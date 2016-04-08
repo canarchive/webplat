@@ -5,6 +5,7 @@ return [
         'setWritable' => [
             'backend/runtime',
             //'backend/web/assets',
+            'website/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -12,18 +13,21 @@ return [
         ],
         'setCookieValidationKey' => [
             'backend/config/main-local.php',
+            'website/config/main-local.php',
         ],
     ],
     'Production' => [
         'path' => 'prod',
         'setWritable' => [
             'backend/runtime',
+            'website/runtime',
         ],
         'setExecutable' => [
             'yii',
         ],
         'setCookieValidationKey' => [
             'backend/config/main-local.php',
+            'website/config/main-local.php',
         ],
     ],
 ];

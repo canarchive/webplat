@@ -47,7 +47,6 @@ return [
             'errorAction' => 'site/error',
         ],
         'authManager' => [
-            //'class' => 'yii\rbac\PhpManager',
             'class' => 'yii\rbac\DbManager',
         ]
     ],
@@ -63,6 +62,9 @@ return [
     ],
 
 	'modules' => [
+		'website' => [
+			'class' => 'backend\website\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
