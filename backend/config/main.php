@@ -63,6 +63,9 @@ return [
     ],
 
 	'modules' => [
+		'merchant' => [
+			'class' => 'backend\merchant\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
