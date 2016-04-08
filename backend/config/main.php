@@ -26,7 +26,6 @@ return [
                     'basePath' => '@backend/messages'
                 ];
             }
-            //user did not define the Navbar?
         }
 	],
     'controllerNamespace' => 'backend\controllers',
@@ -53,7 +52,6 @@ return [
         ]
     ],
 
-    //'layout' => 'left-menu',
     'as access' => [
         'class' => 'backend\components\AccessControl',
         'allowActions' => [

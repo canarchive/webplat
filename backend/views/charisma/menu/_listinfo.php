@@ -2,6 +2,7 @@
 
 $controller = $this->context;
 $menuInfos = $controller->menuInfos;
+$updateUrl = isset($menuInfos['appMenus']['update']) ? $menuInfos['appMenus']['update']['url'] : '';
 
 $modules = $model->getModuleInfos();
 $displays = $model->getDisplayInfos();
@@ -9,7 +10,6 @@ $displays = $model->getDisplayInfos();
 <thead>
     <tr>
         <th><?= $model->getAttributeLabel('name') . '( ' . $model->getAttributeLabel('id') . ' )'; ?></th>
-        <th width='60px'><input type='checkbox' value='' id='check_box' onclick='selectall("mulIds[]");' /></th>
         <th><?= $model->getAttributeLabel('orderlist'); ?></th>
         <th><?= $model->getAttributeLabel('code'); ?></th>
         <th><?= $model->getAttributeLabel('module'); ?></th>
@@ -23,8 +23,9 @@ $displays = $model->getDisplayInfos();
     <?php foreach ($infos as $info) { ?>
     <tr id='node-<?= $info['id']; ?>' class="<?= $info['parentNode']; ?>">
         <td style='padding-left:30px;'><?= $info['name'] . '( ' . $info['id'] . ' )'; ?></td>
-        <td><input type='checkbox' name='mulIds[]' class="checkbox_ids" value='<?= $info['id']; ?>' /></td>
-        <td align='center'><input name='listorders[<?= $info['id']; ?>]' type='text' style='width:30px;' value='<?= $info['orderlist']; ?>' class='input-text-c'></td>
+		<td>
+		    <input type="text" onchange="updateElemByAjax('<?= $updateUrl; ?>', <?= $info['id']; ?>, 'orderlist', this.value);" class="input-text-c" value="<?= $info['orderlist']; ?>" style="width:30px;" name="orderlist">
+        </td>
         <td align='center'><?= $info['code']; ?></td>
         <td align='center'><?= $modules[$info['module']]; ?></td>
         <td align='center'><?= $info['controller']; ?></td>

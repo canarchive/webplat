@@ -3,6 +3,7 @@ $model->roles = implode(',', $model->getRoles());
 $detailViewParams = [
     'model' => $model,
     'attributes' => [
+		'id',
         'username',
 		'roles',
 		'login_num',

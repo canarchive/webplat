@@ -47,6 +47,20 @@ class AdminController extends Controller
     }
 
     /**
+     * Lists all Menu models.
+     * @return mixed
+     */
+    public function _listinfoTree($model)
+    {
+		$infos = $model->getFormatedInfos();
+
+        return $this->render('listinfo', [
+			'model' => $model,
+            'infos' => $infos,
+        ]);
+	}
+
+    /**
      * Displays a single info.
      * @param  string $id
      * @return mixed
