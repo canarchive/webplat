@@ -1,0 +1,42 @@
+{
+    "name": "wangcan/yii2-research",
+    "description": "Study and research Yii2",
+    "keywords": ["yii2", "research"],
+    "homepage": "http://www.acanstudio.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/wangcan/yii2-research/issues?state=open",
+        "source": "https://github.com/wangcan/yii2-project"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": ">=2.0.6",
+        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2-swiftmailer": "*",
+        "pingplusplus/pingpp-php": "dev-master",
+        "2amigos/yii2-file-upload-widget": "~1.0",
+        "mobiledetect/mobiledetectlib": "dev-master",
+        "yiisoft/yii2-redis": "~2.0@dev",
+        "yiisoft/yii2-httpclient": "~2.0@dev",
+        "chrisboulton/php-resque": "dev-master",
+        "fabpot/goutte": "~3.1@dev",
+        "overtrue/pinyin": "2.*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
