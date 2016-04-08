@@ -63,6 +63,9 @@ return [
     ],
 
 	'modules' => [
+		'passport' => [
+			'class' => 'backend\passport\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
