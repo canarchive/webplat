@@ -63,6 +63,9 @@ return [
     ],
 
 	'modules' => [
+		'shoot' => [
+			'class' => 'backend\shoot\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
