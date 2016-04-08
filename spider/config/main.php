@@ -7,12 +7,19 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-console',
+    'id' => 'app-spider',
     'basePath' => dirname(__DIR__),
+	'viewPath' => '@spider/views/default',
+	'layout' => null,
     'bootstrap' => ['log'],
-    'controllerNamespace' => 'console\controllers',
+    'controllerNamespace' => 'spider\controllers',
     'components' => [
+        'user' => [
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => true,
+        ],
         'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
@@ -20,11 +27,17 @@ return [
                 ],
             ],
         ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
+        ],
     ],
 	'modules' => [
-		'spider' => [
-			'class' => 'console\spider\Module',
-		],
 	],
     'params' => $params,
 ];

@@ -63,6 +63,9 @@ return [
     ],
 
 	'modules' => [
+		'spider' => [
+			'class' => 'backend\spider\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
