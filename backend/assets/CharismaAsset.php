@@ -36,7 +36,6 @@ class CharismaAsset extends \yii\web\AssetBundle
      * @inheritdoc
      */
     public $js = [
-        'backend/js/jquery.treetable.js',
         'bower_components/bootstrap/dist/js/bootstrap.min.js',
         'backend/js/jquery.cookie.js',
         'bower_components/moment/min/moment-with-locales.min.js',
@@ -54,6 +53,7 @@ class CharismaAsset extends \yii\web\AssetBundle
         'backend/js/jquery.uploadify-3.1.min.js',
         'backend/js/jquery.history.js',
         'backend/js/charisma.js',
+        'backend/js/jquery.treetable.js',
         'backend/js/jquery.treeview.js',
         'backend/js/common.js',
     ];
