@@ -8,6 +8,7 @@ return [
             'passport/runtime',
             'website/runtime',
             'paytrade/runtime',
+            'restapp/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -18,6 +19,7 @@ return [
             'passport/config/main-local.php',
             'website/config/main-local.php',
             'paytrade/config/main-local.php',
+            'restapp/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -27,6 +29,7 @@ return [
             'passport/runtime',
             'website/runtime',
             'paytrade/runtime',
+            'restapp/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -36,6 +39,7 @@ return [
             'passport/config/main-local.php',
             'website/config/main-local.php',
             'paytrade/config/main-local.php',
+            'restapp/config/main-local.php',
         ],
     ],
 ];
