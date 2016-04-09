@@ -66,6 +66,9 @@ return [
 		'gallerycms' => [
 			'class' => 'backend\gallerycms\Module',
 		],
+		'passport' => [
+			'class' => 'backend\passport\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
