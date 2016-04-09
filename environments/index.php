@@ -7,6 +7,7 @@ return [
             //'backend/web/assets',
             'passport/runtime',
             'website/runtime',
+            'paytrade/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -16,6 +17,7 @@ return [
             'backend/config/main-local.php',
             'passport/config/main-local.php',
             'website/config/main-local.php',
+            'paytrade/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -24,6 +26,7 @@ return [
             'backend/runtime',
             'passport/runtime',
             'website/runtime',
+            'paytrade/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -32,6 +35,7 @@ return [
             'backend/config/main-local.php',
             'passport/config/main-local.php',
             'website/config/main-local.php',
+            'paytrade/config/main-local.php',
         ],
     ],
 ];

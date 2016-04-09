@@ -68,6 +68,9 @@ return [
 		'website' => [
 			'class' => 'backend\website\Module',
 		],
+		'paytrade' => [
+			'class' => 'backend\paytrade\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
