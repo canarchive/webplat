@@ -63,6 +63,9 @@ return [
     ],
 
 	'modules' => [
+		'gallerycms' => [
+			'class' => 'backend\gallerycms\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
