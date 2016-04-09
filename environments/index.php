@@ -7,6 +7,7 @@ return [
             //'backend/web/assets',
             'gallerycms/runtime',
             'passport/runtime',
+            'shoot/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -16,6 +17,7 @@ return [
             'backend/config/main-local.php',
             'gallerycms/config/main-local.php',
             'passport/config/main-local.php',
+            'shoot/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -24,6 +26,7 @@ return [
             'backend/runtime',
             'gallerycms/runtime',
             'passport/runtime',
+            'shoot/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -32,6 +35,7 @@ return [
             'backend/config/main-local.php',
             'gallerycms/config/main-local.php',
             'passport/config/main-local.php',
+            'shoot/config/main-local.php',
         ],
     ],
 ];

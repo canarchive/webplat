@@ -69,6 +69,9 @@ return [
 		'passport' => [
 			'class' => 'backend\passport\Module',
 		],
+		'shoot' => [
+			'class' => 'backend\shoot\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
