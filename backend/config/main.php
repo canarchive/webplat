@@ -75,6 +75,9 @@ return [
 		'spider' => [
 			'class' => 'backend\spider\Module',
 		],
+		'spread' => [
+			'class' => 'backend\spread\Module',
+		]
 	],
 	'language' => 'zh-CN',
 

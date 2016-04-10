@@ -9,6 +9,7 @@ return [
             'passport/runtime',
             'shoot/runtime',
             'spider/runtime',
+            'spread/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -20,6 +21,7 @@ return [
             'passport/config/main-local.php',
             'shoot/config/main-local.php',
             'spider/config/main-local.php',
+            'spread/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -30,6 +32,7 @@ return [
             'passport/runtime',
             'shoot/runtime',
             'spider/runtime',
+            'spread/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -40,6 +43,7 @@ return [
             'passport/config/main-local.php',
             'shoot/config/main-local.php',
             'spider/config/main-local.php',
+            'spread/config/main-local.php',
         ],
     ],
 ];
