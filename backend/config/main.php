@@ -72,6 +72,9 @@ return [
 		'shoot' => [
 			'class' => 'backend\shoot\Module',
 		],
+		'spider' => [
+			'class' => 'backend\spider\Module',
+		],
 	],
 	'language' => 'zh-CN',
 

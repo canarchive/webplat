@@ -5,4 +5,5 @@ Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('gallerycms', dirname(dirname(__DIR__)) . '/gallerycms');
 Yii::setAlias('passport', dirname(dirname(__DIR__)) . '/passport');
 Yii::setAlias('shoot', dirname(dirname(__DIR__)) . '/shoot');
+Yii::setAlias('spider', dirname(dirname(__DIR__)) . '/spider');
 require_once(__DIR__ . '/bootstrap-local.php');
