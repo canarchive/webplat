@@ -118,25 +118,9 @@ class Menu extends PassportModel
 	 *
 	 * @return array
 	 */
-	public function getModuleInfos($data = null)
+	public function getModuleInfos()
 	{
-		$datas = [
-			'' => '后台基本模块',
-			'passport' => '用户模块',
-			'website' => '店铺模块',
-			'paytrade' => '充值交易模块',
-			'groupbuy' => '团购模块',
-			'pay' => '交易模块',
-			'spread' => '推广和统计',
-			'merchant' => '商家',
-		];
-
-		$return = $datas;
-		if ($data !== null) {
-			$return = isset($datas[$data]) ? $datas[$data] : '';
-		}
-
-		return $return;
+		return \Yii::$app->params['moduleInfos'];
 	}
 
 	/**
