@@ -8,6 +8,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\QueryParamAuth;
 use restapp\components\Controller;
+use paytrade\models\Cart;
+use paytrade\models\CheckOrder;
+use paytrade\models\OrderInfo;
 
 class OrderInfoController extends Controller
 {
@@ -25,7 +28,32 @@ class OrderInfoController extends Controller
     {
 		$identity = $this->_getIdentity();
 		$_POST['user_id'] = $identity->id;
-		return $this->_create();
+
+		$userId = 1;//
+		$couponId = Yii::$app->request->get('coupon_id');
+		$datas = [
+			'userId' => $userId,
+			'couponId' => Yii::$app->request->post('coupon_id'),
+			'priceAll' => Yii::$app->request->post('price_all'),
+		];
+
+		$checkOrder = new CheckOrder();
+		$orderInfos = $checkOrder->checkForOrder($datas);
+
+		if (isset($orderInfos['status']) && $orderInfos['status'] != 200) {
+    		foreach ($orderInfos['infos'] as $cartInfo) {
+    			$cartInfo->is_delete = 0;
+    			$cartInfo->update(false);
+    		}
+			return $orderInfos;
+		}
+
+		$orderModel = new OrderInfo();
+		unset($datas['cartInfos']);
+		$result = $orderModel->createOrder($orderInfos, $datas);
+		print_r($result);exit();
+
+		return $result;		
     }
 
     public function actionUpdate($id)

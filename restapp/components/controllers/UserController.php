@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         $model = new SigninForm();
 
-		if (!($model->load(\Yii::$app->getRequest()->getQueryParams(), ''))) {
+		if (!($model->load(\Yii::$app->getRequest()->getBodyParams(), ''))) {
             return ['status' => 400, 'message' => '参数错误'];
 		}
 		if (!$model->signin()) {

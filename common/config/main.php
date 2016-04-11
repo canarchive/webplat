@@ -12,6 +12,9 @@ return [
             'showScriptName' => false,
 			'suffix' => '.html',
             'rules' => [
+		        ['pattern' => '/website-upload/<table:\w+>/<field:\w+>', 'route' => '/website-upload/index', 'host' => Yii::getAlias('@websiteurl')],
+		        ['pattern' => '/paytrade-upload/<table:\w+>/<field:\w+>', 'route' => '/paytrade-upload/index', 'host' => Yii::getAlias('@paytradeurl')],
+                ['pattern' => 'callback/<result:\w+>/<code:\w+>', 'route' => 'account/callback', 'host' => Yii::getAlias('@paytradeurl')],
             ],
         ],
 		'assetManager' => [

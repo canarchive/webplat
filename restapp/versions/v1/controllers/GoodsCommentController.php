@@ -1,9 +1,9 @@
 <?php
 namespace restapp\versions\v1\controllers;
 
-use restapp\components\controllers\UserAddressController as UserAddressControllerBase;
+use restapp\components\controllers\GoodsCommentController as GoodsCommentControllerBase;
 
-class UserAddressController extends UserAddressControllerBase
+class GoodsCommentController extends GoodsCommentControllerBase
 {
 
 }

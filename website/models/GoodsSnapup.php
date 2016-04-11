@@ -63,4 +63,26 @@ class GoodsSnapup extends WebsiteModel
 
 		return true;
 	}
+
+	public function checkNumber($info, $number)
+	{
+		$numberTotal = $info->bet_number_total;
+		$numberRemain = $info->bet_number_total - $info->bet_number;
+		if ($info->bet_number_total == $info->bet_number) {
+			return ['status' => 400, 'message' => '本期云购已结束'];
+		}
+		if ($number > $numberRemain) {
+	   	    return ['status' => 401, 'message' => "本期只剩{$numberRemain}次了"];
+		}
+
+		if (!empty($info->min_times) && $number < $info->min_times && $numberRemain >= $info->min_times) {
+	   	    return ['status' => 402, 'message' => '不能少于' . $info->min_times];
+		}
+
+		if (!empty($info->max_times) && $number > $info->max_times) {
+	   	    return ['status' => 403, 'message' => '不能多于' . $info->max_times];
+		}
+
+		return ['status' => 200, 'message' => 'OK'];
+	}
 }

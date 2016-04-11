@@ -1,13 +1,11 @@
 <?php
-$baseDomain = 'yaolezan.com';
+$baseDomain = 'alyee.com';
 $domains = [
-	'www' => '商城',
-	'user' => '用户中心',
-	'pay' => '充值和交易',
-	'sj' => '商家',
-	'tuan' => '团购会',
-	'spread' => '推广',
-	'backend' => '后台',
+	'yii2.website' => '商城',
+	'yii2.passport' => '用户中心',
+	'yii2.paytrade' => '充值和交易',
+	'yii2.admin' => '后台',
+	'yii2.app' => 'APP',
 	'asset' => '静态资源域名',
 	'upload' => '附件域名',
 ];

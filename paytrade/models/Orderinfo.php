@@ -44,10 +44,10 @@ class OrderInfo extends PaytradeModel
 	{
 		$cartInfos = $infos['cartInfos'];
 		$data = [
-			'orderid' => $this->_createSingleRandomStr(),
+			'orderid' => $this->createSingleRandomStr(),
 			'user_id' => $baseInfos['userId'],
-			'status' => 0,
-			'sold_number' => $cartInfos['numberAll'],
+			'status' => 'order',
+			'number' => $cartInfos['numberAll'],
 			'pay_money' => $baseInfos['priceAll'],
 		];
 
@@ -64,50 +64,80 @@ class OrderInfo extends PaytradeModel
 		$modelStatus = new OrderStatus($dataStatus);
 		$modelStatus->insert(false);
 
-		$this->_addAddressInfo($infos['addressInfo'], $baseInfos);
-		$this->_addGoods($cartInfos, $baseInfos);
+        //$this->_addAddressInfo($infos['addressInfo'], $baseInfos);
+        $this->_addGoods($cartInfos, $baseInfos);
 
-		return ['status' => 200, 'message' => 'OK'];
-	}
+        return ['status' => 200, 'message' => 'OK'];
+    }   
 
-	protected function _addAddressInfo($addressInfo, $baseInfos)
-	{
-		$baseFields = ['orderid', 'invoice_get', 'invoice_type', 'invoice_title'];
-		foreach ($baseFields as $field) {
-			$data[$field] = $baseInfos[$field];
-		}
+    protected function _addAddressInfo($addressInfo, $baseInfos)
+    {   
+        $baseFields = ['orderid', 'invoice_get', 'invoice_type', 'invoice_title'];
+        foreach ($baseFields as $field) {
+            $data[$field] = $baseInfos[$field];
+        }   
 
-		$fields = ['user_id', 'consignee', 'region_id', 'address', 'zipcode', 'mobile', 'sign_building', 'best_time'];
-		foreach ($fields as $field) {
-			$data[$field] = $addressInfo->$field;
-		}
-		$data['sign_building'] = !empty($baseInfos['sign_building']) ? $baseInfos['sign_building'] : $addressInfo->sign_building;
-		$data['best_time'] = !empty($baseInfos['best_time']) ? $baseInfos['best_time'] : $addressInfo->best_time;
+        $fields = ['user_id', 'consignee', 'region_code', 'address', 'zipcode', 'mobile', 'sign_building', 'best_time'];
+        foreach ($fields as $field) {
+            $data[$field] = $addressInfo->$field;
+        }   
+        $data['sign_building'] = !empty($baseInfos['sign_building']) ? $baseInfos['sign_building'] : $addressInfo->sign_building;
+        $data['best_time'] = !empty($baseInfos['best_time']) ? $baseInfos['best_time'] : $addressInfo->best_time;
 
-		$model = new OrderAddress($data);
-		$model->insert(false);
+        $model = new OrderAddress($data);
+        $model->insert(false);
 
-		return true;
-	}
+        return true;
+    } 
 
 	protected function _addGoods($cartInfos, $baseInfos)
 	{
-		foreach ($cartInfos['goodsInfos'] as $goodsInfo) {
-			$info = $goodsInfo['info'];
+		foreach ($cartInfos['infos'] as $info) {
 			$data = [
 				'orderid' => $baseInfos['orderid'],
-				'price' => $goodsInfo['price'],
-				'goods_sku' => !empty($goodsInfo['goods_sku']) ? $goodsInfo['goodsSku']->sku : '',
-				'sold_number' => $goodsInfo['number'],
-				'activity_id' => empty($goodsInfo['activity']) ? 0 : $goodsInfo['activity']->id,
-				'activity_fee' => empty($goodsInfo['activity']) ? 0 : $goodsInfo['activity']->price,
-				'goods_id' => $info['id'],
-				'goods_name' => $info['name'],
-				'goods_price' => $info['price'],
+				'price' => $info['number'],
+				'number' => $info['number'],
+				'snapup_id' => $info['snapup_id'],
+				'period' => $info['snapupInfo']['period'],
+				'goods_id' => $info['goodsInfo']['id'],
+				'goods_name' => $info['goodsInfo']['name'],
+				'goods_price' => $info['goodsInfo']['price'],
 			];
 			$model = new OrderGoods($data);
 			$model->insert();
 		}
+
+		return true;
+	}
+
+	public function pay()
+	{
+		$modelUserPaytrade = new \paytrade\models\UserPaytrade();
+		$userPay = $modelUserPaytrade->updateInfo('pay', ['user_id' => $this->user_id, 'money' => $this->pay_money]);
+		if ($userPay !== true) {
+			return $userPay;
+		}
+
+		$betModel = new Bet();
+		$orderGoods = OrderGoods::find()->where(['orderid' => $this->orderid])->all();
+		$remainMoney = 0;
+		$ip = \Yii::$app->request->getIP();
+		$city = \common\components\IP::find($ip);
+		$city = is_array($city) ? implode('-', $city) : $city;
+		foreach ($orderGoods as $orderGoods) {
+			$snapupInfo = \website\models\GoodsSnapup::findOne($orderGoods['snapup_id']);
+			if (empty($snapupInfo)) {
+				$remainMoney += $orderGoods['price'];
+				continue;
+			}
+			$remainNumber = $snapupInfo['bet_number_total'] - $snapupInfo['bet_number'];
+			$number = $remainNumber < $orderGoods['number'] ? $remainNumber : $orderGoods['number'];
+			$remainMoney += $orderGoods['number'] - $number;
+			$snapupInfo->updateCounters(['bet_number' => $number]);
+			$betModel->createSn($this->orderid, $orderGoods['snapup_id'], $this->user_id, $number, $ip, $city);
+		}
+
+		$modelUserPaytrade->updateInfo('pay', ['user_id' => $this->user_id, 'money' => -$remainMoney]);
 
 		return true;
 	}

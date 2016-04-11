@@ -58,7 +58,8 @@ class Account extends PaytradeModel
 	protected function _updateUserMoney($isValid = false)
 	{
 		$model = new \paytrade\models\UserPaytrade();
-		return $model->updateInfo('want', ['user_id' => $this->user_id, 'money' => $this->money]);
+		$type = $isValid ? 'valid' : 'want';
+		return $model->updateInfo($type, ['user_id' => $this->user_id, 'money' => $this->money]);
 	}
 
     protected function recordPay($payInfo)

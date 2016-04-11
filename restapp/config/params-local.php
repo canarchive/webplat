@@ -1,3 +1,5 @@
 <?php
 return [
+	'openTest' => true,
+	'pingxxCallback' => '{"id":"evt_M65fcPS6ubz6X9FW1yPTOTO1","created":1457342545,"livemode":false,"type":"charge.succeeded","data":{"object":{"id":"ch_CuTmr5a5084Gbz5e9OXXjPe9","object":"charge","created":1457342542,"livemode":false,"paid":true,"refunded":false,"app":"app_TKSeD0nHOK48jDuT","channel":"alipay_wap","order_no":"20160307172222","client_ip":"42.96.194.225","amount":10,"amount_settle":10,"currency":"cny","subject":"Your Subject","body":"Your Body","extra":{"success_url":"http://yii2.pay.alyee.com/callback/success/alipay_wap.html","cancel_url":"http://yii2.pay.alyee.com/callback/cancel/alipay_wap.html","buyer_account":"alipay_account"},"time_paid":1457342545,"time_expire":1457428942,"time_settle":null,"transaction_no":"2016030719969531","refunds":{"object":"list","url":"/v1/charges/ch_CuTmr5a5084Gbz5e9OXXjPe9/refunds","has_more":false,"data":[]},"amount_refunded":0,"failure_code":null,"failure_msg":null,"metadata":{},"credential":{},"description":null}},"object":"event","pending_webhooks":1,"request":"iar_fvTuDSnXfPS8000G4CzjrDWD"}',	
 ];

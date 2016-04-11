@@ -9,7 +9,7 @@ use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\QueryParamAuth;
 use restapp\components\Controller;
 
-class UserAddressController extends Controller
+class CouponController extends Controller
 {
     public $modelClass = 'paytrade\models\Coupon';
 

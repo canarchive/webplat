@@ -10,6 +10,7 @@ use yii\filters\auth\QueryParamAuth;
 
 class Controller extends ActiveController
 {
+	public $modelClass = '';
     public $result = ['errcode' => 404, 'errmsg' => '操作错误'];
 
     public $serializer = [
@@ -64,9 +65,9 @@ class Controller extends ActiveController
 		return $return;
     }
 
-    protected function _view($id)
+    protected function _view($id, $pointUserId = true)
     {
-        return $this->findModel($id);
+        return $this->findModel($id, $pointUserId);
     }
 
     protected function findModel($id, $pointUserId = true)
@@ -79,7 +80,6 @@ class Controller extends ActiveController
 		    $userId = $identity->id;
 			$where = ['id' => $id, 'user_id' => $userId];
 		}
-		$where = $pintUserId ? ['id' => $id, ['user_id' => $
         if (($model = $modelClass::findOne($where)) !== null) {
             return $model;
         } else {

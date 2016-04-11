@@ -40,18 +40,35 @@ class Bet extends PaytradeModel
         ];
     }
 
-	public function createSn($orderid, $snapupId, $userId, $number)
+	public static function createSn($orderid, $snapupId, $userId, $number, $ip, $city)
 	{
 		for ($i = 1; $i <= $number; $i++) {
+            list($usec, $sec) = explode(" ", microtime());
+			$usec = floor($usec * 1000);
     		$data = [
     			'orderid' => $orderid,
     			'snapup_id' => $snapupId,
     			'user_id' => $userId,
-    			'sn' => '111',
+    			'sn' => self::_getSn($snapupId),
+				'created_at' => $sec,
+				'created_at_ext' => $usec,
+				'ip' => $ip,
+				'city' => $city,
     		];
     		$model = new self($data);
     		$model->insert(false);
 		}
 		return true;
+	}
+
+	protected static function _getSn($snapupId)
+	{
+        $orderBy = ['onduty_vernier' => SORT_ASC];
+		$model = self::find()->where(['snapup_id' => $snapupId])->orderBy(['id' => SORT_DESC])->one();
+		if (empty($model)) {
+			return 10001;
+		}
+
+		return $model->sn + 1;
 	}
 }

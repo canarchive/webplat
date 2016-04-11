@@ -3,10 +3,11 @@
 namespace paytrade\models;
 
 use common\models\PaytradeModel;
-use website\models\Goods;
+use website\models\GoodsSnapup;
 
 class Cart extends PaytradeModel
 {
+
     /**
      * @inheritdoc
      */
@@ -42,7 +43,7 @@ class Cart extends PaytradeModel
     {
         return [
             'id' => '购物车ID',
-            'goods_id' => '商品ID',
+            'snapup_id' => '商品ID',
             'number' => '数量',
             'user_id' => '用户ID',
             'created_at' => '时间',
@@ -68,21 +69,24 @@ class Cart extends PaytradeModel
 	public function addInfo($params)
 	{
 		extract($params);
-		if (empty($goodsId) || empty($number)) {
+		if (empty($snapupId) || empty($number)) {
 			return ['status' => 400, 'message' => 'param error'];
 		}
 
-		$goodsInfo = $this->checkGoods($goodsId, $number);
+		$infoExist = self::findOne(['user_id' => $userId, 'snapup_id' => $snapupId]);
+		$numberExist = isset($infoExist['number']) && $infoExist['is_delete'] == 0 ? $infoExist['number'] : 0;
+		$number += $numberExist;
+		$goodsInfo = $this->checkGoodsSnapup($snapupId, $number);
 		if (!isset($goodsInfo['id'])) {
 			return $goodsInfo;
 		}
 
-		$infoExist = self::findOne(['user_id' => $userId, 'goods_id' => $goodsId]);
         if (!$infoExist) {
             $data = [
 				'user_id' => $userId,
-                'goods_id' => $goodsId,
+                'snapup_id' => $snapupId,
                 'number' => $number,
+				'operate_num' => 1,
                 'ip' => \Yii::$app->request->getIP(),
             ];
             $cart = new Cart($data);
@@ -90,8 +94,7 @@ class Cart extends PaytradeModel
             return ['status' => 200, 'message' => 'OK'];
         }
 
-        $infoExist->number = $infoExist->is_delete == 1 ? $number : $infoExist->number + $number;
-		$infoExist->number = $infoExist->number > $goodsInfo->inventory ? $goodsInfo->inventory : $infoExist->number;
+		$infoExist->number = $number;
         $infoExist->operate_num = $infoExist->operate_num + 1;
         $infoExist->ip = \Yii::$app->request->getIP();
 		$infoExist->is_delete = 0;
@@ -101,11 +104,15 @@ class Cart extends PaytradeModel
 
 	public function updateInfo($params)
 	{
+		if (empty($params['id'])) {
+			return ['status' => 400, 'message' => 'params error'];
+		}
+
 		$type = $params['type'];
 		if (!in_array($type, ['add', 'minus'])) {
 			return ['status' => 400, 'message' => 'params error'];
 		}
-		if ($params['number'] <= 0 || $params['number'] > 1000) {
+		if ($params['number'] <= 0) {
 			return ['status' => 400, 'message' => 'params error'];
 		}
 
@@ -114,16 +121,15 @@ class Cart extends PaytradeModel
 			return ['status' => 400, 'message' => '信息不存在'];
 		}
 
-		$goodsInfo = $this->checkGoods($info->goods_id);
-		if (!isset($goodsInfo['id'])) {
+		$number = $type == 'add' ? $info->number + $params['number'] : $info->number - $params['number'];
+		$snapupInfo = $this->checkGoodsSnapup($info->snapup_id, $number);
+		if ($snapupInfo['status'] == 400) { 
 			$info->is_delete = 1;
 			$info->update();
-			return $goodsInfo;
+			return $snapupInfo;
 		}
 
-		$info->number = $type == 'add' ? $info->number + $params['number'] : $info->number - $params['number'];
-		$info->number = $info->number > $goodsInfo->inventory ? $goodsInfo->inventory : $info->number;
-		$info->number = $info->number < 0 ? 0 : $info->number;
+		$info->number = $number < 0 ? 0 : $number;
         $info->operate_num = $info->operate_num + 1;
         $info->ip = \Yii::$app->request->getIP();
         $info->update(false);
@@ -168,17 +174,17 @@ class Cart extends PaytradeModel
 		return ['status' => 200, 'message' => 'OK'];
 	}
 
-	protected function checkGoods($goodsId, $number = 0)
+	protected function checkGoodsSnapup($snapupId, $number)
 	{
-		$info = Goods::getInfo($goodsId);
+		$info = GoodsSnapup::findOne($snapupId);
 		if (empty($info)) {
 			return ['status' => 400, 'message' => '商品不存在'];
 		}
 
-		if ($info->inventory < $number) {
-	   	    return ['status' => 400, 'message' => '库存不足'];
+		$check = $info->checkNumber($info, $number);
+		if ($check['status'] != 200) {
+			return $check;
 		}
-
 		return $info;
 	}
 }

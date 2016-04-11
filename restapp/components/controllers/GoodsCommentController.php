@@ -11,13 +11,13 @@ use restapp\components\Controller;
 
 class GoodsCommentController extends Controller
 {
-    public $modelClass = 'paytrade\models\GoodsComment';
+    public $modelClass = 'website\models\GoodsComment';
 
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
 		$_POST['user_id'] = $identity->id;
-		$searchModel = new \paytrade\models\searchs\GoodsComment();
+		$searchModel = new \website\models\searchs\GoodsComment();
 		return $this->_index($searchModel);
     }
 
