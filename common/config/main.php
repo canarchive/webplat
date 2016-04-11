@@ -12,6 +12,7 @@ return [
             'showScriptName' => false,
 			'suffix' => '.html',
             'rules' => [
+		        ['pattern' => '/spider-upload/<table:\w+>/<field:\w+>', 'route' => '/spider-upload/index', 'host' => Yii::getAlias('@spiderurl')],
             ],
         ],
 		'assetManager' => [
