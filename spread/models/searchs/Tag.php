@@ -5,14 +5,13 @@ namespace spread\models\searchs;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use spread\models\Template as TemplateModel;
+use spread\models\Tag as TagModel;
 
-class Template extends TemplateModel
+class Tag extends TagModel
 {
     public function search($params)
     {
-        $query = TemplateModel::find()
-            ->from(TemplateModel::tableName());
+        $query = TagModel::find();
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 
