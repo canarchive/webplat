@@ -63,6 +63,9 @@ return [
     ],
 
 	'modules' => [
+		'spread' => [
+			'class' => 'backend\spread\Module',
+		]
 	],
 	'language' => 'zh-CN',
 
