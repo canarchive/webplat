@@ -3,18 +3,18 @@
 namespace backend\shoot\controllers;
 
 use Yii;
-use shoot\models\Photographer;
-use shoot\models\searchs\Photographer as PhotographerSearch;
+use shoot\models\GoodsAttribute;
+use shoot\models\searchs\GoodsAttribute as GoodsAttributeSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class PhotographerController extends AdminController
+class GoodsAttributeController extends AdminController
 {
-	protected $modelClass = 'shoot\models\Photographer';
+	protected $modelClass = 'shoot\models\GoodsAttribute';
 
     public function actionListinfo()
     {
-        $searchModel = new PhotographerSearch();
+        $searchModel = new GoodsAttributeSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +25,7 @@ class PhotographerController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Photographer());
+		return $this->_addInfo(new GoodsAttribute());
     }
 
     public function actionUpdate($id = 0)
