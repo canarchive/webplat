@@ -1,0 +1,51 @@
+<?php
+
+namespace spread\decoration\models;
+
+use common\models\SpreadModel;
+
+class Bonus extends SpreadModel
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%bonus}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => '品牌ID',
+            'name' => '名称',
+            'price' => '金额',
+            'limit_day' => '每日限量',
+            'orderlist' => '排序',
+            'status' => '是否显示',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+        ];
+    }
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '暂停使用',
+			'1' => '正常',
+		];	
+		return $datas;
+	}	
+}
