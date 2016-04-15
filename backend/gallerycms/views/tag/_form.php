@@ -12,6 +12,9 @@ use yii\bootstrap\ActiveForm;
 	<?php } else { ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'orderlist')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'meta_title'); ?>
+    <?= $form->field($model, 'meta_keyword'); ?>
+    <?= $form->field($model, 'meta_description')->textarea(['rows' => 2]) ?>
     <?php } ?>
 		
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>

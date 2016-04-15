@@ -30,7 +30,7 @@ class Tag extends GallerycmsModel
 				return $spell;
 			}],
 			[['orderlist'], 'default', 'value' => 0],
-			[['add_mul'], 'safe'],
+			[['add_mul', 'seo_title', 'seo_keyword', 'seo_description'], 'safe'],
         ];
     }
 
@@ -44,6 +44,9 @@ class Tag extends GallerycmsModel
             'name' => '名称',
             'parent_id' => '父栏目ID',
             'orderlist' => '排序',
+            'meta_title' => 'SEO名称',
+            'meta_keywords' => 'SEO关键字',
+            'meta_description' => 'SEO描述',
 			'add_mul' => '批量添加(格式：标签 排序\n)',
         ];
     }
