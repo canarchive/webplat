@@ -28,6 +28,10 @@ use yii\helpers\Url;
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/shoot') . '/default/css/' . $cssFile . '.css?v=151020'; ?>" />
 <?php } } ?>
 
+<?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/default/js/' . $jsFile . '.js'; ?>"></script>
+<?php } } ?>
+
 <script type="text/javascript">
 window.passportUrl = "<?= Yii::getAlias('@passporturl'); ?>";
 window.asseturl = "<?= Yii::getAlias('@asseturl'); ?>";
