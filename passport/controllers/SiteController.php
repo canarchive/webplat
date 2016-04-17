@@ -72,7 +72,7 @@ class SiteController extends PassportController
 
     public function actionSignin()
     {
-		$returnUrl = Yii::$app->getRequest()->get('return_url', Yii::getAlias('@websiteurl'));
+		$returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
         if (!\Yii::$app->user->isGuest) {
             //return $this->redirect($returnUrl);
         }
@@ -92,12 +92,12 @@ class SiteController extends PassportController
     {
         Yii::$app->user->logout();
 
-		return $this->redirect(Yii::getAlias('@websiteurl'));
+		return $this->redirect($this->homeDomain);
     }
 
     public function actionSignup()
     {
-		$returnUrl = Yii::$app->getRequest()->get('return_url', Yii::getAlias('@websiteurl'));
+		$returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
