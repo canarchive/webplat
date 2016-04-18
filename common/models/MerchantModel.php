@@ -6,7 +6,7 @@ class MerchantModel extends BaseModel
 {
     public static function getDb()
     {
-        return \Yii::$app->dbWebsite;
+        return \Yii::$app->dbMerchant;
     }	
 
 	protected function getAttachmentModel()
