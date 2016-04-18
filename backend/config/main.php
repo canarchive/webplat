@@ -65,7 +65,7 @@ return [
 	'modules' => [
 		'spread' => [
 			'class' => 'backend\spread\Module',
-		]
+		],
 		'merchant' => [
 			'class' => 'backend\merchant\Module',
 		],
