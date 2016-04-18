@@ -17,9 +17,23 @@ class Lottery extends SpreadModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
+            [['name', 'prize', 'decoration_id'], 'required'],
+            [['probability', 'limit_day', 'orderlist', 'status', 'price'], 'default', 'value' => 0],
+			[['description'], 'safe'],
         ];
     }
 
@@ -29,7 +43,7 @@ class Lottery extends SpreadModel
     public function attributeLabels()
     {
         return [
-            'id' => '品牌ID',
+            'id' => 'ID',
             'name' => '名称',
             'prize' => '奖品',
             'price' => '价格',

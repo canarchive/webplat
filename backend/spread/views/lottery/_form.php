@@ -8,6 +8,7 @@ use yii\bootstrap\ActiveForm;
 <div class="menu-form">
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'prize')->textInput() ?>
     <?= $form->field($model, 'price')->textInput() ?>
     <?= $form->field($model, 'limit_day')->textInput() ?>
     <?= $form->field($model, 'probability')->textInput() ?>

@@ -2,6 +2,7 @@
 
 namespace spread\decoration\models;
 
+use yii\helpers\ArrayHelper;
 use common\models\SpreadModel;
 
 class Bonus extends SpreadModel
@@ -20,6 +21,9 @@ class Bonus extends SpreadModel
     public function rules()
     {
         return [
+            [['name', 'decoration_id'], 'required'],
+            [['limit_day', 'orderlist', 'status', 'price'], 'default', 'value' => 0],
+			[['description'], 'safe'],
         ];
     }
 
@@ -47,5 +51,11 @@ class Bonus extends SpreadModel
 			'1' => '正常',
 		];	
 		return $datas;
+	}	
+
+	public function getDecorationInfos()
+	{
+		$infos = ArrayHelper::map(\spread\decoration\models\Decoration::find()->all(), 'id', 'name');
+		return $infos;
 	}	
 }
