@@ -22,14 +22,13 @@ use yii\helpers\Url;
 <meta name="keywords" content="keywords" />
 <meta name="description" content="description" />
 <meta property="qc:admins" content="1257363774670076375" />
-<link media="all" type="text/css" rel="stylesheet" href="http://www.oppo.com/cn/assets/stylesheets/styles.css?v=20160217142111">
 
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/shoot') . '/default/css/' . $cssFile . '.css?v=151020'; ?>" />
 <?php } } ?>
 
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/default/js/' . $jsFile . '.js'; ?>"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/shoot') . '/default/js/' . $jsFile . '.js'; ?>"></script>
 <?php } } ?>
 
 <script type="text/javascript">
