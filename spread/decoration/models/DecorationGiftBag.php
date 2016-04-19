@@ -4,25 +4,14 @@ namespace spread\decoration\models;
 
 use common\models\SpreadModel;
 
-class GiftBag extends SpreadModel
+class DecorationGiftBag extends SpreadModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%gift_bag}}';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-		$behaviors = [
-		    $this->timestampBehaviorComponent,
-		];
-		return $behaviors;
+        return '{{%decoration_gift_bag}}';
     }
 
     /**
@@ -31,9 +20,6 @@ class GiftBag extends SpreadModel
     public function rules()
     {
         return [
-            [['name', 'sort'], 'required'],
-            [['thumb', 'limit_mobile', 'orderlist', 'status', 'price'], 'default', 'value' => 0],
-			[['description'], 'safe'],
         ];
     }
 
@@ -43,9 +29,9 @@ class GiftBag extends SpreadModel
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => '品牌ID',
             'name' => '名称',
-            'thumb' => '图片',
+            'thumb' => '名称',
             'sort' => '类别',
             'price' => '价格',
             'limit_mobile' => '每人限量',
@@ -86,9 +72,9 @@ class GiftBag extends SpreadModel
 	{
         parent::afterSave($insert, $changedAttributes);
 
-		$fields = ['thumb'];
+		$fields = ['logo'];
 		$attachment = new \spread\models\Attachment();
-		$this->_updateSingleAttachment($attachment, 'gift_bag', $fields);
+		$this->_updateSingleAttachment($attachment, 'brand', $fields);
 
 		return true;
 	}	

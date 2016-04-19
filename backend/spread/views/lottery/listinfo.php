@@ -5,6 +5,15 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
+		[
+            'attribute' => 'decoration_id',
+            'value'=> function($model){
+				if ($model->decoration_id < 1) {
+					return '';
+				}
+                return $model->decorationInfos[$model->decoration_id];
+            },
+        ],		
 		'name',
 		'prize',
 		'price',

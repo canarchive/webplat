@@ -4,6 +4,10 @@ $detailViewParams = [
     'model' => $model,
     'attributes' => [
 		'id',
+		[
+			'attribute' => 'decoration_id',
+			'value' => $model->decoration_id > 0 ? $model->decorationInfos[$model->decoration_id] : '',
+		],		
         'name',
 		'prize',
 		'price',
