@@ -4,6 +4,7 @@ namespace spread\decoration\models;
 use Yii;
 use yii\base\Model;
 use common\components\sms\Smser;
+use spread\groupon\models\CustomService;
 
 /**
  * Signup form
@@ -20,7 +21,7 @@ class SignupForm extends Model
 	public $product_id;
 	public $brand_id;
 	public $isMobile;
-	public $type;
+	public $decorationModel;
 
     /**
      * @inheritdoc
@@ -28,8 +29,8 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            [['mobile', 'name', 'type'], 'filter', 'filter' => 'trim'],
-            [['mobile', 'name'], 'required'],
+            [['mobile', 'name'], 'filter', 'filter' => 'trim'],
+            [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
 			[['message', 'info_id', 'template_code', 'position', 'position_name'], 'safe'],
         ];
@@ -38,7 +39,7 @@ class SignupForm extends Model
     /**
      * Signs owner up.
      *
-     * @return GrouponOwner|null the saved model or null if saving fails
+     * @return DecorationOwner|null the saved model or null if saving fails
      */
     public function signup()
     {
@@ -61,9 +62,12 @@ class SignupForm extends Model
 			'from_type' => $this->isMobile ? 'h5' : 'pc',
 			'note' => $note,
 			'message' => strip_tags($this->message),
-			'info_id' => 0,
-			'info_name' => '',
-			'type' => $this->type,
+
+			'info_id' => $this->info_id,
+			'info_name' => $this->decorationModel->name,
+			'type' => 677,//$this->decorationModel->type,
+			'decorationModel' => $this->decorationModel,
+
 		);
 
 		$decorationOwner = DecorationOwner::addOwner($data);
@@ -99,11 +103,29 @@ class SignupForm extends Model
 			return false;
 		}
 
-		if (empty($this->type) || !in_array($this->type, ['377', '677'])) {
-			$this->addError('error', '必须报名有效的家装活动');
+		if (empty($this->info_id)) {
+			$this->addError('error', '必须报名指定的家装活动');
 			return false;
 		}
 
+		$this->decorationModel = Decoration::findOne(['id' => $this->info_id]);
+		if (empty($this->decorationModel)) {
+			$this->addError('error', '家装活动信息有误');
+			return false;
+		}
+
+		$noCheckDecorationOver = isset(\Yii::$app->params['noCheckDecorationOver']) ? \Yii::$app->params['noCheckDecorationOver'] : false;
+		if (!$noCheckDecorationOver && $this->decorationModel['end_at'] < time()) {
+			$this->addError('error', '对不起，本次活动报名已截止，请关注其他活动。');
+			return false;
+		}
+
+		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
+		$noCheckDecorationSignined = isset(\Yii::$app->params['noCheckDecorationSignined']) ? \Yii::$app->params['noCheckDecorationSignined'] : false;
+		if (!$noCheckDecorationSignined && !empty($infoExist)) {
+			$this->addError('error', '这个手机号已经报名了本场家装活动');
+			return false;
+		}
 		return true;
 	}
 
@@ -116,7 +138,7 @@ class SignupForm extends Model
         }
 
 		$date = date('Y年m月d日', $this->decorationModel['start_at']);
-		$message = "恭喜您成功报名{$date}举办的{$this->decorationModel['name']}团购会；地址：{$this->decorationModel['address']}(10号线十里河站B口，有摆渡车接送)；全网底价，售后投诉30分钟响应，100%解决！8:30签到， 详询电话：{$serviceMobile}。";
+		$message = "恭喜您成功报名{$date}举办的{$this->decorationModel['name']}家装活动；地址：{$this->decorationModel['address']}(10号线十里河站B口，有摆渡车接送)；全网底价，售后投诉30分钟响应，100%解决！8:30签到， 详询电话：{$serviceMobile}。";
 		//$message = $userInfo['is_new'] ? $this->decorationModel['sms_new'] : $this->decorationModel['sms'];
         $content .= " $message";
 

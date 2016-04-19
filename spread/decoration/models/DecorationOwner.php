@@ -54,6 +54,7 @@ class DecorationOwner extends SpreadModel
 
         $data = [
             'signup_at' => time(),
+			'decoration_id' => $data['info_id'],
             'type' => $data['type'],
             'signup_ip' => \Yii::$app->getRequest()->getIP(),
             'mobile' => $data['mobile'],
