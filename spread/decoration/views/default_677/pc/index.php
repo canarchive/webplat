@@ -1141,6 +1141,7 @@
             <p class="tc"><span class="btn_close mt20">我知道了</span></p>
         </div>
     </div>
+	<input type="hidden" id="decoration_id" value="<?= $info['id']; ?>" />
     <!--大图弹框 end-->
     <!--页脚 start-->
     <section class="zx-footer tc cWhite">

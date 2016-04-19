@@ -4,32 +4,15 @@ $detailViewParams = [
     'model' => $model,
     'attributes' => [
 		'id',
-		'name',
 		[
-			'attribute' => 'sort',
-			'value' => $model->sortInfos[$model->sort],
+			'attribute' => 'decoration_id',
+			'value' => $model->decoration_id > 0 ? $model->decorationInfos[$model->decoration_id] : '',
 		],		
-		'price',
-		'limit_mobile',
+		[
+			'attribute' => 'gift_bag_id',
+			'value' => $model->gift_bag_id > 0 ? $model->giftBagInfos[$model->gift_bag_id] : '',
+		],		
 		'orderlist',
-		[
-			'format' => 'raw',
-			'attribute' => 'thumb',
-			'value' => $model->getAttachmentImg($model->thumb, false),
-		],		
-		[
-			'attribute' => 'status',
-			'value' => $model->statusInfos[$model->status],
-		],		
-		[
-            'attribute' => 'created_at',
-            'value'=> date('Y-m-d H:i:s',$model->created_at),
-        ],
-		[
-            'attribute' => 'updated_at',
-            'value'=> date('Y-m-d H:i:s',$model->updated_at),
-        ],
-		'description',
     ],
 ];
 

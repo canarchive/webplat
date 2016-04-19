@@ -25,9 +25,10 @@ class DetailController extends Controller
             'info' => $info,
             'lotteryInfos' => $this->getLotteryInfos($info['id']),
             'bonusInfos' => $this->getBonusInfos($info['id']),
-            'giftBagInfos' => $this->getGiftBagInfos($info['id']),
+            //'giftBagInfos' => $this->getGiftBagInfos($info['id']),
         ];
 
+		$type = '677';//$info['type'];
 		$viewPath = $isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
         return $this->render($viewPath . 'index.php', $datas);   
     }

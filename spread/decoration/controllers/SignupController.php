@@ -31,6 +31,7 @@ class SignupController extends spreadController
 				'model' => $model,
 			];
 
+print_r($data);exit();
 			return $data;
 		}
 		//print_r($model);
@@ -38,7 +39,7 @@ class SignupController extends spreadController
 		$data = [
 			'status' => '200',
 		];		
-
+print_r($data);exit();
 		return $data;
 	}
 }
