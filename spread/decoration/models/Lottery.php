@@ -2,6 +2,7 @@
 
 namespace spread\decoration\models;
 
+use yii\helpers\ArrayHelper;
 use common\models\SpreadModel;
 
 class Lottery extends SpreadModel
@@ -63,4 +64,25 @@ class Lottery extends SpreadModel
 		];	
 		return $datas;
 	}	
+
+	public function getDecorationInfos()
+	{
+		$infos = ArrayHelper::map(\spread\decoration\models\Decoration::find()->all(), 'id', 'name');
+		return $infos;
+	}	
+
+	public function getInfos($decorationId)
+	{
+		/*$cache = \Yii::$app->cache;
+		$keyCache = 'decoration_brand';
+		$data = $cache->get($keyCache);
+		if ($data) {
+			return $data;
+		}*/
+
+		$infos = $this->find()->where(['decoration_id' => $decorationId])->orderBy(['orderlist' => SORT_DESC])->all();
+
+        //$cache->set($keyCache, $infos);
+		return $infos;
+	}		
 }

@@ -18,6 +18,17 @@ class Bonus extends SpreadModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
@@ -58,4 +69,19 @@ class Bonus extends SpreadModel
 		$infos = ArrayHelper::map(\spread\decoration\models\Decoration::find()->all(), 'id', 'name');
 		return $infos;
 	}	
+
+	public function getInfos($decorationId)
+	{
+		/*$cache = \Yii::$app->cache;
+		$keyCache = 'decoration_brand';
+		$data = $cache->get($keyCache);
+		if ($data) {
+			return $data;
+		}*/
+
+		$infos = $this->find()->where(['decoration_id' => $decorationId])->orderBy(['orderlist' => SORT_DESC])->all();
+
+        //$cache->set($keyCache, $infos);
+		return $infos;
+	}		
 }

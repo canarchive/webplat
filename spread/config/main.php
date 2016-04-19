@@ -37,7 +37,7 @@ return [
             'rules' => [
 				//Yii::getAlias('@grouponurl') => '/groupon',
 				'detail/<id:\d+>' => 'groupon/detail/index',
-                '<type:(677|377)>' => '/decoration/detail/index',
+                'detail-<id:\d+>' => '/decoration/detail/index',
 				'<city:\w+>' => 'groupon/detail/index',
 		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
 		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@syurl')],

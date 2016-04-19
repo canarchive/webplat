@@ -59,6 +59,14 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],
 			],			
+			'gift_bag' => [
+				'thumb' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 80,
+    				'type' => 'image/*',
+				],
+			],			
 		];
 
 		if (is_null($table) && is_null($field)) {
