@@ -6,9 +6,9 @@ use common\widgets\FileUploadUI;
 use spread\models\Attachment;
 
 $attachmentModel = new Attachment();
-$picture = $attachmentModel->getFieldInfos('groupon', 'picture');
-$pictureSmall = $attachmentModel->getFieldInfos('groupon', 'picture_small');
-$map = $attachmentModel->getFieldInfos('groupon', 'map');
+$picture = $attachmentModel->getFieldInfos('decoration', 'picture');
+$pictureSmall = $attachmentModel->getFieldInfos('decoration', 'picture_small');
+$map = $attachmentModel->getFieldInfos('decoration', 'map');
 $model->start_at = date('Y-m-d H:i:s', $model->start_at);
 $model->end_at = date('Y-m-d H:i:s', $model->end_at);
 
@@ -37,7 +37,7 @@ $model->end_at = date('Y-m-d H:i:s', $model->end_at);
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
         'attribute' => 'files[picture]',
-        'url' => ['/spread-upload/index', 'table' => 'groupon', 'field' => 'picture', 'id' => $model->id],
+        'url' => ['/spread-upload/index', 'table' => 'decoration', 'field' => 'picture', 'id' => $model->id],
 		'gallery' => true,
         'fieldOptions' => [
 			'isSingle' => $picture['isSingle'],
@@ -54,7 +54,7 @@ $model->end_at = date('Y-m-d H:i:s', $model->end_at);
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
         'attribute' => 'files[picture_small]',
-        'url' => ['/spread-upload/index', 'table' => 'groupon', 'field' => 'picture_small', 'id' => $model->id],
+        'url' => ['/spread-upload/index', 'table' => 'decoration', 'field' => 'picture_small', 'id' => $model->id],
 		'gallery' => true,
         'fieldOptions' => [
 			'isSingle' => $pictureSmall['isSingle'],
@@ -71,7 +71,7 @@ $model->end_at = date('Y-m-d H:i:s', $model->end_at);
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
         'attribute' => 'files[map]',
-        'url' => ['/spread-upload/index', 'table' => 'groupon', 'field' => 'map', 'id' => $model->id],
+        'url' => ['/spread-upload/index', 'table' => 'decoration', 'field' => 'map', 'id' => $model->id],
 		'gallery' => true,
         'fieldOptions' => [
 			'isSingle' => $map['isSingle'],
