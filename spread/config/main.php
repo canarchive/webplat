@@ -41,7 +41,6 @@ return [
 				'jz-signup' => '/decoration/signup/index',
 				'<city:\w+>' => 'groupon/detail/index',
 		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
-		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@syurl')],
 			],
 		],
     ],
