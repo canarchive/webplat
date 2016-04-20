@@ -58,6 +58,7 @@ return [
 			'site/login',
 			'site/logout',
 			'site/error',
+			'gallerycms/article/upload',
             'debug/*',
         ]
     ],

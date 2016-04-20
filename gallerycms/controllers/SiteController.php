@@ -10,4 +10,14 @@ class SiteController extends GallerycmsController
     {
         return $this->render('index');
     }
+
+	public function actionList()
+	{
+        return $this->render('list');
+	}
+
+	public function actionShow()
+	{
+        return $this->render('show');
+	}
 }

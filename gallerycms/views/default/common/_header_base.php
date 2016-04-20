@@ -27,3 +27,4 @@ window.logoutUrl = "<?= Yii::getAlias('@passporturl') . Url::to(['site/logout'])
 
 </script>
 </head>
+<body>
