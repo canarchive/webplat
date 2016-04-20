@@ -32,7 +32,7 @@ class MenuController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Manager(['scenario' => 'create']));
+		return $this->_addInfo(new Menu());
     }
 
     public function actionUpdate($id = 0)
