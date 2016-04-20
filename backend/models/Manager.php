@@ -16,8 +16,9 @@ class Manager extends AuthBase
     const STATUS_LOCK = 99;
 
 	public $roles;
-    public $password_repeat;
+    public $password_new_repeat;
     public $oldpassword;
+    public $password_new;
 
     public function behaviors()
     {
@@ -54,10 +55,10 @@ class Manager extends AuthBase
     public function scenarios()
     {
         return [
-            'create' => ['username', 'email', 'password', 'password_repeat', 'status', 'auth_role', 'roles'],
-            'update' => ['username', 'email', 'password', 'password_repeat', 'status', 'auth_role', 'roles'],
+            'create' => ['username', 'email', 'password_new', 'password_new_repeat', 'status', 'auth_role', 'roles'],
+            'update' => ['username', 'email', 'password_new', 'password_new_repeat', 'status', 'auth_role', 'roles'],
             'edit-info' => ['email', 'truename', 'mobile'],
-            'edit-password' => ['oldpassword', 'password', 'password_repeat'],
+            'edit-password' => ['oldpassword', 'password_new', 'password_new_repeat'],
         ];
     }
 
@@ -74,9 +75,9 @@ class Manager extends AuthBase
 
 			[['oldpassword'], 'required'],
             [['oldpassword'], 'checkOldPassword', 'on' => ['edit-password']],
-            ['password', 'required', 'on' => ['create', 'edit-password']],
-            ['password', 'string', 'min' => 6, 'when' => function($model) { return $model->password != ''; }],
-            ['password', 'compare', 'on' => ['edit-password']],
+            ['password_new', 'required', 'on' => ['create', 'edit-password']],
+            ['password_new', 'string', 'min' => 6, 'when' => function($model) { return $model->password_new != ''; }],
+            ['password_new', 'compare', 'on' => ['edit-password']],
 			[['truename', 'email', 'mobile', 'status', 'roles'], 'safe', 'on' => ['create', 'update']],
         ];
     }
@@ -106,7 +107,7 @@ class Manager extends AuthBase
 			'login_num' => '登录次数',
             'password' => '密码',
             'oldpassword' => '旧密码',
-            'password_repeat' => '确认密码',
+            'password_new_repeat' => '确认密码',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
             'last_at' => '最后登录时间',
@@ -125,7 +126,9 @@ class Manager extends AuthBase
 			if (\Yii::$app->controller->id == 'site') {
 				return true;
 			}
-			$this->setPassword($this->password, 'password');
+            if (!empty($this->password_new)) {
+			$this->setPassword($this->password_new, 'password');
+            }
             return true;
         }
 
