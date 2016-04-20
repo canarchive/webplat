@@ -102,6 +102,11 @@ class Owner extends SpreadModel
 
 	protected function getUserInfo($data)
 	{
+			return [
+				'user_id' => 0,
+				'password' => '',
+				'is_new' => false,
+			];		
 		$mobile = $data['mobile'];
 		$user = \passport\models\User::findOne(['mobile' => $mobile]);
 		if (!empty($user)) {

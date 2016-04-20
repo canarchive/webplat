@@ -21,6 +21,9 @@ class SignupForm extends Model
 	public $product_id;
 	public $brand_id;
 	public $isMobile;
+	public $lottery;
+	public $bonus_id;
+	public $gift_bag_id;
 	public $decorationModel;
 
     /**
@@ -32,7 +35,7 @@ class SignupForm extends Model
             [['mobile', 'name'], 'filter', 'filter' => 'trim'],
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
-			[['message', 'info_id', 'template_code', 'position', 'position_name'], 'safe'],
+			[['lottery', 'bonus_id', 'gift_bag_id', 'message', 'info_id', 'template_code', 'position', 'position_name'], 'safe'],
         ];
     }
 
@@ -46,6 +49,17 @@ class SignupForm extends Model
 		$isValidate = $this->isValidate();
 		if (!$isValidate) {
 			return $isValidate;
+		}
+
+		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
+		if ($infoExist && (!empty($this->lottery) || !empty($this->bonus_id) || !empty($this->gift_bag_id))) {
+			return $this->getPresent($infoExist);
+		}
+
+		$noCheckDecorationSignined = isset(\Yii::$app->params['noCheckDecorationSignined']) ? \Yii::$app->params['noCheckDecorationSignined'] : false;
+		if (!$noCheckDecorationSignined && !empty($infoExist)) {
+			$this->addError('error', '这个手机号已经报名了本场家装活动');
+			return false;
 		}
 
 		$conversionModel = new \spread\models\Conversion();
@@ -93,7 +107,18 @@ class SignupForm extends Model
 
 		$data['service_code'] = $serviceModel->code;
 
+		if (!empty($this->lottery) || !empty($this->bonus_id) || !empty($this->gift_bag_id)) {
+			return $this->getPresent($data);
+		}
+
         return $data;
+	}
+
+	protected function getPresent($data)
+	{
+		print_r($data);
+		print_r($this);
+		exit();
 	}
 
 	protected function isValidate()
@@ -120,12 +145,6 @@ class SignupForm extends Model
 			return false;
 		}
 
-		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
-		$noCheckDecorationSignined = isset(\Yii::$app->params['noCheckDecorationSignined']) ? \Yii::$app->params['noCheckDecorationSignined'] : false;
-		if (!$noCheckDecorationSignined && !empty($infoExist)) {
-			$this->addError('error', '这个手机号已经报名了本场家装活动');
-			return false;
-		}
 		return true;
 	}
 
