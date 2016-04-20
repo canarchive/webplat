@@ -17,7 +17,7 @@ class Attachment extends AttachmentBase
 
     public static function getDb()
     {
-        return \Yii::$app->dbWebsite;
+        return \Yii::$app->dbMerchant;
     }	
 
 	public function getFieldInfos($table = null, $field = null)
