@@ -11,7 +11,6 @@ $jsFiles = [
 <div class=box>
     <!-- 幻灯 -->
     <?php echo $this->render('_index_slide'); ?>
-    <?php echo $this->render('_index_hot'); ?>
     <?php echo $this->render('_index_1'); ?>
     <?php echo $this->render('_index_2'); ?>
     <?php echo $this->render('_index_3'); ?>

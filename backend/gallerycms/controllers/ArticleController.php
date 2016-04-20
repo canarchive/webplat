@@ -8,6 +8,10 @@ use gallerycms\models\searchs\Article as ArticleSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
+
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: X-Requested-With,X_Requested_With'); //设置允许的跨域header
+date_default_timezone_set("Asia/Chongqing");
 class ArticleController extends AdminController
 {
 	protected $modelClass = 'gallerycms\models\Article';

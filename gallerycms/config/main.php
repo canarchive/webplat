@@ -31,9 +31,9 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
             'rules' => [
+			    'list-<id:\d+>' => 'site/list',
+			    'show-<id:\d+>' => 'site/show',
             ],
         ],
     ],
