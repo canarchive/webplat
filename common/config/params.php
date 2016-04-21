@@ -8,4 +8,5 @@ return [
 	'baseTitle' => 'website',
 	'bankInfos' => require(__DIR__ . '/bank.php'),
 	'genderInfos' => ['0' => '保密', '1' => '男', '2' => '女'],
+	'siteInfos' => require(__DIR__ . '/site-infos.php'),
 ];
