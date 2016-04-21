@@ -1,11 +1,5 @@
 <?php
 
-$gridViewParams = [
-    'dataProvider' => $dataProvider,
-    //'filterModel' => $searchModel,
-    'columns' => [
-        'id',
-    ],
-];
+$treeContent = $this->render('_listinfo', ['model' => $model, 'infos' => $infos]);
 
-echo $this->render('@app/views/common/listinfo', ['gridViewParams'  => $gridViewParams]);
+echo $this->render('@app/views/common/listinfo_tree', ['treeContent' => $treeContent]);

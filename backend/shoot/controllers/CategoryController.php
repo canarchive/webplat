@@ -12,10 +12,19 @@ class CategoryController extends AdminController
 {
 	protected $modelClass = 'shoot\models\Category';
 
+    /**
+     * Lists all Category models.
+     * @return mixed
+     */
     public function actionListinfo()
     {
-        $searchModel = new CategorySearch();
-		return $this->_listinfoInfo($searchModel);
+		$model = new Category();
+		$infos = $model->getFormatedInfos();
+
+        return $this->render('listinfo', [
+			'model' => $model,
+            'infos' => $infos,
+        ]);
     }
 
     public function actionView($id)
@@ -41,5 +50,4 @@ class CategoryController extends AdminController
     {
 		return $this->_deleteInfo($id);
     }
-
 }
