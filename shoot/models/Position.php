@@ -17,9 +17,23 @@ class Position extends ShootModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
+            [['name', 'type'], 'required'],
+            [['orderlist', 'status', 'picture', 'picture_mobile', 'picture_ext'], 'default', 'value' => 0],
+			[['description', 'url', 'name_ext'], 'safe'],
         ];
     }
 
@@ -64,4 +78,15 @@ class Position extends ShootModel
 		];
 		return $datas;
 	}
+
+	public function afterSave($insert, $changedAttributes)
+	{
+        parent::afterSave($insert, $changedAttributes);
+
+		$fields = ['picture', 'picture_mobile', 'picture_ext'];
+		$attachment = $this->getAttachmentModel();
+		$this->_updateSingleAttachment($attachment, 'position', $fields);
+
+		return true;
+	}	
 }

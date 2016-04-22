@@ -23,6 +23,26 @@ class Attachment extends AttachmentBase
 	public function getFieldInfos($table = null, $field = null)
 	{
 		$infos = [
+			'position' => [
+				'picture' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 30,
+    				'type' => 'image/*',
+				],
+				'picture_mobile' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 30,
+    				'type' => 'image/*',
+				],
+				'picture_ext' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 30,
+    				'type' => 'image/*',
+				],
+			],
 			'brand' => [
 				'logo' => [
         			'isSingle' => true,
