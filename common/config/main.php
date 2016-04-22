@@ -13,6 +13,7 @@ return [
 			'suffix' => '.html',
             'rules' => [
 		        ['pattern' => '/spider-upload/<table:\w+>/<field:\w+>', 'route' => '/spider-upload/index', 'host' => Yii::getAlias('@spiderurl')],
+		        ['pattern' => '/shoot-upload/<table:\w+>/<field:\w+>', 'route' => '/shoot-upload/index', 'host' => Yii::getAlias('@shooturl')],
             ],
         ],
 		'assetManager' => [
