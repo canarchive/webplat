@@ -84,4 +84,52 @@ class Bonus extends SpreadModel
         //$cache->set($keyCache, $infos);
 		return $infos;
 	}		
+
+	public function getPresent($data)
+	{
+		$decoration = $data['decorationModel'];
+		$countTarget = 100;//$decoration->bonus_number;
+		if ($countTarget < 1) {
+			return ['status' => 400, 'message' => '本次活动没有红包环节'];
+		}
+
+		$info = self::findOne($data['bonus_id']);
+		if (empty($info)) {
+			return ['status' => 400, 'message' => '红包信息有误'];
+		}
+
+		$got = BonusLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
+		if (!empty($got)) {
+			//return ['status' => 400, 'message' => '您已经领过红包了'];
+		}
+
+		$countExist = BonusLog::find()->where(['decoration_id' => $decoration['id']])->count();
+		if ($countExist >= $countTarget) {
+			return ['status' => 400, 'message' => '本次活动红包已发放完毕'];
+		}
+
+		$got = BonusLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
+		if (!empty($got)) {
+			//return ['status' => 400, 'message' => '您已经领过红包了'];
+		}
+
+		$insertInfo = [
+			'bonus_id' => $info['id'],
+			'decoration_id' => $decoration['id'],
+			'mobile' => $data['mobile'],
+			'name' => $info['name'],
+			'price' => $info['price'],
+			'created_at' => \Yii::$app->params['currentTime'],
+			'status' => 0,
+		];
+		$bonusLog = new BonusLog($insertInfo);
+		$bonusLog->insert(false);
+
+		$return = [
+			'status' => 200,
+			'message' => "您成功领取了价值{$info['price']}的{$info['name']}红包",
+			'data' => $info,
+		];
+		return $return;
+	}
 }
