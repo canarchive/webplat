@@ -51,17 +51,6 @@ class SignupForm extends Model
 			return $isValidate;
 		}
 
-		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
-		if ($infoExist && (!empty($this->lottery) || !empty($this->bonus_id) || !empty($this->gift_bag_id))) {
-			return $this->getPresent($infoExist);
-		}
-
-		$noCheckDecorationSignined = isset(\Yii::$app->params['noCheckDecorationSignined']) ? \Yii::$app->params['noCheckDecorationSignined'] : false;
-		if (!$noCheckDecorationSignined && !empty($infoExist)) {
-			$this->addError('error', '这个手机号已经报名了本场家装活动');
-			return false;
-		}
-
 		$conversionModel = new \spread\models\Conversion();
 		$positionInfos = $conversionModel->getPositionInfos();
 		$positionStr = isset($positionInfos[$this->position]) ? $positionInfos[$this->position] : $this->position;
@@ -73,6 +62,8 @@ class SignupForm extends Model
 			'position' => strip_tags($this->position),
 			'product_id' => 0,
 			'brand_id' => 0,
+			'bonus_id' => $this->bonus_id,
+			'gift_bag_id' => $this->gift_bag_id,
 			'from_type' => $this->isMobile ? 'h5' : 'pc',
 			'note' => $note,
 			'message' => strip_tags($this->message),
@@ -83,6 +74,17 @@ class SignupForm extends Model
 			'decorationModel' => $this->decorationModel,
 
 		);
+
+		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
+		if ($infoExist && (!empty($this->lottery) || !empty($this->bonus_id) || !empty($this->gift_bag_id))) {
+			return $this->getPresent($data);
+		}
+
+		$noCheckDecorationSignined = isset(\Yii::$app->params['noCheckDecorationSignined']) ? \Yii::$app->params['noCheckDecorationSignined'] : false;
+		if (!$noCheckDecorationSignined && !empty($infoExist)) {
+			$this->addError('error', '这个手机号已经报名了本场家装活动');
+			return false;
+		}
 
 		$decorationOwner = DecorationOwner::addOwner($data);
 		if (!$decorationOwner) {
@@ -116,6 +118,19 @@ class SignupForm extends Model
 
 	protected function getPresent($data)
 	{
+		if (!empty($this->lottery)) {
+			$model = new Lottery();
+			return $model->getPresent($data);
+		} elseif (!empty($this->bonus_id)) {
+			$model = new Bonus();
+			return $model->getPresent($data);
+		} else if (!empty($this->gift_bag_id)) {
+			$model = new GiftBag();
+			return $model->getPresent($data);
+		}
+
+		$this->addError('error', '领取奖品失败');
+		return false;
 		print_r($data);
 		print_r($this);
 		exit();
