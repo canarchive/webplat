@@ -88,43 +88,38 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                                 </a>
                             </li>
                             <li class='gi'>
-                                <a class='m-item' href='http://www.oppo.com/cn/products.html'>
-                                    <span>产品</span>
-                                </a>
-                            </li>
-                            <li class='gi'>
-                                <a class='m-item' href='http://www.oppo.com/cn/blogs'>
-                                    <span>品牌</span>
-                                </a>
-                            </li>
-                            <li class='gi'>
-                                <a class='m-item' href='http://www.opposhop.cn'>
-                                    <span>在线商城</span>
+							    <a class='m-item' href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/hot']); ?>'>
+                                    <span>推荐产品</span>
                                     <span class='js-toggle-submenu toggle'></span>
                                 </a>
                                 <ul class='sub-menu'>
                                     <li>
-                                        <a href='http://www.opposhop.cn/products.html'>手机</a>
+									    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>生日派对</a>
                                     </li>
                                     <li>
-                                        <a href='http://www.opposhop.cn/products?is_promotion=0&category=2'>配件</a>
+									    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>儿童摄影</a>
                                     </li>
                                     <li>
-                                        <a href='http://www.oppo.com/cn/service/help?name=%E8%B4%AD%E4%B9%B0%E5%B8%AE%E5%8A%A9'>购物指南</a>
+									    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>时装</a>
                                     </li>
                                     <li>
-                                        <a href='http://points.oppo.com/' target='_blank'>积分商城</a>
+									    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>静物</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class='gi'>
-                                <a class='m-item' href='http://www.oppo.com/cn/shops'>
-                                    <span>体验店</span>
+							<a class='m-item' href='<?= Yii::getAlias('shooturl') . Url::to(['/goods']); ?>'>
+                                    <span>产品大全</span>
                                 </a>
                             </li>
                             <li class='gi'>
-                                <a class='m-item' href='http://www.oppo.com/cn/service.html'>
-                                    <span>服务</span>
+							<a class='m-item' href='<?= Yii::getAlias('shooturl') . Url::to(['/sample']); ?>'>
+                                    <span>样片</span>
+                                </a>
+                            </li>
+                            <li class='gi'>
+							<a class='m-item' href='<?= Yii::getAlias('@shooturl') . Url::to(['/showoff']); ?>'>
+                                    <span>案例</span>
                                 </a>
                             </li>
                         </ul>
