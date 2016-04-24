@@ -43,6 +43,26 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],				
 			],
+			'decoration' => [
+				'picture' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 100,
+    				'type' => 'image/*',
+				],
+				'picture_small' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 40,
+    				'type' => 'image/*',
+				],
+				'map' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 100,
+    				'type' => 'image/*',
+				],				
+			],
 			'product' => [
 				'main_photo' => [
         			'isSingle' => true,
@@ -53,6 +73,14 @@ class Attachment extends AttachmentBase
 			],			
 			'brand' => [
 				'logo' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 80,
+    				'type' => 'image/*',
+				],
+			],			
+			'gift_bag' => [
+				'thumb' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 80,

@@ -31,13 +31,10 @@ class SignupController extends spreadController
 				'model' => $model,
 			];
 
+print_r($data);exit();
 			return $data;
 		}
-		//print_r($model);
-
-		$data = [
-			'status' => '200',
-		];		
+		print_r($signupInfo);exit();
 
 		return $data;
 	}

@@ -12,6 +12,7 @@ return [
             'showScriptName' => false,
 			'suffix' => '.html',
             'rules' => [
+		        ['pattern' => '/spread-upload/<table:\w+>/<field:\w+>', 'route' => '/spread-upload/index', 'host' => Yii::getAlias('@spreadurl')],
             ],
         ],
 		'assetManager' => [

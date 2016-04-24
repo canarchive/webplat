@@ -37,9 +37,10 @@ return [
             'rules' => [
 				//Yii::getAlias('@grouponurl') => '/groupon',
 				'detail/<id:\d+>' => 'groupon/detail/index',
+                'detail-<id:\d+>' => '/decoration/detail/index',
+				'jz-signup' => '/decoration/signup/index',
 				'<city:\w+>' => 'groupon/detail/index',
 		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
-		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@syurl')],
 			],
 		],
     ],
@@ -47,7 +48,10 @@ return [
 	'modules' => [
 		'groupon' => [
 			'class' => 'spread\groupon\Module',
-		]
+		],
+		'decoration' => [
+			'class' => 'spread\decoration\Module',
+		],
 	],
     'params' => $params,
 ];
