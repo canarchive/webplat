@@ -10,7 +10,7 @@ return [
     'id' => 'app-shoot',
     'basePath' => dirname(__DIR__),
 	'viewPath' => '@shoot/views/default',
-	'layout' => null,
+	//'layout' => null,
     'bootstrap' => ['log'],
     'controllerNamespace' => 'shoot\controllers',
     'components' => [

@@ -1,10 +1,5 @@
-<?php
-$cssFiles = ['styles'];
-$jsFiles = [];
-?>
-<?php echo $this->render('@shoot/views/default/common/_header_base', ['cssFiles' => $cssFiles, 'jsFiles' => $jsFiles]); ?>
+<?php $this->beginContent('@shoot/views/default/layouts/main.php'); ?>
 
-<?php echo $this->render('@shoot/views/default/common/_header'); ?>
 <main class='main-content slab-light'>
     <div class="supports">
         <div class='wrapper'>
@@ -136,8 +131,4 @@ $jsFiles = [];
         </div>
     </div>
 </main>
-<?php echo $this->render('@shoot/views/default/common/_footer'); ?>
-<?php echo $this->render('@shoot/views/default/common/_nav_right'); ?>
-
-<?php echo $this->render('@shoot/views/default/common/_footer_javascript'); ?>
-<?php echo $this->render('@shoot/views/default/common/_footer_base'); ?>
+<?php $this->endContent(); ?>
