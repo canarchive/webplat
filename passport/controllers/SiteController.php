@@ -50,6 +50,13 @@ class SiteController extends PassportController
         ];
     }
 
+    public function init()
+    {
+        parent::init();
+		$this->layout = 'main_auth';
+	    //$this->layoutPath = Yii::getAlias('@app/info/views');
+    }
+
     /**
      * @inheritdoc
      */
@@ -115,6 +122,7 @@ class SiteController extends PassportController
 
     public function actionFindpwd()
     {
+		$returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
