@@ -37,6 +37,7 @@ return [
             'rules' => [
 		        ['pattern' => 'signin', 'route' => 'site/signin', 'host' => Yii::getAlias('@passporturl')],
 		        'signup' => 'site/signup',
+		        'findpwd' => 'site/findpwd',
 			],
 		],
     ],
