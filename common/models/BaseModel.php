@@ -147,8 +147,9 @@ class BaseModel extends ActiveRecord
 	protected function getAttachmentModel()
 	{}
 
-	protected function _updateSingleAttachment($attachment, $table, $fields)
+	protected function _updateSingleAttachment($table, $fields)
 	{
+		$attachment = $this->getAttachmentModel();
 		foreach ($fields as $field) {
 			$info = $attachment->findOne($this->$field);
 			if (!empty($info)) {
