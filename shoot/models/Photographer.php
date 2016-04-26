@@ -10,6 +10,7 @@ use yii\helpers\ArrayHelper;
  */
 class Photographer extends ShootModel
 {
+    public $category;
 
     /**
      * @inheritdoc
@@ -62,17 +63,6 @@ class Photographer extends ShootModel
         ];
     }
 
-	public function afterSave($insert, $changedAttributes)
-	{
-        parent::afterSave($insert, $changedAttributes);
-
-		$fields = ['logo'];
-		$attachment = new \shoot\models\Attachment();
-		$this->_updateSingleAttachment($attachment, 'brand', $fields);
-
-		return true;
-	}	
-
 	public function getStatusInfos()
 	{
 		$datas = [
@@ -80,5 +70,22 @@ class Photographer extends ShootModel
 			'1' => '正常',
 		];
 		return $datas;
+	}
+
+	public function afterSave($insert, $changedAttributes)
+	{
+        parent::afterSave($insert, $changedAttributes);
+
+		$fields = ['photo'];
+		$this->_updateSingleAttachment('photographer', $fields);
+
+		return true;
+	}
+
+	public function getCategoryInfos()
+	{
+		$category = new Category();
+		$infos = $category->getSelectInfos();
+		return $infos;
 	}
 }
