@@ -20,6 +20,8 @@ class Type extends ShootModel
     public function rules()
     {
         return [
+            [['name'], 'required'],
+            [['status'], 'default', 'value' => 0],
         ];
     }
 
@@ -29,9 +31,18 @@ class Type extends ShootModel
     public function attributeLabels()
     {
         return [
-            'id' => 'id',
-            'name' => 'name',
-            'status' => 'status',
+            'id' => 'ID',
+            'name' => '名称',
+            'status' => '状态',
         ];
     }
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '停用',
+			'1' => '正常',
+		];
+		return $datas;
+	}
 }

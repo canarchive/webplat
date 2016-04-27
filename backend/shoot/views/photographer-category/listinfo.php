@@ -6,21 +6,21 @@ $gridViewParams = [
     'columns' => [
         'id',
 		[
-            'attribute' => 'decoration_id',
+            'attribute' => 'photographer_id',
             'value'=> function($model){
-				if ($model->decoration_id < 1) {
+				if ($model->photographer_id < 1) {
 					return '';
 				}
-                return $model->decorationInfos[$model->decoration_id];
+                return $model->photographerInfos[$model->photographer_id];
             },
         ],		
 		[
-            'attribute' => 'gift_bag_id',
+            'attribute' => 'category_id',
             'value'=> function($model){
-				if ($model->gift_bag_id < 1) {
+				if ($model->category_id < 1) {
 					return '';
 				}
-                return $model->giftBagInfos[$model->gift_bag_id];
+                return $model->categoryInfos[$model->category_id];
             },
         ],		
         [   
