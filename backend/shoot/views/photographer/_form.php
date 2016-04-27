@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use common\widgets\FileUploadUI;
-use spread\models\Attachment;
+use shoot\models\Attachment;
 
 $attachmentModel = new Attachment();
 $photo = $attachmentModel->getFieldInfos('photographer', 'photo');
@@ -14,6 +14,7 @@ $photo = $attachmentModel->getFieldInfos('photographer', 'photo');
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'nickname')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'orderlist')->textInput() ?>
     <?= $form->field($model, 'photo')->hiddenInput(); ?>

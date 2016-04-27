@@ -3,6 +3,7 @@
 namespace shoot\models;
 
 use common\models\ShootModel;
+use yii\helpers\ArrayHelper;
 
 class Attribute extends ShootModel
 {
@@ -17,9 +18,23 @@ class Attribute extends ShootModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
+            [['name', 'type_id'], 'required'],
+            [['orderlist', 'status'], 'default', 'value' => 0],
+			[['values'], 'safe'],
         ];
     }
 
@@ -39,4 +54,19 @@ class Attribute extends ShootModel
             'status' => '是否显示',
         ];
     }
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '停用',
+			'1' => '正常',
+		];
+		return $datas;
+	}
+
+	public function getTypeInfos()
+	{
+		$infos = ArrayHelper::map(\shoot\models\Type::find()->all(), 'id', 'name');
+		return $infos;
+	}	
 }

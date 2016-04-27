@@ -5,6 +5,13 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
+		'name',
+		[
+			'attribute' => 'status',
+			'value' => function($model) {
+				return $model->statusInfos[$model->status];
+			},
+		],
     ],
 ];
 

@@ -43,6 +43,14 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],
 			],
+			'photographer' => [
+				'photo' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 30,
+    				'type' => 'image/*',
+				],
+			],
 			'brand' => [
 				'logo' => [
         			'isSingle' => true,

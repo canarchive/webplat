@@ -5,12 +5,12 @@ $detailViewParams = [
     'attributes' => [
 		'id',
 		[
-			'attribute' => 'decoration_id',
-			'value' => $model->decoration_id > 0 ? $model->decorationInfos[$model->decoration_id] : '',
+			'attribute' => 'photographer_id',
+			'value' => $model->photographer_id > 0 ? $model->photographerInfos[$model->photographer_id] : '',
 		],		
 		[
-			'attribute' => 'gift_bag_id',
-			'value' => $model->gift_bag_id > 0 ? $model->giftBagInfos[$model->gift_bag_id] : '',
+			'attribute' => 'category_id',
+			'value' => $model->category_id > 0 ? $model->categoryInfos[$model->category_id] : '',
 		],		
 		'orderlist',
     ],
