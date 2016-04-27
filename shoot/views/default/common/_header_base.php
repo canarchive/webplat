@@ -32,11 +32,9 @@ use yii\helpers\Url;
 <?php } } ?>
 
 <script type="text/javascript">
-window.passportUrl = "<?= Yii::getAlias('@passporturl'); ?>";
-window.asseturl = "<?= Yii::getAlias('@asseturl'); ?>";
-window.signinUrl = "<?= Yii::getAlias('@passporturl') . Url::to(['site/signin']); ?>";
-window.signupUrl = "<?= Yii::getAlias('@passporturl') . Url::to(['site/signup']); ?>";
-window.logoutUrl = "<?= Yii::getAlias('@passporturl') . Url::to(['site/logout']); ?>";
+window.BASE_URL = "<?= Yii::getAlias('@shooturl'); ?>";
+window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
+window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
 
 function checkBrowser() {
     var browser = {};
