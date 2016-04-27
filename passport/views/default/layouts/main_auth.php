@@ -36,7 +36,7 @@ $returnUrl = isset($this->params['returnUrl']) ? $this->params['returnUrl'] : ''
             <a class='js-open-user oppo-tj' data-tj="account|link|auth|openusermenu" href='#'>
 			    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/icon-menu-user.png" alt="">
             </a>
-            <div class='login-breadcrumb'>登录OPPO帐号</div>
+            <div class='login-breadcrumb'>登录SHOOT帐号</div>
             <?= $this->render('@shoot/views/default/common/_header_menu'); ?>
         </div>
     </div>
@@ -55,35 +55,33 @@ $returnUrl = isset($this->params['returnUrl']) ? $this->params['returnUrl'] : ''
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/account.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/login.js"></script>
 <script type="text/javascript">
-    var vm;
-    OPPO.conf.BASE_URL = "http://my.oppo.com";
-    OPPO.conf.STORE_URL = 'http://www.opposhop.cn';
-    OPPO.conf.WWW_URL = 'http://www.oppo.com/cn/';
-    OPPO.conf.domains = [];
-    OPPO.conf.jsonpDone = false;
-    OPPO.conf.domains.push('http://www.opposhop.cn');
-    OPPO.conf.domains.push('http://bbs.oppo.cn');
-    OPPO.conf.domains.push('http://bbs.coloros.com');
+var vm;
+SHOOT.conf.BASE_URL = "<?= Yii::getAlias('@shooturl'); ?>";
+SHOOT.conf.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
+SHOOT.conf.ACCOUNT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
+SHOOT.conf.domains = [];
+SHOOT.conf.jsonpDone = false;
+SHOOT.conf.domains.push('http://www.opposhop.cn');
+SHOOT.conf.domains.push('http://bbs.oppo.cn');
+SHOOT.conf.domains.push('http://bbs.coloros.com');
 
-    OPPO.conf.wxdomains = [];
-    OPPO.conf.wxdomains.push('http://www.opposhop.cn');
+SHOOT.conf.wxdomains = [];
+SHOOT.conf.wxdomains.push('http://www.opposhop.cn');
 
-    (function() {
-        var controllerNameWithAction = "AuthController@register".split('@');
-        var controllerName = controllerNameWithAction[0];
-        var actionName = controllerNameWithAction[1];
-        var controller = OPPO.controller[controllerName];
-        if (controller) {
-            action = controller()[actionName];
-            if (action) {
-                $(function() {
-                    vm = action();
-                });
-            }
+(function() {
+    var controllerNameWithAction = "AuthController@register".split('@');
+    var controllerName = controllerNameWithAction[0];
+    var actionName = controllerNameWithAction[1];
+    var controller = SHOOT.controller[controllerName];
+    if (controller) {
+        action = controller()[actionName];
+        if (action) {
+            $(function() {
+                vm = action();
+            });
         }
-        // else console.log(controllerNameWithAction);
-    })();
+    }
+    // else console.log(controllerNameWithAction);
+})();
 </script>
 <?php echo $this->render('@shoot/views/default/common/_footer_base'); ?>
-
-<footer class='main-footer'>

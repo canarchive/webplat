@@ -13,6 +13,7 @@ class SignupForm extends Model
     //public $email;
     public $mobile;
     public $mobileCode;
+    public $captcha;
     public $password;
     public $passwordConfirm;
 
@@ -23,8 +24,6 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            //['verifyCode', 'captcha'],
-
             ['mobile', 'filter', 'filter' => 'trim'],
             [['mobile', 'password', 'mobileCode'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
@@ -32,6 +31,7 @@ class SignupForm extends Model
 
             ['mobileCode', 'required'],
 			['mobileCode', 'checkCode'],
+            //['captcha', 'captcha'],
 			//['aggreement', 'compare', 'compareValue' => 1, 'operator' => '=='],
             ['password', 'string', 'min' => 6],
 			['passwordConfirm', 'compare','compareAttribute'=>'password'],
