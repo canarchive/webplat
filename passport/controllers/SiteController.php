@@ -27,10 +27,10 @@ class SiteController extends PassportController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup', 'signin'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup', 'signin', 'findpwd'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -40,6 +40,9 @@ class SiteController extends PassportController
                         'roles' => ['@'],
                     ],
                 ],
+                'denyCallback' => function ($rule, $action) {
+		            return Yii::$app->response->redirect(\Yii::$app->params['homeDomain'])->send();
+                },
             ],
             /*'verbs' => [
                 'class' => VerbFilter::className(),
@@ -65,7 +68,7 @@ class SiteController extends PassportController
 		$actions = parent::actions();
         $currentActions = [
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => 'common\components\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
@@ -106,17 +109,30 @@ class SiteController extends PassportController
     {
 		$returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
+
+		$infos = [];
+		$message = '';
+        if ($model->load(Yii::$app->request->post(), '')) {
+		    $model->mobile = $_POST['username'];
+		    $model->passwordConfirm = $_POST['r_password'];
+		    $model->mobileCode = $_POST['activation_code'];
+			$message = '请填写完整的注册信息';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+		            return Yii::$app->response->redirect($returnUrl)->send();
                 }
             }
+		    $error = $model->getFirstErrors();
+		    $field = key($error);
+		    $message = isset($error[$field]) ? $error[$field] : $message;
+			$infos = $model->toArray();
         }
 
         return $this->render('signup', [
             'model' => $model,
 			'returnUrl' => $returnUrl,
+			'infos' => $infos,
+			'message' => $message,
         ]);
     }
 

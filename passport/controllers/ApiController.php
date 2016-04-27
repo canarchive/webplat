@@ -35,7 +35,7 @@ class ApiController extends PassportController
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-		$mobile = \Yii::$app->getRequest()->get('mobile');
+		$mobile = \Yii::$app->getRequest()->post('mobile');
 		$validator = new \common\validators\MobileValidator();
 		$valid =  $validator->validate($mobile);
 		if (empty($valid)) {
@@ -47,19 +47,31 @@ class ApiController extends PassportController
 			return ['status' => 400, 'message' => 'exist'];
 		}
 
-		return ['status' => 1, 'message' => 'OK'];
+		return ['status' => 200, 'message' => 'OK'];
 	}
 
 	public function actionGenerateCode()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-		$mobile = \Yii::$app->getRequest()->get('mobile');
 
-		$smser = new Smser();
-		$result = $smser->sendCode($mobile, 'register');
+		$model = new \passport\models\SignupGenerateCode();
+        if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
+    		$smser = new Smser();
+    		$result = $smser->sendCode($model->mobile, 'register');
+			$result = 'OK';
+    
+    		$status = $result == 'OK' ? 200 : 400;
+    		return ['status' => $status, 'message' => $result];
+		} 
+        
+		$error = $model->getFirstErrors();
+		$field = key($error);
+		$message = $error[$field];
+		$status = $field == 'captcha' ? 401 : 400;
+		$message = !empty($message) ? $message : '未知错误，请您刷新页面重新操作';
 
-		$status = $result == 'OK' ? 1 : 0;
-		return ['status' => $status];
+		return ['status' => $status, 'message' => $message];
+
 	}
 
 	public function actionCheckCode()
