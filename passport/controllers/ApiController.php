@@ -153,9 +153,9 @@ class ApiController extends PassportController
 		$model->username = Yii::$app->getRequest()->get('username');
 		$model->captcha = Yii::$app->getRequest()->get('captcha');
 
-		$check = $model->checkParam();
-		var_dump($check);
-
-		
+		$return = $model->findpwd();
+		var_dump($return);
+		exit();
+		return $return ;
 	}
 }

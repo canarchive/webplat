@@ -1,13 +1,13 @@
 <?php
 namespace passport\models;
 
-use common\models\User;
-use yii\base\Model;
+use common\models\PassportModel;
+use common\components\sms\Smser;
 
 /**
  * Password reset request form
  */
-class PasswordResetRequestForm extends Model
+class PasswordResetRequestForm extends PassportModel
 {
 	public $username;
 	public $captcha;
@@ -21,7 +21,7 @@ class PasswordResetRequestForm extends Model
     {
         return [
             [['username', 'captcha'], 'filter', 'filter' => 'trim'],
-            ['captcha', 'checkCaptcha'],
+            ['captcha', 'captcha'],
             //['email', 'required'],
             //['email', 'email'],
             /*['email', 'exist',
@@ -32,12 +32,34 @@ class PasswordResetRequestForm extends Model
         ];
     }
 
-	public function checkMobile($mobile)
+	public function checkUserByMobile()
 	{
+		$isValid = $this->checkMobile($this->username);
+		if ($isValid !== true) {
+			return $isValid;
+		}
+
+		$user = User::findByMobile($this->username);
+		if (empty($user)) {
+			return ['status' => 400, 'message' => '用户不存在'];
+		}
+
+		return $user;
 	}
 
-	public function checkEmail($email)
+	public function checkUserByEmail()
 	{
+		$isValid = $this->checkEmail($this->username);
+		if ($isValid !== true) {
+			return $isValid;
+		}
+
+		$user = User::findByMobile($this->username);
+		if (empty($user)) {
+			return ['status' => 400, 'message' => '用户不存在'];
+		}
+
+		return $user;
 	}
 
     /**
@@ -45,36 +67,35 @@ class PasswordResetRequestForm extends Model
      *
      * @return boolean whether the email was send
      */
-    public function sendEmail()
+    public function emailSend($user)
     {
-        /* @var $user User */
-        $user = User::findOne([
-            'status' => User::STATUS_ACTIVE,
-            'email' => $this->email,
-        ]);
-
-        if ($user) {
-            if (!User::isPasswordResetTokenValid($user->password_reset_token)) {
-                $user->generatePasswordResetToken();
-            }
-
-            if ($user->save()) {
-                return \Yii::$app->mailer->compose(['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'], ['user' => $user])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
-                    ->setTo($this->email)
-                    ->setSubject('Password reset for ' . \Yii::$app->name)
-                    ->send();
-            }
+        if (!User::isPasswordResetTokenValid($user->password_reset_token)) {
+            $user->generatePasswordResetToken();
         }
 
-        return false;
+        if ($user->save()) {
+            $send = \Yii::$app->mailer->compose(['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'], ['user' => $user])
+                ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                ->setTo($user->email)
+                ->setSubject('Password reset for ' . \Yii::$app->name)
+                ->send();
+			$return = $send ? ['status' => 200, 'message' => 'OK'] : ['status' => 400, 'message' => '邮件发送失败，请重试'];
+			return $return;
+        }
+
+        return ['status' => 400, 'message' => '系统异常，请重新操作'];
     }
 
-	public function sendSmsCode()
+	public function mobileSend()
 	{
+ 		$smser = new Smser();
+   		$result = $smser->sendCode($model->mobile, 'register');
+
+    	$status = $result == 'OK' ? 200 : 400;
+        return ['status' => $status, 'message' => $result];
 	}
 
-	public function checkParams()
+	public function findpwd()
 	{
         if (!$this->validate()) {
 		    $error = $this->getFirstErrors();
@@ -85,12 +106,20 @@ class PasswordResetRequestForm extends Model
 			return ['status' => $status, 'message' => $message];
 		}	
 
-		$check = strpos($this->username, '@') !== false ? $this->checkEmail() : $this->checkMobile();
-		if ($check['status'] != 200) {
-			return $check;
+		if (strpos($this->username, '@') !== false) {
+			$methodSend = 'sendEmail';
+		    $user = $this->checkUserByEmail();
+		} else {
+		    $user = $this->checkUserByMobile();
+			$methodSend = 'sendMobile';
 		}
 
+		if (!is_object($user)) {
+			return $user;
+		}
 
-		$checkBase = $this->validate();
+		$return = $this->$methodSend($user);
+		print_r($return);
+		return $return;
 	}
 }
