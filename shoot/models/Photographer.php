@@ -38,10 +38,8 @@ class Photographer extends ShootModel
     {
         return [
             [['name'], 'required'],
-			['code', 'unique', 'targetClass' => '\shoot\models\Photographer', 'message' => '代码已经被使用。'],
-            //[['orderlist'], 'integer'],
-            [['orderlist', 'logo', 'status'], 'default', 'value' => 0],
-			['description', 'safe'],
+            [['orderlist', 'photo', 'status'], 'default', 'value' => 0],
+			[['description', 'title', 'nickname'], 'safe'],
         ];
     }
 
@@ -56,7 +54,8 @@ class Photographer extends ShootModel
             'nickname' => '昵称',
             'title' => '头衔',
             'photo' => '头像',
-            'brief' => '简介',
+            'description' => '简介',
+			'orderlist' => '排序',
             'status' => '是否显示',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
