@@ -36,6 +36,7 @@ class ApiController extends PassportController
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
 		$mobile = \Yii::$app->getRequest()->post('mobile');
+		$formType = \Yii::$app->getRequest()->post('form_type');
 		$validator = new \common\validators\MobileValidator();
 		$valid =  $validator->validate($mobile);
 		if (empty($valid)) {
@@ -43,8 +44,17 @@ class ApiController extends PassportController
 		}
 
 		$user = User::findByMobile($mobile);
-		if (!empty($user)) {
-			return ['status' => 400, 'message' => 'exist'];
+		switch ($formType) {
+		case 'login':
+			if (empty($user)) {
+			    return ['status' => 402, 'message' => 'no exist'];
+			}
+			break;
+		case 'register':
+			if (!empty($user)) {
+			    return ['status' => 402, 'message' => 'exist'];
+			}
+			break;
 		}
 
 		return ['status' => 200, 'message' => 'OK'];
@@ -90,7 +100,8 @@ class ApiController extends PassportController
 	public function actionLoginAjax()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-		$attributes = ['username', 'password'];
+
+		$attributes = ['username', 'password', 'captcha'];
 		foreach ($attributes as $attribute) {
 			$data[$attribute] = \Yii::$app->getRequest()->post($attribute);
 			//$data[$attribute] = \Yii::$app->getRequest()->get($attribute);
@@ -98,24 +109,7 @@ class ApiController extends PassportController
         $model = new SigninForm($data);
 		$loginResult = $model->signin();
 
-		if ($loginResult) {
-			return [
-				'status' => 1,
-				'message' => 'OK',
-			];
-		}
-		//print_r($model);
-		if ($model->hasErrors('password')) {
-			return [
-				'status' => 2,
-				'message' => '密码错误',
-			];
-		}
-
-		return [
-			'status' => 3,
-			'message' => '失败',
-		];
+		return $loginResult;
 	}
 
 	public function actionRegisterAjax()
