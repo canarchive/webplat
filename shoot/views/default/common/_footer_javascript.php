@@ -14,9 +14,10 @@ SHOOT.conf.domains = [];
 SHOOT.conf.jsonpDone = false;
 SHOOT.conf.jsonpDone = true;
 
-var url = SHOOT.conf.ACCOUNT_URL + '/auth/check';
+var url = window.PASSPORT_URL + '<?= Url::to(['/api/login-info']); ?>';
 //callback for jsonp
 var successCallback = function(data) {
+	console.log(data);
     $('ul.log-area .hasLogout').removeClass('show').addClass('hidden');
     $('ul.log-area .hasLogin').removeClass('hidden').addClass('show');
     $('.n-messages').text("(" + data['message_number'] + ")");
@@ -41,7 +42,11 @@ $.ajax({
         errorCallback();
     },
     success: function(data) {
-        successCallback(data);
+		if (data.status == 200) {
+            successCallback(data.data);
+		} else {
+			errorCallback();
+		}
     }
 });
 
