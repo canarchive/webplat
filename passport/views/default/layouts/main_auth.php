@@ -20,11 +20,11 @@ $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['cont
                     <span class='icons-plus icons-plus-home'></span>
                     <span>回到首页</span>
                 </a>
-                <a href='<?= Url::to(['site/signin', 'returnUrl' => $returnUrl]); ?>' class=' oppo-tj'>
+                <a href='<?= Url::to(['site/signin', 'returnUrl' => $returnUrl]); ?>' class='<?php if (isset($this->params['isLogin'])) { echo 'hidden'; } ?> oppo-tj'>
                     <span class='icons-plus icons-plus-user'></span>
                     <span>登录</span>
                 </a>
-                <a href='<?= Url::to(['site/signup', 'returnUrl' => $returnUrl]); ?>' class=' oppo-tj'>
+				<a href='<?= Url::to(['site/signup', 'returnUrl' => $returnUrl]); ?>' class='<?php if (isset($this->params['isRegister'])) { echo 'hidden'; } ?> oppo-tj'>
                     <span class='icons-plus icons-plus-user'></span>
                     <span>注册</span>
                 </a>

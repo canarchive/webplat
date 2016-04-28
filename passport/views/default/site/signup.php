@@ -1,9 +1,10 @@
 <?php
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use yii\captcha\Captcha;
 use yii\helpers\Url;
+
 $this->params['controllerForJs'] = 'AuthController@register';
+$this->params['isRegister'] = true;
 ?>
 
 <div class='wrapper login register'>
@@ -122,6 +123,7 @@ $this->params['controllerForJs'] = 'AuthController@register';
                 </div>
             </div>
             <div class='gi desk-one-quarter lap-hide'>&nbsp;</div>
+        <input type="hidden" id="form_type" value="register" />
         <?php ActiveForm::end(); ?>
         </div>
     </div>

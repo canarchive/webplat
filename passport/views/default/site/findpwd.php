@@ -1,3 +1,11 @@
+<?php
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+$this->params['returnUrl'] = $returnUrl;
+$this->params['controllerForJs'] = 'PasswordsController@findme';
+?>
 <div class='wrapper login forget'>
     <div class='brick-bottom'>
         <ul class='steps'>
@@ -28,13 +36,12 @@
                 <div class="col-md-12">
                     <div class="alert alert-danger" role="alert">
                         <ul class="list-unstyled">
-                            <strong class='error_msg_note'>
-                            </strong>
+                            <strong class='error_msg_note'></strong>
                         </ul>
                     </div>
                 </div>
             </div>
-            <form class='g' method='post' action='http://my.oppo.com/user/send' id='findmeForm'>
+            <?php $form = ActiveForm::begin(['action' => Url::to(['/api/findpwd-ajax']), 'id' => 'findmeForm', 'options' => ['class' => 'g']]); ?>
                 <div class='field'>
                     <input placeholder='邮箱/手机号' name='username' type='text'>
                     <span class='icon icon-tick-green-big register-icon'>
@@ -46,7 +53,7 @@
                             <input placeholder='验证码' type='text' name='captcha'>
                         </div>
                         <div class='gi two-fifths'>
-                            <img src="http://my.oppo.com/captcha?704955" id="captcha" onclick='vm.updateCaptcha()'
+                            <img src="<?= Url::to(['/site/captcha', 'v' => time()]); ?>" id="captcha" onclick='vm.updateCaptcha()'
                             />
                         </div>
                         <div class='gi one-fifth'>
@@ -54,21 +61,17 @@
                                 换一张
                             </a>
                         </div>
-                        <span class='icon icon-tick-green-big register-icon'>
-                        </span>
+                        <span class='icon icon-tick-green-big register-icon'></span>
                     </div>
                 </div>
                 <div class='field'>
-                    <button class='button login-button' type='submit'>
-                        下一步
-                    </button>
+                    <button class='button login-button' type='submit'>下一步</button>
                 </div>
-            </form>
+            <?php ActiveForm::end(); ?>
         </div>
         <div class='forget-help'>
             如果忘记了账户信息，我们将无法帮您找回密码，建议您
-            <a href='http://my.oppo.com/auth/register?callback=http%3A%2F%2Fwww.oppo.com%2Fcn%2F'
-            class='text-green'>
+            <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>' class='text-green'>
                 注册一个新账户
             </a>
         </div>

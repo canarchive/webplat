@@ -6,6 +6,7 @@ use yii\helpers\Url;
 
 $this->params['returnUrl'] = $returnUrl;
 $this->params['controllerForJs'] = 'AuthController@login';
+$this->params['isLogin'] = true;
 ?>
 <div class='wrapper login'>
     <div class='g'>

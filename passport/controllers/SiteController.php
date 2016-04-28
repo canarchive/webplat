@@ -18,12 +18,13 @@ use passport\components\Controller as PassportController;
  */
 class SiteController extends PassportController
 {
+	public $returnUrl;
+
     /**
      * @inheritdoc
      */
     public function behaviors()
     {
-		return [];
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -58,6 +59,8 @@ class SiteController extends PassportController
         parent::init();
 		$this->layout = 'main_auth';
 	    //$this->layoutPath = Yii::getAlias('@app/info/views');
+		
+		$this->returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
     }
 
     /**
@@ -82,11 +85,6 @@ class SiteController extends PassportController
 
     public function actionSignin()
     {
-		$returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
-        if (!\Yii::$app->user->isGuest) {
-            //return $this->redirect($returnUrl);
-        }
-
         $model = new SigninForm();
 		$wrongTimes = $model->wrongTimes('check');
         if ($model->load(Yii::$app->request->post()) && $model->signin()) {
@@ -94,7 +92,7 @@ class SiteController extends PassportController
         } else {
             return $this->render('signin', [
                 'model' => $model,
-				'returnUrl' => $returnUrl,
+				'returnUrl' => $this->returnUrl,
 				'showCaptcha' => $wrongTimes > 5 ? 1 : 0,
             ]);
         }
@@ -109,7 +107,6 @@ class SiteController extends PassportController
 
     public function actionSignup()
     {
-		$returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
         $model = new SignupForm();
 
 		$infos = [];
@@ -121,7 +118,7 @@ class SiteController extends PassportController
 			$message = '请填写完整的注册信息';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-		            return Yii::$app->response->redirect($returnUrl)->send();
+		            return Yii::$app->response->redirect($this->returnUrl)->send();
                 }
             }
 		    $error = $model->getFirstErrors();
@@ -132,7 +129,7 @@ class SiteController extends PassportController
 
         return $this->render('signup', [
             'model' => $model,
-			'returnUrl' => $returnUrl,
+			'returnUrl' => $this->returnUrl,
 			'infos' => $infos,
 			'message' => $message,
         ]);
@@ -140,7 +137,6 @@ class SiteController extends PassportController
 
     public function actionFindpwd()
     {
-		$returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -154,6 +150,7 @@ class SiteController extends PassportController
 
         return $this->render('findpwd', [
             'model' => $model,
+			'returnUrl' => $this->returnUrl,
         ]);
     }
 

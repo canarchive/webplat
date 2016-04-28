@@ -9,7 +9,10 @@ use yii\base\Model;
  */
 class PasswordResetRequestForm extends Model
 {
+	public $username;
+	public $captcha;
     public $email;
+	public $mobile;
 
     /**
      * @inheritdoc
@@ -17,16 +20,25 @@ class PasswordResetRequestForm extends Model
     public function rules()
     {
         return [
-            ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'exist',
+            [['username', 'captcha'], 'filter', 'filter' => 'trim'],
+            ['captcha', 'checkCaptcha'],
+            //['email', 'required'],
+            //['email', 'email'],
+            /*['email', 'exist',
                 'targetClass' => '\common\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
                 'message' => 'There is no user with such email.'
-            ],
+			],*/
         ];
     }
+
+	public function checkMobile($mobile)
+	{
+	}
+
+	public function checkEmail($email)
+	{
+	}
 
     /**
      * Sends an email with a link, for resetting the password.
@@ -57,4 +69,28 @@ class PasswordResetRequestForm extends Model
 
         return false;
     }
+
+	public function sendSmsCode()
+	{
+	}
+
+	public function checkParams()
+	{
+        if (!$this->validate()) {
+		    $error = $this->getFirstErrors();
+		    $field = key($error);
+		    $message = $error[$field];
+		    $status = $field == 'captcha' ? 401 : 400;
+
+			return ['status' => $status, 'message' => $message];
+		}	
+
+		$check = strpos($this->username, '@') !== false ? $this->checkEmail() : $this->checkMobile();
+		if ($check['status'] != 200) {
+			return $check;
+		}
+
+
+		$checkBase = $this->validate();
+	}
 }
