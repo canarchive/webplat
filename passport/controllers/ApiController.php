@@ -19,13 +19,17 @@ class ApiController extends PassportController
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
 
 		$isGuest = Yii::$app->user->isGuest;
-		$callback = Yii::$app->request->get('fun');
+		$callback = Yii::$app->request->get('callback');
 		$data = [
 			'status' => '400',
 		];
 		if (!$isGuest) {
 			$data['status'] = '200';
-			$data['data'] = ['username' => \Yii::$app->user->identity->mobile];
+			$data['data'] = [
+				'username' => \Yii::$app->user->identity->mobile,
+				'message_number' => 1,
+				'cart_number' => 1,
+			];
 		}
 
 		return ['data' => $data, 'callback' => $callback];
@@ -141,5 +145,17 @@ class ApiController extends PassportController
 			'status' => 3,
 			'msg' => 'success',
 		];
+	}
+
+	public function actionFindpwdAjax()
+	{
+		$model = new \passport\models\PasswordResetRequestForm();
+		$model->username = Yii::$app->getRequest()->get('username');
+		$model->captcha = Yii::$app->getRequest()->get('captcha');
+
+		$check = $model->checkParam();
+		var_dump($check);
+
+		
 	}
 }
