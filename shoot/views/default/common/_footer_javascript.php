@@ -45,21 +45,5 @@ $.ajax({
     }
 });
 
-(function() {
-    var controllerNameWithAction = "SupportsController@help".split('@');
-    var controllerName = controllerNameWithAction[0];
-    var actionName = controllerNameWithAction[1];
-    var controller = SHOOT.controller[controllerName];
-    if (controller) {
-        action = controller()[actionName];
-        if (action) {
-            $(function() {
-                vm = action();
-            });
-        }
-    }
-    // else console.log(controllerNameWithAction);
-})();
-
 $(function() {});
 </script>

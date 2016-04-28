@@ -1,3 +1,26 @@
+<?php
+$controllerForJs = isset($this->params['controllerForJs']) ? $this->params['controllerForJs'] : '';
+?>
+<?php if (!empty($controllerForJs)) { ?>
+<script>
+(function() {
+	var controllerNameWithAction = "<?= $controllerForJs; ?>".split('@');
+    var controllerName = controllerNameWithAction[0];
+    var actionName = controllerNameWithAction[1];
+    var controller = SHOOT.controller[controllerName];
+    if (controller) {
+        action = controller()[actionName];
+        if (action) {
+            $(function() {
+                vm = action();
+            });
+        }
+    }
+    // else console.log(controllerNameWithAction);
+})();
+</script>
+<?php } ?>
+
 <!-- baidu-start -->
 <script>
 var _hmt = _hmt || [];
