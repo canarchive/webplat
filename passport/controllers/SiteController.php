@@ -88,12 +88,14 @@ class SiteController extends PassportController
         }
 
         $model = new SigninForm();
+		$wrongTimes = $model->wrongTimes('check');
         if ($model->load(Yii::$app->request->post()) && $model->signin()) {
             return $this->goBack();
         } else {
             return $this->render('signin', [
                 'model' => $model,
 				'returnUrl' => $returnUrl,
+				'showCaptcha' => $wrongTimes > 5 ? 1 : 0,
             ]);
         }
     }

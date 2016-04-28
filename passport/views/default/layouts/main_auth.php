@@ -4,6 +4,7 @@ use yii\helpers\Url;
 $cssFiles = ['styles_member'];
 $jsFiles = ['modernizr.custom'];
 $returnUrl = isset($this->params['returnUrl']) ? $this->params['returnUrl'] : '';
+$controllerForJs = isset($this->params['controllerForJs']) ? $this->params['controllerForJs'] : '';
 ?>
 <?php echo $this->render('@shoot/views/default/common/_header_base', ['cssFiles' => $cssFiles, 'jsFiles' => $jsFiles]); ?>
 <header class='main-header login-header'>
@@ -67,21 +68,5 @@ SHOOT.conf.domains.push('http://bbs.coloros.com');
 
 SHOOT.conf.wxdomains = [];
 SHOOT.conf.wxdomains.push('http://www.opposhop.cn');
-
-(function() {
-    var controllerNameWithAction = "AuthController@register".split('@');
-    var controllerName = controllerNameWithAction[0];
-    var actionName = controllerNameWithAction[1];
-    var controller = SHOOT.controller[controllerName];
-    if (controller) {
-        action = controller()[actionName];
-        if (action) {
-            $(function() {
-                vm = action();
-            });
-        }
-    }
-    // else console.log(controllerNameWithAction);
-})();
 </script>
 <?php echo $this->render('@shoot/views/default/common/_footer_base'); ?>

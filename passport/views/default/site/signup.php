@@ -3,6 +3,7 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\captcha\Captcha;
 use yii\helpers\Url;
+$this->params['controllerForJs'] = 'AuthController@register';
 ?>
 
 <div class='wrapper login register'>
@@ -77,20 +78,16 @@ use yii\helpers\Url;
                                 <input placeholder='手机验证码' type='text' name='activation_code' class='activation_code'>
                             </div>
                             <div class='gi lap-two-fifths'>
-                                <button type='button' href='javascript:;' class='button btn_get_activation_code oppo-tj'
-                                data-tj="account|link|register|getcode">
-                                    获取验证码
-                                </button>
+                                <button type='button' href='javascript:;' class='button btn_get_activation_code oppo-tj'>获取验证码</button>
                             </div>
                         </div>
-                        <span class='icon icon-tick-green-big register-icon'>
-                        </span>
+                        <span class='icon icon-tick-green-big register-icon'></span>
                     </div>
                     <div class='field check-item'>
                         <input id='check1' name='allowed' type='checkbox' checked='checked'>
                         <label for='allowed'>
                             我已阅读并同意
-                            <a href='http://my.oppo.com/agreement.html' target='_blank' class='text-green'>
+							<a href='<?= Yii::$app->params['homeDomain'] . Url::to(['/info/service/aggreement']); ?>' target='_blank' class='text-green'>
                                 《OPPO服务协议》
                             </a>
                         </label>
