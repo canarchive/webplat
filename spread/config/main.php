@@ -35,18 +35,14 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-				//Yii::getAlias('@grouponurl') => '/groupon',
-				'detail/<id:\d+>' => 'groupon/detail/index',
-				'<city:\w+>' => 'groupon/detail/index',
-		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
-		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@syurl')],
+				'hd-<id:\d+>' => 'shoot/detail/index',
 			],
 		],
     ],
 
 	'modules' => [
-		'groupon' => [
-			'class' => 'spread\groupon\Module',
+		'shoot' => [
+			'class' => 'spread\shoot\Module',
 		]
 	],
     'params' => $params,
