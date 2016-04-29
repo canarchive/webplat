@@ -137,18 +137,26 @@ class SiteController extends PassportController
 
     public function actionFindpwd()
     {
+		$step = intval(Yii::$app->request->get('step', 1));
+		$step = $step > 4 ? 1 : $step;
         $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
 
-                return $this->goHome();
-            } else {
-                Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
-            }
-        }
+		switch ($step) {
+		case 2:
+			$data = $model->sendInfos();
+			if (empty($data)) {
+				$step = 1;
+				$view = 'findpwd_1';
+			}
+			break;
+		case 3:
+		case 4:
+		}
 
-        return $this->render('findpwd', [
+		$view = "findpwd_{$step}";
+		$data = [];
+
+        return $this->render($view, [
             'model' => $model,
 			'returnUrl' => $this->returnUrl,
         ]);

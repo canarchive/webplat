@@ -149,13 +149,12 @@ class ApiController extends PassportController
 
 	public function actionFindpwdAjax()
 	{
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 		$model = new \passport\models\PasswordResetRequestForm();
-		$model->username = Yii::$app->getRequest()->get('username');
-		$model->captcha = Yii::$app->getRequest()->get('captcha');
+		$model->username = Yii::$app->getRequest()->post('username');
+		$model->captcha = Yii::$app->getRequest()->post('captcha');
 
 		$return = $model->findpwd();
-		var_dump($return);
-		exit();
 		return $return ;
 	}
 }
