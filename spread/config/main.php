@@ -35,11 +35,15 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
+				'hd-<id:\d+>' => 'shoot/detail/index',
 			],
 		],
     ],
 
 	'modules' => [
+		'shoot' => [
+			'class' => 'spread\shoot\Module',
+		]
 	],
     'params' => $params,
 ];
