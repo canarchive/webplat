@@ -22,6 +22,7 @@ class PasswordResetRequestForm extends Model
         return [
             [['username', 'captcha'], 'filter', 'filter' => 'trim'],
             ['captcha', 'checkCaptcha'],
+            //['captcha', 'captcha'],
             //['email', 'required'],
             //['email', 'email'],
             /*['email', 'exist',
@@ -70,8 +71,14 @@ class PasswordResetRequestForm extends Model
         return false;
     }
 
-	public function sendSmsCode()
+	public function sendMobile()
 	{
+ 		$smser = new Smser();
+   		$result = $smser->sendCode($this->mobile, 'findpwd');
+		$result = 'OK';
+
+    	$status = $result == 'OK' ? 200 : 400;
+        return ['status' => $status, 'message' => $result];
 	}
 
 	public function checkParams()
@@ -91,6 +98,38 @@ class PasswordResetRequestForm extends Model
 		}
 
 
-		$checkBase = $this->validate();
+		$return = $this->$methodSend($user);
+		if ($return['status'] == 200) {
+			$data = [
+				'type' => $methodSend,
+				'username' => $this->username,
+			];
+
+			$this->sendInfos('write', $data);
+		}
+
+		return $return;
 	}
+
+	public function sendInfos($action, $data = []) 
+	{
+        $session = Yii::$app->getSession();
+        $session->open();
+        $name = "_findpwd_send";
+
+		switch ($action) {
+		case 'write':
+			$session[$name] = $data;
+			return ;
+		case 'get':
+			$data = isset($session[$name]) ? $session[$name] : [];
+			return $data;
+		case 'clear':
+			if (isset($session[$name])) {
+				unset($session[$name]);
+			}
+			return ;
+		}
+	}
+
 }
