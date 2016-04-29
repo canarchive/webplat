@@ -3,13 +3,15 @@
 namespace backend\spread\controllers;
 
 use Yii;
-use spread\groupon\models\CustomService;
-use spread\groupon\models\searchs\CustomService as CustomServiceSearch;
+use spread\models\CustomService;
+use spread\models\searchs\CustomService as CustomServiceSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class CustomServiceController extends AdminController
 {
+	protected $modelClass = 'spread\models\CustomService';
+
     public function actionListinfo()
     {
         $searchModel = new CustomServiceSearch();
@@ -38,13 +40,5 @@ class CustomServiceController extends AdminController
     public function actionDelete($id)
     {
 		return $this->_deleteInfo($id);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = CustomService::findOne($id)) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');		
     }
 }
