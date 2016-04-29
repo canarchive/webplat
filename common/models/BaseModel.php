@@ -147,8 +147,9 @@ class BaseModel extends ActiveRecord
 	protected function getAttachmentModel()
 	{}
 
-	protected function _updateSingleAttachment($attachment, $table, $fields)
+	protected function _updateSingleAttachment($table, $fields)
 	{
+		$attachment = $this->getAttachmentModel();
 		foreach ($fields as $field) {
 			$info = $attachment->findOne($this->$field);
 			if (!empty($info)) {
@@ -193,4 +194,15 @@ class BaseModel extends ActiveRecord
 
 		return ;
 	}	
+
+	public function checkMobile($mobile)
+	{
+		$validator = new \common\validators\MobileValidator();
+		$valid =  $validator->validate($mobile);
+		if (empty($valid)) {
+			return ['status' => 400, 'message' => '手机号码格式有误'];
+		}
+
+		return true;
+	}
 }
