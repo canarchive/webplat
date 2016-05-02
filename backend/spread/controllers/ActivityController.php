@@ -3,14 +3,14 @@
 namespace backend\spread\controllers;
 
 use Yii;
-use spread\models\Activity;
-use spread\models\searchs\Activity as ActivitySearch;
+use spread\shoot\models\Activity;
+use spread\shoot\models\searchs\Activity as ActivitySearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class ActivityController extends AdminController
 {
-	protected $modelClass = 'spread\models\Activity';
+	protected $modelClass = 'spread\shoot\models\Activity';
 
     public function actionListinfo()
     {

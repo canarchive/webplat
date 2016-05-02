@@ -34,7 +34,7 @@ class DetailController extends Controller
     protected function getInfo()
     {
         $id = \Yii::$app->getRequest()->get('id');
-        $model = new \spread\shoot\models\Shoot(['id' => $id]);
+        $info = \spread\shoot\models\Activity::findOne(['id' => $id]);
 		
         return $info;
     }

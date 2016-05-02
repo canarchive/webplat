@@ -8,14 +8,25 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "template".
  */
-class shoot extends spreadModel
+class Activity extends spreadModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%shoot}}';
+        return '{{%activity}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
     }
 
     public function rules()
@@ -27,7 +38,7 @@ class shoot extends spreadModel
 			}],
 			[['picture', 'picture_small'], 'integer'],
 			[['sms'], 'default', 'value' => ''],
-			[['signup_base', 'description'], 'safe'],
+			[['description'], 'safe'],
         ];
     }	
 
@@ -53,7 +64,7 @@ class shoot extends spreadModel
 
 	public function getInfo($where)
 	{
-        $key = "shootsem_shoot_info_{$id}";
+        $key = "spread_activity_info_{$id}";
         $info = false;// \Yii::$app->cacheRedis->get($key);
         if ($info) {
             return $info;
@@ -83,23 +94,6 @@ class shoot extends spreadModel
 		return $info;
 	}
 
-	/**
-	 * 获取图片的URL信息
-	 *
-	 * @return array
-	 */
-	protected function _getAttachmentPaths($info, $attachmentFields)
-	{
-		foreach ($attachmentFields as $field) {
-			$aId = isset($info[$field]) ? $info[$field] : 0;
-			$path = Attachments::getPath($aId);
-
-			$info[$field] = $path;
-		}
-
-		return $info;
-	}
-
 	public function getStatusInfos()
 	{
 		$datas = [
@@ -114,8 +108,7 @@ class shoot extends spreadModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['picture', 'picture_small'];
-		$attachment = new \spread\models\Attachment();
-		$this->_updateSingleAttachment($attachment, 'shoot', $fields);
+		$this->_updateSingleAttachment('activity', $fields);
 
 		return true;
 	}	
