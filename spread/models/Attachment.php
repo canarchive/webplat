@@ -23,7 +23,7 @@ class Attachment extends AttachmentBase
 	public function getFieldInfos($table = null, $field = null)
 	{
 		$infos = [
-			'groupon' => [
+			'activity' => [
 				'picture' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
@@ -36,12 +36,6 @@ class Attachment extends AttachmentBase
     				'maxSize' => 40,
     				'type' => 'image/*',
 				],
-				'map' => [
-        			'isSingle' => true,
-    				'minSize' => 1, // unit: kb
-    				'maxSize' => 100,
-    				'type' => 'image/*',
-				],				
 			],
 			'product' => [
 				'main_photo' => [
