@@ -1,5 +1,9 @@
 <?php
 use yii\helpers\Url;
+
+$seoTitle = Yii::$app->params['seoTitle'];
+$seoKeyword = Yii::$app->params['seoKeyword'];
+$seoDescription = Yii::$app->params['seoDescription'];
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>
@@ -18,9 +22,9 @@ use yii\helpers\Url;
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE" />
 <meta content='width=device-width,initial-scale=1, user-scalable=no' name='viewport'>
-<title>title</title>
-<meta name="keywords" content="keywords" />
-<meta name="description" content="description" />
+<title><?= $seoTitle; ?></title>
+<meta name="keywords" content="<?= $seoKeyword; ?>" />
+<meta name="description" content="<?= $seoDescription; ?>" />
 <meta property="qc:admins" content="1257363774670076375" />
 
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>

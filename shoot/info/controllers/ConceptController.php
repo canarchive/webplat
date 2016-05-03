@@ -18,6 +18,9 @@ class ConceptController extends ShootController
 
 	public function actionVision()
 	{
+		$this->layout = null;
+		$this->module->layout = null;
+		\Yii::$app->layout = null;
 		return $this->render('vision');
 	}
 }
