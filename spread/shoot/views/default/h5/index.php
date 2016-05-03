@@ -1,32 +1,39 @@
+<?php
+use yii\helpers\Html;
+use yii\helpers\Url;
+?>
+<?php //echo $this->render('_header', ['info' => $info]); ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-<title>
-    OPPO官网-双12大促，购机钜惠
-</title>
-<meta name="keywords" content="双12促销，OPPO手机，A53，购机促销，OPPO手机官网">
-<meta name="description" content="OPPO手机，双12大促，新品A53上市，更有R7plus升级版全新开启，购机优惠好礼送不停">
-<meta charset="utf-8" />
+<meta charset="UTF-8">
 <meta http-equiv="content-language" content="zh-CN" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
-/>
-<link rel="stylesheet" type="text/css" href="http://shopfs.myoppo.com/hd/m/2015/shuang12/css/style.min.css?1450071767?v=20151211172810">
+<title><?= $info['name']; ?></title>
+<meta name="description" content="<?= $info['name']; ?>" >
+<meta name="keywords" content="<?= $info['description']; ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/css/styles_hd_h5.css?v=20151211213454">
+<script type="text/javascript">
+window.BASE_URL = "<?= Yii::getAlias('@shooturl'); ?>";
+window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
+window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
+</script>
 </head>
 
 <body>
 <div class='unit unit-1' id='unit-1'>
     <div class='relative'>
-        <!-- <a href="http://www.oppo.com" id='logo'><img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/logo.png?1449473250" /></a> -->
+        <!-- <a href="http://www.oppo.com" id='logo'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/logo.png?1449473250" /></a> -->
         <div class='unit-1-bg'>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-1_01.jpg?1449834213"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-1_01.jpg?1449834213"
             />
         </div>
     </div>
 </div>
 <div class='unit unit-2'>
     <p id="category0">
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-2.jpg?1449473250"
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-2.jpg?1449473250"
         />
     </p>
     <a id="list-0" class="list-btn" data-index="0">
@@ -41,44 +48,44 @@
 </div>
 <div class='unit unit-3 relative'>
     <p>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-3-bg_03.jpg?1449834213"
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-3-bg_03.jpg?1449834213"
         />
     </p>
     <!-- 两种状态 -->
-    <!-- <div class="sec-btn"><span>立即开抢</span><img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/icon-unac.png?1449473250"></div> -->
+    <!-- <div class="sec-btn"><span>立即开抢</span><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/icon-unac.png?1449473250"></div> -->
     <!-- <div class="sec-btn"><span style="line-height:2;">秒杀已结束</span></div> -->
-    <!-- <div class="sec-btn"><span>距离开抢还有<br/><strong class="h">00</strong>:<strong class="m">00</strong>:<strong class="s">00</strong></span><img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/icon-unac.png?1449473250"></div> -->
+    <!-- <div class="sec-btn"><span>距离开抢还有<br/><strong class="h">00</strong>:<strong class="m">00</strong>:<strong class="s">00</strong></span><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/icon-unac.png?1449473250"></div> -->
     <!-- <a id="today-btn">查看名单&gt;&gt;</a>
     <p class="comments">*请提前登录官网账号做好开抢准备</p> -->
 </div>
 <div class='unit unit-4' id="unit-4">
     <p id="category1">
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-4-title.jpg?1449473250"
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-4-title.jpg?1449473250"
         />
     </p>
     <div class="wrapper clearfix">
         <p>
             <a href="http://store.oppo.com/products/342.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-4-w1.jpg?1449481926"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-4-w1.jpg?1449481926"
                 />
             </a>
         </p>
         <p>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-4-w2.jpg?1449473250"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-4-w2.jpg?1449473250"
             />
         </p>
         <div class="btn clearfix">
             <a href="http://store.oppo.com/products/342.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                 alt="" class="left-btn" data-index="r7plusmh">
             </a>
             <a href="http://store.oppo.com/products/343.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                 alt="" class="right-btn" data-index="r7plusth">
             </a>
         </div>
         <p style="margin-bottom: 20px;">
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-5_14.jpg?1449834213"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-5_14.jpg?1449834213"
             />
         </p>
         <!-- <div class='unit-3-1'>
@@ -87,53 +94,53 @@
         <tr>
         <td>
         <div class='td lottery-unit lottery-unit-0'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-1.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-1.png?1449473250" />			
         </div>
         </td>
         <td>
         <div class='td lottery-unit lottery-unit-1'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-2.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-2.png?1449473250" />			
         </div>
         </td>
         <td>
         <div class='td lottery-unit lottery-unit-2'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-3.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-3.png?1449473250" />			
         </div>
         </td>
         </tr>
         <tr>
         <td>
         <div class='td lottery-unit lottery-unit-7'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-4.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-4.png?1449473250" />			
         </div>
         </td>
         <td>
         <div class='td'>
         <a href="#" id='btn-lottery' onclick="_optj.push(['_trackEvent', 'hd', 'btn', 'shuang_12', 'lottery']);">
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-5.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-5.png?1449473250" />			
         </a>
         </div>
         </td>
         <td>
         <div class='td lottery-unit lottery-unit-3'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-4.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-4.png?1449473250" />			
         </div>
         </td>
         </tr>
         <tr>
         <td>
         <div class='td lottery-unit lottery-unit-6'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-1.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-1.png?1449473250" />			
         </div>
         </td>
         <td>
         <div class='td lottery-unit lottery-unit-5'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-4.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-4.png?1449473250" />			
         </div>
         </td>
         <td>
         <div class='td lottery-unit lottery-unit-4'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/td-3.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/td-3.png?1449473250" />			
         </div>
         </td>
         </tr>
@@ -141,135 +148,135 @@
         </div>
         <div class='unit-3-btns'>
         <a href="#" id='winnersBtn'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-3-btn1.png?1449630812" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-3-btn1.png?1449630812" />			
         </a>
         <a href="#" id='rulesBtn'>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-3-btn2.png?1449473250" />			
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-3-btn2.png?1449473250" />			
         </a>
         </div>
         </div>
-        <p style="margin-bottom: 20px;"><img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-6.jpg?1449481926" /></p> -->
+        <p style="margin-bottom: 20px;"><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-6.jpg?1449481926" /></p> -->
         <p id="category2">
             <a href="http://store.oppo.com/products/341.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-7-w1.jpg?1449481926"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-7-w1.jpg?1449481926"
                 />
             </a>
         </p>
         <p>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-7-w2.jpg?1449481926"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-7-w2.jpg?1449481926"
             />
         </p>
         <div class="btn">
             <a href="http://store.oppo.com/products/341.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                 alt="" class="center-btn" data-index="a53reserve">
             </a>
         </div>
         <p>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-7-w3.jpg?1449539350"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-7-w3.jpg?1449539350"
             />
         </p>
     </div>
 </div>
 <div class='unit unit-9' id="unit-9">
     <p id="category3">
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-9-title.jpg?1449473250"
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-9-title.jpg?1449473250"
         />
     </p>
     <div class="wrapper clearfix">
         <div>
             <a href="http://store.oppo.com/products/338.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-10-w1_20.jpg?1449834213"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-10-w1_20.jpg?1449834213"
                 />
             </a>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-10-w2_23.jpg?1449834213"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-10-w2_23.jpg?1449834213"
             />
             <div class="btn clearfix">
                 <a href="http://store.oppo.com/products/338.html">
-                    <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                     alt="" class="left-btn">
                 </a>
                 <a href="http://store.oppo.com/products/330.html">
-                    <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                     alt="" class="right-btn">
                 </a>
             </div>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-10-w3.jpg?1449540928"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-10-w3.jpg?1449540928"
             />
         </div>
         <div style="margin-top: 20px;">
             <a href="http://store.oppo.com/products/288.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-11-w1.jpg?1449481926"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-11-w1.jpg?1449481926"
                 />
             </a>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-11-w2.jpg?1449481926"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-11-w2.jpg?1449481926"
             />
             <div class="btn clearfix">
                 <a href="http://store.oppo.com/products/288.html">
-                    <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                     alt="" class="left-btn">
                 </a>
                 <a href="http://store.oppo.com/products/304.html">
-                    <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                     alt="" class="right-btn">
                 </a>
             </div>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-11-w3.jpg?1449539350"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-11-w3.jpg?1449539350"
             />
         </div>
         <div style="margin-top: 20px;">
             <a href="http://store.oppo.com/products/314.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-12-w1.jpg?1449481926"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-12-w1.jpg?1449481926"
                 />
             </a>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-12-w2.jpg?1449481926"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-12-w2.jpg?1449481926"
             />
             <div class="btn clearfix">
                 <a href="http://store.oppo.com/products/314.html">
-                    <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                     alt="" class="left-btn">
                 </a>
                 <a href="http://store.oppo.com/products/319.html">
-                    <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                     alt="" class="right-btn">
                 </a>
             </div>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-12-w3.jpg?1449539350"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-12-w3.jpg?1449539350"
             />
         </div>
     </div>
 </div>
 <div class='unit unit-13' id="unit-13" style="padding-top: 20px;background-color: #7d0132;">
     <p>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-13-title.jpg?1449473250"
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-13-title.jpg?1449473250"
         />
     </p>
     <div class="wrapper">
         <p>
             <a href="http://store.oppo.com/products/118.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-14-w1.jpg?1449481926"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-14-w1.jpg?1449481926"
                 />
             </a>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-14-w2.jpg?1449481926"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-14-w2.jpg?1449481926"
             />
             <div class="btn">
                 <a href="http://store.oppo.com/products/118.html">
-                    <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/buy-btn.png?1449473250"
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/buy-btn.png?1449473250"
                     alt="" class="center-btn">
                 </a>
             </div>
-            <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-14-w3.jpg?1449482869"
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-14-w3.jpg?1449482869"
             />
         </p>
         <p style="margin-bottom: 30px;margin-top:20px;">
             <a href="http://store.oppo.com/products/328.html">
-                <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-15.jpg?1449481926"
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-15.jpg?1449481926"
                 />
             </a>
         </p>
     </div>
     <p>
-        <img src="http://shopfs.myoppo.com/hd/m/2015/shuang12/images/screen-16.jpg?1449630812"
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/screen-16.jpg?1449630812"
         />
     </p>
 </div>
@@ -754,16 +761,12 @@
         R7s直降200
     </li>
 </ul>
-<script type="text/javascript" src="http://shopfs.myoppo.com/hd/static/js/jquery-1.8.3.min.js?1409817228">
-</script>
-<script type="text/javascript" src="http://shopfs.myoppo.com/hd/static/js/region.min.js?1417419001">
-</script>
-<script src="http://my.oppo.com/lib/oppo.login.min.js?v=2015813112014">
-</script>
-<script type="text/javascript" src="http://shopfs.myoppo.com/hd/m/2015/shuang12/js/app.min.js?1450071767">
-</script>
-<script type="text/javascript" src="http://shopfs.myoppo.com/hd/static/js/wxapp.min.js?1442367993">
-</script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/jquery-1.8.3.min.js?1409817228"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/login.js?v=2015813112014"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/region.min.js?1417419001"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/hd.js?1422525808"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/app.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/wxapp.js"></script>
 <script type="text/javascript">
     $(function() {
         var _width = $("body").width();
@@ -907,10 +910,6 @@
         s.parentNode.insertBefore(ut, s);
     })();
 </script>
-<noscript>
-    <img src="http://sit.gentags.net/site/img?site=941" style="border:0" alt=""
-    />
-</noscript>
 </body>
 
 </html>
