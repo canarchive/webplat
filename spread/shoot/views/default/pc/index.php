@@ -11,12 +11,15 @@ use yii\helpers\Url;
 
 <head>
 <meta charset="UTF-8">
-<title>
-    OPPO官网-双12大促，购机钜惠
-</title>
-<meta name="description" content="OPPO手机，双12大促，新品A53上市，更有R7plus升级版全新开启，购机优惠好礼送不停">
-<meta name="keywords" content="双12促销，OPPO手机，A53，购机促销，OPPO手机官网">
+<title><?= $info['name']; ?></title>
+<meta name="description" content="<?= $info['name']; ?>" >
+<meta name="keywords" content="<?= $info['description']; ?>">
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/css/styles_hd.css?v=20151211213454">
+<script type="text/javascript">
+window.BASE_URL = "<?= Yii::getAlias('@shooturl'); ?>";
+window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
+window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
+</script>
 </head>
 
 <body>
@@ -29,7 +32,7 @@ use yii\helpers\Url;
         </div>
         <div class="left header-logo">
 		    <a href="<?= Yii::getAlias('@shooturl'); ?>" target="_blank">
-			    <img src="<?= Yii::getAlias('@shooturl'); ?>/shoot/default/images/spread/logo.png" />
+			    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/logo.png" />
             </a>
         </div>
     </div>
@@ -37,23 +40,22 @@ use yii\helpers\Url;
 <div class='unit' id='banner'>
     <div class='wrapper'>
         <div class='slogan'>
-            <img src="/2015/shuang12/images/banner-slogan.png" />
+		    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/banner-slogan.png" />
         </div>
     </div>
 </div>
 <div class='unit' id='unit-1'>
     <div class='wrapper'>
         <div class='unit-title'>
-            <img src="/2015/shuang12/images/unit-1-title.png" />
+		    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-1-title.png" />
         </div>
         <div class='unit-1-content'>
-            <img src="/2015/shuang12/images/unit-1-content-2.png" />
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-1-content-2.png" />
         </div>
-        <!-- <img id="unit-qrcode" src="/2015/shuang12/images/qrcode-unit.png"
+		<img id="unit-qrcode" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/qrcode-unit.png"
         />
         <div class='unit-1-btn'>
-            <a href="javascript:;" class='btn btn-yellow btn-grey' onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'ms']);"
-            style="line-height:58px;padding-top:0;font-size:20px;">
+            <a href="javascript:;" class='btn btn-yellow btn-grey' style="line-height:58px;padding-top:0;font-size:20px;">
                 秒杀已结束
             </a>
         </div>
@@ -63,7 +65,6 @@ use yii\helpers\Url;
         <a href="#" class='unit-1-more'>
             查看名单&nbsp;&raquo;
         </a>
-        -->
         <a href="#" class='listbtn list-1'>
             查看赠送名单&nbsp;&raquo;
         </a>
@@ -78,61 +79,52 @@ use yii\helpers\Url;
 <div class='unit' id='unit-2'>
     <div class='wrapper'>
         <div class='unit-title'>
-            <img src="/2015/shuang12/images/unit-2-title.png" />
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-2-title.png" />
         </div>
         <div class='unit-mobile unit-r7plus' id='r7plusgp'>
             <div class='unit-tag'>
-                <img src="/2015/shuang12/images/unit-2-tag.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-2-tag.png" />
             </div>
             <div class='unit-parts'>
-                <img src="/2015/shuang12/images/unit-r7plus-parts-2.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-r7plus-parts-2.png" />
             </div>
             <div class='unit-qrcode'>
-                <img src="/2015/shuang12/images/qrcode-r7plusgp.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/qrcode-r7plusgp.png" />
                 <br>
                 扫码购机立减10元
             </div>
             <div class='unit-left'>
-                <img src="/2015/shuang12/images/mobile-r7plus.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/mobile-r7plus.png" />
             </div>
             <div class='unit-right'>
                 <div class='title'>
-                    <span>
-                        R7Plus
-                    </span>
-                    <font>
-                        【高配版】
-                    </font>
+                    <span>R7Plus</span>
+                    <font>【高配版】</font>
                 </div>
                 <div class='subtitle'>
                     · 4G运存 + 64G内存
                 </div>
                 <div class='text'>
-                    · 6吋2.5D弧度屏
-                    <br>
+                    · 6吋2.5D弧度屏 <br>
                     · 4100毫安大电池、VOOC闪充、指纹识别
                 </div>
                 <div class='prices'>
                     <label>
                         全网通版:
-                        <font>
-                            ￥3299
-                        </font>
+                        <font>￥3299</font>
                     </label>
                     <label>
                         移动版:
-                        <font>
-                            ￥2999
-                        </font>
+                        <font>￥2999</font>
                     </label>
                 </div>
                 <div class='btns'>
                     <a href="http://store.oppo.com/products/342.html" target="_blank" class='btn btn-red'
-                    data-type='r7plusmh' onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7plus_qwt']);">
+                    data-type='r7plusmh'>
                         立即购买
                     </a>
                     <a href="http://store.oppo.com/products/343.html" target="_blank" class='btn btn-red'
-                    data-type='r7plusth' onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7plus_yd']);">
+                    data-type='r7plusth'>
                         立即购买
                     </a>
                 </div>
@@ -140,19 +132,19 @@ use yii\helpers\Url;
             <!-- <div class='unit-lottery unit-3-1-table' id='lottery'>
             <table>
             <tr>
-            <td><div class='td lottery-unit lottery-unit-0'><img src="/2015/shuang12/images/prize-0.png" /><br><span>O-lens镜头式相机</span></div></td>
-            <td><div class='td lottery-unit lottery-unit-1'><img src="/2015/shuang12/images/prize-1.png" /><br><span>R7 Plus高配版</span></div></td>
-            <td><div class='td lottery-unit lottery-unit-2'><img src="/2015/shuang12/images/prize-2.png" /><br><span>OPPO时尚自拍杆</span></div></td>
+            <td><div class='td lottery-unit lottery-unit-0'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-0.png" /><br><span>O-lens镜头式相机</span></div></td>
+            <td><div class='td lottery-unit lottery-unit-1'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-1.png" /><br><span>R7 Plus高配版</span></div></td>
+            <td><div class='td lottery-unit lottery-unit-2'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-2.png" /><br><span>OPPO时尚自拍杆</span></div></td>
             </tr>
             <tr>
-            <td><div class='td lottery-unit lottery-unit-7'><img src="/2015/shuang12/images/prize-3.png" /><br><span>谢谢惠顾</span></div></td>
-            <td><div class='td'><a href="#" id='btn-lottery'><img src="/2015/shuang12/images/prize-btn.png" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'lottery']);"/></a></div></td>
-            <td><div class='td lottery-unit lottery-unit-3'><img src="/2015/shuang12/images/prize-3.png" /><br><span>谢谢惠顾</span></div></td>
+            <td><div class='td lottery-unit lottery-unit-7'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-3.png" /><br><span>谢谢惠顾</span></div></td>
+            <td><div class='td'><a href="#" id='btn-lottery'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-btn.png"/></a></div></td>
+            <td><div class='td lottery-unit lottery-unit-3'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-3.png" /><br><span>谢谢惠顾</span></div></td>
             </tr>
             <tr>
-            <td><div class='td lottery-unit lottery-unit-6'><img src="/2015/shuang12/images/prize-0.png" /><br><span>O-lens镜头式相机</span></div></td>
-            <td><div class='td lottery-unit lottery-unit-5'><img src="/2015/shuang12/images/prize-3.png" /><br><span>谢谢惠顾</span></div></td>
-            <td><div class='td lottery-unit lottery-unit-4'><img src="/2015/shuang12/images/prize-2.png" /><br><span>OPPO时尚自拍杆</span></div></td>
+            <td><div class='td lottery-unit lottery-unit-6'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-0.png" /><br><span>O-lens镜头式相机</span></div></td>
+            <td><div class='td lottery-unit lottery-unit-5'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-3.png" /><br><span>谢谢惠顾</span></div></td>
+            <td><div class='td lottery-unit lottery-unit-4'><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/prize-2.png" /><br><span>OPPO时尚自拍杆</span></div></td>
             </tr>
             </table>
             <div class='unit-lottery-list'>
@@ -161,7 +153,7 @@ use yii\helpers\Url;
             <div class='list2' id='todayWinnerList'>
             <ul></ul>
             </div>
-            <div class='more2'><a href="winners.html" target="_blank" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'viewlist']);">全部中奖名单&nbsp;&raquo;</a></div>
+            <div class='more2'><a href="winners.html" target="_blank">全部中奖名单&nbsp;&raquo;</a></div>
             </div>
             </div>
             </div>
@@ -180,18 +172,18 @@ use yii\helpers\Url;
         </div>
         <div class='unit-mobile unit-a53' id='a53'>
             <div class='unit-parts'>
-                <img src="/2015/shuang12/images/unit-a53-parts.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-a53-parts.png" />
             </div>
             <div class='unit-tag'>
-                <img src="/2015/shuang12/images/unit-2-tag.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-2-tag.png" />
             </div>
             <div class='unit-qrcode'>
-                <img src="/2015/shuang12/images/qrcode-a53.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/qrcode-a53.png" />
                 <br>
                 扫码购机立减10元
             </div>
             <div class='unit-left'>
-                <img src="/2015/shuang12/images/mobile-a53.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/mobile-a53.png" />
             </div>
             <div class='unit-right'>
                 <div class='title'>
@@ -214,7 +206,7 @@ use yii\helpers\Url;
                 </div>
                 <div class='btns'>
                     <a href="http://store.oppo.com/products/341.html" target="_blank" class='btn btn-red'
-                    data-type='a53reserve' onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'a53']);">
+                    data-type='a53reserve'>
                         立即购买
                     </a>
                 </div>
@@ -225,22 +217,22 @@ use yii\helpers\Url;
 <div class='unit' id='unit-3'>
     <div class='wrapper'>
         <div class='unit-title'>
-            <img src="/2015/shuang12/images/unit-3-title.png" />
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-3-title.png" />
         </div>
         <div class='unit-mobile unit-r7s'>
             <div class='unit-tag'>
-                <img src="/2015/shuang12/images/unit-2-tag-1-2.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-2-tag-1-2.png" />
             </div>
             <div class='unit-parts'>
-                <img src="/2015/shuang12/images/unit-r7s-parts.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-r7s-parts.png" />
             </div>
             <div class='unit-qrcode'>
-                <img src="/2015/shuang12/images/qrcode-r7s.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/qrcode-r7s.png" />
                 <br>
                 扫码购机立减10元
             </div>
             <div class='unit-left'>
-                <img src="/2015/shuang12/images/mobile-r7s.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/mobile-r7s.png" />
             </div>
             <div class='unit-right'>
                 <div class='title'>
@@ -257,14 +249,14 @@ use yii\helpers\Url;
                 <!-- <div class='text'>· 5.5寸大屏超窄边框<br>· 4G RAM & 32G ROM<br>· 3070mAh电池容量&搭载VOOC闪充</div>
                 <div class='prices'><label>全网通版:<font>￥2599</font></label><label>移动版:<font class=''>￥2499</font></label></div>
                 <div class='prices origin-prices'><label>&nbsp;<font><del>￥2799</del></font></label><label>&nbsp;<font class=''><del>￥2599</del></font></label></div> -->
-                <img src="/2015/shuang12/images/unit-2-price.png" style="margin-top:60px; margin-bottom:6px;">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-2-price.png" style="margin-top:60px; margin-bottom:6px;">
                 <div class='btns'>
                     <a href="http://store.oppo.com/products/338.html" target="_blank" class='btn btn-red'
-                    onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7s_qwt']);">
+                   >
                         立即购买
                     </a>
                     <a href="http://store.oppo.com/products/330.html" target="_blank" class='btn btn-red'
-                    onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7s_yd']);">
+                   >
                         立即购买
                     </a>
                 </div>
@@ -274,15 +266,15 @@ use yii\helpers\Url;
             <div class='unit-left1'>
                 <div class='unit-r7'>
                     <div class='unit-parts'>
-                        <img src="/2015/shuang12/images/unit-r7-parts.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-r7-parts.png" />
                     </div>
                     <div class='unit-qrcode'>
-                        <img src="/2015/shuang12/images/qrcode-r7.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/qrcode-r7.png" />
                         <br>
                         扫码购机立减10元
                     </div>
                     <div class='unit-left'>
-                        <img src="/2015/shuang12/images/mobile-r7.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/mobile-r7.png" />
                     </div>
                     <div class='unit-right'>
                         <div class='title'>
@@ -307,11 +299,11 @@ use yii\helpers\Url;
                         </div>
                         <div class='btns'>
                             <a href="http://store.oppo.com/products/288.html" target="_blank" class='btn btn-red'
-                            onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7_yd']);">
+                           >
                                 立即购买
                             </a>
                             <a href="http://store.oppo.com/products/304.html" target="_blank" class='btn btn-red'
-                            onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7_dx']);">
+                           >
                                 立即购买
                             </a>
                         </div>
@@ -321,18 +313,18 @@ use yii\helpers\Url;
             <div class='unit-right1'>
                 <div class='unit-r7plus2'>
                     <div class='unit-tag'>
-                        <img src="/2015/shuang12/images/unit-2-tag-3.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-2-tag-3.png" />
                     </div>
                     <div class='unit-parts'>
-                        <img src="/2015/shuang12/images/unit-r7plus-parts2.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-r7plus-parts2.png" />
                     </div>
                     <div class='unit-qrcode'>
-                        <img src="/2015/shuang12/images/qrcode-r7plus2.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/qrcode-r7plus2.png" />
                         <br>
                         扫码购机立减10元
                     </div>
                     <div class='unit-left'>
-                        <img src="/2015/shuang12/images/mobile-r7plus2.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/mobile-r7plus2.png" />
                     </div>
                     <div class='unit-right'>
                         <div class='title'>
@@ -378,11 +370,11 @@ use yii\helpers\Url;
                         </div>
                         <div class='btns'>
                             <a href="http://store.oppo.com/products/314.html" target="_blank" class='btn btn-red'
-                            onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7plus_yd2']);">
+                           >
                                 立即购买
                             </a>
                             <a href="http://store.oppo.com/products/319.html" target="_blank" class='btn btn-red'
-                            onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r7plus_qwt2']);">
+                           >
                                 立即购买
                             </a>
                         </div>
@@ -395,19 +387,19 @@ use yii\helpers\Url;
 <div class='unit' id='unit-4'>
     <div class='wrapper'>
         <div class='unit-title'>
-            <img src="/2015/shuang12/images/unit-4-title.png" />
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-4-title.png" />
         </div>
         <div class='unit-mobile unit-r1c'>
             <div class='unit-parts'>
-                <img src="/2015/shuang12/images/unit-r1c-parts.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/unit-r1c-parts.png" />
             </div>
             <div class='unit-qrcode'>
-                <img src="/2015/shuang12/images/qrcode-r1c.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/qrcode-r1c.png" />
                 <br>
                 扫码购机立减10元
             </div>
             <div class='unit-left'>
-                <img src="/2015/shuang12/images/mobile-r1c.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/mobile-r1c.png" />
             </div>
             <div class='unit-right'>
                 <div class='title'>
@@ -430,7 +422,7 @@ use yii\helpers\Url;
                 </div>
                 <div class='btns'>
                     <a href="http://store.oppo.com/products/118.html" class='btn btn-red'
-                    target="_blank" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'r1c']);">
+                    target="_blank">
                         立即购买
                     </a>
                 </div>
@@ -438,7 +430,7 @@ use yii\helpers\Url;
         </div>
         <div class='unit-mobile unit-stick'>
             <div class='unit-left'>
-                <img src="/2015/shuang12/images/mobile-stick.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/mobile-stick.png" />
             </div>
             <div class='unit-right'>
                 <div class='title'>
@@ -459,7 +451,7 @@ use yii\helpers\Url;
                 </div>
                 <div class='btns'>
                     <a href="http://store.oppo.com/products/328.html" class='btn btn-red'
-                    target="_blank" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'zpg']);">
+                    target="_blank">
                         立即购买
                     </a>
                 </div>
@@ -561,8 +553,8 @@ use yii\helpers\Url;
 <div class="unit" id="footer">
     <div class="wrapper block">
         <div class="left logo">
-            <a href="http://www.oppo.com/cn/" target="_blank">
-                <img src="/school/images/logo-2.png" />
+		    <a href="<?= Yii::getAlias('@shooturl'); ?>" target="_blank">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/logo-2.png" />
             </a>
         </div>
         <div class="left copy">
@@ -570,13 +562,12 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-<div class='mask hidden' id='mask'>
-</div>
+<div class='mask hidden' id='mask'></div>
 <div class='dialog hidden' id='orderDialog'>
     <div class="dialog-content">
         <div class="dialog-close">
             <a href="#">
-                <img src="/2015/shuang12/images/dialog-close.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/dialog-close.png" />
             </a>
         </div>
         <div class="dialog-container">
@@ -686,7 +677,7 @@ use yii\helpers\Url;
     <div class="dialog-content">
         <div class="dialog-close">
             <a href="#">
-                <img src="/2015/shuang12/images/dialog-close.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/dialog-close.png" />
             </a>
         </div>
         <div class="dialog-container">
@@ -754,7 +745,7 @@ use yii\helpers\Url;
     <div class='dialog-content'>
         <div class="dialog-close">
             <a href="#">
-                <img src="/2015/shuang12/images/dialog-close.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/dialog-close.png" />
             </a>
         </div>
         <div class='dialog-container'>
@@ -767,7 +758,7 @@ use yii\helpers\Url;
     <div class='dialog-content'>
         <div class="dialog-close">
             <a href="#">
-                <img src="/2015/shuang12/images/dialog-close.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/dialog-close.png" />
             </a>
         </div>
         <div class='dialog-container'>
@@ -837,7 +828,7 @@ use yii\helpers\Url;
     <div class='dialog-content'>
         <div class="dialog-close">
             <a href="#">
-                <img src="/2015/shuang12/images/dialog-close.png" />
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/dialog-close.png" />
             </a>
         </div>
         <div class='dialog-container'>
@@ -930,7 +921,7 @@ use yii\helpers\Url;
                 </div>
                 <div class="dialog-back">
                     <a href="#">
-                        <img src="/2015/r7plus/order/images/dialog-back.png" />
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/dialog-back.png" />
                     </a>
                 </div>
             </div>
@@ -938,32 +929,21 @@ use yii\helpers\Url;
     </div>
 </div>
 <div class='sidebar' id='sidebar'>
-    <img src="/2015/shuang12/images/sidebar-2.png" usemap="#sidebarmap" />
+    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images-tg/sidebar-2.png" usemap="#sidebarmap" />
 </div>
 <map id="sidebarmap" name="sidebarmap">
-    <area shape="rect" coords="0,0,167,105" href="#r7plusgp" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'side1']);"
-    />
-    <area shape="rect" coords="0,120,167,175" href="#a53" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'side2']);"
-    />
-    <area shape="rect" coords="0,190,167,245" href="#unit-3" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'side3']);"
-    />
-    <area shape="rect" coords="0,255,167,310" href="#unit-4" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'side4']);"
-    />
-    <area shape="rect" coords="0,325,167,380" href="#rules" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'side5']);"
-    />
-    <area shape="rect" coords="0,395,167,450" href="#header" onclick="_optj.push(['_trackEvent', 'hd', 'img', 'shuang12', 'side6']);"
-    />
+    <area shape="rect" coords="0,0,167,105" href="#r7plusgp" />
+    <area shape="rect" coords="0,120,167,175" href="#a53" />
+    <area shape="rect" coords="0,190,167,245" href="#unit-3" />
+    <area shape="rect" coords="0,255,167,310" href="#unit-4" />
+    <area shape="rect" coords="0,325,167,380" href="#rules" />
+    <area shape="rect" coords="0,395,167,450" href="#header" />
 </map>
-<script type="text/javascript" src="http://shopfs.myoppo.com/hd/static/js/jquery-1.8.3.min.js?1409817228">
-</script>
-<script src="http://my.oppo.com/lib/oppo.login.min.js?v=2015813112014">
-</script>
-<script type="text/javascript" src="http://shopfs.myoppo.com/hd/static/js/region.min.js?1417419001">
-</script>
-<script type="text/javascript" src="http://shopfs.myoppo.com/hd/static/js/oppo.hd.min.js?1422525808">
-</script>
-<script type="text/javascript" src="/2015/shuang12/js/app.js">
-</script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/jquery-1.8.3.min.js?1409817228"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/login.js?v=2015813112014"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/region.min.js?1417419001"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/hd.js?1422525808"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/app.js"></script>
 </body>
 
 </html>
