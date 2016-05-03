@@ -31,9 +31,6 @@ return [
             'errorAction' => 'site/error',
         ],
 		'urlManager' => [
-	        'enablePrettyUrl' => true,
-            'enableStrictParsing' => false,
-            'showScriptName' => false,
             'rules' => [
 				'hd-<id:\d+>' => 'shoot/detail/index',
 			],
