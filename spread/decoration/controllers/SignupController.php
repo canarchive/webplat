@@ -11,7 +11,7 @@ class SignupController extends spreadController
 
 	public function actionIndex()
 	{
-		//\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         $model = new SignupForm();
 		$model->isMobile = $this->clientIsMobile();
@@ -31,11 +31,9 @@ class SignupController extends spreadController
 				'model' => $model,
 			];
 
-print_r($data);exit();
 			return $data;
 		}
-		print_r($signupInfo);exit();
 
-		return $data;
+		return ['status' => 200, 'message' => 'OK', 'data' => $signupInfo];
 	}
 }

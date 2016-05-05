@@ -6,7 +6,7 @@ use common\widgets\FileUploadUI;
 use spread\models\Attachment;
 
 $attachmentModel = new Attachment();
-$logo = $attachmentModel->getFieldInfos('brand', 'logo');
+$photo = $attachmentModel->getFieldInfos('professor', 'photo');
 
 ?>
 
@@ -14,23 +14,25 @@ $logo = $attachmentModel->getFieldInfos('brand', 'logo');
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'code')->textInput() ?>
-    <?= $form->field($model, 'category_id')->dropDownList($model->categoryInfos, ['prompt' => Yii::t('admin-common', 'Select Category')]); ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'aptitude')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'record')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'company_id')->dropDownList($model->companyInfos, ['prompt' => Yii::t('admin-common', 'Select company')]); ?>
     <?= $form->field($model, 'orderlist')->textInput() ?>
-    <?= $form->field($model, 'logo')->hiddenInput(); ?>
+    <?= $form->field($model, 'photo')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
-        'attribute' => 'files[logo]',
-        'url' => ['/spread-upload/index', 'table' => 'brand', 'field' => 'logo', 'id' => $model->id],
+        'attribute' => 'files[photo]',
+        'url' => ['/spread-upload/index', 'table' => 'professor', 'field' => 'photo', 'id' => $model->id],
 		'gallery' => true,
         'fieldOptions' => [
-			'isSingle' => $logo['isSingle'],
-			'idField' => Html::getInputId($model, 'logo'),
+			'isSingle' => $photo['isSingle'],
+			'idField' => Html::getInputId($model, 'photo'),
             'accept' => 'image/*'
         ],
         'clientOptions' => [
 		    //'dataType' => 'json',
-			'maxFileSize' => $logo['maxSize'] * 1024,
+			'maxFileSize' => $photo['maxSize'] * 1024,
         ],
     ]);
     ?>

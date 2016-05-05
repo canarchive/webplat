@@ -5,15 +5,7 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-		'code',
 		[
-			'format' => 'raw',
-			'attribute' => 'logo',
-			'value' => function($model) {
-				return $model->getAttachmentImg($model->logo);
-			}
-		],
-        [   
             'format' => 'raw',
             'attribute' => 'orderlist',
             'value' => function($model) {
@@ -22,12 +14,13 @@ $gridViewParams = [
                 return '<input name="orderlist" type="text" style="width:30px;" value="' . $model->orderlist . '" class="input-text-c" onchange="updateElemByAjax(\'' . $updateUrl . '\', ' . $model->id . ', \'orderlist\', this.value);">';
             },  
         ],
+        'owner',
         'name',
 		[
-			'attribute' => 'category_id',
+			'attribute' => 'company_id',
 			'value' => function($model) {
-				if ($model->category_id > 0) {
-					return $model->categoryInfos[$model->category_id];
+				if ($model->company_id > 0) {
+					return $model->companyInfos[$model->company_id];
 				}
 				return '';
 			},
@@ -44,16 +37,12 @@ $gridViewParams = [
                 return  date('Y-m-d H:i:s',$model->updated_at);
             },
         ],
-        'status',
-        [   
-            'format' => 'raw',
-            'attribute' => 'description',
-            'value' => function($model) {
-                $appMenus = $this->context->menuInfos['appMenus'];
-                $updateUrl = isset($appMenus['update']) ? $appMenus['update']['url'] : ''; 
-                return '<textarea name="description" onchange="updateElemByAjax(\'' . $updateUrl . '\', ' . $model->id . ', \'description\', this.value);">' . $model->description . '</textarea>';
-            },  
-        ],
+		[
+			'attribute' => 'status',
+			'value' => function($model) {
+			    return $model->statusInfos[$model->status];
+			},
+		],
     ],
 ];
 

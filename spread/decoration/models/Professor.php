@@ -37,9 +37,9 @@ class Professor extends SpreadModel
     public function rules()
     {
         return [
-            [['name', 'logo', 'code'], 'required'],
-            [['orderlist', 'status'], 'default', 'value' => 0],
-			[['description'], 'safe'],
+            [['name', 'photo'], 'required'],
+            [['orderlist', 'status', 'company_id'], 'default', 'value' => 0],
+			[['description', 'title', 'record', 'aptitude'], 'safe'],
         ];
     }
 
@@ -78,8 +78,7 @@ class Professor extends SpreadModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['photo'];
-		$attachment = $this->getAttachmentModel();
-		$this->_updateSingleAttachment($attachment, 'professor', $fields);
+		$this->_updateSingleAttachment('professor', $fields);
 
 		return true;
 	}	
