@@ -87,6 +87,14 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],
 			],			
+			'professor' => [
+				'photo' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 80,
+    				'type' => 'image/*',
+				],
+			],			
 		];
 
 		if (is_null($table) && is_null($field)) {

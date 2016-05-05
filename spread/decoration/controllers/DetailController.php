@@ -12,8 +12,8 @@ class DetailController extends Controller
         $model = new SignupForm();
         $isMobile = $this->clientIsMobile();
 
-        //$code = 'default';
-        $code = 'hd';
+        $code = 'default';
+        //$code = 'hd';
         $info = $this->getDecorationInfo();
         if (empty($info)) {
 			exit('info empty');

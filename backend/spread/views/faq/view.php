@@ -4,16 +4,11 @@ $detailViewParams = [
     'model' => $model,
     'attributes' => [
 		'id',
-		[
-			'format' => 'raw',
-			'attribute' => 'logo',
-			'value' => $model->getAttachmentImg($model->logo, false),
-		],
+		'owner',
         'name',
-		'code',
 		[
-			'attribute' => 'category_id',
-			'value' => $model->categoryInfos[$model->category_id],
+			'attribute' => 'company_id',
+			'value' => $model->companyInfos[$model->company_id],
 		],
         'orderlist',
 		[

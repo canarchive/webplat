@@ -37,8 +37,8 @@ class Faq extends SpreadModel
     public function rules()
     {
         return [
-            [['name', 'logo', 'code'], 'required'],
-            [['orderlist', 'status'], 'default', 'value' => 0],
+            [['name', 'owner'], 'required'],
+            [['orderlist', 'status', 'company_id'], 'default', 'value' => 0],
 			[['description'], 'safe'],
         ];
     }
