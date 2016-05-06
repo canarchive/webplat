@@ -602,6 +602,7 @@ window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 </div>
 <div id="content" class="content">
     <div class="bannerSlides relative" id="bannerSlides">
+        <div class="tempWrap" style="overflow:hidden; position:relative;">
         <ul class="bannerSlide_container">
             <li>
                 <a href="javascript:void(0)" onclick="openZoosUrl();return false;">
@@ -619,7 +620,9 @@ window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
                 </a>
             </li>
         </ul>
+        </div>
         <div class="bannerSlide_foncus absolute">
+            <span></span><span></span><span></span>
         </div>
     </div>
     <div class="item_lists clearfix">
@@ -1320,9 +1323,9 @@ window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 <div id="picture" class="scrollTop" style="bottom: 116px; display: block;"><img width="100%" src="<?= Yii::getAlias('@asseturl'); ?>/beauty/h5/images/topBtn.png"></div>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/beauty/h5/js/TouchSlide.1.1.source.js"></script>
 <script>
-		TouchSlide({ slideCell:"#bannerSlides",titCell:'.bannerSlide_foncus',mainCell:'.bannerSlide_container',autoPage:'&lt;span&gt;&lt;/span&gt;',effect:'leftLoop',delayTime:600,interTime:5000,autoPlay:true,titOnClassName:'active' });
-		TouchSlide({ slideCell:"#anli_slides",titCell:'.anliSlide_foncus',mainCell:'.anli_slideContainer',autoPage:'&lt;span&gt;&lt;/span&gt;',effect:'leftLoop',delayTime:600,interTime:5000,autoPlay:true,titOnClassName:'active' });
-		TouchSlide({ slideCell:"#exports_slides",titCell:'.exportsSlide_foncus',mainCell:'.exports_slideContainer',autoPage:'&lt;span&gt;&lt;/span&gt;',effect:'leftLoop',delayTime:600,interTime:5000,autoPlay:true,titOnClassName:'active' });
+		TouchSlide({ slideCell:"#bannerSlides",titCell:'.bannerSlide_foncus',mainCell:'.bannerSlide_container',autoPage:'<span></span>',effect:'leftLoop',delayTime:600,interTime:5000,autoPlay:true,titOnClassName:'active' });
+		TouchSlide({ slideCell:"#anli_slides",titCell:'.anliSlide_foncus',mainCell:'.anli_slideContainer',autoPage:'<span></span>',effect:'leftLoop',delayTime:600,interTime:5000,autoPlay:true,titOnClassName:'active' });
+		TouchSlide({ slideCell:"#exports_slides",titCell:'.exportsSlide_foncus',mainCell:'.exports_slideContainer',autoPage:'<span></span>',effect:'leftLoop',delayTime:600,interTime:5000,autoPlay:true,titOnClassName:'active' });
     </script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/beauty/h5/js/jquery-1.9.1.min.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/beauty/h5/js/iscroll.js"></script>

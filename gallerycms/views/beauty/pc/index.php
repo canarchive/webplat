@@ -77,7 +77,8 @@ window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
                     $('#chain-nav').stop(true);
                     $(this).toggleClass('hover');
                     $('#chain-nav').slideToggle(); //  css('display','block');
-                }) $('#chain-nav').mouseleave(function() {
+				});
+			   	$('#chain-nav').mouseleave(function() {
                     $(this).removeClass('hover');
                     $('#chain-nav').slideUp(); //.css('display','none');
                 })
