@@ -34,7 +34,7 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                                 </ul>
                             </li>
                             <li class='gi'>
-							<a class='m-item' href='<?= Yii::getAlias('shooturl') . Url::to(['/goods']); ?>'>
+							<a class='m-item' href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/list']); ?>'>
                                     <span>产品大全</span>
                                 </a>
                             </li>
