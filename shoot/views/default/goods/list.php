@@ -1,8 +1,7 @@
 <?php
 use yii\helpers\Url;
 
-$cssFiles = ['styles'];
-$jsFiles = [];
+$this->params['cssFiles'] = ['styles'];
 ?>
 <main class='main-content'>
     <div class="product-index">

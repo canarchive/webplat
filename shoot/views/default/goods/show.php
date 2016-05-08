@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 
 $this->params['cssFiles'] = ['styles_show'];
-$this->params['jsFiles'] = ['my/jquery-1.9.1.min.js'];
+$this->params['jsFiles'] = ['my/jquery-1.9.1.min'];
 
 $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['controllerForJs'] : '';
 ?>
@@ -46,6 +46,27 @@ $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['cont
             </li>
         </ul>
     </div>
+
+<link href="http://points.oppo.com/static/points/points.css?1" media="screen" rel="stylesheet" type="text/css" />
+<div class="points-unit">
+                    <div class="points-wrapper">
+                        <div class="points-rows">
+                            <div class="points-rowspan" id="points-user">
+                                                                    <div class="points-user-title"><img src="/static/points/user-title.png"></div>
+                                    <div class="points-user-intro">登录后您将获得的服务：</div>
+                                    <div class="points-user-text">1.马上查看自己的积分明细。</div>
+                                    <div class="points-user-text">2.立即兑换礼品。</div>
+                                    <div class="points-user-login"><a href="https://account.oppo.com/index.php?q=user/login&amp;back=http%3A%2F%2Fpoints.oppo.com%2F" onclick="_gaq.push(['_trackEvent', 'ButtonClick', 'JiFenShangCheng', 'LiJiDengLu']);">立即登录</a></div>
+                                                            </div>
+                            <div class="points-rowspan" id="points-banner">
+                                <div class="oppo-banner" id="oppo-banner">
+                                                                                                                        <div style="display: block;" class="oppo-banner-unit"><a href="http://store.oppo.com/goods/407" target="_blank" onclick="_gaq.push(['_trackEvent', 'PictureClick', 'JiFenShangCheng', 'LunBoTu-1']);"><img width="830" height="390" src="/uploads/home/142353370048019.jpg?1426743344"></a></div>
+                                                                                                                                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
     <div class='buying-details'>
         <article class='wrapper'>
             <div class='buying-header-mov'></div>
@@ -1083,11 +1104,11 @@ tabIndex="1">
         购机咨询
     </a>
 </div>
-<script src="http://shopfs.myoppo.com/shop/js/build/global.min.js?20150820191148"></script>
-<script src="http://shopfs.myoppo.com/shop/assets/javascripts/opposhop.min.js?20160411163101"></script>
-<script src="http://shopfs.myoppo.com/shop/js/build/product/main.min.js?20160126153544"></script>
-<script src="http://shopfs.myoppo.com/shop/assets/javascripts/product.min.js?20160408172651"></script>
-<script src="http://my.oppo.com/lib/oppo.login.min.js?v=20160126153544"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/show/global.min.js?20150820191148"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/show/opposhop.min.js?20160411163101"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/show/main.min.js?20160126153544"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/show/product.min.js?20160408172651"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/oppo.login.min.js?v=20160126153544"></script>
 <script>
     $(window).on('load',
     function() {
