@@ -1,3 +1,6 @@
+<?php
+$this->params['cssFiles'] = ['styles'];
+?>
 <main class="main-content">
     <?php echo $this->render('_index_1'); ?>
     <?php echo $this->render('_index_2'); ?>

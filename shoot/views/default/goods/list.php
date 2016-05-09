@@ -1,20 +1,15 @@
 <?php
-$cssFiles = ['styles'];
-$jsFiles = [];
-?>
-<?php echo $this->render('@shoot/views/default/common/_header_base', ['cssFiles' => $cssFiles, 'jsFiles' => $jsFiles]); ?>
+use yii\helpers\Url;
 
-<?php echo $this->render('@shoot/views/default/common/_header'); ?>
+$this->params['cssFiles'] = ['styles'];
+?>
 <main class='main-content'>
     <div class="product-index">
         <div class='wrapper'>
             <ul class='breadcrumb'>
                 <li>
-                    <a href='http://www.oppo.com/cn/'>
-                        首页
-                        <span>
-                            /
-                        </span>
+				    <a href='<?= Yii::getAlias('@shooturl'); ?>'>
+                        首页<span>/</span>
                     </a>
                 </li>
                 <li>
@@ -78,7 +73,7 @@ $jsFiles = [];
         </ul>
         <div class="box-products">
             <div class="wrapper">
-                <!-- <img src="/cn/assets/images/content/product-gallery/title-1.png"
+                <!-- <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/title-1.png"
                 class="desk-title"> -->
                 <div class="desk-title">
                     OPPO 产品系列
@@ -102,7 +97,7 @@ $jsFiles = [];
                         <span class="icon-more">
                             <a href="http://www.opposhop.cn/products/?is_promotion=0&category=1&sort=sequence-desc&serial=3"
                             target="_blank" class="oppo-tj" data-tj="www|link|product|serial_1_more'])">
-                                <img src="/cn/assets/images/content/product-gallery/icon-more.png">
+                                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/icon-more.png">
                             </a>
                         </span>
                     </div>
@@ -216,7 +211,7 @@ $jsFiles = [];
                         <span class="icon-more">
                             <a href="http://www.opposhop.cn/products/?is_promotion=0&category=1&sort=sequence-desc&serial=1"
                             target="_blank" class="oppo-tj" data-tj="www|link|product|serial_2_more'])">
-                                <img src="/cn/assets/images/content/product-gallery/icon-more.png">
+                                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/icon-more.png">
                             </a>
                         </span>
                     </div>
@@ -402,7 +397,7 @@ $jsFiles = [];
                         <span class="icon-more">
                             <a href="http://www.opposhop.cn/products/?is_promotion=0&category=1&sort=sequence-desc&serial=4"
                             target="_blank" class="oppo-tj" data-tj="www|link|product|serial_4_more'])">
-                                <img src="/cn/assets/images/content/product-gallery/icon-more.png">
+                                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/icon-more.png">
                             </a>
                         </span>
                     </div>
@@ -503,13 +498,13 @@ $jsFiles = [];
                 </div>
                 <div class="pull-right">
                 <span>查看更多</span>
-                <span class="icon-more"><img src="/cn/assets/images/content/product-gallery/icon-more.png"></span>
+                <span class="icon-more"><img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/icon-more.png"></span>
                 </div>
                 </div>
                 <div class="brick-list">
                 <div class="brick-item brick-item-last">
                 <div class="brick-img">
-                <img src="/cn/assets/images/content/product-gallery/brick-img.png">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/brick-img.png">
                 </div>
                 <div class="brick-content">
                 <div class="brick-title">R7s 长续航闪充利器</div>
@@ -525,8 +520,6 @@ $jsFiles = [];
         </div>
         <div class="oppo-feature">
             <div class="wrapper">
-                <!-- <img src="/cn/assets/images/content/product-gallery/title-2.png"
-                class="desk-title"> -->
                 <div class="desk-title">
                     OPPO 产品特色
                 </div>
@@ -548,34 +541,4 @@ $jsFiles = [];
             </div>
         </div>
     </div>
-    <div class="other-link font-normal">
-        <a href="http://www.opposhop.cn/compare">
-            对比手机
-        </a>
-        <span>
-            |
-        </span>
-        <a href="http://www.opposhop.cn/">
-            在线商城
-        </a>
-        <span>
-            |
-        </span>
-        <a href="http://www.oppo.com/cn/service/proarea">
-            产品使用
-        </a>
-        <span>
-            |
-        </span>
-        <a href="http://www.opposhop.cn/products.html">
-            全部产品
-        </a>
-    </div>
 </main>
-<div class="font-normal">
-<?php echo $this->render('@shoot/views/default/common/_footer'); ?>
-</div>
-<?php echo $this->render('@shoot/views/default/common/_nav_right'); ?>
-
-<?php echo $this->render('@shoot/views/default/common/_footer_javascript'); ?>
-<?php echo $this->render('@shoot/views/default/common/_footer_base'); ?>

@@ -1,6 +1,6 @@
 <?php
-$cssFiles = ['styles'];
-$jsFiles = [];
+$cssFiles = isset($this->params['cssFiles']) ? $this->params['cssFiles'] : [];
+$jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
 ?>
 <?php echo $this->render('@shoot/views/default/common/_header_base', ['cssFiles' => $cssFiles, 'jsFiles' => $jsFiles]); ?>
 
