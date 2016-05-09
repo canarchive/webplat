@@ -12,8 +12,8 @@ class DetailController extends Controller
         $model = new SignupForm();
         $isMobile = $this->clientIsMobile();
 
-        $code = 'default';
-        //$code = 'hd';
+        //$code = 'default';
+        $code = 'hd';
         $info = $this->getDecorationInfo();
         if (empty($info)) {
 			exit('info empty');
@@ -26,8 +26,9 @@ class DetailController extends Controller
             'info' => $info,
             'lotteryInfos' => $this->getLotteryInfos($info['id']),
             'bonusInfos' => $this->getBonusInfos($info['id']),
-            //'giftBagInfos' => $this->getGiftBagInfos($info['id']),
+            'giftBagInfos' => $this->getGiftBagInfos($info['id']),
         ];
+		//print_r($datas);
 
 		$type = '677';//$info['type'];
 		$viewPath = $isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";

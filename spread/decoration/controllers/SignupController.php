@@ -7,18 +7,39 @@ use spread\decoration\models\SignupForm;
 
 class SignupController extends spreadController
 {
-	//public $enableCsrfValidation = false;
+	public $enableCsrfValidation = false;
 
 	public function actionIndex()
+	{
+		return $this->_signup();
+	}
+
+	public function actionLottery()
+	{
+		return $this->_signup('lottery');
+	}
+
+	public function actionBonus()
+	{
+		return $this->_signup('bonus');
+	}
+
+	public function actionGiftBag()
+	{
+		return $this->_signup('gift_bag');
+	}
+
+	protected function _signup($submitType = '')
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         $model = new SignupForm();
 		$model->isMobile = $this->clientIsMobile();
+	    $model->submitType = $submitType;
 
 		$signupInfo = false;
         //if ($model->load(\Yii::$app->request->get())) {
-        if ($model->load(\Yii::$app->request->get(), '')) {
+        if ($model->load(\Yii::$app->request->post(), '')) {
             $signupInfo = $model->signup();
         }
 

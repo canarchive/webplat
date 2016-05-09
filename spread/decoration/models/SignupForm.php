@@ -21,10 +21,11 @@ class SignupForm extends Model
 	public $product_id;
 	public $brand_id;
 	public $isMobile;
-	public $lottery;
+	public $lottery_id;
 	public $bonus_id;
 	public $gift_bag_id;
 	public $decorationModel;
+	public $submitType = '';
 
     /**
      * @inheritdoc
@@ -35,7 +36,7 @@ class SignupForm extends Model
             [['mobile', 'name'], 'filter', 'filter' => 'trim'],
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
-			[['lottery', 'bonus_id', 'gift_bag_id', 'message', 'info_id', 'template_code', 'position', 'position_name'], 'safe'],
+			[['lottery_id', 'bonus_id', 'gift_bag_id', 'message', 'info_id', 'template_code', 'position', 'position_name'], 'safe'],
         ];
     }
 
@@ -76,7 +77,7 @@ class SignupForm extends Model
 		);
 
 		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
-		if ($infoExist && (!empty($this->lottery) || !empty($this->bonus_id) || !empty($this->gift_bag_id))) {
+		if ($infoExist && (!empty($this->lottery_id) || !empty($this->bonus_id) || !empty($this->gift_bag_id))) {
 			return $this->getPresent($data);
 		}
 
@@ -109,7 +110,7 @@ class SignupForm extends Model
 
 		$data['service_code'] = $serviceModel->code;
 
-		if (!empty($this->lottery) || !empty($this->bonus_id) || !empty($this->gift_bag_id)) {
+		if (!empty($this->lottery_id) || !empty($this->bonus_id) || !empty($this->gift_bag_id)) {
 			return $this->getPresent($data);
 		}
 
@@ -118,7 +119,7 @@ class SignupForm extends Model
 
 	protected function getPresent($data)
 	{
-		if (!empty($this->lottery)) {
+		if (!empty($this->lottery_id)) {
 			$model = new Lottery();
 			return $model->getPresent($data);
 		} elseif (!empty($this->bonus_id)) {

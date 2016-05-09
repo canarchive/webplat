@@ -20,7 +20,10 @@
     <!-- <link rel="stylesheet" href="http://s4.17house.com/jiazhuangtong/zxtc_h5/css/ask.css?v=58"> -->
     <link rel="stylesheet" type="text/css" href="http://s4.17house.com/jiazhuangtong/zxtc_h5/css/loaders.css?v=58" />
 
-	<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/css/zzv3_677.css?v=58">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/css/zzv3_677.css?v=58">
+
+
+
 </head>
 <body>
 <div class="cont" id="wrap" data-page="zhengzhuang-v3">
@@ -34,6 +37,9 @@
             </div>
         </div>
     </header><!--cWhite end-->
+
+
+
 <!-- 1. banner start -->
 <section>
 <div class="zzv3-banner">
@@ -50,17 +56,26 @@
 
 
 <!-- 2. 免费报名 start -->
-<section>
-<form class="bg-red zzv3-form">
-	<p class="cWhite f14 clearfix">
-		<span class="l">已报名 <em class="yellow-zzv3">12000</em> 人</span>
-		<span class="r">比传统市场便宜10%-50%</span>
-	</p>
-	<p class="mt4"><input type="text" name="name" class="bg-fff width100" placeholder="请输入您的手机号码" maxlength="11"></p>
-	<p class="mt4"><input type="submit" name="mobile" class="bg-fff submit" value="免费报名"></p>
-	<p class="cWhite f14 mt6">时间：2016年4月30日-5月1日</p>
-	<p class="cWhite f14 mt2">地点：丰台区成寿寺颐方园体育健康城综合馆</p>
-</form>
+<section class="bg-red zzv3-form-box">
+	<form class="zzv3-form"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="免费报名"
+			data-professor_id=""
+		>
+		<input type="hidden" name="name" value="H5_677首屏报名表单"><!-- 首屏表单的name为hidden按钮 -->
+		<p class="cWhite f14 clearfix">
+			<span class="l">已报名 <em class="yellow-zzv3">12000</em> 人</span>
+			<span class="r">比传统市场便宜10%-50%</span>
+		</p>
+		<p class="mt4"><input type="text" name="mobile" class="bg-fff width100" placeholder="请输入您的手机号码" maxlength="11"></p>
+		<p class="mt4"><input type="submit" name="submit" class="bg-fff submit" value="免费报名"></p>
+		<p class="cWhite f14 mt6">时间：2016年4月30日-5月1日</p>
+		<p class="cWhite f14 mt2">地点：丰台区成寿寺颐方园体育健康城综合馆</p>
+	</form>
 </section>
 <!-- 2. 免费报名 end -->
 
@@ -128,14 +143,22 @@
 <!-- 4. 装修省钱攻略2 start -->
 
 
-<!-- 5. 大转盘 start -->
+<!-- 5. 幸运大抽奖 start -->
 <section>
 <div class="bg-red zzv3-titlebox pt6 pb3"><em></em><span class="txt">幸运大抽奖</span><em></em></div>
 <div class="bg-red jiang-box">
 	<div class="jiang">
 		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_bg.jpg" class="jiang-bg" alt="">
 		<div class="rotate"><img id="rotate" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_pan.png" class="img100"></div>
-		<img id="rotateBtn" class="rotate-btn" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_btn.png">
+		<img id="rotateBtn" class="rotate-btn jz-lottery" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_btn.png"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="幸运大抽奖"
+			data-professor_id=""
+		>
 		<div class="txtbox">
 			<div class="jiang-title">活动规则</div>
 			<div class="jiang-con">
@@ -149,7 +172,7 @@
 	</div>
 </div>
 </section>
-<!-- 5. 大转盘 end -->
+<!-- 5. 幸运大抽奖 end -->
 
 
 <!-- 6. 抢红包 start -->
@@ -159,7 +182,15 @@
 
 <ul class="hongbao">
 	<li class="hongbao-li">
-		<div class="hongbao-item">
+		<div class="hongbao-item jz-bonus" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="合同款满5万元,减500元现金"
+			data-professor_id=""
+			>
 			<div class="hongbao-bg"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/hongbao_bg.jpg" class="img100"></div>
 			<div class="hongbao-con">
 				<span class="hb-money f18"><i class="money f12">¥</i>500</span>
@@ -169,7 +200,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="hongbao-item">
+		<div class="hongbao-item jz-bonus" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="合同款满6万元,减600元现金"
+			data-professor_id=""
+			>
 			<div class="hongbao-bg"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/hongbao_bg.jpg" class="img100"></div>
 			<div class="hongbao-con">
 				<span class="hb-money f18"><i class="money f12">¥</i>600</span>
@@ -181,7 +220,15 @@
 		</div>
 	</li>
 	<li class="hongbao-li">
-		<div class="hongbao-item">
+		<div class="hongbao-item jz-bonus" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="合同款满7万元,减800元现金"
+			data-professor_id=""
+			>
 			<div class="hongbao-bg"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/hongbao_bg.jpg" class="img100"></div>
 			<div class="hongbao-con">
 				<span class="hb-money f18"><i class="money f12">¥</i>800</span>
@@ -191,7 +238,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="hongbao-item">
+		<div class="hongbao-item jz-bonus" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="合同款满8万元,减1000元现金"
+			data-professor_id=""
+			>
 			<div class="hongbao-bg"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/hongbao_bg.jpg" class="img100"></div>
 			<div class="hongbao-con">
 				<span class="hb-money f18"><i class="money f12">¥</i>1000</span>
@@ -203,7 +258,15 @@
 		</div>
 	</li>
 	<li class="hongbao-li">
-		<div class="hongbao-item">
+		<div class="hongbao-item jz-bonus" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="合同款满10万元,减1500元现金"
+			data-professor_id=""
+			>
 			<div class="hongbao-bg"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/hongbao_bg.jpg" class="img100"></div>
 			<div class="hongbao-con">
 				<span class="hb-money f18"><i class="money f12">¥</i>1500</span>
@@ -229,37 +292,97 @@
 		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/_img.jpg" class="img100">
 		<div class="gift-tag-img"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiao.png" class="img100" alt=""></div>
 		<div class="gift-tag-txt">橱柜类</div>
-		<a class="gift-btn tc" href="##"><span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span></a>
+		<div class="gift-btn jz-gift-bag" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="装修礼包:TATA木门"
+			data-professor_id=""
+			>
+			<span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span>
+		</div>
 	</li>
 	<li class="gift-item">
 		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/_img.jpg" class="img100">
 		<div class="gift-tag-img"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiao.png" class="img100" alt=""></div>
 		<div class="gift-tag-txt etc">卫浴洁具浴室</div>
-		<a class="gift-btn tc" href="##"><span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span></a>
+		<div class="gift-btn jz-gift-bag" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="装修礼包:TATA木门"
+			data-professor_id=""
+			>
+			<span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span>
+		</div>
 	</li>
 	<li class="gift-item">
 		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/_img.jpg" class="img100">
 		<div class="gift-tag-img"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiao.png" class="img100" alt=""></div>
 		<div class="gift-tag-txt">橱柜类</div>
-		<a class="gift-btn tc" href="##"><span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span></a>
+		<div class="gift-btn jz-gift-bag" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="装修礼包:TATA木门"
+			data-professor_id=""
+			>
+			<span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span>
+		</div>
 	</li>
 	<li class="gift-item">
 		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/_img.jpg" class="img100">
 		<div class="gift-tag-img"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiao.png" class="img100" alt=""></div>
 		<div class="gift-tag-txt">橱柜类</div>
-		<a class="gift-btn tc" href="##"><span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span></a>
+		<div class="gift-btn jz-gift-bag" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="装修礼包:TATA木门"
+			data-professor_id=""
+			>
+			<span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span>
+		</div>
 	</li>
 	<li class="gift-item">
 		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/_img.jpg" class="img100">
 		<div class="gift-tag-img"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiao.png" class="img100" alt=""></div>
 		<div class="gift-tag-txt">橱柜类</div>
-		<a class="gift-btn tc" href="##"><span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span></a>
+		<div class="gift-btn jz-gift-bag" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="装修礼包:TATA木门"
+			data-professor_id=""
+			>
+			<span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span>
+		</div>
 	</li>
 	<li class="gift-item">
 		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/_img.jpg" class="img100">
 		<div class="gift-tag-img"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiao.png" class="img100" alt=""></div>
 		<div class="gift-tag-txt">橱柜类</div>
-		<a class="gift-btn tc" href="##"><span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span></a>
+		<div class="gift-btn jz-gift-bag" 
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="装修礼包:TATA木门"
+			data-professor_id=""
+			>
+			<span class="gift-name etc">TATA木门</span><span class="gift-yuding">抢先预订</span><span class="gift-i"></span>
+		</div>
 	</li>
 </ul>
 </div>
@@ -310,7 +433,15 @@
 		</li>
 	</ul>
 	<p class="tc f16 cWhite mt4 mb4">677元房屋建筑面积=总价</p>
-	<p class="tc"><input type="button" value="获取精准报价" class="yellow-btn js-bm"></p>
+	<p class="tc"><input type="button" value="获取精准报价" class="yellow-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="获取精准报价"
+			data-professor_id=""
+		></p>
 </div>
 </section>
 <!-- 8. 全程管家 end -->
@@ -371,7 +502,15 @@
 
 </div>
 <div class="bg-red">
-	<p class="tc"><input type="button" value="预约到店体验" class="yellow-btn js-bm"></p>
+	<p class="tc"><input type="button" value="预约到店体验" class="yellow-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="预约到店体验"
+			data-professor_id=""
+		></p>
 </div>
 </section>
 <!-- 9. 环保主材 end -->
@@ -388,7 +527,15 @@
     <li class="fucai-li3"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/fucai_05.jpg" class="img100"></li>
 </ul>
 <div class="bg-red">
-	<p class="tc"><input type="button" value="预约到店体验" class="yellow-btn js-bm"></p>
+	<p class="tc"><input type="button" value="预约到店体验" class="yellow-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="预约到店体验"
+			data-professor_id=""
+		></p>
 </div>
 
 </section>
@@ -405,7 +552,15 @@
 	    <li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/gongxv.jpg" class="img100"><p class="p1"><span class="num">03</span>布线管</p></li>
 	    <li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/gongxv.jpg" class="img100"><p class="p1"><span class="num">04</span>防水涂胶</p></li>
 	</ul>
-	<p class="tc mt5"><input type="button" value="免费咨询其他装修流程" class="yellow-btn js-bm"></p>
+	<p class="tc mt5"><input type="button" value="免费咨询其他装修流程" class="yellow-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="免费咨询其他装修流程"
+			data-professor_id=""
+		></p>
 </div>
 </section>
 <!-- 11. 47道标准施工工序 end -->
@@ -425,7 +580,16 @@
 		<div class="txt bee5">免<span class="yellow-zzv3">施工保护费</span></div>
 		<div class="txt bee6">免<span class="yellow-zzv3">杂物费</span></div>
 	</div>
-	<p class="tc mt5"><input type="button" value="马上预约体验" class="yellow-btn js-bm"></p>
+	<p class="tc mt5">
+	<input type="button" value="马上预约体验" class="yellow-btn jz-signup"
+		data-bonus_id=""
+		data-gift_bag_id=""
+		data-info_id=""
+		data-lottery_id=""
+		data-position=""
+		data-position_name="马上预约体验"
+		data-professor_id=""
+	></p>
 
 </div>
 </section>
@@ -443,7 +607,15 @@
 			<div class="jl-mask"></div>
 			<div class="jl-name etc">韩监理</div>
 		</div>
-		<div class="jl-btn js-bm">让TA帮我免费监理</div>
+		<div class="jl-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="韩监理"
+			data-professor_id=""
+		>让TA帮我免费监理</div>
 	</li>
 	<li class="jl-item clearfix">
 		<div class="imgbox">
@@ -451,7 +623,15 @@
 			<div class="jl-mask"></div>
 			<div class="jl-name etc">韩监理</div>
 		</div>
-		<div class="jl-btn js-bm">让TA帮我免费监理</div>
+		<div class="jl-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="韩监理"
+			data-professor_id=""
+		>让TA帮我免费监理</div>
 	</li>
 	<li class="jl-item clearfix">
 		<div class="imgbox">
@@ -459,7 +639,15 @@
 			<div class="jl-mask"></div>
 			<div class="jl-name etc">韩监理</div>
 		</div>
-		<div class="jl-btn js-bm">让TA帮我免费监理</div>
+		<div class="jl-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="韩监理"
+			data-professor_id=""
+		>让TA帮我免费监理</div>
 	</li>
 	<li class="jl-item clearfix">
 		<div class="imgbox">
@@ -467,7 +655,15 @@
 			<div class="jl-mask"></div>
 			<div class="jl-name etc">韩监理</div>
 		</div>
-		<div class="jl-btn js-bm">让TA帮我免费监理</div>
+		<div class="jl-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="韩监理"
+			data-professor_id=""
+		>让TA帮我免费监理</div>
 	</li>
 </ul>
 
@@ -517,7 +713,15 @@
 	<img src="http://s4.17house.com/jiazhuangtong/zxtc/images/beijing/677/address-map.jpg?v=58" class="imgmap" alt="地图">
 	<p class="p2 mt4"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/loc.png" class="loc">北京市朝阳区和平里中街17号天元和平商业大厦5层</p>
 	<p class="p3 mt4"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/phone24.png" class="phone24" alt="">400-689-1717</p>
-	<p class="tc mt5"><input type="button" value="一键发送到手机" class="yellow-btn js-bm"></p>
+	<p class="tc mt5"><input type="button" value="一键发送到手机" class="yellow-btn jz-signup"
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name="一键发送到手机"
+			data-professor_id=""
+		></p>
 
 </div>
 </section>
@@ -569,6 +773,18 @@
     <span class="close"><i class="iconfont f30 cWhite"></i></span>
     <div class="pop-content subscribe">
         <h2 class="text-center fN f20">品质装修 极致优惠</h2>
+
+
+	<form class="zzv3-form"
+			data-js=""
+			data-bonus_id=""
+			data-gift_bag_id=""
+			data-info_id=""
+			data-lottery_id=""
+			data-position=""
+			data-position_name=""
+			data-professor_id=""
+		><!-- 页面点了哪个.jz-signup按钮，就把该按钮自带的值赋值给弹窗的表单，用于提交 -->
         <ul>
             <li class="mt5">
                 <input type="text" name="name" class="input cMdGray fB f14" placeholder="请输入您的姓名" maxlength="10">
@@ -576,8 +792,10 @@
             <li class="mt5">
                 <input type="text" name="mobile" class="input cMdGray fB f14" placeholder="请输入您的手机号" maxlength="11">
             </li>
-            <li><input type="button" class="btn btn-block btn-orange" value="立即预约"></li>
+            <li><input type="submit" class="btn btn-block btn-orange" value="立即预约"></li>
         </ul>
+	</form>
+
     </div>
 </div>
 <div class="mask-layer"></div>
