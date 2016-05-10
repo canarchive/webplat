@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="http://s4.17house.com/common_h5/css/common.css?v=58">
     <!-- <link rel="stylesheet" href="http://s4.17house.com/jiazhuangtong/zxtc_h5/css/ask.css?v=58"> -->
     <link rel="stylesheet" type="text/css" href="http://s4.17house.com/jiazhuangtong/zxtc_h5/css/loaders.css?v=58" />
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/css/zzv3_677.css?v=58">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/css/zzv3_677.css?v=20160510">
 <script>
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
@@ -84,10 +84,10 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 <!-- 弹窗 end -->
 
 <!-- <script src="http://s4.17house.com/common_h5/js/plugin/zepto.min.js?v=58"></script> 幸运大抽奖js，zepto用不了 -->
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/jquery-1.11.3.min.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/jquery-1.11.3.min.js?v=20160510"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/jquery.lazyload.min.js"></script><!-- 懒加载 -->
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/awardRotate.js"></script><!-- 幸运大抽奖的旋转插件js -->
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/zzv3_677.js"></script><!-- 本页js -->
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/zzv3_677.js?v=20160510"></script><!-- 本页js -->
 
 </body>
 </html>

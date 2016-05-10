@@ -9,7 +9,7 @@
     <li class="fucai-li3"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/fucai_05.jpg" class="img100"></li>
 </ul>
 <div class="bg-red">
-	<p class="tc"><input type="button" value="预约到店体验" class="yellow-btn jz-signup"
+	<p class="tc mt5"><input type="button" value="预约到店体验" class="yellow-btn jz-signup"
 			data-bonus_id=""
 			data-gift_bag_id=""
 			data-info_id="<?= $info['id']; ?>"
