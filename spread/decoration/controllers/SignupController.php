@@ -31,7 +31,9 @@ class SignupController extends spreadController
 
 	protected function _signup($submitType = '')
 	{
-		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		//\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
+		$callback = \Yii::$app->request->get('callback');
 
         $model = new SignupForm();
 		$model->isMobile = $this->clientIsMobile();
@@ -39,7 +41,7 @@ class SignupController extends spreadController
 
 		$signupInfo = false;
         //if ($model->load(\Yii::$app->request->get())) {
-        if ($model->load(\Yii::$app->request->post(), '')) {
+        if ($model->load(\Yii::$app->request->get(), '')) {
             $signupInfo = $model->signup();
         }
 
@@ -48,13 +50,13 @@ class SignupController extends spreadController
 			$message = isset($errors['error']) ? $errors['error'] : '报名失败，请您重试！';
 			$data = [
 				'status' => '400',
-				'message' => $message,
+				'msg' => $message,
 				'model' => $model,
 			];
 
-			return $data;
 		}
-
-		return ['status' => 200, 'message' => 'OK', 'data' => $signupInfo];
+		$signupInfo['msg'] = $signupInfo['message'];
+		unset($signupInfo['message']);
+		return ['data' => $signupInfo, 'callback' => $callback];
 	}
 }

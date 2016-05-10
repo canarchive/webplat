@@ -74,4 +74,24 @@ class Faq extends SpreadModel
 		$infos = ArrayHelper::map(\merchant\models\Company::find()->all(), 'id', 'name');
 		return $infos;
 	}
+
+	public function getInfos($companyId)
+	{
+		/*$cache = \Yii::$app->cache;
+		$keyCache = 'decoration_brand';
+		$data = $cache->get($keyCache);
+		if ($data) {
+			return $data;
+		}*/
+
+		$infos = $this->find()->where(['company_id' => $companyId])->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit(4)->all();
+		$infosExt = [];
+		$count = count($infos);
+		if ($count < 4) {
+			$infosExt = $this->find()->where(['company_id' => 0])->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit(4 - $count)->all();
+		}
+		$infos = array_merge((array) $infos, (array) $infosExt);
+        //$cache->set($keyCache, $infos);
+		return $infos;
+	}
 }

@@ -96,7 +96,7 @@ class Lottery extends SpreadModel
 
 		$got = LotteryLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
 		if (!empty($got)) {
-			return ['status' => 400, 'message' => '您已经抽过奖了'];
+		//	return ['status' => 400, 'message' => '您已经抽过奖了'];
 		}
 
 		$countExist = LotteryLog::find()->where(['decoration_id' => $decoration['id']])->count();
@@ -126,7 +126,7 @@ class Lottery extends SpreadModel
 
 		$got = LotteryLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
 		if (!empty($got)) {
-			return ['status' => 400, 'message' => '您已经抽过奖了'];
+		//	return ['status' => 400, 'message' => '您已经抽过奖了'];
 		}
 
 		$insertInfo = [

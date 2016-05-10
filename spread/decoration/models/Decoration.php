@@ -108,23 +108,6 @@ class Decoration extends spreadModel
 		return $info;
 	}
 
-	/**
-	 * 获取团购会相关图片的URL信息
-	 *
-	 * @return array
-	 */
-	protected function _getAttachmentPaths($info, $attachmentFields)
-	{
-		foreach ($attachmentFields as $field) {
-			$aId = isset($info[$field]) ? $info[$field] : 0;
-			$path = Attachments::getPath($aId);
-
-			$info[$field] = $path;
-		}
-
-		return $info;
-	}
-
 	public function getStatusInfos()
 	{
 		$datas = [
@@ -145,8 +128,7 @@ class Decoration extends spreadModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['picture', 'picture_small', 'map'];
-		$attachment = new \spread\models\Attachment();
-		$this->_updateSingleAttachment($attachment, 'decoration', $fields);
+		$this->_updateSingleAttachment('decoration', $fields);
 
 		return true;
 	}	

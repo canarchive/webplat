@@ -109,7 +109,9 @@ class GiftBag extends SpreadModel
 		foreach ($infos as $info) {
 			$id = $info['gift_bag_id'];
 			if (isset($datas[$id])) {
-			    $returns[$id] = $datas[$id];
+				$data = $datas[$id];
+				$data['sort'] = $this->sortInfos[$data['sort']];
+			    $returns[$id] = $data;
 			}
 		}
 

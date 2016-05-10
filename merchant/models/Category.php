@@ -35,7 +35,7 @@ class Category extends MerchantModel
 
 	public function getInfos()
 	{
-		$infos = $this->find()->select(['id', 'name'])->indexBy('id')->asArray()->all();
+		$infos = $this->find()->select(['id', 'name', 'brief'])->indexBy('id')->asArray()->all();
 
 		return $infos;
 	}

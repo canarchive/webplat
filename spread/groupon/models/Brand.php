@@ -79,8 +79,7 @@ class Brand extends SpreadModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['logo'];
-		$attachment = new \spread\models\Attachment();
-		$this->_updateSingleAttachment($attachment, 'brand', $fields);
+		$this->_updateSingleAttachment('brand', $fields);
 
 		return true;
 	}	
@@ -102,5 +101,25 @@ class Brand extends SpreadModel
 		$bindInfo = GrouponBrand::findOne(['groupon_id' => $grouponId, 'brand_id' => $this->id]);
 
 		return empty($bindInfo) ? false : true;
+	}
+
+	public function getInfos()
+	{
+		$model = new \merchant\models\Category();
+		$categories = $model->getInfos();
+
+		$infos = $this->find()->orderBy(['orderlist' => SORT_DESC])->all();
+		$datas = [];
+		foreach ($infos as $key => $info) {
+			$info['logo'] = $info->getAttachmentUrl($info['logo']);
+			$info = $info->toArray();
+			$cId = $info['category_id'];
+			if (!isset($datas[$cId])) {
+				$datas[$cId]['name'] = isset($categories[$cId]) ? $categories[$cId]['name'] : '';
+				$datas[$cId]['brief'] = isset($categories[$cId]) ? $categories[$cId]['brief'] : '';
+			}
+			$datas[$cId]['infos'][] = $info;
+		}
+		return $datas;
 	}
 }

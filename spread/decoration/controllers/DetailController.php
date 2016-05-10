@@ -27,8 +27,10 @@ class DetailController extends Controller
             'lotteryInfos' => $this->getLotteryInfos($info['id']),
             'bonusInfos' => $this->getBonusInfos($info['id']),
             'giftBagInfos' => $this->getGiftBagInfos($info['id']),
+            'brandInfos' => $this->getBrandInfos($info['id']),
+            'professorInfos' => $this->getProfessorInfos($info['company_id']),
+            'faqInfos' => $this->getFaqInfos($info['company_id']),
         ];
-		//print_r($datas);
 
 		$type = '677';//$info['type'];
 		$viewPath = $isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
@@ -67,6 +69,30 @@ class DetailController extends Controller
 	{
 		$model = new \spread\decoration\models\GiftBag();
 		$infos = $model->getInfos($id);
+
+		return $infos;
+	}
+
+	protected function getBrandInfos()
+	{
+		$model = new \spread\groupon\models\Brand();
+		$infos = $model->getInfos();
+
+		return $infos;
+	}
+
+	protected function getFaqInfos($companyId)
+	{
+		$model = new \spread\decoration\models\Faq();
+		$infos = $model->getInfos($companyId);
+
+		return $infos;
+	}
+
+	protected function getProfessorInfos($companyId)
+	{
+		$model = new \spread\decoration\models\Professor();
+		$infos = $model->getInfos($companyId);
 
 		return $infos;
 	}
