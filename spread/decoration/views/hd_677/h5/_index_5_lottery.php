@@ -6,13 +6,13 @@
 
 
 		<!-- 大转盘底图1，撑高度 -->
-		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_bg.jpg" class="jiang-bg" alt="">
+		<img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_bg1.jpg?v=1" class="jiang-bg" alt="">
 		<!-- 大转盘容器 -->
 		<div class="pan-box">
 			<!-- 转盘背景图，撑高度 -->
-			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_pan_bg.png" class="pan-bg" alt="">
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_pan_bg.png?v=1" class="pan-bg" alt="">
 			<!-- 旋转容器 -->
-		<div class="rotate"><img id="rotate" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_pan.png" class="img100"></div>
+		<div class="rotate"><img id="rotate" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_pan.png?v=1" class="img100"></div>
 			<!-- 按钮 -->
 		<img id="rotateBtn" class="rotate-btn jz-lottery" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_btn.png"
 			data-bonus_id=""
@@ -27,7 +27,7 @@
 	</div>
 	<div class="jiang">
 		<!-- 大转盘底图2，撑高度 -->
-		<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_bg2.jpg" class="jiang-bg">
+		<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_bg2.jpg?v=1" class="jiang-bg">
 
 
 		<div class="txtbox">

@@ -51,8 +51,9 @@ class SignupController extends spreadController
 			$data = [
 				'status' => '400',
 				'msg' => $message,
-				'model' => $model,
+				//'model' => $model,
 			];
+		return ['data' => $data, 'callback' => $callback];
 
 		}
 		$signupInfo['msg'] = $signupInfo['message'];
