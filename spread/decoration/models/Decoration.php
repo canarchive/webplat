@@ -28,10 +28,10 @@ class Decoration extends spreadModel
 			[['start_at', 'end_at'], 'filter', 'filter' => function($value) {
 				return strtotime($value);
 			}],
-			[['picture', 'picture_small', 'map'], 'integer'],
+			[['picture', 'picture_small', 'map', 'picture_lottery'], 'integer'],
 			[['company_id'], 'default', 'value' => 0],
 			[['sms', 'sms_new'], 'default', 'value' => ''],
-			[['address', 'signup_base', 'arrive_line', 'holding_at', 'description'], 'safe'],
+			[['address', 'signup_base', 'arrive_line', 'holding_at', 'description', 'lottery_number', 'lottery_rule', 'bonus_number', 'bonus_rule', 'gift_bag_number', 'gift_bag_rule'], 'safe'],
         ];
     }	
 
@@ -47,6 +47,7 @@ class Decoration extends spreadModel
 			'start_at' => '开始时间',
 			'end_at' => '结束时间',
 			'picture' => '图片',
+			'picture_lottery' => '抽奖奖品图片',
 			'picture_small' => '小图',
 			'description' => '描述',
 			'address' => '地址',
@@ -54,8 +55,15 @@ class Decoration extends spreadModel
 			'arrive_line' => '到达路线',
 			'signup_base' => '基准报名人数',
 			'signup_number' => '报名人数',
+			'sms' => '业主短信',
+			'sms_new' => '新业主短信',
+			'lottery_number' => '抽奖总数',
+			'bonus_number' => '红包总数',
+			'gift_bag_number' => '礼包总数',
+			'lottery_rule' => '抽奖规则',
+			'bonus_rule' => '红包规则',
+			'gift_bag_rule' => '礼包规则',
 			'status' => '状态',
-
         ];
     }
 
@@ -95,6 +103,7 @@ class Decoration extends spreadModel
 	protected function _formatInfo($info)
 	{
 		$info['picture'] = $info->getAttachmentUrl($info['picture']);
+		$info['picture_lottery'] = $info->getAttachmentUrl($info['picture_lottery']);
 		$info['picture_small'] = $info->getAttachmentUrl($info['picture_small']);
 		$info['map'] = $info->getAttachmentUrl($info['map']);
 		$info['companyInfo'] = \merchant\models\Company::findOne($info['company_id'])->toArray();
@@ -127,7 +136,7 @@ class Decoration extends spreadModel
 	{
         parent::afterSave($insert, $changedAttributes);
 
-		$fields = ['picture', 'picture_small', 'map'];
+		$fields = ['picture', 'picture_lottery', 'picture_small', 'map'];
 		$this->_updateSingleAttachment('decoration', $fields);
 
 		return true;

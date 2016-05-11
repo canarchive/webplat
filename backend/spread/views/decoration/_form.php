@@ -7,10 +7,11 @@ use spread\models\Attachment;
 
 $attachmentModel = new Attachment();
 $picture = $attachmentModel->getFieldInfos('decoration', 'picture');
+$pictureLottery = $attachmentModel->getFieldInfos('decoration', 'picture_lottery');
 $pictureSmall = $attachmentModel->getFieldInfos('decoration', 'picture_small');
 $map = $attachmentModel->getFieldInfos('decoration', 'map');
-$model->start_at = date('Y-m-d H:i:s', $model->start_at);
-$model->end_at = date('Y-m-d H:i:s', $model->end_at);
+$model->start_at = $model->start_at > 0 ? date('Y-m-d H:i:s', $model->start_at) : '';
+$model->end_at = $model->end_at > 0 ? date('Y-m-d H:i:s', $model->end_at) : '';
 
 ?>
 
@@ -50,6 +51,23 @@ $model->end_at = date('Y-m-d H:i:s', $model->end_at);
         ],
     ]);
     ?>
+    <?= $form->field($model, 'picture_lottery')->hiddenInput(); ?>
+    <?= FileUploadUI::widget([
+        'model' => $attachmentModel,
+        'attribute' => 'files[picture_lottery]',
+        'url' => ['/spread-upload/index', 'table' => 'decoration', 'field' => 'picture_lottery', 'id' => $model->id],
+		'gallery' => true,
+        'fieldOptions' => [
+			'isSingle' => $pictureLottery['isSingle'],
+			'idField' => Html::getInputId($model, 'picture_lottery'),
+            'accept' => 'image/*'
+        ],
+        'clientOptions' => [
+		    //'dataType' => 'json',
+			'maxFileSize' => $pictureLottery['maxSize'] * 1024,
+        ],
+    ]);
+    ?>
     <?= $form->field($model, 'picture_small')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
@@ -85,6 +103,14 @@ $model->end_at = date('Y-m-d H:i:s', $model->end_at);
     ?>
     <?= $form->field($model, 'arrive_line')->textInput() ?>
     <?= $form->field($model, 'signup_base')->textInput() ?>
+
+    <?= $form->field($model, 'lottery_number')->textInput() ?>
+    <?= $form->field($model, 'lottery_rule')->textarea(['rows' => 2]) ?>
+    <?= $form->field($model, 'bonus_number')->textInput() ?>
+    <?= $form->field($model, 'bonus_rule')->textarea(['rows' => 2]) ?>
+    <?= $form->field($model, 'gift_bag_number')->textInput() ?>
+    <?= $form->field($model, 'gift_bag_rule')->textarea(['rows' => 2]) ?>
+
     <?= $form->field($model, 'sms')->textarea(['rows' => 2]) ?>
     <?= $form->field($model, 'sms_new')->textarea(['rows' => 2]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>

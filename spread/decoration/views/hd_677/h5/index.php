@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="mobile-agent" content="format=html5;url=http://beijing.17zhuangxiu.com/zhengzhuang/" />
     <meta charset="UTF-8">
-    <title>【北京整体家装】_整装装修_2016装修套餐大全_一起装修网</title>
+	<title>【北京整体家装】_<?= $info['name']; ?>_一起装修网</title>
     <meta name="keywords" content="北京整体家装,北京整装装修,北京整装装修报价,北京装修套餐" />
     <meta name="description" content="一起装修网【北京整体家装】频道为您提供：整体家装,整装装修,整装装修报价,装修套餐，轻松解决装修预算苦恼，让您获取更合理的装修报价。" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -38,9 +38,9 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
     </header><!--cWhite end-->
 
 <?php echo $this->render('_index_1_4', ['info' => $info]); ?>
-<?php echo $this->render('_index_5_lottery', ['info' => $info]); ?>
-<?php echo $this->render('_index_6_bonus', ['info' => $info, 'bonusInfos' => $bonusInfos]); ?>
-<?php echo $this->render('_index_7_gift', ['info' => $info, 'giftBagInfos' => $giftBagInfos]); ?>
+<?php if ($info['lottery_number'] > 0) { echo $this->render('_index_5_lottery', ['info' => $info]); } ?>
+<?php if ($info['bonus_number'] > 0 && count($bonusInfos) > 0) { echo $this->render('_index_6_bonus', ['info' => $info, 'bonusInfos' => $bonusInfos]); } ?>
+<?php if ($info['bonus_number'] > 0 && count($giftBagInfos) > 0) { echo $this->render('_index_7_gift', ['info' => $info, 'giftBagInfos' => $giftBagInfos]); } ?>
 <?php echo $this->render('_index_8', ['info' => $info]); ?>
 <?php echo $this->render('_index_9', ['info' => $info, 'brandInfos' => $brandInfos]); ?>
 <?php echo $this->render('_index_10_12', ['info' => $info]); ?>

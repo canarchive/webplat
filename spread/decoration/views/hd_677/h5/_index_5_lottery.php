@@ -12,7 +12,7 @@
 			<!-- 转盘背景图，撑高度 -->
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_pan_bg.png?v=1" class="pan-bg" alt="">
 			<!-- 旋转容器 -->
-		<div class="rotate"><img id="rotate" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_pan.png?v=1" class="img100"></div>
+		<div class="rotate"><img id="rotate" data-original="<?= $info['picture_lottery']; ?>" class="img100"></div>
 			<!-- 按钮 -->
 		<img id="rotateBtn" class="rotate-btn jz-lottery" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/jiang_btn.png"
 			data-bonus_id=""
@@ -32,7 +32,7 @@
 
 		<div class="txtbox">
 			<div class="jiang-title">活动规则</div>
-			<div class="jiang-con">
+			<div class="jiang-con"><?php //echo $info['lottery_rule']; ?>
 				<p>1、活动日期：活动时间：2016年X月X日～2016年X月X日。</p>
 				<p>2、奖品需在抽取15日内成功签订施工合同后领取。</p>
 				<p>3、每个手机号只能抽取1次，同一施工地址只可领取一份礼品，不可累积使用。</p>
