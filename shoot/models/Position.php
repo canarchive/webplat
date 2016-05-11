@@ -73,6 +73,7 @@ class Position extends ShootModel
 		$datas = [
 			'index_slice' => '首页-幻灯',
 			'index_goods' => '首页-商品',
+			'index_sample' => '首页-样片',
 			'index_member' => '首页-用户',
 			'list_goods' => '列表页-商品',
 		];
@@ -84,8 +85,7 @@ class Position extends ShootModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['picture', 'picture_mobile', 'picture_ext'];
-		$attachment = $this->getAttachmentModel();
-		$this->_updateSingleAttachment($attachment, 'position', $fields);
+		$this->_updateSingleAttachment('position', $fields);
 
 		return true;
 	}	
