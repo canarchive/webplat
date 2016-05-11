@@ -114,7 +114,9 @@ class SignupForm extends Model
 			return $this->getPresent($data);
 		}
 
-        return $data;
+		return ['status' => 200, 'message' => 'OK'];
+
+        //return $data;
 	}
 
 	protected function getPresent($data)
@@ -132,9 +134,6 @@ class SignupForm extends Model
 
 		$this->addError('error', '领取奖品失败');
 		return false;
-		print_r($data);
-		print_r($this);
-		exit();
 	}
 
 	protected function isValidate()

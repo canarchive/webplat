@@ -37,6 +37,27 @@ class DetailController extends Controller
         return $this->render($viewPath . 'index.php', $datas);   
     }
 
+	public function actionInner()
+    {
+        $model = new SignupForm();
+        $isMobile = $this->clientIsMobile();
+
+        //$code = 'default';
+        $code = 'inner';
+		$view = \Yii::$app->request->get('view');
+		$view = !in_array($view, ['price', 'measure', 'design']) ? 'price' : $view;
+		$info = ['id' => 1];
+        $datas = [
+            'model' => $model,
+			'info' => $info,
+        ];
+
+		$type = '677';//$info['type'];
+		$viewPath = $isMobile ? "/{$code}/h5/" : "/{$code}/h5/";
+		$view = $viewPath . $view;
+        return $this->render($view, $datas);   
+    }
+
     protected function getDecorationInfo()
     {
         $id = \Yii::$app->getRequest()->get('id');
