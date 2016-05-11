@@ -15,7 +15,8 @@ $gridViewParams = [
 		[
 			'attribute' => 'position',
 			'value' => function($model) {
-				return $model->positionInfos[$model->position];
+				$return = isset($model->positionInfos[$model->position]) ? $model->positionInfos[$model->position] : $model->position;
+				return $return;
 			},
 		],
 		'note',
