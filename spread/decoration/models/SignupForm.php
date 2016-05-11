@@ -95,6 +95,12 @@ class SignupForm extends Model
 
 		$conversionInfo = $conversionModel->successLog($data);
 		$this->decorationModel->updateCounters(['signup_number' => 1]);
+		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
+			$decorationOwner->signup_type = $conversionInfo['channel'];
+			$decorationOwner->keyword = $conversionInfo['keyword'];
+			$decorationOwner->city = $conversionInfo['city'];
+			$decorationOwner->update(false);
+		}
 
 		$decorationOwner->owner->updateCounters(['signup_num' => 1]);
 		$serviceModel = isset($decorationOwner->owner->customService) ? $decorationOwner->owner->customService : CustomService::findOne($decorationOwner->owner->service_id);

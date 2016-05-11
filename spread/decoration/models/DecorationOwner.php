@@ -61,6 +61,7 @@ class DecorationOwner extends SpreadModel
             'name' => $data['name'],
 			'from_type' => $data['from_type'],
             'message' => $data['message'],
+            'note' => $data['note'],
             'user_id' => $owner->user_id,
         ];
 
