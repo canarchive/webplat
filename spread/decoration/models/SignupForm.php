@@ -171,12 +171,11 @@ class SignupForm extends Model
             //$content = "尊敬的业主您好！您已经成功注册为认证业主，您的用户名是：{$mobile},密码：{$data['password']}";
         }
 
-		$date = date('Y年m月d日', $this->decorationModel['start_at']);
-		$message = "恭喜您成功报名{$date}举办的{$this->decorationModel['name']}家装活动；地址：{$this->decorationModel['address']}(10号线十里河站B口，有摆渡车接送)；全网底价，售后投诉30分钟响应，100%解决！8:30签到， 详询电话：{$serviceMobile}。";
-		//$message = $userInfo['is_new'] ? $this->decorationModel['sms_new'] : $this->decorationModel['sms'];
+		//$date = date('Y年m月d日', $this->decorationModel['start_at']);
+		$message = $userInfo['is_new'] ? $this->decorationModel['sms_new'] : $this->decorationModel['sms'];
         $content .= " $message";
 
-		$smser = new Smser();
+		$smser = new Smser('company');
         $smser->send($mobile, $content, 'decoration_signup');
         
         return true;
@@ -185,9 +184,9 @@ class SignupForm extends Model
     protected function sendSmsService($data, $employee)
     {
         $mobile = $employee['mobile'];
-        $content = "业主报名：{$data['name']}报名参加{$this->decorationModel['name']}，电话：{$data['mobile']}，请立即回访";
+        $content = "业主家装报名：{$data['name']}报名参加{$this->decorationModel['name']}，电话：{$data['mobile']}，请立即回访";
 
-		$smser = new Smser();
+		$smser = new Smser('company');
         $smser->send($mobile, $content, 'decoration_service');
         
         return true;
