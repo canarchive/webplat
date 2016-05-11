@@ -21,7 +21,6 @@ class Company extends SmserAbstract
         
         curl_setopt($ch, CURLOPT_POST, TRUE);
 		$data = $this->_formatData($mobile, $content);
-		print_r($data);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         
 		$noSendMessage = isset(\Yii::$app->params['noSendMessage']) ? \Yii::$app->params['noSendMessage'] : false;
