@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Html;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -212,6 +215,8 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
     <input type="hidden" id="info_id" value="<?= $info['id']; ?>" />
     <input type="hidden" id="position" value="measure" />
     <input type="hidden" id="position_name" value="免费量房" />
+    <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
+
     <!--页面主体 end-->
     <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=3" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
 </body>

@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Html;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +48,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 <?php echo $this->render('_index_13_professor', ['info' => $info, 'professorInfos' => $professorInfos]); ?>
 <?php echo $this->render('_index_14_17', ['info' => $info, 'faqInfos' => $faqInfos]); ?>
 
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
 <div class="bg-red zzv3-copyright">Copyright © 2009-2016 17house.com,All rights reserved.</div>
 </div>
 

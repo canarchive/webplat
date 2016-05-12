@@ -7,7 +7,7 @@ use spread\decoration\models\SignupForm;
 
 class SignupController extends spreadController
 {
-	public $enableCsrfValidation = false;
+	//public $enableCsrfValidation = false;
 
 	public function actionIndex()
 	{
@@ -31,9 +31,9 @@ class SignupController extends spreadController
 
 	protected function _signup($submitType = '')
 	{
-		//\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
-		$callback = \Yii::$app->request->get('callback');
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		//\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
+		//$callback = \Yii::$app->request->get('callback');
 
         $model = new SignupForm();
 		$model->isMobile = $this->clientIsMobile();
@@ -41,7 +41,7 @@ class SignupController extends spreadController
 
 		$signupInfo = false;
         //if ($model->load(\Yii::$app->request->get())) {
-        if ($model->load(\Yii::$app->request->get(), '')) {
+        if ($model->load(\Yii::$app->request->post(), '')) {
             $signupInfo = $model->signup();
         }
 
@@ -53,11 +53,13 @@ class SignupController extends spreadController
 				'msg' => $message,
 				//'model' => $model,
 			];
-		return ['data' => $data, 'callback' => $callback];
+			return $data;
+		    //return ['data' => $data, 'callback' => $callback];
 
 		}
 		$signupInfo['msg'] = $signupInfo['message'];
 		unset($signupInfo['message']);
-		return ['data' => $signupInfo, 'callback' => $callback];
+		return $signupInfo;
+		//return ['data' => $signupInfo, 'callback' => $callback];
 	}
 }
