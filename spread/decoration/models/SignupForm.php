@@ -96,9 +96,8 @@ class SignupForm extends Model
 		$conversionInfo = $conversionModel->successLog($data);
 		$this->decorationModel->updateCounters(['signup_number' => 1]);
 		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
-			$decorationOwner->signup_type = $conversionInfo['channel'];
+			$decorationOwner->signup_channel = $conversionInfo['channel'];
 			$decorationOwner->keyword = $conversionInfo['keyword'];
-			$decorationOwner->city = $conversionInfo['city'];
 			$decorationOwner->update(false);
 		}
 

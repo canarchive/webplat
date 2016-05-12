@@ -52,11 +52,15 @@ class DecorationOwner extends SpreadModel
             return false;
         }
 
+        $ip = \Yii::$app->getRequest()->getIP();
+		$city = \common\components\IP::find($ip);
+		$city = is_array($city) ? implode('-', $city) : $city;
         $data = [
             'signup_at' => time(),
 			'decoration_id' => $data['info_id'],
             'type' => $data['type'],
-            'signup_ip' => \Yii::$app->getRequest()->getIP(),
+            'signup_ip' => $ip,
+            'signup_city' => $city,
             'mobile' => $data['mobile'],
             'name' => $data['name'],
 			'from_type' => $data['from_type'],
