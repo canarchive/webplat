@@ -49,12 +49,12 @@ class Visit extends SpreadModel
         $attributeParams = $this->getAttributeParams();
         foreach ($attributeParams as $field => $param) {
             $paramValue = (\Yii::$app->getRequest()->get($param, ''));
-            if ($field == 'keyword') {
+            /*if ($field == 'keyword') {
                 $paramValue = rawurldecode($paramValue);
                 //$encoding1 =mb_detect_encoding($paramValue);
                 $paramValue = mb_convert_encoding($paramValue, 'utf-8', 'gb2312');// : $paramValue;
 				$paramValue = preg_match('/\\\\x[0-9a-zA-Z]/', $paramValue, $r) ? '' : $paramValue;
-            }
+            }*/
             $data[$field] = $paramValue;
         }
 

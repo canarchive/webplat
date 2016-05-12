@@ -8,9 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="msapplication-tap-highlight" content="no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/common.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/icon_font.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/free_design.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/common.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/icon_font.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/free_design.css?v=1">
 <script>
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
@@ -76,7 +76,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         </ul>
         <!--tab 切换 end-->
         <!--报名 start-->
-        <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/bj-photo-08.jpg" alt="免费装修设计">
+        <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/bj-photo-08.jpg" alt="免费装修设计">
         <div class="bj-part01-bg pd4">
             <div class="signup bg-ff">
                 <ul>
@@ -111,7 +111,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!--报名 start-->
         <!--传统家装有哪些痛点 start-->
         <div class="part02-bg">
-            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/bj-photo-01.png" alt="传统家装有哪些痛点">
+            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/bj-photo-01.png" alt="传统家装有哪些痛点">
             <ul class="problem-item pl5 cWhite f18">
                 <li class="mt5"><i class="line"></i>我的房子装修到底需要多少钱？</li>
                 <li class="mt5"><i class="line"></i>相同的价格，哪家公司的材料品牌最好？</li>
@@ -122,17 +122,17 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!--传统家装有哪些痛点 end-->
         <!--VR家装设计我们帮您解决这一切！ start-->
         <div class="bj-part03-bg">
-            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-07.png" alt="VR家装设计我们帮您解决这一切！">
+            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-07.png" alt="VR家装设计我们帮您解决这一切！">
         </div>
         <div class="bj-part04-bg">
             <ul class="solve-problem cWhite">
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/bj-photo-02.png" alt="1">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/bj-photo-02.png" alt="1">
                     <p class="ml22">装修底价一目了然,同等材料的市场最低报价真实误差不超过200元</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/bj-photo-03.png" alt="2">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/bj-photo-03.png" alt="2">
                     <p class="ml22">专业预算专家，提供省钱建议我们会告诉您什么该省，什么不该省</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/bj-photo-04.png" alt="3">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/bj-photo-04.png" alt="3">
                   <p class="ml22">全套施工项目报价方案明细表，直接拿回家，不再怕被装修公司忽悠</p>
                 </li>
             </ul>
@@ -140,7 +140,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- VR家装设计我们帮您解决这一切 end -->
         <!-- 五大免费 start -->
         <div class="bj-part01-bg h140">
-            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-01.png" alt="五大免费">
+            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-01.png" alt="五大免费">
         </div>
         <div class="part02-bg">
             <ul class="service-item cWhite">
@@ -154,7 +154,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- 五大免费 end -->
         <!-- 服务流程 start -->
         <div class="bj-part03-bg h140">
-            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-02.png" alt="服务流程">
+            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-02.png" alt="服务流程">
         </div>
         <div class="bj-part04-bg">
             <div class="service-process bj-service-process cWhite">
@@ -193,7 +193,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
     <input type="hidden" id="position_name" value="免费报价" />
     <!--页面主体 end-->
     <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=1.5&amp;ak=yUuYcLL6yWOI2FsMvbdKAo2P&amp;services=&amp;t=20150522094656"></script>
-    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/js/free_design_main.js?v=3" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/js/plugin/require.js"></script>
+    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=3" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
 </body>
 
 </html>

@@ -8,9 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="msapplication-tap-highlight" content="no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/common.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/icon_font.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/free_design.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/common.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/icon_font.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/free_design.css?v=1">
 
 <script>
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
@@ -77,7 +77,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         </ul>
         <!--tab 切换 end-->
         <!--报名 start-->
-        <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-17.jpg" alt="免费装修设计">
+        <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-17.jpg" alt="免费装修设计">
         <div class="part01-bg pd4">
             <div class="signup bg-ff">
                 <ul>
@@ -111,7 +111,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!--报名 start-->
         <!--传统家装有哪些痛点 start-->
         <div class="part02-bg">
-            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-18.png" alt="传统家装有哪些痛点">
+            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-18.png" alt="传统家装有哪些痛点">
             <ul class="problem-item cWhite f18">
                 <li class="mt5"><i class="line"></i>设计图与装修完不一样</li>
                 <li class="mt5"><i class="line"></i>设计效果不好,修改时间太长</li>
@@ -121,19 +121,19 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!--传统家装有哪些痛点 end-->
         <!--VR家装设计我们帮您解决这一切！ start-->
         <div class="part03-bg">
-            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-19.png" alt="VR家装设计我们帮您解决这一切！">
+            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-19.png" alt="VR家装设计我们帮您解决这一切！">
         </div>
         <div class="part04-bg">
             <ul class="solve-problem cWhite">
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-20.png" alt="1">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-20.png" alt="1">
                     <h2 class="f20">您的爱屋设计图</h2>
                     <p>一对一 资深设计师，为您私人定制未来真实房屋效果VR虚拟现实设计图</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-21.png" alt="2">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-21.png" alt="2">
                     <h2 class="f20">VR家装设计现场体验</h2>
                     <p>通过VR新时代黑科技，来体验您未来爱屋的真实效果</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-22.png" alt="3">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-22.png" alt="3">
                     <h2 class="f20">全景VR体验未来房屋设计</h2>
                     <p>720度全景体验， 效果不满意，3分钟修改完成，当然您也可以对设计快速个性DIY调整</p>
                 </li>
@@ -142,8 +142,8 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- VR家装设计我们帮您解决这一切 end -->
         <!-- VR家装设计到底哪里好 start -->
         <div class="part01-bg">
-            <img class="mt14 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-06.png" alt="VR家装设计到底哪里好">
-            <img class="mt4 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-07.png" alt="传统的3D设计VS新VR家装设计">
+            <img class="mt14 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-06.png" alt="VR家装设计到底哪里好">
+            <img class="mt4 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-07.png" alt="传统的3D设计VS新VR家装设计">
         </div>
         <div class="part02-bg pd4">
             <table class="table cWhite">
@@ -182,24 +182,24 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- VR家装设计到底哪里好 end -->
         <!-- VR家装设计专业团队位您服务 start -->
         <div class="part03-bg">
-            <img class="mt14 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-08.png" alt="VR家装设计专业团队位您服务">
+            <img class="mt14 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-08.png" alt="VR家装设计专业团队位您服务">
         </div>
         <div class="part04-bg">
             <div class="service-team cWhite clearfix">
                 <ul>
-                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-09.jpg" alt="12年设计总监"></li>
+                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-09.jpg" alt="12年设计总监"></li>
                     <li>12年设计总监</li>
                 </ul>
                 <ul>
-                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-10.jpg" alt="5年资深设计师"></li>
+                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-10.jpg" alt="5年资深设计师"></li>
                     <li>5年资深设计师</li>
                 </ul>
                 <ul>
-                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-11.jpg" alt="8年装修顾问"></li>
+                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-11.jpg" alt="8年装修顾问"></li>
                     <li>8年装修顾问</li>
                 </ul>
                 <ul>
-                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-12.jpg" alt="5年资深体验师"></li>
+                    <li class="img-circle"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-12.jpg" alt="5年资深体验师"></li>
                     <li>5年资深体验师</li>
                 </ul>
             </div>
@@ -207,25 +207,25 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <div class="service-case cWhite clearfix">
             <ul>
                 <li>
-                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-13.jpg" alt="5年资深体验师">
+                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-13.jpg" alt="5年资深体验师">
                     <p>朝阳区康泉小区98㎡</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-14.jpg" alt="5年资深体验师">
+                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-14.jpg" alt="5年资深体验师">
                     <p>花雨汀小区92.75㎡</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-15.jpg" alt="5年资深体验师">
+                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-15.jpg" alt="5年资深体验师">
                     <p>海淀区中央党校120㎡</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-16.jpg" alt="5年资深体验师">
+                    <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-16.jpg" alt="5年资深体验师">
                     <p>通州区金隅花石匠89㎡</p>
                 </li>
             </ul>
@@ -233,7 +233,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- VR家装设计专业团队位您服务 start -->
         <!-- 五大免费 start -->
         <div class="part01-bg h140">
-            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-01.png" alt="五大免费">
+            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-01.png" alt="五大免费">
         </div>
         <div class="part02-bg">
             <ul class="service-item cWhite">
@@ -247,7 +247,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- 五大免费 end -->
         <!-- 服务流程 start -->
         <div class="part03-bg h140">
-            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-02.png" alt="服务流程">
+            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-02.png" alt="服务流程">
         </div>
         <div class="part04-bg">
             <div class="service-process cWhite">
@@ -286,7 +286,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
     <input type="hidden" id="position_name" value="免费设计" />
     <!--页面主体 end-->
     <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=1.5&amp;ak=yUuYcLL6yWOI2FsMvbdKAo2P&amp;services=&amp;t=20150522094656"></script>
-    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/js/free_design_main.js?v=3" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/js/plugin/require.js"></script>
+    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=3" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
 </body>
 
 </html>

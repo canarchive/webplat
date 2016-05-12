@@ -8,9 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="msapplication-tap-highlight" content="no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/common.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/icon_font.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/css/free_design.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/common.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/icon_font.css?v=1">
+    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/free_design.css?v=1">
 
 <script>
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
@@ -77,7 +77,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         </ul>
         <!--tab 切换 end-->
         <!--报名 start-->
-        <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-01.jpg" alt="免费装修设计">
+        <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-01.jpg" alt="免费装修设计">
         <div class="lf-part01-bg pd4">
             <div class="signup bg-ff">
                 <ul>
@@ -112,15 +112,15 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!--报名 end-->
         <!--量房为什么很重要 start-->
         <div class="lf-part02-bg">
-            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-02.png" alt="量房为什么很重要">
+            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-02.png" alt="量房为什么很重要">
             <ul class="solve-problem cWhite">
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-03.png" alt="1">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-03.png" alt="1">
                     <p class="ml22">做好量房才可以做到布局合理的房屋规划设计、施工严谨，无差错。</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-04.png" alt="2">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-04.png" alt="2">
                     <p class="ml22">房屋测量跟你的装修预算的精准有直接关系</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-05.png" alt="3">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-05.png" alt="3">
                     <p class="ml22">避免误差错误返工、浪费时间与金钱</p>
                 </li>
             </ul>
@@ -128,7 +128,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- 量房为什么很重要 end -->
         <!--通常你会遇到那些坎坷 start-->
         <div class="lf-part02-bg">
-            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-06.png" alt="通常你会遇到那些坎坷">
+            <img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-06.png" alt="通常你会遇到那些坎坷">
             <ul class="problem-item cWhite f18">
                 <li class="mt5"><i class="line"></i>量房人员迟迟不上门！</li>
                 <li class="mt5"><i class="line"></i>测量不准确，装修遇困难！</li>
@@ -139,21 +139,21 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!--通常你会遇到那些坎坷 end-->
         <!-- 我们帮你解决这一切 start -->
         <div class="lf-part03-bg">
-            <img class="mt4 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-07.png" alt="我们帮你解决这一切">
+            <img class="mt4 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-07.png" alt="我们帮你解决这一切">
         </div>
         <div class="lf-part04-bg pd4">
             <ul class="solve-problem cWhite">
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-08.png" alt="1">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-08.png" alt="1">
                     <p>不管您在天涯海角，我们将承诺24小时内与您联系，免费上门量房</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-09.png" alt="2">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-09.png" alt="2">
                     <p>房屋激光专业测量仪器、专业量
 房专家，提供专业测量报告</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-10.png" alt="3">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-10.png" alt="3">
                     <p>墙、顶、门窗、水电改造、 现场规划，提供采光规划、空间布局、功能优化的专业建议</p>
                 </li>
-                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/lf-photo-11.png" alt="3">
+                <li><img class="mt10 img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/lf-photo-11.png" alt="3">
                     <p>全程不收取任何费用，无任何增项，24小时接受业主投诉</p>
                 </li>
             </ul>
@@ -161,7 +161,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- 我们帮你解决这一切 end -->
         <!-- 五大免费 start -->
         <div class="lf-part01-bg h140">
-            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-01.png" alt="五大免费">
+            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-01.png" alt="五大免费">
         </div>
         <div class="lf-part02-bg">
             <ul class="service-item cWhite">
@@ -175,7 +175,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         <!-- 五大免费 end -->
         <!-- 服务流程 start -->
         <div class="lf-part03-bg pd20">
-            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/images/photo-02.png" alt="服务流程">
+            <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-02.png" alt="服务流程">
         </div>
         <div class="lf-part04-bg">
             <div class="service-process lf-service-process cWhite">
@@ -213,7 +213,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
     <input type="hidden" id="position" value="measure" />
     <input type="hidden" id="position_name" value="免费量房" />
     <!--页面主体 end-->
-    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/js/free_design_main.js?v=3" src="<?= Yii::getAlias('@asseturl'); ?>/spread/inner/js/plugin/require.js"></script>
+    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=3" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
 </body>
 
 </html>
