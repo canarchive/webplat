@@ -83,7 +83,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
                 <ul>
                     <li>
                         <input class="input name" type="text" placeholder="输入您的称呼">
-                        <a class="change-city" href="#">石家庄<i class="iconfont icone60d"></i></a>
+                        <!--<a class="change-city" href="#">石家庄<i class="iconfont icone60d"></i></a>-->
                     </li>
                     <li class="mt3">
                         <input class="input mobile" type="tel" placeholder="输入您的手机号">
