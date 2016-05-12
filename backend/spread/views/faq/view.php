@@ -8,7 +8,7 @@ $detailViewParams = [
         'name',
 		[
 			'attribute' => 'company_id',
-			'value' => $model->companyInfos[$model->company_id],
+			'value' => $model->company_id > 0 && isset($model->companyInfos[$model->company_id]) ? $model->companyInfos[$model->company_id] : '',
 		],
         'orderlist',
 		[

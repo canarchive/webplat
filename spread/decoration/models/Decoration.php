@@ -29,7 +29,7 @@ class Decoration extends spreadModel
 				return strtotime($value);
 			}],
 			[['picture', 'picture_small', 'map', 'picture_lottery'], 'integer'],
-			[['company_id'], 'default', 'value' => 0],
+			[['company_id','lottery_number', 'bonus_number', 'gift_bag_number'], 'default', 'value' => 0],
 			[['sms', 'sms_new'], 'default', 'value' => ''],
 			[['address', 'signup_base', 'arrive_line', 'holding_at', 'description', 'lottery_number', 'lottery_rule', 'bonus_number', 'bonus_rule', 'gift_bag_number', 'gift_bag_rule'], 'safe'],
         ];

@@ -1,6 +1,7 @@
 <!-- 10. 优质辅材 start -->
 <section>
 <div class="bg-red zzv3-titlebox pt6 pb3"><em></em><span class="txt">优质辅材 环保加码</span><em></em></div>
+<div class="bg-red">
 <ul class="bg-red fucai clearfix">
     <li class="fucai-li2"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/fucai_01.jpg" class="img100"></li>
     <li class="fucai-li2"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/fucai_02.jpg" class="img100"></li>
@@ -9,7 +10,7 @@
     <li class="fucai-li3"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/fucai_05.jpg" class="img100"></li>
 </ul>
 <div class="bg-red">
-	<p class="tc mt5"><input type="button" value="预约到店体验" class="yellow-btn jz-signup"
+	<p class="tc"><input type="button" value="预约到店体验" class="yellow-btn jz-signup"
 			data-bonus_id=""
 			data-gift_bag_id=""
 			data-info_id="<?= $info['id']; ?>"

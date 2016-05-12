@@ -37,10 +37,10 @@ class Brand extends SpreadModel
     public function rules()
     {
         return [
-            [['name', 'category_id', 'logo', 'code'], 'required'],
+            [['name', 'category_id', 'logo'], 'required'],
 			['code', 'unique', 'targetClass' => '\spread\groupon\models\Brand', 'message' => '代码已经被使用。'],
             [['orderlist', 'status'], 'default', 'value' => 0],
-			[['description'], 'safe'],
+			[['description', 'code'], 'safe'],
         ];
     }
 

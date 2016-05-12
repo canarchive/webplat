@@ -89,14 +89,14 @@ class Lottery extends SpreadModel
 	public function getPresent($data)
 	{
 		$decoration = $data['decorationModel'];
-		$countTarget = 100;//$decoration->lottery_number;
+		$countTarget = $decoration->lottery_number;
 		if ($countTarget < 1) {
 			return ['status' => 400, 'message' => '本次活动没有抽奖环节'];
 		}
 
 		$got = LotteryLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
 		if (!empty($got)) {
-		//	return ['status' => 400, 'message' => '您已经抽过奖了'];
+			return ['status' => 400, 'message' => '您已经抽过奖了'];
 		}
 
 		$countExist = LotteryLog::find()->where(['decoration_id' => $decoration['id']])->count();
@@ -126,7 +126,7 @@ class Lottery extends SpreadModel
 
 		$got = LotteryLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
 		if (!empty($got)) {
-		//	return ['status' => 400, 'message' => '您已经抽过奖了'];
+			return ['status' => 400, 'message' => '您已经抽过奖了'];
 		}
 
 		$insertInfo = [
