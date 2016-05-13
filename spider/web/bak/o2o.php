@@ -1,5 +1,17 @@
 <?php
 $infos = [
+    'lvyike' => [
+            'name' => '旅忆客',
+            'url' => 'http://www.lvyike.cn/',
+    ],
+    'paikedaojia' => [
+            'name' => '拍客到家',
+            'url' => 'http://www.paikedaojia.com/',
+    ],
+    'baiyinghui' => [
+            'name' => '百影汇',
+            'url' => 'http://www.baiyinghui.com/',
+    ],
 	'qupaia' => [
 		'name' => '去拍啊',
 		'url' => 'http://www.qupaia.com/',
