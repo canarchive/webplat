@@ -5,6 +5,7 @@ $detailViewParams = [
     'attributes' => [
 		'id',
         'name',
+		'brief',
 		'orderlist',
 		[
 			'attribute' => 'status',

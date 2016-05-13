@@ -6,6 +6,7 @@ $gridViewParams = [
     'columns' => [
         'id',
         'name',
+		'brief',
 		'orderlist',
 		[
             'attribute' => 'status',
