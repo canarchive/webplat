@@ -3,15 +3,24 @@
 $detailViewParams = [
     'model' => $model,
     'attributes' => [
+		'id',
         'name',
-		'catdir',
-        'parent_id',
+		'code',
+		[
+			'attribute' => 'sort',
+			'value' => $model->sortInfos[$model->sort],
+		],
         'orderlist',
-		'template',
+		[
+			'attribute' => 'template',
+			'value' => $model->templateInfos[$model->template],
+		],
+		[
+			'attribute' => 'status',
+			'value' => $model->statusInfos[$model->status],
+		],
 		'description',
-		'meta_title',
-		'meta_keyword',
-		'meta_description',
+		'content',
     ],
 ];
 
