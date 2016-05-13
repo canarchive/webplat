@@ -1,21 +1,21 @@
 <?php
 use yii\helpers\Url;
 
-$helperInfos = Yii::$app->params['siteInfos'];
+$siteInfos = $this->context->siteInfos;
 $urlPre = Yii::getAlias('@shooturl');
 ?>
 <footer class='main-footer'>
     <div class='footer-sitemap'>
         <nav class='wrapper'>
             <ul class='g'>
-                <?php foreach ($helperInfos as $cKey => $infos) { ?>
+                <?php foreach ($siteInfos as $cKey => $infos) { ?>
                 <li class='gi lap-one-fifth'>
 				    <a class='m-item' href='javascript: void(0);'><?= $infos['name']; ?></a>
                     <span class="toggle js-toggle-sitemap"></span>
                     <ul>
-                        <?php foreach ($infos['infos'] as $aKey => $infoName) { ?>
+                        <?php foreach ($infos['infos'] as $aKey => $subInfo) { ?>
                         <li>
-						    <a href='<?= $urlPre . Url::to(["/info/{$cKey}/{$aKey}"]); ?>' target='_blank'><?= $infoName; ?></a>
+						    <a href='<?= $urlPre . Url::to(['/info/help/index', 'code' => $subInfo['code']]); ?>' target='_blank'><?= $subInfo['name']; ?></a>
                         </li>
                         <?php } ?>
                     </ul>

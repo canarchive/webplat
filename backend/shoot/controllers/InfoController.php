@@ -3,8 +3,8 @@
 namespace backend\shoot\controllers;
 
 use Yii;
-use shoot\models\Info;
-use shoot\models\searchs\Info as InfoSearch;
+use shoot\info\models\Info;
+use shoot\info\models\searchs\Info as InfoSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 

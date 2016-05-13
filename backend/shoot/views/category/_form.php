@@ -2,11 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\widgets\FileUploadUI;
-use gallerycms\models\Attachment;
-
-$attachmentModel = new Attachment();
-$thumb = $attachmentModel->getFieldInfos($tableName, 'thumb');
 
 ?>
 

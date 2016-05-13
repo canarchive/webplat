@@ -60,4 +60,12 @@ class Controller extends YiiController
 
         return parent::beforeAction($action);
 	}
+
+	public function getSiteInfos()
+	{
+		$infoModel = new \shoot\info\models\Info();
+		$infos = $infoModel->getInfos();
+
+		return $infos;
+	}
 }

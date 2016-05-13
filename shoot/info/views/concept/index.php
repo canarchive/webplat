@@ -1,5 +1,6 @@
 <?php
 Yii::$app->params['seoTitle'] = '关于摄到家-' . Yii::$app->params['seoTitle'];
+$this->params['cssFiles'] = ['styles'];
 ?>
 <main class="main-content slab-light blog-revision">
     <div class="wrapper">

@@ -34,6 +34,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+				'info-<code:\w+>' => 'info/help/index',
             ],
         ],
     ],
