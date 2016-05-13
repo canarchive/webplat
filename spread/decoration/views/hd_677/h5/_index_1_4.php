@@ -27,13 +27,13 @@
 		>
 		<input type="hidden" name="name" value="H5_677首屏报名表单"><!-- 首屏表单的name为hidden按钮 -->
 		<p class="cWhite f14 clearfix">
-			<span class="l">已报名 <em class="yellow-zzv3">12000</em> 人</span>
+		<span class="l">已报名 <em class="yellow-zzv3"><?= $info['signup_base'] + $info['signup_number']; ?></em> 人</span>
 			<span class="r">比传统市场便宜10%-50%</span>
 		</p>
 		<p class="mt4"><input type="text" name="mobile" class="bg-fff width100" placeholder="请输入您的手机号码" maxlength="11"></p>
 		<p class="mt4"><input type="submit" name="submit" class="bg-fff submit" value="免费报名"></p>
-		<p class="cWhite f14 mt6">时间：2016年4月30日-5月1日</p>
-		<p class="cWhite f14 mt2">地点：丰台区成寿寺颐方园体育健康城综合馆</p>
+		<p class="cWhite f14 mt6">时间：<?= date('Y年m月d日', $info['start_at']) . '-' . date('m月d日', $info['end_at']); ?></p>
+		<p class="cWhite f14 mt2">地点：<?= $info['address']; ?></p>
 	</form>
 </section>
 <!-- 2. 免费报名 end -->

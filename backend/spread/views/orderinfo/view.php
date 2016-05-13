@@ -4,20 +4,19 @@ $detailViewParams = [
     'model' => $model,
     'attributes' => [
 		'id',
+		'orderid',
+		'mobile',
+		'money',
+		'business_id',
+		'business_name',
 		[
-			'format' => 'raw',
-			'attribute' => 'photo',
-			'value' => $model->getAttachmentImg($model->photo, false),
+			'attribute' => 'pos_machine_id',
+			'value' => $model->pos_machine_id > 0 ? $model->posMachineInfos[$model->pos_machine_id] : '',
 		],
-        'name',
-		'title',
-		'aptitude',
-		'record',
 		[
-			'attribute' => 'company_id',
-			'value' => if ($model->company_id > 0 && isset($model->companyInfos[$model->company_id) ? $model->companyInfos[$model->company_id] : $model->company_id,
+			'attribute' => 'groupon_id',
+			'value' => !empty($model->grouponInfo) ? $model->grouponInfo['groupon_name'] : '',
 		],
-        'orderlist',
 		[
 			'attribute' => 'status',
 			'value' => $model->statusInfos[$model->status],
@@ -30,7 +29,6 @@ $detailViewParams = [
             'attribute' => 'updated_at',
             'value'=> date('Y-m-d H:i:s',$model->updated_at),
         ],
-		'description',
     ],
 ];
 

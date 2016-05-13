@@ -13,4 +13,11 @@ class SpreadModel extends BaseModel
 	{
 		return new \spread\models\Attachment();
 	}
+
+	public function getDecorationInfo()
+	{
+		$info = \spread\decoration\models\Decoration::findOne($this->decoration_id);
+
+		return $info;
+	}
 }

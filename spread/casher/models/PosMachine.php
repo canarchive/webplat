@@ -1,6 +1,6 @@
 <?php
 
-namespace spread\decoration\models;
+namespace spread\casher\models;
 
 use common\models\SpreadModel;
 use yii\helpers\ArrayHelper;
@@ -68,7 +68,24 @@ class PosMachine extends SpreadModel
 
 	public function getCompanyInfos()
 	{
-		$infos = ArrayHelper::map(\merchant\models\Company::find()->all(), 'id', 'name');
+		$infos = ArrayHelper::map(\spread\casher\models\Company::find()->all(), 'company_id', 'company_name');
 		return $infos;
 	}
+
+	public function getGrouponInfos()
+	{
+		$datas = [];
+		if ($this->company_id > 0) {
+		    $datas = \spread\casher\models\Groupon::getInfosByCompanyId($this->company_id);
+		}
+
+		return $datas;
+	}
+
+	public function getGrouponInfo()
+	{
+		$info = \spread\casher\models\Groupon::findOne($this->groupon_id);
+
+		return $info;
+	}	
 }

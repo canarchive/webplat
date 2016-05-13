@@ -34,9 +34,9 @@
 
 	<p class="p1 mt2">专业门店、样板间</p>
 	<p class="p1">200多名服务人员在这里告诉你如何装修</p>
-	<img src="http://s4.17house.com/jiazhuangtong/zxtc/images/beijing/677/address-map.jpg?v=58" class="imgmap" alt="地图">
-	<p class="p2 mt4"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/loc.png" class="loc">北京市朝阳区和平里中街17号天元和平商业大厦5层</p>
-	<p class="p3 mt4"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/phone24.png" class="phone24" alt="">400-689-1717</p>
+	<img src="<?= $info['map']; ?>" class="imgmap" alt="地图">
+	<p class="p2 mt4"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/loc.png" class="loc"><?= $info['address']; ?></p>
+	<p class="p3 mt4"><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/phone24.png" class="phone24" alt=""><?= $info['companyInfo']['hotline']; ?></p>
 	<p class="tc mt5"><input type="button" value="一键发送到手机" class="yellow-btn jz-signup"
 			data-bonus_id=""
 			data-gift_bag_id=""

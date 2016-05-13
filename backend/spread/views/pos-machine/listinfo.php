@@ -5,8 +5,9 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-        'owner',
         'name',
+		'mac',
+		'username',
 		[
 			'attribute' => 'company_id',
 			'value' => function($model) {
@@ -16,6 +17,13 @@ $gridViewParams = [
 				return '';
 			},
 		],
+		[
+            'attribute' => 'groupon_id',
+            'value'=> function($model){
+				$info = $model->grouponInfo;
+				return isset($info['groupon_name']) ? $info['groupon_name'] : '';
+            },
+        ],
 		[
             'attribute' => 'created_at',
             'value'=> function($model){

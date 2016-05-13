@@ -109,11 +109,14 @@ class Lottery extends SpreadModel
 			return ['status' => 400, 'message' => '本次活动抽奖奖品已下架'];
 		}
 
+		$dayTime = strtotime(date('Ymd'));
 		$proArr = [];
 		foreach ($infos as $info) {
 		    $count = LotteryLog::find()->where(['decoration_id' => $decoration['id'], 'lottery_id' => $info['id']])->count();
+		    $dayWhere = ['and', "decoration_id={$decoration['id']}", "lottery_id ={$info['id']}", "created_at>{$dayTime}"];
+		    $dayCount = LotteryLog::find()->where($dayWhere)->count();
 			$rate = $count / $countTarget * 100;
-			if ($rate < $info['probability']) {
+			if ($rate < $info['probability'] && $dayCount < $info['limit_day']) {
 				$proArr[$info['id']] = $info['probability'];
 			}
 		}
@@ -121,7 +124,7 @@ class Lottery extends SpreadModel
 		$info = isset($infos[$keyBingo]) ? $infos[$keyBingo] : false;
 
 		if (empty($info)) {
-			return ['status' => 400, 'message' => '本次活动奖品已发放完毕'];
+			return ['status' => 400, 'message' => '本奖品已发放完毕'];
 		}
 
 		$got = LotteryLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
@@ -142,11 +145,18 @@ class Lottery extends SpreadModel
 		$lotteryLog = new LotteryLog($insertInfo);
 		$lotteryLog->insert(false);
 
+
 		$return = [
 			'status' => 200,
 			'message' => "您成功抽中了{$info['name']}:价值{$info['price']}的{$info['prize']}",
 			'data' => $info,
 		];
+
+		$content = "【一起装修网】恭喜您获得{$info['name']}！客服会在15分钟内回访了解详细需求。展厅参观地址：{$decoration['address']}。咨询电话：400-689-1717转5";
+
+		$smser = new \common\components\sms\Smser('company');
+        $smser->send($data['mobile'], $content, 'decoration_signup');
+
 		return $return;
 	}
     

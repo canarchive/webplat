@@ -40,7 +40,7 @@ class SignupController extends spreadController
 	    $model->submitType = $submitType;
 
 		$signupInfo = false;
-        //if ($model->load(\Yii::$app->request->get())) {
+        //if ($model->load(\Yii::$app->request->get(), '')) {
         if ($model->load(\Yii::$app->request->post(), '')) {
             $signupInfo = $model->signup();
         }

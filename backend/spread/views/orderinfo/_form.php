@@ -9,8 +9,9 @@ use yii\bootstrap\ActiveForm;
 <div class="menu-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'orderid')->textInput(['maxlength' => 128]) ?>
 
+    <?= $form->field($model, 'pos_machine_id')->dropDownList($model->posMachineInfos, ['prompt' => Yii::t('admin-common', 'Select Pos Machine')]); ?>
 	<?= $form->field($model, 'company_id')->dropDownList(
 		$model->companyInfos, 
 		[
@@ -33,9 +34,9 @@ use yii\bootstrap\ActiveForm;
 		]
 	); ?>
 
-    <?= $form->field($model, 'mac')->textInput() ?>
-    <?= $form->field($model, 'username')->textInput() ?>
-    <?= $form->field($model, 'password')->textInput() ?>
+    <?= $form->field($model, 'business_name')->textInput() ?>
+    <?= $form->field($model, 'mobile')->textInput() ?>
+    <?= $form->field($model, 'money')->textInput() ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>

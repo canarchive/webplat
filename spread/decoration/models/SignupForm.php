@@ -110,7 +110,6 @@ class SignupForm extends Model
 		$serviceModel->update(false);
 		$serviceModel->updateCounters(['serviced_times' => 1]);
 
-		$this->sendSms($data, $decorationOwner->owner->userInfo, $serviceModel->mobile);
 		$this->sendSmsService($data, $serviceModel);
 
 		$data['service_code'] = $serviceModel->code;
@@ -118,6 +117,7 @@ class SignupForm extends Model
 		if (!empty($this->lottery_id) || !empty($this->bonus_id) || !empty($this->gift_bag_id)) {
 			return $this->getPresent($data);
 		}
+		$this->sendSms($data, $decorationOwner->owner->userInfo, $serviceModel->mobile);
 
 		return ['status' => 200, 'message' => 'OK'];
 
@@ -177,7 +177,8 @@ class SignupForm extends Model
         }
 
 		//$date = date('Y年m月d日', $this->decorationModel['start_at']);
-		$message = $userInfo['is_new'] ? $this->decorationModel['sms_new'] : $this->decorationModel['sms'];
+		//$message = $userInfo['is_new'] ? $this->decorationModel['sms_new'] : $this->decorationModel['sms'];
+		$message = '您已预约成功，我们的装修顾问会在15分钟内联系您！【一起装修网】';
         $content .= " $message";
 
 		$smser = new Smser('company');

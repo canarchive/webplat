@@ -40,4 +40,13 @@ class LotteryLog extends SpreadModel
             'status' => '状态',
         ];
     }
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '隐藏',
+			'1' => '正常',
+		];	
+		return $datas;
+	}	
 }

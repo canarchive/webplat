@@ -3,14 +3,14 @@
 namespace backend\spread\controllers;
 
 use Yii;
-use spread\casher\models\PosMachine;
-use spread\casher\models\searchs\PosMachine as PosMachineSearch;
+use spread\casher\models\Orderinfo;
+use spread\casher\models\searchs\Orderinfo as OrderinfoSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class PosMachineController extends AdminController
+class OrderinfoController extends AdminController
 {
-	protected $modelClass = 'spread\casher\models\PosMachine';
+	protected $modelClass = 'spread\casher\models\Orderinfo';
 
     public function actionListinfo()
     {
@@ -20,7 +20,7 @@ class PosMachineController extends AdminController
 			return $data;
 		}		
 
-        $searchModel = new PosMachineSearch();
+        $searchModel = new OrderinfoSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -42,7 +42,7 @@ class PosMachineController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new PosMachine());
+		return $this->_addInfo(new Orderinfo());
     }
 
     public function actionUpdate($id = 0)

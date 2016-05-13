@@ -20,7 +20,6 @@ class LotteryLogController extends AdminController
 
 	public function actionDayinfo()
 	{
-		echo 'sss';
 	}
 
     public function actionView($id)

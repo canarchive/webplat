@@ -33,7 +33,7 @@ class DetailController extends Controller
         ];
 
 		$type = '677';//$info['type'];
-		$viewPath = $isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
+		$viewPath = $isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/h5/";
         return $this->render($viewPath . 'index.php', $datas);   
     }
 

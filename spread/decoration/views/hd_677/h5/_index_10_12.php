@@ -29,11 +29,18 @@
 <section>
 <div class="bg-red zzv3-titlebox pt6 pb3"><em></em><span class="txt">47道标准施工工序</span><em></em></div>
 <div class="bg-red">
+<?php
+    $processInfos = [
+		'01' => '水电位放线',
+		'02' => '暗管开槽',
+		'03' => '电路布线',
+		'04' => '水路布管',
+	];
+?>
 	<ul class="gongxv clearfix">
-	    <li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/gongxv.jpg" class="img100"><p class="p1"><span class="num">01</span>放线定位</p></li>
-	    <li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/gongxv.jpg" class="img100"><p class="p1"><span class="num">02</span>墙面开凿</p></li>
-	    <li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/gongxv.jpg" class="img100"><p class="p1"><span class="num">03</span>布线管</p></li>
-	    <li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/gongxv.jpg" class="img100"><p class="p1"><span class="num">04</span>防水涂胶</p></li>
+        <?php foreach ($processInfos as $key => $item) { ?>
+		<li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/process-677-<?= $key; ?>.jpg" class="img100"><p class="p1"><span class="num"><?= $key; ?></span><?= $item; ?></p></li>
+        <?php } ?>
 	</ul>
 	<p class="tc mt5"><input type="button" value="免费咨询其他装修流程" class="yellow-btn jz-signup"
 			data-bonus_id=""

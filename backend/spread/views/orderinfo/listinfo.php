@@ -5,18 +5,25 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
+        'orderid',
 		'mobile',
+		'money',
 		[
-            'attribute' => 'decoration_id',
+			'attribute' => 'pos_machine_id',
+			'value' => function($model) {
+				if ($model->pos_machine_id > 0) {
+					return $model->posMachineInfos[$model->pos_machine_id];
+				}
+				return '';
+			},
+		],
+		[
+            'attribute' => 'groupon_id',
             'value'=> function($model){
-				$info = $model->decorationInfo;
-				return isset($info['name']) ? $info['name'] : '';
+				$info = $model->grouponInfo;
+				return isset($info['groupon_name']) ? $info['groupon_name'] : '';
             },
         ],
-		'lottery_id',
-		'name',
-		'prize',
-		'price',
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
@@ -24,9 +31,9 @@ $gridViewParams = [
             },
         ],
 		[
-            'attribute' => 'confirm_at',
+            'attribute' => 'updated_at',
             'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->confirm_at);
+                return  date('Y-m-d H:i:s',$model->updated_at);
             },
         ],
 		[
@@ -34,7 +41,7 @@ $gridViewParams = [
 			'value' => function($model) {
 			    return $model->statusInfos[$model->status];
 			},
-		],		
+		],
     ],
 ];
 
