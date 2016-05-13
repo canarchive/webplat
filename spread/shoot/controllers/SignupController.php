@@ -5,9 +5,15 @@ namespace spread\shoot\controllers;
 use spread\components\Controller as spreadController;
 use spread\shoot\models\SignupForm;
 
-class shootController extends spreadController
+class SignupController extends spreadController
 {
 	//public $enableCsrfValidation = false;
+
+	public function actionIndex()
+	{
+		$viewPath = "/signup";
+        return $this->render($viewPath);        
+	}
 
 	public function actionSignup()
 	{
