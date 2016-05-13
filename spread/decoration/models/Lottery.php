@@ -148,11 +148,11 @@ class Lottery extends SpreadModel
 
 		$return = [
 			'status' => 200,
-			'message' => "您成功抽中了{$info['name']}:价值{$info['price']}的{$info['prize']}",
+			'message' => "您成功抽中了{$info['prize']}:价值{$info['price']}的{$info['name']}",
 			'data' => $info,
 		];
 
-		$content = "【一起装修网】恭喜您获得{$info['name']}！客服会在15分钟内回访了解详细需求。展厅参观地址：{$decoration['address']}。咨询电话：400-689-1717转5";
+		$content = "【一起装修网】恭喜您获得{$info['prize']}！客服会在15分钟内回访了解详细需求。展厅参观地址：{$decoration['address']}。咨询电话：400-689-1717转5";
 
 		$smser = new \common\components\sms\Smser('company');
         $smser->send($data['mobile'], $content, 'decoration_signup');

@@ -39,7 +39,7 @@
 ?>
 	<ul class="gongxv clearfix">
         <?php foreach ($processInfos as $key => $item) { ?>
-		<li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/process-677-<?= $key; ?>.jpg" class="img100"><p class="p1"><span class="num"><?= $key; ?></span><?= $item; ?></p></li>
+		<li><img data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/process-677-<?= $key; ?>.jpg?v=1" class="img100"><p class="p1"><span class="num"><?= $key; ?></span><?= $item; ?></p></li>
         <?php } ?>
 	</ul>
 	<p class="tc mt5"><input type="button" value="免费咨询其他装修流程" class="yellow-btn jz-signup"
