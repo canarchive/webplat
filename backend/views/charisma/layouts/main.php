@@ -12,7 +12,7 @@ Ltie9Asset::register($this);
 
 $controller = $this->context;
 $menuInfos = $controller->menuInfos;
-$menus = $menuInfos['menus'];
+$menus = isset($menuInfos['menus']) ? $menuInfos['menus'] : [];
 $menusJson = Json::encode($menus);
 //$this->title = $menuInfos['menuTitle'];
 ?>
