@@ -47,7 +47,9 @@ class DetailController extends Controller
 		$view = \Yii::$app->request->get('view');
 		$view = !in_array($view, ['price', 'measure', 'design']) ? 'price' : $view;
 		$info = ['id' => 1];
+        $host = \Yii::$app->request->hostInfo;
         $datas = [
+            'host' => $host,
             'model' => $model,
 			'info' => $info,
         ];

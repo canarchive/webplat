@@ -212,13 +212,4 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
             <!-- 免费预约VR家装设计 end -->
         </div>
     </section>
-    <input type="hidden" id="info_id" value="<?= $info['id']; ?>" />
-    <input type="hidden" id="position" value="measure" />
-    <input type="hidden" id="position_name" value="免费量房" />
-    <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
-
-    <!--页面主体 end-->
-    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=5" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
-</body>
-
-</html>
+<?php echo $this->render('_footer', ['info' => $info, 'host' => $host]); ?>

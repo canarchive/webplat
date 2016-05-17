@@ -191,14 +191,4 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
             <!-- 免费预约VR家装设计 end -->
         </div>
     </section>
-    <input type="hidden" id="info_id" value="<?= $info['id']; ?>" />
-    <input type="hidden" id="position" value="price" />
-    <input type="hidden" id="position_name" value="免费报价" />
-    <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
-
-    <!--页面主体 end-->
-    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=1.5&amp;ak=yUuYcLL6yWOI2FsMvbdKAo2P&amp;services=&amp;t=20150522094656"></script>
-    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=5" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
-</body>
-
-</html>
+<?php echo $this->render('_footer', ['info' => $info, 'host' => $host]); ?>
