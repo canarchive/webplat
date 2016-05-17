@@ -137,9 +137,18 @@ class GiftBag extends SpreadModel
 			//return ['status' => 400, 'message' => '您已经领过红包了'];
 		}
 
+		// 验证是否到达本场活动的礼包总数
 		$countExist = GiftBagLog::find()->where(['decoration_id' => $decoration['id']])->count();
 		if ($countExist >= $countTarget) {
 			return ['status' => 400, 'message' => '本次活动红包已发放完毕'];
+		}
+
+		// 验证是否到达当天领取的限额
+		$dayTime = strtotime(date('Ymd'));
+		$dayWhere = ['and', "decoration_id={$decoration['id']}", "gift_bag_id ={$info['id']}", "created_at>{$dayTime}"];
+		$dayCount = GiftBagLog::find()->where($dayWhere)->count();
+		if ($dayCount > $info['limit_day']) {
+			return ['status' => 400, 'message' => '今天的红包已发放完毕，请明天再抢'];
 		}
 
 		$got = GiftBagLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);

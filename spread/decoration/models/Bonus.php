@@ -108,6 +108,14 @@ class Bonus extends SpreadModel
 			return ['status' => 400, 'message' => '本次活动红包已发放完毕'];
 		}
 
+		// 验证是否到达当天领取的限额
+		$dayTime = strtotime(date('Ymd'));
+		$dayWhere = ['and', "decoration_id={$decoration['id']}", "bonus_id ={$info['id']}", "created_at>{$dayTime}"];
+		$dayCount = BonusLog::find()->where($dayWhere)->count();
+		if ($dayCount > $info['limit_day']) {
+			return ['status' => 400, 'message' => '今天的红包已发放完毕，请明天再抢'];
+		}
+
 		$got = BonusLog::findOne(['mobile' => $data['mobile'], 'decoration_id' => $decoration['id']]);
 		if (!empty($got)) {
 			//return ['status' => 400, 'message' => '您已经领过红包了'];
