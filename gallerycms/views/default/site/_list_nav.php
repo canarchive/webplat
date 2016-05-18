@@ -1,8 +1,8 @@
 <div class="ladytop">
     <div class="nav">
         <div class="left">
-            <a href="/jiehun/">
-                <img src="/jiehun/indexcss/hunshang.png" alt="wed114婚尚">
+		    <a href="<?= Yii::getAlias('@gallerycmsurl'); ?>">
+			    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/default/images/hunshang.png" alt="wed114婚尚">
             </a>
         </div>
         <div class="right">
