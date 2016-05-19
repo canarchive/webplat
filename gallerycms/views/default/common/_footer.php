@@ -8,8 +8,5 @@
         </li>
     </ul>
 </div>
-<div style="display:none;">
-    <script src="/jiehun/images/js/count_zixun.js" language="JavaScript"></script>
-</div>
 </body>
 </html>

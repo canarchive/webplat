@@ -16,9 +16,15 @@ $gridViewParams = [
             },  
         ],
 		[
-			'attribute' => 'type',
+			'attribute' => 'template',
 			'value' => function($model) {
-				return $model->typeInfos[$model->type_id];
+				return $model->templateInfos[$model->template];
+			},
+		],
+		[
+			'attribute' => 'sort',
+			'value' => function($model) {
+				return $model->sortInfos[$model->sort];
 			},
 		],
 		[
@@ -26,18 +32,6 @@ $gridViewParams = [
 			'value' => function($model) {
 				return $model->statusInfos[$model->status];
 			},
-		],
-		[
-            'attribute' => 'created_at',
-            'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->created_at);
-            },
-        ],
-		[
-            'attribute' => 'updated_at',
-            'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->updated_at);
-            },
 		],
     ],
 ];

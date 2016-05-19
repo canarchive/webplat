@@ -3,6 +3,7 @@
 namespace gallerycms\models;
 
 use common\models\GallerycmsModel;
+use yii\helpers\ArrayHelper;
 
 class Article extends GallerycmsModel
 {
@@ -20,6 +21,9 @@ class Article extends GallerycmsModel
     public function rules()
     {
         return [
+            [['name', 'category_id'], 'required'],
+            [['orderlist', 'thumb', 'status'], 'default', 'value' => 0],
+			[['description', 'content', 'keywords', 'url', 'editor', 'copyfrom', 'template'], 'safe'],
         ];
     }
 
@@ -46,4 +50,41 @@ class Article extends GallerycmsModel
             'status' => '状态',
         ];
     }
+
+	/**
+	 * Get tree list for select
+	 *
+	 * @return array
+	 */
+	public function getCategoryLevelInfos()
+	{
+    	$infos = ArticleCategory::find()->select(['id', 'name', 'parent_id'])->indexBy('id')->asArray()->all();
+		$datas = $this->getLevelInfos($infos, 'id', 'parent_id', 'name', 0);
+		return $datas;
+	}	
+
+	public function getCategoryInfos()
+	{
+		$infos = ArrayHelper::map(\gallerycms\models\ArticleCategory::find()->all(), 'id', 'name');
+		return $infos;
+	}
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '不显示',
+			'1' => '显示',
+		];	
+		return $datas;
+	}
+
+	public function afterSave($insert, $changedAttributes)
+	{
+        parent::afterSave($insert, $changedAttributes);
+
+		$fields = ['thumb'];
+		$this->_updateSingleAttachment('article', $fields);
+
+		return true;
+	}	
 }

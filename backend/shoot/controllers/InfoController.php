@@ -18,13 +18,8 @@ class InfoController extends AdminController
      */
     public function actionListinfo()
     {
-		$model = new Info();
-		$infos = $model->getFormatedInfos();
-
-        return $this->render('listinfo', [
-			'model' => $model,
-            'infos' => $infos,
-        ]);
+        $searchModel = new InfoSearch();
+		return $this->_listinfoInfo($searchModel);
     }
 
     public function actionView($id)

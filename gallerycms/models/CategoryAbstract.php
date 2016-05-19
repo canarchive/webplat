@@ -2,6 +2,7 @@
 
 namespace gallerycms\models;
 
+use yii\helpers\Url;
 use common\models\GallerycmsModel;
 use common\helpers\Tree;
 
@@ -86,6 +87,31 @@ class CategoryAbstract extends GallerycmsModel
 			'' => '默认',
 			'simple' => '简洁',
 		];	
+		return $datas;
+	}
+
+	public function getDatas()
+	{
+        $infos = self::find()->where(['status' => 1])->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->asArray()->all();
+
+        foreach ($infos as $catId => & $info) {
+            $info['url'] = url::to(['/site/list', 'code' => $info['catdir']]);
+		}
+
+		return $infos;
+    }
+
+	public function getLevelDatas()
+	{
+		$infos = $this->getDatas();
+		$datas = [];
+        foreach ($infos as $catId => & $info) {
+            if (!isset($datas[$info['parent_id']])) {
+                $datas[$info['parent_id']] = [];
+            }
+            $datas[$info['parent_id']][$catId] = $info;
+        }
+
 		return $datas;
 	}
 }

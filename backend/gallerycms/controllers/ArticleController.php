@@ -16,6 +16,16 @@ class ArticleController extends AdminController
 {
 	protected $modelClass = 'gallerycms\models\Article';
 
+public function actions()
+{
+    return [
+
+        'upload' => [
+            'class' => 'common\ueditor\UEditorAction',
+        ],
+    ];
+}	
+
     public function actionListinfo()
     {
         $searchModel = new ArticleSearch();

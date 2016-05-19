@@ -1,3 +1,6 @@
+<script language="JavaScript">
+document.domain='alyee.biz';
+</script>
 <?php
 $formContent = $this->render('_form', ['model' => $model]);
 

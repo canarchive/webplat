@@ -8,7 +8,7 @@ use yii\helpers\Url;
             <b></b>
         </div>
         <div class="colist">
-            <?php foreach ($this->params['categoryInfos'] as $info) { if ($info['parent_id'] == 1) { ?>
+            <?php foreach ($this->params['levelInfos'][1] as $info) { if ($info['parent_id'] == 1) { ?>
 			<a href="<?= Url::to(['/site/list', 'code' => $info['catdir']]); ?>" target="_blank">
                 <?= $info['name']; ?>
             </a>

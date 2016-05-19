@@ -8,7 +8,7 @@ use yii\helpers\Url;
             <b></b>
         </div>
         <div class="colist">
-            <?php foreach ($this->params['categoryInfos'] as $info) { if ($info['parent_id'] == 1) { ?>
+            <?php foreach ($this->params['levelInfos'][1] as $info) { if ($info['parent_id'] == 1) { ?>
 			<a href="<?= Url::to(['/site/list', 'code' => $info['catdir']]); ?>" target="_blank">
                 <?= $info['name']; ?>
             </a>
@@ -41,114 +41,6 @@ use yii\helpers\Url;
             </dd>
         </dl>
         <?php } } ?>
-
-                <dl class="dlbox2">
-                    <dd>
-                        <div class="sgimg2">
-                            <a href="/jiehun/maozao/20160412144876.html" target=_blank>
-                                <img src="/jiehun/uploads/allimg/160412/42-1604121G6330-L.jpg" alt="头发干枯毛躁怎么办 搞清头"
-                                />
-                            </a>
-                            <p class="iatit2">
-                                <em class="left-arr">
-                                </em>
-                                <a href="/jiehun/maozao/20160412144876.html" class="txt" target=_blank>
-                                    头发干枯毛躁怎么办 搞清头
-                                </a>
-                                <em class="right-arr">
-                                </em>
-                                <b class="bg">
-                                </b>
-                            </p>
-                        </div>
-                    </dd>
-                </dl>
-                <dl class="dlbox2">
-                    <dd>
-                        <div class="sgimg2">
-                            <a href="/jiehun/hanshixieliuhai/20160412144875.html" target=_blank>
-                                <img src="/jiehun/uploads/allimg/160412/52-1604121FT90-L.jpg" alt="中长发加斜刘海怎么扎发 韩"
-                                />
-                            </a>
-                            <p class="iatit2">
-                                <em class="left-arr">
-                                </em>
-                                <a href="/jiehun/hanshixieliuhai/20160412144875.html" class="txt" target=_blank>
-                                    中长发加斜刘海怎么扎发 韩
-                                </a>
-                                <em class="right-arr">
-                                </em>
-                                <b class="bg">
-                                </b>
-                            </p>
-                        </div>
-                    </dd>
-                </dl>
-                <dl class="dlbox2">
-                    <dd>
-                        <div class="sgimg2">
-                            <a href="/jiehun/qiliuhaijuanfafaxing/20160412144874.html" target=_blank>
-                                <img src="/jiehun/uploads/160412/42-1604121F243453.jpg" alt="齐刘海短卷发发型 瞬间提升"
-                                />
-                            </a>
-                            <p class="iatit2">
-                                <em class="left-arr">
-                                </em>
-                                <a href="/jiehun/qiliuhaijuanfafaxing/20160412144874.html" class="txt"
-                                target=_blank>
-                                    齐刘海短卷发发型 瞬间提升
-                                </a>
-                                <em class="right-arr">
-                                </em>
-                                <b class="bg">
-                                </b>
-                            </p>
-                        </div>
-                    </dd>
-                </dl>
-                <dl class="dlbox2">
-                    <dd>
-                        <div class="sgimg2">
-                            <a href="/jiehun/qiliuhaijuanfafaxing/20160412144872.html" target=_blank>
-                                <img src="/jiehun/uploads/160412/42-1604121A342117.jpg" alt="齐刘海长卷发发型图片 甜美"
-                                />
-                            </a>
-                            <p class="iatit2">
-                                <em class="left-arr">
-                                </em>
-                                <a href="/jiehun/qiliuhaijuanfafaxing/20160412144872.html" class="txt"
-                                target=_blank>
-                                    齐刘海长卷发发型图片 甜美
-                                </a>
-                                <em class="right-arr">
-                                </em>
-                                <b class="bg">
-                                </b>
-                            </p>
-                        </div>
-                    </dd>
-                </dl>
-                <dl class="dlbox2">
-                    <dd>
-                        <div class="sgimg2">
-                            <a href="/jiehun/hanshiliuhai/20160412144877.html" target=_blank>
-                                <img src="/jiehun/uploads/allimg/160412/52-1604121H6440-L.jpg" alt="斜刘海韩式编发发型步骤 修"
-                                />
-                            </a>
-                            <p class="iatit2">
-                                <em class="left-arr">
-                                </em>
-                                <a href="/jiehun/hanshiliuhai/20160412144877.html" class="txt" target=_blank>
-                                    斜刘海韩式编发发型步骤 修
-                                </a>
-                                <em class="right-arr">
-                                </em>
-                                <b class="bg">
-                                </b>
-                            </p>
-                        </div>
-                    </dd>
-                </dl>
             </div>
         </div>
         <!-- 第三部分 美容左end-->

@@ -1,36 +1,26 @@
 <?php
 use yii\helpers\Url;
 
-$categoryInfos = $this->context->articleCategoryInfos;
-$navStr = '';
-$navSub = $navTops = [];
-foreach ($categoryInfos as $catId => $info) {
-	$urlCategory = url::to(['/site/list', 'code' => $info['catdir']]);
-	if ($info['parent_id'] == 0) {
-	    $navStr .= "<li class='w1'><a href='{$urlCategory}' rel='dropmenu{$catId}'>{$info['name']}</a></li>";
-		$navTops[] = $catId;
-	} else {
-	    $navStrSub = "<li><a href='{$urlCategory}'>{$info['name']}</a></li>";
-		if (isset($navSub[$info['parent_id']])) {
-			$navSub[$info['parent_id']] .= $navStrSub;
-		} else {
-			$navSub[$info['parent_id']] = $navStrSub;
-		}
-	}
-}
+$levelInfos = $this->context->articleCategoryLevelInfos;
 
-$this->params['categoryInfos'] = $categoryInfos;
+$this->params['levelInfos'] = $levelInfos;
 ?>
 <div id="nav">
     <div class="logo">
         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/default/images/hunslogo.png">
     </div>
-	<ul><?php for ($i = 0; $i < 8; $i++) { echo $navStr;} ?></ul> 
+	<ul>
+	<?php for ($i = 0; $i < 8; $i++) { foreach ($levelInfos[0] as $catId => $info) { ?>
+	    <li class='w1'><a href='<?= $info['url']; ?>' rel='dropmenu<?= $catId; ?>'><?= $info['name']; ?></a></li>
+    <?php } } ?>
+    </ul> 
     <ul>
         <div style="clear:both;"></div>
-        <?php foreach ($navTops as $navTop) { ?>
-		<ul id="dropmenu<?= $navTop; ?>" class="dropMenu" style="background: #fff">
-            <?= $navSub[$navTop]; ?>
+        <?php foreach ($levelInfos as $parentId => $infos) { ?>
+		<ul id="dropmenu<?= $parentId; ?>" class="dropMenu" style="background: #fff">
+            <?php foreach ($infos as $catId => $info) { ?>
+			    <li><a href='<?= $info['url']; ?>'><?= $info['name']; ?></a></li>
+            <?php } ?>
         </ul>
         <?php } ?>
     </ul>
