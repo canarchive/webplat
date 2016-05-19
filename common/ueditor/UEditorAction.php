@@ -94,6 +94,7 @@ class UEditorAction extends Action
             case 'uploadimage':
                 $config = array(
                     "pathRoot" => ArrayHelper::getValue($this->config, "imageRoot", $_SERVER['DOCUMENT_ROOT']),
+                    "urlPrefix" => ArrayHelper::getValue($this->config, "imageUrlPrefix", ''),
                     "pathFormat" => $this->config['imagePathFormat'],
                     "maxSize" => $this->config['imageMaxSize'],
                     "allowFiles" => $this->config['imageAllowFiles']
