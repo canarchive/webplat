@@ -1,30 +1,40 @@
 <?php
 namespace gallerycms\components;
 
+use yii\helpers\Url;
 use common\components\Controller as CommonController;
 
 class Controller extends CommonController
 {
-	public function getArticleCategoryInfos()
+	public function getArticleCategoryInfos($catId = null)
 	{
 		static $datas = null;
 
-		if (is_null($infos)) {
+		if (is_null($datas)) {
 		    $category = new \gallerycms\models\ArticleCategory();
-		    $infos = $category->find()->where(['status' => 1])->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->asArray()->all();
+			$datas = $category->getDatas();
 		}
 
-		$datas = [
-			'infos' => $infos,
-			'levelInfos' => [],
-		];
-		foreach ($infos as $catId => $info) {
-			if (!isset($datas['levelInfos'][$info['parent_id']]) {
-				$datas['levelInfos'][$ifno['parent_id']] = [];
-			}
-			$datas['levelInfos'][$ifno['parent_id']][$catId] = $info;
+		if (!is_null($catId)) {
+			return isset($datas[$catId]) ? $datas[$catId] : [];
 		}
 
 		return $datas;
 	}	
+
+	public function getArticleCategoryLevelInfos($parentId = null)
+	{
+		static $datas = null;
+
+		if (is_null($datas)) {
+		    $category = new \gallerycms\models\ArticleCategory();
+			$datas = $category->getLevelDatas();
+		}
+
+		if (!is_null($parentId)) {
+			return isset($datas[$parentId]) ? $datas[$parentId] : [];
+		}
+
+		return $datas;
+	}		
 }

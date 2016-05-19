@@ -12,6 +12,7 @@ return [
             'showScriptName' => false,
 			'suffix' => '.html',
             'rules' => [
+		        ['pattern' => '/gallerycms-upload/<table:\w+>/<field:\w+>', 'route' => '/gallerycms-upload/index', 'host' => Yii::getAlias('@gallerycmsurl')],
             ],
         ],
 		'assetManager' => [

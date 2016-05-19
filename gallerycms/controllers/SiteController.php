@@ -18,6 +18,16 @@ class SiteController extends GallerycmsController
 
 	public function actionShow()
 	{
-        return $this->render('show');
+		$id = \Yii::$app->request->get('id');
+		if (empty($id)) {
+			exit('参数错误');
+		}
+		$model = new \gallerycms\models\Article();
+		$info = $model->findOne($id);
+		if (empty($info)) {
+			exit('信息不存在');
+		}
+		$categoryInfo = $info->categoryInfos[$info->category_id];
+        return $this->render('show', ['info' => $info, 'categoryInfo' => $categoryInfo]);
 	}
 }
