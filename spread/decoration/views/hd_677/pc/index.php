@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Url;
+?>
 <!DOCTYPE html>
 <head>
 <!--SEO 移动适配-->
@@ -17,6 +20,10 @@
     <script src="http://s4.17house.com/common/js/plugin/selectivizr.js"></script>
 <![endif]--></head>
 <script>
+var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
+if (isMobile == 1) {
+	window.location.href = "<?= Yii::getAlias('@mspreadurl') . Url::to(['/decoration/detail/inner', 'view' => 'design']); ?>";
+}
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
 <body>

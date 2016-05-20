@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +24,10 @@ use yii\helpers\Html;
     <link rel="stylesheet" type="text/css" href="http://s4.17house.com/jiazhuangtong/zxtc_h5/css/loaders.css?v=58" />
     <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/css/zzv3_677.css?v=20160513">
 <script>
+var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
+if (isMobile == 0) {
+	window.location.href = "<?= Yii::getAlias('@spreadurl') . Url::to(['/decoration/detail/index', 'id' => 1]); ?>";
+}
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
 </head>

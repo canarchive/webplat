@@ -1,25 +1,4 @@
-<?php
-use yii\helpers\Html;
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>免费量房</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/common.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/icon_font.css?v=1">
-    <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/free_design.css?v=1">
-
-<script>
-window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
-</script>
-</head>
-
+<?php echo $this->render('_header', ['info' => $info, 'title' => '免费量房']); ?>
 <body class="lf-body">
     <!--页头 start-->
     <header class="cWhite cMdGray ">

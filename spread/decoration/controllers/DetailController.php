@@ -7,10 +7,17 @@ use spread\decoration\models\SignupForm;
 
 class DetailController extends Controller
 {
+	public $isMobile;
+	public function init()
+	{
+		parent::init();
+
+		$this->isMobile = $this->clientIsMobile();
+		\Yii::$app->params['isMobile'] = $this->isMobile;
+	}
     public function actionIndex()
     {
         $model = new SignupForm();
-        $isMobile = $this->clientIsMobile();
 
         //$code = 'default';
         $code = 'hd';
@@ -33,14 +40,13 @@ class DetailController extends Controller
         ];
 
 		$type = '677';//$info['type'];
-		$viewPath = $isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
+		$viewPath = $this->isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
         return $this->render($viewPath . 'index.php', $datas);   
     }
 
 	public function actionInner()
     {
         $model = new SignupForm();
-        $isMobile = $this->clientIsMobile();
 
         //$code = 'default';
         $code = 'inner';
@@ -55,7 +61,7 @@ class DetailController extends Controller
         ];
 
 		$type = '677';//$info['type'];
-		$viewPath = $isMobile ? "/{$code}/h5/" : "/{$code}/h5/";
+		$viewPath = $this->isMobile ? "/{$code}/h5/" : "/{$code}/h5/";
 		$view = $viewPath . $view;
         return $this->render($view, $datas);   
     }
