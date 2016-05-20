@@ -8,11 +8,18 @@ use spread\decoration\models\SignupForm;
 class DetailController extends Controller
 {
 	public $isMobile;
+	public $mHost;
+	public $host;
 	public function init()
 	{
 		parent::init();
 
 		$this->isMobile = $this->clientIsMobile();
+        $this->host = \Yii::$app->request->hostInfo;
+		$this->mHost = false;
+		if (in_array($this->host, \Yii::$app->params['mHosts'])) {
+			$this->mHost = true;
+		}
 		\Yii::$app->params['isMobile'] = $this->isMobile;
 	}
     public function actionIndex()
@@ -40,7 +47,7 @@ class DetailController extends Controller
         ];
 
 		$type = '677';//$info['type'];
-		$viewPath = $this->isMobile ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
+		$viewPath = $this->mHost ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
         return $this->render($viewPath . 'index.php', $datas);   
     }
 
@@ -53,15 +60,14 @@ class DetailController extends Controller
 		$view = \Yii::$app->request->get('view');
 		$view = !in_array($view, ['price', 'measure', 'design']) ? 'price' : $view;
 		$info = ['id' => 1];
-        $host = \Yii::$app->request->hostInfo;
         $datas = [
-            'host' => $host,
+            'host' => $this->host,
             'model' => $model,
 			'info' => $info,
         ];
 
 		$type = '677';//$info['type'];
-		$viewPath = $this->isMobile ? "/{$code}/h5/" : "/{$code}/h5/";
+		$viewPath = $this->mHost ? "/{$code}/h5/" : "/{$code}/h5/";
 		$view = $viewPath . $view;
         return $this->render($view, $datas);   
     }

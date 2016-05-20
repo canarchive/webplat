@@ -22,7 +22,7 @@ use yii\helpers\Url;
 <script>
 var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
 if (isMobile == 1) {
-	window.location.href = "<?= Yii::getAlias('@mspreadurl') . Url::to(['/decoration/detail/inner', 'view' => 'design']); ?>";
+	window.location.href = "<?= Yii::getAlias('@m1spreadurl') . Url::to(['/decoration/detail/inner', 'view' => 'design']); ?>";
 }
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
