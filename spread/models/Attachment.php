@@ -101,6 +101,14 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],
 			],			
+			'business_order' => [
+				'import' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 1000,
+    				'type' => '*',
+				],
+			],				
 		];
 
 		if (is_null($table) && is_null($field)) {
