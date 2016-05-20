@@ -53,6 +53,10 @@ class DetailController extends Controller
 
 	public function actionInner()
     {
+		if (empty($this->mHost) && $this->isMobile) {
+			$url = \Yii::getAlias('@m1spreadurl') . \Yii::$app->request->getUrl();
+			$this->redirect($url)->send();
+		}
         $model = new SignupForm();
 
         //$code = 'default';
