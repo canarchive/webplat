@@ -44,7 +44,7 @@ $import = $attachmentModel->getFieldInfos('business_order', 'import');
         'fieldOptions' => [
 			'isSingle' => $import['isSingle'],
 			'idField' => Html::getInputId($model, 'import'),
-            'accept' => 'image/*'
+            'accept' => '*'
         ],
         'clientOptions' => [
 		    //'dataType' => 'json',

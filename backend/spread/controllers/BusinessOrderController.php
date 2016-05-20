@@ -51,6 +51,13 @@ class BusinessOrderController extends AdminController
 		return $this->_importInfo(new BusinessOrder());
 	}
 
+	public function actionExport()
+	{
+		$model = new BusinessOrder();
+
+		$return = $model->export();
+	}
+
     public function actionUpdate($id = 0)
     {
 		if (Yii::$app->request->isAjax) {

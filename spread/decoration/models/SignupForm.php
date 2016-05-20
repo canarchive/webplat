@@ -124,6 +124,10 @@ class SignupForm extends Model
         //return $data;
 	}
 
+	/**
+	 * 获取礼品，包括抽奖、红包、装修礼包
+	 * 
+	 */
 	protected function getPresent($data)
 	{
 		if (!empty($this->lottery_id)) {

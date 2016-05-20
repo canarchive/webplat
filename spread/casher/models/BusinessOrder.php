@@ -36,7 +36,7 @@ class BusinessOrder extends SpreadModel
     {
         return [
             [['name', 'groupon_id'], 'required'],
-            [['status', 'order_prefix', 'order_start', 'order_end'], 'default', 'value' => 0],
+            [['status', 'order_prefix', 'order_start', 'order_end', 'import'], 'default', 'value' => 0],
         ];
     }
 
@@ -89,4 +89,76 @@ class BusinessOrder extends SpreadModel
 
 		return $info;
 	}	
+
+	public function export()
+	{
+		$grouponId = intval(\Yii::$app->request->get('groupon_id'));
+		if (empty($grouponId)) {
+			return ['status' => 400, 'message' => '参数错误'];
+		}
+
+		$infos = self::find()->where(['groupon_id' => $grouponId])->all();
+
+		//print_r($infos);
+		$datas = [];
+		foreach ($infos as $info) {
+			for ($i = $info['order_start']; $i <= $info['order_end']; $i++) {
+			    $data = [
+				    'name' => $info['name'],
+					'order' => $info['order_prefix'] * 100 + $i,
+			    ];
+				$datas[] = $data;
+			}
+		}
+
+		$this->exportDatas($datas);
+		return $datas;
+	}
+
+	public function import()
+	{
+		//print_r($this);
+		//print_r($_POST);exit();
+		$grouponId = $this->groupon_id;
+		$aId = $this->import;
+		if (empty($grouponId) || empty($aId)) {
+			$this->addError('error', '参数错误');
+			return false;
+		}
+
+		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+		if (empty($grouponInfo)) {
+			$this->addError('error', '指定的团购会不存在');
+			return false;
+		}
+
+		$attachment = \spread\models\Attachment::findOne($aId);
+		if (empty($attachment)) {
+			$this->addError('error', '指定的文件参数有误，请重新上传');
+			return false;
+		}
+		//print_r($attachment);exit();
+
+		$file = $attachment->getPathBase($attachment->path_prefix) . '/' . $attachment->filepath;
+		if (!file_exists($file)) {
+			$this->addError('error', '指定的文件不存在，请重新上传');
+			return false;
+		}
+
+		$datas = $this->importDatas($file);
+
+		foreach ($datas as $data) {
+			$data = [
+				'groupon_id' => $grouponId,
+				'name' => $data['A'],
+				'order_prefix' => $data['B'],
+				'order_start' => $data['C'],
+				'order_end' => $data['D'],
+			];
+			$self = new self($data);
+			$r = $self->save();
+		}
+
+		return true;
+	}
 }
