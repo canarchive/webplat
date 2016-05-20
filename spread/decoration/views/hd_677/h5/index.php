@@ -90,6 +90,6 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/jquery.lazyload.min.js"></script><!-- 懒加载 -->
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/awardRotate.js"></script><!-- 幸运大抽奖的旋转插件js -->
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/zzv3_677.js?v=20160513"></script><!-- 本页js -->
-
+<?php echo $this->render('@spread/decoration/views/_statistic', []); ?>
 </body>
 </html>

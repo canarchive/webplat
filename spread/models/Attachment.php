@@ -47,19 +47,19 @@ class Attachment extends AttachmentBase
 				'picture' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 100,
+    				'maxSize' => 300,
     				'type' => 'image/*',
 				],
 				'picture_small' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 40,
+    				'maxSize' => 200,
     				'type' => 'image/*',
 				],
 				'picture_lottery' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 100,
+    				'maxSize' => 300,
     				'type' => 'image/*',
 				],				
 				'map' => [

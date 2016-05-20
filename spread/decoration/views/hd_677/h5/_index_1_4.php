@@ -1,12 +1,12 @@
 <!-- 1. banner start -->
 <section>
 <div class="zzv3-banner">
-	<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/images/head677.jpg" class="img" alt="环保装修：677元/平米">
+	<img src="<?= $info['picture_small']; ?>" class="img" alt="环保装修：677元/平米">
 	<div class="txtbox">
-		<span class="txt1">环保<br>装修</span>
+		<!--<span class="txt1">环保<br>装修</span>
 		<span class="txt2">677</span>
 		<span class="txt3">元/m<sup>2</sup></span>
-		<span class="txt4">设计施工全程管家 &nbsp; 6大保障装修无忧</span>
+		<span class="txt4">设计施工全程管家 &nbsp; 6大保障装修无忧</span>-->
 	</div>
 </div>
 </section>

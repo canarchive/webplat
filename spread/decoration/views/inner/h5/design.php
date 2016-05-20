@@ -284,4 +284,6 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
             <!-- 免费预约VR家装设计 end -->
         </div>
     </section>
+    <input type="hidden" id="position" value="design" />
+    <input type="hidden" id="position_name" value="免费设计" />
     <?php echo $this->render('_footer', ['info' => $info, 'host' => $host]); ?>

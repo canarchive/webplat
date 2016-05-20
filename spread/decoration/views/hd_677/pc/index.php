@@ -1143,8 +1143,8 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 use yii\helpers\Html;
 ?>
     <input type="hidden" id="info_id" value="<?= $info['id']; ?>" />
-    <input type="hidden" id="position" value="design" />
-    <input type="hidden" id="position_name" value="免费设计" />
+    <input type="hidden" id="position" value="pc" />
+    <input type="hidden" id="position_name" value="PC推广页" />
     <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
 
 <!--大图弹框 end-->
@@ -1155,49 +1155,12 @@ use yii\helpers\Html;
     <br />公司：北京一起向上网络科技有限公司
     <br />地址：北京市东城区天元和平商业大厦东侧六层</section>
 <!--页脚 end-->
-<script src="http://s4.17house.com/common/js/common.js?v=5"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/common.js?v=5"></script>
 <script src="http://s4.17house.com/common/js/plugin/jquery.slides.min.js?v5"></script>
 <script src="http://s4.17house.com/common/js/plugin/jquery.flipster.js?v5"></script>
 <script src="http://s4.17house.com/common/js/poplayer.js?v5"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v5"></script>
-<!-- 商务通 Begin -->
-<script src="http://dkt.zoosnet.net/JS/LsJS.aspx?siteid=DKT85079174&float=1&lng=cn"></script>
-<!-- 商务通 End -->
-<!--baidu-->
-<script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?67984ef0a3cf99a54cad87edfb41cbdc";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();</script>
-<!-- Google analytics -->
-<script>(function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] ||
-        function() { (i[r].q = i[r].q || []).push(arguments)
-        },
-        i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-53338747-1', 'auto');
-    ga('send', 'pageview');</script>
-<!-- WPA Button Begin -->
-<script charset="utf-8" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzkzODA1NDQxMl8zNzI4NjNfNDAwNjYwMTAxN18"></script>
-<!-- WPA Button End -->
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://": " http://");
-    document.write(unescape("%3Cspan  style='display:none;' id='cnzz_stat_icon_1257830471'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257830471' type='text/javascript'%3E%3C/script%3E"));</script>
-<!-- 微信-->
-<script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?6a6c98cae878c88b6a7afcb152e1b674";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();</script>
-<script type="text/javascript">var logurl = 'http://stat.17house.com/stat.js?site=pc&subsite=677page&city=beijing&stype=view&_s=' + new Date().getTime();
-    document.write('<scri' + 'pt src="' + logurl + '"></sc' + 'ript>');</script></body>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v6"></script>
+<?php echo $this->render('@spread/decoration/views/_statistic', []); ?>
+</body>
 
 </html>
