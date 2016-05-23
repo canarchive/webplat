@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\ueditor\Ueditor;
+use common\ueditor\UEditor;
 
 ?>
 
@@ -15,7 +15,7 @@ use common\ueditor\Ueditor;
     <?= $form->field($model, 'template')->dropDownList($model->templateInfos, ['prompt' => Yii::t('admin-common', 'Select Template')]); ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
-	<?= $form->field($model, 'content')->widget(Ueditor::className(),[]) ?>
+	<?= $form->field($model, 'content')->widget(UEditor::className(),[]) ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>
     <?php ActiveForm::end(); ?>
