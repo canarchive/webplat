@@ -179,7 +179,7 @@ class Attachment extends BaseModel
         return $this->file->saveAs($filepath, false);
     }
 
-	protected function getPathBase($pathPrefix = null)
+	public function getPathBase($pathPrefix = null)
 	{
 		$pathParams = \Yii::$app->params['pathParams'];
 

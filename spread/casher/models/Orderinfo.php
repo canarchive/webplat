@@ -8,6 +8,7 @@ use yii\helpers\ArrayHelper;
 class Orderinfo extends SpreadModel
 {
 	public $company_id;
+	public $import;
 
     /**
      * @inheritdoc
@@ -36,7 +37,7 @@ class Orderinfo extends SpreadModel
         return [
             [['orderid', 'groupon_id', 'mobile'], 'required'],
             [['money', 'status', 'pos_machine_id', 'business_id'], 'default', 'value' => 0],
-			[['groupon_name', 'business_name'], 'safe'],
+			[['groupon_name', 'business_name', 'import'], 'safe'],
         ];
     }
 
@@ -80,9 +81,10 @@ class Orderinfo extends SpreadModel
 		return $datas;
 	}
 
-	public function getGrouponInfo()
+	public function getGrouponInfo($grouponId = null)
 	{
-		$info = \spread\casher\models\Groupon::findOne($this->groupon_id);
+		$grouponId = is_null($grouponId) ? $this->groupon_id : $grouponId;
+		$info = \spread\casher\models\Groupon::findOne($grouponId);
 
 		return $info;
 	}	
@@ -97,5 +99,87 @@ class Orderinfo extends SpreadModel
 	{
 		$infos = ArrayHelper::map(\spread\casher\models\PosMachine::find()->all(), 'id', 'name');
 		return $infos;
+	}
+
+	public function export()
+	{
+		$grouponId = intval(\Yii::$app->request->get('groupon_id'));
+		if (empty($grouponId)) {
+			return ['status' => 400, 'message' => '参数错误'];
+		}
+
+		$infos = self::find()->where(['groupon_id' => $grouponId])->all();
+
+		$this->exportDatas($infos);
+		return $datas;
+	}
+
+	public function import()
+	{
+		print_r($this);
+		print_r($_POST);
+		$grouponId = $this->groupon_id;
+		$aId = $this->import;
+		echo $aId;exit();
+		print_r($this);exit();
+		if (empty($grouponId) || empty($aId)) {
+			$this->addError('error', '参数错误');
+			return false;
+		}
+
+		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+		if (empty($grouponInfo)) {
+			$this->addError('error', '指定的团购会不存在');
+			return false;
+		}
+
+		$attachment = \spread\models\Attachment::findOne($aId);
+		if (empty($attachment)) {
+			$this->addError('error', '指定的文件参数有误，请重新上传');
+			return false;
+		}
+		//print_r($attachment);exit();
+
+		$file = $attachment->getPathBase($attachment->path_prefix) . '/' . $attachment->filepath;
+		if (!file_exists($file)) {
+			$this->addError('error', '指定的文件不存在，请重新上传');
+			return false;
+		}
+
+		$datas = $this->importDatas($file);
+
+		foreach ($datas as $data) {
+			$data = [
+				'groupon_id' => $grouponId,
+				'name' => $data['A'],
+				'order_prefix' => $data['B'],
+				'order_start' => $data['C'],
+				'order_end' => $data['D'],
+			];
+			$self = new self($data);
+			$r = $self->save();
+		}
+
+		return true;
+	}
+
+	public function _formatExportDatas($objPHPExcel, $datas)
+	{
+		static $grouponInfos = [];
+		$i = 1;
+
+		foreach ($datas as $data) {
+			$grouponId = $data['groupon_id'];
+			$grouponInfo = isset($grouponInfos[$grouponId]) ? $grouponInfos[$grouponId] : null;
+			$grouponInfo = is_null($grouponInfo) ? $this->getGrouponInfo($grouponId) : $grouponInfo;
+			$grouponName = isset($grouponInfo['groupon_name']) ? $grouponInfo['groupon_name'] : '';
+            $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $data['orderid'])
+                    ->setCellValue('B' . $i, $grouponName)
+                    ->setCellValue('C' . $i, $data['id']);
+			$i++;
+		}
+        
+		return $objPHPExcel;
 	}
 }

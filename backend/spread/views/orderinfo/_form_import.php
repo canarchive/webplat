@@ -7,7 +7,7 @@ use common\widgets\FileUploadUI;
 use spread\models\Attachment;
 
 $attachmentModel = new Attachment();
-$import = $attachmentModel->getFieldInfos('business_order', 'import');
+$import = $attachmentModel->getFieldInfos('orderinfo', 'import');
 
 ?>
 
@@ -18,7 +18,7 @@ $import = $attachmentModel->getFieldInfos('business_order', 'import');
 		$model->companyInfos, 
 		[
 			'prompt' => Yii::t('admin-common', 'Select Company'),
-            'onchange'=>'$.post("' . Url::to(['business-order/listinfo']) . '?action=grouponInfos&company_id=' . '"+$(this).val(),function(data){
+            'onchange'=>'$.post("' . Url::to(['orderinfo/listinfo']) . '?action=grouponInfos&company_id=' . '"+$(this).val(),function(data){
                 var htmlContent = "";
                 $.each(data, function(i, v) {
                     htmlContent += "<option value=\"" + i + "\">" + v + "</option>";
@@ -39,7 +39,7 @@ $import = $attachmentModel->getFieldInfos('business_order', 'import');
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
         'attribute' => 'files[import]',
-        'url' => ['/spread-upload/index', 'table' => 'business_order', 'field' => 'import', 'id' => $model->id],
+        'url' => ['/spread-upload/index', 'table' => 'orderinfo', 'field' => 'import', 'id' => $model->id],
 		'gallery' => true,
         'fieldOptions' => [
 			'isSingle' => $import['isSingle'],

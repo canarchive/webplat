@@ -21,7 +21,8 @@ class OrderinfoController extends AdminController
 		}		
 
         $searchModel = new OrderinfoSearch();
-		return $this->_listinfoInfo($searchModel);
+		$searchDatas = $searchModel->getSearchDatas();
+		return $this->_listinfoInfo($searchModel, $searchDatas);
     }
 
 	protected function grouponInfos()
@@ -58,4 +59,16 @@ class OrderinfoController extends AdminController
     {
 		return $this->_deleteInfo($id);
     }
+
+	public function actionImport()
+	{
+		return $this->_importInfo(new Orderinfo());
+	}
+
+	public function actionExport()
+	{
+		$model = new Orderinfo();
+
+		$return = $model->export();
+	}	
 }

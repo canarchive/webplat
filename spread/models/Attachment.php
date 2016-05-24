@@ -106,7 +106,15 @@ class Attachment extends AttachmentBase
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 1000,
-    				'type' => '*',
+    				'type' => 'application/*',
+				],
+			],				
+			'orderinfo' => [
+				'import' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 1000,
+    				'type' => 'application/*',
 				],
 			],				
 		];
