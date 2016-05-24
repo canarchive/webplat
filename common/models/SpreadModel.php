@@ -42,14 +42,8 @@ class SpreadModel extends BaseModel
         							 ->setCategory("Test result file");
         
         
-		$i = 1;
-		foreach ($datas as $data) {
-            $objPHPExcel->setActiveSheetIndex(0)
-                    ->setCellValue('A' . $i, $data['name'])
-                    ->setCellValue('B' . $i, $data['order']);
-			$i++;
-		}
-        
+		$objPHPExcel = $this->_formatExportDatas($objPHPExcel, $datas);
+
         // Rename worksheet
         $objPHPExcel->getActiveSheet()->setTitle('Simple');
         

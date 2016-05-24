@@ -45,4 +45,5 @@ $gridViewParams = [
     ],
 ];
 
-echo $this->render('@app/views/common/listinfo', ['gridViewParams'  => $gridViewParams]);
+$searchContent = $this->render('_search', array_merge($searchDatas, ['model' => $searchModel]));
+echo $this->render('@app/views/common/listinfo', ['gridViewParams'  => $gridViewParams, 'searchContent' => $searchContent]);

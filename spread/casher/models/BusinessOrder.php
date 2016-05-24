@@ -117,10 +117,11 @@ class BusinessOrder extends SpreadModel
 
 	public function import()
 	{
-		//print_r($this);
-		//print_r($_POST);exit();
+		print_r($this);
+		print_r($_POST);exit();
 		$grouponId = $this->groupon_id;
 		$aId = $this->import;
+		echo $aId;exit();
 		if (empty($grouponId) || empty($aId)) {
 			$this->addError('error', '参数错误');
 			return false;
@@ -160,5 +161,18 @@ class BusinessOrder extends SpreadModel
 		}
 
 		return true;
+	}
+
+	public function _formatExportDatas($objPHPExcel, $datas)
+	{
+		$i = 1;
+		foreach ($datas as $data) {
+            $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $data['name'])
+                    ->setCellValue('B' . $i, $data['order']);
+			$i++;
+		}
+        
+		return $objPHPExcel;
 	}
 }
