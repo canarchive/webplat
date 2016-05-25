@@ -9,6 +9,7 @@ class Orderinfo extends SpreadModel
 {
 	public $company_id;
 	public $import;
+	public $import_business;
 
     /**
      * @inheritdoc
@@ -37,7 +38,7 @@ class Orderinfo extends SpreadModel
         return [
             [['orderid', 'groupon_id', 'mobile'], 'required'],
             [['money', 'status', 'pos_machine_id', 'business_id'], 'default', 'value' => 0],
-			[['groupon_name', 'business_name', 'import'], 'safe'],
+			[['groupon_name', 'business_name', 'import', 'import_business', 'sn_pos'], 'safe'],
         ];
     }
 
@@ -48,6 +49,7 @@ class Orderinfo extends SpreadModel
     {
         return [
             'id' => 'ID',
+			'sn_pos' => 'POS流水号',
             'orderid' => '订单号',
 			'pos_machine_id' => '收银机ID',
 			'groupon_id' => '团购会ID',
@@ -120,9 +122,8 @@ class Orderinfo extends SpreadModel
 		print_r($_POST);
 		$grouponId = $this->groupon_id;
 		$aId = $this->import;
-		echo $aId;exit();
-		print_r($this);exit();
-		if (empty($grouponId) || empty($aId)) {
+		$aIdBusiness = $this->import_business;
+		if (empty($grouponId) || empty($aId) || empty($aIdBusiness)) {
 			$this->addError('error', '参数错误');
 			return false;
 		}
@@ -134,19 +135,22 @@ class Orderinfo extends SpreadModel
 		}
 
 		$attachment = \spread\models\Attachment::findOne($aId);
-		if (empty($attachment)) {
+		$attachmentBusiness = \spread\models\Attachment::findOne($aIdBusiness);
+		if (empty($attachment) || empty($attachmentBusiness)) {
 			$this->addError('error', '指定的文件参数有误，请重新上传');
 			return false;
 		}
-		//print_r($attachment);exit();
 
 		$file = $attachment->getPathBase($attachment->path_prefix) . '/' . $attachment->filepath;
-		if (!file_exists($file)) {
+		$fileBusiness = $attachmentBusiness->getPathBase($attachmentBusiness->path_prefix) . '/' . $attachmentBusiness->filepath;
+		if (!file_exists($file) || !file_exists($fileBusiness)) {
 			$this->addError('error', '指定的文件不存在，请重新上传');
 			return false;
 		}
 
 		$datas = $this->importDatas($file);
+		$datasBusiness = $this->importDatas($fileBusiness);
+		print_r($datas);
 
 		foreach ($datas as $data) {
 			$data = [

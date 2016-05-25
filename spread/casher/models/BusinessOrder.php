@@ -4,6 +4,7 @@ namespace spread\casher\models;
 
 use common\models\SpreadModel;
 use yii\helpers\ArrayHelper;
+use Overtrue\Pinyin\Pinyin;
 
 class BusinessOrder extends SpreadModel
 {
@@ -36,7 +37,8 @@ class BusinessOrder extends SpreadModel
     {
         return [
             [['name', 'groupon_id'], 'required'],
-            [['status', 'order_prefix', 'order_start', 'order_end', 'import'], 'default', 'value' => 0],
+            [['status', 'order_range', 'import'], 'default', 'value' => 0],
+			[['sort'], 'safe'],
         ];
     }
 
@@ -47,11 +49,10 @@ class BusinessOrder extends SpreadModel
     {
         return [
             'id' => 'ID',
+			'sort' => '分类',
             'name' => '商家名称',
 			'groupon_id' => '团购会ID',
-            'order_prefix' => '四联单前缀',
-            'order_start' => '四联单首号',
-            'order_end' => '四联单尾号',
+            'order_range' => '四联单号段',
             'created_at' => '添加时间',
             'updated_at' => '更新时间',
 			'status' => '状态',
@@ -97,31 +98,43 @@ class BusinessOrder extends SpreadModel
 			return ['status' => 400, 'message' => '参数错误'];
 		}
 
+		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+		if (empty($grouponInfo)) {
+			$this->addError('error', '指定的团购会不存在');
+			return false;
+		}			
+
 		$infos = self::find()->where(['groupon_id' => $grouponId])->all();
 
-		//print_r($infos);
+		//print_r($infos);exit();
 		$datas = [];
 		foreach ($infos as $info) {
-			for ($i = $info['order_start']; $i <= $info['order_end']; $i++) {
+			$orderRange = explode('-', $info['order_range']);
+			$orderStart = isset($orderRange[0]) ? $orderRange[0] : 0;
+			$orderEnd = isset($orderRange[1]) ? $orderRange[1] : 0;
+			if (empty($orderStart) || empty($orderEnd) || $orderEnd - $orderStart > 500) {
+				continue;
+			}
+			for ($order = $orderStart; $order <= $orderEnd; $order++) {
 			    $data = [
 				    'name' => $info['name'],
-					'order' => $info['order_prefix'] * 100 + $i,
+					'order' => $order,
+					'sort_code' => '01',
+					'depart_code' => '01',
+					'code' => str_replace(' ', '', Pinyin::letter($info['name'])) . substr($order, -3),
 			    ];
 				$datas[] = $data;
 			}
 		}
 
-		$this->exportDatas($datas);
-		return $datas;
+		$this->exportDatas($datas, $grouponInfo['groupon_name'] . '商家四联单');
+		return ;
 	}
 
 	public function import()
 	{
-		print_r($this);
-		print_r($_POST);exit();
 		$grouponId = $this->groupon_id;
 		$aId = $this->import;
-		echo $aId;exit();
 		if (empty($grouponId) || empty($aId)) {
 			$this->addError('error', '参数错误');
 			return false;
@@ -138,7 +151,6 @@ class BusinessOrder extends SpreadModel
 			$this->addError('error', '指定的文件参数有误，请重新上传');
 			return false;
 		}
-		//print_r($attachment);exit();
 
 		$file = $attachment->getPathBase($attachment->path_prefix) . '/' . $attachment->filepath;
 		if (!file_exists($file)) {
@@ -148,19 +160,28 @@ class BusinessOrder extends SpreadModel
 
 		$datas = $this->importDatas($file);
 
-		foreach ($datas as $data) {
+		$i = 0;
+		foreach ($datas as $key => $data) {
+			if ($key == 1 || empty($data['A']) || empty($data['B']) || empty($data['C'])) {
+				continue;
+			}
 			$data = [
 				'groupon_id' => $grouponId,
-				'name' => $data['A'],
-				'order_prefix' => $data['B'],
-				'order_start' => $data['C'],
-				'order_end' => $data['D'],
+				'sort' => trim($data['B']),
+				'name' => trim($data['C']),
+				'order_num' => intval(trim($data['D'])),
+				'order_range' => trim($data['E']),
 			];
+			$info = $this->findOne(['groupon_id' => $grouponId, 'order_range' => $data['order_range']]);
+			if (!empty($info)) {
+				continue;
+			}
 			$self = new self($data);
-			$r = $self->save();
+			$r = @ $self->save();
+			$i++;
 		}
 
-		return true;
+		return $i;
 	}
 
 	public function _formatExportDatas($objPHPExcel, $datas)
@@ -169,7 +190,12 @@ class BusinessOrder extends SpreadModel
 		foreach ($datas as $data) {
             $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A' . $i, $data['name'])
-                    ->setCellValue('B' . $i, $data['order']);
+                    ->setCellValue('B' . $i, $data['order'])
+                    ->setCellValue('C' . $i, $data['code'])
+                    ->setCellValue('D' . $i, $data['sort_code'])
+                    ->setCellValue('E' . $i, $data['depart_code'])
+                    ->setCellValue('F' . $i, $data['depart_code'])
+                    ->setCellValue('G' . $i, '部类商品');
 			$i++;
 		}
         
