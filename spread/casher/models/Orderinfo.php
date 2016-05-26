@@ -36,9 +36,9 @@ class Orderinfo extends SpreadModel
     public function rules()
     {
         return [
-            [['orderid', 'groupon_id', 'mobile'], 'required'],
+            [['orderid', 'groupon_id'], 'required'],
             [['money', 'status', 'pos_machine_id', 'business_id'], 'default', 'value' => 0],
-			[['groupon_name', 'business_name', 'import', 'import_business', 'sn_pos'], 'safe'],
+			[['groupon_name', 'business_name', 'import', 'import_business', 'sn_pos', 'mobile'], 'safe'],
         ];
     }
 
@@ -120,7 +120,7 @@ class Orderinfo extends SpreadModel
 	{
 		//print_r($this);
 		//print_r($_POST);
-		$grouponId = $this->groupon_id;
+		$grouponId = 2355;//$this->groupon_id;
 		$aId = $this->import;
 		$aIdBusiness = $this->import_business;
 		if (empty($grouponId) || empty($aId) || empty($aIdBusiness)) {
@@ -128,7 +128,7 @@ class Orderinfo extends SpreadModel
 			return false;
 		}
 
-		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+		$grouponInfo = ['groupon_name' => '团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
 		if (empty($grouponInfo)) {
 			$this->addError('error', '指定的团购会不存在');
 			return false;
@@ -150,6 +150,12 @@ class Orderinfo extends SpreadModel
 
 		$datas = $this->importDatas($file);
 		$datasBusiness = $this->importDatas($fileBusiness);
+		if (empty($datas) || empty($datasBusiness)) {
+			$this->addError('error', '没有要录入的信息');
+			return false;
+		}
+
+		$businessSortInfos = ArrayHelper::map(\spread\casher\models\BusinessOrder::find(['groupon_id' => $grouponId])->all(), 'name', 'sort');
 		//print_r($datasBusiness);
 		//print_r($datas);
 
@@ -159,48 +165,41 @@ class Orderinfo extends SpreadModel
 				continue;
 			}
 			$infos[$data['A']] = [
-				'note' => $data['F'],
-				'pay_money' => $data['E'],
-				'money' => $data['D'],
+				'note' => (string) $data['F'],
 			];
 		}
 
 		foreach ($datas as $data) {
-			if (empty($data['A']) || $data['A'] == '') {
+			if (empty($data['A']) || $data['A'] == '流水号') {
 				continue;
 			}
 			$sn = $data['A'];
+			$info = $this->findOne(['sn_pos' => $sn, 'orderid' => $data['D']]);
+			if (!empty($info)) {
+				//continue;
+			}
 			$insertData = [
-				'sn' => $sn,
-				'note' => isset($infos[$sn]) ? $infos[$sn]['note'] : '',
-				'pay_money' => isset($infos[$sn]) ? $infos[$sn]['pay_money'] : 0,
-				'money' => isset($infos[$sn]) ? $infos[$sn]['money'] : 0,
+				'sn_pos' => $sn,
 				'orderid' => $data['D'],
 				'groupon_id' => $grouponId,
 				'groupon_name' => $grouponInfo['groupon_name'],
+				'business_sort' => isset($businessSortInfos[$data['F']]) ? $businessSortInfos[$data['F']] : '',
 				'business_name' => $data['F'],
+				'mobile' => isset($infos[$sn]) ? $infos[$sn]['note'] : '',
 				'money' => $data['H'],
+				'created_day' => date('Ymd', strtotime($data['B'])),
+				'created_at' => strtotime($data['B']),
+				'updated_at' => strtotime($data['B']),
 			];
 			print_r($insertData);
-			//$self = new self($data);
-			//$r = $self->save();
-
-		}
-
-		print_r($infos);
-		exit();
-
-		foreach ($datas as $data) {
-			$data = [
-				'groupon_id' => $grouponId,
-				'name' => $data['A'],
-				'order_prefix' => $data['B'],
-				'order_start' => $data['C'],
-				'order_end' => $data['D'],
-			];
-			$self = new self($data);
+			$self = new self($insertData);
 			$r = $self->save();
+			var_dump($r);
+
 		}
+
+		//print_r($infos);
+		exit();
 
 		return true;
 	}
