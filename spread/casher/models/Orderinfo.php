@@ -118,8 +118,8 @@ class Orderinfo extends SpreadModel
 
 	public function import()
 	{
-		print_r($this);
-		print_r($_POST);
+		//print_r($this);
+		//print_r($_POST);
 		$grouponId = $this->groupon_id;
 		$aId = $this->import;
 		$aIdBusiness = $this->import_business;
@@ -150,7 +150,45 @@ class Orderinfo extends SpreadModel
 
 		$datas = $this->importDatas($file);
 		$datasBusiness = $this->importDatas($fileBusiness);
-		print_r($datas);
+		//print_r($datasBusiness);
+		//print_r($datas);
+
+		$infos = [];
+		foreach ($datasBusiness as $data) {
+			if (empty($data['A']) || ($data['A'] == '流水号')) {
+				continue;
+			}
+			$infos[$data['A']] = [
+				'note' => $data['F'],
+				'pay_money' => $data['E'],
+				'money' => $data['D'],
+			];
+		}
+
+		foreach ($datas as $data) {
+			if (empty($data['A']) || $data['A'] == '') {
+				continue;
+			}
+			$sn = $data['A'];
+			$insertData = [
+				'sn' => $sn,
+				'note' => isset($infos[$sn]) ? $infos[$sn]['note'] : '',
+				'pay_money' => isset($infos[$sn]) ? $infos[$sn]['pay_money'] : 0,
+				'money' => isset($infos[$sn]) ? $infos[$sn]['money'] : 0,
+				'orderid' => $data['D'],
+				'groupon_id' => $grouponId,
+				'groupon_name' => $grouponInfo['groupon_name'],
+				'business_name' => $data['F'],
+				'money' => $data['H'],
+			];
+			print_r($insertData);
+			//$self = new self($data);
+			//$r = $self->save();
+
+		}
+
+		print_r($infos);
+		exit();
 
 		foreach ($datas as $data) {
 			$data = [
