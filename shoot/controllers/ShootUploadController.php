@@ -14,6 +14,9 @@ class ShootUploadController extends UploadController
 
 	protected function getAttachment($params = [])
 	{
+		if ($params['info_table'] == 'sample') {
+			return new \shoot\models\AttachmentSample($params);
+		}
 		return new Attachment($params);
 	}
 }

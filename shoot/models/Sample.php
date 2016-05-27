@@ -6,6 +6,8 @@ use common\models\ShootModel;
 
 class Sample extends ShootModel
 {
+	public $picture;
+
     /**
      * @inheritdoc
      */
@@ -17,23 +19,10 @@ class Sample extends ShootModel
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-		$behaviors = [
-		    $this->timestampBehaviorComponent,
-		];
-		return $behaviors;
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['name', 'type'], 'required'],
-            [['orderlist', 'status', 'picture', 'picture_mobile', 'picture_ext'], 'default', 'value' => 0],
-			[['description', 'url', 'name_ext'], 'safe'],
+            [['category_id', 'photographer_id'], 'required'],
         ];
     }
 
@@ -59,25 +48,9 @@ class Sample extends ShootModel
         ];
     }
 
-	public function getStatusInfos()
+	public function save($runValidation = true, $attributeNames = NULL)
 	{
-		$datas = [
-			'0' => '停用',
-			'1' => '正常',
-		];
-		return $datas;
-	}
-
-	public function getTypeInfos()
-	{
-		$datas = [
-			'index_slice' => '首页-幻灯',
-			'index_goods' => '首页-商品',
-			'index_sample' => '首页-样片',
-			'index_member' => '首页-用户',
-			'list_goods' => '列表页-商品',
-		];
-		return $datas;
+		return true;
 	}
 
 	public function afterSave($insert, $changedAttributes)

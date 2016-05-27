@@ -25,7 +25,7 @@ class SampleController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Sample());
+		return $this->_addInfo(new Sample(), false);
     }
 
     public function actionUpdate($id = 0)
