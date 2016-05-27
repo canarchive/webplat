@@ -58,8 +58,11 @@ class Orderinfo extends SpreadModel
 			'business_name' => '商家名字',
             'mobile' => '业主手机号',
             'status' => '状态',
+            'created_day' => '下单日期',
             'created_at' => '添加时间',
             'updated_at' => '更新时间',
+			'import' => 'POS汇总订单',
+			'import_business' => 'POS商家订单',
         ];
     }
 
@@ -155,13 +158,13 @@ class Orderinfo extends SpreadModel
 			return false;
 		}
 
-		$businessSortInfos = ArrayHelper::map(\spread\casher\models\BusinessOrder::find(['groupon_id' => $grouponId])->all(), 'name', 'sort');
-		//print_r($datasBusiness);
+		$businessSortInfos = \spread\casher\models\BusinessOrder::find(['groupon_id' => $grouponId])->indexBy('name')->all();
 		//print_r($datas);
+		//print_r($datasBusiness);exit();
 
 		$infos = [];
-		foreach ($datasBusiness as $data) {
-			if (empty($data['A']) || ($data['A'] == '流水号')) {
+		foreach ($datas as $data) {
+			if (empty($data['A']) || $data['A'] == 'POS机交易流水') {
 				continue;
 			}
 			$infos[$data['A']] = [
@@ -169,8 +172,8 @@ class Orderinfo extends SpreadModel
 			];
 		}
 
-		foreach ($datas as $data) {
-			if (empty($data['A']) || $data['A'] == '流水号') {
+		foreach ($datasBusiness as $data) {
+			if (empty($data['A']) || ($data['A'] == '流水号')) {
 				continue;
 			}
 			$sn = $data['A'];
