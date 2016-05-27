@@ -10,6 +10,8 @@ use yii\bootstrap\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'sort_big')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'sort')->textInput(['maxlength' => 128]) ?>
 	<?= $form->field($model, 'company_id')->dropDownList(
 		$model->companyInfos, 
 		[
@@ -31,8 +33,7 @@ use yii\bootstrap\ActiveForm;
 			'id' => 'groupon_id',
 		]
 	); ?>
-    <?= $form->field($model, 'order_start')->textInput() ?>
-    <?= $form->field($model, 'order_end')->textInput() ?>
+    <?= $form->field($model, 'order_range')->textInput() ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>

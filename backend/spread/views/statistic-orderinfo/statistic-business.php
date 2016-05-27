@@ -17,6 +17,7 @@ $currentMenuUrl = $controller->menuInfos['currentMenu']['url'];
                 <table class="table table-striped table-bordered responsive">
                     <thead>
                     <tr>
+                        <th>项目</th>
                         <th>品类</th>
                         <th>名称</th>
                         <th>签单数</th>
@@ -27,6 +28,7 @@ $currentMenuUrl = $controller->menuInfos['currentMenu']['url'];
                     <tbody>
                     <?php foreach ($datas as $data) { ?>
                     <tr>
+					    <td><?= $data['business_sort_big']; ?></td>
 					    <td><?= $data['business_sort']; ?></td>
 					    <td><?= $data['business_name']; ?></td>
 					    <td><?= $data['count']; ?></td>

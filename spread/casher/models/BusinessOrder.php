@@ -38,7 +38,7 @@ class BusinessOrder extends SpreadModel
         return [
             [['name', 'groupon_id'], 'required'],
             [['status', 'order_range', 'import'], 'default', 'value' => 0],
-			[['sort'], 'safe'],
+			[['sort', 'sort_big'], 'safe'],
         ];
     }
 
@@ -49,6 +49,7 @@ class BusinessOrder extends SpreadModel
     {
         return [
             'id' => 'ID',
+			'sort_big' => '一级分类',
 			'sort' => '分类',
             'name' => '商家名称',
 			'groupon_id' => '团购会ID',
@@ -167,10 +168,11 @@ class BusinessOrder extends SpreadModel
 			}
 			$data = [
 				'groupon_id' => $grouponId,
-				'sort' => trim($data['B']),
-				'name' => trim($data['C']),
-				'order_num' => intval(trim($data['D'])),
-				'order_range' => trim($data['E']),
+				'sort_big' => trim($data['B']),
+				'sort' => trim($data['C']),
+				'name' => trim($data['D']),
+				'order_num' => intval(trim($data['E'])),
+				'order_range' => trim($data['F']),
 			];
 			$info = $this->findOne(['groupon_id' => $grouponId, 'order_range' => $data['order_range']]);
 			if (!empty($info)) {

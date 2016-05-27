@@ -55,6 +55,8 @@ class Orderinfo extends SpreadModel
 			'groupon_id' => '团购会ID',
 			'groupon_name' => '团购会名字',
 			'business_id' => '商家ID',
+			'business_sort_big' => '一级分类',
+			'business_sort' => '分类',
 			'business_name' => '商家名字',
             'mobile' => '业主手机号',
             'status' => '状态',
@@ -158,7 +160,7 @@ class Orderinfo extends SpreadModel
 			return false;
 		}
 
-		$businessSortInfos = \spread\casher\models\BusinessOrder::find(['groupon_id' => $grouponId])->indexBy('name')->all();
+		$businessSortInfos = \spread\casher\models\BusinessOrder::find(['groupon_id' => $grouponId])->indexBy('name')->asArray()->all();
 		//print_r($datas);
 		//print_r($datasBusiness);exit();
 
@@ -172,6 +174,7 @@ class Orderinfo extends SpreadModel
 			];
 		}
 
+		$i = 0;
 		foreach ($datasBusiness as $data) {
 			if (empty($data['A']) || ($data['A'] == '流水号')) {
 				continue;
@@ -181,30 +184,27 @@ class Orderinfo extends SpreadModel
 			if (!empty($info)) {
 				//continue;
 			}
+			$businessName = $data['F'];
 			$insertData = [
 				'sn_pos' => $sn,
 				'orderid' => $data['D'],
 				'groupon_id' => $grouponId,
 				'groupon_name' => $grouponInfo['groupon_name'],
-				'business_sort' => isset($businessSortInfos[$data['F']]) ? $businessSortInfos[$data['F']] : '',
-				'business_name' => $data['F'],
+				'business_sort_big' => isset($businessSortInfos[$businessName]) ? $businessSortInfos[$businessName]['sort_big'] : '',
+				'business_sort' => isset($businessSortInfos[$businessName]) ? $businessSortInfos[$businessName]['sort'] : '',
+				'business_name' => $businessName,
 				'mobile' => isset($infos[$sn]) ? $infos[$sn]['note'] : '',
 				'money' => $data['H'],
 				'created_day' => date('Ymd', strtotime($data['B'])),
 				'created_at' => strtotime($data['B']),
 				'updated_at' => strtotime($data['B']),
 			];
-			print_r($insertData);
 			$self = new self($insertData);
 			$r = $self->save();
-			var_dump($r);
-
+			$i++;
 		}
 
-		//print_r($infos);
-		exit();
-
-		return true;
+		return $i;
 	}
 
 	public function _formatExportDatas($objPHPExcel, $datas)

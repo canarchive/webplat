@@ -4,10 +4,10 @@ $detailViewParams = [
     'model' => $model,
     'attributes' => [
 		'id',
+		'sort_big',
+		'sort',
         'name',
-		'order_prefix',
-		'order_start',
-		'order_end',
+		'order_range',
 		[
 			'attribute' => 'groupon_id',
 			'value' => !empty($model->grouponInfo) ? $model->grouponInfo['groupon_name'] : '',

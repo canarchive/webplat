@@ -20,7 +20,7 @@ class StatisticOrderinfo extends Orderinfo
 
 	protected function statisticBusiness($where)
 	{
-		$groupField = "`business_sort`, `business_name`, `created_day`";
+		$groupField = "`business_sort_big`, `business_sort`, `business_name`, `created_day`";
 		$selectField = $groupField . ', COUNT(*) AS `count`, SUM(`money`) AS `money`';
 		$orderField = '`count` DESC';
 
