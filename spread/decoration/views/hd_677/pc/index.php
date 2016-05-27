@@ -1162,12 +1162,31 @@ use yii\helpers\Html;
     <br />公司：北京一起向上网络科技有限公司
     <br />地址：北京市东城区天元和平商业大厦东侧六层</section>
 <!--页脚 end-->
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/common.js?v=5"></script>
+<script src="http://s4.17house.com/common/js/common.js?v=5"></script>
+<!--<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/common.js?v=5"></script>-->
 <script src="http://s4.17house.com/common/js/plugin/jquery.slides.min.js?v5"></script>
 <script src="http://s4.17house.com/common/js/plugin/jquery.flipster.js?v5"></script>
 <script src="http://s4.17house.com/common/js/poplayer.js?v5"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v6"></script>
-<?php echo $this->render('@spread/decoration/views/_statistic', []); ?>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?371dc64184e86cb9bff04d04e5960deb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- 53客服start -->
+<!--<script>
+(function() {
+  var _53code = document.createElement("script");
+  _53code.src = "//tb.53kf.com/code/code/10135389/1";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(_53code, s);
+})();
+</script>-->
+<!-- 53客服end -->
 </body>
 
 </html>
