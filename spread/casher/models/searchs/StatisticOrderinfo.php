@@ -55,4 +55,28 @@ class StatisticOrderinfo extends Orderinfo
 
 		return $datas;
 	}
+
+    public function export($datas)
+	{
+		$this->exportDatas($datas, "订单汇总");
+	}
+
+	public function _formatExportDatas($objPHPExcel, $datas)
+	{
+		$data = [
+			'business_sort_big' => '项目',
+			'business_sort' => '品类',
+		];
+		array_unshift($datas, $data);
+		foreach ($datas as $key => $data) {
+			$i = $key + 1;
+            $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $i, $key)
+                    ->setCellValue('B' . $i, $data['business_sort_big'])
+                    ->setCellValue('C' . $i, $data['business_sort']);
+		}
+        
+		return $objPHPExcel;
+	}
+
 }
