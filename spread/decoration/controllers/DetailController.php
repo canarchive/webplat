@@ -22,6 +22,14 @@ class DetailController extends Controller
 		}
 		\Yii::$app->params['isMobile'] = $this->isMobile;
 	}
+
+
+	public function actionHome()
+	{
+		$_GET['id'] = $this->mHost ? 3 : 1;
+		return $this->actionIndex();
+	}
+
     public function actionIndex()
     {
         $model = new SignupForm();

@@ -35,6 +35,7 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
+                '/' => '/decoration/detail/home',
 				//Yii::getAlias('@grouponurl') => '/groupon',
 				'detail/<id:\d+>' => 'groupon/detail/index',
                 'detail-<id:\d+>' => '/decoration/detail/index',
