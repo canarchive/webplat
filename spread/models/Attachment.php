@@ -116,6 +116,12 @@ class Attachment extends AttachmentBase
     				'maxSize' => 1000,
     				'type' => 'application/*',
 				],
+				'import_business' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 1000,
+    				'type' => 'application/*',
+				],
 			],				
 		];
 

@@ -31,7 +31,6 @@ use yii\bootstrap\ActiveForm;
 			'id' => 'groupon_id',
 		]
 	); ?>
-    <?= $form->field($model, 'order_prefix')->textInput() ?>
     <?= $form->field($model, 'order_start')->textInput() ?>
     <?= $form->field($model, 'order_end')->textInput() ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>

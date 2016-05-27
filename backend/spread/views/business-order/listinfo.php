@@ -5,10 +5,10 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
+		'sort',
         'name',
-		'order_prefix',
-		'order_start',
-		'order_end',
+		'order_num',
+		'order_range',
 		[
             'attribute' => 'groupon_id',
             'value'=> function($model){

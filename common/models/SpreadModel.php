@@ -21,7 +21,7 @@ class SpreadModel extends BaseModel
 		return $info;
 	}
 
-    public function exportDatas($datas)
+    public function exportDatas($datas, $title)
 	{
 		if (empty($datas)) {
 			return ['status' => '400', 'data empty'];
@@ -33,11 +33,11 @@ class SpreadModel extends BaseModel
         $objPHPExcel = new \PHPExcel\Spreadsheet();
         
         // Set document properties
-        $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-        							 ->setLastModifiedBy("Maarten Balliauw")
-        							 ->setTitle("Office 2007 XLSX Test Document")
-        							 ->setSubject("Office 2007 XLSX Test Document")
-        							 ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
+        $objPHPExcel->getProperties()->setCreator("Creator")
+        							 ->setLastModifiedBy("System")
+        							 ->setTitle($title)
+        							 ->setSubject($title)
+        							 ->setDescription($title)
         							 ->setKeywords("office 2007 openxml php")
         							 ->setCategory("Test result file");
         
@@ -45,7 +45,7 @@ class SpreadModel extends BaseModel
 		$objPHPExcel = $this->_formatExportDatas($objPHPExcel, $datas);
 
         // Rename worksheet
-        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+        $objPHPExcel->getActiveSheet()->setTitle($title);
         
         
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
@@ -54,7 +54,7 @@ class SpreadModel extends BaseModel
         
         // Redirect output to a client’s web browser (Excel2007)
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="01simple.xlsx"');
+        header('Content-Disposition: attachment;filename="' . $title . '.xls"');
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
