@@ -11,7 +11,7 @@ class DecorationOwner extends DecorationOwnerModel
 {
     public function search($params)
     {
-        $query = DecorationOwnerModel::find();
+        $query = DecorationOwnerModel::find()->orderBy('id DESC');
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 
