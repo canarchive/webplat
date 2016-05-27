@@ -30,6 +30,6 @@ class StatisticOrderinfoController extends AdminController
         $searchModel = new \spread\casher\models\searchs\StatisticOrderinfo();
 		$infos = $searchModel->getInfos($field);
 
-		return $this->render('statistic-orderinfo', ['datas' => $infos, 'fields' => $typeInfo]);
+		return $this->render('statistic-' . $field, ['datas' => $infos]);
     }
 }

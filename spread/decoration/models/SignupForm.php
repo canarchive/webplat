@@ -76,7 +76,8 @@ class SignupForm extends Model
 
 		);
 
-		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
+		//$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
+		$infoExist = DecorationOwner::findOne(['mobile' => $this->mobile]);
 		if ($infoExist && (!empty($this->lottery_id) || !empty($this->bonus_id) || !empty($this->gift_bag_id))) {
 			return $this->getPresent($data);
 		}
