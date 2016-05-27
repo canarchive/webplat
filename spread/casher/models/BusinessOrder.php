@@ -10,6 +10,7 @@ class BusinessOrder extends SpreadModel
 {
 	public $company_id;
 	public $import;
+	public $export;
 
     /**
      * @inheritdoc
@@ -57,6 +58,7 @@ class BusinessOrder extends SpreadModel
             'created_at' => '添加时间',
             'updated_at' => '更新时间',
 			'status' => '状态',
+			'export' => '导出',
         ];
     }
 
@@ -94,20 +96,25 @@ class BusinessOrder extends SpreadModel
 
 	public function export()
 	{
-		$grouponId = intval(\Yii::$app->request->get('groupon_id'));
-		if (empty($grouponId)) {
-			return ['status' => 400, 'message' => '参数错误'];
+		$id = intval(\Yii::$app->request->get('id'));
+		if ($id) {
+			$where = ['id' => $id];
+		} else {
+    		$grouponId = intval(\Yii::$app->request->get('groupon_id'));
+    		if (empty($grouponId)) {
+    			return ['status' => 400, 'message' => '参数错误'];
+    		}
+    
+    		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+    		if (empty($grouponInfo)) {
+    			$this->addError('error', '指定的团购会不存在');
+    			return false;
+    		}			
+			$where = ['groupon_id' => $grouponId];
 		}
 
-		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
-		if (empty($grouponInfo)) {
-			$this->addError('error', '指定的团购会不存在');
-			return false;
-		}			
+		$infos = self::find()->where($where)->all();
 
-		$infos = self::find()->where(['groupon_id' => $grouponId])->all();
-
-		//print_r($infos);exit();
 		$datas = [];
 		foreach ($infos as $info) {
 			$orderRange = explode('-', $info['order_range']);
@@ -128,7 +135,8 @@ class BusinessOrder extends SpreadModel
 			}
 		}
 
-		$this->exportDatas($datas, $grouponInfo['groupon_name'] . '商家四联单');
+		$title = isset($grouponInfo['groupon_name']) ? $grouponInfo['groupon_name'] : '';
+		$this->exportDatas($datas, "{$title}商家四联单");
 		return ;
 	}
 

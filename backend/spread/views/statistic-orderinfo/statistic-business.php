@@ -17,23 +17,25 @@ $currentMenuUrl = $controller->menuInfos['currentMenu']['url'];
                 <table class="table table-striped table-bordered responsive">
                     <thead>
                     <tr>
+                        <th>序号</th>
                         <th>项目</th>
                         <th>品类</th>
                         <th>名称</th>
-                        <th>签单数</th>
-                        <th>订金金额</th>
                         <th>下单日期</th>
+                        <th>签单数(总签单数)</th>
+                        <th>订金金额(总定金金额）</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($datas as $data) { ?>
+					<?php foreach ($datas as $key => $data) { ?>
                     <tr>
+					    <td><?= $key + 1; ?></td>
 					    <td><?= $data['business_sort_big']; ?></td>
 					    <td><?= $data['business_sort']; ?></td>
 					    <td><?= $data['business_name']; ?></td>
-					    <td><?= $data['count']; ?></td>
-					    <td><?= $data['money']; ?></td>
 					    <td><?= $data['created_day']; ?></td>
+					    <td><?= $data['count'] . ' ( ' . $data['totalCount'] . ' )'; ?></td>
+					    <td><?= $data['money'] . ' ( ' . $data['totalMoney'] . ' )'; ?></td>
                     </tr>
                     <?php } ?>
                     </tbody>

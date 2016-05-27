@@ -38,7 +38,7 @@ class Orderinfo extends SpreadModel
         return [
             [['orderid', 'groupon_id'], 'required'],
             [['money', 'status', 'pos_machine_id', 'business_id'], 'default', 'value' => 0],
-			[['groupon_name', 'business_name', 'import', 'import_business', 'sn_pos', 'mobile'], 'safe'],
+			[['groupon_name', 'business_name', 'business_sort_big', 'business_sort', 'import', 'import_business', 'sn_pos', 'mobile'], 'safe'],
         ];
     }
 

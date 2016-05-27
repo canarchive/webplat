@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
@@ -10,13 +11,13 @@ $gridViewParams = [
         'name',
 		'order_num',
 		'order_range',
-		[
+		/*[
             'attribute' => 'groupon_id',
             'value'=> function($model){
 				$info = $model->grouponInfo;
 				return isset($info['groupon_name']) ? $info['groupon_name'] : '';
             },
-        ],
+		],*/
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
@@ -33,6 +34,14 @@ $gridViewParams = [
 			'attribute' => 'status',
 			'value' => function($model) {
 			    return $model->statusInfos[$model->status];
+			},
+		],
+		[
+			'format' => 'raw',
+			'attribute' => 'export',
+			'value' => function($model) {
+				$url = Url::to(['business-order/export']);
+				return "<a href='{$url}?id={$model->id}'>导出</a>";
 			},
 		],
     ],
