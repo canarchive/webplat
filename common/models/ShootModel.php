@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use yii\helpers\ArrayHelper;
+
 class ShootModel extends BaseModel
 {
     public static function getDb()
@@ -13,4 +15,31 @@ class ShootModel extends BaseModel
 	{
 		return new \shoot\models\Attachment();
 	}
+
+	public function getPhotographerInfos()
+	{
+		$infos = ArrayHelper::map(\shoot\models\Photographer::find()->all(), 'id', 'name');
+		return $infos;
+	}	
+
+	public function getPhotographerInfo()
+	{
+		$info = \shoot\models\Photographer::findOne($this->photographer_id);
+
+		return $info;
+	}	
+
+	public function getCategoryInfos()
+	{
+		$category = new \shoot\models\Category();
+		$infos = $category->getSelectInfos();
+		return $infos;
+	}
+
+	public function getCategoryInfo()
+	{
+		$info = \shoot\models\Category::findOne($this->category_id);
+
+		return $info;
+	}	
 }

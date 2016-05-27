@@ -5,31 +5,22 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
+		[
+			'attribute' => 'photographer_id',
+			'value' => function($model) {
+				$info = $model->photographerInfo;
+				return isset($info['name']) ? $info['name'] : '';
+			},
+		],
+		[
+			'attribute' => 'category_id',
+			'value' => function($model) {
+				$info = $model->categoryInfo;
+				return isset($info['name']) ? $info['name'] : '';
+			},
+		],
 		'name',
 		[
-			'attribute' => 'type',
-			'value' => function($model) {
-				if (!empty($model->type)) {
-					return $model->typeInfos[$model->type];
-				}
-				return '';
-			},
-		],
-		[
-			'format' => 'raw',
-			'attribute' => 'url',
-			'value' => function($model) {
-				return "<a href='{$model->url}' target='_blank'>{$model->url}</a>";
-			},
-		],
-		[
-			'format' => 'raw',
-			'attribute' => 'picture',
-			'value' => function($model) {
-				return $model->getAttachmentImg($model->picture);
-			}
-		],
-        [   
             'format' => 'raw',
             'attribute' => 'orderlist',
             'value' => function($model) {
@@ -44,18 +35,6 @@ $gridViewParams = [
                 return  date('Y-m-d H:i:s',$model->created_at);
             },
         ],
-		[
-            'attribute' => 'updated_at',
-            'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->updated_at);
-            },
-        ],
-		[
-			'attribute' => 'status',
-			'value' => function($model) {
-				return $model->statusInfos[$model->status];
-			},
-		]
     ],
 ];
 
