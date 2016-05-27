@@ -1157,9 +1157,9 @@ use yii\helpers\Html;
 <!--大图弹框 end-->
 <!--页脚 start-->
 <section class="zx-footer tc cWhite">Copyright © 2009-2016 17zhuangxiu.com,All rights reserved.
-    <a href="http://www.17zhuangxiu.com/signups/link.php" class="ml10" target="_blank">关于我们</a>
+    <!--<a href="http://www.17zhuangxiu.com/signups/link.php" class="ml10" target="_blank">关于我们</a>-->
     <br />备案号：京ICP备15047540号
-    <br />公司：北京一起向上网络科技有限公司
+    <!--<br />公司：北京一起向上网络科技有限公司-->
     <br />地址：北京市东城区天元和平商业大厦东侧六层</section>
 <!--页脚 end-->
 <script src="http://s4.17house.com/common/js/common.js?v=5"></script>
