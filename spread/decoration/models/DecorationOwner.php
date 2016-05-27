@@ -97,7 +97,8 @@ class DecorationOwner extends SpreadModel
 
 	public function synapp()
 	{
-		$infos = self::find(['synapp_num' => 0])->limit(20)->all();
+error_reporting(0);
+		$infos = self::find()->where(['synapp_num' => 0])->limit(50)->all();
 		$appApi = 'http://appdev.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
 		foreach ((array) $infos as $info) {
 		    $callback = \spread\groupon\models\CallbackLog::find()->select(['created_at'])->where(['mobile' => $info['mobile']])->orderBy(['created_at' => SORT_DESC])->one();
@@ -130,7 +131,7 @@ class DecorationOwner extends SpreadModel
 			    $info->update(false);	
 		        $info->updateCounters(['synapp_num' => 1]);
 			}
-			exit();
+echo "\n";
 		}
 		//print_r($infos);
 	}
