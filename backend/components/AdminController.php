@@ -76,10 +76,13 @@ class AdminController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    protected function _addInfo($model)
+    protected function _addInfo($model, $returnView = true)
     {
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+			if ($returnView) {
+                return $this->redirect(['view', 'id' => $model->id]);
+			}
+            return $this->redirect(['listinfo']);
         }
 
         return $this->render('add', [
