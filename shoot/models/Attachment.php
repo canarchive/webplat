@@ -63,7 +63,7 @@ class Attachment extends AttachmentBase
 				'main_photo' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 30,
+    				'maxSize' => 80,
     				'type' => 'image/*',
 				],
 				'picture' => [

@@ -38,17 +38,4 @@ class PhotographerCategory extends ShootModel
             'orderlist' => '排序',
         ];
     }
-
-	public function getPhotographerInfos()
-	{
-		$infos = ArrayHelper::map(\shoot\models\Photographer::find()->all(), 'id', 'name');
-		return $infos;
-	}	
-
-	public function getCategoryInfos()
-	{
-		$category = new Category();
-		$infos = $category->getSelectInfos();
-		return $infos;
-	}
 }
