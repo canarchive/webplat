@@ -11,6 +11,18 @@ $gridViewParams = [
         'name',
 		'order_num',
 		'order_range',
+		[
+			'attribute' => 'order_diff',
+			'value' => function($model) {
+				if (empty($model->order_range)) {
+					return 0;
+				}
+			    $orderRange = explode('-', $model->order_range);
+			    $orderStart = isset($orderRange[0]) ? $orderRange[0] : 0;
+			    $orderEnd = isset($orderRange[1]) ? $orderRange[1] : 0;
+				return $orderEnd - $orderStart + 1;
+			},
+		],
 		/*[
             'attribute' => 'groupon_id',
             'value'=> function($model){

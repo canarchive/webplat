@@ -8,6 +8,7 @@ $gridViewParams = [
         'orderid',
 		'business_sort_big',
 		'business_sort',
+		'business_name',
 		'mobile',
 		'money',
 		/*[

@@ -66,14 +66,25 @@ class StatisticOrderinfo extends Orderinfo
 		$data = [
 			'business_sort_big' => '项目',
 			'business_sort' => '品类',
+			'business_name' => '名称',
+			'created_day' => '下单日期',
+			'count' => '签单数 (总签单数)',
+			'money' => '签单数 (总签单数)',
+			'totalCount' => '',
+			'totalMoney' => '',
 		];
+		//print_r($datas);exit();
 		array_unshift($datas, $data);
 		foreach ($datas as $key => $data) {
 			$i = $key + 1;
             $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A' . $i, $key)
                     ->setCellValue('B' . $i, $data['business_sort_big'])
-                    ->setCellValue('C' . $i, $data['business_sort']);
+                    ->setCellValue('C' . $i, $data['business_sort'])
+                    ->setCellValue('D' . $i, $data['business_name'])
+                    ->setCellValue('E' . $i, $data['created_day'])
+                    ->setCellValue('F' . $i, $data['count'] . ' (' . $data['totalCount'] . ')')
+                    ->setCellValue('G' . $i, $data['money'] . ' (' . $data['totalMoney'] . ')');
 		}
         
 		return $objPHPExcel;

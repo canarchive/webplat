@@ -11,6 +11,7 @@ class BusinessOrder extends SpreadModel
 	public $company_id;
 	public $import;
 	public $export;
+	public $order_diff;
 
     /**
      * @inheritdoc
@@ -54,7 +55,9 @@ class BusinessOrder extends SpreadModel
 			'sort' => '分类',
             'name' => '商家名称',
 			'groupon_id' => '团购会ID',
+            'order_num' => '四联单本数',
             'order_range' => '四联单号段',
+            'order_diff' => '四联单号数量',
             'created_at' => '添加时间',
             'updated_at' => '更新时间',
 			'status' => '状态',
