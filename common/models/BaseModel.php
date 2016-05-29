@@ -171,8 +171,9 @@ class BaseModel extends ActiveRecord
 		return ;
 	}
 
-	protected function _updateMulAttachment($attachment, $table, $field)
+	protected function _updateMulAttachment($table, $field)
 	{
+		$attachment = $this->getAttachmentModel();
 		$ids = array_filter(explode(',', $this->$field));
 		foreach ($ids as $id) {
 			$info = $attachment->findOne($id);
