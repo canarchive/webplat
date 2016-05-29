@@ -38,5 +38,4 @@ class PhotographerCategory extends ShootModel
             'orderlist' => '排序',
         ];
     }
-
 }
