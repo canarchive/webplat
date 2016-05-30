@@ -76,6 +76,6 @@ class Conversion extends Visit
 		    $keywordModel->recordKeyword($insertInfo['keyword'], $insertInfo['from_type'], true);
 		}
 
-		return true;
+		return $insertInfo;
 	}
 }

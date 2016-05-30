@@ -32,18 +32,6 @@ $formName = $model->formName();
 						]
 					) ?>
 				</div>
-                <label class="control-label col-md-1">模板</label>
-                <div class="col-md-2">
-					<?= Html::dropDownList(
-						"{$formName}[template_code]", 
-						0, 
-						$templateInfos, 
-						[
-							'prompt' => '全部', 
-							'class' => 'form-control',
-						]
-					) ?>
-				</div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">来源</label>
