@@ -5,7 +5,6 @@ namespace spread\models;
 use common\models\SpreadModel;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
-use spread\models\Template;
 
 /**
  * This is the model class for table "template".
@@ -142,12 +141,10 @@ class Visit extends SpreadModel
 	
 	public function getSearchDatas()
 	{
-		$templateInfos = ArrayHelper::map(Template::find()->all(), 'code', 'name');
 		$channelInfos = ['bd' => 'bd', '360' => '360', 'sg' => 'sg', 'sm' => 'sm'];
 		$fromTypeInfos = ['pc' => 'pc', 'h5' => 'h5'];
 
 		$datas = [
-			'templateInfos' => $templateInfos,
 			'fromTypeInfos' => $fromTypeInfos,
 			'channelInfos' => $channelInfos,
 		];
