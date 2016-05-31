@@ -329,7 +329,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
         </div>
     </div><!--wap10 end-->
     <div class="wap11">
-        <p>Copyright © 2009-2016 17zhuangxiu.com,All rights reserved.</p>
+        <p>Copyright © 2009-2016 北京信天捷快递有限公司,All rights reserved.</p>
     </div>
 </div>
 <div class="pop-layer pop-activity">
@@ -366,7 +366,7 @@ var _hmt = _hmt || [];
 <script src="http://s4.17house.com/common_h5/js/plugin/zepto.min.js?v=5"></script>
 <!-- 公共common.js -->
 <script src="http://s4.17house.com/common_h5/js/common.js?v=5"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/zztc.js?v6"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/zztc.js?v2016053101"></script>
 <!-- Google Analytics -->
 
 <script>

@@ -99,7 +99,9 @@ class DecorationOwner extends SpreadModel
 	{
 error_reporting(0);
 		$infos = self::find()->where(['synapp_num' => 0])->limit(50)->all();
-		$appApi = 'http://appdev.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
+		//$appApi = 'http://appdev.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
+		$appApi = 'http://hui.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
+                $i = 0;
 		foreach ((array) $infos as $info) {
 		    $callback = \spread\groupon\models\CallbackLog::find()->select(['created_at'])->where(['mobile' => $info['mobile']])->orderBy(['created_at' => SORT_DESC])->one();
 			$lastVisitTime = isset($callback['created_at']) ? $callback['created_at'] : 0;
@@ -111,28 +113,25 @@ error_reporting(0);
 				'channelFirst' => 'SEM',
 				'channelSecond' => $info['signup_channel'],
 				'channelKey' => $info['keyword'],
-				'enrollTime' => $info['signup_at'],
-				'lastVisitTime' => $lastVisitTime,
+				'enrollTime' => $info['signup_at'] . '000',
+				'lastVisitTime' => $lastVisitTime . '000',
 				'cancelStatus' => $cancelStatus,
 				'cancelMsg' => $cancelMsg,
 			];
-			print_r($params);
 		    $queryStr = http_build_query($params);
 			$url = $appApi . $queryStr;
-			echo $url . "\n";
-			$result = '{"baseOutput":{"code":0,"message":"success"},"data":""}';
+			//$result = '{"baseOutput":{"code":0,"message":"success"},"data":""}';
 			$result = file_get_contents($url);
 		    $result = json_decode($result,true);
-			var_dump($result);
 			$code = isset($result['baseOutput']['code']) ? $result['baseOutput']['code'] : '';
 			if ($code === 0 || $code === 5) {
-				echo 'ssssss';
 				$info->synapp_at = \Yii::$app->params['currentTime'];
 			    $info->update(false);	
 		        $info->updateCounters(['synapp_num' => 1]);
 			}
-echo "\n";
+                        $i++;
 		}
+                echo date('Y-m-d H:i:s') . '-' . $i . "\n";
 		//print_r($infos);
 	}
 
