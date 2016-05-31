@@ -37,12 +37,25 @@ class Attachment extends BaseModel
     /**
      * @inheritdoc
      */
+    public static function tableName()
+    {
+        return '{{%attachment}}';
+    }
+
+    public static function getDb()
+    {
+        return \Yii::$app->db;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
 			[['info_field'], 'filterTableField'],
-			['listorder', 'default', 'value' => 0],
-            [['size', 'info_id', 'listorder'], 'integer'],
+			['orderlist', 'default', 'value' => 0],
+            [['size', 'info_id', 'orderlist'], 'integer'],
 			[['info_table', 'info_field', 'info_id'], 'default', 'value' => function($model, $attribute) {
 				return $model->$attribute;				
 			}],
@@ -141,7 +154,7 @@ class Attachment extends BaseModel
             'id' => '附件ID',
             'name' => '名称',
             'filename' => '名称',
-            'listorder' => '排序',
+            'orderlist' => '排序',
             'description' => '图片描述',
             'url' => 'URL地址',
             'size' => '大小',
@@ -235,5 +248,26 @@ class Attachment extends BaseModel
 		}
 
 		return ;
+	}
+
+	public function getFieldInfos($table = null, $field = null)
+	{
+		$infos = $this->_fieldInfos();
+
+		if (is_null($table) && is_null($field)) {
+			return $infos;
+		}
+
+		if (!isset($infos[$table])) {
+			return false;
+		}
+		if (is_null($field)) {
+			return $infos[$table];
+		}
+		if (!isset($infos[$table][$field])) {
+			return false;
+		}
+
+		return $infos[$table][$field];
 	}
 }
