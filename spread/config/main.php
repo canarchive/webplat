@@ -47,6 +47,7 @@ return [
 				'jz-gift-bag' => '/decoration/signup/gift-bag',
 				//'<city:\w+>' => 'groupon/detail/index',
 		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
+				'api/order-mobile' => '/casher/api/order-mobile',
 			],
 		],
     ],
@@ -57,6 +58,9 @@ return [
 		],
 		'decoration' => [
 			'class' => 'spread\decoration\Module',
+		],
+		'casher' => [
+			'class' => 'spread\casher\Module',
 		],
 	],
     'params' => $params,

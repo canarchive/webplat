@@ -226,4 +226,16 @@ class Orderinfo extends SpreadModel
         
 		return $objPHPExcel;
 	}
+
+	public function getMobiles($grouponId)
+	{
+		$infos = $this->find()->where(['groupon_id' => $grouponId])->select('mobile')->asArray()->limit(5000)->all();
+		$datas = [];
+		foreach ($infos as $info) {
+			$datas[] = $info['mobile'];
+		}
+		$datas = array_unique(array_filter($datas));
+
+		return $datas;
+	}
 }
