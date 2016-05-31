@@ -30,6 +30,23 @@ class DetailController extends Controller
 		return $this->actionIndex();
 	}
 
+	public function actionThird()
+	{
+		$client = \Yii::$app->request->get('client');
+		$this->mHost = $client == 'wap' ? false : true;
+        $model = new SignupForm();
+
+		$info = ['id' => 1];
+        $datas = [
+            'host' => $this->host,
+            'model' => $model,
+			'info' => $info,
+        ];
+
+		$view = $this->mHost ? "/hd_third/pc/index.php" : "/hd_third/h5/index.php";
+        return $this->render($view, $datas);  
+	}
+
     public function actionIndex()
     {
         $model = new SignupForm();

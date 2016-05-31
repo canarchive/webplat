@@ -36,6 +36,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => '/decoration/detail/home',
+                '<client:(pc|wap)>' => '/decoration/detail/third',
 				//Yii::getAlias('@grouponurl') => '/groupon',
 				'detail/<id:\d+>' => 'groupon/detail/index',
                 'detail-<id:\d+>' => '/decoration/detail/index',
