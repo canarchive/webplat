@@ -17,7 +17,8 @@ class StatisticOrderinfoController extends AdminController
 
     public function actionBusiness()
     {
-		return $this->getInfos('business');
+		$action = Yii::$app->request->get('action');
+		return $this->getInfos('business', $action);
 	}
 
     public function actionOwner()
@@ -25,10 +26,14 @@ class StatisticOrderinfoController extends AdminController
 		return $this->getInfos('owner');
 	}
 
-	protected function getInfos($field)
+	protected function getInfos($field, $action = '')
 	{
         $searchModel = new \spread\casher\models\searchs\StatisticOrderinfo();
 		$infos = $searchModel->getInfos($field);
+
+		if ($action == 'export') {
+			return $searchModel->export($infos);
+		}
 
 		return $this->render('statistic-' . $field, ['datas' => $infos]);
     }

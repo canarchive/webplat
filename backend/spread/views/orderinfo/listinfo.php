@@ -2,13 +2,16 @@
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
-    //'filterModel' => $searchModel,
+    'filterModel' => $searchModel,
     'columns' => [
         'id',
         'orderid',
+		'business_sort_big',
+		'business_sort',
+		'business_name',
 		'mobile',
 		'money',
-		[
+		/*[
 			'attribute' => 'pos_machine_id',
 			'value' => function($model) {
 				if ($model->pos_machine_id > 0) {
@@ -16,14 +19,14 @@ $gridViewParams = [
 				}
 				return '';
 			},
-		],
-		[
+		],*/
+		/*[
             'attribute' => 'groupon_id',
             'value'=> function($model){
 				$info = $model->grouponInfo;
 				return isset($info['groupon_name']) ? $info['groupon_name'] : '';
             },
-        ],
+		],*/
 		[
             'attribute' => 'created_at',
             'value'=> function($model){

@@ -38,7 +38,7 @@ class Orderinfo extends SpreadModel
         return [
             [['orderid', 'groupon_id'], 'required'],
             [['money', 'status', 'pos_machine_id', 'business_id'], 'default', 'value' => 0],
-			[['groupon_name', 'business_name', 'import', 'import_business', 'sn_pos', 'mobile'], 'safe'],
+			[['groupon_name', 'business_name', 'business_sort_big', 'business_sort', 'import', 'import_business', 'sn_pos', 'mobile'], 'safe'],
         ];
     }
 
@@ -125,7 +125,7 @@ class Orderinfo extends SpreadModel
 	{
 		//print_r($this);
 		//print_r($_POST);
-		$grouponId = 2355;//$this->groupon_id;
+		$grouponId = 2474;//$this->groupon_id;
 		$aId = $this->import;
 		$aIdBusiness = $this->import_business;
 		if (empty($grouponId) || empty($aId) || empty($aIdBusiness)) {
@@ -133,7 +133,7 @@ class Orderinfo extends SpreadModel
 			return false;
 		}
 
-		$grouponInfo = ['groupon_name' => '团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
+		$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
 		if (empty($grouponInfo)) {
 			$this->addError('error', '指定的团购会不存在');
 			return false;
