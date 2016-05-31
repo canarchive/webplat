@@ -59,7 +59,7 @@ class Goods extends ShootModel
             'keyword' => '商品关键词',
             'description' => '商品描述',
             'content' => '商品详情',
-            'status' => '状态:0－备货中;1-正常;99-手动下架;',
+            'status' => '状态',
             'created_at' => '添加时间',
             'updated_at' => '更新时间',
         ];
