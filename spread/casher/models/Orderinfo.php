@@ -114,10 +114,12 @@ class Orderinfo extends SpreadModel
 		if (empty($grouponId)) {
 			return ['status' => 400, 'message' => '参数错误'];
 		}
+		$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
 
 		$infos = self::find()->where(['groupon_id' => $grouponId])->all();
+		//print_r($infos);exit();
 
-		$this->exportDatas($infos);
+		$this->exportDatas($infos, $grouponInfo['groupon_name']);
 		return $datas;
 	}
 
@@ -212,15 +214,31 @@ class Orderinfo extends SpreadModel
 		static $grouponInfos = [];
 		$i = 1;
 
+		$data = [
+			'orderid' => '四联单号',
+			'business_sort_big' => '项目',
+			'business_sort' => '品类',
+			'business_name' => '商家名称',
+			'mobile' => '业主手机号',
+			'money' => '订金',
+			'created_day' => '下单日期',
+		];
+		//print_r($datas);exit();
+		array_unshift($datas, $data);
 		foreach ($datas as $data) {
-			$grouponId = $data['groupon_id'];
-			$grouponInfo = isset($grouponInfos[$grouponId]) ? $grouponInfos[$grouponId] : null;
-			$grouponInfo = is_null($grouponInfo) ? $this->getGrouponInfo($grouponId) : $grouponInfo;
-			$grouponName = isset($grouponInfo['groupon_name']) ? $grouponInfo['groupon_name'] : '';
+			//$grouponId = $data['groupon_id'];
+			//$grouponInfo = isset($grouponInfos[$grouponId]) ? $grouponInfos[$grouponId] : null;
+			//$grouponInfo = is_null($grouponInfo) ? $this->getGrouponInfo($grouponId) : $grouponInfo;
+			//$grouponName = isset($grouponInfo['groupon_name']) ? $grouponInfo['groupon_name'] : '';
             $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A' . $i, $data['orderid'])
-                    ->setCellValue('B' . $i, $grouponName)
-                    ->setCellValue('C' . $i, $data['id']);
+                    //->setCellValue('B' . $i, $grouponName)
+                    ->setCellValue('B' . $i, $data['business_sort_big'])
+                    ->setCellValue('C' . $i, $data['business_sort'])
+                    ->setCellValue('D' . $i, $data['business_name'])
+                    ->setCellValue('E' . $i, $data['mobile'])
+                    ->setCellValue('F' . $i, $data['money'])
+                    ->setCellValue('G' . $i, $data['created_day']);
 			$i++;
 		}
         

@@ -59,8 +59,8 @@ function exportData()
 {
 	var groupon_id = $('#groupon_id').val();
 	if (!groupon_id) {
-		alert('请选择指定的团购会！');
-		return ;
+		//alert('请选择指定的团购会！');
+		//return ;
 	}
 	window.location.href="<?= Url::to(['orderinfo/export']); ?>?groupon_id=" + groupon_id; 
 }
