@@ -59,11 +59,15 @@ class UploadController extends \yii\web\Controller
         $files = UploadedFile::getInstances($model, 'files');
         $model->file = isset($files[0]) ? $files[0] : null;
         if ($model->save()) {
+			$baseName = substr($model->name, 0, strrpos($model->name, '.'));
 			$data = [
 				'status' => '200200',
 				'id' => $model->id,
 				'name' => $model->name,
 				'size' => $model->size,
+				'filename' => $baseName,
+				'orderlist' => 0,
+				'description' => $baseName,
 				'url' => $model->getUrl(),
 		    ];
 		} else {

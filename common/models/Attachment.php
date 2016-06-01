@@ -270,4 +270,50 @@ class Attachment extends BaseModel
 
 		return $infos[$table][$field];
 	}
+
+	/**
+	 * 更新附件信息
+	 */
+	public function updateInfo($id, $infoId, $extData)
+	{
+		$info = $this->findOne($id);
+		if (empty($info)) {
+			return ;
+		}
+		$info->info_id = $infoId;
+   		$info->in_use = 1;
+   	    $info->noFile = true;
+
+		// 部分数据表会有一些专有的字段
+		if (!empty($extData)) {
+			foreach ($extData as $field => $value) {
+				$info->$field = $value;
+			}
+		}
+		// 处理附件的常用属性，名称、排序和描述
+		$attrs = ['filename', 'orderlist', 'description'];
+		foreach ($attrs as $attr) {
+			$params = \Yii::$app->request->post('attachment_' . $attr, '');
+			$value = isset($params[$id]) ? $params[$id] : '';
+			$value = $attr == 'orderlist' ? intval($value) : $value;
+			$info->$attr = $value;
+		}
+		//print_r($info);exit();
+   		return $info->update(false);
+	}
+
+	/**
+	 * 删除没用的附件
+	 */
+	public function deleteInfo($where, $noDeleteIds)
+	{
+		$infos = $this->find()->where($where)->all();
+    	foreach ($infos as $info) {
+			if (in_array($info->id, (array) $noDeleteIds)) {
+				continue;
+			}
+			$info->delete();
+		}
+		return ;
+	}
 }

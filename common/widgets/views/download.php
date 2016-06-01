@@ -23,13 +23,16 @@
             {% } %}
         </td>
         <td>
-            <span class="">filename</span>
-        </td>
-        <td>
             <span class="size">{%=o.formatFileSize(file.size)%}</span>
         </td>
         <td>
-            <span class="size">abc</span>
+            <span class="">名称：<input type="text" name="attachment_filename[{%=file.id%}]" value="{%=file.filename%}"/></span>
+        </td>
+        <td>
+            <span class="size">排序：<input type="text" name="attachment_orderlist[{%=file.id%}]" value="{%=file.orderlist%}"/></span>
+        </td>
+        <td>
+            <span class="size">描述：<input type="text" name="attachment_description[{%=file.id%}]" value="{%=file.description%}" /></span>
         </td>
         <td>
             {% if (file.deleteUrl) { %}
