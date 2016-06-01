@@ -28,6 +28,7 @@ $picture = $attachmentModel->getFieldInfos('sample', 'picture');
         ],
         'clientOptions' => [
 		    //'dataType' => 'json',
+			'noShow' => true,
 			'maxFileSize' => $picture['maxSize'] * 1024,
         ],
     ]);
