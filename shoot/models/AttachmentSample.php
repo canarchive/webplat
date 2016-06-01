@@ -12,9 +12,14 @@ class AttachmentSample extends Attachment
         return '{{%sample}}';
     }
 
-	public function getFieldInfos($table = null, $field = null)
+    public static function getDb()
+    {
+        return \Yii::$app->dbShoot;
+    }
+
+	protected function _fieldInfos()
 	{
-		$infos = [
+		return [
 			'sample' => [
 				'picture' => [
         			'isSingle' => false,
@@ -24,21 +29,6 @@ class AttachmentSample extends Attachment
 				],
 			],
 		];
-
-		if (is_null($table) && is_null($field)) {
-			return $infos;
-		}
-
-		if (!isset($infos[$table])) {
-			return false;
-		}
-		if (is_null($field)) {
-			return $infos[$table];
-		}
-		if (!isset($infos[$table][$field])) {
-			return false;
-		}
-
 		return $infos[$table][$field];
 	}
 }

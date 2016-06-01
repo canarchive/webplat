@@ -23,6 +23,7 @@ class Sample extends ShootModel
     {
         return [
             [['category_id', 'photographer_id'], 'required'],
+			['picture', 'safe'],
         ];
     }
 
@@ -50,6 +51,7 @@ class Sample extends ShootModel
 
 	public function save($runValidation = true, $attributeNames = NULL)
 	{
+		$this->afterSave(false, []);
 		return true;
 	}
 
@@ -57,9 +59,19 @@ class Sample extends ShootModel
 	{
         parent::afterSave($insert, $changedAttributes);
 
-		$fields = ['picture', 'picture_mobile', 'picture_ext'];
-		$this->_updateSingleAttachment('position', $fields);
+		$this->deleteAttachment = false;
+		$extData = [
+			'photographer_id' => $this->photographer_id,
+			'category_id' => $this->category_id,
+		];
+		$this->id = 0;
+		$this->_updateMulAttachment('sample', 'picture', $extData);
 
 		return true;
 	}	
+
+	public function getAttachmentModel()
+	{
+		return new \shoot\models\AttachmentSample();
+	}
 }
