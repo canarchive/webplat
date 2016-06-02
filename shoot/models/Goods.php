@@ -34,7 +34,7 @@ class Goods extends ShootModel
     {
         return [
             [['name', 'category_id', 'price', 'main_photo'], 'required'],
-            [['orderlist', 'status'], 'default', 'value' => 0],
+            [['orderlist', 'status', 'price_market'], 'default', 'value' => 0],
             [['price', 'price_market'], 'double'],
 			[['picture', 'keyword', 'description', 'content'], 'safe'],
         ];
