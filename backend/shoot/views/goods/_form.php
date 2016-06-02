@@ -8,6 +8,7 @@ use shoot\models\Attachment;
 $attachmentModel = new Attachment();
 $mainPhoto = $attachmentModel->getFieldInfos('goods', 'main_photo');
 $picture = $attachmentModel->getFieldInfos('goods', 'picture');
+$model->picture = $attachmentModel->getFieldIds('goods', 'picture', $model->id);
 
 ?>
 
