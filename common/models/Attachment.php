@@ -250,6 +250,26 @@ class Attachment extends BaseModel
 		return ;
 	}
 
+	public function getFieldIds($table, $field, $infoId)
+	{
+		if (empty($table) || empty($field) || empty($infoId)) {
+			return '';
+		}
+
+		$condition = [
+			'info_table' => $table,
+			'info_field' => $field,
+			'info_id' => $infoId,
+			'in_use' => 1,
+		];
+		$infos = $this->find()->indexBy('id')->where($condition)->all();		
+
+		if (empty($infos)) {
+			return '';
+		}
+		return implode(',', array_keys($infos));
+	}
+
 	public function getFieldInfos($table = null, $field = null)
 	{
 		$infos = $this->_fieldInfos();
