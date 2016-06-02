@@ -22,10 +22,10 @@ use yii\helpers\Html;
     <link rel="stylesheet" type="text/css" href="http://s4.17house.com/jiazhuangtong/zxtc_h5/css/loaders.css?v=5" />
 
 <script>
-var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
+/*var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
 if (isMobile == 0) {
 	window.location.href = "<?= Yii::getAlias('@spreadthird') . '/pc.html'; ?>";
-}
+}*/
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
 </head>

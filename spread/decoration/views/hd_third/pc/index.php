@@ -20,10 +20,10 @@ use yii\helpers\Url;
     <script src="http://s4.17house.com/common/js/plugin/selectivizr.js"></script>
 <![endif]--></head>
 <script>
-var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
+/*var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
 if (isMobile == 1) {
 	window.location.href = "<?= Yii::getAlias('@spreadthird') . '/wap.html'; ?>";
-}
+}*/
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
 <body>

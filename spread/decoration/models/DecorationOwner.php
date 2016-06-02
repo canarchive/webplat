@@ -99,6 +99,7 @@ class DecorationOwner extends SpreadModel
 	{
 error_reporting(0);
 		$infos = self::find()->where(['synapp_num' => 0])->limit(50)->all();
+		//$infos = self::find()->where(['synapp_num' => 1])->limit(50)->all();
 		//$appApi = 'http://appdev.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
 		$appApi = 'http://hui.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
                 $i = 0;
@@ -118,6 +119,13 @@ error_reporting(0);
 				'cancelStatus' => $cancelStatus,
 				'cancelMsg' => $cancelMsg,
 			];
+                    if (empty($info['signup_at'])) {
+                        unset($params['enrollTime']);
+                    }
+                    if (empty($lastVisitTime)) {
+                        unset($params['lastVisitTime']);
+                    }
+print_r($params);
 		    $queryStr = http_build_query($params);
 			$url = $appApi . $queryStr;
 			//$result = '{"baseOutput":{"code":0,"message":"success"},"data":""}';

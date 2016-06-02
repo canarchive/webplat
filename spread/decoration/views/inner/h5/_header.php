@@ -17,10 +17,10 @@ use yii\helpers\Url;
     <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/css/free_design.css?v=1">
 
 <script>
-var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
+/*var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
 if (isMobile == 0) {
 	window.location.href = "<?= Yii::getAlias('@spreadurl') . Url::to(['/decoration/detail/index', 'id' => 1]); ?>";
-}
+}*/
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>
 </head>
