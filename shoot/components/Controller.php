@@ -5,7 +5,7 @@ use common\components\Controller as CommonController;
 
 class Controller extends CommonController
 {
-	protected function _getPositionInfos($type = null, $number = 10)
+	protected function _getPositionInfos($type = null, $number = 20)
 	{
 		$position = new \shoot\models\Position();
 		$where = !empty($type) ? ['type' => $type] : [];
