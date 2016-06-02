@@ -29,10 +29,17 @@ class ShootModel extends BaseModel
 		return $info;
 	}	
 
-	public function getCategoryInfos()
+	public function getCategoryLevelInfos()
 	{
 		$category = new \shoot\models\Category();
 		$infos = $category->getSelectInfos();
+		return $infos;
+	}
+
+	public function getCategoryInfos()
+	{
+		$category = new \shoot\models\Category();
+		$infos = $category->find()->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->asArray()->all();
 		return $infos;
 	}
 

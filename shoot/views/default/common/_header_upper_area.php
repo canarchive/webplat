@@ -16,7 +16,7 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                         随时随地想摄就摄
                     </a>
                 </li>
-                <li class='gi' data-desktop='.menu-sec' data-mobile='.main-menu nav>ul'>
+                <!--<li class='gi' data-desktop='.menu-sec' data-mobile='.main-menu nav>ul'>
 				    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/info/enter/photographer']); ?>' target='_blank'>
                         摄影师入驻
                     </a>
@@ -25,7 +25,7 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
 				    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/info/enter/merchant']); ?>' target='_blank'>
                         影楼入驻
                     </a>
-                </li>
+                </li>-->
             </ul>
             <div class='search gi'>
                 <a class='js-toggle-close' href='#'>
