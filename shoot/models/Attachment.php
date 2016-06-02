@@ -14,19 +14,19 @@ class Attachment extends AttachmentBase
 				'picture' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 300,
+    				'maxSize' => 2000,
     				'type' => 'image/*',
 				],
 				'picture_mobile' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 300,
+    				'maxSize' => 600,
     				'type' => 'image/*',
 				],
 				'picture_ext' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 300,
+    				'maxSize' => 2000,
     				'type' => 'image/*',
 				],
 			],
