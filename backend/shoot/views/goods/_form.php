@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use common\widgets\FileUploadUI;
+use common\ueditor\Ueditor;
 use shoot\models\Attachment;
 
 $attachmentModel = new Attachment();
@@ -16,7 +17,7 @@ $model->picture = $attachmentModel->getFieldIds('goods', 'picture', $model->id);
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'category_id')->dropDownList($model->categoryInfos, ['prompt' => Yii::t('admin-common', 'Select Category')]); ?>
+    <?= $form->field($model, 'category_id')->dropDownList($model->categoryLevelInfos, ['prompt' => Yii::t('admin-common', 'Select Category')]); ?>
     <?= $form->field($model, 'price')->textInput() ?>
     <?= $form->field($model, 'price_market')->textInput() ?>
     <?= $form->field($model, 'orderlist')->textInput() ?>
@@ -57,7 +58,7 @@ $model->picture = $attachmentModel->getFieldIds('goods', 'picture', $model->id);
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
     <?= $form->field($model, 'keyword')->textInput() ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
-    <?= $form->field($model, 'content')->textarea(['rows' => 2]) ?>
+	<?= $form->field($model, 'content')->widget(Ueditor::className(),[]) ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>
     <?php ActiveForm::end(); ?>

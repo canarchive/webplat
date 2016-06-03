@@ -12,6 +12,16 @@ class GoodsController extends AdminController
 {
 	protected $modelClass = 'shoot\models\Goods';
 
+    public function actions()
+    {
+        return [
+    
+            'upload' => [
+                'class' => 'common\ueditor\UEditorAction',
+            ],
+        ];
+    }	
+
     public function actionListinfo()
     {
         $searchModel = new GoodsSearch();

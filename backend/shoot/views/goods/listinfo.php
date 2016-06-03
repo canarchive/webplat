@@ -19,7 +19,7 @@ $gridViewParams = [
 				if ($model->category_id < 1) {
 					return '';
 				}
-                return $model->categoryInfos[$model->category_id];
+                return $model->categoryLevelInfos[$model->category_id];
             },
         ],		
         [   

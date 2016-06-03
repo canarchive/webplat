@@ -18,7 +18,7 @@ class GoodsController extends ShootController
 		}		
 
 		$goods = new \shoot\models\Goods();
-		$infos = $goods->find()->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->all();
+		$infos = $goods->find()->select('id, name, category_id, main_photo')->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->all();
 		$categoryInfos = $goods->categoryInfos;
 
 		$datas = [];
@@ -44,6 +44,17 @@ class GoodsController extends ShootController
 
     public function actionShow()
     {
-        return $this->render('show');
+		$id = intval(\Yii::$app->request->get('id'));
+		if (empty($id)) {
+		    return \Yii::$app->response->redirect('/')->send();
+		}
+
+		$goods = new \shoot\models\Goods();
+		$info = $goods->getInfo($id);
+		if (empty($info)) {
+		    return \Yii::$app->response->redirect('/')->send();
+		}
+
+        return $this->render('show', ['info' => $info]);
     }
 }
