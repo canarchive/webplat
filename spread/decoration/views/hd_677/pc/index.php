@@ -1187,6 +1187,31 @@ var _hmt = _hmt || [];
 })();
 </script>-->
 <!-- 53客服end -->
-</body>
 
+    <style>
+        .sem-pop{position: fixed; z-index: 999; width:420px; height:256px; top:50%; left:50%; margin:-148px 0 0 -210px; }
+        .sem-pop .close{position: absolute; z-index: 1000; top:14px; right:38px; width:30px; height:30px; background: url(<?= Yii::getAlias('@asseturl'); ?>/tuig/images/sem-close.png) no-repeat; cursor:pointer;}
+    </style>
+    <script>
+        var semPop = {
+            init : function(){
+                var str = '';
+                str += '<div class="sem-pop"><a href="javascript: void(0);" onclick="openZoosUrl(\'chatwin\', \'&e=semzhjian\');" style="cursor:pointer");"><img src="<?= Yii::getAlias('@asseturl'); ?>/tuig/images/sem-pop.png" alt=""></a><span class="close"></span></div>';
+                $(document.body).append(str);
+                this.closePop();
+            },
+            closePop : function(){
+                var $semPop = $('.sem-pop');
+                $('.sem-pop .close').on('click',function(){
+                    $semPop.hide();
+                    setTimeout(function(){
+                        $semPop.show();
+                    },8000)
+                });
+            }
+        }
+        semPop.init();
+    </script>
+</body>
+<script language="javascript" src="http://dkt.zoosnet.net/JS/LsJS.aspx?siteid=DKT85079174&float=1&lng=cn"></script>
 </html>
