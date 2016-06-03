@@ -85,4 +85,41 @@ class Goods extends ShootModel
 		];	
 		return $datas;
 	}	
+
+	public function getInfo($id)
+	{
+		$info = self::findOne($id);
+		if (empty($info)) {
+			return $info;
+		}
+
+		$info = $this->_formatInfo($info);
+
+		return $info;
+	}
+
+	protected function _formatInfo($info)
+	{
+		$info['main_photo'] = $info->getAttachmentUrl($info['main_photo']);
+		$condition = [
+			'info_table' => 'goods',
+			'info_field' => 'picture',
+			'info_id' => $info->id,
+			'in_use' => 1,
+		];
+		$infos = $this->getAttachmentModel()->find()->where($condition)->orderBy(['orderlist' => SORT_DESC])->all();
+		$pictureInfos = [];
+		foreach ($infos as $attachment) {
+			$url = $attachment->getUrl();
+			$pictureInfos[] = [
+				'url' => $url,
+				'name' => $attachment['filename'],
+				'description' => $attachment['description'],
+			];
+		}		
+		$info->picture = $pictureInfos;
+		print_r($info);
+
+		return $info;
+	}
 }

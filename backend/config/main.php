@@ -58,6 +58,7 @@ return [
 			'site/login',
 			'site/logout',
 			'site/error',
+			'shoot/goods/upload',
             'debug/*',
         ]
     ],

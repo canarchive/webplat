@@ -35,6 +35,7 @@ return [
             'showScriptName' => false,
             'rules' => [
 				'info-<code:\w+>' => 'info/help/index',
+				'show-<id:\d+>' => 'goods/show',
             ],
         ],
     ],
