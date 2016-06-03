@@ -77,4 +77,32 @@ class SpreadModel extends BaseModel
 
 		return $datas;
 	}
+
+	public function getCompanyInfos()
+	{
+		$infos = ArrayHelper::map(\spread\casher\models\Company::find()->all(), 'company_id', 'company_name');
+		return $infos;
+	}
+
+	public function getGrouponInfos()
+	{
+		/*$datas = [];
+		if ($this->company_id > 0) {
+		    $datas = \spread\casher\models\Groupon::getInfosByCompanyId($this->company_id);
+		}*/
+		$infos = \Yii::$app->params['grouponInfos'];
+		$datas = [];
+		foreach ($infos as $id => $info) {
+			$datas[$id] = $info['groupon_name'];
+		}
+
+		return $datas;
+	}
+
+	public function getGrouponInfo()
+	{
+		$info = \spread\casher\models\Groupon::findOne($this->groupon_id);
+
+		return $info;
+	}		
 }

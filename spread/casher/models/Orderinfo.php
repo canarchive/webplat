@@ -78,30 +78,6 @@ class Orderinfo extends SpreadModel
 		return $datas;
 	}	
 
-	public function getGrouponInfos()
-	{
-		$datas = [];
-		if ($this->company_id > 0) {
-		    $datas = \spread\casher\models\Groupon::getInfosByCompanyId($this->company_id);
-		}
-
-		return $datas;
-	}
-
-	public function getGrouponInfo($grouponId = null)
-	{
-		$grouponId = is_null($grouponId) ? $this->groupon_id : $grouponId;
-		$info = \spread\casher\models\Groupon::findOne($grouponId);
-
-		return $info;
-	}	
-
-	public function getCompanyInfos()
-	{
-		$infos = ArrayHelper::map(\spread\casher\models\Company::find()->all(), 'company_id', 'company_name');
-		return $infos;
-	}
-
 	public function getPosMachineInfos()
 	{
 		$infos = ArrayHelper::map(\spread\casher\models\PosMachine::find()->all(), 'id', 'name');
@@ -117,10 +93,12 @@ class Orderinfo extends SpreadModel
 		$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
 
 		$infos = self::find()->where(['groupon_id' => $grouponId])->all();
-		//print_r($infos);exit();
+		if (empty($infos)) {
+			return ['status' => 400, 'message' => '参数错误'];
+		}
 
 		$this->exportDatas($infos, $grouponInfo['groupon_name']);
-		return $datas;
+		return ;
 	}
 
 	public function import()

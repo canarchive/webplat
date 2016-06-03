@@ -20,31 +20,19 @@ $formName = $model->formName();
             ]);
             ?>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">所属公司</label>
+                <label class="control-label col-md-1">所属团购会</label>
                 <div class="col-md-2">
 					<?= Html::dropDownList(
-						"{$formName}[company_id]", 
+						"{$formName}[groupon_id]", 
 						0, 
-						$companyInfos, 
+						$model->grouponInfos, 
 						[
 							'prompt' => '全部', 
 							'class' => 'form-control',
-                            'onchange'=>'$.get("' . Url::to(['orderinfo/listinfo']) . '?action=grouponInfos&company_id=' . '"+$(this).val(),function(data){
-								var htmlContent = "";
-								$.each(data, function(i, v) {
-									htmlContent += "<option value=\"" + i + "\">" + v + "</option>";
-								});
-
-                                $("#groupon_id").html(htmlContent);
-                            });',
+							'id' => 'groupon_id',
 						]
 					) ?>
-                </div>
-
-                <label class="control-label col-md-1">所属团购会</label>
-                <div class="col-md-2">
-                    <?= Html::dropDownList("{$formName}[groupon_id]", 0, [], ['prompt' => '全部', 'class' => 'form-control', 'id' => 'groupon_id']) ?>
-                </div>
+				</div>
                 <div class="col-md-2">
                     <?= Html::submitButton(Yii::t('app', '搜索'), ['class' => 'btn btn-primary']) ?>
                     <?= Html::submitButton(Yii::t('app', '导出'), ['class' => 'btn btn-primary', 'onclick' => 'exportData();return false;']) ?>

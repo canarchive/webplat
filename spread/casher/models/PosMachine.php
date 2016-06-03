@@ -66,26 +66,4 @@ class PosMachine extends SpreadModel
 		return $datas;
 	}	
 
-	public function getCompanyInfos()
-	{
-		$infos = ArrayHelper::map(\spread\casher\models\Company::find()->all(), 'company_id', 'company_name');
-		return $infos;
-	}
-
-	public function getGrouponInfos()
-	{
-		$datas = [];
-		if ($this->company_id > 0) {
-		    $datas = \spread\casher\models\Groupon::getInfosByCompanyId($this->company_id);
-		}
-
-		return $datas;
-	}
-
-	public function getGrouponInfo()
-	{
-		$info = \spread\casher\models\Groupon::findOne($this->groupon_id);
-
-		return $info;
-	}	
 }

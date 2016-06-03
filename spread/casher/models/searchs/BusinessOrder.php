@@ -24,7 +24,7 @@ class BusinessOrder extends BusinessOrderModel
 	public function getSearchDatas()
 	{
 		$datas = [
-			'companyInfos' => [],//$this->companyInfos,
+			'grouponInfos' => $this->grouponInfos,
 		];
 
 		return $datas;

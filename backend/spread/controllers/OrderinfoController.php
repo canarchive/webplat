@@ -70,5 +70,6 @@ class OrderinfoController extends AdminController
 		$model = new Orderinfo();
 
 		$return = $model->export();
+		
 	}	
 }
