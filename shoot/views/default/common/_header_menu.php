@@ -39,7 +39,7 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                     </a>
                 </li>
                 <li class='gi'>
-                <a class='m-item' href='<?= Yii::getAlias('shooturl') . Url::to(['/sample']); ?>'>
+                <a class='m-item' href='<?= Yii::getAlias('@shooturl') . Url::to(['/sample']); ?>'>
                         <span>样片</span>
                     </a>
                 </li>
