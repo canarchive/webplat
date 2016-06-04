@@ -11,6 +11,7 @@ class SignupController extends spreadController
 
 	public function actionIndex()
 	{
+		$this->layout = '@shoot/views/default/layouts/main';
 		$viewPath = "/signup";
         return $this->render($viewPath);        
 	}
