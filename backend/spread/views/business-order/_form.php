@@ -12,27 +12,7 @@ use yii\bootstrap\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'sort_big')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'sort')->textInput(['maxlength' => 128]) ?>
-	<?= $form->field($model, 'company_id')->dropDownList(
-		$model->companyInfos, 
-		[
-			'prompt' => Yii::t('admin-common', 'Select Company'),
-            'onchange'=>'$.post("' . Url::to(['business-order/listinfo']) . '?action=grouponInfos&company_id=' . '"+$(this).val(),function(data){
-                var htmlContent = "";
-                $.each(data, function(i, v) {
-                    htmlContent += "<option value=\"" + i + "\">" + v + "</option>";
-                });
-
-                $("#groupon_id").html(htmlContent);
-            });',
-		]
-	); ?>
-	<?= $form->field($model, 'groupon_id')->dropDownList(
-		$model->grouponInfos,
-		[
-			'prompt' => Yii::t('admin-common', 'Select Groupon'),
-			'id' => 'groupon_id',
-		]
-	); ?>
+    <?= $form->field($model, 'groupon_id')->dropDownList($model->grouponInfos, ['prompt' => Yii::t('admin-common', 'Select Groupon')]); ?>
     <?= $form->field($model, 'order_range')->textInput() ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
 

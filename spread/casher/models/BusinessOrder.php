@@ -82,11 +82,14 @@ class BusinessOrder extends SpreadModel
 		} else {
     		$grouponId = intval(\Yii::$app->request->get('groupon_id'));
     		if (empty($grouponId)) {
+				exit('参数错误');
     			return ['status' => 400, 'message' => '参数错误'];
     		}
     
-    		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+    		//$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+			$grouponInfo = isset($this->grouponInfos[$grouponId]) ? $this->grouponInfos[$grouponId] : false;
     		if (empty($grouponInfo)) {
+				exit('团购会信息有误');
     			$this->addError('error', '指定的团购会不存在');
     			return false;
     		}			
@@ -94,6 +97,9 @@ class BusinessOrder extends SpreadModel
 		}
 
 		$infos = self::find()->where($where)->all();
+		if (empty($infos)) {
+			exit('没有要导出的信息');
+		}
 
 		$datas = [];
 		foreach ($infos as $info) {
@@ -115,7 +121,8 @@ class BusinessOrder extends SpreadModel
 			}
 		}
 
-		$title = isset($grouponInfo['groupon_name']) ? $grouponInfo['groupon_name'] : '';
+		//$title = isset($grouponInfo['groupon_name']) ? $grouponInfo['groupon_name'] : '';
+		$title = isset($grouponInfo) ? $grouponInfo : '';
 		$this->exportDatas($datas, "{$title}商家四联单");
 		return ;
 	}

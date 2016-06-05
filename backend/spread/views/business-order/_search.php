@@ -30,6 +30,7 @@ $formName = $model->formName();
 						[
 							'prompt' => '全部', 
 							'class' => 'form-control',
+							'id' => 'groupon_id',
 						]
 					) ?>
 				</div>

@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use yii\helpers\ArrayHelper;
+
 class SpreadModel extends BaseModel
 {
     public static function getDb()
