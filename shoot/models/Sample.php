@@ -74,4 +74,21 @@ class Sample extends ShootModel
 	{
 		return new \shoot\models\AttachmentSample();
 	}
+
+	public function getInfos($goodsId, $number)
+	{
+		$infos = $this->find()->where(['goods_id' => $goodsId, 'in_use' => 1])->orderBy(['orderlist' => SORT_DESC])->limit($number)->all();
+		$where = ['goods_id' => $goodsId, 'in_use' => 1];
+		$infos = $this->getAttachmentModel()->find()->where($where)->orderBy(['orderlist' => SORT_DESC])->all();
+		$datas = [];
+		foreach ($infos as $attachment) {
+			$url = $attachment->getUrl();
+			$datas[] = [
+				'url' => $url,
+				'name' => $attachment['filename'],
+				'description' => $attachment['description'],
+			];
+		}		
+		return $datas;
+	}
 }

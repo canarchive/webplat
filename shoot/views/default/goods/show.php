@@ -46,7 +46,7 @@ $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['cont
             <div class="related-view" data-tab="related"></div>
         </div>
     </div>
-    <?php echo $this->render('_show_content', ['info' => $info]); ?>
+    <?php echo $this->render('_show_content', ['info' => $info, 'sampleInfos' => $sampleInfos]); ?>
 </main>
 <div class="purchase-advisory">
     <a href="" target="_blank" id="advisory">

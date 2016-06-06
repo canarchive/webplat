@@ -51,8 +51,7 @@ $guarantees = [
             <div class='add-cart-form'>
                 <form id="add-cart-form" onsubmit="return false;">
                     <div class="g product-gifts" id="good-gifts"></div>
-                    <section class="g module product-selector" data-common-name="attribute-0"
-                    data-selector-type="box">
+                    <section class="g module product-selector">
                         <div class='gi one-quarter desk-one-fifth'>
                             <div class='radio-label'>
                                 网络
@@ -70,8 +69,7 @@ $guarantees = [
                             </div>
                         </div>
                     </section>
-                    <section class="g module product-selector" data-common-name="attribute-1"
-                    data-selector-type="box">
+                    <section class="g module product-selector">
                         <div class='gi one-quarter desk-one-fifth'>
                             <div class='radio-label'>
                                 颜色
@@ -96,8 +94,7 @@ $guarantees = [
                             </div>
                         </div>
                     </section>
-                    <section class="g module product-selector" data-common-name="attribute-2"
-                    data-selector-type="box">
+                    <section class="g module product-selector">
                         <div class='gi one-quarter desk-one-fifth'>
                             <div class='radio-label'>
                                 容量
