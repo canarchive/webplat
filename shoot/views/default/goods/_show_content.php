@@ -28,7 +28,7 @@
     </div>
     <div class="product-view-detail" id="product-detail">
         <?php echo $this->render('_show_content_detail', ['info' => $info]); ?>
-        <?php echo $this->render('_show_content_param', ['info' => $info]); ?>
+        <?php echo $this->render('_show_content_param', ['info' => $info, 'sampleInfos' => $sampleInfos]); ?>
         <?php //echo $this->render('_list_content_comment', ['info' => $info]); ?>
     </div>
 </div>

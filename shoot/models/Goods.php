@@ -98,6 +98,9 @@ class Goods extends ShootModel
 		return $info;
 	}
 
+	/**
+	 * 格式化商品信息，获取图片的url地址等
+	 */
 	protected function _formatInfo($info)
 	{
 		$info['main_photo'] = $info->getAttachmentUrl($info['main_photo']);

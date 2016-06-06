@@ -54,7 +54,13 @@ class GoodsController extends ShootController
 		if (empty($info)) {
 		    return \Yii::$app->response->redirect('/')->send();
 		}
+		$sample = new \shoot\models\Sample();
+		$sampleInfos = $sample->getInfos($id, 5);
+		$datas = [
+			'info' => $info,
+			'sampleInfos' => $sampleInfos,
+		];
 
-        return $this->render('show', ['info' => $info]);
+		return $this->render('show', $datas);
     }
 }
