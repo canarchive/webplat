@@ -8,7 +8,7 @@ $this->params['controllerForJs'] = 'BlogsController@video';
     <div class='wrapper'>
         <div class='blog-nav'>
             <ul>
-				<?php foreach ($categoryInfos as $catId => $info) { ?>
+				<?php foreach ($goodsInfos as $catId => $info) { ?>
                 <li>
 					<a href="<?= Url::to(['sample/list', 'id' => $catId]); ?>" class="oppo-tj <?php if ($catId == $currentId) { echo 'selected'; } ?>"><?= $info['name']; ?></a>
                 </li>
@@ -43,7 +43,7 @@ $this->params['controllerForJs'] = 'BlogsController@video';
                         </div>
                         <p class='image'>
                             <a href="javascript:;" onclick="vm.playVideo(138, this)">
-                                <img src="http://static.oppo.com/archives/201603/20160317040305Bk7hfo5eXIHhOMdM.jpg" />
+							    <img src="<?= $info['filepath']; ?>" />
                                 <span class='play-mask'></span>
                                 <span class='blog-icon play-icon'></span>
                                 <span class='play-iframe'></span>

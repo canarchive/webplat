@@ -10,7 +10,7 @@ $detailViewParams = [
 		],		
 		[
 			'attribute' => 'category_id',
-			'value' => $model->category_id > 0 ? $model->categoryInfos[$model->category_id] : '',
+			'value' => $model->category_id > 0 ? $model->categoryLevelInfos[$model->category_id] : '',
 		],		
 		'orderlist',
     ],

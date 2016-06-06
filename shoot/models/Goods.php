@@ -118,7 +118,7 @@ class Goods extends ShootModel
 			];
 		}		
 		$info->picture = $pictureInfos;
-		print_r($info);
+		//print_r($info);
 
 		return $info;
 	}

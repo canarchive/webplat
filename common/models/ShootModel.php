@@ -16,10 +16,23 @@ class ShootModel extends BaseModel
 		return new \shoot\models\Attachment();
 	}
 
+	public function getGoodsInfos()
+	{
+		$infos = ArrayHelper::map(\shoot\models\Goods::find()->all(), 'id', 'name');
+		return $infos;
+	}	
+
 	public function getPhotographerInfos()
 	{
 		$infos = ArrayHelper::map(\shoot\models\Photographer::find()->all(), 'id', 'name');
 		return $infos;
+	}	
+
+	public function getGoodsInfo()
+	{
+		$info = \shoot\models\Goods::findOne($this->goods_id);
+
+		return $info;
 	}	
 
 	public function getPhotographerInfo()
