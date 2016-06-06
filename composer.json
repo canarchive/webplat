@@ -22,7 +22,8 @@
         "yiisoft/yii2-httpclient": "~2.0@dev",
         "chrisboulton/php-resque": "dev-master",
         "fabpot/goutte": "~3.1@dev",
-        "overtrue/pinyin": "2.*"
+        "overtrue/pinyin": "2.*",
+        "phpoffice/phpexcel": "^1.8"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

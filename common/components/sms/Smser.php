@@ -13,7 +13,7 @@ class Smser extends \yii\base\Component
     public function __construct($plat = null, $config = [])
     {
 		$platInfos = require(__DIR__ . '/smser/config.php');
-		$plat = is_null($plat) || in_array($plat, array_keys($platInfos)) ? 'luosimao' : $plat;
+		$plat = is_null($plat) || !in_array($plat, array_keys($platInfos)) ? 'luosimao' : $plat;
 
 		$smser = 'common\components\sms\smser\\' . ucfirst($plat);
 		$this->smser = new $smser($platInfos[$plat]);
