@@ -50,8 +50,7 @@ $guarantees = [
             </div>
             <div class='add-cart-form'>
                 <form id="add-cart-form" onsubmit="return false;">
-                    <div class="g product-gifts" id="good-gifts"></div>
-                    <section class="g module product-selector" data-common-name="attribute-0"
+                    <!--<section class="g module product-selector" data-common-name="attribute-0"
                     data-selector-type="box">
                         <div class='gi one-quarter desk-one-fifth'>
                             <div class='radio-label'>
@@ -114,19 +113,103 @@ $guarantees = [
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <div class="g product-gifts" id="good-gifts"></div>
+                    </section>-->
+                    <div class="g product-gifts" id="good-gifts">
+                        <div class="one-quarter desk-one-fifth">
+                            <div class="y-label">
+                                赠品
+                            </div>
+                        </div>
+                        <div class="gi three-quarters desk-four-fifths">
+                            <div class="g gift-item clearfix">
+                                <input type="hidden" name="gift[]" value="214">
+                                <div class="y-img">
+                                    <img src="http://static.oppo.com/archives/201505/_thumbnail/thumbnail_20150508040535eIZYIesiDJ9cpwLd_60x60.jpg"
+                                    alt="蓝牙音箱">
+                                </div>
+                                <div class="y-name">
+                                    <a href="http://www.opposhop.cn/products/214.html" title="蓝牙音箱" target="_blank">
+                                        蓝牙音箱
+                                    </a>
+                                </div>
+                                <div class="y-attributes">
+                                    <ul class="swatches">
+                                        <li class="swatch  selected " data-gift-id="214" data-thumbnail="http://static.oppo.com/archives/201505/_thumbnail/thumbnail_20150508040535eIZYIesiDJ9cpwLd_60x60.jpg">
+                                            <a href="javascript:;">
+                                                蓝色
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="g gift-item clearfix">
+                                <input type="hidden" name="gift[]" value="216">
+                                <div class="y-img">
+                                    <img src="http://static.oppo.com/archives/201505/_thumbnail/thumbnail_20150508050552auM8VK55Oagbj23p_60x60.jpg"
+                                    alt="QCY 大咖蓝牙耳机 J134">
+                                </div>
+                                <div class="y-name">
+                                    <a href="http://www.opposhop.cn/products/216.html" title="QCY 大咖蓝牙耳机 J134"
+                                    target="_blank">
+                                        QCY 大咖蓝牙耳机 J134
+                                    </a>
+                                </div>
+                                <div class="y-attributes">
+                                    <ul class="swatches">
+                                        <li class="swatch  selected " data-gift-id="216" data-thumbnail="http://static.oppo.com/archives/201505/_thumbnail/thumbnail_20150508050552auM8VK55Oagbj23p_60x60.jpg">
+                                            <a href="javascript:;">
+                                                黄黑
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="service-repair" value=" 0 " />
+                    <input type="hidden" name="service-screen" value="0" />
+                    <div class="g pro-service" id="product-services"></div>
+                    <div class="g product-gifts">
+                        <div class="one-quarter desk-one-fifth">
+                            <div class="y-label">
+                                分期
+                            </div>
+                        </div>
+                        <div class="gi three-quarters desk-four-fifths">
+                            <p class='alipay-hb-product alipay-hb-product-free'>
+                                <i class='icon-hb icon-hb-free'></i>
+                                订单满600可使用花呗分期3/6期免息 0手续费
+                            </p>
+                            <a href="http://www.oppo.com/cn/service/help/330?name=%E8%B4%AD%E4%B9%B0%E5%B8%AE%E5%8A%A9"
+                            target="_blank" class='huabei-more'>
+                                了解详情&gt;&gt;
+                            </a>
+                        </div>
+                    </div>
                     <div class='g slab-white-border buying-actions'>
+                        <div class='gi lap-one-third'>
+                            <div class='wrapper'>
+                                <div class='counter-box' id="product-amount">
+                                    <a class='btn minus disabled' data-bind="minus">
+                                        -
+                                    </a>
+                                    <input class='number' type='text' id="amount-textbox" value='1'>
+                                    <a class='btn plus' data-bind="plus">
+                                        +
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <div class="gi lap-two-thirds">
                             <div class="g">
                                 <div class="gi one-half">
-                                    <a><button class="button-light" id="button-buy">
-                                        电话咨询
-                                    </button></a>
+                                    <button class="button-light" id="button-buy">
+                                        加入购物车
+                                    </button>
                                 </div>
                                 <div class="gi one-half">
                                     <button class="button button-primary" id="go-buy">
-                                        申请预约
+                                        立即购买
                                     </button>
                                 </div>
                             </div>

@@ -13,9 +13,9 @@ $gridViewParams = [
 			},
 		],
 		[
-			'attribute' => 'category_id',
+			'attribute' => 'goods_id',
 			'value' => function($model) {
-				$info = $model->categoryInfo;
+				$info = $model->goodsInfo;
 				return isset($info['name']) ? $info['name'] : '';
 			},
 		],

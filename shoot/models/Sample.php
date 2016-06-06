@@ -22,7 +22,7 @@ class Sample extends ShootModel
     public function rules()
     {
         return [
-            [['category_id', 'photographer_id'], 'required'],
+            [['goods_id', 'photographer_id'], 'required'],
 			['picture', 'safe'],
         ];
     }
@@ -62,7 +62,7 @@ class Sample extends ShootModel
 		$this->deleteAttachment = false;
 		$extData = [
 			'photographer_id' => $this->photographer_id,
-			'category_id' => $this->category_id,
+			'goods_id' => $this->goods_id,
 		];
 		$this->id = 0;
 		$this->_updateMulAttachment('sample', 'picture', $extData);

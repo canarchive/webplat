@@ -14,7 +14,7 @@ $picture = $attachmentModel->getFieldInfos('sample', 'picture');
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'photographer_id')->dropDownList($model->photographerInfos, ['prompt' => Yii::t('admin-common', 'Select photographer')]); ?>
-    <?= $form->field($model, 'category_id')->dropDownList($model->categoryInfos, ['prompt' => Yii::t('admin-common', 'Select Category')]); ?>
+    <?= $form->field($model, 'goods_id')->dropDownList($model->goodsInfos, ['prompt' => Yii::t('admin-common', 'Select Goods')]); ?>
     <?= $form->field($model, 'picture')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
