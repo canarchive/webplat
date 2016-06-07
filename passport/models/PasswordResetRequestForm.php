@@ -21,8 +21,8 @@ class PasswordResetRequestForm extends PassportModel
     {
         return [
             [['username', 'captcha'], 'filter', 'filter' => 'trim'],
-            ['captcha', 'checkCaptcha'],
-            //['captcha', 'captcha'],
+            //['captcha', 'checkCaptcha'],
+            ['captcha', 'captcha'],
             //['email', 'required'],
             //['email', 'email'],
             /*['email', 'exist',
@@ -135,7 +135,7 @@ class PasswordResetRequestForm extends PassportModel
 
 	public function sendInfos($action, $data = []) 
 	{
-        $session = Yii::$app->getSession();
+        $session = \Yii::$app->getSession();
         $session->open();
         $name = "_findpwd_send";
 
