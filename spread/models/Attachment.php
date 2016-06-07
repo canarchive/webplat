@@ -15,11 +15,6 @@ class Attachment extends AttachmentBase
         return '{{%attachment}}';
     }
 
-    public static function getDb()
-    {
-        return \Yii::$app->dbSpread;
-    }	
-
 	public function getFieldInfos($table = null, $field = null)
 	{
 		$infos = [
