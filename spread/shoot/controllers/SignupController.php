@@ -16,7 +16,7 @@ class SignupController extends spreadController
         return $this->render($viewPath);        
 	}
 
-	public function actionSignup()
+	public function actionSubmit()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
@@ -24,8 +24,8 @@ class SignupController extends spreadController
 		$model->isMobile = $this->clientIsMobile();
 
 		$signupInfo = false;
-        //if ($model->load(\Yii::$app->request->get())) {
-        if ($model->load(\Yii::$app->request->post())) {
+        if ($model->load(\Yii::$app->request->get(), '')) {
+        //if ($model->load(\Yii::$app->request->post())) {
             $signupInfo = $model->signup();
         }
 
@@ -35,8 +35,9 @@ class SignupController extends spreadController
 			$data = [
 				'status' => '400',
 				'message' => $message,
-				'model' => $model,
+				//'model' => $model,
 			];
+			print_r($data);exit();
 
 			return $data;
 		}

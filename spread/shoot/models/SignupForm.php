@@ -5,6 +5,8 @@ use Yii;
 use yii\base\Model;
 use common\components\sms\Smser;
 
+use spread\models\CustomService;
+
 /**
  * Signup form
  */
@@ -14,12 +16,9 @@ class SignupForm extends Model
 	public $name;
 	public $info_id;
 	public $message;
-	public $template_code;
 	public $position;
 	public $position_name;
-	public $product_id;
-	public $brand_id;
-	public $shootModel;
+	public $activityModel;
 	public $isMobile;
 
     /**
@@ -31,14 +30,14 @@ class SignupForm extends Model
             [['mobile', 'name'], 'filter', 'filter' => 'trim'],
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
-			[['name', 'message', 'info_id', 'template_code', 'position', 'position_name', 'product_id', 'brand_id'], 'safe'],
+			[['name', 'message', 'info_id', 'position', 'position_name'], 'safe'],
         ];
     }
 
     /**
-     * Signs owner up.
+     * 客户报名操作.
      *
-     * @return shootOwner|null the saved model or null if saving fails
+     * @return mixed
      */
     public function signup()
     {
@@ -47,36 +46,29 @@ class SignupForm extends Model
 			return $isValidate;
 		}
 
-		$conversionModel = new \spread\models\Conversion();
-		$positionInfos = $conversionModel->getPositionInfos();
-		$positionStr = isset($positionInfos[$this->position]) ? $positionInfos[$this->position] : $this->position;
-		$note = $positionStr . '#' . strip_tags($this->position_name);
 		$data = array(
 			'mobile' => $this->mobile,
 			'name' => $this->name,
-			'template_code' => $this->template_code,
 			'position' => strip_tags($this->position),
-			'product_id' => strpos($this->position, 'product') !== false ? intval($this->product_id) : 0,
-			'brand_id' => $this->position == 'brand' ? intval($this->brand_id) : 0,
 			'from_type' => $this->isMobile ? 'h5' : 'pc',
-			'note' => $note,
 			'message' => strip_tags($this->message),
 			'info_id' => $this->info_id,
-			'info_name' => $this->shootModel->name,
-			'shootModel' => $this->shootModel,
+			'info_name' => $this->activityModel->name,
+			'activityModel' => $this->activityModel,
 		);
 
-		$shootOwner = shootOwner::addOwner($data);
-		if (!$shootOwner) {
+		$activityUser = ActivityUser::addUser($data);
+		if (!$activityUser) {
 			$this->addError('mobile', '报名失败，请您重新报名');
 			return false;
 		}
 
+		$conversionModel = new \spread\models\Conversion();
 		$conversionInfo = $conversionModel->successLog($data);
-		$this->shootModel->updateCounters(['signup_number' => 1]);
+		$this->activityModel->updateCounters(['signup_number' => 1]);
 
-		$shootOwner->owner->updateCounters(['signup_num' => 1]);
-		$serviceModel = isset($shootOwner->owner->customService) ? $shootOwner->owner->customService : CustomService::findOne($shootOwner->owner->service_id);
+		$activityUser->user->updateCounters(['signup_num' => 1]);
+		$serviceModel = isset($activityUser->user->customService) ? $activityUser->user->customService : CustomService::findOne($activityUser->user->service_id);
 		if (empty($serviceModel->status)) {
 		    $serviceModel = CustomService::getServiceInfo();
 		}
@@ -84,7 +76,7 @@ class SignupForm extends Model
 		$serviceModel->update(false);
 		$serviceModel->updateCounters(['serviced_times' => 1]);
 
-		$this->sendSms($data, $shootOwner->owner->userInfo, $serviceModel->mobile);
+		$this->sendSms($data, $activityUser->user->userInfo, $serviceModel->mobile);
 		$this->sendSmsService($data, $serviceModel);
 
 		$data['service_code'] = $serviceModel->code;
@@ -92,34 +84,39 @@ class SignupForm extends Model
         return $data;
 	}
 
+	/**
+	 * 验证用户提交的信息是否有效
+	 */
 	protected function isValidate()
 	{
+		// 基于rules的基本验证
         if (!$this->validate()) {
 			$this->addError('error', '信息有误');
 			return false;
 		}
 
+		// 验证用户参与的活动的有效性
 		if (empty($this->info_id)) {
-			$this->addError('error', '必须报名指定的团购会');
+			$this->addError('error', '必须报名指定的活动');
 			return false;
 		}
 
-		$this->shootModel = shoot::findOne(['id' => $this->info_id]);
-		if (empty($this->shootModel)) {
-			$this->addError('error', '团购会信息有误');
+		$this->activityModel = Activity::findOne(['id' => $this->info_id]);
+		if (empty($this->activityModel)) {
+			$this->addError('error', '活动信息有误');
 			return false;
 		}
 
-		$noCheckshootOver = isset(\Yii::$app->params['noCheckshootOver']) ? \Yii::$app->params['noCheckshootOver'] : false;
-		if (!$noCheckshootOver && $this->shootModel['end_at'] < time()) {
+		$noCheckOver = isset(\Yii::$app->params['noCheckOver']) ? \Yii::$app->params['noCheckOver'] : false;
+		if (!$noCheckOver && $this->activityModel['end_at'] < time()) {
 			$this->addError('error', '对不起，本次活动报名已截止，请关注其他活动。');
 			return false;
 		}
 
-		$infoExist = shootOwner::findOne(['shoot_id' => $this->info_id, 'mobile' => $this->mobile]);
-		$noCheckshootSignined = isset(\Yii::$app->params['noCheckshootSignined']) ? \Yii::$app->params['noCheckshootSignined'] : false;
-		if (!$noCheckshootSignined && !empty($infoExist)) {
-			$this->addError('error', '这个手机号已经报名了本场团购会');
+		$infoExist = activityUser::findOne(['info_id' => $this->info_id, 'mobile' => $this->mobile]);
+		$noCheckSignined = isset(\Yii::$app->params['noCheckSignined']) ? \Yii::$app->params['noCheckSignined'] : false;
+		if (!$noCheckSignined && !empty($infoExist)) {
+			$this->addError('error', '这个手机号已经报名了本场活动');
 			return false;
 		}
 
@@ -134,9 +131,8 @@ class SignupForm extends Model
             //$content = "尊敬的业主您好！您已经成功注册为认证业主，您的用户名是：{$mobile},密码：{$data['password']}";
         }
 
-		$date = date('Y年m月d日', $this->shootModel['start_at']);
-		$message = "恭喜您成功报名{$date}举办的{$this->shootModel['name']}团购会；地址：{$this->shootModel['address']}(10号线十里河站B口，有摆渡车接送)；全网底价，售后投诉30分钟响应，100%解决！8:30签到， 详询电话：{$serviceMobile}。";
-		//$message = $userInfo['is_new'] ? $this->shootModel['sms_new'] : $this->shootModel['sms'];
+		$date = date('Y年m月d日', $this->activityModel['start_at']);
+		$message = "恭喜您成功报名， 详询电话：{$serviceMobile}。";
         $content .= " $message";
 
 		$smser = new Smser();
@@ -148,7 +144,7 @@ class SignupForm extends Model
     protected function sendSmsService($data, $employee)
     {
         $mobile = $employee['mobile'];
-        $content = "业主报名：{$data['name']}报名参加{$this->shootModel['name']}，电话：{$data['mobile']}，请立即回访";
+        $content = "业主报名：{$data['name']}报名参加{$this->activityModel['name']}，电话：{$data['mobile']}，请立即回访";
 
 		$smser = new Smser();
         $smser->send($mobile, $content, 'shoot_service');
