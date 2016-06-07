@@ -34,9 +34,6 @@ class Conversion extends Visit
 			'' => '未知',
 			'top' => '顶部',
 			'picture' => 'H5中部图片',
-			'product' => '特价商品',
-			'product' => '特价商品-按钮',
-			'brand' => '商家',
 			'bottom' => '底部',
 		];
 		return $datas;
@@ -52,11 +49,7 @@ class Conversion extends Visit
 			'info_id' => $data['info_id'],
 			'info_name' => $data['info_name'],
 			'position' => $data['position'],
-			'product_id' => $data['product_id'],
-			'brand_id' => $data['brand_id'],
-			'template_code' => $data['template_code'],
 			'message' => $data['message'],
-			'note' => $data['note'],
 		];
 
 		$session = \Yii::$app->session;
