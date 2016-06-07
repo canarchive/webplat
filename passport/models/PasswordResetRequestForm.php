@@ -87,18 +87,11 @@ class PasswordResetRequestForm extends PassportModel
         return ['status' => 400, 'message' => '系统异常，请重新操作'];
     }
 
-<<<<<<< HEAD
-	public function mobileSend()
-	{
- 		$smser = new Smser();
-   		$result = $smser->sendCode($model->mobile, 'register');
-=======
 	public function sendMobile()
 	{
  		$smser = new Smser();
    		$result = $smser->sendCode($this->mobile, 'findpwd');
 		$result = 'OK';
->>>>>>> passport
 
     	$status = $result == 'OK' ? 200 : 400;
         return ['status' => $status, 'message' => $result];
