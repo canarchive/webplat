@@ -23,7 +23,8 @@
         "chrisboulton/php-resque": "dev-master",
         "fabpot/goutte": "~3.1@dev",
         "overtrue/pinyin": "2.*",
-        "phpoffice/phpexcel": "^1.8"
+        "phpoffice/phpexcel": "^1.8",
+        "overtrue/wechat": "~3.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
