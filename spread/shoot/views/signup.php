@@ -1,17 +1,23 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $this->params['cssFiles'] = ['styles_member'];
 $this->params['jsFiles'] = ['modernizr.custom'];
 $this->params['controllerForJs'] = 'AddressesController@index';
+$info = ['id' => 1];
+$referrer = Yii::$app->request->referrer;
 ?>
+<script>
+window.spreadUrl = '<?= Yii::getAlias('@spreadurl'); ?>';
+</script>
 <?php $this->beginPage() ?>
 <main class='main-content user'>
     <div class='wrapper'>
         <div class='myOppo-menu'>
             <h1 class='h-gamma'>预约摄影</h1>
         </div>
-        <div class="row">
+        <div class="row" id="error_note">
             <div class="col-md-12">
                 <div class="alert alert-danger" role="alert">
                     <ul class="list-unstyled">
@@ -53,7 +59,7 @@ $this->params['controllerForJs'] = 'AddressesController@index';
                         <div class='gi field two-thirds'>
                             <label>*称呼：</label>
                             <div class='my-oppo-content-edit' style="display: block;">
-                                <input id="user_profile_form" name="username" type="text" value="">
+                                <input id="name" name="name" type="text" value="">
                             </div>
                         </div>
                     </div>
@@ -61,7 +67,7 @@ $this->params['controllerForJs'] = 'AddressesController@index';
                         <div class='gi field two-thirds'>
                             <label>*手机号：</label>
                             <div class='my-oppo-content-edit' style="display: block;">
-                                <input id="user_profile_form" name="username" type="text" value="">
+                                <input id="mobile" name="mobile" type="text" value="">
                             </div>
                         </div>
                     </div>
@@ -76,7 +82,8 @@ $this->params['controllerForJs'] = 'AddressesController@index';
                 </section>
                 <div class='form-actions brick-shadow'>
                     <div class='form-actions-right'>
-                        <a class='my-oppo-content-save button-light button-save-form' style="display:block;" data-trigger='submit'>保存</a>
+                        <a class='my-oppo-content-save button-light button-save-form' id="signupSubmit" style="display:block;">保存</a>
+                        <a class='my-oppo-content-save button-light button-save-form' id="signupDealing" style="display:none;">正在提交...</a>
                     </div>
                 </div>
                 </form> 
@@ -84,3 +91,9 @@ $this->params['controllerForJs'] = 'AddressesController@index';
         </div>
     </div>
 </main>
+<input type="hidden" id="info_id" value="<?= $info['id']; ?>" />
+<input type="hidden" id="position" value="spread" />
+<input type="hidden" id="position_name" value="<?= $referrer; ?>" />
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
+<script src="http://asset.alyee.biz/shoot/default/js/my/jquery-1.9.1.min.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/signup.js"></script>
