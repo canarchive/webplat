@@ -143,7 +143,7 @@ class SiteController extends PassportController
 
 		switch ($step) {
 		case 2:
-			$data = $model->sendInfos();
+			$data = $model->sendInfos('get');
 			if (empty($data)) {
 				$step = 1;
 				$view = 'findpwd_1';
@@ -157,6 +157,7 @@ class SiteController extends PassportController
 		$data = [];
 
         return $this->render($view, [
+			'step' => $step,
             'model' => $model,
 			'returnUrl' => $this->returnUrl,
         ]);
