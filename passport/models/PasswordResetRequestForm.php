@@ -21,7 +21,8 @@ class PasswordResetRequestForm extends PassportModel
     {
         return [
             [['username', 'captcha'], 'filter', 'filter' => 'trim'],
-            ['captcha', 'captcha'],
+            ['captcha', 'checkCaptcha'],
+            //['captcha', 'captcha'],
             //['email', 'required'],
             //['email', 'email'],
             /*['email', 'exist',
@@ -86,10 +87,11 @@ class PasswordResetRequestForm extends PassportModel
         return ['status' => 400, 'message' => '系统异常，请重新操作'];
     }
 
-	public function mobileSend()
+	public function sendMobile()
 	{
  		$smser = new Smser();
-   		$result = $smser->sendCode($model->mobile, 'register');
+   		$result = $smser->sendCode($this->mobile, 'findpwd');
+		$result = 'OK';
 
     	$status = $result == 'OK' ? 200 : 400;
         return ['status' => $status, 'message' => $result];
@@ -119,7 +121,37 @@ class PasswordResetRequestForm extends PassportModel
 		}
 
 		$return = $this->$methodSend($user);
-		print_r($return);
+		if ($return['status'] == 200) {
+			$data = [
+				'type' => $methodSend,
+				'username' => $this->username,
+			];
+
+			$this->sendInfos('write', $data);
+		}
+
 		return $return;
 	}
+
+	public function sendInfos($action, $data = []) 
+	{
+        $session = Yii::$app->getSession();
+        $session->open();
+        $name = "_findpwd_send";
+
+		switch ($action) {
+		case 'write':
+			$session[$name] = $data;
+			return ;
+		case 'get':
+			$data = isset($session[$name]) ? $session[$name] : [];
+			return $data;
+		case 'clear':
+			if (isset($session[$name])) {
+				unset($session[$name]);
+			}
+			return ;
+		}
+	}
+
 }
