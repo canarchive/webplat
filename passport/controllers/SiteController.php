@@ -2,6 +2,7 @@
 namespace passport\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use passport\models\SigninForm;
 use passport\models\PasswordResetRequestForm;
 use passport\models\ResetPasswordForm;
@@ -28,7 +29,7 @@ class SiteController extends PassportController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup', 'signin'],
+                'only' => ['logout', 'signup', 'signin', 'index'],
                 'rules' => [
                     [
                         'actions' => ['signup', 'signin', 'findpwd'],
@@ -36,13 +37,17 @@ class SiteController extends PassportController
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['index', 'logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {
-		            return Yii::$app->response->redirect(\Yii::$app->params['homeDomain'])->send();
+					if (in_array($action->id, ['index', 'logout'])) { 
+		                return Yii::$app->response->redirect(Url::to(['site/signin']))->send();
+					} else {
+		                return Yii::$app->response->redirect(\Yii::$app->params['homeDomain'])->send();
+					}
                 },
             ],
             /*'verbs' => [
@@ -80,6 +85,7 @@ class SiteController extends PassportController
 
     public function actionIndex()
     {
+		$this->layout = '@shoot/views/default/layouts/main';
         return $this->render('index');
     }
 
