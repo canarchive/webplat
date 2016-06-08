@@ -132,29 +132,35 @@ class BusinessOrder extends SpreadModel
 		$grouponId = $this->groupon_id;
 		$aId = $this->import;
 		if (empty($grouponId) || empty($aId)) {
+			exit('参数错误');
 			$this->addError('error', '参数错误');
 			return false;
 		}
 
-		$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+		//$grouponInfo = Groupon::findOne(['groupon_id' => $grouponId]);
+		$grouponInfo = isset($this->grouponInfos[$grouponId]) ? $this->grouponInfos[$grouponId] : false;
 		if (empty($grouponInfo)) {
+			exit('指定的团购会不存在');
 			$this->addError('error', '指定的团购会不存在');
 			return false;
 		}
 
 		$attachment = \spread\models\Attachment::findOne($aId);
 		if (empty($attachment)) {
+			exit('上传的文件有误');
 			$this->addError('error', '指定的文件参数有误，请重新上传');
 			return false;
 		}
 
 		$file = $attachment->getPathBase($attachment->path_prefix) . '/' . $attachment->filepath;
 		if (!file_exists($file)) {
+			exit('上传的文件有误，请重新上传');
 			$this->addError('error', '指定的文件不存在，请重新上传');
 			return false;
 		}
 
 		$datas = $this->importDatas($file);
+		//print_r($datas);exit();
 
 		$i = 0;
 		foreach ($datas as $key => $data) {
@@ -166,8 +172,9 @@ class BusinessOrder extends SpreadModel
 				'sort_big' => trim($data['B']),
 				'sort' => trim($data['C']),
 				'name' => trim($data['D']),
-				'order_num' => intval(trim($data['E'])),
-				'order_range' => trim($data['F']),
+				//'order_num' => intval(trim($data['E'])),
+				//'order_range' => trim($data['F']),
+				'order_range' => trim($data['E']),
 			];
 			$info = $this->findOne(['groupon_id' => $grouponId, 'order_range' => $data['order_range']]);
 			if (!empty($info)) {
@@ -184,7 +191,9 @@ class BusinessOrder extends SpreadModel
 	public function _formatExportDatas($objPHPExcel, $datas)
 	{
 		$i = 1;
+		//$sql = "INSERT INTO `test`(`code`, `name`) VALUES";
 		foreach ($datas as $data) {
+			//$sql .= "('{$data['order']}', '{$data['name']}'),\n";
             $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A' . $i, $data['name'])
                     ->setCellValue('B' . $i, $data['order'])
@@ -195,6 +204,8 @@ class BusinessOrder extends SpreadModel
                     ->setCellValue('G' . $i, '部类商品');
 			$i++;
 		}
+		//echo $sql;exit();
+		
         
 		return $objPHPExcel;
 	}

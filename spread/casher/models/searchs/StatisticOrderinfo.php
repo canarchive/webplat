@@ -42,7 +42,7 @@ class StatisticOrderinfo extends Orderinfo
 			$data['totalMoney'] = $totalInfos[$business]['money'];
 		}
 
-		$datas[] = [
+		/*$datas[] = [
 			'business_sort_big' => '合计',
 			'business_sort' => '',
 			'business_name' => '',
@@ -51,7 +51,7 @@ class StatisticOrderinfo extends Orderinfo
 			'money' => $moneyAll,
 			'totalCount' => '',
 			'totalMoney' => '',
-		];
+		];*/
 
 		return $datas;
 	}
