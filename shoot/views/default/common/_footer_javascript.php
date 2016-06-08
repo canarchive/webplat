@@ -1,10 +1,12 @@
 <?php
 use yii\helpers\Url;
+
+$jsFootersDefault = ['lib.min', 'custom_form', 'scripts', 'sdj'];
+$jsFooters = isset($this->params['jsFooters']) ? $this->params['jsFooters'] : $jsFootersDefault;
+foreach ($jsFooters as $jsFooter) {
+	echo '<script src="'. Yii::getAlias('@asseturl') . '/shoot/default/js/' . $jsFooter . '.js"></script><br />';
+}
 ?>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/lib.min.js"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/custom_form.js?v=20150914144728"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/scripts.js?v=201506151120596"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/sdj.js?v=20160121142624"></script>
 <script type="text/javascript">
 var vm;
 SHOOT.conf.BASE_URL = "<?= Yii::getAlias('@shooturl'); ?>";

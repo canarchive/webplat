@@ -8,9 +8,9 @@ $this->params['controllerForJs'] = 'BlogsController@video';
     <div class='wrapper'>
         <div class='blog-nav'>
             <ul>
-				<?php foreach ($goodsInfos as $catId => $info) { ?>
+				<?php foreach ($goodsInfos as $goodsId => $goodsName) { ?>
                 <li>
-					<a href="<?= Url::to(['sample/list', 'id' => $catId]); ?>" class="oppo-tj <?php if ($catId == $currentId) { echo 'selected'; } ?>"><?= $info['name']; ?></a>
+					<a href="<?= Url::to(['sample/index', 'id' => $goodsId]); ?>" class="oppo-tj <?php if ($goodsId == $currentId) { echo 'selected'; } ?>"><?= $goodsName; ?></a>
                 </li>
                 <?php } ?>
             </ul>
@@ -42,8 +42,8 @@ $this->params['controllerForJs'] = 'BlogsController@video';
                             </div>
                         </div>
                         <p class='image'>
-                            <a href="javascript:;" onclick="vm.playVideo(138, this)">
-							    <img src="<?= $info['filepath']; ?>" />
+							<a href="<?= Yii::getAlias('@spreadurl') . Url::to(['/shoot/signup/index', 'goods_id' => $info['goods_id']]); ?>">
+							    <img src="<?= $info['filepath']; ?>" width="540px" height="300px" style="width: 540px; height:300px;"/>
                                 <span class='play-mask'></span>
                                 <span class='blog-icon play-icon'></span>
                                 <span class='play-iframe'></span>
@@ -55,6 +55,7 @@ $this->params['controllerForJs'] = 'BlogsController@video';
                 </div>
                 <?php } } ?>
             </div>
+            <?php if ($pages > 1) { ?>
             <div class='page_pagination  page_first '>
                 <div class="text-center">
                     <ul class="pagination">
@@ -73,10 +74,12 @@ $this->params['controllerForJs'] = 'BlogsController@video';
                         <?php } ?>
                         <?php } ?>
                         <li>
-                            <a href="http://www.oppo.com/cn/blogs/video?group_name=%E6%88%91%E4%BB%AC%E7%9A%84%E8%A7%86%E9%A2%91&page=2" rel="next">&raquo;</a></li>
+							<a href="http://www.oppo.com/cn/blogs/video?group_name=%E6%88%91%E4%BB%AC%E7%9A%84%E8%A7%86%E9%A2%91&page=2" rel="next">&raquo;</a>
+                        </li>
                     </ul>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </main>
