@@ -33,7 +33,6 @@ return [
 		'urlManager' => [
             'rules' => [
 				'hd-<id:\d+>' => 'shoot/detail/index',
-				'signup' => 'shoot/signup/index',
 				'submit' => 'shoot/signup/submit',
 			],
 		],
