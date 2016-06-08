@@ -16,6 +16,7 @@ $importBusiness = $attachmentModel->getFieldInfos('orderinfo', 'import_business'
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'import')->hiddenInput(); ?>
+    <?= $form->field($model, 'groupon_id')->dropDownList($model->grouponInfos, ['prompt' => Yii::t('admin-common', 'Select Groupon')]); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
         'attribute' => 'files[import]',

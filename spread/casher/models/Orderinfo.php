@@ -88,16 +88,22 @@ class Orderinfo extends SpreadModel
 	{
 		$grouponId = intval(\Yii::$app->request->get('groupon_id'));
 		if (empty($grouponId)) {
+			exit('参数有误');
 			return ['status' => 400, 'message' => '参数错误'];
 		}
 		$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
+		$grouponInfo = isset($this->grouponInfos[$grouponId]) ? $this->grouponInfos[$grouponId] : false;
+    	if (empty($grouponInfo)) {
+			exit('团购会信息有误');
+    	}			
 
 		$infos = self::find()->where(['groupon_id' => $grouponId])->all();
 		if (empty($infos)) {
+			exit('没有要导出的信息');
 			return ['status' => 400, 'message' => '参数错误'];
 		}
 
-		$this->exportDatas($infos, $grouponInfo['groupon_name']);
+		$this->exportDatas($infos, $grouponInfo);
 		return ;
 	}
 

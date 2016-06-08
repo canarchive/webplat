@@ -9,9 +9,9 @@ use spread\casher\models\Orderinfo;
 
 class StatisticOrderinfo extends Orderinfo
 {
-	public function getInfos($field)
+	public function getInfos($field, $grouponId)
 	{
-		$where = [];
+		$where = "WHERE `groupon_id` = $grouponId";
 		$method = "statistic{$field}";
 		$datas = $this->$method($where);
 
@@ -24,7 +24,7 @@ class StatisticOrderinfo extends Orderinfo
 		$selectField = $groupField . ', COUNT(*) AS `count`, SUM(`money`) AS `money`';
 		$orderField = '`business_sort_big`, `business_sort`, `business_name`, `created_day` DESC';
 
-		$sql = "SELECT {$selectField} FROM `ws_orderinfo` GROUP BY {$groupField} ORDER BY {$orderField} LIMIT 5000";
+		$sql = "SELECT `groupon_id`, {$selectField} FROM `ws_orderinfo` {$where} GROUP BY {$groupField} ORDER BY {$orderField} LIMIT 5000";
         $datas = $this->db->createCommand($sql)->queryAll();
 		$countAll = $moneyAll = 0;
 		$totalInfos = [];

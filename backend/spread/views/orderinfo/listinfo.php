@@ -20,13 +20,12 @@ $gridViewParams = [
 				return '';
 			},
 		],*/
-		/*[
+		[
             'attribute' => 'groupon_id',
             'value'=> function($model){
-				$info = $model->grouponInfo;
-				return isset($info['groupon_name']) ? $info['groupon_name'] : '';
+				return $model->grouponInfos[$model->groupon_id];
             },
-		],*/
+		],
 		[
             'attribute' => 'created_at',
             'value'=> function($model){

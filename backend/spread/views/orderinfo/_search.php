@@ -5,6 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 $formName = $model->formName();
 ?>
+<div class="row">
 <div class="box col-md-12">
     <div class="box-inner">
         <div class="box-header well" data-original-title="">
@@ -42,13 +43,14 @@ $formName = $model->formName();
         </div>
     </div>
 </div>
+</div>
 <script>
 function exportData()
 {
 	var groupon_id = $('#groupon_id').val();
 	if (!groupon_id) {
-		//alert('请选择指定的团购会！');
-		//return ;
+		alert('请选择指定的团购会！');
+		return ;
 	}
 	window.location.href="<?= Url::to(['orderinfo/export']); ?>?groupon_id=" + groupon_id; 
 }
