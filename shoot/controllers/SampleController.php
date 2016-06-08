@@ -23,11 +23,7 @@ class SampleController extends ShootController
 		foreach ($infos as $id => & $info) {
 			$info['filepath'] = $info->getAttachmentUrl($info['id']);
 		}
-		foreach ($goodsInfos as $goodsId => & $info) {
-			if (!in_array($goodsId, $goodsIds)) {
-				unset($goodsInfos[$goodsId]);
-			}
-		}
+
 		$datas = [
 			'page' => $page,
 			'pages' => ceil($count / 20),
