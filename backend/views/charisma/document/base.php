@@ -1,5 +1,5 @@
 <?php
-$baseDomain = 'yaolezan.com';
+$baseDomain = 'no.com';
 $domains = [
 	'www' => '商城',
 	'user' => '用户中心',
