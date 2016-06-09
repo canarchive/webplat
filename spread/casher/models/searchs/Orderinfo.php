@@ -12,7 +12,7 @@ class Orderinfo extends OrderinfoModel
     public function rules()
     {
         return [
-			[['orderid', 'money', 'groupon_name', 'business_name', 'business_sort_big', 'business_sort', 'sn_pos', 'mobile'], 'safe'],
+			[['groupon_id', 'orderid', 'money', 'groupon_name', 'business_name', 'business_sort_big', 'business_sort', 'sn_pos', 'mobile'], 'safe'],
         ];
     }
 

@@ -25,7 +25,7 @@ class Orderinfo extends SpreadModel
     public function behaviors()
     {
 		$behaviors = [
-		    $this->timestampBehaviorComponent,
+		    //$this->timestampBehaviorComponent,
 		];
 		return $behaviors;
     }
@@ -71,7 +71,7 @@ class Orderinfo extends SpreadModel
 	public function getStatusInfos()
 	{
 		$datas = [
-			'0' => '测试',
+			'0' => '',
 			'1' => '正常',
 			'99' => '异常',
 		];	
@@ -91,7 +91,7 @@ class Orderinfo extends SpreadModel
 			exit('参数有误');
 			return ['status' => 400, 'message' => '参数错误'];
 		}
-		$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
+		//$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
 		$grouponInfo = isset($this->grouponInfos[$grouponId]) ? $this->grouponInfos[$grouponId] : false;
     	if (empty($grouponInfo)) {
 			exit('团购会信息有误');
@@ -115,16 +115,16 @@ class Orderinfo extends SpreadModel
 		$aId = $this->import;
 		$aIdBusiness = $this->import_business;
 		if (empty($grouponId) || empty($aId) || empty($aIdBusiness)) {
+			exit('参数错误');
 			$this->addError('error', '参数错误');
 			return false;
 		}
 
 		//$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
-		//$grouponInfo = isset($this->grouponInfos[$grouponId]) ? $this->grouponInfos[$grouponId] : false;
 		$grouponInfos = \Yii::$app->params['grouponInfos'];
 		$grouponInfo = isset($grouponInfos[$grouponId]) ? $grouponInfos[$grouponId] : false;
-		//print_R($grouponInfo);exit();
 		if (empty($grouponInfo)) {
+			exit('指定的团购会不存在');
 			$this->addError('error', '指定的团购会不存在');
 			return false;
 		}
@@ -132,6 +132,7 @@ class Orderinfo extends SpreadModel
 		$attachment = \spread\models\Attachment::findOne($aId);
 		$attachmentBusiness = \spread\models\Attachment::findOne($aIdBusiness);
 		if (empty($attachment) || empty($attachmentBusiness)) {
+			exit('文件上传有误');
 			$this->addError('error', '指定的文件参数有误，请重新上传');
 			return false;
 		}
@@ -139,6 +140,7 @@ class Orderinfo extends SpreadModel
 		$file = $attachment->getPathBase($attachment->path_prefix) . '/' . $attachment->filepath;
 		$fileBusiness = $attachmentBusiness->getPathBase($attachmentBusiness->path_prefix) . '/' . $attachmentBusiness->filepath;
 		if (!file_exists($file) || !file_exists($fileBusiness)) {
+			exit('没有找到上传的文件');
 			$this->addError('error', '指定的文件不存在，请重新上传');
 			return false;
 		}
@@ -146,6 +148,7 @@ class Orderinfo extends SpreadModel
 		$datas = $this->importDatas($file);
 		$datasBusiness = $this->importDatas($fileBusiness);
 		if (empty($datas) || empty($datasBusiness)) {
+			exit('没有要录入的信息');
 			$this->addError('error', '没有要录入的信息');
 			return false;
 		}

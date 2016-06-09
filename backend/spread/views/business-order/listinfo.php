@@ -9,7 +9,7 @@ $gridViewParams = [
 		'sort_big',
 		'sort',
         'name',
-		'order_num',
+		//'order_num',
 		'order_range',
 		[
 			'attribute' => 'order_diff',
@@ -23,20 +23,19 @@ $gridViewParams = [
 				return $orderEnd - $orderStart + 1;
 			},
 		],
-		/*[
+		[
             'attribute' => 'groupon_id',
             'value'=> function($model){
-				$info = $model->grouponInfo;
-				return isset($info['groupon_name']) ? $info['groupon_name'] : '';
+				return $model->grouponInfos[$model->groupon_id];
             },
-		],*/
+		],
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
                 return  date('Y-m-d H:i:s',$model->created_at);
             },
         ],
-		[
+		/*[
             'attribute' => 'updated_at',
             'value'=> function($model){
                 return  date('Y-m-d H:i:s',$model->updated_at);
@@ -47,7 +46,7 @@ $gridViewParams = [
 			'value' => function($model) {
 			    return $model->statusInfos[$model->status];
 			},
-		],
+		],*/
 		[
 			'format' => 'raw',
 			'attribute' => 'export',
