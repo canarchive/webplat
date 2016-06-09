@@ -111,7 +111,7 @@ class Orderinfo extends SpreadModel
 	{
 		//print_r($this);
 		//print_r($_POST);
-		$grouponId = 2474;//$this->groupon_id;
+		$grouponId = $this->groupon_id;
 		$aId = $this->import;
 		$aIdBusiness = $this->import_business;
 		if (empty($grouponId) || empty($aId) || empty($aIdBusiness)) {
@@ -119,7 +119,11 @@ class Orderinfo extends SpreadModel
 			return false;
 		}
 
-		$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
+		//$grouponInfo = ['groupon_name' => '20160528-29北京团购会'];//Groupon::findOne(['groupon_id' => $grouponId]);
+		//$grouponInfo = isset($this->grouponInfos[$grouponId]) ? $this->grouponInfos[$grouponId] : false;
+		$grouponInfos = \Yii::$app->params['grouponInfos'];
+		$grouponInfo = isset($grouponInfos[$grouponId]) ? $grouponInfos[$grouponId] : false;
+		//print_R($grouponInfo);exit();
 		if (empty($grouponInfo)) {
 			$this->addError('error', '指定的团购会不存在');
 			return false;
