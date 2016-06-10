@@ -36,6 +36,7 @@ return [
             'rules' => [
 				'info-<code:\w+>' => 'info/help/index',
 				'show-<id:\d+>' => 'goods/show',
+				'sample-<id:\d+>' => 'sample/index',
             ],
         ],
     ],

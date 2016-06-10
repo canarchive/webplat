@@ -77,9 +77,9 @@ class Sample extends ShootModel
 
 	public function getInfos($goodsId, $number)
 	{
-		$infos = $this->find()->where(['goods_id' => $goodsId, 'in_use' => 1])->orderBy(['orderlist' => SORT_DESC])->limit($number)->all();
+		//$infos = $this->find()->where(['goods_id' => $goodsId, 'in_use' => 1])->orderBy(['orderlist' => SORT_DESC])->limit($number)->all();
 		$where = ['goods_id' => $goodsId, 'in_use' => 1];
-		$infos = $this->getAttachmentModel()->find()->where($where)->orderBy(['orderlist' => SORT_DESC])->all();
+		$infos = $this->getAttachmentModel()->find()->where($where)->orderBy(['orderlist' => SORT_DESC])->limit($number)->all();
 		$datas = [];
 		foreach ($infos as $attachment) {
 			$url = $attachment->getUrl();

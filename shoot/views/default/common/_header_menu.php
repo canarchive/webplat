@@ -14,22 +14,22 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                     </a>
                 </li>
                 <li class='gi'>
-                    <a class='m-item' href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/hot']); ?>'>
+                    <a class='m-item' href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => '2']); ?>'>
                         <span>推荐产品</span>
                         <span class='js-toggle-submenu toggle'></span>
                     </a>
                     <ul class='sub-menu'>
                         <li>
-                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>生日派对</a>
+                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 2]); ?>'>人体写真</a>
                         </li>
                         <li>
-                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>儿童摄影</a>
+                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>童装摄影</a>
                         </li>
                         <li>
-                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>时装</a>
+                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 5]); ?>'>女装时装</a>
                         </li>
                         <li>
-                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 1]); ?>'>静物</a>
+                            <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/goods/show', 'id' => 4]); ?>'>内衣摄影</a>
                         </li>
                     </ul>
                 </li>

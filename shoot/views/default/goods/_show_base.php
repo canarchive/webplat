@@ -17,7 +17,11 @@ $guarantees = [
 ];
 
 $attributes = [
-	'step_1' => ['申请预约' => ''],
+	'步骤1' => ['打电话或在线提交预约申请'],
+	'步骤2' => ['客服跟您确认拍摄需求'],
+	'步骤3' => ['安排摄影师上门服务'],
+	'步骤4' => ['摄影、选片'],
+	'步骤5' => ['满意后付款'],
 ];
 ?>
 <div class='buying-details'>
@@ -57,67 +61,24 @@ $attributes = [
             <div class='add-cart-form'>
                 <form id="add-cart-form" onsubmit="return false;">
                     <div class="g product-gifts" id="good-gifts"></div>
+                    <?php foreach ($attributes as $attrKey => $attribute) { ?>
                     <section class="g module product-selector">
                         <div class='gi one-quarter desk-one-fifth'>
-                            <div class='radio-label'>
-                                网络
-                            </div>
+						    <div class='radio-label'><?= $attrKey; ?></div>
                         </div>
                         <div class="gi three-quarters desk-four-fifths">
                             <div class="g g-wrapper-s">
-                                <div class="gi one-half desk-one-third">
-                                    <a href="http://www.opposhop.cn/products/362.html" class="swatch selected">
-                                        <span>
-                                            全网通
-                                        </span>
+                                <?php foreach ($attribute as $attrValue) { ?>
+                                <div class="gi one-half desk-two-third">
+                                    <a href="javascript: void(0);" class="swatch selected">
+									    <span><?= $attrValue; ?></span>
                                     </a>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </section>
-                    <section class="g module product-selector">
-                        <div class='gi one-quarter desk-one-fifth'>
-                            <div class='radio-label'>
-                                颜色
-                            </div>
-                        </div>
-                        <div class="gi three-quarters desk-four-fifths">
-                            <div class="g g-wrapper-s">
-                                <div class="gi one-half desk-one-third">
-                                    <a href="javascript:;" class="swatch selected">
-                                        <span>
-                                            金色
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="gi one-half desk-one-third">
-                                    <a href="http://www.opposhop.cn/products/363.html" class="swatch ">
-                                        <span>
-                                            玫瑰金
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="g module product-selector">
-                        <div class='gi one-quarter desk-one-fifth'>
-                            <div class='radio-label'>
-                                容量
-                            </div>
-                        </div>
-                        <div class="gi three-quarters desk-four-fifths">
-                            <div class="g g-wrapper-s">
-                                <div class="gi one-half desk-one-third">
-                                    <a href="javascript:;" class="swatch selected">
-                                        <span>
-                                            64G
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <?php } ?>
                     <div class="g product-gifts" id="good-gifts"></div>
                     <div class='g slab-white-border buying-actions'>
                         <div class="gi lap-two-thirds">

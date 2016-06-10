@@ -36,7 +36,7 @@ class Goods extends ShootModel
             [['name', 'category_id', 'price', 'main_photo'], 'required'],
             [['orderlist', 'status', 'price_market'], 'default', 'value' => 0],
             [['price', 'price_market'], 'double'],
-			[['picture', 'keyword', 'description', 'content'], 'safe'],
+			[['brief', 'picture', 'keyword', 'description', 'content'], 'safe'],
         ];
     }
 
@@ -50,6 +50,7 @@ class Goods extends ShootModel
             'category_id' => '分类ID',
             'brand_id' => '品牌ID',
             'name' => '产品名称',
+			'brief' => '摘要',
             'main_photo' => '商品主图',
             'period' => '期数',
             'orderlist' => '排序',

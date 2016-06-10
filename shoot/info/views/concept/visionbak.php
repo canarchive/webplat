@@ -36,11 +36,13 @@ window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
         <div class="head">
             <div class="head_left">
 			    <a href="<?= Yii::getAlias('@shooturl'); ?>">
-				    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/oppo_logo.png" />
+				    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/logo.jpg" />
                 </a>
             </div>
             <div class="head_right">
-			    <a href="<?= Yii::getAlias('@spreadurl') . Url::to(['/shoot/signup/index']); ?>">立即预约</a>
+			    <a href="<?= Yii::getAlias('@shooturl') . Url::to(['/info/helper']); ?>">
+                    帮助文档
+                </a>
             </div>
         </div>
     </div>
@@ -48,16 +50,17 @@ window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
     <div class="main_1" data-cycle-speed="1000">
         <div class="main_1s">
             <div class="main_title">
-                摄到家让摄影更简单&nbsp;
-                <span></span>
+                OPPO手机官方管理工具&nbsp;
+                <span>(V3.8.2)</span>
             </div>
             <div class="main_titles">
-                摄影师上门服务、不满意不收费
+                管理照片和文件、清理手机中垃圾、安装官方应用游戏
             </div>
             <div class="main_down">
-			    <a href="<?= Yii::getAlias('@spreadurl') . Url::to(['/shoot/signup/index']); ?>">
+			    <a href="<?= Yii::getAlias('@spreadurl') . Url::to(['/signup/']); ?>">
                     立即体验
                 </a>
+                XP/Win7/Win8
             </div>
             <div class="main_1_img">
 			    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/img_1.png" />
@@ -129,9 +132,15 @@ window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
     <!-- main_5 -->
     <div class="main_6">
         <div class="main_6s">
-			<?= Yii::$app->params['siteCopyRightInfo'] . '  ' . Yii::$app->params['siteIcpInfo']; ?>
+            Copyright © 广东欧珀电子工业有限公司 2014. All Rights Reserved. 网站备案号 : 粤ICP备08130115号-1
         </div>
     </div>
+</div>
+<div style="display: none;">
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://": " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F60be21aec6469c0f8b7f14996acfe756' type='text/javascript'%3E%3C/script%3E"));
+    </script>
 </div>
 </body>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/jquery-1.8.3.min.js"></script>
