@@ -9,14 +9,14 @@ $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['cont
 <script>
     var Yo = Yo || {};
 
-    Yo.base_url = "http://www.opposhop.cn/";
+    Yo.base_url = "";
 
     Yo.config = {
         product_id: 362,
-        product_url: "http://www.opposhop.cn/products/362/",
-        account_url: "http://my.oppo.com",
-        countdown_start: '2016/04/12 09:00:00',
-        countdown_end: '2016/04/12 10:00:00'
+        product_url: "",
+        account_url: "",
+        countdown_start: '',
+        countdown_end: ''
     };
 
     var is_insurance_allowed = true;
@@ -72,7 +72,7 @@ $(function() {
 
     var Related = new Yo.Product.Related();
 
-    var Comments = Yo.Product.Comments = new Yo.Product.Comments(362, '#comments', '#comments-pagination', '#respond');
+    //var Comments = Yo.Product.Comments = new Yo.Product.Comments(362, '#comments', '#comments-pagination', '#respond');
 
     Yo.Product.Tabs();
 
@@ -96,11 +96,11 @@ $(function() {
         if ($tab.data('hash') == 'comments' && !$tab.data('trigger')) {
             $tab.data('trigger', true);
 
-            Comments.render();
+            //Comments.render();
         }
     });
     if ($('#product-tabs').find('li').length == 1 && $('#product-tabs').find('li').data('hash') == 'comments') {
-        Comments.render();
+        //Comments.render();
     }
 
     //new Yo.Product.Suits();

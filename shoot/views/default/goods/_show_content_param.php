@@ -1,4 +1,4 @@
-<div class="product-detail-tab y-tab-frame " id="product-detail-params">
+<div class="product-detail-tab y-tab-frame tab-item-active" id="product-detail-params">
 <section>
     <?php $i = 0; foreach ($sampleInfos as $picture) { ?>
     <p style="text-align:center;">

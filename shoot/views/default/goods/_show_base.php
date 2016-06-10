@@ -1,6 +1,8 @@
 <?php
+use yii\helpers\Url;
+
 $guarantees = [
-    'postpage' => [
+    'postage' => [
         'name' => '免费上门',
     ],
     'return' => [
@@ -12,6 +14,10 @@ $guarantees = [
     'points' => [
         'name' => '消费返红包',
     ],
+];
+
+$attributes = [
+	'step_1' => ['申请预约' => ''],
 ];
 ?>
 <div class='buying-details'>
@@ -122,7 +128,7 @@ $guarantees = [
                                     </button></a>
                                 </div>
                                 <div class="gi one-half">
-                                    <button class="button button-primary" id="go-buy">
+				                    <button class="button button-primary" id="go-buy" onclick="window.location.href='<?= Yii::getAlias('@spreadurl') . Url::to(['/shoot/signup/index', 'goods_id' => $info['id']]); ?>'">
                                         申请预约
                                     </button>
                                 </div>

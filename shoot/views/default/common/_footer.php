@@ -66,7 +66,7 @@ $urlPre = Yii::getAlias('@shooturl');
                         <span class="icon icon-tel"></span>
                     </div>
                     <div class="about-contact-info">
-                        <h4 class='h-delta'><span class="highlight">4001-666-888</span></h4>
+                        <h4 class='h-delta'><span class="highlight">4001-6218-718</span></h4>
                         <p style="">7*24小时客服电话</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ $urlPre = Yii::getAlias('@shooturl');
     <div class='footer-info'>
         <div class='wrapper'>
             <p class='copy'>
-                © 2005 - 2016 东莞市永盛通信科技有限公司 版权所有 粤ICP备08130115号-1 联系方式：0755-66866666
+                © 2005 - 2016 北京市诚联互通科技有限公司 版权所有 京ICP备15002642号-3 联系方式：400-6218-718
             </p>
         </div>
     </div>
