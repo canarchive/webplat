@@ -10,6 +10,7 @@ $detailViewParams = [
 			'value' => $model->getAttachmentImg($model->main_photo, false),
 		],
         'name',
+        'brief',
 		'price',
 		'price_market',
 		[

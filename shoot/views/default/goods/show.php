@@ -48,11 +48,11 @@ $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['cont
     </div>
     <?php echo $this->render('_show_content', ['info' => $info, 'sampleInfos' => $sampleInfos]); ?>
 </main>
-<div class="purchase-advisory">
+<!--<div class="purchase-advisory">
     <a href="" target="_blank" id="advisory">
         购机咨询
     </a>
-</div>
+</div>-->
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/show/global.min.js?20150820191148"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/show/opposhop.min.js?20160411163101"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/show/main.min.js?20160126153544"></script>

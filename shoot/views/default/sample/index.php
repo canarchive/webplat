@@ -49,8 +49,7 @@ $this->params['controllerForJs'] = 'BlogsController@video';
                                 <span class='play-iframe'></span>
                             </a>
                         </p>
-                        <p class='other'>2016-03-17
-                            <a href="http://www.oppo.com/cn/product/p/r9/index.html" target="_black" class="oppo-tj" data-tj="www|link|blog|recomend-138">OPPO R9</a></p>
+                        <p class='other'><a href="" target="_black" class="oppo-tj"></a></p>
                     </div>
                 </div>
                 <?php } } ?>
