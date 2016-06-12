@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 
-$cssFiles = ['styles_member'];
+$cssFiles = isset($this->params['cssFiles']) ? $this->params['cssFiles'] : ['styles_member'];
 $jsFiles = ['modernizr.custom'];
 $returnUrl = isset($this->params['returnUrl']) ? $this->params['returnUrl'] : '';
 $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['controllerForJs'] : '';
@@ -54,6 +54,7 @@ $controllerForJs = isset($this->params['controllerForJs']) ? $this->params['cont
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/responsive.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/scripts.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/account.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/birthday.min.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/login.js"></script>
 <script type="text/javascript">
 var vm;
@@ -62,11 +63,7 @@ SHOOT.conf.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 SHOOT.conf.ACCOUNT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
 SHOOT.conf.domains = [];
 SHOOT.conf.jsonpDone = false;
-SHOOT.conf.domains.push('http://www.opposhop.cn');
-SHOOT.conf.domains.push('http://bbs.oppo.cn');
-SHOOT.conf.domains.push('http://bbs.coloros.com');
 
 SHOOT.conf.wxdomains = [];
-SHOOT.conf.wxdomains.push('http://www.opposhop.cn');
 </script>
 <?php echo $this->render('@shoot/views/default/common/_footer_base'); ?>
