@@ -8,10 +8,10 @@ $this->params['controllerForJs'] = 'AddressesController@index';
 $info = ['id' => 1];
 $referrer = Yii::$app->request->referrer;
 ?>
+<?php $this->beginPage() ?>
 <script>
 window.spreadUrl = '<?= Yii::getAlias('@spreadurl'); ?>';
 </script>
-<?php $this->beginPage() ?>
 <main class='main-content user'>
     <div class='wrapper'>
         <div class='myOppo-menu'>
@@ -48,9 +48,9 @@ window.spreadUrl = '<?= Yii::getAlias('@spreadurl'); ?>';
                                 <span class='icon icon-grey-arrow-down'></span>
                                 <select id='select' name='gender'>
                                     <option value='' selected>请选择</option>
-                                    <option value='1'>女装</option>
-                                    <option value='0'>童装</option>
-                                    <option value='0'>写真</option>
+                                    <?php foreach ($goodsInfos as $gId => $gInfo) { ?>
+									<option value='<?= $gId; ?>' <?php if ($goodsId == $gId) { echo 'selected'; } ?>><?= $gInfo; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -95,5 +95,5 @@ window.spreadUrl = '<?= Yii::getAlias('@spreadurl'); ?>';
 <input type="hidden" id="position" value="spread" />
 <input type="hidden" id="position_name" value="<?= $referrer; ?>" />
 <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
-<script src="http://asset.alyee.biz/shoot/default/js/my/jquery-1.9.1.min.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/my/jquery-1.9.1.min.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/js/hd/signup.js"></script>
