@@ -71,10 +71,10 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                 <a href='<?= Yii::getAlias('@paytradeurl') . Url::to(['/cart']); ?>'>购物车</a>
             </li>-->
             <li class='user-menu-login user-menu-toLogin'>
-                <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signin', 'returnUrl' => $returnUrl]); ?>'>登录</a>
+                <a href='<?= Url::to(['/site/signin', 'returnUrl' => $returnUrl]); ?>'>登录</a>
             </li>
             <li class='user-menu-logout'>
-                <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/logout', 'returnUrl' => $returnUrl]); ?>'>退出</a>
+                <a href='<?= Url::to(['/site/logout', 'returnUrl' => $returnUrl]); ?>'>退出</a>
             </li>
         </ul>
     </div>

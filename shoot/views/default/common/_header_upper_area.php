@@ -54,10 +54,10 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
 				    <a class='logout' href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/logout', 'returnUrl' => $returnUrl]); ?>'>退出</a>
                 </li>
                 <li class='gi hasLogout' data-desktop='.upper-area .log-area' data-mobile='.mobile-tools .log-area'>
-				    <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signin', 'returnUrl' => $returnUrl]); ?>'>登录</a>
+				    <a href='<?= Url::to(['/site/signin', 'returnUrl' => $returnUrl]); ?>'>登录</a>
                 </li>
 				<li class='gi hasLogout' data-desktop='.upper-area .log-area' data-mobile='.mobile-tools .log-area'>
-				    <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>'>注册</a>
+				    <a href='<?= Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>'>注册</a>
                 </li>
                 <li class='gi' data-desktop='.upper-area .log-area' data-mobile='.mobile-tools .log-area' id='old-version-link'></li>
             </ul>
