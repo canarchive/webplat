@@ -113,7 +113,7 @@ class SignupForm extends Model
 			return false;
 		}
 
-		$infoExist = activityUser::findOne(['info_id' => $this->info_id, 'mobile' => $this->mobile]);
+		$infoExist = ActivityUser::findOne(['info_id' => $this->info_id, 'mobile' => $this->mobile]);
 		$noCheckSignined = isset(\Yii::$app->params['noCheckSignined']) ? \Yii::$app->params['noCheckSignined'] : false;
 		if (!$noCheckSignined && !empty($infoExist)) {
 			$this->addError('error', '这个手机号已经报名了本场活动');

@@ -11,9 +11,16 @@ class SignupController extends spreadController
 
 	public function actionIndex()
 	{
+		$goodsId = intval(\Yii::$app->request->get('goods_id'));
+		$goods = new \shoot\models\Goods();
+		$goodsInfos = $goods->goodsInfos;
 		$this->layout = '@shoot/views/default/layouts/main';
 		$viewPath = "/signup";
-        return $this->render($viewPath);        
+		$datas = [
+			'goodsId' => $goodsId,
+			'goodsInfos' => $goodsInfos,
+		];
+        return $this->render($viewPath, $datas);        
 	}
 
 	public function actionSubmit()
@@ -24,8 +31,8 @@ class SignupController extends spreadController
 		$model->isMobile = $this->clientIsMobile();
 
 		$signupInfo = false;
-        if ($model->load(\Yii::$app->request->get(), '')) {
-        //if ($model->load(\Yii::$app->request->post())) {
+        //if ($model->load(\Yii::$app->request->get(), '')) {
+        if ($model->load(\Yii::$app->request->post(), '')) {
             $signupInfo = $model->signup();
         }
 
@@ -37,7 +44,6 @@ class SignupController extends spreadController
 				'message' => $message,
 				//'model' => $model,
 			];
-			print_r($data);exit();
 
 			return $data;
 		}
