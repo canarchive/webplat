@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
+$this->params['controllerForJs'] = 'PasswordsController@sendSuccessed';
 ?>
 <div class="wrapper login forget">
     <div class="brick-bottom">
@@ -14,8 +16,7 @@ use yii\helpers\Url;
                     </div>
                 </div>
             </div>
-            <form action="http://my.oppo.com/user/resetting" method="post" id="passwordSendNextForm"
-            class="g">
+			<form action="<?= Url::to(['api/findpwd-check-code']); ?>" method="post" id="passwordSendNextForm" class="g">
                 <div class="field lap-hide">
                     系统已经将相关的短信验证码发送到您的手机
                     <font class="text-green">
@@ -32,10 +33,10 @@ use yii\helpers\Url;
                             验证码：
                         </div>
                         <div class="gi desk-two-fifths one-half">
-                            <input type="text" name="validation_code" placeholder="短信验证码">
+                            <input type="text" id="mobile_code" name="mobile_code" placeholder="短信验证码">
                         </div>
                         <div class="gi desk-two-fifths one-half">
-                            <button data-type="mobile" id="get_validation_code_btn" class="button btn-resend">
+                            <button data-type="mobile" id="get_validation_code_btn" class="button btn-resend btn-disabled">
                                 重新发送
                             </button>
                         </div>
@@ -45,20 +46,18 @@ use yii\helpers\Url;
                 </div>
                 <div class="field">
                     <div class="g">
-                        <div class="gi desk-one-fifth lap-hide">
-                            &nbsp;
-                        </div>
+                        <div class="gi desk-one-fifth lap-hide">&nbsp;</div>
                         <div class="gi desk-two-fifths one-whole">
-                            <input type="button" id="sendNextBtn" class="button btn-next" value="下一步"
-                            name="some_name">
+                            <input type="button" id="sendNextBtn" class="button btn-next" value="下一步" name="some_name">
                         </div>
                     </div>
                 </div>
+            <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
             </form>
         </div>
         <div class="forget-help">
             如果忘记了账户信息，我们将无法帮您找回密码，建议您
-            <a class="text-green" href="http://my.oppo.com/auth/register">
+            <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>' class='text-green'>
                 注册一个新账户
             </a>
         </div>

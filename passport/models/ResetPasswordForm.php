@@ -3,6 +3,7 @@ namespace passport\models;
 
 use yii\base\InvalidParamException;
 use yii\base\Model;
+use yii\helpers\Url;
 use Yii;
 use passport\models\User;
 
@@ -26,6 +27,35 @@ class ResetPasswordForm extends Model
         }
 
 		return ['status' => 200, 'message' => 'OK'];
+    }
+
+    public function checkCode()
+    {
+		$code = \Yii::$app->getRequest()->post('mobile_code');
+		if (empty($code)) {
+			return ['status' => 400, 'message' => '验证码不能为空'];
+		}
+
+		$passwordResetRequestForm = new PasswordResetRequestForm();
+		$data = $passwordResetRequestForm->sendInfos('get');
+		//$data = ['type' => 'mobile', 'username' => '13811974106'];
+		if (empty($data) || $data['type'] != 'mobile') {
+			return ['status' => 401, 'message' => '请返回第一步输入手机号'];
+		}
+
+		$smser = new Smser();
+		$result = $smser->checkCode($data['username'], 'findpwd', $code);
+		$result = 'OK';
+
+		$status = $result == 'OK' ? 200 : 400;
+		$data = [
+			'site/findpwd',
+			'step' => 3,
+			'type' => 'mobile',
+			'mobile_code' => $code,
+		];
+		$data['url'] = $result['status'] == 200 ? Url::to($data) : '';
+		return ['status' => $status, 'message' => $result, 'data' => $data];
     }
 
     /**
