@@ -14,7 +14,7 @@ $this->params['controllerForJs'] = 'PasswordsController@findme';
                 <div class="col-md-12">
                     <div class="alert alert-danger" role="alert">
                         <ul class="list-unstyled">
-                            <strong class='error_msg_note'></strong>
+						    <strong class='error_msg_note'><?= $message; ?></strong>
                         </ul>
                     </div>
                 </div>

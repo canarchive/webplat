@@ -148,6 +148,7 @@ class SiteController extends PassportController
         $model = new PasswordResetRequestForm();
 
 		$data = [];
+		$message = '';
 		switch ($step) {
 		case 2:
 			$data = $model->sendInfos('get');
@@ -156,40 +157,66 @@ class SiteController extends PassportController
 			$data = ['type' => 'sendMobile', 'username' => '13811974106'];
 			if (empty($data)) {
 				$step = 1;
-				$view = 'findpwd_1';
+				$message = '您还没有输入您的账户信息';
 			} else {
 			    $view = 'findpwd_2_' . ($data['type'] == 'sendEmail' ? 'email' : 'mobile');
 			}
 			break;
 		case 3:
+			$result = $this->_findStep3();
+			if ($result['status'] != 200) {
+				$step = 1;
+				$message = $result['message'];
+			} else {
+				$data = $result['data'];
+			}
 		case 4:
 		}
 		$view = $step == 2 ? $view : "findpwd_{$step}";
 
         return $this->render($view, [
 			'step' => $step,
+			'message' => $message,
 			'data' => $data,
             'model' => $model,
 			'returnUrl' => $this->returnUrl,
         ]);
     }
 
-    public function actionResetPassword($token)
-    {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
+	protected function _findStep3()
+	{
+		$type = \Yii::$app->request->get('type');
+        $model = new ResetPasswordForm();
 
+		if (!in_array($type, ['email', 'mobile'])) {
+			return false;
+		}
+
+		if ($type == 'email') {
+			$token = \Yii::$app->request->get('token');
+			$result = $model->checkToken($token);
+			if ($result['status'] == 200) {
+			    $result['data'] = ['type' => $type, 'token' => $token];
+			}
+
+			return $result;
+		}
+
+		$token = \Yii::$app->request->get('findpwd_code');
+		$result = $mobile->checkCode($findpwdCode);
+		if (empty($result)) {
+			return false;
+		}
+
+		return ['type' => $type, 'token' => $token];
+	}
+
+	protected function resetPwd()
+	{
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
 
             return $this->goHome();
         }
-
-		$_GET['step'] = 3;
-		$_GET['token'] = $token;
-		return $this->actionFindpwd();
     }
 }
