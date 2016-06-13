@@ -22,7 +22,7 @@ class Controller extends YiiController
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => 'common\components\ErrorAction',
                 'view' => '@common/views/common/error',
             ],
         ];
