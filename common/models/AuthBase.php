@@ -52,7 +52,7 @@ class AuthBase extends PassportModel implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            //'status' => self::STATUS_ACTIVE,
         ]);
     }
 
