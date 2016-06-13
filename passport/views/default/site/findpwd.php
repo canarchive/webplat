@@ -71,7 +71,7 @@ $this->params['controllerForJs'] = 'PasswordsController@findme';
         </div>
         <div class='forget-help'>
             如果忘记了账户信息，我们将无法帮您找回密码，建议您
-            <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>' class='text-green'>
+            <a href='<?= Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>' class='text-green'>
                 注册一个新账户
             </a>
         </div>
