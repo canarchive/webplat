@@ -147,23 +147,28 @@ class SiteController extends PassportController
 		$step = $step > 4 ? 1 : $step;
         $model = new PasswordResetRequestForm();
 
+		$data = [];
 		switch ($step) {
 		case 2:
 			$data = $model->sendInfos('get');
+			//print_r($data);
+			//$data = ['type' => 'sendEmail', 'username' => 'iamwangcan@163.com'];
+			$data = ['type' => 'sendMobile', 'username' => '13811974106'];
 			if (empty($data)) {
 				$step = 1;
 				$view = 'findpwd_1';
+			} else {
+			    $view = 'findpwd_2_' . ($data['type'] == 'sendEmail' ? 'email' : 'mobile');
 			}
 			break;
 		case 3:
 		case 4:
 		}
-
-		$view = "findpwd_{$step}";
-		$data = [];
+		$view = $step == 2 ? $view : "findpwd_{$step}";
 
         return $this->render($view, [
 			'step' => $step,
+			'data' => $data,
             'model' => $model,
 			'returnUrl' => $this->returnUrl,
         ]);
@@ -183,8 +188,8 @@ class SiteController extends PassportController
             return $this->goHome();
         }
 
-        return $this->render('resetPassword', [
-            'model' => $model,
-        ]);
+		$_GET['step'] = 3;
+		$_GET['token'] = $token;
+		return $this->actionFindpwd();
     }
 }
