@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Url;
+?>
 <div class="wrapper login forget">
     <div class="brick-bottom">
         <?php echo $this->render('_findpwd_top', ['step' => $step]); ?>
