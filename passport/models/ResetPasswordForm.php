@@ -15,23 +15,17 @@ class ResetPasswordForm extends Model
 
     private $_user;
 
-    /**
-     * Creates a form model given a token.
-     *
-     * @param  string $token
-     * @param  array $config name-value pairs that will be used to initialize the object properties
-     * @throws \yii\base\InvalidParamException if token is empty or not valid
-     */
-    public function __construct($token, $config = [])
+    public function checkToken($token)
     {
         if (empty($token) || !is_string($token)) {
-            throw new InvalidParamException('参数TOKEN不能为空！');
+			return ['status' => 400, 'message' => '参数TOKEN不能为空！'];
         }
         $this->_user = User::findByPasswordResetToken($token);
         if (!$this->_user) {
-            throw new InvalidParamException('TOKEN值有误！');
+			return ['status' => 400, 'message' => 'TOKEN值有误'];
         }
-        parent::__construct($config);
+
+		return ['status' => 200, 'message' => 'OK'];
     }
 
     /**
