@@ -6,6 +6,7 @@ use yii\base\Model;
 use yii\helpers\Url;
 use Yii;
 use passport\models\User;
+use common\components\sms\Smser;
 
 /**
  * Password reset form
@@ -31,14 +32,14 @@ class ResetPasswordForm extends Model
 
     public function checkCode()
     {
-		$code = \Yii::$app->getRequest()->post('mobile_code');
+		$code = \Yii::$app->getRequest()->get('mobile_code');
 		if (empty($code)) {
 			return ['status' => 400, 'message' => '验证码不能为空'];
 		}
 
 		$passwordResetRequestForm = new PasswordResetRequestForm();
 		$data = $passwordResetRequestForm->sendInfos('get');
-		//$data = ['type' => 'mobile', 'username' => '13811974106'];
+		$data = ['type' => 'mobile', 'username' => '13811974106'];
 		if (empty($data) || $data['type'] != 'mobile') {
 			return ['status' => 401, 'message' => '请返回第一步输入手机号'];
 		}
@@ -52,21 +53,10 @@ class ResetPasswordForm extends Model
 			'site/findpwd',
 			'step' => 3,
 			'type' => 'mobile',
-			'mobile_code' => $code,
+			'code' => $code,
 		];
-		$data['url'] = $result['status'] == 200 ? Url::to($data) : '';
+		$data['url'] = $status == 200 ? Url::to($data) : '';
 		return ['status' => $status, 'message' => $result, 'data' => $data];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
-        ];
     }
 
     /**
@@ -82,4 +72,20 @@ class ResetPasswordForm extends Model
 
         return $user->save(false);
     }
+
+	public function checkReset()
+	{
+		$params = ['type', 'code', 'password', 'password_confirm'];
+		$datas = [];
+		foreach ($params as $param) {
+			$datas[$param] = \Yii::$app->post($param);
+		}
+
+		if (empty($type) || empty($datas['code'])) {
+			return ['status' => 400, 'message' => '账号信息有误，请重新输入账号信息'];
+		}
+		if (empty($datas['password']) || empty($datas['password_confirm']) || $datas['password'] != $datas['password_confirm']) {
+			return ['status' => 400, 'message' => '请输入正确的密码'];
+		}
+	}
 }

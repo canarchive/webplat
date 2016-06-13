@@ -170,7 +170,9 @@ class SiteController extends PassportController
 			} else {
 				$data = $result['data'];
 			}
+			break;
 		case 4:
+			$result = $this->_findStep4();
 		}
 		$view = $step == 2 ? $view : "findpwd_{$step}";
 
@@ -196,7 +198,7 @@ class SiteController extends PassportController
 			$token = \Yii::$app->request->get('token');
 			$result = $model->checkToken($token);
 			if ($result['status'] == 200) {
-			    $result['data'] = ['type' => $type, 'token' => $token];
+			    $result['data'] = ['type' => $type, 'code' => $token];
 			}
 
 			return $result;
@@ -207,6 +209,17 @@ class SiteController extends PassportController
 
 	protected function resetPwd()
 	{
+        $model = new ResetPasswordForm();
+		$check = $model->checkReset();
+
+		if ($type == 'email') {
+			$token = \Yii::$app->request->get('token');
+			$result = $model->checkToken($token);
+			if ($result['status'] == 200) {
+			    $result['data'] = ['type' => $type, 'code' => $token];
+			}
+
+			return $result;
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
 
