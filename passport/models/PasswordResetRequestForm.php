@@ -55,7 +55,7 @@ class PasswordResetRequestForm extends PassportModel
 			return $isValid;
 		}
 
-		$user = User::findByMobile($this->username);
+		$user = User::findByEmail($this->username);
 		if (empty($user)) {
 			return ['status' => 400, 'message' => '用户不存在'];
 		}
@@ -68,7 +68,7 @@ class PasswordResetRequestForm extends PassportModel
      *
      * @return boolean whether the email was send
      */
-    public function emailSend($user)
+    public function sendEmail($user)
     {
         if (!User::isPasswordResetTokenValid($user->password_reset_token)) {
             $user->generatePasswordResetToken();
@@ -76,7 +76,7 @@ class PasswordResetRequestForm extends PassportModel
 
         if ($user->save()) {
             $send = \Yii::$app->mailer->compose(['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'], ['user' => $user])
-                ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                //->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
                 ->setTo($user->email)
                 ->setSubject('Password reset for ' . \Yii::$app->name)
                 ->send();
@@ -105,7 +105,7 @@ class PasswordResetRequestForm extends PassportModel
 		    $message = $error[$field];
 		    $status = $field == 'captcha' ? 401 : 400;
 
-			return ['status' => $status, 'message' => $message];
+			//return ['status' => $status, 'message' => $message];
 		}	
 
 		if (strpos($this->username, '@') !== false) {
