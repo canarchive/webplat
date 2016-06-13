@@ -153,13 +153,13 @@ class SiteController extends PassportController
 		case 2:
 			$data = $model->sendInfos('get');
 			//print_r($data);
-			//$data = ['type' => 'sendEmail', 'username' => 'iamwangcan@163.com'];
-			$data = ['type' => 'sendMobile', 'username' => '13811974106'];
+			//$data = ['type' => 'email', 'username' => 'iamwangcan@163.com'];
+			$data = ['type' => 'mobile', 'username' => '13811974106'];
 			if (empty($data)) {
 				$step = 1;
 				$message = '您还没有输入您的账户信息';
 			} else {
-			    $view = 'findpwd_2_' . ($data['type'] == 'sendEmail' ? 'email' : 'mobile');
+			    $view = 'findpwd_2_' . ($data['type'] == 'email' ? 'email' : 'mobile');
 			}
 			break;
 		case 3:
@@ -202,13 +202,7 @@ class SiteController extends PassportController
 			return $result;
 		}
 
-		$token = \Yii::$app->request->get('findpwd_code');
-		$result = $mobile->checkCode($findpwdCode);
-		if (empty($result)) {
-			return false;
-		}
-
-		return ['type' => $type, 'token' => $token];
+		return $model->checkCode();
 	}
 
 	protected function resetPwd()

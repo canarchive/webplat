@@ -3,6 +3,7 @@ namespace passport\controllers;
 
 use Yii;
 use yii\web\BadRequestHttpException;
+use yii\helpers\Url;
 use passport\components\Controller as PassportController;
 use common\components\sms\Smser;
 use passport\models\User;
@@ -14,10 +15,14 @@ use passport\models\SigninForm;
  */
 class ApiController extends PassportController
 {
+	public function init()
+	{
+		parent::init();
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+	}
+
 	public function actionLoginInfo()
 	{
-		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
-
 		$isGuest = Yii::$app->user->isGuest;
 		$callback = Yii::$app->request->get('callback');
 		$data = [
@@ -90,7 +95,6 @@ class ApiController extends PassportController
 
 	public function actionCheckCode()
 	{
-		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 		$mobile = \Yii::$app->getRequest()->get('mobile');
 		$code = \Yii::$app->getRequest()->get('mobileCode');
 
@@ -149,14 +153,36 @@ class ApiController extends PassportController
 
 	public function actionFindpwdAjax()
 	{
-		//\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 		$model = new \passport\models\PasswordResetRequestForm();
 		$model->username = Yii::$app->getRequest()->post('username');
 		$model->captcha = Yii::$app->getRequest()->post('captcha');
 
 		$return = $model->findpwd();
-		var_dump($return);
-exit();
 		return $return ;
+	}
+
+	public function actionFindpwdSendCode()
+	{
+        $model = new \passport\models\PasswordResetRequestForm();
+		//$data = $model->sendInfos('get');
+		$data = ['type' => 'mobile', 'username' => '13811974106'];
+		if (empty($data) || $data['type'] != 'mobile') {
+			return ['status' => 401, 'message' => '请返回第一步输入手机号'];
+		}
+
+    	$smser = new Smser();
+    	$result = $smser->sendCode($data['username'], 'findpwd');
+		$result = 'OK';
+   
+   		$status = $result == 'OK' ? 200 : 400;
+   		return ['status' => $status, 'message' => $result];
+
+	}
+
+	public function actionFindpwdCheckCode()
+	{
+        $model = new \passport\models\ResetPasswordForm();
+		return $model->checkCode($code);
 	}
 }
