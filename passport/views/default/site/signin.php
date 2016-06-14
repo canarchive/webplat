@@ -63,7 +63,7 @@ $this->params['isLogin'] = true;
             <?php ActiveForm::end(); ?>
             <div class='field g'>
                 <div class='gi one-half'>
-                    <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/findpwd', 'returnUrl' => $returnUrl]); ?>' class='text-green oppo-tj'>
+                    <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/findpwd']); ?>' class='text-green oppo-tj'>
                         忘记密码？
                     </a>
                 </div>
