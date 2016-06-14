@@ -28,21 +28,27 @@ $this->params['jsFooters'] = [
             <div class='user-data-info'>
                 <div class='field'>
                     <label>当前密码</label>
-                    <input type='password' name='default_password' value="*************" disabled></div>
-                <button class='button button-primary full-width' id='update_password'>修改</button></div>
+					<input type='password' name='default_password' value="*************" disabled>
+                </div>
+				<button class='button button-primary full-width' id='update_password'>修改</button>
+            </div>
             <div class='user-data-info' style="display: none;">
                 <h2 class='message-box-title'>修改密码：</h2>
                 <div class='field'>
                     <label>当前密码</label>
-                    <input type='password' name='old_password'></div>
+					<input type='password' name='old_password'>
+                </div>
                 <div class='field'>
                     <label>新密码</label>
                     <input type='password' name='password'>
-                    <p class='instructions gi one-whole'>密码(密码长度6~16位，数字、字母、字符至少包含两种)</p></div>
+					<p class='instructions gi one-whole'>密码(密码长度6~16位，数字、字母、字符至少包含两种)</p>
+                </div>
                 <div class='field'>
                     <label>新密码确认</label>
-                    <input type='password' name='r_password'></div>
-                <button class='button button-primary full-width' id='save_password'>保存</button></div>
+					<input type='password' name='r_password'>
+                </div>
+				<button class='button button-primary full-width' id='save_password'>保存</button>
+            </div>
             <div class="user-data-info msg_password"></div>
         </div>
         <div class='gi lap-three-fifths desk-three-quarters my-oppo-content slab-white-border'>
@@ -175,4 +181,5 @@ $this->params['jsFooters'] = [
         </div>
     </div>
 </div>
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
 </main>
