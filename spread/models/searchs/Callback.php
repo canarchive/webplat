@@ -5,13 +5,13 @@ namespace spread\models\searchs;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use spread\models\CallbackLog as CallbackLogModel;
+use spread\models\Callback as CallbackModel;
 
-class CallbackLog extends CallbackLogModel
+class Callback extends CallbackModel
 {
     public function search($params)
     {
-        $query = CallbackLogModel::find();
+        $query = CallbackModel::find();
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 
