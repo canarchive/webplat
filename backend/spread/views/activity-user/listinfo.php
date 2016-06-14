@@ -6,9 +6,9 @@ $gridViewParams = [
     'columns' => [
         'id',
 		[
-			'attribute' => 'decoration_id',
+			'attribute' => 'info_id',
 			'value' => function($model) {
-				return $model->decoration_id;
+				return $model->info_id;
 			},
 		],
         'name',

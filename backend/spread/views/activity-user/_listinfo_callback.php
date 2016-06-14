@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 
 $tableName = 'callback';
-$modelNew = new \spread\groupon\models\CallbackLog();
+$modelNew = new \spread\models\Callback();
 ?>
 <div class="row">
     <div class="box col-md-12">
@@ -18,12 +18,12 @@ $modelNew = new \spread\groupon\models\CallbackLog();
                         </tr>
                     </thead>
 					<tbody id="callback_infos">
-                    <?php foreach ($callbackLogInfos as $model) { ?>
+                    <?php foreach ($callbackInfos as $model) { ?>
 						<tr>
 							<td><?= date('Y-m-d H:i:s', $model->created_at); ?></td>
 							<td><?= date('Y-m-d H:i:s', $model->updated_at); ?></td>
 							<td><?= $model->content; ?></td>
-                            <td><?= Html::textarea('note', $model->note, ['row' => 2, 'onchange' => "updateElemForOwner('{$tableName}', {$model->id}, 'note', this.value)"]); ?></td>
+                            <td><?= Html::textarea('note', $model->note, ['row' => 2, 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'note', this.value)"]); ?></td>
 						</tr>
                     <?php } ?>
                     </tbody>
@@ -59,13 +59,13 @@ function addCallback()
 		return false;
 	}
 	var data = {
-	    'mobile': '<?= $modelOwner->mobile; ?>',
+	    'mobile': '<?= $modelUser->mobile; ?>',
 	    'operation': 'add',
 		'table': '<?= $tableName; ?>',
 	    'content': content,
 		'note': $("#callback_note").val()
 	};
 
-	addElemForOwner(data);
+	addElemForUser(data);
 }
 </script>

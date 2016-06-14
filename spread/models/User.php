@@ -23,10 +23,10 @@ class User extends SpreadModel
     public function attributeLabels()
     {
         return [
-            'id' => '业主ID',
+            'id' => '客户ID',
             'user_id' => '用户ID',
             'mobile' => '手机号',
-            'sort' => '业主类型',
+            'sort' => '客户类型',
             'name' => '名字',
             'gender' => '性别',
             'birthday' => '生日',
@@ -36,8 +36,8 @@ class User extends SpreadModel
             'company_id' => '公司ID',
             'service_id' => '客服ID',
             'description' => '简介',
-            'callback_overtime' => '回访是否超时[0:未超时1:超时]',
-            'callback_again' => '是否再次回访 1：本不再回访 2：再次回访',
+            'callback_overtime' => '回访超时',
+            'callback_again' => '再次回访',
             'groupon_id_first' => '第一次团购会ID',
             'signup_num' => '报名次数',
             'signin_num' => '到场次数',
@@ -139,8 +139,8 @@ class User extends SpreadModel
     public function getSortInfos()
     {
         $datas = [
-            'level1' => '挑剔用户',
-            'level2' => 'VIP业主',
+            'level1' => '挑剔客户',
+            'level2' => 'VIP客户',
         ];
 
         return $datas;

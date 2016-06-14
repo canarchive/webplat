@@ -4,7 +4,7 @@ namespace spread\models;
 
 use common\models\SpreadModel;
 
-class CallbackLog extends SpreadModel
+class Callback extends SpreadModel
 {
     /**
      * @inheritdoc
