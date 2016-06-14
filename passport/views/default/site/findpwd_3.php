@@ -34,7 +34,7 @@ $this->params['controllerForJs'] = 'PasswordsController@resetpwd';
                         <label>确认新密码：</label>
                     </div>
                     <div class="gi desk-four-fifths one-whole">
-                        <input type="password" name="r_password" placeholder="确认密码">
+                        <input type="password" name="password_confirm" placeholder="确认密码">
                     </div>
                     <span class="icon icon-tick-green-big register-icon"></span>
                 </div>

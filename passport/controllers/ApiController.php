@@ -23,6 +23,7 @@ class ApiController extends PassportController
 
 	public function actionLoginInfo()
 	{
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
 		$isGuest = Yii::$app->user->isGuest;
 		$callback = Yii::$app->request->get('callback');
 		$data = [
@@ -183,6 +184,7 @@ class ApiController extends PassportController
 	public function actionFindpwdCheckCode()
 	{
         $model = new \passport\models\ResetPasswordForm();
+		$code = \Yii::$app->request->post('code');
 		return $model->checkCode($code);
 	}
 }

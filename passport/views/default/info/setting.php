@@ -5,6 +5,11 @@ use yii\helpers\Html;
 $this->params['cssFiles'] = ['styles_member'];
 $this->params['jsFiles'] = ['modernizr.custom'];
 $this->params['controllerForJs'] = 'UserProfileController@index';
+$this->params['jsFooters'] = [
+	'my/jquery-1.9.1.min', 'my/custom_form', 'my/responsive',
+	'my/scripts', 'my/account', 'my/birthday.min',
+	'my/login',
+];
 ?>
 <main class='main-content user'>
 <div class='wrapper'>

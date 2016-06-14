@@ -109,21 +109,22 @@ class PasswordResetRequestForm extends PassportModel
 		}	
 
 		if (strpos($this->username, '@') !== false) {
-			$methodSend = 'email';
+			$type = 'email';
 		    $user = $this->checkUserByEmail();
 		} else {
 		    $user = $this->checkUserByMobile();
-			$methodSend = 'mobile';
+			$type = 'mobile';
 		}
 
 		if (!is_object($user)) {
 			return $user;
 		}
 
-		$return = $this->$methodSend($user);
+		$method = 'send' . ucfirst($type); 
+		$return = $this->$method($user);
 		if ($return['status'] == 200) {
 			$data = [
-				'type' => $methodSend,
+				'type' => $type,
 				'username' => $this->username,
 			];
 

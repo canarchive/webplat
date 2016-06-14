@@ -20,15 +20,14 @@ use yii\helpers\Url;
                     </a>
                     , 请点击邮件链接重置您的密码：
                 </div>
-                <div class="field">
+                <!--<div class="field">
                     如果您超过2分钟未收到邮件，您可以
                     <a class="text-green" id="get_validation_code_btn" data-type="email" href="javascript:;">
                         重新发送
                     </a>
                     。
-                    <span id="emailResendMessage">
-                    </span>
-                </div>
+                    <span id="emailResendMessage"></span>
+                </div>-->
                 <div class="field">
                     <div class="gi desk-two-fifths one-whole">
                         <a href="http://mail.163.com" class="button btn-next" target="blank">
@@ -38,7 +37,7 @@ use yii\helpers\Url;
                 </div>
                 <div class="field g">
                     如果忘记了账户信息，我们将无法帮您找回密码，建议您
-                    <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>' class='text-green'>
+                    <a href='<?= Url::to(['/site/signup']); ?>' class='text-green'>
                         注册一个新账户
                     </a>
                 </div>

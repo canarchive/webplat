@@ -33,7 +33,7 @@ $this->params['controllerForJs'] = 'PasswordsController@sendSuccessed';
                             验证码：
                         </div>
                         <div class="gi desk-two-fifths one-half">
-                            <input type="text" id="mobile_code" name="mobile_code" placeholder="短信验证码">
+                            <input type="text" id="code" name="code" placeholder="短信验证码">
                         </div>
                         <div class="gi desk-two-fifths one-half">
                             <button data-type="mobile" id="get_validation_code_btn" class="button btn-resend btn-disabled">
@@ -57,7 +57,7 @@ $this->params['controllerForJs'] = 'PasswordsController@sendSuccessed';
         </div>
         <div class="forget-help">
             如果忘记了账户信息，我们将无法帮您找回密码，建议您
-            <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/site/signup', 'returnUrl' => $returnUrl]); ?>' class='text-green'>
+            <a href='<?= Url::to(['/site/signup']); ?>' class='text-green'>
                 注册一个新账户
             </a>
         </div>

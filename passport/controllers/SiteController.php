@@ -154,7 +154,7 @@ class SiteController extends PassportController
 			$data = $model->sendInfos('get');
 			//print_r($data);
 			//$data = ['type' => 'email', 'username' => 'iamwangcan@163.com'];
-			$data = ['type' => 'mobile', 'username' => '13811974106'];
+			//$data = ['type' => 'mobile', 'username' => '13811974106'];
 			if (empty($data)) {
 				$step = 1;
 				$message = '您还没有输入您的账户信息';
@@ -172,7 +172,7 @@ class SiteController extends PassportController
 			}
 			break;
 		case 4:
-			$result = $this->_findStep4();
+			$data = $this->_findStep4();
 		}
 		$view = $step == 2 ? $view : "findpwd_{$step}";
 
@@ -181,7 +181,6 @@ class SiteController extends PassportController
 			'message' => $message,
 			'data' => $data,
             'model' => $model,
-			'returnUrl' => $this->returnUrl,
         ]);
     }
 
@@ -204,26 +203,14 @@ class SiteController extends PassportController
 			return $result;
 		}
 
-		return $model->checkCode();
+		$code = \Yii::$app->request->get('code');
+		return $model->checkCode($code);
 	}
 
-	protected function resetPwd()
+	protected function _findStep4()
 	{
         $model = new ResetPasswordForm();
-		$check = $model->checkReset();
-
-		if ($type == 'email') {
-			$token = \Yii::$app->request->get('token');
-			$result = $model->checkToken($token);
-			if ($result['status'] == 200) {
-			    $result['data'] = ['type' => $type, 'code' => $token];
-			}
-
-			return $result;
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->getSession()->setFlash('success', 'New password was saved.');
-
-            return $this->goHome();
-        }
+		$return = $model->resetPassword();
+		return $return;
     }
 }
