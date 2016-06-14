@@ -63,6 +63,20 @@ class ResetPasswordForm extends Model
 		return ['status' => $status, 'message' => $result, 'data' => $data];
     }
 
+	public function checkPassword($password)
+	{
+		$this->_user = \Yii::$app->user->identity;
+        if (!$this->_user) {
+			return ['status' => 400, 'message' => '您已退出平台，请重新登录'];
+        }
+
+        $result = \Yii::$app->security->validatePassword($password, $this->_user->password);
+        if (!$result) {
+			return ['status' => 400, 'message' => '旧密码错误'];
+        }
+		return ['status' => 200, 'message' => 'OK'];
+	}
+
     /**
      * Resets password.
      *
@@ -125,7 +139,7 @@ class ResetPasswordForm extends Model
 		case 'mobile':
 			$result = $this->checkCode($datas['code']);
 			break;
-		case 'passport':
+		case 'password':
 			$result = $this->checkPassword($datas['code']);
 			break;
 		}
