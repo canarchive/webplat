@@ -1,30 +1,11 @@
 <?php
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\widgets\Pjax;
 
-$detailViewParams = [
-    'model' => $model,
-    'attributes' => [
-		'id',
-		[
-			'format' => 'raw',
-			'attribute' => 'picture',
-			'value' => Yii::$app->formatter->asImage($model->picture),
-		],
-        'name',
-		[
-			'attribute' => 'status',
-			'value' => $model->statusInfos[$model->status],
-		],
-		[
-            'attribute' => 'start_at',
-            'value'=> date('Y-m-d H:i:s',$model->start_at),
-        ],
-		[
-            'attribute' => 'end_at',
-            'value'=> date('Y-m-d H:i:s',$model->end_at),
-        ],
-		'description',
-    ],
-];
-
-echo $this->render('@app/views/common/view', ['detailViewParams' => $detailViewParams]);
-
+?>
+<?php
+echo $this->render('_base_user', ['modelUser' => $modelUser]);
+echo $this->render('_listinfo_activity_user', ['activityUserInfos' => $activityUserInfos]);
+echo $this->render('_listinfo_callback', ['callbackInfos' => $callbackInfos]);
+?>
