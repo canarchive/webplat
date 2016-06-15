@@ -30,6 +30,31 @@ class DetailController extends Controller
 		return $this->actionIndex();
 	}
 
+	public function actionSpread()
+	{
+		$productTypes = \Yii::$app->params['productTypes'];
+		$type = \Yii::$app->request->get('type');
+		if (!in_array($type, array_keys($productTypes))) {
+			$this->redirect($this->host);
+		}
+		$typeInfo = $productTypes[$type];
+		$city = \Yii::$app->request->get('city');
+		if (!in_array($city, array_keys($typeInfo['cities']))) {
+			$this->redirect($this->host);
+		}
+
+        $model = new SignupForm();
+		$info = ['id' => $typeInfo['cities'][$city]['id']];
+        $datas = [
+            'host' => $this->host,
+            'model' => $model,
+			'info' => $info,
+        ];
+
+		$view = $this->mHost ? "/jzsem/h5/{$type}_{$city}.php" : "/jzsem/pc/{$type}_{$city}.php";
+        return $this->render($view, $datas); 
+	}
+
 	public function actionThird()
 	{
 		$client = \Yii::$app->request->get('client');
