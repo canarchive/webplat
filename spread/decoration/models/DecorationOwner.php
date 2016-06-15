@@ -79,6 +79,23 @@ class DecorationOwner extends SpreadModel
 		return $newModel;
     }
 
+	public function xunkeOperation($data)
+	{
+		$info = self::findOne(['mobile' => $data['mobile']]);
+		if (!empty($info)) {
+			//return false;
+		}
+
+        $newModel = new self($data);
+		print_r($newModel);
+        $insert = $newModel->insert(true, $data);
+        if (!$insert) {
+            return false;
+        }
+
+		return true;
+	}
+
     public function insert($runValidation = true, $attributes = null)
     {
         if (($primaryKeys = static::getDb()->schema->insert($this->tableName(), $attributes)) === false) {
