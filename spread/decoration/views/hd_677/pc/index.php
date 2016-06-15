@@ -1162,8 +1162,8 @@ use yii\helpers\Html;
     <!--<br />公司：北京一起向上网络科技有限公司-->
     <br />地址：北京市东城区天元和平商业大厦东侧六层</section>
 <!--页脚 end-->
-<script src="http://s4.17house.com/common/js/common.js?v=5"></script>
-<!--<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/common.js?v=5"></script>-->
+<!--<script src="http://s4.17house.com/common/js/common.js?v=5"></script>-->
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/common.js?v=5"></script>
 <script src="http://s4.17house.com/common/js/plugin/jquery.slides.min.js?v5"></script>
 <script src="http://s4.17house.com/common/js/plugin/jquery.flipster.js?v5"></script>
 <script src="http://s4.17house.com/common/js/poplayer.js?v5"></script>
@@ -1210,8 +1210,17 @@ var _hmt = _hmt || [];
                 });
             }
         }
-        semPop.init();
+        //semPop.init();
     </script>
 </body>
 <script language="javascript" src="http://dkt.zoosnet.net/JS/LsJS.aspx?siteid=DKT85079174&float=1&lng=cn"></script>
+
+<script>
+(function() {
+	  var _53code = document.createElement("script");
+	    _53code.src = "//tb.53kf.com/code/code/10136656/1";
+	    var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(_53code, s);
+})();
+</script>
 </html>

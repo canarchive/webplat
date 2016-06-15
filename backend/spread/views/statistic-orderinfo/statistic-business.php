@@ -62,7 +62,7 @@ ol, ul, li {
 
 </style>
 <body>
-<?php $sumInfosAll = []; foreach ($infos as $bigSort => $values) { ?>
+<?php $sumInfosAll = []; $k = 1; foreach ($infos as $bigSort => $values) { ?>
 <div class="db_tongji">
 <h1><?= $grouponInfo['groupon_name'] . '-' . $bigSort . '-'; ?>订单收款统计表</h1>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -104,6 +104,7 @@ ol, ul, li {
 	<td bgcolor="#8fff00"><strong><?= $sumInfos[$key . 'MoneySum']; ?></strong></td>
     <?php } ?>
     </tr>
+  <?php if ($k == count($infos)) { ?>
   <tr>
     <td bgcolor="#8db4e2"><strong><?= ++$j; ?></strong></td>
     <td bgcolor="#8db4e2"><strong>累计</strong></td>
@@ -114,10 +115,11 @@ ol, ul, li {
 	<td bgcolor="#3db4e2"><strong><?= $sumInfosAll[$key . 'MoneySum']; ?></strong></td>
     <?php } ?>
   </tr>
+  <?php } ?>
 	
 </table>
 </div>
-<?php } ?>
+<?php $k++; } ?>
 
 </body>
 </html>
