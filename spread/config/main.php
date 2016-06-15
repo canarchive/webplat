@@ -48,6 +48,7 @@ return [
 				//'<city:\w+>' => 'groupon/detail/index',
 		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
 				'api/order-mobile' => '/casher/api/order-mobile',
+				'xunke' => 'decoration/signup/xunke',
 			],
 		],
     ],
