@@ -10,6 +10,7 @@ return [
             'shoot/runtime',
             'spider/runtime',
             'spread/runtime',
+            'paytrade/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -22,6 +23,7 @@ return [
             'shoot/config/main-local.php',
             'spider/config/main-local.php',
             'spread/config/main-local.php',
+            'paytrade/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -33,6 +35,7 @@ return [
             'shoot/runtime',
             'spider/runtime',
             'spread/runtime',
+            'paytrade/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -44,6 +47,7 @@ return [
             'shoot/config/main-local.php',
             'spider/config/main-local.php',
             'spread/config/main-local.php',
+            'paytrade/config/main-local.php',
         ],
     ],
 ];
