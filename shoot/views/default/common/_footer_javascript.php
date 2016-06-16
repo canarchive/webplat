@@ -4,7 +4,7 @@ use yii\helpers\Url;
 $jsFootersDefault = ['lib.min', 'custom_form', 'scripts', 'sdj'];
 $jsFooters = isset($this->params['jsFooters']) ? $this->params['jsFooters'] : $jsFootersDefault;
 foreach ($jsFooters as $jsFooter) {
-	echo '<script src="'. Yii::getAlias('@asseturl') . '/shoot/default/js/' . $jsFooter . '.js"></script><br />';
+	echo '<script src="'. Yii::getAlias('@asseturl') . '/shoot/default/js/' . $jsFooter . '.js"></script>';
 }
 ?>
 <script type="text/javascript">
