@@ -79,7 +79,7 @@ return [
 		],
 		'spread' => [
 			'class' => 'backend\spread\Module',
-		]
+		],
 		'paytrade' => [
 			'class' => 'backend\paytrade\Module',
 		],
