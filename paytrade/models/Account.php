@@ -21,6 +21,7 @@ class Account extends PaytradeModel
     {
         return [
             'orderid' => '订单号',
+            'orderid_info' => '支付订单号',
             'orderid_plat' => '平台订单号',
             'payment_code' => '支付方式代码',
             'account_type' => '充值类型',
@@ -30,13 +31,13 @@ class Account extends PaytradeModel
             'money_valid_middle' => '实际充值金额',
             'money_valid' => '有效充值金额',
             'day' => '充值日期',
-            'accounted_at' => '充值时间',
-            'accounted_valid_at' => '成功充值时间',
+            'account_at' => '充值时间',
+            'account_valid_at' => '成功充值时间',
             'account_data' => '平台传递的数据',
             'goods_id' => '商品ID',
             'goods_sku_id' => 'SKU-ID',
             'period' => '期数',
-            'status' => '充值状态，0：未支付，1：成功支付；',
+            'status' => '充值状态；',
             'handpay_manager' => '手工支付管理员账号',
         ];
     }

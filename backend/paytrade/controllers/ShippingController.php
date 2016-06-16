@@ -10,6 +10,8 @@ use backend\components\AdminController;
 
 class ShippingController extends AdminController
 {
+	protected $modelClass = 'paytrade\models\Shipping';
+
     public function actionListinfo()
     {
         $searchModel = new ShippingSearch();
@@ -38,13 +40,5 @@ class ShippingController extends AdminController
     public function actionDelete($id)
     {
 		return $this->_deleteInfo($id);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = Shipping::findOne($id)) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');		
     }
 }
