@@ -32,7 +32,9 @@ class InfoController extends PassportController
 
     public function actionSetting()
     {
-        return $this->render('setting');
+		$user = \Yii::$app->user->getIdentity();
+		
+        return $this->render('setting', ['user' => $user]);
     }
 
 	public function actionChangePassword()
