@@ -109,19 +109,23 @@ class DetailController extends Controller
 		}
         $model = new SignupForm();
 
-        //$code = 'default';
-        $code = 'inner';
 		$view = \Yii::$app->request->get('view');
 		$view = !in_array($view, ['price', 'measure', 'design']) ? 'price' : $view;
-		$info = ['id' => 1];
+
+		$type = \Yii::$app->request->get('type');
+		$type = !in_array($type, ['377', '677']) ? '677' : $type;
+		$city = \Yii::$app->request->get('city');
+		$city = !in_array($city, ['shanghai']) ? '' : $city;
+		$infoId = $city == 'shanghai' ? 2 : 1;
+		$info = ['id' => $infoId];
         $datas = [
             'host' => $this->host,
             'model' => $model,
 			'info' => $info,
         ];
 
-		$type = '677';//$info['type'];
-		$viewPath = $this->mHost ? "/{$code}/h5/" : "/{$code}/h5/";
+
+		$viewPath = $this->mHost ? "/inner/h5/" : "/inner/h5/";
 		$view = $viewPath . $view;
         return $this->render($view, $datas);   
     }

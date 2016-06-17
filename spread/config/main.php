@@ -50,6 +50,7 @@ return [
 				'api/order-mobile' => '/casher/api/order-mobile',
 				'xunke' => 'decoration/accept/xunke',
 				'jzhd-<type:\w+>-<city:\w+>' => '/decoration/detail/spread',
+				'<view:(price|design|measure)>-<type:\w+>-<city:\w+>' => 'decoration/detail/inner',
 			],
 		],
     ],
