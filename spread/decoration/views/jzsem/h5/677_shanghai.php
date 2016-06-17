@@ -310,7 +310,7 @@
     </div>
     <!--wap10 end-->
     <div class="wap11">
-        <p>Copyright © 2009-2016 17zhuangxiu.com,All rights reserved.</p>
+        <p>Copyright © 2009-2016 17house.com,All rights reserved.</p>
     </div>
 </div>
 <div class="pop-layer pop-activity">
