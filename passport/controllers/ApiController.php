@@ -178,7 +178,6 @@ class ApiController extends PassportController
    
    		$status = $result == 'OK' ? 200 : 400;
    		return ['status' => $status, 'message' => $result];
-
 	}
 
 	public function actionFindpwdCheckCode()
@@ -186,5 +185,13 @@ class ApiController extends PassportController
         $model = new \passport\models\ResetPasswordForm();
 		$code = \Yii::$app->request->post('code');
 		return $model->checkCode($code);
+	}
+
+	public function actionRegion()
+	{
+		$parentCode = strval(\Yii::$app->request->get('parent_code'));
+		$region = new \passport\models\Region();
+		$datas = $region->getSubInfos($parentCode);
+		return $datas;
 	}
 }
