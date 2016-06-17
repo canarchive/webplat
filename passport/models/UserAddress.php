@@ -109,7 +109,7 @@ class UserAddress extends PassportModel
 	{
 		$condition = [
 			'and',
-			"user_id = {$params['userId']}",
+			"user_id = {$params['user_id']}",
 		];
 		$model = new self();
         $infos = $model->find()->where($condition)->all();
@@ -165,7 +165,7 @@ class UserAddress extends PassportModel
 
 	protected function _checkParam($params)
 	{
-		$needFields = ['name', 'region_id', 'consignee', 'address', 'mobile'];
+		$needFields = ['region_code', 'consignee', 'address', 'mobile'];
 		foreach ($needFields as $field) {
 			if (empty($params[$field])) {
 			    return ['status' => 400, 'message' => "{$field} is need!"];
@@ -173,7 +173,7 @@ class UserAddress extends PassportModel
 		}
 
 		$regionModel = new Region();
-		$checkRegion = $regionModel->checkInfo($params['region_id']);
+		$checkRegion = $regionModel->checkInfo($params['region_code']);
 		if (isset($checkRegion['status'])) {
 			return $checkRegion;
 		}

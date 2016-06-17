@@ -43,42 +43,50 @@ class UserAddressController extends PassportController
 
     public function actionCreate()
     {
-		$params['snapupId'] = Yii::$app->request->post('snapup_id');
-		$params['number'] = intval(Yii::$app->request->post('number', 0));
-
+		$params = $this->_initParams();
 		return $this->_operate('add', $params);
-    }
+	}
 
 	public function actionUpdate()
 	{
-		$params['id'] = Yii::$app->request->post('id');
-		$params['number'] = intval(Yii::$app->request->post('number', 0));
-		$params['type'] = Yii::$app->request->post('type');
-		$status = Yii::$app->request->post('status');
-		$params['status'] = $status === '0' ? 0 : 1;
+		$params = $this->_initParams();
+		$params['id'] = \Yii::$app->request->post('id');
 
 		return $this->_operate('update', $params);
 	}
 
-    public function actionDelete($id)
+    public function actionDelete()
     {
-		$params['id'] = $id;
+		$params['id'] = \Yii::$app->request->post('id');
 
 		return $this->_operate('delete', $params);
     }
 
-	public function actionClear()
-	{
-		return $this->_operate('clear', []);
-	}
-
 	protected function _operate($action, $params)
 	{
-		$params['userId'] = 1;//\Yii::$app->user->id;
+		if ($action != 'list') {
+		    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		}			
+		$params['user_id'] = 1;//\Yii::$app->user->id;
 
 		$model = new \passport\models\UserAddress();
 		$method = $action . 'Info';
 		$return = $model->$method($params);
 		return $return;
 	}
+
+	protected function _initParams()
+	{
+		$fields = ['consignee', 'mobile', 'address', 'is_default'];
+		foreach ($fields as $field) {
+			$params[$field] = \Yii::$app->request->post($field);
+		}
+		$regionCode = \Yii::$app->request->post('district_id');
+		$regionCode = empty($regionCode) ? \Yii::$app->request->post('city_id') : $regionCode;
+		$regionCode = empty($regionCode) ? \Yii::$app->request->post('province_id') : $regionCode;
+		$params['region_code'] = $regionCode;
+		$params['is_default'] = intval($params['is_default']);
+
+		return $params;
+    }
 }

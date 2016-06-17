@@ -10,6 +10,11 @@ $this->params['jsFooters'] = [
 	'my/scripts', 'my/account', 'my/birthday.min',
 	'my/login',
 ];
+
+$birthday = $user->birthday;
+$birthdayStr = $birthday == '0000-00-00' ? '未填写' : $birthday;
+$birthdayInfo = explode('-', $birthday);
+
 ?>
 <main class='main-content user'>
 <div class='wrapper'>
@@ -52,7 +57,7 @@ $this->params['jsFooters'] = [
             <div class="user-data-info msg_password"></div>
         </div>
         <div class='gi lap-three-fifths desk-three-quarters my-oppo-content slab-white-border'>
-            <section class='brick-shadow'>
+            <!--<section class='brick-shadow'>
                 <div class='user-data-info'>
                     <div id='update-mobile-step1' class='hidden'>
                         <strong>绑定手机号码，及时接收OPPO活动消息</strong>
@@ -88,8 +93,8 @@ $this->params['jsFooters'] = [
                         </div>
                     </div>
                 </div>
-            </section>
-            <section class='brick-shadow'>
+            </section>-->
+            <!--<section class='brick-shadow'>
                 <div class='user-data-info' js-state>
                     <div id='update-email-step1'>
                         <strong>绑定您的邮箱，及时接收OPPO活动资讯</strong>
@@ -122,51 +127,49 @@ $this->params['jsFooters'] = [
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>-->
             <section class='brick-shadow'>
-                <form method="POST" action="http://my.oppo.com/user/profile/140634132" accept-charset="UTF-8">
+			    <form method="POST" action="<?= Url::to(['info/setting']); ?>" accept-charset="UTF-8">
                     <input name="_method" type="hidden" value="PUT">
-                    <input name="_token" type="hidden" value="P4rTKhLFPnbpTewoHdGkRNdZvdVJSX7r4DI7iX1u">
+                    <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf', 'name' => '_csrf']); ?>
+
                     <div class='g g-wrapper-s'>
                         <div class='gi two-thirds'>
-                            <label>*用户名：
-                                <span class='my-oppo-content-text'>U56160741</span></label>
+						    <label>昵称：<span class='my-oppo-content-text'></span><?php $nickname = empty($user->nickname) ? '未填写' : $user->nickname; echo $nickname; ?></label>
                             <div class='my-oppo-content-edit'>
-                                <input id="user_profile_form" name="username" type="text" value="U56160741">
-                                <div>
-                                    <div class='edit-message'>亲，会员名只允许修改一次，请选择方便记忆的名称并牢记它。</div></div>
+							    <input id="user_profile_form" name="nickname" type="text" value="<?= $user['nickname']; ?>">
+                                <div><div class='edit-message'>昵称会在多个地方显示。</div></div>
                             </div>
                         </div>
                         <div class='gi one-third'>
-                            <label>性别：
-                                <span class='my-oppo-content-text'>未填写</span></label>
+						    <label>性别：<span class='my-oppo-content-text'><?= $user->genderInfos[$user->gender]; ?></span></label>
                             <div class='my-oppo-content-edit basic-input'>
                                 <span class='icon icon-grey-arrow-down'></span>
                                 <select id='select' name='gender'>
-                                    <option value='2' selected>请选择</option>
-                                    <option value='1'>男</option>
-                                    <option value='0'>女</option></select>
+								    <option value='0' <?php if ($user->gender == 0) { echo 'selected'; } ?>>请选择</option>
+									<option value='1' <?php if ($user->gender == 1) { echo 'selected'; } ?>>男</option>
+									<option value='2' <?php if ($user->gender == 2) { echo 'selected'; } ?>>女</option></select>
                             </div>
                         </div>
                     </div>
                     <div class='g g-wrapper-s'>
                         <div class='gi field desk-two-thirds lap-one-whole' id="birthSelectors">
                             <label>生日：
-                                <span class='my-oppo-content-text'>未填写</span></label>
+							    <span class='my-oppo-content-text'><?= $birthdayStr; ?></span></label>
                             <div class="my-oppo-content-edit">
                                 <div class='basic-input three-quarters desk-one-quarter inline-block'>
                                     <span class='icon icon-grey-arrow-down'></span>
-                                    <select id="select" name='year' data-default=""></select>
+									<select id="select" name='year' data-default="<?= $birthdayInfo[0]; ?>"></select>
                                 </div>
                                 <span class='input-suffix'>年</span>
                                 <div class='basic-input three-quarters desk-one-quarter inline-block'>
                                     <span class='icon icon-grey-arrow-down'></span>
-                                    <select id="select" name='month' data-default=""></select>
+									<select id="select" name='month' data-default="<?= $birthdayInfo[1]; ?>"></select>
                                 </div>
                                 <span class='input-suffix'>月</span>
                                 <div class='basic-input three-quarters desk-one-quarter inline-block'>
                                     <span class='icon icon-grey-arrow-down'></span>
-                                    <select id="select" name='day' data-default=""></select>
+									<select id="select" name='day' data-default="<?= intval($birthdayInfo[2]); ?>"></select>
                                 </div>
                                 <span class='input-suffix'>日</span></div>
                         </div>
@@ -181,5 +184,4 @@ $this->params['jsFooters'] = [
         </div>
     </div>
 </div>
-<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
 </main>

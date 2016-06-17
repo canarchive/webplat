@@ -41,7 +41,7 @@ var regionLevel1 = <?= $regionLevel1; ?>;
                                 <div class='gi field lap-one-whole desk-one-quarter'>
                                     <label>*联系人姓名</label>
 									<input type="hidden" name='id' value='<?= $info['id']; ?>' />
-									<input type='text' name='consignee' value='<?= $info['consignee']; ?>'>
+									<input type='text' name='receiver' value='<?= $info['consignee']; ?>'>
                                 </div>
                                 <div class='g'>
                                     <div class='gi field lap-one-whole desk-one-quarter'>
@@ -54,27 +54,27 @@ var regionLevel1 = <?= $regionLevel1; ?>;
                                     <div class='g'>
                                         <div class='gi basic-input one-whole desk-one-fifth'>
                                             <span class='icon icon-grey-arrow-down'></span>
-                                            <select id='select7595311' name='province_id' data-region-default="2"></select>
+                                            <select id='select<?= $info['id']; ?>1' name='province_id' data-region-default="2"></select>
                                         </div>
                                         <div class='gi basic-input one-whole desk-one-fifth'>
                                             <span class='icon icon-grey-arrow-down'></span>
-                                            <select id='select7595312' name='city_id' data-region-default="3"></select>
+                                            <select id='select<?= $info['id']; ?>2' name='city_id' data-region-default="3"></select>
                                         </div>
                                         <div class='gi basic-input one-whole desk-one-fifth'>
                                             <span class='icon icon-grey-arrow-down'></span>
-                                            <select id='select7595313' name='district_id' data-region-default="8"></select>
+                                            <select id='select<?= $info['id']; ?>3' name='district_id' data-region-default="8"></select>
                                         </div>
                                     </div>
                                     <div class="g">
                                         <div class="gi desk-two-thirds one-whole">
-											<input class='address-detail' type="text" name="address" value='<?= $info['address']; ?>'>
+											<input class='address-detail' type="text" name="address-detail" value='<?= $info['address']; ?>'>
                                         </div>
                                     </div>
                                 </div>
                                 <div class='form-actions'>
                                     <div class='pull-left'>
-                                        <a class='button-light pull-left address-update' href='javascript:;' data-id='759531'>保存</a>
-										<a class='button-light pull-left address-cancel' href='javascript:;' data-id='759531'>取消</a>
+                                        <a class='button-light pull-left address-update' href='javascript:;' data-id='<?= $info['id']; ?>'>保存</a>
+										<a class='button-light pull-left address-cancel' href='javascript:;' data-id='<?= $info['id']; ?>'>取消</a>
                                     </div>
                                 </div>
                                 <div class="dividing-line"></div>
@@ -133,11 +133,6 @@ var regionLevel1 = <?= $regionLevel1; ?>;
                                     <input class='address-detail' type="text" name="address-detail" value='' placeholder="详细街道地址"></div>
                             </div>
                         </div>
-                        <div class='g'>
-                            <div class='gi field lap-one-whole desk-one-quarter'>
-                                <label>联系邮箱</label>
-                                <input type='text' name='email'></div>
-                        </div>
                         <div class='form-actions'>
                             <div class='pull-left'>
                                 <a class='button-light pull-left address-store' href='javascript:;'>保存</a>
@@ -147,6 +142,7 @@ var regionLevel1 = <?= $regionLevel1; ?>;
                 </div>
             </div>
         </div>
+        <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
     </form>
 </div>
 </main>
