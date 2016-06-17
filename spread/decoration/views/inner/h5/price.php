@@ -51,13 +51,7 @@
     <!--主导航（默认隐藏） end-->
     <!--页面主体 start-->
     <section class="container f16">
-        <!--tab 切换 start-->
-        <ul class="tab-switch cGray clearfix">
-            <li><a href="/design.html"><span class="icon"><i class="iconfont icone618"></i></span>免费设计</a></li>
-            <li><a href="/measure.html"><span class="icon"><i class="iconfont icone698"></i></span>免费量房</a></li>
-            <li class="active"><a href="javascript:void(0);"><span class="icon"><i class="iconfont icone67a"></i></span>免费报价</a></li>
-        </ul>
-        <!--tab 切换 end-->
+        <?php echo $this->render('_nav', ['info' => $info, 'view' => $view, 'type' => $type, 'city' => $city]); ?>
         <!--报名 start-->
         <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/bj-photo-08.jpg" alt="免费装修设计">
         <div class="bj-part01-bg pd4">

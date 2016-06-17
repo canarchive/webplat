@@ -119,7 +119,11 @@ class DetailController extends Controller
 		$infoId = $city == 'shanghai' ? 2 : 1;
 		$hotline = $city == 'shanghai' ? '400-658-1017' : '400-689-1717';
 		$info = ['id' => $infoId, 'hotline' => $hotline];
+
         $datas = [
+			'view' => $view,
+			'city' => $city,
+			'type' => $type,
             'host' => $this->host,
             'model' => $model,
 			'info' => $info,
