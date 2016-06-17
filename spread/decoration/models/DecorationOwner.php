@@ -83,11 +83,10 @@ class DecorationOwner extends SpreadModel
 	{
 		$info = self::findOne(['mobile' => $data['mobile']]);
 		if (!empty($info)) {
-			//return false;
+			return false;
 		}
 
         $newModel = new self($data);
-		print_r($newModel);
         $insert = $newModel->insert(true, $data);
         if (!$insert) {
             return false;

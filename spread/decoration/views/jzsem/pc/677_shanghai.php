@@ -19,9 +19,9 @@
             <li class="mt15 cWhite bm">已有
                 <span class="cOrange ml2 mr2">6821</span>人成功预约</li></ul>
     </section>
-    <section class="zztc-cj">
+    <!--<section class="zztc-cj">
         <a target="_blank" href="http://m.17house.com/weixin/lottery/type/93/"></a>
-    </section>
+    </section>-->
     <!--banner end-->
     <!--主材全包 一次配齐 start-->
     <section class="area w1190 tc clearfix" id="zcqb">
