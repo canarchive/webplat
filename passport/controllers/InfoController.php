@@ -35,11 +35,6 @@ class InfoController extends PassportController
         return $this->render('setting');
     }
 
-    public function actionAddress()
-    {
-        return $this->render('address');
-    }
-
 	public function actionChangePassword()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

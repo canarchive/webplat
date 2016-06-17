@@ -116,4 +116,19 @@ class Region extends PassportModel
 
 		return true;
 	}
+
+	public function getSubInfos($parentCode)
+	{
+		$infos = $this->_subInfos($parentCode);
+		foreach ($infos as $key => & $info) {
+			$info['sub'] = $this->_subInfos($info['code']);
+		}
+		return $infos;
+	}
+
+	protected function _subInfos($parentCode)
+	{
+		$infos = self::find()->where(['parent_code' => $parentCode])->asArray()->all();
+		return $infos;
+	}
 }

@@ -14,7 +14,7 @@ $actions = [
 	],
 	'address' => [
 		'name' => '地址管理',
-		'url' => $passportUrl . Url::to(['info/address']),
+		'url' => $passportUrl . Url::to(['user-address/index']),
 	],
 	/*'myorder' => [
 		'name' => '我的订单',
