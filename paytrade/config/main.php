@@ -36,12 +36,16 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-		        ['pattern' => 'signin', 'route' => 'site/signin', 'host' => Yii::getAlias('@passporturl')],
                 'callback/<result:\w+>/<code:\w+>' => 'account/callback',
 				'pingback' => 'account/pingback',
                 'cart' => 'cart/index',
 			],
 		],
     ],
+	'modules' => [
+		'shoot' => [
+			'class' => 'paytrade\shoot\Module',
+		],
+	],
     'params' => $params,
 ];
