@@ -25,6 +25,16 @@ class OrderInfoController extends AdminController
 
     public function actionAdd()
     {
+		$mobile = \Yii::$app->request->get('mobile');
+		if (empty($mobile)) {
+			exit('<script>alert("您需要指定手机号，才能生成订单");history.back(-2);</script>');
+		}
+		$model = new OrderInfo();
+		$model->initUserInfo($mobile);
+		if (empty($model->userInfo)) {
+			exit('<script>alert("指定的用户不存在");history.back(-2);</script>');
+		}
+		
 		return $this->_addInfo(new OrderInfo());
     }
 
