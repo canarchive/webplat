@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$tableName = 'activity_user';
+$tableName = 'order_info';
 ?>
 <div class="row">
     <div class="box col-md-12">
@@ -10,68 +10,30 @@ $tableName = 'activity_user';
                 <table class="table table-striped table-bordered responsive">
                     <thead>
                     <tr>
-					    <th><?= $model->getAttributeLabel('mobile'); ?></th>
-					    <th><?= $model->getAttributeLabel('name'); ?></th>
-					    <th><?= $model->getAttributeLabel('signup_at'); ?></th>
-					    <th><?= $model->getAttributeLabel('signup_city'); ?></th>
-					    <th><?= $model->getAttributeLabel('signup_channel'); ?></th>
-					    <th><?= $model->getAttributeLabel('signin_at'); ?></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-					    <td><?= $model->mobile; ?></td>
-						<td><input type="text" name="name" value="<?= $model->name; ?>" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'name', this.value);"/></td>
-					    <td><?= date('Y-m-d H:i:s', $model->signup_at); ?></td>
-					    <td><?= $model->signup_city; ?></td>
-					    <td><?= $model->signup_channel; ?></td>
-					    <td><?= date('Y-m-d H:i:s', $model->signin_at); ?></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <table class="table table-striped table-bordered responsive">
-                    <thead>
-                    <tr>
-						<th><?= $model->getAttributeLabel('valid_status'); ?></th>
-					    <th><?= $model->getAttributeLabel('callback_at'); ?></th>
-					    <th><?= $model->getAttributeLabel('callback_again'); ?></th>
-					    <th><?= $model->getAttributeLabel('keyword'); ?></th>
+					    <th><?= $model->userInfo->getAttributeLabel('id'); ?></th>
+					    <th><?= $model->userInfo->getAttributeLabel('mobile'); ?></th>
+					    <th><?= $model->getAttributeLabel('goods_id'); ?></th>
+					    <th><?= $model->getAttributeLabel('pay_money'); ?></th>
 					    <th><?= $model->getAttributeLabel('note'); ?></th>
-					    <th><?= $model->getAttributeLabel('message'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-					    <td>
-						其他原因：<input type="text" name="valid_status" value="" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'valid_status', this.value);"/>
+					    <td><?= $model->userInfo->id; ?></td>
+					    <td><?= $model->mobile; ?></td>
+                        <td>
     					<?= Html::dropDownList(
-    						"valid_status", 
-    						$model->valid_status, 
-    						$model->validStatusInfos, 
+    						"goods_id", 
+    						$model->goods_id, 
+    						$model->goodsInfos, 
     						[
     							'prompt' => '全部', 
     							'class' => 'form-control',
-								'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'valid_status', this.value)",
     						]
     					); ?>
                         </td>
-					    <td>
-                        <?php if ($model->callback_at > 0) { echo Yii::$app->Formatter->asRelativeTime($model->callback_at, $model->signup_at); } else { echo Html::radio('callback_at', false, ['label' => '标识为已回访', 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'callback_at', this.value)"]); } ?>
-					    <td>
-    					<?= Html::dropDownList(
-    						"callback_again", 
-    						$model->callback_again, 
-    						$model->callbackAgainInfos, 
-    						[
-    							'prompt' => '全部', 
-    							'class' => 'form-control',
-								'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'callback_again', this.value)",
-    						]
-    					); ?>
-                        </td>
-					    <td><?= $model->keyword; ?></td>
-					    <td><?= $model->note; ?></td>
-					    <td><?= $model->message; ?></td>
+						<td><input type="text" name="pay_money" value="<?= $model->pay_money; ?>"/></td>
+                        <td><?= Html::textarea('note', $model->note, ['row' => 2]); ?></td>
                     </tr>
                     </tbody>
                 </table>

@@ -6,6 +6,8 @@ use common\models\PaytradeModel;
 
 class OrderInfo extends PaytradeModel
 {
+	public $mobile;
+	public $userInfo;
     /**
      * @inheritdoc
      */
@@ -110,5 +112,11 @@ class OrderInfo extends PaytradeModel
 		}
 
 		return true;
+	}
+
+	public function initUserInfo($mobile)
+	{
+		$this->mobile = $mobile;
+		$this->userInfo = \passport\models\User::findByMobile($mobile);
 	}
 }
