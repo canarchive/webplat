@@ -4,39 +4,26 @@ $gridViewParams = [
     'dataProvider' => $dataProvider,
     //'filterModel' => $searchModel,
     'columns' => [
-        'id',
+        'orderid',
+        'user_id',
 		[
-			'attribute' => 'info_id',
-			'value' => function($model) {
-				return $model->info_id;
-			},
-		],
-        'name',
-		'mobile',
-		'keyword',
-		'signup_channel',
-		[
-            'attribute' => 'signup_at',
+            'attribute' => 'created_at',
             'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->signup_at);
+                return  date('Y-m-d H:i:s',$model->created_at);
             },
         ],
-		'signup_city',
-		'message',
-		'note',
 		[
-			'attribute' => 'valid_status',
+            'attribute' => 'pay_at',
+            'value'=> function($model){
+                return  date('Y-m-d H:i:s',$model->pay_at);
+            },
+        ],
+		[
+            'attribute' => 'status',
 			'value' => function($model) {
-				$value = isset($model->validStatusInfos[$model->valid_status]) ? $model->validStatusInfos[$model->valid_status] : $model->valid_status;
-				return $value;
+				return $model->statusInfos[$model->status];
 			},
 		],
-		[
-            'attribute' => 'callback_again',
-			'value' => function($model) {
-				return $model->callbackAgainInfos[$model->callback_again];
-			}
-		]
     ],
 ];
 

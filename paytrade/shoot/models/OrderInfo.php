@@ -6,8 +6,10 @@ use common\models\PaytradeModel;
 
 class OrderInfo extends PaytradeModel
 {
-	public $mobile;
+	public $mobile_user;
 	public $userInfo;
+	public $goodsInfo;
+
     /**
      * @inheritdoc
      */
@@ -19,11 +21,36 @@ class OrderInfo extends PaytradeModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
+            [['user_id', 'pay_money'], 'required'],
+            [['goods_id'], 'checkGoods'],
+			[['pay_at', 'activity_id', 'activity_fee', 'goods_price', 'coupon_fee', 'service_start', 'service_hour_num'], 'default', 'value' => 0],
+			[['note', 'status', 'address', 'mobile', 'consignee', 'goods_name'], 'safe'],
         ];
     }
+
+	public function checkGoods()
+	{
+        $value = $this->goods_id;
+        $this->goodsInfo = \shoot\models\Goods::findOne(['id' => $value]);
+        if (empty($this->goodsInfo)) {
+            $this->addError('parent_code', '父菜单不存在');
+        }
+		
+	}
 
     /**
      * @inheritdoc
@@ -32,12 +59,23 @@ class OrderInfo extends PaytradeModel
     {
         return [
             'orderid' => '订单号',
-            'snapup_id' => '商品ID',
             'user_id' => '用户ID',
             'pay_money' => '支付金额',
-            'pay_type' => '支付类型：0，余额支付；1，红包支付；',
-            'created_time' => '创建时间',
-            'paid_at' => '支付时间',
+            'pay_type' => '支付类型',
+            'goods_id' => '产品ID',
+            'goods_name' => '产品名称',
+            'goods_price' => '产品价格',
+			'activity_id' => '活动ID',
+			'activity_fee' => '活动优惠',
+			'coupon_fee' => '优惠券',
+			'service_start' => '拍摄时间',
+			'service_hour_num' => '拍摄时长',
+			'consignee' => '联系人',
+			'mobile' => '联系电话',
+			'address' => '地址',
+			'note' => '备注',
+            'created_at' => '创建时间',
+            'pay_at' => '支付时间',
             'status' => '状态',
         ];
     }
@@ -72,51 +110,26 @@ class OrderInfo extends PaytradeModel
 		return ['status' => 200, 'message' => 'OK'];
 	}
 
-	protected function _addAddressInfo($addressInfo, $baseInfos)
-	{
-		$baseFields = ['orderid', 'invoice_get', 'invoice_type', 'invoice_title'];
-		foreach ($baseFields as $field) {
-			$data[$field] = $baseInfos[$field];
-		}
-
-		$fields = ['user_id', 'consignee', 'region_id', 'address', 'zipcode', 'mobile', 'sign_building', 'best_time'];
-		foreach ($fields as $field) {
-			$data[$field] = $addressInfo->$field;
-		}
-		$data['sign_building'] = !empty($baseInfos['sign_building']) ? $baseInfos['sign_building'] : $addressInfo->sign_building;
-		$data['best_time'] = !empty($baseInfos['best_time']) ? $baseInfos['best_time'] : $addressInfo->best_time;
-
-		$model = new OrderAddress($data);
-		$model->insert(false);
-
-		return true;
-	}
-
-	protected function _addGoods($cartInfos, $baseInfos)
-	{
-		foreach ($cartInfos['goodsInfos'] as $goodsInfo) {
-			$info = $goodsInfo['info'];
-			$data = [
-				'orderid' => $baseInfos['orderid'],
-				'price' => $goodsInfo['price'],
-				'goods_sku' => !empty($goodsInfo['goods_sku']) ? $goodsInfo['goodsSku']->sku : '',
-				'sold_number' => $goodsInfo['number'],
-				'activity_id' => empty($goodsInfo['activity']) ? 0 : $goodsInfo['activity']->id,
-				'activity_fee' => empty($goodsInfo['activity']) ? 0 : $goodsInfo['activity']->price,
-				'goods_id' => $info['id'],
-				'goods_name' => $info['name'],
-				'goods_price' => $info['price'],
-			];
-			$model = new OrderGoods($data);
-			$model->insert();
-		}
-
-		return true;
-	}
-
 	public function initUserInfo($mobile)
 	{
-		$this->mobile = $mobile;
+		$this->mobile_user = $mobile;
 		$this->userInfo = \passport\models\User::findByMobile($mobile);
 	}
+
+	public function getStatusInfos()
+	{
+		$orderStatus = new \paytrade\models\OrderStatus();
+		return $orderStatus->statusInfos;
+	}
+
+	public function beforeInsert()
+	{
+        parent::beforeSave($insert);
+		$this->orderid =  $this->_createSingleRandomStr();
+		$this->goods_name = isset($this->goodsInfo['name']) ? $this->goodsInfo['name'] : '';
+		$this->goods_price = isset($this->goodsInfo['price']) ? $this->goodsInfo['price'] : '';
+		$this->status = 'order';
+
+		return true;
+	}		
 }
