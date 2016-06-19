@@ -122,7 +122,7 @@ class OrderInfo extends PaytradeModel
 		return $orderStatus->statusInfos;
 	}
 
-	public function beforeInsert()
+	public function beforeSave($insert)
 	{
         parent::beforeSave($insert);
 		$this->orderid =  $this->_createSingleRandomStr();

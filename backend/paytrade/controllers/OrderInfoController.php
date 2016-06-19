@@ -26,7 +26,7 @@ class OrderInfoController extends AdminController
     public function actionAdd()
     {
 		$model = new OrderInfo();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->insert()) {
             return $this->redirect(['listinfo']);
         }
 		
