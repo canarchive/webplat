@@ -4,14 +4,14 @@ namespace paytrade\models;
 
 use common\models\PaytradeModel;
 
-class OrderGoods extends PaytradeModel
+class ShowoffComment extends PaytradeModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%order_goods}}';
+        return '{{%showoff_comment}}';
     }
 
     /**
@@ -29,9 +29,12 @@ class OrderGoods extends PaytradeModel
     public function attributeLabels()
     {
         return [
-            'orderid' => '订单号',
+            'id' => '晒单评论ID',
+            'user_id' => '用户ID',
+            'content' => '内容',
+            'star' => '评分',
+            'created_at' => '评论时间',
             'status' => '状态',
-            'created_time' => '创建时间',
         ];
     }
 }
