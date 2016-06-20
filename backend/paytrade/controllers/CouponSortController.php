@@ -39,16 +39,4 @@ class CouponSortController extends AdminController
     {
 		return $this->_deleteInfo($id);
     }
-
-    protected function findModel($id, $throwException = true)
-    {
-        if (($model = CouponSort::findOne($id)) !== null) {
-            return $model;
-        }
-		if ($throwException) {
-            throw new NotFoundHttpException('The requested page does not exist.');		
-		}
-
-		return false;
-    }
 }

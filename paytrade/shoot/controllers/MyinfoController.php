@@ -10,6 +10,8 @@ class MyinfoController extends PaytradeController
 	
     public function actionOrder()
     {
+		$orderInfo = new \paytrade\shoot\models\OrderInfo();
+		$infos = $orderInfo->getInfosByUserId(\Yii::$app->user->id);
         return $this->render('order');
     }
 
