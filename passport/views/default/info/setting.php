@@ -130,7 +130,6 @@ $birthdayInfo = explode('-', $birthday);
             </section>-->
             <section class='brick-shadow'>
 			    <form method="POST" action="<?= Url::to(['info/setting']); ?>" accept-charset="UTF-8">
-                    <input name="_method" type="hidden" value="PUT">
                     <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf', 'name' => '_csrf']); ?>
 
                     <div class='g g-wrapper-s'>

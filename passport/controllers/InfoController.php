@@ -33,6 +33,16 @@ class InfoController extends PassportController
     public function actionSetting()
     {
 		$user = \Yii::$app->user->getIdentity();
+		if (\Yii::$app->request->isPost) {
+			$params = ['nickname', 'gender', 'year', 'month', 'day'];
+			$data = [];
+			foreach ($params as $param) {
+				$data[$param] = \Yii::$app->request->post($param);
+			}
+
+			$user->settingInfo($data);
+            //return $this->refresh();
+        } 		
 		
         return $this->render('setting', ['user' => $user]);
     }
