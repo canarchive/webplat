@@ -132,4 +132,16 @@ class OrderInfo extends PaytradeModel
 
 		return true;
 	}		
+
+	public function getInfosByUserId($userId)
+	{
+		$userId = 1;
+        $infos = $this->find()->where(['user_id' => $userId])->asArray()->all();
+		foreach ($infos as $info) {
+			$goodsInfo = \shoot\models\Goods::findOne($info['goods_id']);
+			print_r($goodsInfo);
+		}
+		print_r($infos);exit();
+		return $infos;
+	}
 }

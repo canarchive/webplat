@@ -46,14 +46,17 @@ class OrderInfoController extends AdminController
 		]);
     }
 
-    public function actionUpdate($id)
+    public function actionUpdate($id = 0)
     {
-		$data = $this->_userInfos($id, 'activity-user');
-		if ($this->isAjax) {
-			return $data;
+		if (Yii::$app->request->isAjax) {
+		    return $this->_updateByAjax();
 		}
-		//print_r($data);exit();
 
-        return $this->render('update', $data);
+		return $this->_updateInfo($id);
+    }
+
+    public function actionDelete($id)
+    {
+		return $this->_deleteInfo($id);
     }
 }
