@@ -121,4 +121,12 @@ class User extends AuthBase
 	{
 		return \Yii::$app->params['genderInfos'];
 	}
+
+	public function settingInfo($data)
+	{
+		$this->birthday = implode('-', [$data['year'], $data['month'], $data['day']]);
+		$this->nickname = $data['nickname'];
+		$this->gender = $data['gender'];
+		return $this->update(false, $data);
+	}
 }
