@@ -50,7 +50,7 @@ class Visit extends SpreadModel
         $channel = \Yii::$app->getRequest()->get('channel');
         foreach ($attributeParams as $field => $param) {
             $paramValue = (\Yii::$app->getRequest()->get($param, ''));
-            if ($field == 'keyword' && $channel == 'sembd') {
+            if ($field == 'keyword' && strpos($channel, 'sembd') !== false) {
                 $paramValue = rawurldecode($paramValue);
                 //$encoding1 =mb_detect_encoding($paramValue);
                 $paramValue = mb_convert_encoding($paramValue, 'utf-8', 'gb2312');// : $paramValue;

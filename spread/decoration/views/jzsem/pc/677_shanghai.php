@@ -5,7 +5,7 @@
     <div class="w1190 clearfix">
         <img class="logo" src="http://s4.17house.com/jiazhuangtong/zxtc/images/chengdu/677/zx-logo.gif" height="70" width="340" alt="">
         <div class="zxtc-box f16 fB"></div>
-        <span class="tel">400-658-1017</span></div>
+		<span class="tel"><?= $info['hotline']; ?></span></div>
 </section>
 <!--头文件 end-->
 <!--页面主体 start-->
@@ -15,7 +15,7 @@
         <ul>
             <li>
                 <a href="javascript:;" class="btn js-bm btn-orange">马上预约</a>
-                <span class="tel">400-658-1017</span></li>
+				<span class="tel"><?= $info['hotline']; ?></span></li>
             <li class="mt15 cWhite bm">已有
                 <span class="cOrange ml2 mr2">6821</span>人成功预约</li></ul>
     </section>
@@ -737,7 +737,7 @@
                 </div>
                 <div class="adress f16 tl">
                     <i class="icon-tel"></i>电话咨询：
-                    <span class="tel mr30">400-658-1017</span>
+					<span class="tel mr30"><?= $info['hotline']; ?></span>
                     <i class="icon-adress"></i>地址：上海市徐汇区漕宝路70号光大会展中心商务办公楼C座802室
                     <a class="r btn-orange mt10 js-bm" href="javascript:;">地址发送至手机</a></div>
             </div>
@@ -1046,7 +1046,7 @@
         <ul class="address clearfix">
             <li class="clearfix">
                 <i class="num">1</i>
-                <p>如有疑问请联系您的专属客服(400-658-1017)， 客服工号为：01241。</p>
+				<p>如有疑问请联系您的专属客服(<?= $info['hotline']; ?>)， 客服工号为：01241。</p>
             </li>
             <li class="clearfix mt10">
                 <i class="num">2</i>

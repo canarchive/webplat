@@ -44,7 +44,8 @@ class DetailController extends Controller
 		}
 
         $model = new SignupForm();
-		$info = ['id' => $typeInfo['cities'][$city]['id']];
+		$hotline = $city == 'shanghai' ? '18610455123' : '400-689-1717';
+		$info = ['id' => $typeInfo['cities'][$city]['id'], 'hotline' => $hotline];
         $datas = [
             'host' => $this->host,
             'model' => $model,
@@ -104,7 +105,7 @@ class DetailController extends Controller
 	public function actionInner()
     {
 		if (empty($this->mHost) && $this->isMobile) {
-			$url = \Yii::getAlias('@m1spreadurl') . \Yii::$app->request->getUrl();
+			$url = \Yii::getAlias('@m2spreadurl') . \Yii::$app->request->getUrl();
 			$this->redirect($url)->send();
 		}
         $model = new SignupForm();
@@ -117,7 +118,7 @@ class DetailController extends Controller
 		$city = \Yii::$app->request->get('city');
 		$city = !in_array($city, ['shanghai']) ? '' : $city;
 		$infoId = $city == 'shanghai' ? 2 : 1;
-		$hotline = $city == 'shanghai' ? '400-658-1017' : '400-689-1717';
+		$hotline = $city == 'shanghai' ? '18610455123' : '400-689-1717';
 		$info = ['id' => $infoId, 'hotline' => $hotline];
 
         $datas = [
