@@ -119,14 +119,20 @@ error_reporting(0);
 		//$appApi = 'http://appdev.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
 		$appApi = 'http://hui.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
                 $i = 0;
+		$cityInfos = [
+			1 => 3,
+			2 => 40,
+		];
 		foreach ((array) $infos as $info) {
 		    $callback = \spread\groupon\models\CallbackLog::find()->select(['created_at'])->where(['mobile' => $info['mobile']])->orderBy(['created_at' => SORT_DESC])->one();
 			$lastVisitTime = isset($callback['created_at']) ? $callback['created_at'] : 0;
 			$cancelStatus = $info['valid_status'] == '' || $info['valid_status'] == 'ok' ? '' : 1;
 			$cancelMsg = $cancelStatus == 1 ? (isset($this->validStatusInfos[$info['valid_status']]) ? $this->validStatusInfos[$info['valid_status']] : $info['valid_status']) : '';
+			$frameworkId = 
 			$params = [
-				'name' => $info['name'],
+				'name' => empty($info['name']) ? '未填写' : $info['name'],
 				'mobile' => $info['mobile'],
+				'frameworkId' => isset($cityInfos[$info['decoration_id']]) ? $cityInfos[$info['decoration_id']] : 3, 
 				'channelFirst' => 'SEM',
 				'channelSecond' => $info['signup_channel'],
 				'channelKey' => $info['keyword'],
@@ -144,6 +150,7 @@ error_reporting(0);
 print_r($params);
 		    $queryStr = http_build_query($params);
 			$url = $appApi . $queryStr;
+			echo $url;
 			//$result = '{"baseOutput":{"code":0,"message":"success"},"data":""}';
 			$result = file_get_contents($url);
 		    $result = json_decode($result,true);
