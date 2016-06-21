@@ -3,17 +3,17 @@ $navInfos = [
 	'design' => [
 		'icon' => '618',
 	    'name' => '免费设计',
-		'url' => $city == '' ? 'design.html' : "design-{$type}-{$city}.html",
+		'url' => $info['city'] == 'beijing' ? 'design.html' : "design-{$info['type']}-{$info['city']}.html",
 	],
 	'measure' => [
 		'icon' => '698',
 	    'name' => '免费量房',
-		'url' => $city == '' ? 'measure.html' : "measure-{$type}-{$city}.html",
+		'url' => $info['city'] == 'beijing' ? 'measure.html' : "measure-{$info['type']}-{$info['city']}.html",
 	],
 	'price' => [
 		'icon' => '67a',
 	    'name' => '免费报价',
-		'url' => $city == '' ? 'price.html' : "price-{$type}-{$city}.html",
+		'url' => $info['city'] == 'beijing' ? 'price.html' : "price-{$info['type']}-{$info['city']}.html",
 	],
 ];
 ?>

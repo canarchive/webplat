@@ -51,7 +51,7 @@
     <!--主导航（默认隐藏） end-->
     <!--页面主体 start-->
     <section class="container f16" data-page="store-list">
-        <?php echo $this->render('_nav', ['info' => $info, 'view' => $view, 'type' => $type, 'city' => $city]); ?>
+        <?php echo $this->render('_nav', ['info' => $info, 'view' => $view]); ?>
         <!--报名 start-->
         <img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/images/photo-17.jpg" alt="免费装修设计">
         <div class="part01-bg pd4">

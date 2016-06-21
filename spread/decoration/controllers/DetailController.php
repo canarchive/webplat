@@ -32,27 +32,16 @@ class DetailController extends Controller
 
 	public function actionSpread()
 	{
-		$productTypes = \Yii::$app->params['productTypes'];
-		$type = \Yii::$app->request->get('type');
-		if (!in_array($type, array_keys($productTypes))) {
-			$this->redirect($this->host);
-		}
-		$typeInfo = $productTypes[$type];
-		$city = \Yii::$app->request->get('city');
-		if (!in_array($city, array_keys($typeInfo['cities']))) {
-			$this->redirect($this->host);
-		}
+		$info = $this->getInfo();
 
         $model = new SignupForm();
-		$hotline = $city == 'shanghai' ? '18610455123' : '400-689-1717';
-		$info = ['id' => $typeInfo['cities'][$city]['id'], 'hotline' => $hotline];
         $datas = [
             'host' => $this->host,
             'model' => $model,
 			'info' => $info,
         ];
 
-		$view = $this->mHost ? "/jzsem/h5/{$type}_{$city}.php" : "/jzsem/pc/{$type}_{$city}.php";
+		$view = $this->mHost ? "/jzsem/h5/{$info['type']}_{$info['city']}.php" : "/jzsem/pc/{$info['type']}_{$info['city']}.php";
         return $this->render($view, $datas); 
 	}
 
@@ -113,28 +102,35 @@ class DetailController extends Controller
 		$view = \Yii::$app->request->get('view');
 		$view = !in_array($view, ['price', 'measure', 'design']) ? 'price' : $view;
 
-		$type = \Yii::$app->request->get('type');
-		$type = !in_array($type, ['377', '677']) ? '677' : $type;
-		$city = \Yii::$app->request->get('city');
-		$city = !in_array($city, ['shanghai']) ? '' : $city;
-		$infoId = $city == 'shanghai' ? 2 : 1;
-		$hotline = $city == 'shanghai' ? '18610455123' : '400-689-1717';
-		$info = ['id' => $infoId, 'hotline' => $hotline];
+		$info = $this->getInfo();
 
         $datas = [
 			'view' => $view,
-			'city' => $city,
-			'type' => $type,
             'host' => $this->host,
             'model' => $model,
 			'info' => $info,
         ];
 
-
 		$viewPath = $this->mHost ? "/inner/h5/" : "/inner/h5/";
 		$view = $viewPath . $view;
         return $this->render($view, $datas);   
     }
+
+	protected function getInfo()
+	{
+		$productTypes = \Yii::$app->params['productTypes'];
+		$type = \Yii::$app->request->get('type');
+		$type = !in_array($type, array_keys($productTypes)) ? '677' : $type;
+
+		$typeInfo = $productTypes[$type];
+		$city = \Yii::$app->request->get('city');
+		$city = !in_array($city, array_keys($typeInfo['cities'])) ? 'beijing' : $city;
+		$info = $typeInfo['cities'][$city];
+		$info['type'] = $type;
+		$info['city'] = $city;
+
+		return $info;
+	}
 
     protected function getDecorationInfo()
     {
