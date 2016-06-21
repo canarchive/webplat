@@ -6,7 +6,7 @@ var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " 
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F02113b70e89c53a8f979402aa526162e' type='text/javascript'%3E%3C/script%3E")); </script> 
 <script type="text/javascript" charset="utf-8" async src="http://lxbjs.baidu.com/lxb.js?sid=8979354"></script>
 </div>
-<?php if (isset($info) && $info['id'] != 2) { ?>
+<?php if (isset($info) && $info['id'] == 1) { ?>
 <!-- 53客服start -->
 <script>
 (function() {

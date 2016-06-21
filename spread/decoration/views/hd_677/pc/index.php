@@ -1177,16 +1177,6 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<!-- 53客服start -->
-<!--<script>
-(function() {
-  var _53code = document.createElement("script");
-  _53code.src = "//tb.53kf.com/code/code/10135389/1";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(_53code, s);
-})();
-</script>-->
-<!-- 53客服end -->
 
     <style>
         .sem-pop{position: fixed; z-index: 999; width:420px; height:256px; top:50%; left:50%; margin:-148px 0 0 -210px; }
@@ -1215,6 +1205,7 @@ var _hmt = _hmt || [];
 </body>
 <script language="javascript" src="http://dkt.zoosnet.net/JS/LsJS.aspx?siteid=DKT85079174&float=1&lng=cn"></script>
 
+<!-- 53客服start -->
 <script>
 (function() {
 	  var _53code = document.createElement("script");
@@ -1223,4 +1214,5 @@ var _hmt = _hmt || [];
 		  s.parentNode.insertBefore(_53code, s);
 })();
 </script>
+<!-- 53客服end -->
 </html>

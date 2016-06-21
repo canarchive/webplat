@@ -32,6 +32,10 @@ class DetailController extends Controller
 
 	public function actionSpread()
 	{
+		if ($this->mHost && !$this->isMobile) {
+			$url = \Yii::getAlias('@spreadurl') . \Yii::$app->request->getUrl();
+			$this->redirect($url)->send();
+		}
 		$info = $this->getInfo();
 
         $model = new SignupForm();

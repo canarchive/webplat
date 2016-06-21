@@ -122,6 +122,9 @@ error_reporting(0);
 		$cityInfos = [
 			1 => 3,
 			2 => 40,
+			3 => 3,
+			4 => 60,
+			5 => 70,
 		];
 		foreach ((array) $infos as $info) {
 		    $callback = \spread\groupon\models\CallbackLog::find()->select(['created_at'])->where(['mobile' => $info['mobile']])->orderBy(['created_at' => SORT_DESC])->one();
