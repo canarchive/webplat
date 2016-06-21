@@ -22,9 +22,6 @@ return [
         ],
     ],
 	'modules' => [
-		'spider' => [
-			'class' => 'console\spider\Module',
-		],
 	],
     'params' => $params,
 ];

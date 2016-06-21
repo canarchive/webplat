@@ -65,17 +65,11 @@ return [
     ],
 
 	'modules' => [
-		'gallerycms' => [
-			'class' => 'backend\gallerycms\Module',
-		],
 		'passport' => [
 			'class' => 'backend\passport\Module',
 		],
 		'shoot' => [
 			'class' => 'backend\shoot\Module',
-		],
-		'spider' => [
-			'class' => 'backend\spider\Module',
 		],
 		'spread' => [
 			'class' => 'backend\spread\Module',
