@@ -45,7 +45,7 @@ class DetailController extends Controller
 			'info' => $info,
         ];
 
-		$view = $this->mHost ? "/jzsem/h5/{$info['type']}_{$info['city']}.php" : "/jzsem/pc/{$info['type']}_{$info['city']}.php";
+		$view = $this->mHost ? "/jzsem/pc/{$info['type']}_{$info['city']}.php" : "/jzsem/pc/{$info['type']}_{$info['city']}.php";
         return $this->render($view, $datas); 
 	}
 
@@ -88,6 +88,7 @@ class DetailController extends Controller
             'brandInfos' => $this->getBrandInfos($info['id']),
             'professorInfos' => $this->getProfessorInfos($info['company_id']),
             'faqInfos' => $this->getFaqInfos($info['company_id']),
+            'host' => $this->host,
         ];
 
 		$type = '677';//$info['type'];
