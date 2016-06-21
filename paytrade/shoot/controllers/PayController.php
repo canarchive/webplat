@@ -4,19 +4,12 @@ namespace paytrade\shoot\controllers;
 
 use paytrade\components\Controller as PaytradeController;
 
-class MyinfoController extends PaytradeController
+class PayController extends PaytradeController
 {
 	public $layout = '@shoot/views/default/layouts/main';
 	
-    public function actionOrder()
+    public function actionPay()
     {
-		$orderInfo = new \paytrade\shoot\models\OrderInfo();
-		$infos = $orderInfo->getInfosByUserId(\Yii::$app->user->id);
-        return $this->render('order', ['infos' => $infos]);
-    }
-
-	public function actionOrderShow()
-	{
 		$orderid = \Yii::$app->request->get('orderid');
 		if (empty($orderid)) {
 			return $this->actionOrder();
@@ -27,6 +20,6 @@ class MyinfoController extends PaytradeController
 			return $this->actionOrder();
 		}
 
-		return $this->render('order-show', $data);
+		return $this->render('pay', $data);
 	}
 }
