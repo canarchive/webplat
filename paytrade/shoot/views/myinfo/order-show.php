@@ -4,150 +4,104 @@ use yii\helpers\Html;
 
 $this->params['cssFiles'] = ['styles_member_address'];
 $this->params['jsFiles'] = ['modernizr.custom'];
-$this->params['controllerForJs'] = 'AddressesController@index';
-$info = ['id' => 1];
-$referrer = Yii::$app->request->referrer;
+$this->params['controllerForJs'] = 'OrdersController@index';
+$this->params['jsFooters'] = [
+	'my/jquery-1.9.1.min', 'jquery.lazyload.min', 'underscore-min', 
+	'es5-shim.min', 'base64.min', 'custom_form', 
+	'jquery.countdown.min', 'slick.min', 'my/responsive', 'picturefill.min', 
+	'scripts-address', 'sdj-new',
+];
 ?>
-<?php $this->beginPage() ?>
 <main class='main-content user'>
-    <div class='wrapper'>
-        <ul class='breadcrumb'>
-            <li>
-                <a href='http://www.oppo.com/cn/'>首页
-                    <span>/</span></a>
-            </li>
-            <li>
-                <a href='http://my.oppo.com/user'>我的OPPO
-                    <span>/</span></a>
-            </li>
-            <li>
-                <a href='/orders'>我的订单
-                    <span>/</span></a>
-            </li>
-            <li>160612114174790</li></ul>
-        <div class='myOppo-menu'>
-            <h1 class='h-gamma'>订单详情</h1>
-            <ul class='navigation'>
-                <li class=''>
-                    <a href='http://my.oppo.com/user'>个人首页</a></li>
-                <li class=''>
-                    <a href='http://my.oppo.com/user/profile'>账户信息</a></li>
-                <li class=''>
-                    <a href='http://www.opposhop.cn/user/addresses'>配送地址</a></li>
-                <li class='is-active'>
-                    <a href='http://www.opposhop.cn/orders'>我的订单</a></li>
-                <li class=''>
-                    <a href='http://my.oppo.com/user/messages'>系统消息</a></li>
-                <li class=''>
-                    <a href='http://www.opposhop.cn/coupons/show'>优惠券</a></li>
-            </ul>
+<div class='wrapper'>
+    <?php echo $this->render('@passport/views/default/_user_nav', ['currentAction' => 'myorder']); ?>
+    <div class='g slab-white-border order'>
+        <div class='g brick-shadow order-list-top clearfix'>
+            <div class='gi one-whole desk-three-quarters pull-left'>
+                <div class="one-whole lap-width-auto">
+                    <input type="hidden" id="order-number" value="<?= $info['orderid']; ?>">
+                    <span>订单编号：<strong><?= $info['orderid']; ?></strong></span>
+                </div>
+                <div class="one-whole lap-width-auto">
+					<span>订单状态：<?= $info['statusStr']; ?></span>
+                </div>
+                <div class='gi one-whole lap-width-auto'>
+                    <div class='gi pull-left'>
+						<a class='button button-s' href='<?= Url::to(['account/pay', 'orderid' => $info['orderid']]); ?>'>立即支付</a>
+                    </div>
+                    <div class='gi pull-left'>
+						<a class='box-link' href='javascript: vm.cancel("<?= $info['orderid']; ?>");'>取消订单</a>
+                    </div>
+                </div>
+            </div>
+            <div class='gi one-whole desk-one-quarter pull-left desk-text-align-right'>
+				<span>下单时间：<?= date('Y-m-d H:i:s', $info['created_at']); ?></span>
+            </div>
         </div>
-        <div class='g slab-white-border order'>
-            <div class='g brick-shadow order-list-top clearfix'>
-                <div class='gi one-whole desk-three-quarters pull-left'>
-                    <div class="one-whole lap-width-auto">
-                        <input type="hidden" id="order-number" value="160612114174790">
-                        <span>订单编号：
-                            <strong>160612114174790</strong></span>
-                    </div>
-                    <div class="one-whole lap-width-auto">
-                        <span>订单状态：已取消</span></div>
-                    <div class='gi one-whole lap-width-auto'>
-                        <div class='gi pull-left'></div>
-                        <div class='gi pull-left'></div>
-                    </div>
+        <div class='order-list'>
+            <div class='order-summary'>
+                <div class='order-show-item one-whole lap-one-half desk-one-half'>
+                    <div class='title'>服务信息:</div>
+					<div class="row">联&nbsp;&nbsp;系&nbsp;&nbsp;人：<?= $info['consignee']; ?></div>
+					<div class="row">联系电话：<?= $info['mobile']; ?></div>
+					<div class="row">拍摄地址：<?= date('Y-m-d H:i:s', $info['service_start']); ?></div>
+					<div class="row">拍摄持续时间：<?= $info['service_hour_num']; ?></div>
+					<div class="row">拍摄地址：<?= $info['address']; ?></div>
                 </div>
-                <div class='gi one-whole desk-one-quarter pull-left desk-text-align-right'>
-                    <span>下单时间：2016-06-12 11:41:08</span></div>
-            </div>
-            <div class='order-list'>
-                <div class='order-summary'>
-                    <div class='order-show-item one-whole lap-one-half desk-one-half'>
-                        <div class='title'>收货信息:</div>
-                        <div class="row">收&nbsp;&nbsp;件&nbsp;&nbsp;人：王</div>
-                        <div class="row">收货地址：北京北京市朝阳区南磨房农光里</div>
-                        <div class="row">联系电话：13811974106</div>
-                        <div class="row">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：hdwyz@163.com</div></div>
-                    <div class='order-show-item one-whole lap-one-half desk-one-half'>
-                        <div class='title'>支付及配送信息：</div>
-                        <div class='row'>支付方式：在线支付</div>
-                        <div class='row'>配送方式：快递</div>
-                        <div class='row'>配送状态：
-                            <span class='color-primary'>未配货</span></div>
-                        <div class='row'>支付状态：未支付</div>
-                        <div class='row'>发票抬头：王</div></div>
+                <div class='order-show-item one-whole lap-one-half desk-one-half'>
+                    <div class='title'>支付及服务信息：</div>
+					<div class='row'>支付方式：<?= $info['pay_type']; ?></div>
+					<div class='row'>支付状态：<?= $info['status_pay']; ?></div>
+					<div class='row'>服务状态：<span class='color-primary'><?= $info['status_service']; ?></span></div>
                 </div>
             </div>
-            <div class='g clearfix'>
-                <div class='order-product-list brick-shadow one-whole desk-two-thirds pull-left'>
-                    <div class='order-good-title'>商品清单：</div>
-                    <div class='goods-list'>
-                        <div class='goods-list-show'>
-                            <a class='goods-list-image' href='http://www.opposhop.cn/products/360' target='_blank'>
-                                <img src='http://static.oppo.com/archives/201603/20160315030351KKwrcwls9cvvMmC7.jpg'></a>
-                        </div>
-                        <div class='goods-list-detail'>
-                            <div class="goods-list-info goods-list-main">
-                                <div class='goods-list-description'>
-                                    <h4 class='heading'>
-                                        <a href='http://www.opposhop.cn/products/360' target='_blank'>R9 全网通4G 全新拍照手机 金色</a></h4>
-                                    <p>全网通|金色|64G</p>
-                                </div>
-                                <div class="goods-list-quantity">
-                                    <strong>×1</strong></div>
-                                <div class='goods-list-price'>
-                                    <strong>￥2799.00</strong></div>
+        </div>
+        <div class='g clearfix'>
+            <div class='order-product-list brick-shadow one-whole desk-two-thirds pull-left'>
+                <div class='order-good-title'>产品信息：</div>
+                <div class='goods-list'>
+                    <div class='goods-list-show'>
+					    <a class='goods-list-image' href='<?= Yii::getAlias('@shooturl') . Url::to(['goods/show', 'id' => $goodsInfo['id']]); ?>' target='_blank'>
+					        <img src='<?= $goodsInfo['main_photo']; ?>'>
+                        </a>
+                    </div>
+                    <div class='goods-list-detail'>
+                        <div class="goods-list-info goods-list-main">
+                            <div class='goods-list-description'>
+                                <h4 class='heading'><a href='<?= Yii::getAlias('@shooturl') . Url::to(['goods/show', 'id' => $goodsInfo['id']]); ?>' target='_blank'><?= $goodsInfo['name']; ?></a></h4>
+								<p><?= $goodsInfo['brief']; ?></p>
                             </div>
-                            <div class='goods-list-info goods-list-attach goods-list-gift'>
-                                <div class='goods-list-description'>
-                                    <i class="goods-list-flag-gift">赠品</i>
-                                    <a href='http://www.opposhop.cn/products/214' target='_blank'>蓝牙音箱</a></div>
-                                <div class="goods-list-quantity">×1</div></div>
-                            <div class='goods-list-info goods-list-attach goods-list-gift'>
-                                <div class='goods-list-description'>
-                                    <i class="goods-list-flag-gift">赠品</i>
-                                    <a href='http://www.opposhop.cn/products/216' target='_blank'>QCY 大咖蓝牙耳机 J134 黄黑</a></div>
-                                <div class="goods-list-quantity">×1</div></div>
-                            <div class='goods-list-info goods-list-attach goods-list-gift'>
-                                <div class='goods-list-description'>
-                                    <i class="goods-list-flag-gift">赠品</i>
-                                    <a href='http://www.opposhop.cn/products/370' target='_blank'>OPPO R9液态硅胶保护壳 晴空蓝</a></div>
-                                <div class="goods-list-quantity">×1</div></div>
+                            <div class='goods-list-price'>
+							    <strong>￥<?= $goodsInfo['price']; ?></strong>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class='total-price slab-extra-light gi one-whole desk-one-third'>
-                    <div class='title hidden'>您的订单</div>
-                    <ul>
-                        <li>
-                            <span class='product'>商品数量：</span>
-                            <span class='amount'>4</span></li>
-                        <li>
-                            <span class='product'>总价：</span>
-                            <span class='amount'>￥2799.00</span></li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <span class='product'>邮费：</span>
-                            <span class='amount'>+ ￥0.00</span></li>
-                        <li>
-                            <span class='product'>手续费：</span>
-                            <span class='amount'>+ ￥0.00</span></li>
-                        <li>
-                            <span class='product'>优惠：</span>
-                            <span class='amount'>- ￥0.00</span></li>
-                    </ul>
-                    <div class='total'>
-                        <span class='label'>应付总额：</span>
-                        <span class='price'>￥2799.00</span></div>
+            </div>
+            <div class='total-price slab-extra-light gi one-whole desk-one-third'>
+                <div class='title hidden'>您的订单</div>
+                <ul>
+                    <li>
+                        <span class='product'>总价：</span>
+						<span class='amount'>￥<?= $info['pay_money']; ?></span>
+                    </li>
+                </ul>
+                <div class='total'>
+                    <span class='label'>应付总额：</span>
+					<span class='price'>￥<?= $info['pay_money']; ?></span>
+                </div>
+                <div class="total one-whole desk-text-align-right">
+					<a class='button button-s' href=''>立即支付</a>
                 </div>
             </div>
-            <div class='form-actions brick-shadow lap-invisible'>
-                <div class='form-actions-left'>
-                    <a class='button-light' href='http://www.opposhop.cn/orders'>返回订单列表</a></div>
+        </div>
+        <div class='form-actions brick-shadow lap-invisible'>
+            <div class='form-actions-left'>
+				<a class='button-light' href='<?= Url::to(['myinfo/order']); ?>'>返回订单列表</a>
             </div>
         </div>
     </div>
+</div>
 </main>
 <div id='return-confirm' class='hidden'>
     <div class="mask-common"></div>

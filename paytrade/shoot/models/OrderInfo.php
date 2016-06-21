@@ -137,11 +137,31 @@ class OrderInfo extends PaytradeModel
 	{
 		$userId = 1;
         $infos = $this->find()->where(['user_id' => $userId])->asArray()->all();
-		foreach ($infos as $info) {
+		foreach ($infos as & $info) {
+			$info['goodsMainPhoto'] = '';
 			$goodsInfo = \shoot\models\Goods::findOne($info['goods_id']);
-			print_r($goodsInfo);
+			if (!empty($goodsInfo['main_photo'])) {
+			    $info['goodsMainPhoto'] = $goodsInfo->getAttachmentUrl($goodsInfo['main_photo']);
+			}
+			$info['statusStr'] = $this->statusInfos[$info['status']];
 		}
-		print_r($infos);exit();
 		return $infos;
+	}
+
+	public function getInfo($orderid)
+	{
+		$info = $this->findOne(['orderid' => $orderid])->toArray();
+		if (empty($info)) {
+			return false;
+		}
+		$info['statusStr'] = $this->statusInfos[$info['status']];
+		$info['status_pay'] = 'wei';
+		$info['status_service'] = 'wei';
+		$goodsInfo = \shoot\models\Goods::findOne($info['goods_id']);
+		if (!empty($goodsInfo)) {
+		    $goodsInfo['main_photo'] = $goodsInfo->getAttachmentUrl($goodsInfo['main_photo']);
+		}
+
+		return ['info' => $info, 'goodsInfo' => $goodsInfo];
 	}
 }

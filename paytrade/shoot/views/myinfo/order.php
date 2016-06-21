@@ -36,7 +36,7 @@ $this->params['jsFooters'] = [
             <div class='order-list'>
                 <div class='order-item order-product desk-text-align-center'>
 				    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['goods/show', 'id' => $info['goods_id']]); ?>' target="_blank">
-						<img class='order-product-thumbnail' alt='' src='<?= $info['goodsThumb']; ?>' />
+						<img class='order-product-thumbnail' alt='' src='<?= $info['goodsMainPhoto']; ?>' />
                     </a>
                     <div class='row'>
 						<a href='<?= Yii::getAlias('@shooturl') . Url::to(['goods/show', 'id' => $info['goods_id']]); ?>' target="_blank"><?= $info['goods_name']; ?></a>
@@ -55,17 +55,18 @@ $this->params['jsFooters'] = [
 					<div class='row'><?= $info['address']; ?></div>
                 </div>
                 <div class='order-item order-primary desk-text-align-center'>
-				    <div class='row'>订单状态：<?= $info['status_str']; ?></div>
+				    <div class='row'>订单状态：<?= $info['statusStr']; ?></div>
                     <?php if ($info['status'] == 'order') { ?>
                     <div class='row'>
 						<a class='button button-s' href=''>立即支付</a>
                     </div>
                     <?php } ?>
                     <div class='row'>
-						<a class='button button-s' href=''>查看详情</a>
+					    <a class='button button-s' href='<?= Url::to(['myinfo/order-show', 'orderid' => $info['orderid']]); ?>'>查看详情</a>
                     </div>
                     <div class='row'>
-                        <a class='box-link' href='javascript: vm.cancel("160619100465211");'>取消订单</a></div>
+					    <a class='box-link' href='javascript: vm.cancel("<?= $info['orderid']; ?>");'>取消订单</a>
+                    </div>
                 </div>
             </div>
             <?php } ?>
