@@ -72,19 +72,15 @@ class UserAddress extends PassportModel
             'name' => 'name',
             'user_id' => 'user_id',
             'consignee' => 'consignee',
-            'email' => 'email',
-            'country' => 'country',
-            'province' => 'province',
-            'city' => 'city',
-            'district' => 'district',
-            'address' => 'address',
-            'zipcode' => 'zipcode',
-            'tel' => 'tel',
-            'mobile' => 'mobile',
-            'sign_building' => 'sign_building',
-            'best_time' => 'best_time',
+			'region_code' => '地区',
+            'address' => '详细地址',
+            'zipcode' => '邮编',
+            'mobile' => '手机号',
+            'sign_building' => '标志性建筑',
+            'best_time' => '最佳时间',
             'created_at' => '创建时间',
             'updated_at' => '最后更新时间',
+			'is_default' => '默认地址',
         ];
     }
 
@@ -113,7 +109,7 @@ class UserAddress extends PassportModel
 	{
 		$condition = [
 			'and',
-			"user_id = {$params['userId']}",
+			"user_id = {$params['user_id']}",
 		];
 		$model = new self();
         $infos = $model->find()->where($condition)->all();
@@ -169,7 +165,7 @@ class UserAddress extends PassportModel
 
 	protected function _checkParam($params)
 	{
-		$needFields = ['name', 'region_id', 'consignee', 'address', 'mobile'];
+		$needFields = ['region_code', 'consignee', 'address', 'mobile'];
 		foreach ($needFields as $field) {
 			if (empty($params[$field])) {
 			    return ['status' => 400, 'message' => "{$field} is need!"];
@@ -177,7 +173,7 @@ class UserAddress extends PassportModel
 		}
 
 		$regionModel = new Region();
-		$checkRegion = $regionModel->checkInfo($params['region_id']);
+		$checkRegion = $regionModel->checkInfo($params['region_code']);
 		if (isset($checkRegion['status'])) {
 			return $checkRegion;
 		}

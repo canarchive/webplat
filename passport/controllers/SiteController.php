@@ -2,6 +2,7 @@
 namespace passport\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use passport\models\SigninForm;
 use passport\models\PasswordResetRequestForm;
 use passport\models\ResetPasswordForm;
@@ -18,28 +19,36 @@ use passport\components\Controller as PassportController;
  */
 class SiteController extends PassportController
 {
+	public $returnUrl;
+
     /**
      * @inheritdoc
      */
     public function behaviors()
     {
-		return [];
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup', 'signin', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup', 'signin', 'findpwd'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['index', 'logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
+                'denyCallback' => function ($rule, $action) {
+					if (in_array($action->id, ['index', 'logout'])) { 
+		                return Yii::$app->response->redirect(Url::to(['site/signin']))->send();
+					} else {
+		                return Yii::$app->response->redirect(\Yii::$app->params['homeDomain'])->send();
+					}
+                },
             ],
             /*'verbs' => [
                 'class' => VerbFilter::className(),
@@ -50,6 +59,15 @@ class SiteController extends PassportController
         ];
     }
 
+    public function init()
+    {
+        parent::init();
+		$this->layout = 'main_auth';
+	    //$this->layoutPath = Yii::getAlias('@app/info/views');
+		
+		$this->returnUrl = Yii::$app->getRequest()->get('return_url', $this->homeDomain);
+    }
+
     /**
      * @inheritdoc
      */
@@ -58,7 +76,7 @@ class SiteController extends PassportController
 		$actions = parent::actions();
         $currentActions = [
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => 'common\components\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
@@ -67,23 +85,21 @@ class SiteController extends PassportController
 
     public function actionIndex()
     {
+		$this->layout = '@shoot/views/default/layouts/main';
         return $this->render('index');
     }
 
     public function actionSignin()
     {
-		$returnUrl = Yii::$app->getRequest()->get('return_url', Yii::getAlias('@websiteurl'));
-        if (!\Yii::$app->user->isGuest) {
-            //return $this->redirect($returnUrl);
-        }
-
         $model = new SigninForm();
+		$wrongTimes = $model->wrongTimes('check');
         if ($model->load(Yii::$app->request->post()) && $model->signin()) {
             return $this->goBack();
         } else {
             return $this->render('signin', [
                 'model' => $model,
-				'returnUrl' => $returnUrl,
+				'returnUrl' => $this->returnUrl,
+				'showCaptcha' => $wrongTimes > 5 ? 1 : 0,
             ]);
         }
     }
@@ -92,61 +108,109 @@ class SiteController extends PassportController
     {
         Yii::$app->user->logout();
 
-		return $this->redirect(Yii::getAlias('@websiteurl'));
+		return $this->redirect($this->homeDomain);
     }
 
     public function actionSignup()
     {
-		$returnUrl = Yii::$app->getRequest()->get('return_url', Yii::getAlias('@websiteurl'));
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
+
+		$infos = [];
+		$message = '';
+        if ($model->load(Yii::$app->request->post(), '')) {
+		    $model->mobile = $_POST['username'];
+		    $model->passwordConfirm = $_POST['r_password'];
+		    $model->mobileCode = $_POST['activation_code'];
+			$message = '请填写完整的注册信息';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+		            return Yii::$app->response->redirect($this->returnUrl)->send();
                 }
             }
+		    $error = $model->getFirstErrors();
+		    $field = key($error);
+		    $message = isset($error[$field]) ? $error[$field] : $message;
+			$infos = $model->toArray();
         }
 
         return $this->render('signup', [
             'model' => $model,
-			'returnUrl' => $returnUrl,
+			'returnUrl' => $this->returnUrl,
+			'infos' => $infos,
+			'message' => $message,
         ]);
     }
 
     public function actionFindpwd()
     {
+		$step = intval(Yii::$app->request->get('step', 1));
+		$step = $step > 4 ? 1 : $step;
         $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
 
-                return $this->goHome();
-            } else {
-                Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
-            }
-        }
+		$data = [];
+		$message = '';
+		switch ($step) {
+		case 2:
+			$data = $model->sendInfos('get');
+			//print_r($data);
+			//$data = ['type' => 'email', 'username' => 'iamwangcan@163.com'];
+			//$data = ['type' => 'mobile', 'username' => '13811974106'];
+			if (empty($data)) {
+				$step = 1;
+				$message = '您还没有输入您的账户信息';
+			} else {
+			    $view = 'findpwd_2_' . ($data['type'] == 'email' ? 'email' : 'mobile');
+			}
+			break;
+		case 3:
+			$result = $this->_findStep3();
+			if ($result['status'] != 200) {
+				$step = 1;
+				$message = $result['message'];
+			} else {
+				$data = $result['data'];
+			}
+			break;
+		case 4:
+			$data = $this->_findStep4();
+		}
+		$view = $step == 2 ? $view : "findpwd_{$step}";
 
-        return $this->render('findpwd', [
+        return $this->render($view, [
+			'step' => $step,
+			'message' => $message,
+			'data' => $data,
             'model' => $model,
         ]);
     }
 
-    public function actionResetPassword($token)
-    {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
+	protected function _findStep3()
+	{
+		$type = \Yii::$app->request->get('type');
+        $model = new ResetPasswordForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->getSession()->setFlash('success', 'New password was saved.');
+		if (!in_array($type, ['email', 'mobile'])) {
+			return false;
+		}
 
-            return $this->goHome();
-        }
+		if ($type == 'email') {
+			$token = \Yii::$app->request->get('token');
+			$result = $model->checkToken($token);
+			if ($result['status'] == 200) {
+			    $result['data'] = ['type' => $type, 'code' => $token];
+			}
 
-        return $this->render('resetPassword', [
-            'model' => $model,
-        ]);
+			return $result;
+		}
+
+		$code = \Yii::$app->request->get('code');
+		return $model->checkCode($code);
+	}
+
+	protected function _findStep4()
+	{
+        $model = new ResetPasswordForm();
+		$return = $model->resetPassword();
+		return $return;
     }
 }

@@ -88,7 +88,7 @@ class User extends AuthBase
 	public function getRegisterFromInfos()
 	{
 		$datas = [
-			'groupon' => '团购会',
+			'default' => '站内',
 		];
 
 		return $datas;
@@ -115,5 +115,18 @@ class User extends AuthBase
         }		
 
 		return false;
+	}
+
+	public function getGenderInfos()
+	{
+		return \Yii::$app->params['genderInfos'];
+	}
+
+	public function settingInfo($data)
+	{
+		$this->birthday = implode('-', [$data['year'], $data['month'], $data['day']]);
+		$this->nickname = $data['nickname'];
+		$this->gender = $data['gender'];
+		return $this->update(false, $data);
 	}
 }
