@@ -55,6 +55,10 @@ class UserPaytrade extends PaytradeModel
 		$types = ['want', 'valid', 'pay', 'activity', 'coupon'];
 
 		$model = self::findOne(['user_id' => $data['user_id']]);
+		if ($type == 'pay' && (empty($model) || $model->money < $data['money'])) {
+			return ['status' => 400, 'message' => '余额不足'];
+		}
+
 		$model = empty($model) ? new self() : $model;
 
 		$model->user_id = $data['user_id'];
@@ -64,6 +68,11 @@ class UserPaytrade extends PaytradeModel
 		$model->$timesField = $model->$timesField + 1;
 		$lasttimeField = $type . '_lasttime';
 		$model->account_lasttime = \Yii::$app->params['currentTime'];
+		if ($type == 'valid') {
+			$model->money = $model->money + $data['money'];
+		} else if ($type == 'pay') {
+			$model->money = $model->money - $data['money'];
+		}
 
 		$model->save(false);
 		return true;
