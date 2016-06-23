@@ -32,5 +32,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 <!-- baidu-end -->
+<?php if (isset($this->params['pingxxPay'])) { ?>
+<script type="text/javascript" src="https://one.pingxx.com/lib/pingpp_one.js"></script>
+<?php } ?>
 </body>
 </html>
