@@ -11,14 +11,13 @@ class PayController extends PaytradeController
     public function actionPay()
     {
 		$orderid = \Yii::$app->request->get('orderid');
-		if (empty($orderid)) {
-			return $this->actionOrder();
-		}
 		$orderInfo = new \paytrade\shoot\models\OrderInfo();
-		$data = $orderInfo->getInfo($orderid);
-		if (empty($data)) {
-			return $this->actionOrder();
+		$info = $orderInfo->getInfo($orderid);
+		if ($info['status'] != 200) {
+			return $this->redirect(Url::to(['myinfo/order']))->send();
 		}
+		$data = $info['data']->formatInfo();
+		//print_r($data);exit();
 
 		return $this->render('pay', $data);
 	}
