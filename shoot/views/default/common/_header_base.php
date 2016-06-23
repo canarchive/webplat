@@ -38,7 +38,8 @@ $seoDescription = Yii::$app->params['seoDescription'];
 <script type="text/javascript">
 window.BASE_URL = "<?= Yii::getAlias('@shooturl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
-window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl'); ?>';
+window.PASSPORT_URL = '<?= Yii::getAlias('@passporturl', false); ?>';
+window.PAYTRADE_URL = '<?= Yii::getAlias('@paytradeurl', false); ?>';
 
 function checkBrowser() {
     var browser = {};
