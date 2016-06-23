@@ -56,7 +56,7 @@ $this->params['jsFooters'] = [
                 </div>
                 <div class='order-item order-primary desk-text-align-center'>
 				    <div class='row'>订单状态：<?= $info['statusStr']; ?></div>
-                    <?php if ($info['status'] == 'order') { ?>
+                    <?php if ($info['status_pay'] != 'finish' && $info['status'] != 'cancel') { ?>
                     <div class='row'>
 						<a class='button button-s' href=''>立即支付</a>
                     </div>
@@ -64,9 +64,11 @@ $this->params['jsFooters'] = [
                     <div class='row'>
 					    <a class='button button-s' href='<?= Url::to(['myinfo/order-show', 'orderid' => $info['orderid']]); ?>'>查看详情</a>
                     </div>
+                    <?php if ($info['status'] == 'order') { ?>
                     <div class='row'>
 					    <a class='box-link' href='javascript: vm.cancel("<?= $info['orderid']; ?>");'>取消订单</a>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <?php } ?>
@@ -96,3 +98,4 @@ $this->params['jsFooters'] = [
         </div>
     </div>
 </div>
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf', 'name' => '_csrf']); ?>

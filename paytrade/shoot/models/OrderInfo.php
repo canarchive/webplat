@@ -37,6 +37,9 @@ class OrderInfo extends PaytradeModel
         return [
             [['user_id', 'pay_money'], 'required'],
             [['goods_id'], 'checkGoods'],
+			[['service_start'], 'filter', 'filter' => function($value) {
+				return strtotime($value);
+			}],
 			[['pay_at', 'activity_id', 'activity_fee', 'goods_price', 'coupon_fee', 'service_start', 'service_hour_num'], 'default', 'value' => 0],
 			[['note', 'status', 'address', 'mobile', 'consignee', 'goods_name'], 'safe'],
         ];
@@ -118,13 +121,17 @@ class OrderInfo extends PaytradeModel
 
 	public function getStatusInfos()
 	{
-		$orderStatus = new \paytrade\models\OrderStatus();
+		$orderStatus = new OrderStatus();
 		return $orderStatus->statusInfos;
 	}
 
 	public function beforeSave($insert)
 	{
         parent::beforeSave($insert);
+		if (empty($insert)) {
+			return true;
+		}
+
 		$this->orderid =  $this->_createSingleRandomStr();
 		$this->goods_name = isset($this->goodsInfo['name']) ? $this->goodsInfo['name'] : '';
 		$this->goods_price = isset($this->goodsInfo['price']) ? $this->goodsInfo['price'] : '';
@@ -148,12 +155,25 @@ class OrderInfo extends PaytradeModel
 		return $infos;
 	}
 
-	public function getInfo($orderid)
+	public function getInfo($orderid, $userId = null)
 	{
-		$info = $this->findOne(['orderid' => $orderid])->toArray();
-		if (empty($info)) {
-			return false;
+		if (empty($orderid)) {
+			return ['status' => 400, 'message' => '订单号不能为空'];
 		}
+		$info = $this->findOne(['orderid' => $orderid]);
+		if (empty($info)) {
+			return ['status' => 400, 'message' => '订单信息不存在'];
+		}
+		if (!is_null($userId) && $userId != $info['user_id']) {
+			return ['status' => 400, 'message' => '订单信息有误'];
+		}
+
+		return ['status' => 200, 'message' => 'OK', 'data' => $info];
+	}
+
+	public function formatInfo()
+	{
+		$info = $this->toArray();
 		$info['statusStr'] = $this->statusInfos[$info['status']];
 		$info['status_pay'] = 'wei';
 		$info['status_service'] = 'wei';
@@ -163,5 +183,31 @@ class OrderInfo extends PaytradeModel
 		}
 
 		return ['info' => $info, 'goodsInfo' => $goodsInfo];
+	}
+
+	public function cancelInfo($data)
+	{
+		$status = $this['status'];
+
+		if ($status == 'cancel') {
+			//return ['status' => 200, 'message' => '订单已取消'];
+		}
+		if ($status != 'order') {
+			//return ['status' => 400, 'message' => '不能取消该订单'];
+		}
+		$this->status = 'cancel';
+		$this->update(false);
+
+		$data = [
+			'orderid' => $this->orderid,
+			'status' => 'cancel',
+			'status_pay' => $this->status_pay,
+			'status_refund' => $this->status_refund,
+			'operator_id' => $data['user_id'],
+			'operator_name' => $data['user_name'],
+			'created_at' => \Yii::$app->params['currentTime'],
+		];
+		OrderStatus::statusChange($data);
+		return ['status' => 200, 'message' => 'OK'];
 	}
 }
