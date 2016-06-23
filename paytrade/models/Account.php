@@ -46,8 +46,8 @@ class Account extends PaytradeModel
 	{
 	
 		return [
-			'topay', // 直接消费
-			'tocoin', // 充值到账号
+			'topay' => '直接消费',
+			'toaccount' => '充值到账号',
 		];
 	}
 
@@ -67,4 +67,22 @@ class Account extends PaytradeModel
 		$orderinfoModel = new Orderinof();
 		$orderinfoModel->save();
     }	
+
+	public function checkParams($params, $orderInfo)
+	{
+		$accountTypes = $this->accountTypes;
+		$accountType = isset($params['account_type']) ? $params['account_type'] : '';
+		if (!in_array($accountType, array_keys($accountTypes))) {
+			return ['status' => 400, 'message' => '充值方式有误'];
+		}
+
+		if ($accountType == 'topay') {
+		    $orderid = isset($params['orderid_info']) ? $params['orderid_info'] : 0;
+			$checkOrder = $orderInfo->getInfo($orderid);
+
+			return $checkOrder;
+		}
+		
+		return ['status' => 200, 'message' => 'OK'];
+	}
 }
