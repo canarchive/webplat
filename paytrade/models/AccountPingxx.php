@@ -16,7 +16,6 @@ class AccountPingxx extends Account
 			'account_at' => \Yii::$app->params['currentTime'],
 			'status' => 0,
 		);
-		//print_r($data);exit();
 
 		$accountModel = new \paytrade\models\Account($data);
 		$return = $accountModel->save();
