@@ -110,19 +110,20 @@ $this->params['pingxxPay'] = true;
     document.addEventListener('pingpp_one_ready',function(){
         document.getElementById('pay_action').addEventListener('click',function(){
             pingpp_one.init({
-                app_id:'app_1234567890',                     //该应用在 ping++ 的应用 ID
-                order_no:'no1234567890',                     //订单在商户系统中的订单号
-                amount:10,                                   //订单价格，单位：人民币 分
+                app_id: 'app_1234567890', // 该应用在 ping++ 的应用 ID
+				order_no: '', // 订单在商户系统中的订单号
+				amount: <?= $info['pay_money']; ?>, // 订单价格，单位：人民币 分
                 // 壹收款页面上需要展示的渠道，数组，数组顺序即页面展示出的渠道的顺序
                 // upmp_wap 渠道在微信内部无法使用，若用户未安装银联手机支付控件，则无法调起支付
-                channel:['alipay_wap','wx_pub','upacp_wap','yeepay_wap','jdpay_wap','bfb_wap'],
-				charge_url:'<?= Yii::getAlias('@paytradeurl') . Url::to(['/account/pay']); ?>',  //商户服务端创建订单的 url
+                channel: ['alipay_wap','wx_pub','upacp_wap','yeepay_wap','jdpay_wap','bfb_wap'],
+				charge_url: '<?= Url::to(['/shoot/charge/pay']); ?>',  //商户服务端创建订单的 url
 				charge_param:{
-					account_type: 'toaccount',
-					snapup_id: 2
-				},                      //(可选，用户自定义参数，若存在自定义参数则壹收款会通过 POST 方法透传给 charge_url)
-                open_id:'wx1234567890',                      //(可选，使用微信公众号支付时必须传入)
-                debug:true                                   //(可选，debug 模式下会将 charge_url 的返回结果透传回来)
+					account_type: 'topay',
+				    money: <?= $info['pay_money']; ?>, // 订单价格，单位：人民币 分
+				    orderid_info: '<?= $info['orderid']; ?>'
+				}, //(可选，用户自定义参数，若存在自定义参数则壹收款会通过 POST 方法透传给 charge_url)
+                open_id: 'wx1234567890',                      //(可选，使用微信公众号支付时必须传入)
+                debug: true                                   //(可选，debug 模式下会将 charge_url 的返回结果透传回来)
             },function(res){
 				console.log(res);
                 //debug 模式下获取 charge_url 的返回结果
