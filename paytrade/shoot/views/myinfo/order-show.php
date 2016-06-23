@@ -26,12 +26,16 @@ $this->params['jsFooters'] = [
 					<span>订单状态：<?= $info['statusStr']; ?></span>
                 </div>
                 <div class='gi one-whole lap-width-auto'>
+                    <?php if ($info['status_pay'] != 'finish' && $info['status'] != 'cancel') { ?>
                     <div class='gi pull-left'>
 						<a class='button button-s' href='<?= Url::to(['account/pay', 'orderid' => $info['orderid']]); ?>'>立即支付</a>
                     </div>
+                    <?php } ?>
+                    <?php if ($info['status'] == 'order') { ?>
                     <div class='gi pull-left'>
 						<a class='box-link' href='javascript: vm.cancel("<?= $info['orderid']; ?>");'>取消订单</a>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class='gi one-whole desk-one-quarter pull-left desk-text-align-right'>
@@ -90,9 +94,11 @@ $this->params['jsFooters'] = [
                     <span class='label'>应付总额：</span>
 					<span class='price'>￥<?= $info['pay_money']; ?></span>
                 </div>
+                <?php if ($info['status_pay'] != 'finish' && $info['status'] != 'cancel') { ?>
                 <div class="total one-whole desk-text-align-right">
 					<a class='button button-s' href=''>立即支付</a>
                 </div>
+                <?php } ?>
             </div>
         </div>
         <div class='form-actions brick-shadow lap-invisible'>
@@ -212,3 +218,4 @@ $this->params['jsFooters'] = [
         </div>
     </div>
 </div>
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf', 'name' => '_csrf']); ?>

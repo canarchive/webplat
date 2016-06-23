@@ -36,9 +36,8 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                'callback/<result:\w+>/<code:\w+>' => 'account/callback',
+                ['pattern' => 'callback/<result:\w+>/<code:\w+>', 'route' => 'account/callback', 'host' => Yii::getAliase('@paytradeurl')],
 				'pingback' => 'account/pingback',
-                'cart' => 'cart/index',
 			],
 		],
     ],

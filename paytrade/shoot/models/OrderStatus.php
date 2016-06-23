@@ -2,9 +2,9 @@
 
 namespace paytrade\shoot\models;
 
-use common\models\PaytradeModel;
+use paytrade\models\OrderStatus as OrderStatusBase;
 
-class OrderStatus extends PaytradeModel
+class OrderStatus extends OrderStatusBase
 {
     /**
      * @inheritdoc
@@ -14,39 +14,16 @@ class OrderStatus extends PaytradeModel
         return '{{%order_status}}';
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'orderid' => '订单号',
-            'status' => '状态',
-            'created_time' => '创建时间',
-        ];
-    }
-
 	public function getStatusInfos()
 	{
 		$datas = [
 			'order' => '下单',
-			'pay' => '支付',
-			'sending' => '发货',
-			'recieve' => '签收',
+			'cancel' => '取消订单',
+			'service' => '服务中',
+			'servicebreak' => '服务中止',
 			'finish' => '完成',
-			'cancel_before_recieve' => '签收前取消',
-			'cancel_after_recieve' => '签收后取消',
 		];
 
 		return $datas;
-	}
+	}	
 }
