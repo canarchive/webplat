@@ -58,7 +58,7 @@ $this->params['jsFooters'] = [
 				    <div class='row'>订单状态：<?= $info['statusStr']; ?></div>
                     <?php if ($info['status_pay'] != 'finish' && $info['status'] != 'cancel') { ?>
                     <div class='row'>
-						<a class='button button-s' href=''>立即支付</a>
+					    <a class='button button-s' href='<?= Url::to(['/shoot/pay/pay', 'orderid' => $info['orderid']]); ?>'>立即支付</a>
                     </div>
                     <?php } ?>
                     <div class='row'>
