@@ -87,7 +87,7 @@ class OrderInfo extends PaytradeModel
 	{
 		$cartInfos = $infos['cartInfos'];
 		$data = [
-			'orderid' => $this->_createSingleRandomStr(),
+			'orderid' => $this->createSingleRandomStr(),
 			'user_id' => $baseInfos['userId'],
 			'status' => 0,
 			'sold_number' => $cartInfos['numberAll'],
@@ -132,7 +132,7 @@ class OrderInfo extends PaytradeModel
 			return true;
 		}
 
-		$this->orderid =  $this->_createSingleRandomStr();
+		$this->orderid =  $this->createSingleRandomStr();
 		$this->goods_name = isset($this->goodsInfo['name']) ? $this->goodsInfo['name'] : '';
 		$this->goods_price = isset($this->goodsInfo['price']) ? $this->goodsInfo['price'] : '';
 		$this->status = 'order';

@@ -4,8 +4,6 @@ namespace paytrade\components;
 use yii\base\Component;
 use yii\helpers\Url;
 use Pingpp\Pingpp;
-use paytrade\models\Account;
-use paytrade\models\OrderInfo;
 
 class Pingxx extends Component
 {
@@ -22,7 +20,7 @@ class Pingxx extends Component
                     'amount'    => $params['money'],
                     'currency'  => 'cny',
                     'extra'     => $params['channelParams'],
-					'order_no' => date('YmdHis'),
+					'order_no' => $params['orderid'],
                     'channel'   => $params['channel'],
                     'client_ip' => '42.96.194.225',//$_SERVER['REMOTE_ADDR'],
                     'app'       => array('id' => 'app_TKSeD0nHOK48jDuT')
@@ -40,55 +38,19 @@ class Pingxx extends Component
 
 	public function getParams()
 	{
-        //$params = file_get_contents('php://input');
-        $params = $_POST;//json_decode($params, true);
+        $params = file_get_contents('php://input');
+        $params = json_decode($params, true);
 		//var_export($params);exit();
 
 		$money = isset($params['money']) ? $params['money'] : 0;
 		if ($money <= 0) {
-			$return = [
-				'status' => 400,
-				'message' => '充值金额有误',
-			];
-			return $return;
+			return ['status' => 400, 'message' => '充值金额有误'];
 		}
 
 		$channel = isset($params['channel']) ? strtolower($params['channel']) : '';
 		$channelParams = $this->getChannelParams($channel);
 		if (empty($channelParams)) {
-			$return = [
-				'status' => 400,
-				'message' => '充值渠道有误',
-			];
-			return $return;
-		}
-		$accountType = isset($params['account_type']) ? $params['account_type'] : '';
-		if (!in_array($accountType, Account::getAccountTypes())) {
-			$return = [
-				'status' => 400,
-				'message' => '充值方式有误',
-			];
-			return $return;
-		}
-
-		$orderidInfo = isset($params['orderid_info']) ? $params['orderid_info'] : 0;
-		if ($accountType == 'topay') {
-		   	if (empty($orderidInfo)) {
-    			$return = [
-    				'status' => 400,
-    				'message' => '支付订单不能为空',
-    			];
-    			return $return;
-			}
-
-			$orderInfo = OrderInfo::findOne(['orderid' => $orderidInfo, 'user_id' => $params['user_id']]);
-			if (empty($orderInfo)) {
-    			$return = [
-    				'status' => 400,
-    				'message' => '支付订单有误',
-    			];
-    			return $return;
-			}
+			return ['status' => 400, 'message' => '充值渠道有误'];
 		}
 
 		$params['channelParams'] = $channelParams;
