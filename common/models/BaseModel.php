@@ -189,4 +189,15 @@ class BaseModel extends ActiveRecord
 
 		return true;
 	}
+
+	public function checkEmail($email)
+	{
+		$validator = new \yii\validators\EmailValidator();
+		$valid =  $validator->validate($email);
+		if (empty($valid)) {
+			return ['status' => 400, 'message' => '邮箱有误'];
+		}
+
+		return true;
+	}
 }
