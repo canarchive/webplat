@@ -77,7 +77,7 @@ class Pingxx extends Component
 		foreach ($params as $key => $param) {
 			if (in_array($key, $urlParams)) {
 				$result = str_replace('_url', '', $key);
-				$url = Url::to(['/account/callback', 'result' => $result, 'code' => $channel]);
+				$url = Url::to(['/shoot/charge/pingback', 'result' => $result, 'code' => $channel]);
 				$params[$key] = $url;
 			}
 		}
