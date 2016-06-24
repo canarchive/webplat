@@ -68,7 +68,8 @@ class ChargeController extends PaytradeController
 		case 'charge.succeeded':
 		    $orderInfo = $this->getOrderInfoModel();
 			$modelAccount = new AccountPingxx();
-			$modelAccount->callback($data, $orderInfo);
+			$result = $modelAccount->callback($data, $orderInfo);
+			var_dump($result);
 			break;
 		case 'refund.succeeded':
 		case '':
