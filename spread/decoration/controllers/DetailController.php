@@ -26,7 +26,7 @@ class DetailController extends Controller
 
 	public function actionHome()
 	{
-		$_GET['id'] = $this->mHost ? 3 : 1;
+		$_GET['id'] = 1;//$this->mHost ? 3 : 1;
 		return $this->actionIndex();
 	}
 

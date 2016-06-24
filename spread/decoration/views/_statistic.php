@@ -1,4 +1,4 @@
-<?php if (isset($info) && $info['id'] == 1) { ?>
+<?php if (true) { //isset($info) && $info['id'] == 1) { ?>
 <!-- 53客服start -->
 <script>
 (function() {
