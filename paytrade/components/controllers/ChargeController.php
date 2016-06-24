@@ -6,6 +6,7 @@ use Yii;
 use paytrade\components\Controller as PaytradeController;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\Response;
 use common\components\ResponseCode;
 use paytrade\components\Pingxx;
 use paytrade\models\Account;
@@ -17,7 +18,7 @@ class ChargeController extends PaytradeController
 
 	public function actionPay()
 	{
-		Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		Yii::$app->response->format = Response::FORMAT_JSON;
 
         if (Yii::$app->user->isGuest) {
 			//return $this->returnInfo('NEED_LOGIN');
@@ -51,30 +52,28 @@ class ChargeController extends PaytradeController
 
 	public function actionPingback()
 	{
-        $pingxx = new \paytrade\components\Pingxx();
+        $pingxx = new Pingxx();
 		$result = $pingxx->verifySignature();
 
-        if (empty($result)) {
+        if ($result === false) {
             http_response_code(400);
             echo 'verification failed';
             exit;
 		}
+		//print_r($result);exit();
 
-		$data = $result['data'];
-		$eventType = $data['type'];
+		$data = $result['data']['object'];
+		$eventType = $result['type'];
 		switch ($eventType) {
 		case 'charge.succeeded':
-			$modelAccount = AccountPingxx();
-			$modelAccount->callback($data);
+		    $orderInfo = $this->getOrderInfoModel();
+			$modelAccount = new AccountPingxx();
+			$modelAccount->callback($data, $orderInfo);
 			break;
 		case 'refund.succeeded':
 		case '':
 		default:
 		}
         http_response_code(200); // PHP 5.4 or greater
-	}
-
-	protected function checkParams($params)
-	{
 	}
 }

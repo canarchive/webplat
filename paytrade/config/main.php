@@ -15,7 +15,7 @@ return [
     'modules' => [],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'passport\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['site/signin'],//, 'ref' => Yii::$app->getRequest()->getAbsoluteUrl()],
         ],
@@ -36,8 +36,9 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                ['pattern' => 'callback/<result:\w+>/<code:\w+>', 'route' => '/shoot/charge/pingback', 'host' => Yii::getAlias('@paytradeurl')],
-				'pingback' => 'account/pingback',
+				'/callback/<result:\w+>' => '/shoot/charge/callback',
+				'pingback' => '/shoot/charge/pingback',
+		        '/<controller:\w+>/<action:\w+>' => '/shoot/<controller>/<action>',
 			],
 		],
     ],
