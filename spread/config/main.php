@@ -35,11 +35,19 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
+                'detail-<id:\d+>' => '/decoration/detail/index',
+				'<view:(price|design|measure)>' => 'decoration/detail/inner',
+				'jzhd-<type:\w+>-<city:\w+>' => '/decoration/detail/spread',
+				'<view:(price|design|measure)>-<type:\w+>-<city:\w+>' => 'decoration/detail/inner',
+		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/decoration/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
 			],
 		],
     ],
 
 	'modules' => [
+		'decoration' => [
+			'class' => 'spread\decoration\Module',
+		],
 	],
     'params' => $params,
 ];
