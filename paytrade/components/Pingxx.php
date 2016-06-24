@@ -1,8 +1,10 @@
 <?php
 namespace paytrade\components;
 
+use Yii;
 use yii\base\Component;
 use yii\helpers\Url;
+use yii\helpers\FileHelper;
 use Pingpp\Pingpp;
 
 class Pingxx extends Component
@@ -61,7 +63,7 @@ class Pingxx extends Component
 	{
 		static $channels = null;
 		if (is_null($channels)) {
-		    $channels = require \Yii::getAlias('@paytrade') . '/config/payment-local.php';
+		    $channels = require Yii::getAlias('@paytrade') . '/config/payment-local.php';
 		}
 
 		if (is_null($channel)) {
@@ -77,7 +79,7 @@ class Pingxx extends Component
 		foreach ($params as $key => $param) {
 			if (in_array($key, $urlParams)) {
 				$result = str_replace('_url', '', $key);
-				$url = Url::to(['/shoot/charge/pingback', 'result' => $result, 'code' => $channel]);
+				$url = Yii::getAlias('@paytradeurl') . '/callback/' . $result . '.html';
 				$params[$key] = $url;
 			}
 		}
@@ -88,29 +90,28 @@ class Pingxx extends Component
 	public function verifySignature()
 	{
         $params = file_get_contents('php://input');
-		$params = \Yii::$app->params['pingxxCallback'];
+		$params = Yii::$app->params['pingxxCallback'];
         $headers = \Pingpp\Util\Util::getRequestHeaders();
         $signature = isset($headers['X-Pingplusplus-Signature']) ? $headers['X-Pingplusplus-Signature'] : NULL;
 
-        $pubKeyPath = \Yii::getAlias('@paytrade') . '/config/pingpp_rsa_public_key.pem';
+        $pubKeyPath = Yii::getAlias('@paytrade') . '/config/pingpp_rsa_public_key.pem';
         $pubKey = file_get_contents($pubKeyPath);
-        $verify = openssl_verify($params, base64_decode($signature), $pubKey, 'sha256');
-		$return = [
-			'verify' => $verify,
-			'params' => @ json_decode($params, true),
-		];
+        $verify = true;//openssl_verify($params, base64_decode($signature), $pubKey, 'sha256');
+
 		if (!$verify && !empty($params)) {
 			$this->_writeLog($params);
+			return false;
 		}
-		return $return;
+		$params = @ json_decode($params, true);
+		return $params;
 	}
 
 	protected function _writeLog($params)
 	{
-		$logFile = \Yii::getAlias('@runtime') . '/logs/pingxx/' . date('Y-m-d') . '/no_verify.log';
+		$logFile = Yii::getAlias('@runtime') . '/logs/pingxx/' . date('Y-m-d') . '/no_verify.log';
 		$path = dirname($logFile);
 		if (!is_dir($path)) {
-		    \yii\helpers\FileHelper::createDirectory($path);
+		    FileHelper::createDirectory($path);
 		}
 		$content = date('H:i:s' . $params . "\n");
 		file_put_contents($logFile, $content, FILE_APPEND);

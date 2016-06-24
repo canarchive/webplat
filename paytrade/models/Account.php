@@ -44,7 +44,6 @@ class Account extends PaytradeModel
 
 	public function getAccountTypes()
 	{
-	
 		return [
 			'topay' => '直接消费',
 			'toaccount' => '充值到账号',

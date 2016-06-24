@@ -75,6 +75,6 @@ class UserPaytrade extends PaytradeModel
 		}
 
 		$model->save(false);
-		return true;
+		return ['status' => 200, 'message' => 'OK'];
 	}
 }
