@@ -3,6 +3,7 @@
 namespace paytrade\shoot\models;
 
 use common\models\PaytradeModel;
+use paytrade\models\UserPaytrade;
 
 class OrderInfo extends PaytradeModel
 {
@@ -210,4 +211,24 @@ class OrderInfo extends PaytradeModel
 		OrderStatus::statusChange($data);
 		return ['status' => 200, 'message' => 'OK'];
 	}
+
+	public function pay($data)
+	{
+		$info = $orderInfoModel->findOne(['orderid' => $data['orderid_info']]);
+		if (empty($info)) {
+			return ['status' => 400, 'message' => '订单信息不存在'];
+		}
+
+		if ($info['status_pay'] == 'finish' || $info['status'] == 'cancel') {
+			return ['status' => 400, 'message' => '订单已完成支付或已取消'];
+		}
+		if ($info['pay_money'] != $data['money_valid']) {
+			return ['status' => 400, 'message' => '订单支付金额有误'];
+		}
+
+		$modelUserPaytrade = UserPaytrade();
+		$payResult = $modelUserPaytrade->updateInfo('pay', ['user_id' => $data['user_id'], 'money' => $data['valid_money']]);
+
+		return $payResult;
+    }
 }

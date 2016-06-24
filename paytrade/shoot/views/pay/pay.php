@@ -122,20 +122,19 @@ $this->params['pingxxPay'] = true;
 				    money: <?= $info['pay_money']; ?>, // 订单价格，单位：人民币 分
 				    orderid_info: '<?= $info['orderid']; ?>'
 				}, //(可选，用户自定义参数，若存在自定义参数则壹收款会通过 POST 方法透传给 charge_url)
-                open_id: 'wx1234567890',                      //(可选，使用微信公众号支付时必须传入)
-                debug: true                                   //(可选，debug 模式下会将 charge_url 的返回结果透传回来)
+                open_id: 'wx1234567890', //(可选，使用微信公众号支付时必须传入)
+                debug: true // (可选，debug 模式下会将 charge_url 的返回结果透传回来)
             },function(res){
 				console.log(res);
-                //debug 模式下获取 charge_url 的返回结果
+                // debug 模式下获取 charge_url 的返回结果
                 if(res.debug&&res.chargeUrlOutput){
                     console.log(res.chargeUrlOutput);
                 }
                 if(!res.status){
                     //处理错误
                     alert(res.msg);
-                }
-                else{
-                    //debug 模式下调用 charge_url 后会暂停，可以调用 pingpp_one.resume 方法继续执行
+                } else {
+                    // debug 模式下调用 charge_url 后会暂停，可以调用 pingpp_one.resume 方法继续执行
                     if(res.debug&&!res.wxSuccess){
                         if(confirm('当前为 debug 模式，是否继续支付？')){
                             pingpp_one.resume();
