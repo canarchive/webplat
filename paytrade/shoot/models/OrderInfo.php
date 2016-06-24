@@ -214,7 +214,7 @@ class OrderInfo extends PaytradeModel
 
 	public function pay($data)
 	{
-		$info = $orderInfoModel->findOne(['orderid' => $data['orderid_info']]);
+		$info = $this->findOne(['orderid' => $data['orderid_info']]);
 		if (empty($info)) {
 			return ['status' => 400, 'message' => '订单信息不存在'];
 		}
@@ -226,8 +226,22 @@ class OrderInfo extends PaytradeModel
 			return ['status' => 400, 'message' => '订单支付金额有误'];
 		}
 
-		$modelUserPaytrade = UserPaytrade();
-		$payResult = $modelUserPaytrade->updateInfo('pay', ['user_id' => $data['user_id'], 'money' => $data['valid_money']]);
+		$modelUserPaytrade = new UserPaytrade();
+		$payResult = $modelUserPaytrade->updateInfo('pay', ['user_id' => $data['user_id'], 'money' => $data['money_valid']]);
+
+		$info['status_pay'] = 'finish';
+		$info->update(false);
+
+		$data = [
+			'orderid' => $info['orderid'],
+			'status' => $info['status'],
+			'status_pay' => 'finish',
+			'status_refund' => $info['status_refund'],
+			'operator_id' => $info['user_id'],
+			'operator_name' => '',
+			'created_at' => \Yii::$app->params['currentTime'],
+		];
+		OrderStatus::statusChange($data);
 
 		return $payResult;
     }
