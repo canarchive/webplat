@@ -15,7 +15,7 @@ class Conversion extends ConversionModel
     public function rules()
     {
         return [
-            [['keyword', 'groupon_id', 'created_at_start', 'created_at_end', 'template_code', 'from_type', 'channel'], 'safe'],
+            [['keyword', 'created_at_start', 'created_at_end', 'template_code', 'from_type', 'channel'], 'safe'],
         ];
     }
     public function search($params)
