@@ -16,6 +16,7 @@ class AccountPingxx extends Account
 			'money' => $params['money'],
 			'account_type' => $params['account_type'],
 			'account_at' => Yii::$app->params['currentTime'],
+			'account_at_day' => date('Ymd', Yii::$app->params['currentTime']),
 			'status' => 0,
 		);
 
@@ -39,7 +40,7 @@ class AccountPingxx extends Account
 		$model->update(false);
 
 		$userPaytrade = new UserPaytrade();
-		$payResult = $userPaytrade->updateInfo('valid', ['user_id' => $params['user_id'], 'money' => $params['money']]);
+		$payResult = $userPaytrade->updateInfo('valid', ['user_id' => $model->user_id, 'money' => $data['amount']]);
 
 		if ($model->orderid_info && $model->account_type == 'topay') {
 			$return = $orderInfoModel->pay($model);
@@ -48,7 +49,7 @@ class AccountPingxx extends Account
 		return ['status' => 200, 'message' => 'OK'];
 	}
 
-	protected function _checkUnusual($data)
+	protected function checkUnusual($data)
 	{
 		$model = self::findOne(['orderid' => $data['order_no']]);
 		if (empty($model)) {
