@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $model->roles = $model->getRoles();
-$model->password = '';
+$model->password_new = '';
 ?>
 
 <div class="menu-form">
@@ -12,15 +12,15 @@ $model->password = '';
     <?php $form = ActiveForm::begin(); ?>
     <?php if ($model->scenario == 'edit-password') { ?>
     <?= $form->field($model, 'oldpassword')->passwordInput(['maxlength' => 255]) ?>
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => 255]) ?>
-    <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'password_new')->passwordInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'password_new_repeat')->passwordInput(['maxlength' => 255]) ?>
     <?php } else if ($model->scenario == 'edit-info') { ?>
     <?= $form->field($model, 'truename')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'email') ?>
     <?= $form->field($model, 'mobile') ?>
     <?php } else { ?>
     <?= $form->field($model, 'username')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'password')->passwordInput() ?>
+    <?= $form->field($model, 'password_new')->passwordInput() ?>
     <?= $form->field($model, 'roles')->dropDownList($model->roleInfos, ['multiple' => 'multiple', 'prompt' => Yii::t('admin-common', 'Select Role')]); ?>
     <?= $form->field($model, 'truename')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'email') ?>
