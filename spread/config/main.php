@@ -39,7 +39,7 @@ return [
 				'<view:(price|design|measure)>' => 'decoration/detail/inner',
 				'jzhd-<type:\w+>-<city:\w+>' => '/decoration/detail/spread',
 				'<view:(price|design|measure)>-<type:\w+>-<city:\w+>' => 'decoration/detail/inner',
-		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/decoration/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
+		        '/jz-<controller:\w+>/<action:\w+>' => '/decoration/<controller>/<action>',
 			],
 		],
     ],
