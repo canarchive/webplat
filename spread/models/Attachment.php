@@ -7,19 +7,6 @@ use common\models\Attachment as AttachmentBase;
 
 class Attachment extends AttachmentBase
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%attachment}}';
-    }
-
-    public static function getDb()
-    {
-        return \Yii::$app->dbSpread;
-    }	
-
 	protected function _fieldInfos()
 	{
 		$infos = [
@@ -36,18 +23,26 @@ class Attachment extends AttachmentBase
     				'maxSize' => 200,
     				'type' => 'image/*',
 				],
-				'picture_lottery' => [
+			],
+			'activity' => [
+				'picture' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 300,
     				'type' => 'image/*',
-				],				
+				],
+				'picture_small' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 200,
+    				'type' => 'image/*',
+				],
 				'map' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 500,
+    				'maxSize' => 200,
     				'type' => 'image/*',
-				],				
+				],
 			],
 		];
 	}
