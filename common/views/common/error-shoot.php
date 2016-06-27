@@ -1,21 +1,14 @@
-﻿<?php
+<?php
 use yii\helpers\Url;
-
+$siteInfos = $this->context->siteInfos;
+$urlPre = Yii::getAlias('@shooturl');
+$this->params['cssFiles'] = ['styles'];
 $referrer = Yii::$app->request->referrer;
 $referrer = strpos($referrer, Yii::$app->params['baseDomain']) !== false ? $referrer : '';
 ?>
-<html class='no-js'>
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE" />
-<meta content='width=device-width,initial-scale=1, user-scalable=no' name='viewport'>
-</head>
-<body>
+<?php $this->beginContent('@shoot/views/default/layouts/main.php'); ?>
 
 <style type="text/css">
-
 body {
     background-color: #f1f2f7;
     color: rgba(118, 118, 118, 1.0);
@@ -83,5 +76,4 @@ body {
     </div>
 </div>
 
-</body>
-</html>
+<?php $this->endContent(); ?>
