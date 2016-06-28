@@ -135,6 +135,7 @@ class BaseModel extends ActiveRecord
 			$info->getUrl();
 			$optionsDefault = [
 				'style' => ['width' => '80px', 'height' => '40px'],
+				'onclick' => 'window.open(this.src);',
 			];
 			$options = $pointSize && empty($options) ? $optionsDefault : $options;
             return \Yii::$app->formatter->asImage($info->getUrl(), $options);
