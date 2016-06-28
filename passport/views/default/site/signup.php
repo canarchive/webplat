@@ -88,7 +88,7 @@ $this->params['isRegister'] = true;
                         <input id='check1' name='allowed' type='checkbox' checked='checked'>
                         <label for='allowed'>
                             我已阅读并同意
-							<a href='<?= Yii::$app->params['homeDomain'] . Url::to(['/info/service/aggreement']); ?>' target='_blank' class='text-green'>
+							<a href='<?= Yii::$app->params['homeDomain'] . Url::to(['/info/help/index', 'code' => 'fwtk']); ?>' target='_blank' class='text-green'>
                                 《OPPO服务协议》
                             </a>
                         </label>
