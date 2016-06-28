@@ -37,12 +37,25 @@ class Attachment extends BaseModel
     /**
      * @inheritdoc
      */
+    public static function tableName()
+    {
+        return '{{%attachment}}';
+    }
+
+    public static function getDb()
+    {
+        return \Yii::$app->db;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
 			[['info_field'], 'filterTableField'],
-			['listorder', 'default', 'value' => 0],
-            [['size', 'info_id', 'listorder'], 'integer'],
+			['orderlist', 'default', 'value' => 0],
+            [['size', 'info_id', 'orderlist'], 'integer'],
 			[['info_table', 'info_field', 'info_id'], 'default', 'value' => function($model, $attribute) {
 				return $model->$attribute;				
 			}],
@@ -141,7 +154,7 @@ class Attachment extends BaseModel
             'id' => '附件ID',
             'name' => '名称',
             'filename' => '名称',
-            'listorder' => '排序',
+            'orderlist' => '排序',
             'description' => '图片描述',
             'url' => 'URL地址',
             'size' => '大小',
@@ -179,7 +192,7 @@ class Attachment extends BaseModel
         return $this->file->saveAs($filepath, false);
     }
 
-	protected function getPathBase($pathPrefix = null)
+	public function getPathBase($pathPrefix = null)
 	{
 		$pathParams = \Yii::$app->params['pathParams'];
 
@@ -234,6 +247,93 @@ class Attachment extends BaseModel
 			}
 		}
 
+		return ;
+	}
+
+	public function getFieldIds($table, $field, $infoId)
+	{
+		if (empty($table) || empty($field) || empty($infoId)) {
+			return '';
+		}
+
+		$condition = [
+			'info_table' => $table,
+			'info_field' => $field,
+			'info_id' => $infoId,
+			'in_use' => 1,
+		];
+		$infos = $this->find()->indexBy('id')->where($condition)->all();		
+
+		if (empty($infos)) {
+			return '';
+		}
+		return implode(',', array_keys($infos));
+	}
+
+	public function getFieldInfos($table = null, $field = null)
+	{
+		$infos = $this->_fieldInfos();
+
+		if (is_null($table) && is_null($field)) {
+			return $infos;
+		}
+
+		if (!isset($infos[$table])) {
+			return false;
+		}
+		if (is_null($field)) {
+			return $infos[$table];
+		}
+		if (!isset($infos[$table][$field])) {
+			return false;
+		}
+
+		return $infos[$table][$field];
+	}
+
+	/**
+	 * 更新附件信息
+	 */
+	public function updateInfo($id, $infoId, $extData)
+	{
+		$info = $this->findOne($id);
+		if (empty($info)) {
+			return ;
+		}
+		$info->info_id = $infoId;
+   		$info->in_use = 1;
+   	    $info->noFile = true;
+
+		// 部分数据表会有一些专有的字段
+		if (!empty($extData)) {
+			foreach ($extData as $field => $value) {
+				$info->$field = $value;
+			}
+		}
+		// 处理附件的常用属性，名称、排序和描述
+		$attrs = ['filename', 'orderlist', 'description'];
+		foreach ($attrs as $attr) {
+			$params = \Yii::$app->request->post('attachment_' . $attr, '');
+			$value = isset($params[$id]) ? $params[$id] : '';
+			$value = $attr == 'orderlist' ? intval($value) : $value;
+			$info->$attr = $value;
+		}
+		//print_r($info);exit();
+   		return $info->update(false);
+	}
+
+	/**
+	 * 删除没用的附件
+	 */
+	public function deleteInfo($where, $noDeleteIds)
+	{
+		$infos = $this->find()->where($where)->all();
+    	foreach ($infos as $info) {
+			if (in_array($info->id, (array) $noDeleteIds)) {
+				continue;
+			}
+			$info->delete();
+		}
 		return ;
 	}
 }

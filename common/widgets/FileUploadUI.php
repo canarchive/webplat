@@ -13,8 +13,10 @@ class FileUploadUI extends FileUploadUIBase
         $id = $this->options['id'];
 
 		$js = "$('#{$id}').addClass('fileupload-processing');
-        var url = $('#{$id}').fileupload('option', 'url');
-		url += url.indexOf('?') > 0 ? '&action=show' : '?action=show';
+		var url = $('#{$id}').fileupload('option', 'url');";
+
+		if (!isset($this->clientOptions['noShow'])) { 
+		$js .= "url += url.indexOf('?') > 0 ? '&action=show' : '?action=show';
 
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
@@ -28,6 +30,7 @@ class FileUploadUI extends FileUploadUIBase
             $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
         });";
+		}
 	 
 	    $this->getView()->registerJs($js);
 	}
