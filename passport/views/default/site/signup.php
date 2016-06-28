@@ -89,7 +89,7 @@ $this->params['isRegister'] = true;
                         <label for='allowed'>
                             我已阅读并同意
 							<a href='<?= Yii::$app->params['homeDomain'] . Url::to(['/info/help/index', 'code' => 'fwtk']); ?>' target='_blank' class='text-green'>
-                                《OPPO服务协议》
+                                《用户服务协议》
                             </a>
                         </label>
                     </div>
