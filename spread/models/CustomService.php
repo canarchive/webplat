@@ -2,6 +2,7 @@
 
 namespace spread\models;
 
+use Yii;
 use common\models\SpreadModel;
 
 /**
@@ -69,5 +70,14 @@ class CustomService extends spreadModel
 		$info = self::find()->where(['status' => 1])->orderBy($orderBy)->one();
 
 		return $info;
+	}
+
+	public function updateServiceInfo()
+	{
+        $this->distributed_at = Yii::$app->params['currentTime'];
+        $this->update();
+        $this->updateCounters(['serviced_num' => 1]);
+		
+		return ;
 	}
 }
