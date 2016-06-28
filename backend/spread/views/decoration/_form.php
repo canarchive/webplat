@@ -21,7 +21,6 @@ $model->end_at = $model->end_at > 0 ? date('Y-m-d H:i:s', $model->end_at) : '';
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'company_id')->dropDownList($model->companyInfos, ['prompt' => Yii::t('admin-common', 'Select Company')]); ?>
     <?= $form->field($model, 'address')->textInput() ?>
-    <?= $form->field($model, 'holding_at')->textInput() ?>
     <?= $form->field($model, 'start_at')->textInput(); ?>
     <script type="text/javascript">
         $(function () {
@@ -48,23 +47,6 @@ $model->end_at = $model->end_at > 0 ? date('Y-m-d H:i:s', $model->end_at) : '';
         'clientOptions' => [
 		    //'dataType' => 'json',
 			'maxFileSize' => $picture['maxSize'] * 1024,
-        ],
-    ]);
-    ?>
-    <?= $form->field($model, 'picture_lottery')->hiddenInput(); ?>
-    <?= FileUploadUI::widget([
-        'model' => $attachmentModel,
-        'attribute' => 'files[picture_lottery]',
-        'url' => ['/spread-upload/index', 'table' => 'decoration', 'field' => 'picture_lottery', 'id' => $model->id],
-		'gallery' => true,
-        'fieldOptions' => [
-			'isSingle' => $pictureLottery['isSingle'],
-			'idField' => Html::getInputId($model, 'picture_lottery'),
-            'accept' => 'image/*'
-        ],
-        'clientOptions' => [
-		    //'dataType' => 'json',
-			'maxFileSize' => $pictureLottery['maxSize'] * 1024,
         ],
     ]);
     ?>
@@ -104,15 +86,8 @@ $model->end_at = $model->end_at > 0 ? date('Y-m-d H:i:s', $model->end_at) : '';
     <?= $form->field($model, 'arrive_line')->textInput() ?>
     <?= $form->field($model, 'signup_base')->textInput() ?>
 
-    <?= $form->field($model, 'lottery_number')->textInput() ?>
-    <?= $form->field($model, 'lottery_rule')->textarea(['rows' => 2]) ?>
-    <?= $form->field($model, 'bonus_number')->textInput() ?>
-    <?= $form->field($model, 'bonus_rule')->textarea(['rows' => 2]) ?>
-    <?= $form->field($model, 'gift_bag_number')->textInput() ?>
-    <?= $form->field($model, 'gift_bag_rule')->textarea(['rows' => 2]) ?>
 
     <?= $form->field($model, 'sms')->textarea(['rows' => 2]) ?>
-    <?= $form->field($model, 'sms_new')->textarea(['rows' => 2]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
 

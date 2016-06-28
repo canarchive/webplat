@@ -2,6 +2,7 @@
 
 namespace spread\decoration\controllers;
 
+use yii\helpers\Url;
 use spread\components\Controller;
 use spread\decoration\models\SignupForm;
 
@@ -30,78 +31,34 @@ class DetailController extends Controller
 		return $this->actionIndex();
 	}
 
-	public function actionSpread()
-	{
-		if ($this->mHost && !$this->isMobile) {
-			$url = \Yii::getAlias('@spreadurl') . \Yii::$app->request->getUrl();
-			$this->redirect($url)->send();
-		}
-		$info = $this->getInfo();
-
-        $model = new SignupForm();
-        $datas = [
-            'host' => $this->host,
-            'model' => $model,
-			'info' => $info,
-        ];
-
-		$view = $this->mHost ? "/jzsem/pc/{$info['type']}_{$info['city']}.php" : "/jzsem/pc/{$info['type']}_{$info['city']}.php";
-        return $this->render($view, $datas); 
-	}
-
-	public function actionThird()
-	{
-		$client = \Yii::$app->request->get('client');
-		$this->mHost = $client == 'wap' ? false : true;
-        $model = new SignupForm();
-
-		$info = ['id' => 1];
-        $datas = [
-            'host' => $this->host,
-            'model' => $model,
-			'info' => $info,
-        ];
-
-		$view = $this->mHost ? "/hd_third/pc/index.php" : "/hd_third/h5/index.php";
-        return $this->render($view, $datas);  
-	}
-
     public function actionIndex()
     {
+		if (empty($this->mHost) && $this->isMobile) {
+			$url = \Yii::getAlias('@m2spreadurl') . \Yii::$app->request->getUrl();
+			$this->redirect($url)->send();
+		}
         $model = new SignupForm();
 
-        //$code = 'default';
-        $code = 'hd';
         $info = $this->getDecorationInfo();
         if (empty($info)) {
-			exit('info empty');
-            //$this->redirect('http://www.17house.com/');
+            return $this->redirect('/')->send();
         }
 
         $urlFull = \Yii::$app->request->hostInfo . \Yii::$app->request->getUrl();
         $datas = [
             'model' => $model,
             'info' => $info,
-            'lotteryInfos' => $this->getLotteryInfos($info['id']),
-            'bonusInfos' => $this->getBonusInfos($info['id']),
-            'giftBagInfos' => $this->getGiftBagInfos($info['id']),
-            'brandInfos' => $this->getBrandInfos($info['id']),
-            'professorInfos' => $this->getProfessorInfos($info['company_id']),
-            'faqInfos' => $this->getFaqInfos($info['company_id']),
             'host' => $this->host,
         ];
+		$type = $info['type'];
 
-		$type = '677';//$info['type'];
-		$viewPath = $this->mHost ? "/{$code}_{$type}/h5/" : "/{$code}_{$type}/pc/";
-        return $this->render($viewPath . 'index.php', $datas);   
+		$view = "{$info['type']}_{$info['city']}.php";
+		$view = $this->mHost ? "/jzsem/h5/{$view}" : "/jzsem/pc/{$view}";
+        return $this->render($view, $datas);   
     }
 
 	public function actionInner()
     {
-		if (empty($this->mHost) && $this->isMobile) {
-			$url = \Yii::getAlias('@m2spreadurl') . \Yii::$app->request->getUrl();
-			$this->redirect($url)->send();
-		}
         $model = new SignupForm();
 
 		$view = \Yii::$app->request->get('view');
@@ -121,29 +78,11 @@ class DetailController extends Controller
         return $this->render($view, $datas);   
     }
 
-	protected function getInfo()
-	{
-		$productTypes = \Yii::$app->params['productTypes'];
-		$type = \Yii::$app->request->get('type');
-		$type = !in_array($type, array_keys($productTypes)) ? '677' : $type;
-
-		$typeInfo = $productTypes[$type];
-		$city = \Yii::$app->request->get('city');
-		$city = !in_array($city, array_keys($typeInfo['cities'])) ? 'beijing' : $city;
-		$info = $typeInfo['cities'][$city];
-		$info['type'] = $type;
-		$info['city'] = $city;
-
-		return $info;
-	}
-
     protected function getDecorationInfo()
     {
         $id = \Yii::$app->getRequest()->get('id');
-		
         $model = new \spread\decoration\models\Decoration();
      	$where = ['id' => $id];
-
 		$info = $model->getInfo($where);
 		
         return $info;

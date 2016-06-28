@@ -14,22 +14,7 @@ class SignupController extends spreadController
 		return $this->_signup();
 	}
 
-	public function actionLottery()
-	{
-		return $this->_signup('lottery');
-	}
-
-	public function actionBonus()
-	{
-		return $this->_signup('bonus');
-	}
-
-	public function actionGiftBag()
-	{
-		return $this->_signup('gift_bag');
-	}
-
-	protected function _signup($submitType = '')
+	protected function _signup()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 		//\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
@@ -37,11 +22,10 @@ class SignupController extends spreadController
 
         $model = new SignupForm();
 		$model->isMobile = $this->clientIsMobile();
-	    $model->submitType = $submitType;
 
 		$signupInfo = false;
-        //if ($model->load(\Yii::$app->request->get(), '')) {
-        if ($model->load(\Yii::$app->request->post(), '')) {
+        if ($model->load(\Yii::$app->request->get(), '')) {
+        //if ($model->load(\Yii::$app->request->post(), '')) {
             $signupInfo = $model->signup();
         }
 

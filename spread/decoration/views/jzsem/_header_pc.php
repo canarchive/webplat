@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <!--SEO 移动适配-->
-<meta http-equiv="mobile-agent" content="format=html5;url=<?= Yii::getAlias('@m2spreadurl') . '/price-677-' . $info['city'] . '.html'; ?>" />
+<meta http-equiv="mobile-agent" content="format=html5;url=<?= Yii::getAlias('@m.spreadurl') . '/price-677-' . $info['city'] . '.html'; ?>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
 <title>【<?= $info['cityName']; ?>整体家装】_整装装修_2016装修套餐大全_一起装修网</title>
@@ -18,7 +18,7 @@
 <script>
 /*var isMobile = '<?= intval(Yii::$app->params['isMobile']); ?>';
 if (isMobile == 1) {
-	window.location.href = "<?= Yii::getAlias('@spreadthird') . '/wap.html'; ?>";
+	window.location.href = "<?= Yii::getAlias('@m.spreadurl') . '/wap.html'; ?>";
 }*/
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>

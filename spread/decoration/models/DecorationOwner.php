@@ -6,8 +6,7 @@ use common\models\SpreadModel;
 
 class DecorationOwner extends SpreadModel
 {
-	public $owner;
-	public $type;
+	public $user;
 
     /**
      * @inheritdoc
@@ -46,9 +45,9 @@ class DecorationOwner extends SpreadModel
 
     public static function addOwner($data)
     {
-        $ownerModel = new \spread\groupon\models\Owner();
-        $owner = $ownerModel->getOwnerInfo($data);
-        if (empty($owner)) {
+        $userModel = new \spread\models\User();
+        $user = $userModel->getUserInfo($data);
+        if (empty($user)) {
             return false;
         }
 
@@ -64,9 +63,11 @@ class DecorationOwner extends SpreadModel
             'mobile' => $data['mobile'],
             'name' => $data['name'],
 			'from_type' => $data['from_type'],
+			'type' => $data['type'],
+			'city' => $data['city'],
             'message' => $data['message'],
             'note' => $data['note'],
-            'user_id' => $owner->user_id,
+            'user_id' => $user->id,
         ];
 
         $newModel = new self($data);
@@ -74,7 +75,7 @@ class DecorationOwner extends SpreadModel
         if (!$insert) {
             return false;
         }
-		$newModel->owner = $owner;
+		$newModel->user = $user;
 
 		return $newModel;
     }
@@ -111,64 +112,6 @@ class DecorationOwner extends SpreadModel
         return true;
     }        
 
-	public function synapp()
-	{
-error_reporting(0);
-		$infos = self::find()->where(['synapp_num' => 0])->limit(50)->all();
-		//$infos = self::find()->where(['synapp_num' => 1])->limit(50)->all();
-		//$appApi = 'http://appdev.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
-		$appApi = 'http://hui.17house.com/svc/payment-facade/housekeepAdmin/addHousekeepOrder?';
-                $i = 0;
-		$cityInfos = [
-			1 => 3,
-			2 => 40,
-			3 => 3,
-			4 => 60,
-			5 => 70,
-		];
-		foreach ((array) $infos as $info) {
-		    $callback = \spread\groupon\models\CallbackLog::find()->select(['created_at'])->where(['mobile' => $info['mobile']])->orderBy(['created_at' => SORT_DESC])->one();
-			$lastVisitTime = isset($callback['created_at']) ? $callback['created_at'] : 0;
-			$cancelStatus = $info['valid_status'] == '' || $info['valid_status'] == 'ok' ? '' : 1;
-			$cancelMsg = $cancelStatus == 1 ? (isset($this->validStatusInfos[$info['valid_status']]) ? $this->validStatusInfos[$info['valid_status']] : $info['valid_status']) : '';
-			$frameworkId = 
-			$params = [
-				'name' => empty($info['name']) ? '未填写' : $info['name'],
-				'mobile' => $info['mobile'],
-				'frameworkId' => isset($cityInfos[$info['decoration_id']]) ? $cityInfos[$info['decoration_id']] : 3, 
-				'channelFirst' => 'SEM',
-				'channelSecond' => $info['signup_channel'],
-				'channelKey' => $info['keyword'],
-				'enrollTime' => $info['signup_at'] . '000',
-				'lastVisitTime' => $lastVisitTime . '000',
-				'cancelStatus' => $cancelStatus,
-				'cancelMsg' => $cancelMsg,
-			];
-                    if (empty($info['signup_at'])) {
-                        unset($params['enrollTime']);
-                    }
-                    if (empty($lastVisitTime)) {
-                        unset($params['lastVisitTime']);
-                    }
-print_r($params);
-		    $queryStr = http_build_query($params);
-			$url = $appApi . $queryStr;
-			echo $url;
-			//$result = '{"baseOutput":{"code":0,"message":"success"},"data":""}';
-			$result = file_get_contents($url);
-		    $result = json_decode($result,true);
-			$code = isset($result['baseOutput']['code']) ? $result['baseOutput']['code'] : '';
-			if ($code === 0 || $code === 5) {
-				$info->synapp_at = \Yii::$app->params['currentTime'];
-			    $info->update(false);	
-		        $info->updateCounters(['synapp_num' => 1]);
-			}
-                        $i++;
-		}
-                echo date('Y-m-d H:i:s') . '-' . $i . "\n";
-		//print_r($infos);
-	}
-
 	public function getValidStatusInfos()
 	{
 		$datas = [
@@ -192,5 +135,15 @@ print_r($params);
 		];
 
 		return $datas;
+	}
+
+	public function updateAfterInsert($conversionInfo)
+	{
+		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
+			$this->signup_channel = $conversionInfo['channel'];
+			$this->keyword = $conversionInfo['keyword'];
+			$this->update(false);
+		}
+		return ;
 	}
 }
