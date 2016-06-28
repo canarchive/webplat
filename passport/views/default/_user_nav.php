@@ -16,10 +16,10 @@ $actions = [
 		'name' => '地址管理',
 		'url' => $passportUrl . Url::to(['user-address/index']),
 	],
-	'myorder' => [
+	/*'myorder' => [
 		'name' => '我的订单',
 		'url' => $paytradeUrl . Url::to(['myinfo/order']),
-	],
+	],*/
 	/*'coupon' => [
 		'name' => '优惠券',
 		'url' => $paytradeUrl . Url::to(['myinfo/coupon']),
