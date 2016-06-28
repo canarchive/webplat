@@ -61,7 +61,11 @@ $urlPre = Yii::getAlias('@shooturl');
                         <span class="icon icon-tel"></span>
                     </div>
                     <div class="about-contact-info">
-					    <h4 class='h-delta'><span class="highlight"><?= Yii::$app->params['siteHotline']; ?></span></h4>
+						<h4 class='h-delta'>
+							<a href="<?php if (Yii::$app->params['clientIsMobile']) { echo 'tel:' . Yii::$app->params['siteHotline']; } else { echo 'javascript: void(0);'; } ?>">
+								<span class="highlight"><?= Yii::$app->params['siteHotline']; ?></span>
+							</a>
+                        </h4>
                         <p style="">7*24小时客服电话</p>
                     </div>
                 </div>
@@ -71,7 +75,11 @@ $urlPre = Yii::getAlias('@shooturl');
     <div class='footer-info'>
         <div class='wrapper'>
             <p class='copy'>
-				<?= Yii::$app->params['siteCopyRightInfo'] . '  ' . Yii::$app->params['siteIcpInfo'] . '  联系方式：' . Yii::$app->params['siteHotline']; ?>
+				<?php $infoStr = Yii::$app->params['siteCopyRightInfo'] . '  ' . Yii::$app->params['siteIcpInfo'];
+					$telHref = Yii::$app->params['clientIsMobile'] ? 'tel:' . Yii::$app->params['siteHotline'] : 'javascript:void(0);';
+$infoStr .= '  联系方式：<a href="' . $telHref . '">' . Yii::$app->params['siteHotline'] . '</a>'; 
+                    echo $infoStr;
+                ?>
             </p>
         </div>
     </div>

@@ -11,11 +11,11 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                         摄影就上摄到家
                     </a>
                 </li>
-                <li class='gi' data-desktop='.menu-sec' data-mobile='.main-menu nav>ul'>
+                <!--<li class='gi' data-desktop='.menu-sec' data-mobile='.main-menu nav>ul'>
 				    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/info/concept/vision']); ?>' target='_blank'>
                         随时随地想摄就摄
                     </a>
-                </li>
+                </li>-->
                 <!--<li class='gi' data-desktop='.menu-sec' data-mobile='.main-menu nav>ul'>
 				    <a href='<?= Yii::getAlias('@shooturl') . Url::to(['/info/enter/photographer']); ?>' target='_blank'>
                         摄影师入驻
@@ -28,9 +28,9 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                 </li>-->
             </ul>
             <div class='search gi'>
-                <a class='js-toggle-close' href='#'>
+                <!--<a class='js-toggle-close' href='#'>
                     <span class='icon icon-search'></span>
-                </a>
+                </a>-->
                 <div class='search-form js-content'>
                     <div class='wrapper'>
 					    <form action='<?= Yii::getAlias('@shooturl') . Url::to(['/search']); ?>' class='main-form' data-desktop='.search-form .wrapper' data-mobile='.main-menu .search'>

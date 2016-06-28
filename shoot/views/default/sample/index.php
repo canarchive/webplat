@@ -43,7 +43,7 @@ $this->params['controllerForJs'] = 'BlogsController@video';
                         </div>
                         <p class='image'>
 							<a href="<?= Yii::getAlias('@spreadurl') . Url::to(['/shoot/signup/index', 'goods_id' => $info['goods_id']]); ?>">
-							    <img src="<?= $info['filepath']; ?>" width="540px" height="300px" style="width: 540px; height:300px;"/>
+                                <img src="<?= $info['filepath'] . Yii::$app->params['fileUrlSuffix']['sampleList']; ?>"/>
                                 <span class='play-mask'></span>
                                 <span class='blog-icon play-icon'></span>
                                 <span class='play-iframe'></span>

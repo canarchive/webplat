@@ -62,7 +62,7 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
                 <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/info/setting']); ?>'>账户信息</a>
             </li>
             <li class='user-menu-login'>
-                <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/info/address']); ?>'>约拍地址</a>
+                <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/user-address/index']); ?>'>约拍地址</a>
             </li>
             <!--<li class='user-menu-login user-menu-message'>
                 <a href='<?= Yii::getAlias('@passporturl') . Url::to(['/message/system']); ?>'>系统消息</a>
