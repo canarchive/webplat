@@ -19,7 +19,7 @@
         <p class="txt-p">已有
             <i>6821</i>人成功预约</p>
         <div class="txt3">
-            <a class="cWhite" href="tel:<?= $info['hotline']; ?>"><?= $info['hotline']; ?></a></div>
+            <a class="cWhite" href="tel:<?= $info['merchantInfo']['hotline']; ?>"><?= $info['merchantInfo']['hotline']; ?></a></div>
     </div>
     <!--wap1 end-->
     <div class="wap2 wap">
@@ -261,7 +261,7 @@
             <img src="http://s4.17house.com/jiazhuangtong/zxtc_h5/images/shanghai/i677/shop.jpg?v=13" alt="" class="shop-img">
             <p class="shop-p">上海市徐汇区漕宝路70号光大会展中心商务办公楼C座802室</p>
             <div class="phone">
-                <a class="cWhite" href="tel:<?= $info['hotline']; ?>"><?= $info['hotline']; ?></a></div>
+                <a class="cWhite" href="tel:<?= $info['merchantInfo']['hotline']; ?>"><?= $info['merchantInfo']['hotline']; ?></a></div>
             <a href="javascript:;" class="despoke-but btn js-bm">免费预约到店</a></div>
     </div>
     <!--wap8 end-->

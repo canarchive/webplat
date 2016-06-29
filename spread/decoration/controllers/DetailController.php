@@ -37,104 +37,60 @@ class DetailController extends Controller
 			$url = \Yii::getAlias('@m2spreadurl') . \Yii::$app->request->getUrl();
 			$this->redirect($url)->send();
 		}
-        $model = new SignupForm();
 
-        $info = $this->getDecorationInfo();
-        if (empty($info)) {
+        $datas = $this->getDatas();
+        if (empty($datas)) {
             return $this->redirect('/')->send();
         }
 
-        $urlFull = \Yii::$app->request->hostInfo . \Yii::$app->request->getUrl();
-        $datas = [
-            'model' => $model,
-            'info' => $info,
-            'host' => $this->host,
-        ];
-		$type = $info['type'];
-
+		$info = $datas['info'];
 		$view = "{$info['type']}_{$info['city']}.php";
 		$view = $this->mHost ? "/jzsem/h5/{$view}" : "/jzsem/pc/{$view}";
         return $this->render($view, $datas);   
     }
 
-	public function actionInner()
+	public function actionFeature()
     {
-        $model = new SignupForm();
+		if (empty($this->mHost) && $this->isMobile) {
+			$url = \Yii::getAlias('@m2spreadurl') . \Yii::$app->request->getUrl();
+			$this->redirect($url)->send();
+		}
+
+		$this->layout = '@spread/decoration/views/tview/pc/main';
+
+        $datas = $this->getDatas();
+        if (empty($datas)) {
+            return $this->redirect('/')->send();
+        }
 
 		$view = \Yii::$app->request->get('view');
-		$view = !in_array($view, ['price', 'measure', 'design']) ? 'price' : $view;
+		$views = ['index', 'inspector', 'supervisor', 'design'];
+		$view = !in_array($view, $views) ? 'index' : $view;
 
-		$info = $this->getInfo();
-
-        $datas = [
-			'view' => $view,
-            'host' => $this->host,
-            'model' => $model,
-			'info' => $info,
-        ];
-
-		$viewPath = $this->mHost ? "/inner/h5/" : "/inner/h5/";
-		$view = $viewPath . $view;
+		$view = "/tview/pc/{$view}";
         return $this->render($view, $datas);   
     }
 
-    protected function getDecorationInfo()
+    protected function getDatas()
     {
         $id = \Yii::$app->getRequest()->get('id');
         $model = new \spread\decoration\models\Decoration();
      	$where = ['id' => $id];
 		$info = $model->getInfo($where);
+		if (empty($info)) {
+			return false;
+		}
 		
-        return $info;
+        $urlFull = \Yii::$app->request->hostInfo . \Yii::$app->request->getUrl();
+        $signupForm = new SignupForm();
+        $datas = [
+            'model' => $signupForm,
+            'info' => $info,
+            'host' => $this->host,
+        ];
+
+        return $datas;
     }
-
-	protected function getLotteryInfos($id)
-	{
-		$model = new \spread\decoration\models\Lottery();
-		$infos = $model->getInfos($id);
-
-		return $infos;
-	}
-
-	protected function getBonusInfos($id)
-	{
-		$model = new \spread\decoration\models\Bonus();
-		$infos = $model->getInfos($id);
-
-		return $infos;
-	}
-
-	protected function getGiftBagInfos($id)
-	{
-		$model = new \spread\decoration\models\GiftBag();
-		$infos = $model->getInfos($id);
-
-		return $infos;
-	}
-
-	protected function getBrandInfos()
-	{
-		$model = new \spread\groupon\models\Brand();
-		$infos = $model->getInfos();
-
-		return $infos;
-	}
-
-	protected function getFaqInfos($companyId)
-	{
-		$model = new \spread\decoration\models\Faq();
-		$infos = $model->getInfos($companyId);
-
-		return $infos;
-	}
-
-	protected function getProfessorInfos($companyId)
-	{
-		$model = new \spread\decoration\models\Professor();
-		$infos = $model->getInfos($companyId);
-
-		return $infos;
-	}
 
     protected function getCache($key)
     {

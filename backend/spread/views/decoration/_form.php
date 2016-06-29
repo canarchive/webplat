@@ -7,7 +7,6 @@ use spread\models\Attachment;
 
 $attachmentModel = new Attachment();
 $picture = $attachmentModel->getFieldInfos('decoration', 'picture');
-$pictureLottery = $attachmentModel->getFieldInfos('decoration', 'picture_lottery');
 $pictureSmall = $attachmentModel->getFieldInfos('decoration', 'picture_small');
 $map = $attachmentModel->getFieldInfos('decoration', 'map');
 $model->start_at = $model->start_at > 0 ? date('Y-m-d H:i:s', $model->start_at) : '';
@@ -19,7 +18,9 @@ $model->end_at = $model->end_at > 0 ? date('Y-m-d H:i:s', $model->end_at) : '';
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'company_id')->dropDownList($model->companyInfos, ['prompt' => Yii::t('admin-common', 'Select Company')]); ?>
+    <?= $form->field($model, 'type')->dropDownList($model->typeInfos, ['prompt' => Yii::t('admin-common', 'Select type')]); ?>
+    <?= $form->field($model, 'city')->dropDownList($model->cityInfos, ['prompt' => Yii::t('admin-common', 'Select city')]); ?>
+    <?= $form->field($model, 'merchant_id')->dropDownList($model->merchantInfos, ['prompt' => Yii::t('admin-common', 'Select merchant')]); ?>
     <?= $form->field($model, 'address')->textInput() ?>
     <?= $form->field($model, 'start_at')->textInput(); ?>
     <script type="text/javascript">
@@ -83,7 +84,6 @@ $model->end_at = $model->end_at > 0 ? date('Y-m-d H:i:s', $model->end_at) : '';
         ],
     ]);
     ?>
-    <?= $form->field($model, 'arrive_line')->textInput() ?>
     <?= $form->field($model, 'signup_base')->textInput() ?>
 
 

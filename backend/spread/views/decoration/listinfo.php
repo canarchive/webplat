@@ -7,12 +7,24 @@ $gridViewParams = [
         'id',
         'name',
 		[
-            'attribute' => 'company_id',
+            'attribute' => 'type',
+			'value' => function($model) {
+				return $model->typeInfos[$model->type];
+			}
+		],
+		[
+            'attribute' => 'city',
+			'value' => function($model) {
+				return $model->cityInfos[$model->city];
+			}
+		],
+		[
+            'attribute' => 'merchant_id',
             'value'=> function($model){
-				if ($model->company_id < 1) {
+				if ($model->merchant_id < 1) {
 					return '';
 				}
-                return $model->companyInfos[$model->company_id];
+                return $model->merchantInfos[$model->merchant_id];
             },
         ],
 		'signup_base',

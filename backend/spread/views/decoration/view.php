@@ -5,13 +5,20 @@ $detailViewParams = [
     'attributes' => [
 		'id',
         'name',
-		'holding_at',
 		'signup_base',
 		'signup_number',
 		'address',
 		[
-			'attribute' => 'company_id',
-			'value' => $model->company_id > 0 ? $model->companyInfos[$model->company_id] : '',
+			'attribute' => 'type',
+			'value' => $model->typeInfos[$model->type],
+		],
+		[
+			'attribute' => 'city',
+			'value' => $model->cityInfos[$model->city],
+		],
+		[
+			'attribute' => 'merchant_id',
+			'value' => $model->merchant_id > 0 ? $model->merchantInfos[$model->merchant_id] : '',
 		],
 		[
             'attribute' => 'start_at',
@@ -28,11 +35,6 @@ $detailViewParams = [
 		],
 		[
 			'format' => 'raw',
-			'attribute' => 'picture_lottery',
-			'value' => $model->getAttachmentImg($model->picture_lottery, false),
-		],
-		[
-			'format' => 'raw',
 			'attribute' => 'picture_small',
 			'value' => $model->getAttachmentImg($model->picture_small, false),
 		],
@@ -46,14 +48,7 @@ $detailViewParams = [
 			'attribute' => 'status',
 			'value' => $model->statusInfos[$model->status],
 		],
-		'lottery_number',
-		'lottery_rule',
-		'bonus_number',
-		'bonus_rule',
-		'gift_bag_number',
-		'gift_bag_rule',
 		'sms',
-		'sms_new',
 		'description',
     ],
 ];

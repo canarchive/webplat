@@ -24,7 +24,7 @@ class Decoration extends spreadModel
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name', 'type', 'city'], 'required'],
             //[['orderlist'], 'default', 'value' => 0],
 			[['start_at', 'end_at'], 'filter', 'filter' => function($value) {
 				return strtotime($value);
@@ -116,6 +116,7 @@ class Decoration extends spreadModel
 	public function getCityInfos()
 	{
 		$datas = [
+			'' => '',
 			'beijing' => '北京',
 			'shanghai' => '上海',
 		];
@@ -125,6 +126,7 @@ class Decoration extends spreadModel
 	public function getTypeInfos()
 	{
 		$datas = [
+			'' => '',
 			'677' => '677整装套餐',
 			'local' => '局部装修',
 			'office' => '公装',
