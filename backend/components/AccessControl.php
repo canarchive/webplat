@@ -91,7 +91,7 @@ class AccessControl extends \yii\base\ActionFilter
 		}
 		if ($identity->status == Manager::STATUS_NOACTIVE && $currentMenu['controller'] != 'document' && $currentMenu['method'] != 'edit-password') {
 			$url = Url::to(['/manager/edit-password']);
-		    return Yii::$app->response->redirect($url);
+		    return Yii::$app->response->redirect($url)->send();
 		}			
 
         $manager = Yii::$app->getAuthManager();

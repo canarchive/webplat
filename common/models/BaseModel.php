@@ -8,6 +8,11 @@ use common\helpers\Tree;
 
 class BaseModel extends ActiveRecord
 {
+	/**
+	 * 附件类型的字段信息更新时，是否删除旧的附件，默认删除
+	 */
+	public $deleteAttachment = true;
+
 	protected function getTimestampBehaviorComponent($createField = 'created_at', $updateField = 'updated_at')
 	{
         return [
@@ -130,6 +135,7 @@ class BaseModel extends ActiveRecord
 			$info->getUrl();
 			$optionsDefault = [
 				'style' => ['width' => '80px', 'height' => '40px'],
+				'onclick' => 'window.open(this.src);',
 			];
 			$options = $pointSize && empty($options) ? $optionsDefault : $options;
             return \Yii::$app->formatter->asImage($info->getUrl(), $options);
@@ -147,50 +153,52 @@ class BaseModel extends ActiveRecord
 	protected function getAttachmentModel()
 	{}
 
-	protected function _updateSingleAttachment($attachment, $table, $fields)
+	protected function _updateSingleAttachment($table, $fields, $extData = [])
 	{
+		$attachment = $this->getAttachmentModel();
 		foreach ($fields as $field) {
-			$info = $attachment->findOne($this->$field);
-			if (!empty($info)) {
-    			$info->info_id = $this->id;
-    			$info->in_use = 1;
-    		    $info->noFile = true;
-    			$info->update(false);
-			}
+			$attachment->updateInfo($this->$field, $this->id, $extData);
 
-			$infos = $attachment->find()->where(['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id])->all();
-			foreach ($infos as $info) {
-				if ($info->id == $this->$field) {
-					continue;
-				}
-				$info->delete();
-			}
+			$where = ['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id];
+			$this->deleteAttachment && $attachment->deleteInfo($where, $this->$field);
 		}
 
 		return ;
 	}
 
-	protected function _updateMulAttachment($attachment, $table, $field)
+	protected function _updateMulAttachment($table, $field, $extData = [])
 	{
+		$attachment = $this->getAttachmentModel();
 		$ids = array_filter(explode(',', $this->$field));
 		foreach ($ids as $id) {
-			$info = $attachment->findOne($id);
-			if (!empty($info)) {
-    			$info->info_id = $this->id;
-    			$info->in_use = 1;
-    		    $info->noFile = true;
-    			$info->update(false);
-			}
+			$attachment->updateInfo($id, $this->id, $extData);
 		}
 
-		$infos = $attachment->find()->where(['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id])->all();
-		foreach ($infos as $info) {
-			if (in_array($info->id, $ids)) {
-				continue;
-			}
-			$info->delete();
-		}
+		$where = ['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id];
+		$this->deleteAttachment && $attachment->deleteInfo($where, $ids);
 
 		return ;
 	}	
+
+	public function checkMobile($mobile)
+	{
+		$validator = new \common\validators\MobileValidator();
+		$valid =  $validator->validate($mobile);
+		if (empty($valid)) {
+			return ['status' => 400, 'message' => '手机号码格式有误'];
+		}
+
+		return true;
+	}
+
+	public function checkEmail($email)
+	{
+		$validator = new \yii\validators\EmailValidator();
+		$valid =  $validator->validate($email);
+		if (empty($valid)) {
+			return ['status' => 400, 'message' => '邮箱有误'];
+		}
+
+		return true;
+	}
 }
