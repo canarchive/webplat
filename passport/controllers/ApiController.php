@@ -190,7 +190,7 @@ class ApiController extends PassportController
 	public function actionRegion()
 	{
 		$parentCode = strval(\Yii::$app->request->get('parent_code'));
-		$region = new \passport\models\Region();
+		$region = new \common\models\Region();
 		$datas = $region->getSubInfos($parentCode);
 		return $datas;
 	}

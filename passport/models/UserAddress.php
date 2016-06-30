@@ -2,7 +2,7 @@
 
 namespace passport\models;
 
-use passport\models\Region;
+use common\models\Region;
 use common\models\PassportModel;
 
 class UserAddress extends PassportModel

@@ -35,7 +35,7 @@ class UserAddressController extends PassportController
     public function actionIndex()
     {
 		$infos = $this->_operate('list', []);
-		$region = new \passport\models\Region();
+		$region = new \common\models\Region();
 		$regionLevel1 = json_encode($region->getSubInfos(''));
 
         return $this->render('address', ['infos' => $infos, 'regionLevel1' => $regionLevel1]);
