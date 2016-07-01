@@ -48,6 +48,7 @@ class SignupController extends spreadController
 
 	public function actionCms()
 	{
+		$_POST['info_id'] = 1;
 		return $this->_signup();
 	}
 
@@ -60,11 +61,9 @@ class SignupController extends spreadController
 
         $model = new SignupForm();
 		$model->isMobile = $this->clientIsMobile();
-print_r($_POST);
 		$signupInfo = false;
         //if ($model->load(\Yii::$app->request->get(), '')) {
         if ($model->load(\Yii::$app->request->post(), '')) {
-			print_r($model);
             $signupInfo = $model->signup();
         }
 
@@ -73,14 +72,14 @@ print_r($_POST);
 			$message = isset($errors['error']) ? $errors['error'] : '报名失败，请您重试！';
 			$data = [
 				'status' => '400',
-				'msg' => $message,
+				'message' => $message,
 				//'model' => $model,
 			];
 			return $data;
 		    //return ['data' => $data, 'callback' => $callback];
 
 		}
-		$signupInfo['msg'] = $signupInfo['message'];
+		$signupInfo['message'] = $signupInfo['message'];
 		unset($signupInfo['message']);
 		return $signupInfo;
 		//return ['data' => $signupInfo, 'callback' => $callback];
