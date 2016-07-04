@@ -2,6 +2,7 @@
 
 namespace spread\models;
 
+use Yii;
 use common\models\SpreadModel;
 
 class User extends SpreadModel
@@ -70,13 +71,7 @@ class User extends SpreadModel
 
         $isNew = false;
         if (!empty($info)) {
-            $info->userInfo = false;
             return $info;
-        }
-
-        $userInfo = $this->getSystemUser($data);
-        if (empty($userInfo)) {
-            return false;
         }
 
         $customService = CustomService::getServiceInfo();
@@ -84,56 +79,17 @@ class User extends SpreadModel
             'mobile' => $data['mobile'],
             'name' => $data['name'],
             'groupon_id_first' => $data['info_id'],
-            'user_id' => $userInfo['user_id'],
             'service_id' => $customService->id,
             'created_at' => time(),
             'updated_at' => time(),
         ];
         $newModel = new self($data);
         $newModel->insert(true, $data);
-        $newModel->userInfo = $userInfo;
-        $customService->distributed_at = \Yii::$app->params['currentTime'];
-        $customService->update();
-        $customService->updateCounters(['serviced_num' => 1]);
+
+		//$customService->updateServiceInfo();
         $newModel->customService = $customService;
 
         return $newModel;
-    }
-
-    protected function getSystemUser($data)
-    {
-            return [
-                'user_id' => 0,
-                'password' => '',
-                'is_new' => false,
-            ];        
-        $mobile = $data['mobile'];
-        $user = \passport\models\User::findOne(['mobile' => $mobile]);
-        if (!empty($user)) {
-            return [
-                'user_id' => $user->id,
-                'password' => '',
-                'is_new' => false,
-            ];
-        }
-
-        $userModel = new \passport\models\User();
-        $userData = [
-            'mobile' => $data['mobile'],
-            'password' => \Yii::$app->security->generateRandomString(6),
-            'from_type' => 'groupon',
-        ];
-        $user = $userModel->registerUser($userData);
-
-        if (empty($user)) {
-            return false;
-        }
-
-        return [
-            'user_id' => $user->id,
-            'password' => $userData['password'],
-            'is_new' => true,
-        ];
     }
 
     public function getSortInfos()
@@ -150,4 +106,25 @@ class User extends SpreadModel
     {
         return \Yii::$app->params['genderInfos'];
     }
+
+	public function dealService()
+	{
+		$serviceModel = isset($this->customService) ? $this->customService : CustomService::findOne($this->service_id);
+		if (empty($serviceModel) || empty($serviceModel->status)) {
+		    $serviceModel = CustomService::getServiceInfo();
+		}
+
+		$serviceModel->distributed_at = Yii::$app->params['currentTime'];
+		$serviceModel->update(false);
+		$serviceModel->updateCounters(['serviced_times' => 1]);
+		
+		$serviceModel->updateServiceInfo();
+		return $serviceModel;
+	}
+
+	public function updateAfterInsert()
+	{
+		$this->updateCounters(['signup_num' => 1]);
+		return ;
+	}
 }
