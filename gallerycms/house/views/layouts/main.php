@@ -1,0 +1,78 @@
+<?php
+use yii\helpers\Url;
+
+$cssFiles = isset($this->params['cssFiles']) ? $this->params['cssFiles'] : [];
+$jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
+$seoTitle = Yii::$app->params['seoTitle'];
+$seoKeyword = Yii::$app->params['seoKeyword'];
+$seoDescription = Yii::$app->params['seoDescription'];
+?>
+<!doctype html>
+<!--[if IE 6]>
+<html lang="zh-cn" class="ielt7  ielt8  ielt9 ielt10 ">
+<![endif]-->
+<!--[if IE 7]>
+<html lang="zh-cn" class="ie7  ielt8  ielt9 ielt10">
+<![endif]-->
+<!--[if IE 8 ]>
+<html lang="zh-cn" class="ie8 ielt9 ielt10">
+<![endif]-->
+<!--[if IE 9 ]>
+<html lang="zh-cn" class="ie9 ielt10">
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]>
+<!-->
+<html lang="zh-cn">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="applicable-device" content="pc" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta name="mobile-agent" content="format=html5;url=http://m./bj/" />
+<link rel="alternate" media="only screen and (max-width:750px)" href="http://m.tugou.com/bj/" />
+<title><?= $seoTitle; ?></title>
+<meta name="keywords" content="<?= $seoKeyword; ?>" />
+<meta name="description" content="<?= $seoDescription; ?>" />
+<link rel="shortcut icon" href="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/favicon.ico" />
+<?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
+<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/gallerycms') . '/home/css/' . $cssFile . '.css?v=151020'; ?>" />
+<?php } } ?>
+
+<?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/home/js/' . $jsFile . '.js'; ?>"></script>
+<?php } } ?>
+
+<script type="text/javascript">
+window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
+window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
+window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';
+jQuery(document).ready(function($) {
+    $("img").lazyload({
+		placeholder: "<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/grey.gif",
+        effect: "fadeIn",
+        threshold: 200
+    });
+});
+</script>
+</head>
+<body>
+<!--顶部-->
+<?php //echo $this->render('../common/_top', []); ?>
+<!--<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/login.js"></script>-->
+<!--logo 导航-->
+<?php echo $this->render('../common/_nav', []); ?>
+<?= $content; ?>
+<!--底部-->
+<?php echo $this->render('../common/_footer', []); ?>
+<?php echo $this->render('../common/_footer_base', []); ?>
+<div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
+</div>
+<div><img src="http://yii2.tg.alyee.biz/site/tg.html?channel=sem360&kw=aaa" /></div>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/nav.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/ProvinceJson.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/CityJson.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/cascadingRegion.js"></script>
+</body>
+</html>
