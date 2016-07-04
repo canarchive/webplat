@@ -8,6 +8,8 @@ $gridViewParams = [
 		'code',
         'name',
 		'mobile',
+		'serviced_num',
+		'serviced_times',
 		[
             'attribute' => 'distributed_at',
             'value'=> function($model){
