@@ -58,11 +58,15 @@ return [
 			'site/login',
 			'site/logout',
 			'site/error',
+			'gallerycms/article/upload',
             'debug/*',
         ]
     ],
 
 	'modules' => [
+		'gallerycms' => [
+			'class' => 'backend\gallerycms\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
