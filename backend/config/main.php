@@ -67,6 +67,9 @@ return [
 		'gallerycms' => [
 			'class' => 'backend\gallerycms\Module',
 		],
+		'spread' => [
+			'class' => 'backend\spread\Module',
+		]
 	],
 	'language' => 'zh-CN',
 
