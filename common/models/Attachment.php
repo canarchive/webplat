@@ -44,7 +44,7 @@ class Attachment extends BaseModel
 
     public static function getDb()
     {
-        return \Yii::$app->db;
+        return \Yii::$app->dbCommon;
     }
 
     /**
