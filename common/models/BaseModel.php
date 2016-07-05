@@ -3,6 +3,7 @@
 namespace common\models;
 
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use common\helpers\Tree;
 
@@ -191,6 +192,12 @@ class BaseModel extends ActiveRecord
 		return true;
 	}
 
+	/**
+	 * 验证邮箱格式
+	 *
+	 * @param $email string
+	 * @return boolean
+	 */
 	public function checkEmail($email)
 	{
 		$validator = new \yii\validators\EmailValidator();
@@ -200,5 +207,28 @@ class BaseModel extends ActiveRecord
 		}
 
 		return true;
+	}
+
+	/**
+	 * 获取省级地区信息
+	 *
+	 * @param $haveSub 是否返回地区的辖区信息
+	 * @return array
+	 */
+	public function getRegionSubInfos($parentCode = '')
+	{
+		$region = new \common\models\Region();
+		$datas = $region->getSubInfos($parentCode, false);
+        $datas = ArrayHelper::map($datas, 'code', 'name');
+
+		return $datas;
+	}
+
+	public function getRegionInfo($code = '')
+	{
+		$region = new \common\models\Region();
+		$info = $region->getInfoByCode($code);
+
+		return $info;
 	}
 }
