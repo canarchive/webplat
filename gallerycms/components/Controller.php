@@ -4,6 +4,7 @@ namespace gallerycms\components;
 use Yii;
 use yii\helpers\Url;
 use common\components\Controller as CommonController;
+use merchant\models\Company;
 
 class Controller extends CommonController
 {
@@ -92,4 +93,39 @@ class Controller extends CommonController
 
 		return $datas;
 	}		
+
+	public function getCompanyInfos()
+	{
+		static $datas = null;
+		if (is_null($datas)) {
+		    $company = new Company();
+		    $datas = $company->getInfos();
+		}
+
+		return $datas;
+	}
+
+	public function getCurrentCompany()
+	{
+		$code = Yii::$app->request->get('company_code');
+		$session = Yii::$app->session;
+		$currentCompany = isset($session['current_company']) ? $session['current_company'] : [];
+
+		if (!empty($currentCompany)) {
+			if (empty($code) || $currentCompany['code'] == $code) {
+				return $currentCompany;
+			}
+		}
+		
+		$code = empty($code) ? 'beijing' : $code;
+		$company = new Company();
+	    $info = $company->getInfoByCode($code);
+		if (empty($info)) {
+			$code = 'beijing';
+	        $info = $company->getInfoByCode($code);
+		}
+		$info = $info->toArray();
+		$session['current_company'] = $info;
+		return $info;
+	}
 }
