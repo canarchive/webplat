@@ -2,6 +2,7 @@
 
 namespace merchant\models;
 
+use Overtrue\Pinyin\Pinyin;
 use common\models\MerchantModel;
 
 /**
@@ -9,6 +10,8 @@ use common\models\MerchantModel;
  */
 class Company extends MerchantModel
 {
+	public $region_level1;
+
     /**
      * @inheritdoc
      */
@@ -33,14 +36,24 @@ class Company extends MerchantModel
      */
     public function rules()
     {
+		//print_r($_POST);exit();
         return [
-            [['name'], 'required'],
-            ['code', 'required'],
+            [['name', 'region_code', 'code'], 'required'],
             ['code', 'unique', 'targetClass' => '\merchant\models\Company', 'message' => 'This code has already been taken.'],
-            [['status'], 'default', 'value' => 0],
-			[['logo'], 'integer'],
-			[['logo'], 'default', 'value' => '0'],
-			[['hotline', 'postcode', 'address', 'description'], 'safe'],
+            [['status', 'logo'], 'default', 'value' => 0],
+			/*['region_code', 'default', 'value' => function($model, $attribute) {
+				$specials = ['11000', '12000', '310000', '71000', '81000', '82000'];
+				if (in_array($model->region_level1, $specials)) {
+					return $model->region_level1;
+				}
+				return $model->region_code;
+			}],*/
+			['code_initial', 'default', 'value' => function($model, $attribute) {
+                $spell = substr(Pinyin::letter(trim($model->name)), 0, 1);
+				return $spell;
+			}],
+			//[['postcode', 'code', 'code_initial'], 'default', 'value' => ''],
+			[['name_full', 'postcode', 'hotline', 'address', 'description'], 'safe'],
         ];
     }
 
@@ -52,6 +65,10 @@ class Company extends MerchantModel
         return [
             'id' => '公司ID',
 			'code' => '代码',
+			'code_initial' => '首写字母',
+			'region_level1' => '省级地区',
+			'region_code' => '地区代码',
+			'name_full' => '全称',
             'name' => '名称',
             'logo' => 'LOGO',
 			'hotline' => '电话',
@@ -72,4 +89,27 @@ class Company extends MerchantModel
 		];
 		return $datas;
 	}	
+
+	public function afterSave($insert, $changedAttributes)
+	{
+        parent::afterSave($insert, $changedAttributes);
+
+		$fields = ['logo'];
+		$this->_updateSingleAttachment('logo', $fields);
+
+		return true;
+	}	
+
+	public function getInfos()
+	{
+		$infos = $this->find()->orderBy(['code_initial' => SORT_ASC])->indexBy('code')->all();
+
+		return $infos;
+	}
+
+	public function getInfoByCode($code)
+	{
+		$info = $this->findOne(['code' => $code]);
+		return $info;
+	}
 }
