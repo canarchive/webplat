@@ -33,8 +33,10 @@ return [
         'urlManager' => [
             'rules' => [
 				'/ts-<view:\w+>' => '/house/feature/index',
-				Yii::getAlias('@house.gallerycmsurl') . '/' => '/house/site/index', 
-				Yii::getAlias('@house.gallerycmsurl') . '/<_q:.*>' => '/house/<_q>', 
+				Yii::getAlias('@gallerycmsurl') . '/' => '/house/site/index', 
+				Yii::getAlias('@m.gallerycmsurl') . '/' => '/house/site/index', 
+				Yii::getAlias('@gallerycmsurl') . '/<_q:.*>' => '/house/<_q>', 
+				Yii::getAlias('@m.gallerycmsurl') . '/<_q:.*>' => '/house/<_q>', 
             ],
         ],
     ],
