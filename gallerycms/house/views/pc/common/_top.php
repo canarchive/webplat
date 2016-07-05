@@ -1,8 +1,13 @@
+<?php
+$controller = $this->context;
+$companyInfos = $controller->companyInfos;
+$currentCompany = $controller->currentCompany;
+?>
 <div class="roof">
     <div class="content clearfix">
         <div class="fn-left">
             <span class="address fn-left">&nbsp;</span>
-            <span class="fn-left" id="current_city"></span>
+			<span class="fn-left" id="current_city"><?= $currentCompany['name']; ?></span>
             <div class="check-address fn-left">切换城市
                 <div class="cities-list">
                     <dl>

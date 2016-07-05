@@ -59,7 +59,7 @@ jQuery(document).ready(function($) {
 </head>
 <body>
 <!--顶部-->
-<?php //echo $this->render('../common/_top', []); ?>
+<?php echo $this->render('../common/_top', []); ?>
 <!--<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/login.js"></script>-->
 <!--logo 导航-->
 <?php echo $this->render('../common/_nav', []); ?>
