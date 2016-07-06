@@ -58,18 +58,19 @@ jQuery(document).ready(function($) {
 </script>
 </head>
 <body>
-<!--顶部-->
-<?php echo $this->render('../common/_top', []); ?>
+<?php if (!isset($this->params['showPage'])) { ?>
+<?php echo $this->render('../common/_top', []); // 顶部 ?>
 <!--<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/login.js"></script>-->
-<!--logo 导航-->
-<?php echo $this->render('../common/_nav', []); ?>
+<?php echo $this->render('../common/_nav', []); //logo 导航 ?>
+<?php } ?>
 <?= $content; ?>
 <!--底部-->
+<link type="text/css" rel="stylesheet" href="//at.alicdn.com/t/font_1463989160_300939.css" />
+<?php echo $this->render('../common/_custom_service', []); ?>
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_footer_base', []); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 </div>
-<div><img src="http://yii2.tg.alyee.biz/site/tg.html?channel=sem360&kw=aaa" /></div>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/nav.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/ProvinceJson.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/CityJson.js"></script>

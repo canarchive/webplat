@@ -11,10 +11,9 @@ $this->params['jsFiles'] = [
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
-$this->params['currentNav'] = $view;
-$this->params['communityCode'] = isset($communityInfo['code']) ? $communityInfo['code'] : '';
+$this->params['currentNav'] = 'free';
 ?>
-<?php echo $this->render('_nav', []); ?>
+<?php echo $this->render('_nav', ['view' => $view]); ?>
 <div class="content" id="biaodan">
     <div class="content1" id="content1">
         <div id="bg1">

@@ -575,4 +575,4 @@ $this->params['friendLink'] = true;
     </div>
 </div>
 <!--首页底部浮动报名条-->
-<?php echo $this->render('./_signup', []); ?>
+<?php echo $this->render('../common/_signup', []); ?>
