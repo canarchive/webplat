@@ -299,46 +299,5 @@ $this->params['friendLink'] = true;
         <div id="pd-fault-footer"></div>
     </div>
 </div>
-<div class="pop_mask hide">
-    <div class="pop_box">
-        <div class="title_box">
-            <p class="title">免费为我做设计</p>
-            <p class="subtitle">免费获取3份设计选取最满意设计稿</p></div>
-        <div class="apply_form">
-            <input name="apply_type" type="hidden" value="6">
-            <input name="apply_provider" type="hidden" value="81">
-            <input name="name" type="text" placeholder="您的姓名">
-            <input name="phone" type="text" placeholder="手机号码">
-            <div class="select">
-                <div class="selected">
-                    <span>选择城市</span>
-                    <span>
-                        <i class="arrow arrow_down"></i>
-                    </span>
-                </div>
-                <div class="select_option hide">
-                    <ul>
-                        <div data-id="0">
-                            <li class="options_title">A - E</li></div>
-                        <div data-id="1">
-                            <li class="options_title">F - H</li></div>
-                        <div data-id="2">
-                            <li class="options_title">J - L</li></div>
-                        <div data-id="3">
-                            <li class="options_title">M - Q</li></div>
-                        <div data-id="4">
-                            <li class="options_title">R - T</li></div>
-                        <div data-id="5">
-                            <li class="options_title">W - X</li></div>
-                        <div data-id="6">
-                            <li class="options_title">Y - Z</li></div>
-                    </ul>
-                </div>
-                <select name="city" id="city" style="display: none;">
-                    <option value="">选择城市</option></select>
-            </div>
-            <input name="apply" type="button" value="立即预约"></div>
-        <p class="sm">全国服务热线400-8617-000
-            <br>为了方便我们联系，请留下您的联系方式，我们将严格保密</p></div>
-</div>
+<?php echo $this->render('../common/_pop_mask', []); ?>
 <?php echo $this->render('../common/_signup', []); ?>

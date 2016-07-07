@@ -8,8 +8,8 @@
         ?>
         <div class="links-footer">
             <div class="links-left">
-                <p>Copyright © 兔狗家装 tugou.com All Rights Reserved &nbsp;杭州兔狗科技有限公司</p>
-                <p>浙ICP备14016529号&nbsp;&nbsp;杭州兔狗科技有限公司&nbsp;&nbsp;0571-85866119</p>
+			    <p><?= Yii::$app->params['siteCopyRightInfo']; ?></p>
+				<p><?= Yii::$app->params['siteIcpInfo']; ?>&nbsp;&nbsp; <?= Yii::$app->params['siteHotline']; ?></p>
             </div>
             <div class="links-right">
                 <a></a>
