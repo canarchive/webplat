@@ -18,9 +18,9 @@ $this->params['currentNav'] = 'free';
     <div class="content1" id="content1">
         <div id="bg1">
             <div class="position">
-                <img src="http://pic.tugou.com/service/bg11.jpg">
-                <img src="http://pic.tugou.com/service/bg12.jpg">
-                <img src="http://pic.tugou.com/service/bg13.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg11.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg12.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg13.jpg">
                 <div class="arrow01"></div>
                 <div class="float apply_form">
                     <div class="title">申请免费验房</div>
@@ -46,12 +46,12 @@ $this->params['currentNav'] = 'free';
             </div>
         </div>
         <div class="page11">
-            <img src="http://pic.tugou.com/service/yf1.jpg" class="img">
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf1.jpg" class="img">
             <div class="case">
                 <div class="src">
-                    <img src="http://pic.tugou.com/service/yf11.jpg">
-                    <img src="http://pic.tugou.com/service/yf12.jpg">
-                    <img src="http://pic.tugou.com/service/yf13.jpg"></div>
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf11.jpg">
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf12.jpg">
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf13.jpg"></div>
                 <div class="font1">
                     <h3>世贸东壹号</h3>
                     <p>验房师傅：张工</p>
@@ -60,9 +60,9 @@ $this->params['currentNav'] = 'free';
             </div>
             <div class="case">
                 <div class="src">
-                    <img src="http://pic.tugou.com/service/yf14.jpg">
-                    <img src="http://pic.tugou.com/service/yf15.jpg">
-                    <img src="http://pic.tugou.com/service/yf16.jpg"></div>
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf14.jpg">
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf15.jpg">
+                    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf16.jpg"></div>
                 <div class="font1">
                     <h3>中天.官河锦庭</h3>
                     <p>验房师傅：刘工</p>
@@ -71,7 +71,7 @@ $this->params['currentNav'] = 'free';
             </div>
         </div>
         <div class="page12">
-            <img src="http://pic.tugou.com/service/yf2.jpg" class="img">
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf2.jpg" class="img">
             <div class="signed_box">
                 <div class="signed_list">
                     <ul class="signed_list_header">
@@ -177,96 +177,96 @@ $this->params['currentNav'] = 'free';
             </div>
         </div>
         <div class="page13">
-            <img src="http://pic.tugou.com/service/yf3.jpg" class="img">
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf3.jpg" class="img">
             <div class="src1">
-                <img src="http://pic.tugou.com/service/yf17.jpg">
-                <img src="http://pic.tugou.com/service/yf18.jpg">
-                <img src="http://pic.tugou.com/service/yf19.jpg">
-                <img src="http://pic.tugou.com/service/yf20.jpg"></div>
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf17.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf18.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf19.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf20.jpg"></div>
             <div class="src2">
-                <img src="http://pic.tugou.com/service/yf21.jpg">
-                <img src="http://pic.tugou.com/service/yf22.jpg">
-                <img src="http://pic.tugou.com/service/yf23.jpg">
-                <img src="http://pic.tugou.com/service/yf24.jpg"></div>
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf21.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf22.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf23.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf24.jpg"></div>
         </div>
         <div class="page14">
-            <img src="http://pic.tugou.com/service/yf4.jpg" class="img">
+            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/yf4.jpg" class="img">
             <div class="src3">
                 <div class="img25"></div>
                 <div class="ul">
                     <ul>
                         <li>
-                            <img src="http://pic.tugou.com/service/28.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/28.jpg">
                             <p class="number">01</p>
                             <p>楼地面</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/29.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/29.jpg">
                             <p class="number">02</p>
                             <p>墙面</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/30.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/30.jpg">
                             <p class="number">03</p>
                             <p>室内楼梯</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/27.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/27.jpg">
                             <p class="number">04</p>
                             <p>门窗安装</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/39.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/39.jpg">
                             <p class="number">05</p>
                             <p>进门户</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/31.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/31.jpg">
                             <p class="number">06</p>
                             <p>阳台</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/32.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/32.jpg">
                             <p class="number">07</p>
                             <p>层高</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/33.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/33.jpg">
                             <p class="number">08</p>
                             <p>给水</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/34.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/34.jpg">
                             <p class="number">09</p>
                             <p>排水</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/40.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/40.jpg">
                             <p class="number">10</p>
                             <p>电气</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/36.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/36.jpg">
                             <p class="number">11</p>
                             <p>预留洞</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/37.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/37.jpg">
                             <p class="number">12</p>
                             <p>弱电</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/38.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/38.jpg">
                             <p class="number">13</p>
                             <p>平整度</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/41.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/41.jpg">
                             <p class="number">14</p>
                             <p>门窗垂直度</p>
                         </li>
                         <li>
-                            <img src="http://pic.tugou.com/service/42.jpg">
+                            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/42.jpg">
                             <p class="number">15</p>
                             <p>公共配套</p>
                         </li>

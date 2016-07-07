@@ -759,19 +759,6 @@ $(function() {
         bindPopupForm($('.handler a'));
     })</script>
 
-<link type="text/css" rel="stylesheet" href="//static.tugou.com/common/consult/aside-consult-v3.css?ver=3.0.0" />
-<!-- side bar -->
-<div class="side">
-    <div class="side-con">
-        <div id="kefu-close">x</div>
-        <div id="kefu-online" onclick="nTalk.im_openInPageChat();">
-            <img src="//static.tugou.com/common/consult/img/consult.png"></div>
-        <div class="icon-btn iconfont icon-huidaodingbu back-top" style="display:none">返回顶部</div></div>
-</div>
-<script type="text/javascript" src="//static.tugou.com/common/consult/aside-consult-v3.js?ver=3.0.0"></script>
-<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
-<!--底部-->
-
 <script type="text/javascript" src="http://static.tugou.com/js/meitu.js"></script>
 <script type="text/javascript">$(function() {
         bindPopupForm($('.handler a'));
