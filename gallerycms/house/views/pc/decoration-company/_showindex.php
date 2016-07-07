@@ -1,4 +1,4 @@
-<div class="pd-index active">
+<div class="pd-index active" id="content-index">
     <div class="pd-m-apply">
         <p class="pd-title">最新申请设计服务
             <span class="pd-ma-btn pd-btn free-order-pop">我要申请</span></p>

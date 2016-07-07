@@ -1,4 +1,4 @@
-<div class="pd-realcase active">
+<div class="pd-realcase active" id="content-realcase">
     <div class="pd-rc-case">
         <div class="pd-showcase">
             <div class="case-item">

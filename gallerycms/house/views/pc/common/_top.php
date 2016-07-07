@@ -30,18 +30,13 @@ use yii\helpers\Url;
             <li id="phone-link" class="phone">
                 <a href="javascript: void(0);" target="_blank">移动端窝窝家</a>
                 <div class="code">
-                    <!--<img src="/index/app_code.jpg" border="0" alt="装修网">
-                    <p>下载APP 找装修更轻松</p>-->
-                    <img src="http://img.tugou.com/index/app_weixin.jpg" border="0" alt="装修网">
+				<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" border="0" alt="装修网">
                     <p>窝窝家官方微客服</p>
                 </div>
             </li>
             <li class="number">
 			    <a><?= Yii::$app->params['currentCompany']['hotline']; ?></a>
             </li>
-            <!--<li class="baike">
-				<a href="/baike/">装修百科</a>
-            </li>-->
         </ul>
     </div>
 </div>
