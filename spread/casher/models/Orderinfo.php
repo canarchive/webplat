@@ -187,7 +187,7 @@ class Orderinfo extends SpreadModel
 				'business_sort' => isset($businessSortInfos[$businessName]) ? $businessSortInfos[$businessName]['sort'] : '',
 				'business_name' => $businessName,
 				'mobile' => isset($infos[$sn]) ? $infos[$sn]['note'] : '',
-				'money' => $data['H'],
+				'money' => str_replace(',', '', $data['H']),
 				'created_day' => date('Ymd', strtotime($data['B'])),
 				'created_at' => strtotime($data['B']),
 				'updated_at' => strtotime($data['B']),
