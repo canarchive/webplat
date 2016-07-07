@@ -7,12 +7,10 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
 	'jquery', 'rem50',
 ];
-$this->params['controllerForJs'] = 'ProductsController@index';
-$this->params['friendLink'] = true;
 ?>
 <div class="toptitle">
     <a href="<?= Url::to(['/site/select-city']); ?>">
-	    <div class="position"><?= $currentCity['name']; ?></div>
+	    <div class="position"><?= Yii::$app->params['currentCompany']['name']; ?></div>
     </a>
 </div>
 <div class="content" style="position:relative;">
@@ -185,54 +183,57 @@ $this->params['friendLink'] = true;
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/city_list.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/m_common.js"></script>
 <!-- 2016-05-19 在线客服系统 -->
-<script type="text/javascript">var NTKF_PARAM = {
-        "siteid": "kf_9262"
-        /*网站siteid*/
-        ,
-        "settingid": "kf_9262_1463469263605"
-        /*代码ID*/
-        ,
-        "uid": ""
-        /*会员ID*/
-        ,
-        "uname": ""
-        /*会员名*/
-        ,
-        "userlevel": "0"
-        /*会员等级*/
-    }</script>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/foot-online.js" charset="utf-8"></script>
+<script type="text/javascript">
+var NTKF_PARAM = {
+    "siteid": "kf_9262"
+    /*网站siteid*/
+    ,
+    "settingid": "kf_9262_1463469263605"
+    /*代码ID*/
+    ,
+    "uid": ""
+    /*会员ID*/
+    ,
+    "uname": ""
+    /*会员名*/
+    ,
+    "userlevel": "0"
+    /*会员等级*/
+}
+</script>
 <script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/foot-online.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/m-nav.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/m-region.js"></script>
 <script type="text/javascript">$(function() {
-        var mySwiper = new Swiper('.banner', {
-            direction: 'horizontal',
-            loop: true,
-            autoplay: 3000,
-            autoplayDisableOnInteraction: false,
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-        });
-        var mySwiper3 = new Swiper('.jy-list', {
-            slidesPerView: "auto",
-            slidesPerGroup: 1,
-            freeMode: true,
-            freeModeMomentumBounceRatio: 4,
+    var mySwiper = new Swiper('.banner', {
+        direction: 'horizontal',
+        loop: true,
+        autoplay: 3000,
+        autoplayDisableOnInteraction: false,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+    });
+    var mySwiper3 = new Swiper('.jy-list', {
+        slidesPerView: "auto",
+        slidesPerGroup: 1,
+        freeMode: true,
+        freeModeMomentumBounceRatio: 4,
 		});
 	   	var ua = navigator.userAgent.toLowerCase();
-        if (/android/.test(ua)) {
-            $('.position').addClass('Android');
-            $('.case-title a').addClass('case-android');
+    if (/android/.test(ua)) {
+        $('.position').addClass('Android');
+        $('.case-title a').addClass('case-android');
+    }
+    $(window).scroll(function() {
+        var scrollTop = $(window).scrollTop();
+        var Top = $(".cubeTop").offset().top;
+        if (scrollTop >= Top) {
+            $(".bespoke").show();
+        } else {
+            $(".bespoke").hide();
         }
-        $(window).scroll(function() {
-            var scrollTop = $(window).scrollTop();
-            var Top = $(".cubeTop").offset().top;
-            if (scrollTop >= Top) {
-                $(".bespoke").show();
-            } else {
-                $(".bespoke").hide();
-            }
-        });
-    });</script>
+    });
+});
+</script>
 </div>

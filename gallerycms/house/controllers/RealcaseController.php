@@ -12,4 +12,10 @@ class RealcaseController extends HouseController
 		$datas = [];
 		return $this->render('index', $datas);
 	}
+
+	public function actionShow()
+	{
+		$datas = [];
+		return $this->render('show', $datas);
+	}
 }

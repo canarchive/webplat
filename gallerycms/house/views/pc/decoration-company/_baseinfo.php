@@ -1,4 +1,4 @@
-<div class="pd-selfintro active">
+<div class="pd-selfintro active" id="content-baseinfo">
     <div class="pd-self-basic">
         <p class="pd-title">品牌简介</p>
         <div class="pd-self-header">

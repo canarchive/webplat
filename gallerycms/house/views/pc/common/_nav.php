@@ -23,7 +23,6 @@ $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] :
             <li data-tabid="provider">
 				<a href="<?= Url::to(['/house/decoration-company/index']); ?>">装修公司</a>
             </li>
-
 		    <li data-tabid="provider" <?php if ($currentNav == 'free') { echo 'class="on"'; } ?>>
 			    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang']); ?>">免费服务</a>
             </li>
