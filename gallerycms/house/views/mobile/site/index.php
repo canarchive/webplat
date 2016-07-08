@@ -17,18 +17,22 @@ $this->params['jsFiles'] = [
     <div class="swiper-container banner">
         <div class="swiper-wrapper">
             <div class="swiper-slide tg-img-item">
-                <a href="http://m.tugou.com/topic/kaopu/">
-                    <img src="http://img.tugou.com/index/4.0/m_lunbo_yfz.jpg" width="100%" alt="一分钟找到靠谱装修公司" /></a>
+                <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji']); ?>">
+					<img src="http://img.tugou.com/index/4.0/m_lunbo_yfz.jpg" width="100%" alt="一分钟找到靠谱装修公司" />
+                </a>
             </div>
             <div class="swiper-slide tg-img-item">
-                <a href="http://m.tugou.com/tuan/baoming/beijing/?tgsy">
-                    <img src="http://img.tugou.com/index/4.0/m_lunbo_hangzhou.jpg" width="100%" alt="建材团购" /></a>
+                <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang']); ?>">
+                    <img src="http://img.tugou.com/index/4.0/m_lunbo_hangzhou.jpg" width="100%" alt="建材团购" />
+                </a>
             </div>
             <div class="swiper-slide tg-img-item">
-                <a href="http://m.tugou.com/topic/jy/29/?lunbo_m">
-                    <img src="http://img.tugou.com/index/4.0/m_banner_jy.jpg" width="100%" alt="装修经验" /></a>
+                <a href="<?= Url::to(['/house/feature/index', 'view' => 'jianli']); ?>">
+                    <img src="http://img.tugou.com/index/4.0/m_banner_jy.jpg" width="100%" alt="装修经验" />
+                </a>
             </div>
-            <!-- <div class="swiper-slide tg-img-item"><a href="http://m.tugou.com/topic/realcase/"><img src="http://img.tugou.com/index/m_banner_case_01.jpg" width="100%" alt="实景作品"/></a></div> --></div>
+            <!-- <div class="swiper-slide tg-img-item"><a href="http://m.tugou.com/topic/realcase/"><img src="http://img.tugou.com/index/m_banner_case_01.jpg" width="100%" alt="实景作品"/></a></div> -->
+        </div>
         <div class="swiper-pagination"></div>
     </div>
     <!-- 豆腐块 -->
