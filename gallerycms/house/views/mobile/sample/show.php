@@ -1,48 +1,40 @@
-<!DOCTYPE HTML>
-<html>
+<?php
+use yii\helpers\Url;
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="canonical" href="http://meitu.tugou.com/s1957.html" />
-<meta name="applicable-device" content="mobile" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no" />
-<title>简洁雅致中式风格三居室装修案例-兔狗装修效果图</title>
-<meta name="keywords" content="简洁雅致中式风格三居室装修案例" />
-<meta name="description" content="兔狗装修效果图专区,为您提供国内外专业全面的简洁雅致中式风格三居室装修案例,涵盖最流行的简洁雅致中式风格三居室装修案例大全、案例,找装修图,上兔狗家装。" />
-<link rel="shortcut icon" href="/favicon.ico">
-<link href="http://static.tugou.com/css/mobile/base.css" rel="stylesheet" type="text/css">
-<link href="http://static.tugou.com/css/mobile/content.css" rel="stylesheet" type="text/css">
-<script src="http://static.tugou.com/js/lib/jquery.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/common.js"></script>
-<script src="http://static.tugou.com/js/mobile/m_index.js"></script>
-<script>$(function() { //置顶
-        showScroll();
-        function showScroll() {
-            $(window).scroll(function() {
-                var scrollValue = $(window).scrollTop();
-                scrollValue > 100 ? $('div[class=list_top]').fadeIn() : $('div[class=list_top]').fadeOut();
-            });
-            $('#list_top').click(function() {
-                $("html,body").animate({
-                    scrollTop: 0
-                },
-                200);
-            });
-        };
-
-        $(".footer").click(function() { //弹出申请框
-            $(".win_all").show();
+$this->params['cssFiles'] = [
+	'mobile/base', 'mobile/content',
+];
+$this->params['jsFiles'] = [
+	'jquery', 'common', 'm_index', 'lib/total',
+];
+//'简洁雅致中式风格三居室装修案例-兔狗装修效果图';
+//'简洁雅致中式风格三居室装修案例';
+//'兔狗装修效果图专区,为您提供国内外专业全面的简洁雅致中式风格三居室装修案例,涵盖最流行的简洁雅致中式风格三居室装修案例大全、案例,找装修图,上兔狗家装。';
+?>
+<script>
+$(function() { //置顶
+    showScroll();
+    function showScroll() {
+        $(window).scroll(function() {
+            var scrollValue = $(window).scrollTop();
+            scrollValue > 100 ? $('div[class=list_top]').fadeIn() : $('div[class=list_top]').fadeOut();
         });
-        $(".close a").click(function() { //关闭申请框
-            $(".win_all").hide();
+        $('#list_top').click(function() {
+            $("html,body").animate({
+                scrollTop: 0
+            },
+            200);
         });
-    })</script>
-</head>
+    };
 
-<body>
-<script src="http://static.tugou.com/m/js/lib/total.js"></script>
+    $(".footer").click(function() { //弹出申请框
+        $(".win_all").show();
+    });
+    $(".close a").click(function() { //关闭申请框
+        $(".win_all").hide();
+    });
+})
+</script>
 <!--抽屉总导航-->
 <div class="total-bg"></div>
 <div class="total">
@@ -135,7 +127,7 @@
             <td style="width:61.8%" class="apply-btn">免费预约设计</td></tr>
     </table>
 </footer>
-<script type="text/javascript">< !--2016 - 05 - 19在线客服系统-->$(function() {
+<script type="text/javascript">$(function() {
         $(".apply-btn").click(function() { //弹出申请框
             $(".win_all").show();
         });
@@ -170,53 +162,3 @@
     </div>
 </div>
 <div class="alert" style="display:none">请输入姓名</div>
-<script type="text/javascript" src="http://static.tugou.com/js/mobile/m_mobile.js"></script>
-<div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
-    <!--PC/移动端加百度统计代码：-->
-    <script>var _hmt = _hmt || []; (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?dc5a135b405f74dc32ec7a6e5e1f5716";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();</script>
-    <!-- 站长统计 -->
-    <script src="http://s4.cnzz.com/z_stat.php?id=1255110144&web_id=1255110144" language="JavaScript"></script>
-</div>
-<style type="text/css">.list-consult { position: fixed; right: 0; bottom: 4rem; width: 3rem; z-index: 9999; right: 6% } .apply-bar { width: 15rem; position: fixed; z-index: 999; left: 0; right: 0; bottom: 0; margin: 0 auto; background-color: #fff; height: 2.16rem; display: none; } .apply-bar li { float: left; } .apply-bar .sprite-icon-dialog { background-position: 0 -18.28rem; height: 0.61rem; width: 0.64rem; display: inline-block; position: relative; top: 0.08rem; margin-right: 0.16rem; background: url("http://img.tugou.com/consultant/m-consult.png") no-repeat center; background-size: 0.64rem 0.6rem; } .apply-bar .consult-submit { font-size: 0.56rem; color: #444; line-height: 2.14rem; text-align: center; width: 5.72rem; border-top: 1px solid #e5e5e5; } .apply-bar .apply-submit { line-height: 2.19rem; background-color: #00b7b1; text-align: center; font-size: 0.64rem; color: #fff; width: 9.28rem; } .apply-bar .apply-submit a { color: inherit; display: block; }</style>
-<div class="apply-bar app-hide">
-    <ul>
-        <li class="consult-submit" onclick="nTalk.im_openInPageChat();">
-            <span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询</li>
-        <li class="apply-submit">
-            <a href="javascript:;">立即申请</a></li>
-    </ul>
-</div>
-<div class="list-consult app-hide" onclick="nTalk.im_openInPageChat();">
-    <img src="//img.tugou.com/consultant/online-tugou.png" width="100%" alt="在线咨询" /></div>
-<script type="text/javascript" src="http://static.tugou.com/js/city_list.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/m_common.js"></script>
-<!-- 2015-12-10新增加 -->
-<script type="text/javascript" src="http://static.tugou.com/js/ga.js"></script>
-<!-- 2016-05-19 在线客服系统 -->
-<script type="text/javascript">var NTKF_PARAM = {
-        "siteid": "kf_9262"
-        /*网站siteid*/
-        ,
-        "settingid": "kf_9262_1463469263605"
-        /*代码ID*/
-        ,
-        "uid": ""
-        /*会员ID*/
-        ,
-        "uname": ""
-        /*会员名*/
-        ,
-        "userlevel": "0"
-        /*会员等级*/
-    }</script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/foot-online.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
-</body>
-<script type="text/javascript" src="http://static.tugou.com/m/js/m-region.js"></script>
-
-</html>
