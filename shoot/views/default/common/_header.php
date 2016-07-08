@@ -12,7 +12,7 @@ $returnUrl = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
             </a>
             <div class='logo logo-extend'>
 			    <a href='<?= Yii::getAlias('@shooturl'); ?>'>
-				    <img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/oppo_logo.png" alt="">
+				    <img width="190px" height="31px" src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/logo.png" alt="">
                 </a>
             </div>
             <a class='js-open-user' href='#'>

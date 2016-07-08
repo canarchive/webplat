@@ -18,10 +18,10 @@
     </div>
 </div>
 <!-- 移动端featured图 -->
+<?php $info = isset($infos['list_mobile'][0]) ? $infos['list_mobile'][0] : []; if (!empty($info)) { ?>
 <div class="flagship-mobile">
-    <a href="http://www.oppo.com/cn/product/p/r9/index.html" class="oppo-tj"
-    data-tj="www|link|product|mobile">
-        <img src="http://static.oppo.com/archives/201603/20160317030315lhZXCbKFwR4Uja9w.jpg"
-        alt="">
+	<a class="oppo-tj" href="<?= $info['url']; ?>" target="_blank">
+	    <img src="<?= $info['picture']; ?>" >
     </a>
 </div>
+<?php } ?>

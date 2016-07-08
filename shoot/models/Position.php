@@ -71,12 +71,13 @@ class Position extends ShootModel
 	public function getTypeInfos()
 	{
 		$datas = [
-			'index_slice' => '首页-幻灯',
-			'index_goods' => '首页-商品',
-			'index_goods_text' => '首页-图文商品',
-			'index_sample' => '首页-样片',
-			'list_left' => '列表页-左侧',
-			'list_right' => '列表页-右侧',
+			'index_slice' => '首页-幻灯(619X649,1920X1049)',
+			'index_goods' => '首页-商品(559X311)',
+			'index_goods_text' => '首页-图文商品(559X311)',
+			'index_sample' => '首页-样片(500X500)',
+			'list_left' => '列表页-左侧(770X365)',
+			'list_right' => '列表页-右侧(400X738',
+			'list_mobile' => '列表页-移动端(1080X897)',
 		];
 		return $datas;
 	}
