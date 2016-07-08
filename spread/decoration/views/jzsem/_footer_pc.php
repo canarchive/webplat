@@ -8,7 +8,7 @@
 <script src="http://s4.17house.com/common/js/plugin/jquery.slides.min.js?v13"></script>
 <script src="http://s4.17house.com/common/js/plugin/jquery.flipster.js?v13"></script>
 <script src="http://s4.17house.com/common/js/poplayer.js?v13"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v6"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v20160708"></script>
 
 <?php echo $this->render('_common', ['info' => $info, 'host' => $host]); ?>
 <script>

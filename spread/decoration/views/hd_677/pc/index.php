@@ -1167,8 +1167,19 @@ use yii\helpers\Html;
 <script src="http://s4.17house.com/common/js/plugin/jquery.slides.min.js?v5"></script>
 <script src="http://s4.17house.com/common/js/plugin/jquery.flipster.js?v5"></script>
 <script src="http://s4.17house.com/common/js/poplayer.js?v5"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v6"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/pc/js/zztc.js?v20160708"></script>
 </body>
+
+<script>
+jQuery(function($){
+        var urlreferer=document.referrer||window.location.href;
+        var urlReg = /[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/;
+        var refurl=urlReg.exec(urlreferer);
+        var urldomain=refurl[0];
+        var staturl='http://stat.17house.com/stat.js?site=pc&housetype=sem&houseyewu=view&urlreferer='+urlreferer+'&urldomain='+urldomain+'&t='+new Date().getTime();
+        $.getScript(staturl);
+    });
+</script>
 
 <!-- 53客服start -->
 <script>

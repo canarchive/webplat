@@ -5,7 +5,8 @@ use yii\helpers\Html;
     <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
 
     <!--页面主体 end-->
-    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=7" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
+    <script src="http://s4.17house.com/common/js/jquery-1.11.3.min.js?v=5"></script>
+    <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=20160708" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
 <?php echo $this->render('@spread/decoration/views/_statistic', ['info' => $info, 'host' => $host]); ?>
 
 <?php if ($host == 'http://m.hd.17zhuangxiu.com' || $host == 'http://hd.17zhuangxiu.com') { ?>
@@ -15,13 +16,13 @@ use yii\helpers\Html;
 <?php } ?>
 
 <script>
-Zepto(function($){
+jQuery(function($){
         var urlreferer=document.referrer||window.location.href;
         var urlReg = /[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/;
         var refurl=urlReg.exec(urlreferer);
         var urldomain=refurl[0];
         var staturl='http://stat.17house.com/stat.js?site=h5&housetype=sem&houseyewu=view&urlreferer='+urlreferer+'&urldomain='+urldomain+'&t='+new Date().getTime();
-        $.get(staturl);
+        $.getScript(staturl);
     });
 </script>
 </body>
