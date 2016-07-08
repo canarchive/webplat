@@ -1,75 +1,67 @@
-<!DOCTYPE HTML>
-<html>
+<?php
+use yii\helpers\Url;
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="canonical" href="http://meitu.tugou.com/case-a58" />
-<meta name="applicable-device" content="mobile" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no" />
-<title>【三室一厅装修效果图】三室一厅设计图_三室一厅图片-兔狗装修效果图</title>
-<meta name="keywords" content="三室一厅装修效果图,三室一厅设计图,三室一厅图片" />
-<meta name="description" content="兔狗三室一厅装修效果图专区,提供最新性价比最高的三室一厅装修效果图,两厅,三厅,效果图,三室一厅设计图,三室一厅图片,82后白领最爱的三室一厅装修效果图大全" />
-<link rel="shortcut icon" href="/favicon.ico">
-<link href="http://static.tugou.com/css/mobile/base.css" rel="stylesheet" type="text/css">
-<link href="http://static.tugou.com/css/mobile/list.css" rel="stylesheet" type="text/css">
-<script src="http://static.tugou.com/js/lib/jquery.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/common.js"></script>
-<script src="http://static.tugou.com/js/mobile/m_index.js"></script>
-<script>$(document).ready(function() {
-        var $tab_li = $('.list_nav ul li');
-        $tab_li.click(function() {
-            $(this).toggleClass('list_add').siblings('.list_nav ul li').removeClass('list_add');
-            $(this).toggleClass('list_add_one').siblings('.list_nav ul li').removeClass('list_add_one');
-            var index = $tab_li.index(this);
-            $('div.list_table > div').slideToggle(10);
-            $('div.list_table > div').eq(index).show().siblings().hide();
-        });
+$this->params['cssFiles'] = [
+	'mobile/base', 'mobile/list',
+];
+$this->params['jsFiles'] = [
+	'jquery', 'common', 'm_index', 'lib/total',
+];
+//'【三室一厅装修效果图】三室一厅设计图_三室一厅图片-兔狗装修效果图';
+//'三室一厅装修效果图,三室一厅设计图,三室一厅图片';
+//'兔狗三室一厅装修效果图专区,提供最新性价比最高的三室一厅装修效果图,两厅,三厅,效果图,三室一厅设计图,三室一厅图片,82后白领最爱的三室一厅装修效果图大全';
+?>
+<script>
+$(document).ready(function() {
+    var $tab_li = $('.list_nav ul li');
+    $tab_li.click(function() {
+        $(this).toggleClass('list_add').siblings('.list_nav ul li').removeClass('list_add');
+        $(this).toggleClass('list_add_one').siblings('.list_nav ul li').removeClass('list_add_one');
+        var index = $tab_li.index(this);
+        $('div.list_table > div').slideToggle(10);
+        $('div.list_table > div').eq(index).show().siblings().hide();
+    });
 
-        //点击子级，父级内容变化
-        $("#table_01 li a").click(function() {
-            $("#nav_01 a span").html($(this).html());
-        });
-        $("#table_02 li a").click(function() {
-            $("#nav_02 a span").html($(this).html());
-        });
-        $("#table_03 li a").click(function() {
-            $("#nav_03 a span").html($(this).html());
-        });
-        $("#table_04 li a").click(function() {
-            $("#nav_04 a span").html($(this).html());
-        });
-    })
+    //点击子级，父级内容变化
+    $("#table_01 li a").click(function() {
+        $("#nav_01 a span").html($(this).html());
+    });
+    $("#table_02 li a").click(function() {
+        $("#nav_02 a span").html($(this).html());
+    });
+    $("#table_03 li a").click(function() {
+        $("#nav_03 a span").html($(this).html());
+    });
+    $("#table_04 li a").click(function() {
+        $("#nav_04 a span").html($(this).html());
+    });
+})
 
-    $(function() { //置顶
-        showScroll();
-        function showScroll() {
-            $(window).scroll(function() {
-                var scrollValue = $(window).scrollTop();
-                scrollValue > 100 ? $('div[class=list_top]').fadeIn() : $('div[class=list_top]').fadeOut();
-            });
-            $('#list_top').click(function() {
-                $("html,body").animate({
-                    scrollTop: 0
-                },
-                200);
-            });
-        };
-
-        $(".footer").click(function() { //弹出申请框
-            $(".win_all").show();
-            // //光标自动定位到输入框
-            // document.getElementById("name").focus(); 
+$(function() { //置顶
+    showScroll();
+    function showScroll() {
+        $(window).scroll(function() {
+            var scrollValue = $(window).scrollTop();
+            scrollValue > 100 ? $('div[class=list_top]').fadeIn() : $('div[class=list_top]').fadeOut();
         });
-        $(".close a").click(function() { //关闭申请框
-            $(".win_all").hide();
+        $('#list_top').click(function() {
+            $("html,body").animate({
+                scrollTop: 0
+            },
+            200);
         });
-    })</script>
-</head>
+    };
 
-<body>
-<script src="http://static.tugou.com/m/js/lib/total.js"></script>
+    $(".footer").click(function() { //弹出申请框
+        $(".win_all").show();
+        // //光标自动定位到输入框
+        // document.getElementById("name").focus(); 
+    });
+    $(".close a").click(function() { //关闭申请框
+        $(".win_all").hide();
+    });
+})
+</script>
 <!--抽屉总导航-->
 <div class="total-bg"></div>
 <div class="total">
@@ -95,7 +87,8 @@
     </div>
 </div>
 <h1 class="list_head box total-top">
-    <a href="javascript:history.go(-1);"></a>装修案例</h1>
+	<a href="javascript:history.go(-1);"></a>装修案例
+</h1>
 <div class="list_nav">
     <ul>
         <li id="nav_01">
@@ -674,7 +667,8 @@
             <td style="width:61.8%" class="apply-btn">免费预约设计</td></tr>
     </table>
 </footer>
-<script type="text/javascript">< !--2016 - 05 - 19在线客服系统-->$(function() {
+<script type="text/javascript">
+$(function() {
         $(".apply-btn").click(function() { //弹出申请框
             $(".win_all").show();
         });
@@ -710,90 +704,44 @@
 </div>
 <div class="alert" style="display:none">请输入姓名</div>
 <script type="text/javascript" src="http://static.tugou.com/js/mobile/m_mobile.js"></script>
-<div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
-    <!--PC/移动端加百度统计代码：-->
-    <script>var _hmt = _hmt || []; (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?dc5a135b405f74dc32ec7a6e5e1f5716";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();</script>
-    <!-- 站长统计 -->
-    <script src="http://s4.cnzz.com/z_stat.php?id=1255110144&web_id=1255110144" language="JavaScript"></script>
-</div>
-<style type="text/css">.list-consult { position: fixed; right: 0; bottom: 4rem; width: 3rem; z-index: 9999; right: 6% } .apply-bar { width: 15rem; position: fixed; z-index: 999; left: 0; right: 0; bottom: 0; margin: 0 auto; background-color: #fff; height: 2.16rem; display: none; } .apply-bar li { float: left; } .apply-bar .sprite-icon-dialog { background-position: 0 -18.28rem; height: 0.61rem; width: 0.64rem; display: inline-block; position: relative; top: 0.08rem; margin-right: 0.16rem; background: url("http://img.tugou.com/consultant/m-consult.png") no-repeat center; background-size: 0.64rem 0.6rem; } .apply-bar .consult-submit { font-size: 0.56rem; color: #444; line-height: 2.14rem; text-align: center; width: 5.72rem; border-top: 1px solid #e5e5e5; } .apply-bar .apply-submit { line-height: 2.19rem; background-color: #00b7b1; text-align: center; font-size: 0.64rem; color: #fff; width: 9.28rem; } .apply-bar .apply-submit a { color: inherit; display: block; }</style>
-<div class="apply-bar app-hide">
-    <ul>
-        <li class="consult-submit" onclick="nTalk.im_openInPageChat();">
-            <span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询</li>
-        <li class="apply-submit">
-            <a href="javascript:;">立即申请</a></li>
-    </ul>
-</div>
-<div class="list-consult app-hide" onclick="nTalk.im_openInPageChat();">
-    <img src="//img.tugou.com/consultant/online-tugou.png" width="100%" alt="在线咨询" /></div>
-<script type="text/javascript" src="http://static.tugou.com/js/city_list.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/m_common.js"></script>
-<!-- 2015-12-10新增加 -->
-<script type="text/javascript" src="http://static.tugou.com/js/ga.js"></script>
-<!-- 2016-05-19 在线客服系统 -->
-<script type="text/javascript">var NTKF_PARAM = {
-        "siteid": "kf_9262"
-        /*网站siteid*/
-        ,
-        "settingid": "kf_9262_1463469263605"
-        /*代码ID*/
-        ,
-        "uid": ""
-        /*会员ID*/
-        ,
-        "uname": ""
-        /*会员名*/
-        ,
-        "userlevel": "0"
-        /*会员等级*/
-    }</script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/foot-online.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
-<script>$(function() {
-        var num = 2;
-        function loadMeinv() {
-            $.post("/meitu/SuitAjax/?t=" + Math.random(), {
-                page: num
-            },
-            function(data) {
-                if (data) {
-                    //每次加载时模拟加载图片
-                    for (var i = 0; i < 20; i++) {
-                        html = "<div class='list_con_01'><a href='" + "http://m.tugou.com/meitu/s" + data[i].suit_id + ".html'><span><img src =http://pic.tugou.com/" + data[i].Coverimg + '@218h_288w_1e_1c ><p class="description">' + data[i].pic_num + '张</p></span><h2>' + data[i].title + '</h2></a></div>';
-                        $minUl = getMinUl();
-                        $minUl.append(html);
-                    }
+<script>
+$(function() {
+    var num = 2;
+    function loadMeinv() {
+        $.post("/meitu/SuitAjax/?t=" + Math.random(), {
+            page: num
+        },
+        function(data) {
+            if (data) {
+                //每次加载时模拟加载图片
+                for (var i = 0; i < 20; i++) {
+                    html = "<div class='list_con_01'><a href='" + "http://m.tugou.com/meitu/s" + data[i].suit_id + ".html'><span><img src =http://pic.tugou.com/" + data[i].Coverimg + '@218h_288w_1e_1c ><p class="description">' + data[i].pic_num + '张</p></span><h2>' + data[i].title + '</h2></a></div>';
+                    $minUl = getMinUl();
+                    $minUl.append(html);
                 }
-            },
-            "json");
-            num = num + 1;
-        }
-        //loadMeinv();
-        $(window).on("scroll",
-        function() {
-            $minUl = getMinUl();
-            if ($minUl.height() <= $(window).scrollTop() + $(window).height()) {
-
-                loadMeinv();
             }
-        }) function getMinUl() {
-            var $arrUl = $(".list_con");
-            var $minUl = $arrUl.eq(0);
-            $arrUl.each(function(index, elem) {
-                if ($(elem).height() < $minUl.height()) {
-                    $minUl = $(elem);
-                }
-            });
-            return $minUl;
-        }
-    })</script>
-</body>
-<script type="text/javascript" src="http://static.tugou.com/m/js/m-region.js"></script>
+        },
+        "json");
+        num = num + 1;
+    }
+    //loadMeinv();
+    $(window).on("scroll",
+    function() {
+        $minUl = getMinUl();
+        if ($minUl.height() <= $(window).scrollTop() + $(window).height()) {
 
-</html>
+            loadMeinv();
+        }
+		});
+		function getMinUl() {
+        var $arrUl = $(".list_con");
+        var $minUl = $arrUl.eq(0);
+        $arrUl.each(function(index, elem) {
+            if ($(elem).height() < $minUl.height()) {
+                $minUl = $(elem);
+            }
+        });
+        return $minUl;
+    }
+})
+</script>

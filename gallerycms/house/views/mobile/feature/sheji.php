@@ -78,49 +78,5 @@ $this->params['bodyClass'] = 'design';
             </div>
         </div>
     </div>
-    <p class="copyright">杭州兔狗科技有限公司
-        <br>0571-85866119&nbsp;&nbsp;浙ICP备14016529号</p>
-    <!--电话-->
-    <!-- <p class="tel"><a href="tel:4008617000">预约热线：4008617000</a></p> --></div>
-<style type="text/css">
-.list-consult { position: fixed; right: 0; bottom: 4rem; width: 3rem; z-index: 9999; right: 6% } 
-.apply-bar { width: 15rem; position: fixed; z-index: 999; left: 0; right: 0; bottom: 0; margin: 0 auto; background-color: #fff; height: 2.16rem; display: none; } 
-.apply-bar li { float: left; } 
-.apply-bar .sprite-icon-dialog { background-position: 0 -18.28rem; height: 0.61rem; width: 0.64rem; display: inline-block; position: relative; top: 0.08rem; margin-right: 0.16rem; background: url("http://img.tugou.com/consultant/m-consult.png") no-repeat center; background-size: 0.64rem 0.6rem; } 
-.apply-bar .consult-submit { font-size: 0.56rem; color: #444; line-height: 2.14rem; text-align: center; width: 5.72rem; border-top: 1px solid #e5e5e5; } 
-.apply-bar .apply-submit { line-height: 2.19rem; background-color: #00b7b1; text-align: center; font-size: 0.64rem; color: #fff; width: 9.28rem; } 
-.apply-bar .apply-submit a { color: inherit; display: block; }
-</style>
-<script type="text/javascript" src="http://static.tugou.com/js/city_list.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/m_common.js"></script>
-<!-- 2016-05-19 在线客服系统 -->
-<div class="apply-bar app-hide">
-    <ul>
-        <li class="consult-submit" onclick="nTalk.im_openInPageChat();">
-            <span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询</li>
-        <li class="apply-submit">
-            <a href="javascript:;">立即申请</a></li>
-    </ul>
+    <?php echo $this->render('../common/_footer_base', []); ?>
 </div>
-<div class="list-consult app-hide" onclick="nTalk.im_openInPageChat();">
-    <img src="//img.tugou.com/consultant/online-tugou.png" width="100%" alt="在线咨询" /></div>
-<script type="text/javascript">var NTKF_PARAM = {
-        "siteid": "kf_9262"
-        /*网站siteid*/
-        ,
-        "settingid": "kf_9262_1463469263605"
-        /*代码ID*/
-        ,
-        "uid": ""
-        /*会员ID*/
-        ,
-        "uname": ""
-        /*会员名*/
-        ,
-        "userlevel": "0"
-        /*会员等级*/
-    }</script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/foot-online.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/m-region.js"></script>
-

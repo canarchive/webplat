@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html>
+<?php
+use yii\helpers\Url;
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no" />
-<title>实景作品频道</title>
-<link rel="canonical" href="http://www.tugou.com/realcase/" />
-<meta name="applicable-device" content="mobile" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<link rel="shortcut icon" href="/favicon.ico">
+$this->params['cssFiles'] = [
+	'mobile/base', 'mobile/list',
+];
+$this->params['jsFiles'] = [
+	'jquery', 'common', 'm_index', 'lib/total',
+];
+//'实景作品频道';
 <link rel="stylesheet" type="text/css" href="http://static.tugou.com/m/css/dpl.css">
 <link rel="stylesheet" type="text/css" href="http://static.tugou.com/m/css/case/new-case.css">
 <link rel="stylesheet" type="text/css" href="http://static.tugou.com/m/css/company/company.css">

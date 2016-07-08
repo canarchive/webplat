@@ -1,30 +1,17 @@
-<!DOCTYPE html>
-<html>
+<?php
+use yii\helpers\Url;
 
-<head>
-<meta charset="UTF-8">
-<link rel="canonical" href="http://www.tugou.com/free/yanfang/" />
-<meta name="applicable-device" content="mobile" />
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>【兔狗免费验房】收房验房注意事项_验房注意事项_交房时如何验房</title>
-<meta name="keywords" content="免费验房,收房验房注意事项,验房注意事项,交房时如何验房" />
-<meta name="description" content="兔狗免费验房,为您验房时提醒您,北京收房验房注意事项,验房注意事项,交房时如何验房" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<meta name="format-detection" content="telephone=no">
-<meta name="format-detection" content="address=no">
-<meta content="false" name="twcClient" id="twcClient" />
-<script type="text/javascript" src="http://static.tugou.com/js/lib/jquery.js"></script>
-<!-- // <script type="text/javascript" src="http://static.tugou.com/m/js/common.js"></script> -->
-<script></script>
-<link rel="stylesheet" type="text/css" href="http://static.tugou.com/css/mobile/m_free_index.css" />
-<script type="text/javascript" src="http://static.tugou.com/js/mobile/m-free-index.js"></script>
-</head>
-
-<body>
+$this->params['cssFiles'] = [
+	'free_index',
+];
+$this->params['jsFiles'] = [
+	'jquery', 'free-index',
+];
+$this->params['bodyClass'] = 'design';
+//'【兔狗免费验房】收房验房注意事项_验房注意事项_交房时如何验房';
+//'免费验房,收房验房注意事项,验房注意事项,交房时如何验房';
+//'兔狗免费验房,为您验房时提醒您,北京收房验房注意事项,验房注意事项,交房时如何验房';
+?>
 <div class="container">
     <div class="top toptitle">
         <a href="javascript:history.go(-1);" class="return"></a>
@@ -98,58 +85,5 @@
             </div>
         </div>
     </div>
-    <p class="copyright">杭州兔狗科技有限公司
-        <br>浙ICP备14016529号</p>
-    <!--电话-->
-    <div class="tel">
-        <a href="tel:4008617000">预约热线：4008617000</a></div>
+    <?php echo $this->render('../common/_footer_base', []); ?>
 </div>
-<style type="text/css">.list-consult { position: fixed; right: 0; bottom: 4rem; width: 3rem; z-index: 9999; right: 6% } .apply-bar { width: 15rem; position: fixed; z-index: 999; left: 0; right: 0; bottom: 0; margin: 0 auto; background-color: #fff; height: 2.16rem; display: none; } .apply-bar li { float: left; } .apply-bar .sprite-icon-dialog { background-position: 0 -18.28rem; height: 0.61rem; width: 0.64rem; display: inline-block; position: relative; top: 0.08rem; margin-right: 0.16rem; background: url("http://img.tugou.com/consultant/m-consult.png") no-repeat center; background-size: 0.64rem 0.6rem; } .apply-bar .consult-submit { font-size: 0.56rem; color: #444; line-height: 2.14rem; text-align: center; width: 5.72rem; border-top: 1px solid #e5e5e5; } .apply-bar .apply-submit { line-height: 2.19rem; background-color: #00b7b1; text-align: center; font-size: 0.64rem; color: #fff; width: 9.28rem; } .apply-bar .apply-submit a { color: inherit; display: block; }</style>
-<div class="apply-bar app-hide">
-    <ul>
-        <li class="consult-submit" onclick="nTalk.im_openInPageChat();">
-            <span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询</li>
-        <li class="apply-submit">
-            <a href="javascript:;">立即申请</a></li>
-    </ul>
-</div>
-<div class="list-consult app-hide" onclick="nTalk.im_openInPageChat();">
-    <img src="//img.tugou.com/consultant/online-tugou.png" width="100%" alt="在线咨询" /></div>
-<script type="text/javascript" src="http://static.tugou.com/js/city_list.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/m_common.js"></script>
-<!-- 2015-12-10新增加 -->
-<script type="text/javascript" src="http://static.tugou.com/js/ga.js"></script>
-<!-- 2016-05-19 在线客服系统 -->
-<script type="text/javascript">var NTKF_PARAM = {
-        "siteid": "kf_9262"
-        /*网站siteid*/
-        ,
-        "settingid": "kf_9262_1463469263605"
-        /*代码ID*/
-        ,
-        "uid": ""
-        /*会员ID*/
-        ,
-        "uname": ""
-        /*会员名*/
-        ,
-        "userlevel": "0"
-        /*会员等级*/
-    }</script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/foot-online.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
-<div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
-    <!--PC/移动端加百度统计代码：-->
-    <script>var _hmt = _hmt || []; (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?dc5a135b405f74dc32ec7a6e5e1f5716";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();</script>
-    <!-- 站长统计 -->
-    <script src="http://s4.cnzz.com/z_stat.php?id=1255110144&web_id=1255110144" language="JavaScript"></script>
-</div>
-</body>
-<script type="text/javascript" src="http://static.tugou.com/m/js/m-region.js"></script>
-
-</html>

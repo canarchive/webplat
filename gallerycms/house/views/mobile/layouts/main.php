@@ -10,7 +10,6 @@ $seoDescription = Yii::$app->params['seoDescription'];
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <link rel="canonical" href="<?= Yii::getAlias('@gallerycmsurl'); ?>" />
 <meta name="applicable-device" content="mobile" />
@@ -37,8 +36,10 @@ $seoDescription = Yii::$app->params['seoDescription'];
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/js/' . $jsFile . '.js'; ?>"></script>
 <?php } } ?>
 </head>
-<?= $content; ?>
 <body class="<?php if (isset($this->params['bodyClass'])) { echo $this->params['bodyClass']; } ?>">
+<?= $content; ?>
+<?php echo $this->render('../common/_footer', []); ?>
+<?php echo $this->render('../common/_custom_service', []); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 </div>
 </body>
