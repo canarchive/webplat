@@ -14,7 +14,7 @@ class Attachment extends AttachmentBase
 				'logo' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 30,
+    				'maxSize' => 300,
     				'type' => 'image/*',
 				],
 			],
@@ -22,7 +22,19 @@ class Attachment extends AttachmentBase
 				'logo' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 30,
+    				'maxSize' => 300,
+    				'type' => 'image/*',
+				],
+				'picture' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 300,
+    				'type' => 'image/*',
+				],
+				'aptitude' => [
+        			'isSingle' => false, 
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 500,
     				'type' => 'image/*',
 				],
 			],

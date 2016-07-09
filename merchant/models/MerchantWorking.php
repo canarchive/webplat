@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "merchant".
  */
-class Merchant extends MerchantModel
+class MerchantWorking extends MerchantModel
 {
 	public $aptitude;
     
@@ -17,7 +17,7 @@ class Merchant extends MerchantModel
      */
     public static function tableName()
     {
-        return '{{%merchant}}';
+        return '{{%merchant_working}}';
     }
 
     /**
@@ -100,15 +100,9 @@ class Merchant extends MerchantModel
 		return true;
 	}	
 
-	protected function getCompanyInfos()
+	protected function getMerchantInfos()
 	{
-		$infos = ArrayHelper::map(Company::find()->all(), 'id', 'name');
-		return $infos;
-	}
-
-	protected function getCategoryInfos()
-	{
-		$infos = ArrayHelper::map(Category::find()->all(), 'id', 'name');
+		$infos = ArrayHelper::map(Merchant::find()->all(), 'id', 'name');
 		return $infos;
 	}
 }
