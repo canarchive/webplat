@@ -3,18 +3,18 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Merchant;
-use merchant\models\searchs\Merchant as MerchantSearch;
+use merchant\models\MerchantRealcase;
+use merchant\models\searchs\MerchantRealcase as MerchantRealcaseSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class MerchantController extends AdminController
+class MerchantRealcaseController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Merchant';
+	protected $modelClass = 'merchant\models\MerchantRealcase';
 
     public function actionListinfo()
     {
-        $searchModel = new MerchantSearch();
+        $searchModel = new MerchantRealcaseSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +25,7 @@ class MerchantController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Merchant());
+		return $this->_addInfo(new MerchantRealcase());
     }
 
     public function actionUpdate($id = 0)
