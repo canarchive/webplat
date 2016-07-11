@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use common\widgets\FileUploadUI;
-use spread\models\Attachment;
+use merchant\models\Attachment;
 
 $attachmentModel = new Attachment();
-$photo = $attachmentModel->getFieldInfos('professor', 'photo');
+$photo = $attachmentModel->getFieldInfos('designer', 'photo');
 
 ?>
 
@@ -23,7 +23,7 @@ $photo = $attachmentModel->getFieldInfos('professor', 'photo');
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
         'attribute' => 'files[photo]',
-        'url' => ['/spread-upload/index', 'table' => 'professor', 'field' => 'photo', 'id' => $model->id],
+        'url' => ['/merchant-upload/index', 'table' => 'designer', 'field' => 'photo', 'id' => $model->id],
 		'gallery' => true,
         'fieldOptions' => [
 			'isSingle' => $photo['isSingle'],

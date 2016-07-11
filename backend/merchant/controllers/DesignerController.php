@@ -3,18 +3,18 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\MerchantDesigner;
-use merchant\models\searchs\MerchantDesigner as MerchantDesignerSearch;
+use merchant\models\Designer;
+use merchant\models\searchs\Designer as DesignerSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class MerchantDesignerController extends AdminController
+class DesignerController extends AdminController
 {
-	protected $modelClass = 'merchant\models\MerchantDesigner';
+	protected $modelClass = 'merchant\models\Designer';
 
     public function actionListinfo()
     {
-        $searchModel = new MerchantDesignerSearch();
+        $searchModel = new DesignerSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +25,7 @@ class MerchantDesignerController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new MerchantDesigner());
+		return $this->_addInfo(new Designer());
     }
 
     public function actionUpdate($id = 0)

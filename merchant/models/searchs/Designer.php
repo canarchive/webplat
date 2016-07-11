@@ -5,13 +5,13 @@ namespace merchant\models\searchs;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use merchant\models\MerchantRealcase as MerchantRealcaseModel;
+use merchant\models\Designer as DesignerModel;
 
-class MerchantRealcase extends MerchantRealcaseModel
+class Designer extends DesignerModel
 {
     public function search($params)
     {
-        $query = MerchantRealcaseModel::find();
+        $query = DesignerModel::find();
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 

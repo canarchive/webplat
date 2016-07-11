@@ -5,13 +5,13 @@ namespace merchant\models\searchs;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use merchant\models\MerchantDesigner as MerchantDesignerModel;
+use merchant\models\Working as WorkingModel;
 
-class MerchantDesigner extends MerchantDesignerModel
+class Working extends WorkingModel
 {
     public function search($params)
     {
-        $query = MerchantDesignerModel::find();
+        $query = WorkingModel::find();
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 

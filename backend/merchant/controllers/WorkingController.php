@@ -3,18 +3,18 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\MerchantWorking;
-use merchant\models\searchs\MerchantWorking as MerchantWorkingSearch;
+use merchant\models\Working;
+use merchant\models\searchs\Working as WorkingSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class MerchantWorkingController extends AdminController
+class WorkingController extends AdminController
 {
-	protected $modelClass = 'merchant\models\MerchantWorking';
+	protected $modelClass = 'merchant\models\Working';
 
     public function actionListinfo()
     {
-        $searchModel = new MerchantWorkingSearch();
+        $searchModel = new WorkingSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +25,7 @@ class MerchantWorkingController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new MerchantWorking());
+		return $this->_addInfo(new Working());
     }
 
     public function actionUpdate($id = 0)
