@@ -5,27 +5,34 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-        'name',
 		[
 			'format' => 'raw',
-			'attribute' => 'logo',
+			'attribute' => 'photo',
 			'value' => function($model) {
-				return $model->getAttachmentImg($model->logo);
+				return $model->getAttachmentImg($model->photo);
 			}
 		],
+        [   
+            'format' => 'raw',
+            'attribute' => 'orderlist',
+            'value' => function($model) {
+                $appMenus = $this->context->menuInfos['appMenus'];
+                $updateUrl = isset($appMenus['update']) ? $appMenus['update']['url'] : ''; 
+                return '<input name="orderlist" type="text" style="width:30px;" value="' . $model->orderlist . '" class="input-text-c" onchange="updateElemByAjax(\'' . $updateUrl . '\', ' . $model->id . ', \'orderlist\', this.value);">';
+            },  
+        ],
+		'name',
+		'title',
+		'aptitude',
 		[
-            'attribute' => 'company_id',
+			'attribute' => 'merchant_id',
 			'value' => function($model) {
-				return $model->companyInfos[$model->company_id];
+				if ($model->merchant_id > 0) {
+					return $model->merchantInfos[$model->merchant_id];
+				}
+				return '';
 			},
 		],
-		[
-            'attribute' => 'sort_id',
-			'value' => function($model) {
-				return $model->sortInfos[$model->sort];
-			},
-		],
-		'hotline',
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
@@ -39,28 +46,11 @@ $gridViewParams = [
             },
         ],
 		[
-            'attribute' => 'status',
+			'attribute' => 'status',
 			'value' => function($model) {
-				return $model->statusInfos[$model->status];
-			}
+			    return $model->statusInfos[$model->status];
+			},
 		],
-        [   
-            'format' => 'raw',
-            'attribute' => 'operation',
-            'value' => function($model) {
-                $menus = $this->context->menuInfos['menus'];
-                $opeStr = '';
-                $elems = ['merchant_merchant-realcase_add', 'merchant_merchant_designer_add', 'merchant_merchant_working_add'];
-                foreach ($elems as $elem) {
-                    if (isset($menus[$elem])) {
-                    $opeStr .= "<a href='{$menus[$elem]['url']}?merchant_id={$model->id}'>{$menus[$elem]['name']}</a>";
-                    }
-                }
-                return $opeStr;
-                //$url = Url::to(['business-order/export']);
-                //return "<a href='{$url}?id={$model->id}'>导出</a>";
-            },  
-        ],
     ],
 ];
 
