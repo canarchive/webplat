@@ -6,25 +6,18 @@ $detailViewParams = [
 		'id',
 		[
 			'format' => 'raw',
-			'attribute' => 'logo',
-			'value' => $model->getAttachmentImg($model->logo, false),
+			'attribute' => 'photo',
+			'value' => $model->getAttachmentImg($model->photo, false),
 		],
         'name',
+		'title',
+		'aptitude',
+		'record',
 		[
-			'attribute' => 'company_id',
-			'value' => $model->companyInfos[$model->company_id],
+			'attribute' => 'merchant_id',
+			'value' => ($model->merchant_id > 0 && isset($model->merchantInfos[$model->merchant_id])) ? $model->merchantInfos[$model->merchant_id] : $model->merchant_id,
 		],
-		[
-			'attribute' => 'sort',
-			'value' => $model->sortInfos[$model->sort],
-		],
-		[
-			'attribute' => 'category_id',
-			'value' => $model->categoryInfos[$model->category_id],
-		],
-        'hotline',
-		'postcode',
-		'address',
+        'orderlist',
 		[
 			'attribute' => 'status',
 			'value' => $model->statusInfos[$model->status],

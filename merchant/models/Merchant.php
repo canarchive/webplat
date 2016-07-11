@@ -10,6 +10,7 @@ use yii\helpers\ArrayHelper;
  */
 class Merchant extends MerchantModel
 {
+	public $companyInfo;
 	public $aptitude;
     
     /**
@@ -109,6 +110,77 @@ class Merchant extends MerchantModel
 	protected function getCategoryInfos()
 	{
 		$infos = ArrayHelper::map(Category::find()->all(), 'id', 'name');
+		return $infos;
+	}
+
+	public function getInfo($id)
+	{
+        /*$key = "decorationsem_decoration_info_{$id}";
+        $info = false;// \Yii::$app->cacheRedis->get($key);
+        if ($info) {
+			$info['signup_number'] = $this->getSignupNumber($id);
+            return $info;
+		}*/
+
+		$info = static::find()->where(['id' => $id])->one();//->toArray();
+		if (empty($info)) {
+			return $info;
+		}
+
+		$info = $this->_formatInfo($info);
+
+        //\Yii::$app->cacheRedis->set($key, $info);
+		return $info;
+	}
+
+	protected function _formatInfo($info)
+	{
+		$info['logo'] = $info->getAttachmentUrl($info['logo']);
+		$info['picture'] = $info->getAttachmentUrl($info['picture']);
+		$info['companyInfo'] = Company::findOne($info['company_id'])->toArray();
+
+        $condition = [ 
+            'info_table' => 'merchant',
+            'info_field' => 'aptitude',
+            'info_id' => $info->id,
+            'in_use' => 1,
+        ];  
+        $infos = $this->getAttachmentModel()->find()->where($condition)->orderBy(['orderlist' => SORT_DESC])->all();
+        $aptitudeInfos = []; 
+        foreach ($infos as $attachment) {
+            $url = $attachment->getUrl();
+            $aptitudeInfos[] = [ 
+                'url' => $url,
+                'name' => $attachment['filename'],
+                'description' => $attachment['description'],
+            ];  
+        }    
+        $info->aptitude = $aptitudeInfos;
+
+		return $info;
+	}
+
+	public function getRealcaseInfos()
+	{
+		$model = new MerchantRealcase();
+		$infos = $model->getInfos(['merchant_id' => $this->id]);
+
+		return $infos;
+	}
+
+	public function getWorkingInfos()
+	{
+		$model = new MerchantWorking();
+		$infos = $model->getInfos(['merchant_id' => $this->id]);
+
+		return $infos;
+	}
+
+	public function getDesignerInfos()
+	{
+		$model = new MerchantDesigner();
+		$infos = $model->getInfos(['merchant_id' => $this->id]);
+
 		return $infos;
 	}
 }

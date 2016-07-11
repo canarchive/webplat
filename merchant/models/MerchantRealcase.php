@@ -105,4 +105,8 @@ class MerchantRealcase extends MerchantModel
 		$infos = ArrayHelper::map(Merchant::find()->all(), 'id', 'name');
 		return $infos;
 	}
+
+	public function getInfos($where)
+	{
+	}
 }
