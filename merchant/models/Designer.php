@@ -5,7 +5,7 @@ namespace merchant\models;
 use common\models\MerchantModel;
 use yii\helpers\ArrayHelper;
 
-class MerchantDesigner extends MerchantModel
+class Designer extends MerchantModel
 {
 	public $select;
 
@@ -14,7 +14,7 @@ class MerchantDesigner extends MerchantModel
      */
     public static function tableName()
     {
-        return '{{%merchant_designer}}';
+        return '{{%designer}}';
     }
 
     /**

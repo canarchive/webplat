@@ -8,16 +8,16 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "merchant".
  */
-class MerchantRealcase extends MerchantModel
+class Realcase extends MerchantModel
 {
-	public $aptitude;
+	public $design_sketch;
     
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%merchant_realcase}}';
+        return '{{%realcase}}';
     }
 
     /**
@@ -37,10 +37,10 @@ class MerchantRealcase extends MerchantModel
     public function rules()
     {
         return [
-            [['name'], 'required'],
-			[['logo', 'picture'], 'integer'],
-			[['logo', 'picture', 'company_id', 'category_id', 'status'], 'default', 'value' => '0'],
-			[['aptitude', 'sort', 'hotline', 'postcode', 'brief', 'address', 'description'], 'safe'],
+            [['name', 'merchant_id'], 'required'],
+			[['thumb', 'picture_design', 'orderlist'], 'integer'],
+			[['thumb', 'picture_design', 'service_id', 'orderlist', 'status', 'decoration_price'], 'default', 'value' => '0'],
+			[['design_sketch', 'picture_design', 'decoration_type', 'community_name', 'house_type', 'style', 'area', 'description'], 'safe'],
         ];
     }
 
@@ -50,18 +50,20 @@ class MerchantRealcase extends MerchantModel
     public function attributeLabels()
     {
         return [
-            'id' => '商家ID',
+            'id' => '案例ID',
             'name' => '名称',
-            'breif' => '简介',
-			'company_id' => '所属公司',
-			'category_id' => '分类',
-			'sort' => '类别',
-            'logo' => 'LOGO',
-            'picture' => '描述配图',
-            'aptitude' => '资质',
-			'hotline' => '电话',
-			'postcode' => '邮编',
-			'address' => '地址',
+			'merchant_id' => '所属公司',
+			'service_id' => '装修管家',
+			'house_type' => '户型',
+			'style' => '风格',
+			'area' => '面积',
+			'community_name' => '小区名字',
+			'decoration_type' => '装修类型',
+			'decoration_price' => '装修价格',
+            'thumb' => '缩略图',
+            'picture_design' => '设计图',
+            'design_sketch' => '效果图',
+			'orderlist' => '排序',
             'description' => '描述',
             'status' => '是否显示',
             'created_at' => '创建时间',
@@ -78,33 +80,16 @@ class MerchantRealcase extends MerchantModel
 		return $datas;
 	}	
 
-	protected function getSortInfos()
-	{
-		$datas = [
-			'focus' => '关注',
-			'discuss' => '洽谈',
-			'cooperation' => '合作',
-			'deepco' => '深度合作',
-		];
-		return $datas;
-	}	
-
 	public function afterSave($insert, $changedAttributes)
 	{
         parent::afterSave($insert, $changedAttributes);
 
-		$fields = ['logo', 'picture'];
+		$fields = ['thumb', 'picture_design'];
 		$this->_updateSingleAttachment('merchant', $fields);
-		$this->_updateMulAttachment('merchant', 'aptitude');
+		$this->_updateMulAttachment('merchant', 'design_sketch');
 
 		return true;
 	}	
-
-	protected function getMerchantInfos()
-	{
-		$infos = ArrayHelper::map(Merchant::find()->all(), 'id', 'name');
-		return $infos;
-	}
 
 	public function getInfos($where)
 	{

@@ -38,6 +38,50 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],
 			],
+			'realcase' => [
+				'thumb' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 300,
+    				'type' => 'image/*',
+				],
+				'picture_design' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 300,
+    				'type' => 'image/*',
+				],
+				'design_sketch' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 500,
+    				'type' => 'image/*',
+				],
+			],
+			'designer' => [
+				'photo' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 300,
+    				'type' => 'image/*',
+				],
+			],
+			'working' => [
+				'thumb' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 300,
+    				'type' => 'image/*',
+				],
+			],
+			'working_status' => [
+				'picture_living' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 500,
+    				'type' => 'image/*',
+				],
+			],
 		];
 	}
 }
