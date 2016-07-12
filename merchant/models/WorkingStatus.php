@@ -61,8 +61,8 @@ class WorkingStatus extends MerchantModel
 		$datas = [
 			'' => '',
 			'start' => '开始',
-			'hydropower' => '水电',
-			'wood' => '泥木',
+			'electric' => '水电',
+			'cement' => '泥木',
 			'paint' => '油漆',
 			'finish' => '竣工',
 		];
@@ -84,7 +84,29 @@ class WorkingStatus extends MerchantModel
 		return true;
 	}	
 
-	public function getInfos($where)
+	public function getInfos($where, $limit = 100)
 	{
+		$infos = $this->find()->where($where)->indexBy('status')->limit($limit)->all();
+		foreach ($infos as $info) {
+            $condition = [ 
+                'info_table' => 'working_status',
+                'info_field' => 'picture_living',
+                'info_id' => $info->id,
+                'in_use' => 1,
+            ];  
+            $datas = $this->getAttachmentModel()->find()->where($condition)->orderBy(['orderlist' => SORT_DESC])->all();
+            $livingInfos = []; 
+            foreach ($datas as $attachment) {
+                $url = $attachment->getUrl();
+                $livingInfos[] = [ 
+                    'url' => $url,
+                    'name' => $attachment['filename'],
+                    'description' => $attachment['description'],
+                ];  
+            }    
+            $info->picture_living = $livingInfos;
+		}
+
+		return $infos;
 	}
 }
