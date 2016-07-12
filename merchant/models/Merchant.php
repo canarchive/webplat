@@ -162,7 +162,7 @@ class Merchant extends MerchantModel
 
 	public function getRealcaseInfos()
 	{
-		$model = new MerchantRealcase();
+		$model = new Realcase();
 		$infos = $model->getInfos(['merchant_id' => $this->id]);
 
 		return $infos;
@@ -170,7 +170,7 @@ class Merchant extends MerchantModel
 
 	public function getWorkingInfos()
 	{
-		$model = new MerchantWorking();
+		$model = new Working();
 		$infos = $model->getInfos(['merchant_id' => $this->id]);
 
 		return $infos;
@@ -178,7 +178,7 @@ class Merchant extends MerchantModel
 
 	public function getDesignerInfos()
 	{
-		$model = new MerchantDesigner();
+		$model = new Designer();
 		$infos = $model->getInfos(['merchant_id' => $this->id]);
 
 		return $infos;

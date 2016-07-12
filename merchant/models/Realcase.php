@@ -2,8 +2,9 @@
 
 namespace merchant\models;
 
-use common\models\MerchantModel;
 use yii\helpers\ArrayHelper;
+use common\models\MerchantModel;
+use spread\models\CustomService;
 
 /**
  * This is the model class for table "merchant".
@@ -11,6 +12,7 @@ use yii\helpers\ArrayHelper;
 class Realcase extends MerchantModel
 {
 	public $design_sketch;
+	public $serviceInfo;
     
     /**
      * @inheritdoc
@@ -91,7 +93,19 @@ class Realcase extends MerchantModel
 		return true;
 	}	
 
-	public function getInfos($where)
+	public function getInfos($where, $limit = 100)
 	{
-	}
+		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
+		$serviceModel = new CustomService();
+		foreach ($infos as $key => & $info) {
+			$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
+			$info['house_type'] = $info->houseTypeInfos[$info->house_type];
+			$info['style'] = $info->styleInfos[$info->style];
+			$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
+			$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
+		}
+
+        //$cache->set($keyCache, $infos);
+		return $infos;
+	}		
 }
