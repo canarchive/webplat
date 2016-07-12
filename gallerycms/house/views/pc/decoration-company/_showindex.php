@@ -161,7 +161,7 @@
     </div>
     <div class="pd-m-case">
         <p class="pd-title">实景作品
-            <a class="pd-more pd-service-more sm pd-btn" href="/realcase/1053">更多&gt;</a></p>
+            <a class="pd-more pd-service-more sm pd-btn" href="">更多&gt;</a></p>
         <div class="pd-showcase">
             <div class="case-item">
                 <figure>

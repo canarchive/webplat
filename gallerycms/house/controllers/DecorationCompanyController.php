@@ -39,7 +39,7 @@ class DecorationCompanyController extends HouseController
             'workingInfos' => $info->getWorkingInfos(),
             'designerInfos' => $info->getDesignerInfos(),
         ];
-		print_r($datas);exit();
+		//print_r($datas);exit();
 
 		return $datas;
 	}

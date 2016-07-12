@@ -17,7 +17,7 @@ $this->params['friendLink'] = true;
 //'中博装饰,【中博】杭州中博装饰工程有限公司,杭州兔狗官网';
 //'中博装饰是杭州兔狗官网提供的装修设计公司。中博装饰免费为广大杭州业主提供专业的验房、设计、监理服务。了解中博装饰怎么样？速上杭州兔狗官网！';
 
-$info = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
+//$info = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
 $this->params['showPage'] = true;
 ?>
 <div class="pd-header">
@@ -33,7 +33,7 @@ $this->params['showPage'] = true;
     </div>
     <section class="pd-h-header">
         <div class="pd-hh-logo">
-		    <img src="http://pic.tugou.com/provider/1450923590_735233.jpeg" alt="<?= $info['name']; ?>" class="pd-logo">
+			<img src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" class="pd-logo">
             <p class="pd-btn-design pd-btn free-order-pop">免费设计与报价</p>
             <p class="pd-hh-usercount">已服务&nbsp;&nbsp;<a>3620</a>&nbsp;&nbsp;位业主</p>
         </div>
@@ -42,11 +42,11 @@ $this->params['showPage'] = true;
             <div class="pd-current">
                 <p>
                     <span class="pd-icon pd-icon-house">&nbsp;</span>实景作品:
-					<a class="pd-current-cnt">4</a>
+					<a class="pd-current-cnt"><?= count($realcaseInfos); ?></a>
                 </p>
                 <p>
                     <span class="pd-icon pd-icon-carry"></span>直播工地:
-					<a class="pd-current-cnt">4</a>
+					<a class="pd-current-cnt"><?= count($workingInfos); ?></a>
                 </p>
             </div>
 			<p class="pd-introduction">打造全环保精装品牌，浙江省连续10年环保抽检合格！</p>
@@ -91,11 +91,11 @@ $this->params['showPage'] = true;
                 </li>
             </ul>
         </div>
-        <?php echo $this->render('_showindex', []); ?>
-        <?php echo $this->render('_realcase', []); ?>
-        <?php echo $this->render('_working', []); ?>
-        <?php echo $this->render('_designer', []); ?>
-        <?php echo $this->render('_baseinfo', []); ?>
+        <?php echo $this->render('_showindex', ['info' => $info, 'workingInfos' => $workingInfos, 'realcaseInfos' => $realcaseInfos]); ?>
+        <?php echo $this->render('_realcase', ['infos' => $realcaseInfos]); ?>
+        <?php echo $this->render('_working', ['infos' => $workingInfos]); ?>
+        <?php echo $this->render('_designer', ['infos' => $designerInfos]); ?>
+        <?php echo $this->render('_baseinfo', ['info' => $info]); ?>
     </div>
     <div id="pd-fault-footer"></div>
 </section>
