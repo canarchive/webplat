@@ -9,6 +9,7 @@ return [
             'shoot/runtime',
             'spread/runtime',
             'paytrade/runtime',
+            'gallerycms/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -20,6 +21,7 @@ return [
             'shoot/config/main-local.php',
             'spread/config/main-local.php',
             'paytrade/config/main-local.php',
+            'gallerycms/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -30,6 +32,7 @@ return [
             'shoot/runtime',
             'spread/runtime',
             'paytrade/runtime',
+            'gallerycms/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -40,6 +43,7 @@ return [
             'shoot/config/main-local.php',
             'spread/config/main-local.php',
             'paytrade/config/main-local.php',
+            'gallerycms/config/main-local.php',
         ],
     ],
 ];

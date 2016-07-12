@@ -77,6 +77,9 @@ return [
 		'paytrade' => [
 			'class' => 'backend\paytrade\Module',
 		],
+		'gallerycms' => [
+			'class' => 'backend\gallerycms\Module',
+		],
 	],
 	'language' => 'zh-CN',
 
