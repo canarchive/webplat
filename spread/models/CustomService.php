@@ -80,4 +80,10 @@ class CustomService extends spreadModel
 		
 		return ;
 	}
+
+	public function getInfo($where)
+	{
+		$info = $this->findOne($where);
+		return $info;
+	}
 }
