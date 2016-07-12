@@ -1,3 +1,6 @@
+<?php 
+use yii\helpers\Url;
+?>
 <div class="pd-index active" id="content-index">
     <div class="pd-m-apply">
         <p class="pd-title">最新申请设计服务
@@ -161,71 +164,49 @@
     </div>
     <div class="pd-m-case">
         <p class="pd-title">实景作品
-            <a class="pd-more pd-service-more sm pd-btn" href="">更多&gt;</a></p>
+            <a class="pd-more pd-service-more sm pd-btn" href="javascript:tabChange('realcase');">更多&gt;</a></p>
         <div class="pd-showcase">
+            <?php $i = 1; foreach ($realcaseInfos as $info) { if ($i > 3) { break; } ?>
             <div class="case-item">
                 <figure>
-                    <a data-url="/realcase/1416.html">
-                        <img alt="别墅 中式 半包45" src="http://pic.tugou.com/realcase/1467192284_146865.jpeg@213h_319w_1e_1c"></a>
-                    <p class="desc">远洋天著</p></figure>
+				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>">
+						<img alt="<?= $info['name']; ?>" src="<?= $info['thumb']; ?>">
+                    </a>
+					<p class="desc"><?= $info['community_name']; ?></p>
+                </figure>
                 <p class="case-info">
                     <img alt="装修管家" src="http://pic.tugou.com/weixin/userheader.png" class="designer-head">
-                    <a role="construction">别墅</a>
-                    <a role="style">中式</a>
-                    <a role="detail">半包45万</a></p>
+					<a role="construction"><?= $info['house_type']; ?></a>
+					<a role="style"><?= $info['style']; ?></a>
+					<a role="detail"><?= $info['decoration_type'] . ' ' . $info['decoration_price']; ?>万</a>
+                </p>
             </div>
-            <div class="case-item">
-                <figure>
-                    <a data-url="/realcase/1406.html">
-                        <img alt="三室两厅 田园 半包11" src="http://pic.tugou.com/realcase/1467113228_5184826.jpeg@213h_319w_1e_1c"></a>
-                    <p class="desc">富力新城</p></figure>
-                <p class="case-info">
-                    <img alt="装修管家" src="http://pic.tugou.com/crm_admin_avator/1451535777_5693821.jpeg" class="designer-head">
-                    <a role="construction">三室两厅</a>
-                    <a role="style">田园</a>
-                    <a role="detail">半包11万</a></p>
-            </div>
-            <div class="case-item">
-                <figure>
-                    <a data-url="/realcase/1395.html">
-                        <img alt="两室两厅 简约 半包5" src="http://pic.tugou.com/realcase/1466837697_6625486.jpeg@213h_319w_1e_1c"></a>
-                    <p class="desc">幸福艺居</p></figure>
-                <p class="case-info">
-                    <img alt="装修管家" src="http://pic.tugou.com/crm_admin_avator/1451535777_5693821.jpeg" class="designer-head">
-                    <a role="construction">两室两厅</a>
-                    <a role="style">简约</a>
-                    <a role="detail">半包5万</a></p>
-            </div>
+            <?php $i++; } ?>
         </div>
     </div>
     <div class="pd-m-building">
         <p class="pd-title">直播工地
-            <a class="pd-more pd-build-more sm pd-btn" href="/site/1053">更多&gt;</a></p>
+			<a class="pd-more pd-build-more sm pd-btn" href="javascript:tabChange('working');">更多&gt;</a>
+        </p>
         <div class="pd-showbuild">
+            <?php $i = 1; foreach ($workingInfos as $info) { if ($i > 3) { break; } ?>
             <div class="case-item">
                 <figure>
-                    <a data-url="/site/831.html">
-                        <img alt="直播工地" src="http://pic.tugou.com/buildingsite/1466591565_9696736.jpeg@164h_237w_1e_1c"></a>
-                    <p class="desc">油漆阶段</p></figure>
+				    <a data-url="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id']]); ?>">
+					    <img alt="直播工地" src="<?= $info['thumb']; ?>">
+                    </a>
+					<p class="desc"><?= $info['status']; ?></p>
+                </figure>
                 <p class="case-info">
-                    <a data-role="building">云龙家园</a>-
-                    <a data-role="owner">申屠先生</a>的家</p>
+				    <a data-role="building"><?= $info['community_name']; ?></a>-
+					<a data-role="owner"><?= $info['owner_name']; ?></a>的家
+                </p>
                 <p class="case-subinfo sm">
-                    <a data-role="area">127m²</a>
-                    <a data-role="price">半包6万</a></p>
+				    <a data-role="area"><?= $info['area']; ?>m²</a>
+				    <a data-role="price"><?= $info['decoration_type'] . ' ' . $info['decoration_price']; ?>万</a>
+                </p>
             </div>
-            <div class="case-item">
-                <figure>
-                    <a data-url="/site/832.html">
-                        <img alt="直播工地" src="http://pic.tugou.com/buildingsite/1466592118_8313285.jpeg@164h_237w_1e_1c"></a>
-                    <p class="desc">油漆阶段</p></figure>
-                <p class="case-info">
-                    <a data-role="building">恒大幸福家园</a>-
-                    <a data-role="owner">金女士</a>的家</p>
-                <p class="case-subinfo sm">
-                    <a data-role="area">120m²</a>
-                    <a data-role="price">半包6万</a></p>
-            </div>
+            <?php $i++; } ?>
         </div>
     </div>
 </div>
