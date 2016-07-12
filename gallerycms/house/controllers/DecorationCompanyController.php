@@ -5,6 +5,7 @@ namespace gallerycms\house\controllers;
 use Yii;
 use gallerycms\components\HouseController;
 use merchant\models\Merchant;
+use merchant\models\Working;
 
 class DecorationCompanyController extends HouseController
 {
@@ -22,6 +23,21 @@ class DecorationCompanyController extends HouseController
         }
 
 		return $this->render('show', $datas);
+	}
+
+	public function actionShowWorking()
+	{
+        $id = \Yii::$app->getRequest()->get('id');
+        $model = new Working();
+		$info = $model->getInfo($id);
+		if (empty($info)) {
+            return $this->redirect('/')->send();
+		}
+
+		$datas = [
+			'info' => $info,
+		];
+		return $this->render('show-working', $datas);
 	}
 
     protected function getShowDatas()

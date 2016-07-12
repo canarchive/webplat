@@ -2,15 +2,15 @@
 use yii\helpers\Url;
 
 $this->params['cssFiles'] = [
-    'layouts/page_header', 'layouts/page_footer', 'dpl', 'common', 'lib/footer',
+    'layouts/page_header', 'layouts/page_footer', 'dpl', 'lib/footer',
+	'components/arrow', 'provider/pd-nav', 'provider/pd-common', 'provider/pd-casedetail',
 ];
 $this->params['jsFiles'] = [
 	'mtogo', 'lib/jquery-1.11.3.min', 'lib/jquery.lazyload',
 	'components/jquery.validate', 'components/placeholder', 'components/switch',
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
-	'common',
+	'common', 'provider/pd-common', 'provider/pd-casedetail',
 ];
-$this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
 
 //'之江九里四室两厅欧式半包12万-云格装饰';
@@ -19,70 +19,18 @@ $this->params['friendLink'] = true;
 $info = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
 $this->params['showPage'] = true;
 ?>
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/lib/apply-form.css">
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/components/arrow.css">
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/provider/pd-nav.css" />
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/provider/pd-common.css" />
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/provider/pd-casedetail.css" />
-<script type="text/javascript" src="http://static.tugou.com/js/provider/pd-common.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/provider/pd-casedetail.js"></script>
-</head>
-
-<body>
 <!-- 兔狗主页导航栏 -->
-<nav class="tugou-new-nav">
-    <div class="nav-body">
-        <ul>
-            <li class="nav-logo">
-                <a href="http://www.tugou.com/">
-                    <span></span>
-                </a>
-            </li>
-            <li class="nav-cell" data-id="index">
-                <a href="http://www.tugou.com/">首页</a></li>
-            <li class="nav-cell" data-id="meitu">
-                <a href="http://meitu.tugou.com">装修效果图</a></li>
-            <li class="nav-cell" data-id="jy">
-                <a href="http://www.tugou.com/jy/">装修经验</a></li>
-            <li class="nav-cell" data-id="realcase">
-                <a href="http://www.tugou.com/realcase/">实景作品</a></li>
-            <li class="nav-cell" data-id="provider">
-                <a href="/provider/">装修公司</a></li>
-            <li class="nav-cell" data-id="keeper">
-                <a href="http://www.tugou.com/free/guanjia/">装修管家</a></li>
-            <li class="nav-cell" data-id="jiancai">
-                <a href="http://www.citytogo.com.cn/baoming/hangzhou/jiancai.html" target="_blank">团购建材</a></li>
-            <!-- <li class="nav-cell" data-id="product"><a href="/product/">整体装</a></li> -->
-            <!-- <li class="nav-cell" data-id="principal"><a href="/principal/">主材包</a></li> --></ul>
-        <div class="nav-mobile">
-            <span data-icon="mobile"></span>
-            <span role="desc">手机兔狗</span>
-            <div class="dim-code">
-                <img src="http://img.tugou.com/index/app_code.jpg" border="0" alt="装修网">
-                <p>下载APP 找装修更轻松</p>
-                <img src="http://img.tugou.com/index/app_weixin.jpg" border="0" alt="装修网">
-                <p>兔狗家装官方微客服</p>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>
 <div class="pd-header">
     <!-- 兔狗主页导航栏 -->
     <!-- <div class="pd-for-nav"></div> -->
     <!-- 面包屑导航主页样式 -->
     <div class="crumbs">
-        <a href="/">杭州装修网</a>
-        <span class="sep">&gt;</span>
-        <a href="/provider/">杭州装修公司</a>
-        <span class="sep">&gt;</span>
-        <a href="/provider/233/">云格装饰</a>
-        <span class="sep">&gt;</span>
-        <a href="/realcase/233/">实景作品列表</a>
-        <span class="sep">&gt;</span>
-        <a href="/realcase/1371.html">
-            <span class="btn-crumbs">之江九里·四室两厅·欧式·半包12万
-                <i class="i-del"></i></span>
-        </a>
+	    <a href="/">团家汇</a><span class="sep">&gt;</span>
+		<a href="<?= Url::to(['/house/decoration-company/index']); ?>">装修公司</a><span class="sep">&gt;</span>
+		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id']]); ?>"><?= $merchantInfo['name']; ?></a><span class="sep">&gt;</span>
+        <a>实景作品</a><span class="sep">&gt;</span>
+		<a ><span class="btn-crumbs"><?= $info['name']; ?><i class="i-del"></i></span></a>
     </div>
 </div>
 <div class="pd-main">
