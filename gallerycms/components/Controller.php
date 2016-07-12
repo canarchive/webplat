@@ -1,19 +1,35 @@
 <?php
 namespace gallerycms\components;
 
+use Yii;
 use yii\helpers\Url;
 use common\components\Controller as CommonController;
 
 class Controller extends CommonController
 {
 	public $isMobile;
+	public $host;
 
     public function init()
     {
         parent::init();
 
         $this->isMobile = $this->clientIsMobile();
-		\Yii::$app->params['homeUrl'] = $this->isMobile ? \Yii::getAlias('@m-gallerycmsurl') : \Yii::getAlias('@gallerycmsurl');
+		$this->host = \Yii::$app->request->hostInfo;
+
+		$hostPc = Yii::getAlias('@gallerycmsurl');
+		$hostMobile = Yii::getAlias('@m.gallerycmsurl');
+
+		if (isset($this->module->viewPath)) {
+			$this->module->viewPath .= $this->isMobile ? '/mobile' : '/pc';
+		}
+
+		if ($this->isMobile && $this->host != $hostMobile) {
+			return $this->redirect($hostMobile)->send();
+		}
+		if (!$this->isMobile && $this->host != $hostPc) {
+			return $this->redirect($hostPc)->send();
+		}
     }
 
 	protected function getCategoryInfos()
