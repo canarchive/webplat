@@ -18,6 +18,7 @@ return [
 		        ['pattern' => 'signup', 'route' => 'site/signup', 'host' => Yii::getAlias('@passporturl')],
 				'signup' => 'shoot/signup/index',
 		        ['pattern' => '/gallerycms-upload/<table:\w+>/<field:\w+>', 'route' => '/gallerycms-upload/index', 'host' => Yii::getAlias('@gallerycmsurl')],
+		        ['pattern' => '/merchant-upload/<table:\w+>/<field:\w+>', 'route' => '/merchant-upload/index', 'host' => Yii::getAlias('@merchanturl')],
             ],
         ],
 		'assetManager' => [

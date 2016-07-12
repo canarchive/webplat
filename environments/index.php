@@ -10,6 +10,7 @@ return [
             'spread/runtime',
             'paytrade/runtime',
             'gallerycms/runtime',
+            'merchant/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -22,6 +23,7 @@ return [
             'spread/config/main-local.php',
             'paytrade/config/main-local.php',
             'gallerycms/config/main-local.php',
+            'merchant/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -33,6 +35,7 @@ return [
             'spread/runtime',
             'paytrade/runtime',
             'gallerycms/runtime',
+            'merchant/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -44,6 +47,7 @@ return [
             'spread/config/main-local.php',
             'paytrade/config/main-local.php',
             'gallerycms/config/main-local.php',
+            'merchant/config/main-local.php',
         ],
     ],
 ];
