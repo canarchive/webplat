@@ -49,6 +49,17 @@ class DetailController extends Controller
         return $this->render($view, $datas); 
 	}
 
+	public function actionSuccess()
+	{
+		$view = \Yii::$app->request->get('view');
+		$info = $this->getInfo();
+		$datas = [
+			'view' => $view,
+			'info' => $info,
+		];
+        return $this->render('/house/h5/success', $datas); 
+	}
+
 	public function actionThird()
 	{
 		$client = \Yii::$app->request->get('client');
@@ -105,7 +116,8 @@ class DetailController extends Controller
         $model = new SignupForm();
 
 		$view = \Yii::$app->request->get('view');
-		$view = !in_array($view, ['price', 'measure', 'design']) ? 'price' : $view;
+		$views = ['price', 'measure', 'design', 'wed', 'old', 'new'];
+		$view = !in_array($view, $views) ? 'price' : $view;
 
 		$info = $this->getInfo();
 
@@ -116,7 +128,11 @@ class DetailController extends Controller
 			'info' => $info,
         ];
 
-		$viewPath = $this->mHost ? "/inner/h5/" : "/inner/h5/";
+		if (in_array($view, ['wed', 'old', 'new'])) {
+			$viewPath = $this->mHost ? "/house/h5/" : "/house/h5/";
+		} else {
+		    $viewPath = $this->mHost ? "/inner/h5/" : "/inner/h5/";
+		}
 		$view = $viewPath . $view;
         return $this->render($view, $datas);   
     }

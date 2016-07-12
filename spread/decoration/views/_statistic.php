@@ -1,3 +1,9 @@
+<?php
+use yii\helpers\Html;
+?>
+    <input type="hidden" id="info_id" value="<?= $info['id']; ?>" />
+    <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
+
 <?php if (true) { //isset($info) && $info['id'] == 1) { ?>
 <!-- 53客服start -->
 <script>

@@ -1,9 +1,3 @@
-<?php
-use yii\helpers\Html;
-?>
-    <input type="hidden" id="info_id" value="<?= $info['id']; ?>" />
-    <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
-
     <!--页面主体 end-->
     <script src="http://s4.17house.com/common/js/jquery-1.11.3.min.js?v=5"></script>
     <script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/free_design_main.js?v=20160708" src="<?= Yii::getAlias('@asseturl'); ?>/spread/h5inner/js/plugin/require.js"></script>
