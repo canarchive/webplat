@@ -12,6 +12,8 @@ use spread\models\CustomService;
 class Working extends MerchantModel
 {
 	public $serviceInfo;
+	public $statusDatas;
+	public $merchantInfo;
     
     /**
      * @inheritdoc
@@ -89,6 +91,29 @@ class Working extends MerchantModel
 
 		return true;
 	}	
+
+	public function getInfo($id)
+	{
+		$info = static::find()->where(['id' => $id])->one();//->toArray();
+		if (empty($info)) {
+			return $info;
+		}
+
+		$info = $this->_formatInfo($info);
+        //\Yii::$app->cacheRedis->set($key, $info);
+		return $info;
+	}
+
+	protected function _formatInfo($info)
+	{
+		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
+		$info['serviceInfo'] = CustomService::findOne($info['service_id'])->toArray();
+		$workingStatus = new WorkingStatus();
+		$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
+		$info['merchantInfo'] = Merchant::findOne($info['merchant_id']);
+
+		return $info;
+	}
 
 	public function getInfos($where, $limit = 100)
 	{
