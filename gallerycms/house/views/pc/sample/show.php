@@ -3,6 +3,7 @@ use yii\helpers\Url;
 
 $this->params['cssFiles'] = [
     'layouts/page_header', 'layouts/page_footer', 'dpl', 'common', 'lib/footer',
+	'pages/meitu/common', 'pages/meitu/nav', 'pages/meitu/detail', 
 ];
 $this->params['jsFiles'] = [
 	'mtogo', 'lib/jquery-1.11.3.min', 'lib/jquery.lazyload',
@@ -20,72 +21,22 @@ $info = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中�
 $this->params['showPage'] = true;
 ?>
 
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/pages/meitu/common.css" />
 <style rel="stylesheet">.page_header img, .page_footer img { display: inline; } .page_header, .page_footer_links { font-size: 12px; }</style>
 <script type="text/javascript">
 $(function() {
     setCookie('page_flag', 'meitu');
 });
 </script>
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/pages/meitu/nav.css" />
-<link type="text/css" rel="stylesheet" href="http://static.tugou.com/css/pages/meitu/detail.css" /></head>
-
-<body>
-<nav class="tugou-new-nav">
-    <div class="nav-body logo-head">
-        <ul class="nav">
-            <li class="nav-logo">
-                <a href="http://www.tugou.com/">
-                    <span></span>
-                </a>
-            </li>
-            <li class="nav-cell" data-tabid="index">
-                <a href="http://www.tugou.com/">首页</a></li>
-            <li class="nav-cell" data-tabid="meitu">
-                <a href="http://meitu.tugou.com">装修效果图</a></li>
-            <li class="nav-cell" data-tabid="jy">
-                <a href="http://www.tugou.com/jy/">装修经验</a></li>
-            <li class="nav-cell" data-tabid="realcase">
-                <a href="http://www.tugou.com/realcase/">实景作品</a></li>
-            <li class="nav-cell" data-tabid="provider">
-                <a href="/provider/">装修公司</a></li>
-            <li class="nav-cell" data-tabid="guanjia">
-                <a href="http://www.tugou.com/free/guanjia/">装修管家</a></li>
-            <li class="nav-cell" data-tabid="jiancai">
-                <a href="http://www.citytogo.com.cn/baoming/hangzhou/jiancai.html" target="_blank">团购建材</a></li>
-            <!-- <li class="nav-cell" data-id="product"><a href="/product/">整体装</a></li> -->
-            <!-- <li class="nav-cell" data-id="principal"><a href="/principal/">主材包</a></li> --></ul>
-        <div class="nav-mobile">
-            <span data-icon="mobile"></span>
-            <span role="desc">手机兔狗</span>
-            <div class="dim-code">
-                <img src="http://img.tugou.com/index/app_code.jpg" border="0" alt="装修网">
-                <p>下载APP 找装修更轻松</p>
-                <img src="http://img.tugou.com/index/app_weixin.jpg" border="0" alt="装修网">
-                <p>兔狗家装官方微客服</p>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>
 <div class="wp" id="wp">
     <div class="cont">
         <div class="main">
             <div class="topic">
                 <div class="crumbs">
-                    <a href="/">装修效果图</a>
-                    <span class="sep">&gt;</span>
-                    <a href="/case/">装修案例</a>
-                    <span class="sep">&gt;</span>
-                    <em>
-                        <h1>个性混搭工业风时尚一居设计装潢案例</h1></em>
+                    <a href="/">装修网</a><span class="sep">&gt;</span>
+					<a href="<?= Url::to(['/house/sample/index']); ?>">装修案例</a><span class="sep">&gt;</span>
+					<em><h1><?= $info['name']; ?></h1></em>
                 </div>
-                <!--<div class="ectbtn">
-                <a class="btn-wx" href="javascript:;">
-                <i class="i-wx"></i>收藏到微信
-                <div class="attachbox-wx">
-                <img src="http://img.tugou.com/images/tugou5/qrcode_mobile.jpg" width="120" height="120" /></div>
-                </a>
-                <a class="btn-mobile" href="javascript:;" onclick="alertMsg('敬请期待！')"><i class="i-mobile"></i>发送到手机</a></div>-->
             </div>
             <div class="details clearfix">
                 <div id="suit" class="bigpic js-bigpic-viewbox">

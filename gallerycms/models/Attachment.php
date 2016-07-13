@@ -78,6 +78,20 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],
 			],			
+			'house_sample' => [
+				'thumb' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 200,
+    				'type' => 'image/*',
+				],
+				'picture' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 600,
+    				'type' => 'image/*',
+				],
+			],			
 		];
 	}
 }
