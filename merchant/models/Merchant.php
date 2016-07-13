@@ -12,6 +12,9 @@ class Merchant extends MerchantModel
 {
 	public $companyInfo;
 	public $aptitude;
+	public $num_owner;
+	public $num_realcase;
+	public $num_working;
     
     /**
      * @inheritdoc
@@ -181,6 +184,20 @@ class Merchant extends MerchantModel
 		$model = new Designer();
 		$infos = $model->getInfos(['merchant_id' => $this->id]);
 
+		return $infos;
+	}
+
+	public function getInfos($limit = 100)
+	{
+		$infos = $this->find()->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
+		foreach ($infos as $key => & $info) {
+			$info['logo'] = $info->getAttachmentUrl($info['logo']);
+			$info['num_owner'] = 2389;
+			$info['num_realcase'] = 10;
+			$info['num_realcase'] = 2;
+		}
+
+        //$cache->set($keyCache, $infos);
 		return $infos;
 	}
 }
