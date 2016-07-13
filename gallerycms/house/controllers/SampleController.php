@@ -10,7 +10,11 @@ class SampleController extends HouseController
 {
 	public function actionIndex()
 	{
-		$datas = [];
+		$model = new HouseSample();
+		$infos = $model->getInfos([]);
+		$datas = [
+			'infos' => $infos,
+		];
 		return $this->render('index', $datas);
 	}
 

@@ -16,7 +16,6 @@ $this->params['friendLink'] = true;
 //'【装修案例效果图】装修案例图片_装修设计案例-兔狗装修效果图';
 //'装修案例效果图,装修案例图片,装修设计案例';
 //'兔狗装修案例效果图专区,提供最新装修案例图片,装修设计案例包括简约,现代,中式,欧式,美式,田园等装修效果图';
-$infos[] = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
 ?>
 <style rel="stylesheet">
 .page_header img, .page_footer img { display: inline; } 
@@ -34,7 +33,8 @@ $(function() {
                 <a href="/">装修效果图</a>
                 <span class="sep">&gt;</span>
                 <a href="/case/">装修案例</a>
-                <span class="sep last">&gt;</span></div>
+				<span class="sep last">&gt;</span>
+            </div>
             <div class="filter">
                 <dl class="filterlist filterlist-first clearfix">
                     <dt>户型：</dt>
@@ -184,12 +184,12 @@ $(function() {
             </div>
             <div class="showlist">
                 <ul class="showlist-ul clearfix">
-                    <?php for ($i = 1; $i < 20; $i++) { foreach ($infos as $info) { ?>
+                    <?php for ($i = 1; $i < 5; $i++) { foreach ($infos as $info) { ?>
                     <li>
                         <div class="pictxtbox">
                             <div class="ptx-img">
 							    <a href="<?= Url::to(['/house/sample/show', 'id' => $info['id']]); ?>" target="_blank">
-                                    <img src="http://pic.tugou.com/meitu/20160705165013_8360.jpeg@211h_280w_1e_1c" alt="混搭风格别墅装修案例欣赏" />
+								    <img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>" />
 									<span>7张</span>
                                 </a>
                                 <div class="handler hand_new">
@@ -208,7 +208,7 @@ $(function() {
                     <?php } } ?>
                 </ul>
             </div>
-            <div class="page">
+            <!--<div class="page">
                 <p>
                     <a class="btnpage on">1</a>
                     <a class="btnpage" href="http://meitu.tugou.com/case/p_2/">2</a>
@@ -218,7 +218,7 @@ $(function() {
                     <a href="http://meitu.tugou.com/case/p_2/">下一页</a>
                     <a href="http://meitu.tugou.com/case/p_54/">末页</a>
                 </p>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

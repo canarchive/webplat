@@ -17,7 +17,6 @@ $this->params['friendLink'] = true;
 //'杭州装修公司,杭州装修公司大全,杭州装修公司排名';
 //'兔狗杭州装修网是一家致力于为广大杭州业主提供家装、家居、建材等装修服务的家装平台,专业正规杭州装修公司推荐,帮助杭州业主轻松搞定装修!';
 
-$infos[] = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
 ?>
 <script type="text/javascript">$(function() {
     setCookie('page_flag', 'provider');
@@ -26,11 +25,11 @@ $infos[] = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京�
 <div class="page_container clearfix">
 <h1>推荐装修公司</h1>
 <ul class="provider_list">
-    <?php for ($i = 1; $i < 20; $i++) { foreach ($infos as $info) { ?>
+    <?php for ($i = 1; $i < 5; $i++) { foreach ($infos as $info) { ?>
 	<li data-provider-id="<?= $info['id']; ?>">
         <div class="item_part left">
 		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" target="_blank">
-				<img class="provider_avatar" src="http://pic.tugou.com/provider/1461553260_4216181.jpeg" alt="<?= $info['name']; ?>" />
+				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
             </a>
             <p>已服务 4200 业主</p>
         </div>
