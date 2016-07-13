@@ -11,7 +11,11 @@ class DecorationCompanyController extends HouseController
 {
 	public function actionIndex()
 	{
-		$datas = [];
+		$model = new Merchant();
+		$infos = $model->getInfos();
+		$datas = [
+			'infos' => $infos,
+		];
 		return $this->render('index', $datas);
 	}
 

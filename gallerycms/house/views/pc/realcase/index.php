@@ -17,7 +17,6 @@ $this->params['friendLink'] = true;
 //'【装修案例】装修实景案例大全|兔狗家装';
 //'装修案例 , 装修实景案例大全 , 兔狗家装';
 //'装修案例大全由兔狗家装提供，装修实景案例效果图中每一个装修案例都是装修公司的良心作品。装修选择兔狗家装，就是选择更多优质装修公司!';
-$infos[] = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
 ?>
 <div class="banner">
 	<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/case_banner.jpg">
@@ -29,10 +28,10 @@ $infos[] = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京�
         <div class="pd-realcase active">
             <div class="pd-rc-case">
                 <div class="pd-showcase">
-                    <?php for ($i = 1; $i < 20; $i++) { foreach ($infos as $info) { ?>
+                    <?php for ($i = 1; $i < 5; $i++) { foreach ($infos as $info) { ?>
 					<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>" target="_blank">
                         <div class="case-item">
-                            <div><img class="case-img" src="http://pic.tugou.com/realcase/1466763930_2447433.jpeg@177h_299w_1e_1c" alt="<?= $info['name']; ?>"></div>
+							<div><img class="case-img" src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>"></div>
                             <div class="ch-case-footer">
                                 <div class="ch-left">
 								    <p class="ch-case-title"><?= $info['name']; ?></p>
