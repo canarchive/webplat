@@ -15,4 +15,9 @@ class SiteController extends GallerycmsController
 	{
 		return $this->render('index');
 	}
+
+	public function actionSelectCity()
+	{
+		return $this->render('select-city');
+	}
 }
