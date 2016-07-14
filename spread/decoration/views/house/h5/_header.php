@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="http://s3.17house.com/common_h5/css/icon_font.css">
  -->
  <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/css/common.css">
- <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/css/style.css">
+ <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/css/style.css?v=20160712">
 <script>
 window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
 </script>

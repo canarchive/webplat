@@ -65,7 +65,7 @@
                         <input class="input mobile" type="tel" placeholder="输入您的手机号">
                     </li>
                     <li class="mt3"><a href="javascript:;" class="btn btn-orange btn-block btn-block tijiao">免费预约VR家装设计</a></li>
-					<li class="mt3 f18 text-center cGray fB"><i class="iconfont icone64a mr2"></i><?= $info['hotline']; ?></li>
+					<!--<li class="mt3 f18 text-center cGray fB"><i class="iconfont icone64a mr2"></i><?= $info['hotline']; ?></li>-->
                     <li class="text-center cGray">
                         <div class="txt-box">
                             <div class="bg-line"></div>

@@ -66,7 +66,7 @@
                         <p class="error-tips"></p>
                     </li>
                     <li class="mt3"><a href="#" class="btn btn-orange btn-block btn-block tijiao">预约免费上门量房</a></li>
-					<li class="mt3 f18 text-center cGray fB"><i class="iconfont icone64a mr2"></i><?= $info['hotline']; ?></li>
+					<!--<li class="mt3 f18 text-center cGray fB"><i class="iconfont icone64a mr2"></i><?= $info['hotline']; ?></li>-->
                     <li class="text-center cGray">
                         <div class="txt-box">
                             <div class="bg-line"></div>

@@ -520,7 +520,7 @@ window.signupUrl = '<?= Yii::getAlias('@web'); ?>';
                                 <span class="r">设计经验</span></p>
                             <p>擅长风格：地中海、现代、简欧、混搭、田园</p>
                             <p>
-                                <span class="f16 cYellow mr2">1762</span>名业主优质平价</p></div>
+                                <span class="f16 cYellow mr2">1762</span>名业主优质评价</p></div>
                     </li>
                     <li class="tc mt20">
                         <a class="f18 btn btn-orange js-bm" href="javascript:;">让TA帮我免费设计</a></li>

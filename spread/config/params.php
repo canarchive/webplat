@@ -12,7 +12,7 @@ return [
 					'id' => 1,
 					'hotline' => '400-689-1717',
 					'cityName' => '北京',
-					'address' => '',
+					'address' => '北京市东城区和平里中街17号天元和平商业大厦5层',
 				],
 				'shanghai' => [
 					'id' => 2,
@@ -24,13 +24,13 @@ return [
 					'id' => 4,
 					'hotline' => '17736062591',
 					'cityName' => '石家庄',
-					'address' => '',
+					'address' => '石家庄市长安区广安大街天利商务19层',
 				],
 				'tianjin' => [
 					'id' => 5,
 					'hotline' => '15722003504',
 					'cityName' => '天津',
-					'address' => '',
+					'address' => '天津市河西区友谊北路罗马花园1期A2 1701',
 				],
 			]
 		],

@@ -35,6 +35,9 @@ class SiteController extends SpreadController
 			'price' => '免费报价',
 			'measure' => '免费量房',
 			'design' => '免费设计',
+            'old' => '老房装修',
+            'new' => '新房装修',
+            'wed' => '婚房装修',			
 		];
 		$str = '';
 		foreach ($cities as $key => $city) {

@@ -4,7 +4,7 @@
 					<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/img/L_700.jpg" alt="700" class="L_700"/>
 					<P class="L_p2">今日仅剩 &nbsp;<span class="num_num">6</span>个&nbsp;免费名额</P>
 					<p class="L_p3">下一个会是你吗？</p>
-                    <form method="post" action="" class="form6-yuyue form6-yuyue_on">
+                    <form class="form6-yuyue form6-yuyue_on">
 								<!--<select name="rcity" class="ipt">
 									<option value="">请选择房屋所在城市</option>
 									<option value="北京">北京</option>
@@ -23,7 +23,7 @@
 								<input type="submit" value="免费预约量房设计" class="ipt ipt-submit">
 							</form>
 							<P class="L_p3 L_p_3">您也可以通过电话咨询</P>
-							<P class="L_p4">400-689-1717</P>
+							<P class="L_p4"><?= $info['hotline']; ?></P>
 						</div>
 						<p class="L_p5">我们承诺：一起装修网提供免费上门量房服务，绝不产生任何费用，为了您的利益及我们的口碑，对于您所提供的个人信息我们将严格保密。</p>
 			</div>
