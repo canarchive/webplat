@@ -20,93 +20,98 @@ $this->params['friendLink'] = true;
 ?>
 <script type="text/javascript">$(function() {
     setCookie('page_flag', 'provider');
-});</script>
-<div class="page_banner" style="background: url('http://img.tugou.com/images/tugou5/provider/banner.jpg') no-repeat top center; height: 320px;"></div>
+});
+</script>
+<div class="page_banner" style="background: url('<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/merchant-banner.jpg') no-repeat top center; height: 320px;"></div>
 <div class="page_container clearfix">
-<h1>推荐装修公司</h1>
-<ul class="provider_list">
-    <?php for ($i = 1; $i < 5; $i++) { foreach ($infos as $info) { ?>
-	<li data-provider-id="<?= $info['id']; ?>">
-        <div class="item_part left">
-		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" target="_blank">
-				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
-            </a>
-            <p>已服务 4200 业主</p>
-        </div>
-        <div class="item_part center">
-            <p class="provider_name">
-			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
-                <span class="provider_tags">
-                    <i class="icon_new icon1"><span>保障金先行赔付</span></i>
-                    <i class="icon_new icon2"><span>装修施工资质权威认证</span></i>
-                    <i class="icon_new icon3"><span>环保用材，绿色施工</span></i>
-                </span>
-            </p>
-            <p class="provider_resource">
-                <span>
-                    <i class="icon_new designer"></i>
-					<span>实景作品：</span>19个
-                </span>
-                <span>
-                    <i class="icon_new operator"></i>
-					<span>直播工地：</span>1个
-                </span>
-            </p>
-            <p class="provider_address">
-			    <i class="icon_new address"></i><?= $info['address']; ?>
-            </p>
-            <p class="provider_operate">
-                <input type="button" value="免费为我做设计" />
-                <input type="button" value="免费为我出报价" />
-				<input type="button" value="免费预约看工地" />
-            </p>
-        </div>
-        <div class="item_part right">
-            <p>业主评分<br /><strong>4.9</strong></p>
-        </div>
-    </li>
-    <?php } } ?>
-</ul>
-<div class="provider_advert">
-    <div class="provider_advert_form">
-        <div class="title_box">
-            <p class="title">免费获取3套方案</p>
-            <p class="subtitle">优质装修公司免费出方案，预算省40%</p></div>
-        <div class="apply_form">
-            <input name="apply_type" type="hidden" value="8" />
-            <input name="name" type="text" placeholder="您的姓名" />
-            <input name="phone" type="text" placeholder="手机号码" />
-            <div class="select-group clearfix js-region-select-group">
-                <select class="js-province" name="province" id="province">
-                    <option value="">省/市</option></select>
-                <select class="js-city" name="city" id="city">
-                    <option value="">市/地区</option></select>
+    <h1>推荐装修公司</h1>
+    <ul class="provider_list">
+        <?php foreach ($infos as $info) { ?>
+    	<li data-provider-id="<?= $info['id']; ?>">
+            <div class="item_part left">
+    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" target="_blank">
+    				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
+                </a>
+                <p>已服务 4200 业主</p>
             </div>
-            <input name="apply" type="button" value="立即预约" /></div>
+            <div class="item_part center">
+                <p class="provider_name">
+    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
+                    <span class="provider_tags">
+                        <i class="icon_new icon1"><span>保障金先行赔付</span></i>
+                        <i class="icon_new icon2"><span>装修施工资质权威认证</span></i>
+                        <i class="icon_new icon3"><span>环保用材，绿色施工</span></i>
+                    </span>
+                </p>
+                <p class="provider_resource">
+                    <span>
+                        <i class="icon_new designer"></i>
+    					<span>实景作品：</span>19个
+                    </span>
+                    <span>
+                        <i class="icon_new operator"></i>
+    					<span>直播工地：</span>1个
+                    </span>
+                </p>
+                <p class="provider_address">
+    			    <i class="icon_new address"></i><?= $info['address']; ?>
+                </p>
+                <p class="provider_operate">
+                    <input type="button" value="免费为我做设计" />
+                    <input type="button" value="免费为我出报价" />
+    				<input type="button" value="免费预约看工地" />
+                </p>
+            </div>
+            <div class="item_part right">
+                <p>业主评分<br /><strong>4.9</strong></p>
+            </div>
+        </li>
+        <?php } ?>
+    </ul>
+    <div class="provider_advert">
+        <div class="provider_advert_form">
+            <div class="title_box">
+                <p class="title">免费获取3套方案</p>
+				<p class="subtitle">优质装修公司免费出方案，预算省40%</p>
+            </div>
+            <div class="apply_form">
+                <input name="apply_type" type="hidden" value="8" />
+                <input name="name" type="text" placeholder="您的姓名" />
+                <input name="phone" type="text" placeholder="手机号码" />
+                <div class="select-group clearfix js-region-select-group">
+                    <select class="js-province" name="province" id="province">
+						<option value="">省/市</option>
+                    </select>
+                    <select class="js-city" name="city" id="city">
+						<option value="">市/地区</option>
+                    </select>
+                </div>
+				<input name="apply" type="button" value="立即预约" />
+            </div>
+        </div>
+        <div class="provider_advert_free">
+            <ul>
+                <li style="background-position: 0 -638px;">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang']); ?>">
+                        <p class="title">免费上门验房</p>
+						<p class="content">资深验房专家上门验房<br>专业仪器检测房屋质量</p>
+                    </a>
+                </li>
+                <li style="background-position: -230px -638px;">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji']); ?>">
+                        <p class="title">免费3套设计方案</p>
+						<p class="content">3套设计方案比较<br>合理规划空间</p>
+                    </a>
+                </li>
+                <li style="background-position: -460px -638px;">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia']); ?>">
+                        <p class="title">免费3份报价清单</p>
+						<p class="content">3份报价清单比较<br>避免价格猫腻</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="provider_advert_free">
-        <ul>
-            <li style="background-position: 0 -638px;">
-                <a href="http://www.tugou.com/free/yanfang/">
-                    <p class="title">免费上门验房</p>
-                    <p class="content">资深验房专家上门验房
-                        <br>专业仪器检测房屋质量</p></a>
-            </li>
-            <li style="background-position: -230px -638px;">
-                <a href="http://www.tugou.com/free/sheji/">
-                    <p class="title">免费3套设计方案</p>
-                    <p class="content">3套设计方案比较
-                        <br>合理规划空间</p></a>
-            </li>
-            <li style="background-position: -460px -638px;">
-                <a href="http://www.tugou.com/free/sheji/">
-                    <p class="title">免费3份报价清单</p>
-                    <p class="content">3份报价清单比较
-                        <br>避免价格猫腻</p></a>
-            </li>
-        </ul>
-    </div>
-</div>
 </div>
 <?php echo $this->render('../common/_pop_mask', []); ?>
 <!--底部-->
