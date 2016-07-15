@@ -73,6 +73,9 @@ return [
 		'merchant' => [
 			'class' => 'backend\merchant\Module',
 		],
+		'spider' => [
+			'class' => 'backend\spider\Module',
+		],
 	],
 	'language' => 'zh-CN',
 

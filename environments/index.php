@@ -8,6 +8,7 @@ return [
             'gallerycms/runtime',
             'spread/runtime',
             'merchant/runtime',
+            'spider/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -18,6 +19,7 @@ return [
             'gallerycms/config/main-local.php',
             'spread/config/main-local.php',
             'merchant/config/main-local.php',
+            'spider/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -27,6 +29,7 @@ return [
             'gallerycms/runtime',
             'spread/runtime',
             'merchant/runtime',
+            'spider/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -36,6 +39,7 @@ return [
             'gallerycms/config/main-local.php',
             'spread/config/main-local.php',
             'merchant/config/main-local.php',
+            'spider/config/main-local.php',
         ],
     ],
 ];
