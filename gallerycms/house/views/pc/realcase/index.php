@@ -28,13 +28,13 @@ $this->params['friendLink'] = true;
         <div class="pd-realcase active">
             <div class="pd-rc-case">
                 <div class="pd-showcase">
-                    <?php for ($i = 1; $i < 5; $i++) { foreach ($infos as $info) { ?>
+                    <?php foreach ($infos as $info) { ?>
 					<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>" target="_blank">
                         <div class="case-item">
 							<div><img class="case-img" src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>"></div>
                             <div class="ch-case-footer">
                                 <div class="ch-left">
-								    <p class="ch-case-title"><?= $info['name']; ?></p>
+								    <p class="ch-case-title"><?= $info['community_name']; ?></p>
                                     <p class="ch-case-info">
                                         <span role="construction">别墅</span>
                                         <span role="style">美式</span>
@@ -47,7 +47,7 @@ $this->params['friendLink'] = true;
                             </div>
                         </div>
                     </a>
-                    <?php } } ?>
+                    <?php } ?>
                 </div>
                 <div class="page">
                     <p>

@@ -32,7 +32,7 @@ $this->params['friendLink'] = true;
     		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" target="_blank">
     				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
                 </a>
-                <p>已服务 4200 业主</p>
+				<p>已服务 <?= $info['num_owner']; ?> 业主</p>
             </div>
             <div class="item_part center">
                 <p class="provider_name">
@@ -46,11 +46,11 @@ $this->params['friendLink'] = true;
                 <p class="provider_resource">
                     <span>
                         <i class="icon_new designer"></i>
-    					<span>实景作品：</span>19个
+						<span>实景作品：</span><?= $info['num_realcase']; ?>个
                     </span>
                     <span>
                         <i class="icon_new operator"></i>
-    					<span>直播工地：</span>1个
+						<span>直播工地：</span><?= $info['num_working']; ?>个
                     </span>
                 </p>
                 <p class="provider_address">
