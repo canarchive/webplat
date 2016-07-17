@@ -34,8 +34,8 @@ class WorkingStatus extends MerchantModel
     public function rules()
     {
         return [
-            [['working_id'], 'required'],
-			[['status'], 'default', 'value' => ''],
+            [['name', 'working_id'], 'required'],
+			[['status', 'start_time'], 'default', 'value' => ''],
 			[['picture_living', 'description'], 'safe'],
         ];
     }
@@ -86,7 +86,8 @@ class WorkingStatus extends MerchantModel
 
 	public function getInfos($where, $limit = 100)
 	{
-		$infos = $this->find()->where($where)->indexBy('status')->limit($limit)->all();
+		$return = [];
+		$infos = $this->find()->where($where)->indexBy('id')->limit($limit)->all();
 		foreach ($infos as $info) {
             $condition = [ 
                 'info_table' => 'working_status',
@@ -105,8 +106,9 @@ class WorkingStatus extends MerchantModel
                 ];  
             }    
             $info->picture_living = $livingInfos;
+			$return[$info['status']][] = $info;
 		}
 
-		return $infos;
+		return $return;
 	}
 }

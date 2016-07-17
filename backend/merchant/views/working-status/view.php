@@ -8,6 +8,8 @@ $detailViewParams = [
 			'attribute' => 'working_id',
 			'value' => $model->workingInfos[$model->working_id],
 		],
+		'name',
+		'start_time',
 		[
 			'attribute' => 'status',
 			'value' => $model->statusInfos[$model->status],
