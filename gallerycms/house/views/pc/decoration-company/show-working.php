@@ -62,19 +62,21 @@ $statusDatas = $info->statusDatas;
 							<a><?= $statusValue; ?></a>
                         </div>
                     </div>
+                    <?php foreach ($statusData as $sData) { ?>
                     <div step-sequence="0" class="step-case">
                         <div class="pd-subtitle">
                             <span class="icon-point"></span>
-							<a role="substep"><?= $statusData['id']; ?></a>
-							<a role="time"><?= date('Y-m-d', $statusData['created_at']); ?></a>
+							<a role="substep"><?= $sData['name']; ?></a>
+							<a role="time"><?= $sData['start_time']; ?></a>
                         </div>
                         <div class="pd-img-list">
-                            <?php foreach ($statusData['picture_living'] as $living) { ?>
+                            <?php foreach ($sData['picture_living'] as $living) { ?>
 							<img src="<?= $living['url']; ?>" alt="施工图片">
                             <?php } ?>
                         </div>
-						<p class="pd-step-desc"><?= $statusData['description']; ?></p>
+						<p class="pd-step-desc"><?= $sData['description']; ?></p>
                     </div>
+                    <?php } ?>
                 </div>
                 <?php $i++; } ?>
             </div>
