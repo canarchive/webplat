@@ -49,7 +49,7 @@ $this->params['showPage'] = true;
 					<a class="pd-current-cnt"><?= count($workingInfos); ?></a>
                 </p>
             </div>
-			<p class="pd-introduction">打造全环保精装品牌，浙江省连续10年环保抽检合格！</p>
+			<p class="pd-introduction"><?= $info['brief']; ?></p>
         </div>
         <div class="pd-hh-cert">
             <p class="pd-hc-item"><span class="pd-icon pd-icon-bao"></span>保障金先行赔付</p>
