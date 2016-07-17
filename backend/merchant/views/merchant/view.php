@@ -18,10 +18,6 @@ $detailViewParams = [
 			'attribute' => 'sort',
 			'value' => $model->sortInfos[$model->sort],
 		],
-		[
-			'attribute' => 'category_id',
-			'value' => $model->categoryInfos[$model->category_id],
-		],
         'hotline',
 		'postcode',
 		'address',
