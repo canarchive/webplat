@@ -11,6 +11,8 @@ $gridViewParams = [
 				return $model->workingInfos[$model->working_id];
 			},
 		],
+		'name',
+		'start_time',
 		[
             'attribute' => 'created_at',
             'value'=> function($model){

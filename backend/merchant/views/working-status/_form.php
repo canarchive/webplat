@@ -15,7 +15,14 @@ $pictureLiving = $attachmentModel->getFieldInfos('working_status', 'picture_livi
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'working_id')->dropDownList($model->workingInfos, ['prompt' => Yii::t('admin-common', 'Select Working')]); ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
+    <?= $form->field($model, 'start_time')->textInput(); ?>
+    <script type="text/javascript">
+        $(function () {
+            $('#workingstatus-start_time').datetimepicker({locale: 'zh-CN', format: 'YYYY-MM-DD'});
+        });
+    </script>
     <?= $form->field($model, 'picture_living')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
