@@ -3,11 +3,17 @@
 namespace common\models;
 
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use common\helpers\Tree;
 
 class BaseModel extends ActiveRecord
 {
+	/**
+	 * 附件类型的字段信息更新时，是否删除旧的附件，默认删除
+	 */
+	public $deleteAttachment = true;
+
 	protected function getTimestampBehaviorComponent($createField = 'created_at', $updateField = 'updated_at')
 	{
         return [
@@ -130,6 +136,7 @@ class BaseModel extends ActiveRecord
 			$info->getUrl();
 			$optionsDefault = [
 				'style' => ['width' => '80px', 'height' => '40px'],
+				'onclick' => 'window.open(this.src);',
 			];
 			$options = $pointSize && empty($options) ? $optionsDefault : $options;
             return \Yii::$app->formatter->asImage($info->getUrl(), $options);
@@ -147,50 +154,117 @@ class BaseModel extends ActiveRecord
 	protected function getAttachmentModel()
 	{}
 
-	protected function _updateSingleAttachment($attachment, $table, $fields)
+	protected function _updateSingleAttachment($table, $fields, $extData = [])
 	{
+		$attachment = $this->getAttachmentModel();
 		foreach ($fields as $field) {
-			$info = $attachment->findOne($this->$field);
-			if (!empty($info)) {
-    			$info->info_id = $this->id;
-    			$info->in_use = 1;
-    		    $info->noFile = true;
-    			$info->update(false);
-			}
+			$attachment->updateInfo($this->$field, $this->id, $extData);
 
-			$infos = $attachment->find()->where(['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id])->all();
-			foreach ($infos as $info) {
-				if ($info->id == $this->$field) {
-					continue;
-				}
-				$info->delete();
-			}
+			$where = ['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id];
+			$this->deleteAttachment && $attachment->deleteInfo($where, $this->$field);
 		}
 
 		return ;
 	}
 
-	protected function _updateMulAttachment($attachment, $table, $field)
+	protected function _updateMulAttachment($table, $field, $extData = [])
 	{
+		$attachment = $this->getAttachmentModel();
 		$ids = array_filter(explode(',', $this->$field));
 		foreach ($ids as $id) {
-			$info = $attachment->findOne($id);
-			if (!empty($info)) {
-    			$info->info_id = $this->id;
-    			$info->in_use = 1;
-    		    $info->noFile = true;
-    			$info->update(false);
-			}
+			$attachment->updateInfo($id, $this->id, $extData);
 		}
 
-		$infos = $attachment->find()->where(['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id])->all();
-		foreach ($infos as $info) {
-			if (in_array($info->id, $ids)) {
-				continue;
-			}
-			$info->delete();
-		}
+		$where = ['info_table' => $table, 'info_field' => $field, 'info_id' => $this->id];
+		$this->deleteAttachment && $attachment->deleteInfo($where, $ids);
 
 		return ;
 	}	
+
+	public function checkMobile($mobile)
+	{
+		$validator = new \common\validators\MobileValidator();
+		$valid =  $validator->validate($mobile);
+		if (empty($valid)) {
+			return ['status' => 400, 'message' => '手机号码格式有误'];
+		}
+
+		return true;
+	}
+
+	/**
+	 * 验证邮箱格式
+	 *
+	 * @param $email string
+	 * @return boolean
+	 */
+	public function checkEmail($email)
+	{
+		$validator = new \yii\validators\EmailValidator();
+		$valid =  $validator->validate($email);
+		if (empty($valid)) {
+			return ['status' => 400, 'message' => '邮箱有误'];
+		}
+
+		return true;
+	}
+
+	/**
+	 * 获取省级地区信息
+	 *
+	 * @param $haveSub 是否返回地区的辖区信息
+	 * @return array
+	 */
+	public function getRegionSubInfos($parentCode = '')
+	{
+		$region = new \common\models\Region();
+		$datas = $region->getSubInfos($parentCode, false);
+        $datas = ArrayHelper::map($datas, 'code', 'name');
+
+		return $datas;
+	}
+
+	public function getRegionInfo($code = '')
+	{
+		$region = new \common\models\Region();
+		$info = $region->getInfoByCode($code);
+
+		return $info;
+	}
+
+	public function getHouseTypeInfos()
+	{
+		$datas = [
+			'one' => '一居',
+			'two' => '二居',
+			'three' => '三居',
+			'four' => '四居',
+			'solo' => '小户型',
+			'lodging' => '公寓',
+			'double' => '复式',
+			'villa' => '别墅',
+		];
+
+		return $datas;
+	}
+
+	public function getStyleInfos()
+	{
+		$datas = [
+			'simple' => '简约',
+			'modern' => '现代',
+			'EN' => '欧式',
+			'CN' => '中式',
+			'rural' => '田园',
+			'mediterranean' => '地中海',
+			'US' => '美式',
+			'mashup' => '混搭',
+			'family' => '宜家',
+			'simple-EN' => '简欧',
+			'new-classics' => '新古典',
+			'SE-asia' => '东南亚',
+		];
+
+		return $datas;
+	}
 }

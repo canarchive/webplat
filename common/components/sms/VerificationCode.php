@@ -90,7 +90,7 @@ class VerificationCode extends \yii\base\Object
 		}
 
 		$expire = isset($configInfo['expire']) ? $configInfo['expire'] : 300;
-		if ($this->currentTime > $info['createdAt'] + $expire) {
+		if ($this->currentTime > $info['updatedAt'] + $expire) {
 			return 'SMS_SEND_EXPIRE';
 		}
 		return true;

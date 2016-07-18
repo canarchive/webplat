@@ -22,7 +22,7 @@ class Controller extends YiiController
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => 'common\components\ErrorAction',
                 'view' => '@common/views/common/error',
             ],
         ];
@@ -35,23 +35,25 @@ class Controller extends YiiController
 
     protected function clientIsMobile()
     {
-        $forceMobile = \Yii::$app->getRequest()->get('force_mobile');
+        $forceMobile = Yii::$app->getRequest()->get('force_mobile');
 		if ($forceMobile) {
+			Yii::$app->params['clientIsMobile'] = $forceMobile;
 			return $forceMobile;
 		}
 
 		//return false;
         $detect = new \Mobile_Detect;
         $isMobile = $detect->isMobile();
+		Yii::$app->params['clientIsMobile'] = $isMobile;
 
         return $isMobile;
     }
 
 	public function beforeAction($action)
 	{
-		$spread = \Yii::getAlias('@spread', false);
-		$channel = \Yii::$app->getRequest()->get('channel');
-		$method = \Yii::$app->getRequest()->method;
+		$spread = Yii::getAlias('@spread', false);
+		$channel = Yii::$app->getRequest()->get('channel');
+		$method = Yii::$app->getRequest()->method;
 		$isMobile = $this->clientIsMobile();
 		if ($spread && $channel && $method == 'GET') {
 			$visit = new \spread\models\Visit();
@@ -59,5 +61,13 @@ class Controller extends YiiController
 		}
 
         return parent::beforeAction($action);
+	}
+
+	public function getSiteInfos()
+	{
+		$infoModel = new \shoot\info\models\Info();
+		$infos = $infoModel->getInfos();
+
+		return $infos;
 	}
 }
