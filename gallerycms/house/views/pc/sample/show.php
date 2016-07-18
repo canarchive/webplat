@@ -17,7 +17,6 @@ $this->params['friendLink'] = true;
 //'个性混搭工业风时尚一居设计装潢案例';
 //'兔狗装修效果图专区,为您提供国内外专业全面的个性混搭工业风时尚一居设计装潢案例,涵盖最流行的个性混搭工业风时尚一居设计装潢案例大全、案例,找装修图,上兔狗家装。';
 
-$info = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
 $this->params['showPage'] = true;
 ?>
 
@@ -33,7 +32,7 @@ $(function() {
         <div class="main">
             <div class="topic">
                 <div class="crumbs">
-                    <a href="/">装修网</a><span class="sep">&gt;</span>
+                    <a href="/">首页</a><span class="sep">&gt;</span>
 					<a href="<?= Url::to(['/house/sample/index']); ?>">装修案例</a><span class="sep">&gt;</span>
 					<em><h1><?= $info['name']; ?></h1></em>
                 </div>
@@ -83,11 +82,14 @@ $(function() {
                                 <input class="inptxt" name="phone" type="text" placeholder="手机号码" />
                                 <div class="select-group clearfix js-region-select-group">
                                     <select class="js-province" name="province" id="province">
-                                        <option value="">省/市</option></select>
+										<option value="">省/市</option>
+                                    </select>
                                     <select class="js-city" name="city" id="city">
-                                        <option value="">市/地区</option></select>
+										<option value="">市/地区</option>
+                                    </select>
                                 </div>
-                                <input class="btn" name="apply" type="button" value="立即获取" /></div>
+								<input class="btn" name="apply" type="button" value="立即获取" />
+                            </div>
                         </div>
                         <div class="aside-example">
                             <h3>相关案例</h3>
@@ -175,17 +177,23 @@ $(function() {
             <input class="inptxt" name="phone" type="text" placeholder="手机号码" />
             <div class="select-group clearfix js-region-select-group">
                 <select class="js-province" name="province" id="province">
-                    <option value="">省/市</option></select>
+					<option value="">省/市</option>
+                </select>
                 <select class="js-city" name="city" id="city">
-                    <option value="">市/地区</option></select>
+					<option value="">市/地区</option>
+                </select>
             </div>
             <input class="btn" name="apply" type="button" value="立即预约" />
-            <!--<p style="line-height: 20px; color: #999;">注：每户业主可同时获取3份设计比较，挑选适合方案后个性化修改</p>--></div>
-        <a class="btn-popclose" href="javascript:;" onclick="hidePopMask($('.pop'));">关闭</a></div>
+			<!--<p style="line-height: 20px; color: #999;">注：每户业主可同时获取3份设计比较，挑选适合方案后个性化修改</p>-->
+        </div>
+		<a class="btn-popclose" href="javascript:;" onclick="hidePopMask($('.pop'));">关闭</a>
+    </div>
 </div>
-<script type="text/javascript">$(function() {
+<script type="text/javascript">
+$(function() {
         bindPopupForm($('.handler a'));
-    })</script>
+})
+</script>
 <script type="text/javascript" src="http://static.tugou.com/js/ga.js"></script>
 <script type="text/javascript" src="http://static.tugou.com/js/nav.js"></script>
 <style type="text/css">
@@ -515,5 +523,6 @@ $(function() {
         }
         var suitId = SuitListData[targetIndex].suitid;
         window.location.href = 'http://meitu.tugou.com/s' + suitId + '.html';
-    }</script>
+	}
+</script>
 <script type="text/javascript" src="http://static.tugou.com/js/meitu/detail.js"></script>

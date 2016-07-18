@@ -30,10 +30,8 @@ $(function() {
     <div class="cont">
         <div class="main">
             <div class="crumbs">
-                <a href="/">装修效果图</a>
-                <span class="sep">&gt;</span>
-                <a href="/case/">装修案例</a>
-				<span class="sep last">&gt;</span>
+                <a href="/">首页</a><span class="sep">&gt;</span>
+				<a href="<?= Url::to(['/house/sample/index']); ?>">装修案例</a><span class="sep last">&gt;</span>
             </div>
             <div class="filter">
                 <dl class="filterlist filterlist-first clearfix">
@@ -184,7 +182,7 @@ $(function() {
             </div>
             <div class="showlist">
                 <ul class="showlist-ul clearfix">
-                    <?php for ($i = 1; $i < 5; $i++) { foreach ($infos as $info) { ?>
+                    <?php foreach ($infos as $info) { ?>
                     <li>
                         <div class="pictxtbox">
                             <div class="ptx-img">
@@ -205,7 +203,7 @@ $(function() {
                             </div>
                         </div>
                     </li>
-                    <?php } } ?>
+                    <?php } ?>
                 </ul>
             </div>
             <!--<div class="page">

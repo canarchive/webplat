@@ -1,11 +1,11 @@
 <?php
 
-namespace gallerycms\models\searchs;
+namespace gallerycms\house\models\searchs;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use gallerycms\models\HouseCommunity as HouseCommunityModel;
+use gallerycms\house\models\HouseCommunity as HouseCommunityModel;
 
 class HouseCommunity extends HouseCommunityModel
 {

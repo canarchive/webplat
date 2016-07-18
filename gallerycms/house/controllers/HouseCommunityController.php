@@ -4,13 +4,13 @@ namespace gallerycms\house\controllers;
 
 use Yii;
 use gallerycms\components\HouseController;
-use merchant\models\Realcase;
+use gallerycms\house\models\HouseCommunity;
 
-class RealcaseController extends HouseController
+class HouseCommunityController extends HouseController
 {
 	public function actionIndex()
 	{
-		$model = new Realcase();
+		$model = new HouseCommunity();
 		$infos = $model->getInfos([]);
 		$datas = [
 			'infos' => $infos,
@@ -21,7 +21,7 @@ class RealcaseController extends HouseController
 	public function actionShow()
 	{
         $id = \Yii::$app->getRequest()->get('id');
-        $model = new Realcase();
+        $model = new HouseCommunity();
 		$info = $model->getInfo($id);
 		if (empty($info)) {
             return $this->redirect('/')->send();
