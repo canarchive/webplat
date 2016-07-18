@@ -1,12 +1,14 @@
 <?php
 
-namespace gallerycms\models;
+namespace gallerycms\house\models;
 
 use common\models\GallerycmsModel;
 use yii\helpers\ArrayHelper;
 
 class HouseCommunity extends GallerycmsModel
 {
+	public $region_level1;
+	public $picture;
     /**
      * @inheritdoc
      */
@@ -18,12 +20,23 @@ class HouseCommunity extends GallerycmsModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['name', 'category_id'], 'required'],
+            [['name', 'region_code'], 'required'],
             [['orderlist', 'thumb', 'status'], 'default', 'value' => 0],
-			[['description', 'content', 'keywords', 'url', 'editor', 'copyfrom', 'template'], 'safe'],
+			[['code', 'region_level1', 'house_type', 'price_average', 'build_time', 'property_fee', 'property_company', 'developer', 'plot_ratio', 'greening_rate', 'building_num', 'house_num', 'picture', 'description',], 'safe'],
         ];
     }
 
@@ -34,40 +47,29 @@ class HouseCommunity extends GallerycmsModel
     {
         return [
             'id' => '文章ID',
-            'category_id' => '栏目ID',
-            'name' => '标题',
-            'thumb' => '缩略图',
-            'keywords' => '关键字',
-            'description' => '描述',
-            'url' => '访问地址',
-            'orderlist' => '排序',
-            'editor' => '编辑',
-            'copyfrom' => '来源',
-            'content' => '内容',
-            'template' => '使用模板',
+			'code' => '代码',
+			'region_level1' => '省级地区',
+			'region_code' => '地区代码',
+			'name' => '名称',
+			'thumb' => '缩略图',
+			'house_type' => '户型',
+			'orderlist' => '排序',
+			'price_average' => '均价',
+			'build_time' => '建筑年代',
+			'property_fee' => '物业费',
+			'property_company' => '物业公司',
+			'developer' => '开发商',
+			'plot_ratio' => '容积率',
+			'greening_rate' => '绿化率',
+			'building_num' => '楼栋总数',
+			'house_num' => '房屋总数',
+			'picture' => '图片',
             'created_at' => '录入时间',
             'updated_at' => '更新时间',
             'status' => '状态',
+			'description' => '描述',
         ];
     }
-
-	/**
-	 * Get tree list for select
-	 *
-	 * @return array
-	 */
-	public function getCategoryLevelInfos()
-	{
-    	$infos = ArticleCategory::find()->select(['id', 'name', 'parent_id'])->indexBy('id')->asArray()->all();
-		$datas = $this->getLevelInfos($infos, 'id', 'parent_id', 'name', 0);
-		return $datas;
-	}	
-
-	public function getCategoryInfos()
-	{
-		$infos = ArrayHelper::map(\gallerycms\models\ArticleCategory::find()->all(), 'id', 'name');
-		return $infos;
-	}
 
 	public function getStatusInfos()
 	{
@@ -83,8 +85,47 @@ class HouseCommunity extends GallerycmsModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['thumb'];
-		$this->_updateSingleAttachment('article', $fields);
+		$this->_updateSingleAttachment('house_community', $fields);
+		$this->_updateMulAttachment('house_community', 'picture');
 
 		return true;
 	}	
+
+	public function getInfo($id)
+	{
+		$info = static::find()->where(['id' => $id])->one();//->toArray();
+		if (empty($info)) {
+			return $info;
+		}
+
+		$info = $this->_formatInfo($info);
+
+        //\Yii::$app->cacheRedis->set($key, $info);
+		return $info;
+	}
+
+	protected function _formatInfo($info)
+	{
+		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
+
+        $condition = [ 
+            'info_table' => 'house_community',
+            'info_field' => 'picture',
+            'info_id' => $info->id,
+            'in_use' => 1,
+        ];  
+        $infos = $this->getAttachmentModel()->find()->where($condition)->orderBy(['orderlist' => SORT_DESC])->all();
+        $pictureInfos = []; 
+        foreach ($infos as $attachment) {
+            $url = $attachment->getUrl();
+            $pictureInfos[] = [ 
+                'url' => $url,
+                'name' => $attachment['filename'],
+                'description' => $attachment['description'],
+            ];  
+        }    
+        $info->picture = $pictureInfos;
+
+		return $info;
+	}
 }

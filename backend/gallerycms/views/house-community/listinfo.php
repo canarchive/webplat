@@ -1,32 +1,26 @@
 <?php
+use yii\helpers\Url;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
+		[
+			'format' => 'raw',
+			'attribute' => 'name',
+			'value' => function($model) {
+				$url = Yii::getAlias('@gallerycmsurl') . Url::to(['/house-community/show', 'id' => $model->id]);
+				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
+			},
+		],
 		'name',
-		[
-			'attribute' => 'type',
-			'value' => function($model) {
-				if (!empty($model->type)) {
-					return $model->typeInfos[$model->type];
-				}
-				return '';
-			},
-		],
+		'house_type',
 		[
 			'format' => 'raw',
-			'attribute' => 'url',
+			'attribute' => 'thumb',
 			'value' => function($model) {
-				return "<a href='{$model->url}' target='_blank'>{$model->url}</a>";
-			},
-		],
-		[
-			'format' => 'raw',
-			'attribute' => 'picture',
-			'value' => function($model) {
-				return $model->getAttachmentImg($model->picture);
+				return $model->getAttachmentImg($model->thumb);
 			}
 		],
         [   

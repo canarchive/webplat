@@ -3,14 +3,14 @@
 namespace backend\gallerycms\controllers;
 
 use Yii;
-use gallerycms\models\HouseCommunity;
-use gallerycms\models\searchs\HouseCommunity as HouseCommunitySearch;
+use gallerycms\house\models\HouseCommunity;
+use gallerycms\house\models\searchs\HouseCommunity as HouseCommunitySearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class HouseCommunityController extends AdminController
 {
-	protected $modelClass = 'gallerycms\models\HouseCommunity';
+	protected $modelClass = 'gallerycms\house\models\HouseCommunity';
 
     public function actionListinfo()
     {
