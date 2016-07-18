@@ -13,6 +13,8 @@ class Realcase extends MerchantModel
 {
 	public $design_sketch;
 	public $serviceInfo;
+	public $merchantInfo;
+	public $pictureDesignInfo;
     
     /**
      * @inheritdoc
@@ -92,6 +94,55 @@ class Realcase extends MerchantModel
 
 		return true;
 	}	
+
+	public function getInfo($id)
+	{
+		$info = static::find()->where(['id' => $id])->one();//->toArray();
+		if (empty($info)) {
+			return $info;
+		}
+
+		$info = $this->_formatInfo($info);
+		return $info;
+	}
+
+	protected function _formatInfo($info)
+	{
+		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
+		//$info['picture_design'] = $info->getAttachmentUrl($info['picture_design']);
+		$info['merchantInfo'] = Company::findOne($info['merchant_id'])->toArray();
+
+		$serviceModel = new CustomService();
+		$pictureDesign = $this->getAttachmentModel()->findOne($info['picture_design']);
+		if (!empty($pictureDesign)) {
+			$info['picture_design'] = $pictureDesign->getUrl();
+		}
+		$info['pictureDesignInfo'] = $pictureDesign;
+		$info['house_type'] = $info->houseTypeInfos[$info->house_type];
+		$info['style'] = $info->styleInfos[$info->style];
+		$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
+		$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
+
+        $condition = [ 
+            'info_table' => 'realcase',
+            'info_field' => 'design_sketch',
+            'info_id' => $info->id,
+            'in_use' => 1,
+        ];  
+        $infos = $this->getAttachmentModel()->find()->where($condition)->orderBy(['orderlist' => SORT_DESC])->all();
+        $designSketchInfos = []; 
+        foreach ($infos as $attachment) {
+            $url = $attachment->getUrl();
+            $designSketchInfos[] = [ 
+                'url' => $url,
+                'name' => $attachment['filename'],
+                'description' => $attachment['description'],
+            ];  
+        }    
+        $info->design_sketch = $designSketchInfos;
+
+		return $info;
+	}
 
 	public function getInfos($where, $limit = 100)
 	{
