@@ -14,7 +14,6 @@ $gridViewParams = [
 				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
 			},
 		],
-		'name',
 		'house_type',
 		[
 			'format' => 'raw',
