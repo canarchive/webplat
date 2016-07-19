@@ -110,7 +110,7 @@ class Realcase extends MerchantModel
 	{
 		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
 		//$info['picture_design'] = $info->getAttachmentUrl($info['picture_design']);
-		$info['merchantInfo'] = Company::findOne($info['merchant_id'])->toArray();
+		$info['merchantInfo'] = Merchant::findOne($info['merchant_id'])->toArray();
 
 		$serviceModel = new CustomService();
 		$pictureDesign = $this->getAttachmentModel()->findOne($info['picture_design']);

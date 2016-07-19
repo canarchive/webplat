@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
@@ -6,9 +7,11 @@ $gridViewParams = [
     'columns' => [
         'id',
 		[
+			'format' => 'raw',
             'attribute' => 'working_id',
 			'value' => function($model) {
-				return $model->workingInfos[$model->working_id];
+				$url = Yii::getAlias('@gallerycmsurl') . Url::to(['/decoration-company/show-working', 'id' => $model->working_id]);
+				return "<a href='{$url}' target='_blank'>{$model->workingInfos[$model->working_id]}</a>";
 			},
 		],
 		'name',
