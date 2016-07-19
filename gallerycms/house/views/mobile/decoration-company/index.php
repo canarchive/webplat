@@ -25,7 +25,7 @@ $this->params['jsFiles'] = [
             </div>
             <div class="listContent">
                 <div class="nameAndimg">
-                    <span class="companyName">南鸿装饰</span>
+				    <span class="companyName"><?= $info['name']; ?></span>
 					<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/bao.png" alt="" class="companyIcon" />
 					<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/zheng.png" alt="" class="companyIcon" />
 					<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/huan.png" alt="" class="companyIcon" />

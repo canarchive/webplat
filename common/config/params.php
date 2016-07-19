@@ -16,4 +16,5 @@ return [
 	'siteIcpInfo' => '网站备案号 京ICP备15002642号-3',
 	'siteHotline' => '400-6218-718',	
 	'siteJoinusTel' => '400-6218-719',	
+	'siteInfoName' => '家装团购会',
 ];
