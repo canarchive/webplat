@@ -35,6 +35,7 @@ return [
 				'/ts-<view:\w+>' => '/house/feature/index',
 				'/' => '/house/site/home', 
 				'/meitu' => '/house/sample/index',
+				'/meitu-<house_type:\w*>-<style:\w*>' => '/house/sample/filter',
 				'/mt-<id:\d+>' => '/house/sample/show',
 				'/shangjia' => '/house/decoration-company/index',
 				'/sj-<id:\d+>' => '/house/decoration-company/show',
