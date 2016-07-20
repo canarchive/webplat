@@ -13,9 +13,6 @@ $this->params['jsFiles'] = [
 ];
 $this->params['friendLink'] = true;
 
-//'之江九里四室两厅欧式半包12万-云格装饰';
-//'四室两厅欧式-云格装饰';
-//'四室两厅欧式 由云格装饰负责设计施工，四室两厅欧式 每一处的装修细节都是经过云格装饰细心设计和施工的。装修选择云格装饰，就是选择放心!';
 $this->params['showPage'] = true;
 $merchantInfo = $info->merchantInfo;
 ?>

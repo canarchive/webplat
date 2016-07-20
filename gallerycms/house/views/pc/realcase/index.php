@@ -14,9 +14,6 @@ $this->params['jsFiles'] = [
 ];
 $this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
-//'【装修案例】装修实景案例大全|兔狗家装';
-//'装修案例 , 装修实景案例大全 , 兔狗家装';
-//'装修案例大全由兔狗家装提供，装修实景案例效果图中每一个装修案例都是装修公司的良心作品。装修选择兔狗家装，就是选择更多优质装修公司!';
 ?>
 <div class="banner">
 	<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/case_banner.jpg">

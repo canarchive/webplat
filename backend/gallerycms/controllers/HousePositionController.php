@@ -3,14 +3,14 @@
 namespace backend\gallerycms\controllers;
 
 use Yii;
-use gallerycms\models\HousePosition;
-use gallerycms\models\searchs\HousePosition as HousePositionSearch;
+use gallerycms\house\models\HousePosition;
+use gallerycms\house\models\searchs\HousePosition as HousePositionSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class HousePositionController extends AdminController
 {
-	protected $modelClass = 'gallerycms\models\HousePosition';
+	protected $modelClass = 'gallerycms\house\models\HousePosition';
 
     public function actionListinfo()
     {

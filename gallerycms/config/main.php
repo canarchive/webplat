@@ -34,6 +34,13 @@ return [
             'rules' => [
 				'/ts-<view:\w+>' => '/house/feature/index',
 				'/' => '/house/site/home', 
+				'/meitu' => '/house/sample/index',
+				'/mt-<id:\d+>' => '/house/sample/show',
+				'/shangjia' => '/house/decoration-company/index',
+				'/sj-<id:\d+>' => '/house/decoration-company/show',
+				'/gd-<id:\d+>' => '/house/decoration-company/show-working',
+				'/shijing' => '/house/realcase/index',
+				'/shj-<id:\d+>' => '/house/realcase/show',
 				'/<company_code:\w*>' => '/house/site/index', 
 				'/<_q:.*>' => '/house/<_q>', 
             ],
