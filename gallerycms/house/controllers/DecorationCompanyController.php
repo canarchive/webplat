@@ -16,6 +16,14 @@ class DecorationCompanyController extends HouseController
 		$datas = [
 			'infos' => $infos,
 		];
+
+		$tdkInfos = [
+			'title' => '{{CITYNAME}}装修公司_{{CITYNAME}}装修公司大全|排名 - {{CITYNAME}}{{SITENAME}}装修网',
+            'keyword' => '{{CITYNAME}}装修公司,{{CITYNAME}}装修公司大全,{{CITYNAME}}装修公司排名',
+			'description' => '{{SITENAME}}{{CITYNAME}}装修网是一家致力于为广大{{CITYNAME}}业主提供家装、家居、建材等装修服务的家装平台,专业正规{{CITYNAME}}装修公司推荐,帮助{{CITYNAME}}业主轻松搞定装修!',
+		];
+		Yii::$app->params['tdkInfos'] = $tdkInfos;
+
 		return $this->render('index', $datas);
 	}
 
@@ -25,6 +33,12 @@ class DecorationCompanyController extends HouseController
         if (empty($datas)) {
             return $this->redirect('/')->send();
         }
+		$tdkInfos = [
+			'title' => "{$datas['info']['name']}|{{CITYNAME}}{$datas['info']['name']}公司-{{CITYNAME}}{{SITENAME}}官网",
+            'keyword' => "{$datas['info']['name']},{$datas['info']['name']}公司,{{CITYNAME}}{{SITENAME}}官网",
+            'description' => "{$datas['info']['name']}是{{CITYNAME}}{{SITENAME}}官网提供的装修设计公司。{$datas['info']['name']}免费为广大{{CITYNAME}}业主提供专业的验房、设计、监理服务。了解{$datas['info']['name']}怎么样？速上{{CITYNAME}}{{SITENAME}}官网！",
+		];
+		Yii::$app->params['tdkInfos'] = $tdkInfos;
 
 		return $this->render('show', $datas);
 	}
@@ -37,6 +51,13 @@ class DecorationCompanyController extends HouseController
 		if (empty($info)) {
             return $this->redirect('/')->send();
 		}
+
+		$tdkInfos = [
+            'title' => "{{CITYNAME}}{$info['name']}-{$info['merchantInfo']['name']}",
+            'keyword' => "{{CITYNAME}}{$info['name']},{$info['merchantInfo']['name']}",
+            'description' => "【南鸿】浙江南鸿装饰股份有限公司提供{{CITYNAME}}{$info['name']}装修施工的每个细节，{{CITYNAME}}业主可以清楚知道装修的每个环节。装修施工选择{$info['merchantInfo']['name']}，就是选择放心! ",
+		];
+		Yii::$app->params['tdkInfos'] = $tdkInfos;
 
 		$datas = [
 			'info' => $info,

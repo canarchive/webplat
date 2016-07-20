@@ -1,5 +1,5 @@
 <div class="service line-bg">
-    <h3>为什么选择<?= Yii::$app->params['siteInfoName']; ?></h3>
+    <h3>为什么选择<?= Yii::$app->params['siteName']; ?></h3>
     <p>八大无忧保障，装修更放心！</p>
     <div class="items padTop35">
         <a class="item1" href="javascript:void(0)">精选优质<br/>装修公司</a>

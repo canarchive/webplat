@@ -13,9 +13,6 @@ $this->params['jsFiles'] = [
 ];
 $this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
-//'杭州装修公司_杭州装修公司大全|排名 -兔狗杭州装修网';
-//'杭州装修公司,杭州装修公司大全,杭州装修公司排名';
-//'兔狗杭州装修网是一家致力于为广大杭州业主提供家装、家居、建材等装修服务的家装平台,专业正规杭州装修公司推荐,帮助杭州业主轻松搞定装修!';
 
 ?>
 <script type="text/javascript">$(function() {

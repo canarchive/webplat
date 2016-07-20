@@ -13,9 +13,6 @@ $this->params['jsFiles'] = [
 ];
 $this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
-//'个性混搭工业风时尚一居设计装潢案例-兔狗装修效果图';
-//'个性混搭工业风时尚一居设计装潢案例';
-//'兔狗装修效果图专区,为您提供国内外专业全面的个性混搭工业风时尚一居设计装潢案例,涵盖最流行的个性混搭工业风时尚一居设计装潢案例大全、案例,找装修图,上兔狗家装。';
 
 $this->params['showPage'] = true;
 ?>

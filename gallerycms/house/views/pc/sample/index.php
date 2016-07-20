@@ -13,9 +13,6 @@ $this->params['jsFiles'] = [
 ];
 $this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
-//'【装修案例效果图】装修案例图片_装修设计案例-兔狗装修效果图';
-//'装修案例效果图,装修案例图片,装修设计案例';
-//'兔狗装修案例效果图专区,提供最新装修案例图片,装修设计案例包括简约,现代,中式,欧式,美式,田园等装修效果图';
 ?>
 <style rel="stylesheet">
 .page_header img, .page_footer img { display: inline; } 

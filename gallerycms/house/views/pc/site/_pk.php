@@ -1,9 +1,9 @@
 <div class="line-bg PK">
-    <h3><?= Yii::$app->params['siteInfoName']; ?>PK传统装修</h3>
+    <h3><?= Yii::$app->params['siteName']; ?>PK传统装修</h3>
     <table class="cont marTop35">
         <thead>
             <tr>
-			    <th><?= Yii::$app->params['siteInfoName']; ?></th>
+			    <th><?= Yii::$app->params['siteName']; ?></th>
                 <th class="m-column">PK</th>
 				<th class="last">传统装修</th>i
             </tr>

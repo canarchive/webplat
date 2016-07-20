@@ -12,9 +12,6 @@ $this->params['jsFiles'] = [
 	'common', 'provider/pd-common', 'provider/pd-real',
 ];
 $this->params['friendLink'] = true;
-//'杭州天鸿香榭丽88㎡全包13万-【南鸿】浙江南鸿装饰股份有限公司';
-//'杭州天鸿香榭丽88㎡全包13万,【南鸿】浙江南鸿装饰股份有限公司';
-//'【南鸿】浙江南鸿装饰股份有限公司提供杭州天鸿香榭丽88㎡全包13万装修施工的每个细节，杭州业主可以清楚知道装修的每个环节。装修施工选择【南鸿】浙江南鸿装饰股份有限公司，就是选择放心! ';
 
 $this->params['showPage'] = true;
 //print_R($info);exit();

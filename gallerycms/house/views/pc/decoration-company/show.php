@@ -13,9 +13,6 @@ $this->params['jsFiles'] = [
 ];
 $this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
-//'中博装饰|【中博】杭州中博装饰工程有限公司-杭州兔狗官网';
-//'中博装饰,【中博】杭州中博装饰工程有限公司,杭州兔狗官网';
-//'中博装饰是杭州兔狗官网提供的装修设计公司。中博装饰免费为广大杭州业主提供专业的验房、设计、监理服务。了解中博装饰怎么样？速上杭州兔狗官网！';
 
 //$info = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
 $this->params['showPage'] = true;
