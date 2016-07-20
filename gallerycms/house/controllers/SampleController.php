@@ -10,10 +10,29 @@ class SampleController extends HouseController
 {
 	public function actionIndex()
 	{
+		return $this->_list();
+	}
+
+	public function actionFilter()
+	{
+		return $this->_list();
+	}
+
+	protected function _list()
+	{
+		$houseType = Yii::$app->request->get('house_type', '');
+		$style = Yii::$app->request->get('style', '');
 		$model = new HouseSample();
 		$infos = $model->getInfos([]);
+		$filterInfos = [
+			'currentHouseType' => empty($houseType) ? 'all' : $houseType,
+			'currentStyle' => empty($style) ? 'all' : $style,
+			'houseTypes' => $model->houseTypeInfos,
+			'styles' => $model->styleInfos,
+		];
 		$datas = [
 			'infos' => $infos,
+			'filterInfos' => $filterInfos,
 		];
 
 		$tdkInfos = [
