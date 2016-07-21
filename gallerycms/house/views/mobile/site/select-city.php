@@ -7,9 +7,6 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
     'jquery', 'common', 'mobile/m_country', 'mobile/city',
 ];
-//<title>兔狗家装-好装修，找兔狗</title>
-//<meta name="keywords" content="装修公司，装修，装修网，装修论坛，家装" />
-//<meta name="description" content="好装修，找兔狗，兔狗家装是全国领先互联网家装平台。好设计，好材料，好施工，好服务，装修管家全程一对一专业指导。" />
 ?>
 <div class="container">
     <!--顶部-->
@@ -42,7 +39,7 @@ $this->params['jsFiles'] = [
             <a href="javascript:void(0);" class="close-box"></a>
             <p class="sorry">Sorry!</p>
             <p class="soon">您所在的城市即将开通！</p>
-            <img src="http://img.tugou.com/mb/images/m_index/QR-code.jpg" alt="" class="QR-code" />
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/QR-code.jpg" alt="" class="QR-code" />
             <p class="wechat">添加微信号：<span>togojiazhuang</span></br>关注兔狗家装资讯</p>
             <p class="telphone">全国统一热线：<?= Yii::$app->params['siteHotline']; ?></p>
         </div>
