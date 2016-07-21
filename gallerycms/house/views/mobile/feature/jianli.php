@@ -8,9 +8,6 @@ $this->params['jsFiles'] = [
 	'jquery', 'free-index',
 ];
 $this->params['bodyClass'] = 'design';
-//'【免费监理】家装工程监理_装修监理_施工监理-北京兔狗家装';
-//'免费监理,家装工程监理,装修监理,施工监理,北京兔狗家装';
-//'北京兔狗免费监理服务,为您提供竣工收尾后的水电验收,泥工验收,油漆验收,竣工验收,家装工程监理,装修监理,施工监理给您全方面的装修保障服务！';
 ?>
 <div class="container">
     <div class="top toptitle">

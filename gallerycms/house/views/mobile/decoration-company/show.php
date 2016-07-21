@@ -7,9 +7,6 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
 	'jquery-1.11.3.min', 'common', 'slideApply', 'lib/total',
 ];
-//<title>【装修案例】装修实景作品大全-南鸿装饰</title>
-//<meta name="keywords" content="装修案例，装修实景作品大全，南鸿装饰" />
-//<meta name="description" content="杭州 装修案例大全由南鸿装饰提供，装修实景作品效果图中每一个装修案例都是装修公司的良心作品。装修选择南鸿装饰，就是选择放心!" />
 ?>
 <?php echo $this->render('../common/_nav', []); ?>
 <div class="toptitle total-top">
@@ -20,9 +17,9 @@ $this->params['jsFiles'] = [
 	    <a><img src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>"></a>
     </span>
     <ul>
-        <li>已服务业主<span>4200</span></li>
-        <li>实景作品<span>19</span></li>
-        <li>直播工地<span>1</span></li>
+	    <li>已服务业主<span><?= $info['num_owner']; ?></span></li>
+		<li>实景作品<span><?= $info['num_realcase']; ?></span></li>
+		<li>直播工地<span><?= $info['num_working']; ?></span></li>
     </ul>
     <b class="top01"></b>
     <b class="top02"></b>
@@ -135,5 +132,5 @@ function tabChange(elem)
 	});
 	$('#content-' + elem).show();
 }
-tabChange('index');
+tabChange('realcase');
 </script>

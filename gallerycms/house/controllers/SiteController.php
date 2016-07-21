@@ -29,6 +29,11 @@ class SiteController extends GallerycmsController
 		return $this->render('select-city');
 	}
 
+	public function actionWechat()
+	{
+		return $this->render('wechat');
+	}
+
 	protected function getSampleInfos()
 	{
 		$model = new HouseSample();

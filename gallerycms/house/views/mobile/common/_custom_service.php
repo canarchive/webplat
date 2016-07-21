@@ -10,7 +10,8 @@
     </ul>
 </div>
 <div class="list-consult app-hide" onclick="nTalk.im_openInPageChat();">
-    <img src="//img.tugou.com/consultant/online-tugou.png" width="100%" alt="在线咨询" /></div>
+	<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/online-service.png" width="100%" alt="在线咨询" />
+</div>
 <script type="text/javascript">var NTKF_PARAM = {
     "siteid": "kf_9262"
     /*网站siteid*/
