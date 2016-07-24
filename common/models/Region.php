@@ -16,6 +16,11 @@ class Region extends PassportModel
         return '{{%region}}';
     }
 
+    public static function getDb()
+    {
+        return Yii::$app->dbCommon;
+    }	
+
     /**
      * @inheritdoc
      */
@@ -154,5 +159,11 @@ class Region extends PassportModel
 		$datas[$code] = $info;
 
 		return $info;
+	}
+
+	public function isDirect($code)
+	{
+		$directCodes = ['110000', '120000', '310000', '500000'];
+		return in_array($code, $directCodes);
 	}
 }

@@ -33,7 +33,18 @@ class RegionController extends AdminController
 
 		$parentCode = Yii::$app->request->get('parent_code');
 		$model = new Region();
-		$datas = $model->getSubInfos($parentCode);
+		$infos = $model->getSubInfos($parentCode);
+		$isDirect = $model->isDirect($parentCode);
+		$datas = [];
+		if ($isDirect) {
+			foreach ($infos as $info) {
+				$subDatas = (array) $model->getSubInfos($info['code']);
+				$datas = array_merge($datas, $subDatas);
+			}
+		} else {
+			$datas = $infos;
+		}
+		
 		$datas = ArrayHelper::map($datas, 'code', 'name');
 		//print_r($datas);
 		return $datas;

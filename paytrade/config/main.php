@@ -36,10 +36,8 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-		        ['pattern' => 'signin', 'route' => 'site/signin', 'host' => Yii::getAlias('@passporturl')],
                 ['pattern' => 'callback/<result:\w+>/<code:\w+>', 'route' => 'account/callback', 'host' => Yii::getAliase('@paytradeurl')],
 				'pingback' => 'account/pingback',
-                'cart' => 'cart/index',
 			],
 		],
     ],

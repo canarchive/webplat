@@ -3,18 +3,18 @@
 namespace backend\paytrade\controllers;
 
 use Yii;
-use paytrade\models\Shipping;
-use paytrade\models\searchs\Shipping as ShippingSearch;
+use paytrade\models\Cart;
+use paytrade\models\searchs\Cart as CartSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class ShippingController extends AdminController
+class CartController extends AdminController
 {
-	protected $modelClass = 'paytrade\models\Shipping';
+	protected $modelClass = 'paytrade\models\Cart';
 
     public function actionListinfo()
     {
-        $searchModel = new ShippingSearch();
+        $searchModel = new CartSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +25,7 @@ class ShippingController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Shipping());
+		return $this->_addInfo(new Cart());
     }
 
     public function actionUpdate($id = 0)

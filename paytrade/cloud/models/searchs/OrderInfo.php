@@ -7,7 +7,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use paytrade\models\Orderinfo as OrderinfoModel;
 
-class Orderinfo extends OrderinfoModel
+class OrderInfo extends OrderinfoModel
 {
     public function search($params)
     {

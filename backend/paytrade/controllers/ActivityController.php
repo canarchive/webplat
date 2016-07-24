@@ -3,18 +3,16 @@
 namespace backend\paytrade\controllers;
 
 use Yii;
-use paytrade\models\Shipping;
-use paytrade\models\searchs\Shipping as ShippingSearch;
+use paytrade\models\Activity;
+use paytrade\models\searchs\Activity as ActivitySearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class ShippingController extends AdminController
+class ActivityController extends AdminController
 {
-	protected $modelClass = 'paytrade\models\Shipping';
-
     public function actionListinfo()
     {
-        $searchModel = new ShippingSearch();
+        $searchModel = new ActivitySearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +23,7 @@ class ShippingController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Shipping());
+		return $this->_addInfo(new Activity());
     }
 
     public function actionUpdate($id = 0)
@@ -40,5 +38,13 @@ class ShippingController extends AdminController
     public function actionDelete($id)
     {
 		return $this->_deleteInfo($id);
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = Activity::findOne($id)) !== null) {
+            return $model;
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');		
     }
 }

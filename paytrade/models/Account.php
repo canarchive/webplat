@@ -21,6 +21,7 @@ class Account extends PaytradeModel
     {
         return [
             'orderid' => '订单号',
+            'orderid_info' => '支付订单号',
             'orderid_plat' => '平台订单号',
             'payment_code' => '支付方式代码',
             'account_type' => '充值类型',
@@ -30,23 +31,22 @@ class Account extends PaytradeModel
             'money_valid_middle' => '实际充值金额',
             'money_valid' => '有效充值金额',
             'day' => '充值日期',
-            'accounted_at' => '充值时间',
-            'accounted_valid_at' => '成功充值时间',
+            'account_at' => '充值时间',
+            'account_valid_at' => '成功充值时间',
             'account_data' => '平台传递的数据',
             'goods_id' => '商品ID',
             'goods_sku_id' => 'SKU-ID',
             'period' => '期数',
-            'status' => '充值状态，0：未支付，1：成功支付；',
+            'status' => '充值状态；',
             'handpay_manager' => '手工支付管理员账号',
         ];
     }
 
 	public function getAccountTypes()
 	{
-	
 		return [
-			'topay', // 直接消费
-			'tocoin', // 充值到账号
+			'topay' => '直接消费',
+			'toaccount' => '充值到账号',
 		];
 	}
 
@@ -58,8 +58,7 @@ class Account extends PaytradeModel
 	protected function _updateUserMoney($isValid = false)
 	{
 		$model = new \paytrade\models\UserPaytrade();
-		$type = $isValid ? 'valid' : 'want';
-		return $model->updateInfo($type, ['user_id' => $this->user_id, 'money' => $this->money]);
+		return $model->updateInfo('want', ['user_id' => $this->user_id, 'money' => $this->money]);
 	}
 
     protected function recordPay($payInfo)
@@ -67,4 +66,22 @@ class Account extends PaytradeModel
 		$orderinfoModel = new Orderinof();
 		$orderinfoModel->save();
     }	
+
+	public function checkParams($params, $orderInfo)
+	{
+		$accountTypes = $this->accountTypes;
+		$accountType = isset($params['account_type']) ? $params['account_type'] : '';
+		if (!in_array($accountType, array_keys($accountTypes))) {
+			return ['status' => 400, 'message' => '充值方式有误'];
+		}
+
+		if ($accountType == 'topay') {
+		    $orderid = isset($params['orderid_info']) ? $params['orderid_info'] : 0;
+			$checkOrder = $orderInfo->getInfo($orderid);
+
+			return $checkOrder;
+		}
+		
+		return ['status' => 200, 'message' => 'OK'];
+	}
 }

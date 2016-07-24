@@ -17,11 +17,25 @@ class CouponSort extends PaytradeModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
             [['name', 'code', 'money'], 'required'],
-			[['orderlist', 'status', 'start_at', 'end_at'], 'default', 'value' => 0],
+			[['start_at', 'end_at'], 'filter', 'filter' => function($value) {
+				return strtotime($value);
+			}],
+			[['orderlist', 'status'], 'default', 'value' => 0],
 			[['description'], 'safe'],
 		];
     }
@@ -39,8 +53,8 @@ class CouponSort extends PaytradeModel
             'money' => '代金金额',
             'status' => '状态',
             'description' => '描述',
-            'start_time' => '开始时间',
-            'end_time' => '结束时间',
+            'start_at' => '开始时间',
+            'end_at' => '结束时间',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

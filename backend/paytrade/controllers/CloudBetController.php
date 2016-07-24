@@ -3,18 +3,18 @@
 namespace backend\paytrade\controllers;
 
 use Yii;
-use paytrade\models\Shipping;
-use paytrade\models\searchs\Shipping as ShippingSearch;
+use paytrade\cloud\models\Bet;
+use paytrade\cloud\models\searchs\Bet as BetSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class ShippingController extends AdminController
+class CloudBetController extends AdminController
 {
-	protected $modelClass = 'paytrade\models\Shipping';
+	protected $modelClass = 'paytrade\models\Bet';
 
     public function actionListinfo()
     {
-        $searchModel = new ShippingSearch();
+        $searchModel = new BetSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +25,7 @@ class ShippingController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Shipping());
+		return $this->_addInfo(new Bet());
     }
 
     public function actionUpdate($id = 0)
@@ -40,5 +40,5 @@ class ShippingController extends AdminController
     public function actionDelete($id)
     {
 		return $this->_deleteInfo($id);
-    }
+    }	
 }
