@@ -33,14 +33,6 @@ class ManagerlogController extends AdminController
 		return $this->_viewInfo($id);
     }
 
-    protected function findModel($id)
-    {
-        if (($model = Managerlog::findOne($id)) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');		
-    }
-	
 	protected function getSearchDatas()
 	{
 		$managerInfos = ArrayHelper::map(\backend\models\Manager::find()->all(), 'id', 'username');
