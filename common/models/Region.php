@@ -1,6 +1,6 @@
 <?php
 
-namespace passport\models;
+namespace common\models;
 
 use Yii;
 use common\helpers\Tree;
@@ -84,7 +84,16 @@ class Region extends PassportModel
 	 */
 	public function getSelectInfos()
 	{
-    	$infos = $this->find()->select(['code', 'name', 'parent_code'])->indexBy('code')->asArray()->all();
+		$datas = $this->getSubInfos('');
+		$infos = [];
+		foreach ($datas as $data) {
+			foreach ($data['sub'] as $info) {
+				$infos[$info['code']] = $info;
+			}
+			unset($data['sub']);
+			$infos[$data['code']] = $data;
+		}
+
 		$datas = $this->getLevelInfos($infos, 'code', 'parent_code', 'name', '');
 		return $datas;
 	}
@@ -115,5 +124,35 @@ class Region extends PassportModel
 		}*/
 
 		return true;
+	}
+
+	public function getSubInfos($parentCode, $getSub = true)
+	{
+		$infos = $this->_subInfos($parentCode);
+		if ($getSub) {
+    		foreach ($infos as $key => & $info) {
+    			$info['sub'] = $this->_subInfos($info['code']);
+    		}
+		}
+		return $infos;
+	}
+
+	protected function _subInfos($parentCode)
+	{
+		$infos = self::find()->where(['parent_code' => $parentCode])->asArray()->all();
+		return $infos;
+	}
+
+	public function getInfoByCode($code)
+	{
+		static $datas;
+		if (isset($datas[$code])) {
+			return $datas[$code];
+		}
+
+		$info = self::findOne(['code' => $code]);
+		$datas[$code] = $info;
+
+		return $info;
 	}
 }

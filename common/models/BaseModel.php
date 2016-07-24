@@ -135,6 +135,7 @@ class BaseModel extends ActiveRecord
 			$info->getUrl();
 			$optionsDefault = [
 				'style' => ['width' => '80px', 'height' => '40px'],
+				'onclick' => 'window.open(this.src);',
 			];
 			$options = $pointSize && empty($options) ? $optionsDefault : $options;
             return \Yii::$app->formatter->asImage($info->getUrl(), $options);
@@ -185,6 +186,17 @@ class BaseModel extends ActiveRecord
 		$valid =  $validator->validate($mobile);
 		if (empty($valid)) {
 			return ['status' => 400, 'message' => '手机号码格式有误'];
+		}
+
+		return true;
+	}
+
+	public function checkEmail($email)
+	{
+		$validator = new \yii\validators\EmailValidator();
+		$valid =  $validator->validate($email);
+		if (empty($valid)) {
+			return ['status' => 400, 'message' => '邮箱有误'];
 		}
 
 		return true;

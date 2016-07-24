@@ -11,7 +11,8 @@ return [
     'basePath' => dirname(__DIR__),
 	//'viewPath' => '@app/views/1yyg',
 	//'viewPath' => '@app/views/basey',
-	'viewPath' => '@app/views/tmall',
+	//'viewPath' => '@app/views/default',
+	'viewPath' => '@app/views/default',
 	'layout' => null,
     'bootstrap' => ['log'],
     'controllerNamespace' => 'passport\controllers',
@@ -34,8 +35,8 @@ return [
         ],
 		'urlManager' => [
             'rules' => [
-		        ['pattern' => 'signin', 'route' => 'site/signin', 'host' => Yii::getAlias('@passporturl')],
-		        'signup' => 'site/signup',
+		        'findpwd' => 'site/findpwd',
+				'/' => 'info/setting',
 			],
 		],
     ],

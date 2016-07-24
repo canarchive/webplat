@@ -3,6 +3,7 @@ namespace passport\controllers;
 
 use Yii;
 use yii\web\BadRequestHttpException;
+use yii\helpers\Url;
 use passport\components\Controller as PassportController;
 use common\components\sms\Smser;
 use passport\models\User;
@@ -14,18 +15,27 @@ use passport\models\SigninForm;
  */
 class ApiController extends PassportController
 {
+	public function init()
+	{
+		parent::init();
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+	}
+
 	public function actionLoginInfo()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSONP;
-
 		$isGuest = Yii::$app->user->isGuest;
-		$callback = Yii::$app->request->get('fun');
+		$callback = Yii::$app->request->get('callback');
 		$data = [
 			'status' => '400',
 		];
 		if (!$isGuest) {
 			$data['status'] = '200';
-			$data['data'] = ['username' => \Yii::$app->user->identity->mobile];
+			$data['data'] = [
+				'username' => \Yii::$app->user->identity->mobile,
+				'message_number' => 1,
+				'cart_number' => 1,
+			];
 		}
 
 		return ['data' => $data, 'callback' => $callback];
@@ -35,7 +45,8 @@ class ApiController extends PassportController
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-		$mobile = \Yii::$app->getRequest()->get('mobile');
+		$mobile = \Yii::$app->getRequest()->post('mobile');
+		$formType = \Yii::$app->getRequest()->post('form_type');
 		$validator = new \common\validators\MobileValidator();
 		$valid =  $validator->validate($mobile);
 		if (empty($valid)) {
@@ -43,28 +54,48 @@ class ApiController extends PassportController
 		}
 
 		$user = User::findByMobile($mobile);
-		if (!empty($user)) {
-			return ['status' => 400, 'message' => 'exist'];
+		switch ($formType) {
+		case 'login':
+			if (empty($user)) {
+			    return ['status' => 402, 'message' => 'no exist'];
+			}
+			break;
+		case 'register':
+			if (!empty($user)) {
+			    return ['status' => 402, 'message' => 'exist'];
+			}
+			break;
 		}
 
-		return ['status' => 1, 'message' => 'OK'];
+		return ['status' => 200, 'message' => 'OK'];
 	}
 
 	public function actionGenerateCode()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-		$mobile = \Yii::$app->getRequest()->get('mobile');
 
-		$smser = new Smser();
-		$result = $smser->sendCode($mobile, 'register');
+		$model = new \passport\models\SignupGenerateCode();
+        if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
+    		$smser = new Smser();
+    		$result = $smser->sendCode($model->mobile, 'register');
+			$result = 'OK';
+    
+    		$status = $result == 'OK' ? 200 : 400;
+    		return ['status' => $status, 'message' => $result];
+		} 
+        
+		$error = $model->getFirstErrors();
+		$field = key($error);
+		$message = $error[$field];
+		$status = $field == 'captcha' ? 401 : 400;
+		$message = !empty($message) ? $message : '未知错误，请您刷新页面重新操作';
 
-		$status = $result == 'OK' ? 1 : 0;
-		return ['status' => $status];
+		return ['status' => $status, 'message' => $message];
+
 	}
 
 	public function actionCheckCode()
 	{
-		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 		$mobile = \Yii::$app->getRequest()->get('mobile');
 		$code = \Yii::$app->getRequest()->get('mobileCode');
 
@@ -78,7 +109,8 @@ class ApiController extends PassportController
 	public function actionLoginAjax()
 	{
 		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-		$attributes = ['username', 'password'];
+
+		$attributes = ['username', 'password', 'captcha'];
 		foreach ($attributes as $attribute) {
 			$data[$attribute] = \Yii::$app->getRequest()->post($attribute);
 			//$data[$attribute] = \Yii::$app->getRequest()->get($attribute);
@@ -86,24 +118,7 @@ class ApiController extends PassportController
         $model = new SigninForm($data);
 		$loginResult = $model->signin();
 
-		if ($loginResult) {
-			return [
-				'status' => 1,
-				'message' => 'OK',
-			];
-		}
-		//print_r($model);
-		if ($model->hasErrors('password')) {
-			return [
-				'status' => 2,
-				'message' => '密码错误',
-			];
-		}
-
-		return [
-			'status' => 3,
-			'message' => '失败',
-		];
+		return $loginResult;
 	}
 
 	public function actionRegisterAjax()
@@ -135,5 +150,48 @@ class ApiController extends PassportController
 			'status' => 3,
 			'msg' => 'success',
 		];
+	}
+
+	public function actionFindpwdAjax()
+	{
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		$model = new \passport\models\PasswordResetRequestForm();
+		$model->username = Yii::$app->getRequest()->post('username');
+		$model->captcha = Yii::$app->getRequest()->post('captcha');
+
+		$return = $model->findpwd();
+		return $return ;
+	}
+
+	public function actionFindpwdSendCode()
+	{
+        $model = new \passport\models\PasswordResetRequestForm();
+		//$data = $model->sendInfos('get');
+		$data = ['type' => 'mobile', 'username' => '13811974106'];
+		if (empty($data) || $data['type'] != 'mobile') {
+			return ['status' => 401, 'message' => '请返回第一步输入手机号'];
+		}
+
+    	$smser = new Smser();
+    	$result = $smser->sendCode($data['username'], 'findpwd');
+		$result = 'OK';
+   
+   		$status = $result == 'OK' ? 200 : 400;
+   		return ['status' => $status, 'message' => $result];
+	}
+
+	public function actionFindpwdCheckCode()
+	{
+        $model = new \passport\models\ResetPasswordForm();
+		$code = \Yii::$app->request->post('code');
+		return $model->checkCode($code);
+	}
+
+	public function actionRegion()
+	{
+		$parentCode = strval(\Yii::$app->request->get('parent_code'));
+		$region = new \common\models\Region();
+		$datas = $region->getSubInfos($parentCode);
+		return $datas;
 	}
 }
