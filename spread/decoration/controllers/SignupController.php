@@ -15,12 +15,11 @@ class SignupController extends spreadController
 	public function behaviors()
     {
         //header("Access-Control-Allow-Origin:*");
-		return [];
         return ArrayHelper::merge([
             [
                 'class' => Cors::className(),
                 'cors' => [
-                    //'Origin' => [\Yii::getAlias('@gallerycmsurl')],
+                    'Origin' => [\Yii::getAlias('@gallerycmsurl')],
                     'Access-Control-Request-Method' => ['GET', 'HEAD', 'POST', 'OPTIONS'],
                 ],
             ],
