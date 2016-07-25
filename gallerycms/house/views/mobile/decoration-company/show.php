@@ -117,9 +117,9 @@ $this->params['jsFiles'] = [
     </form>
 </div>
 <div class="alert" style="display: none;">请输入姓名</div>
-<script src="http://static.tugou.com/js/slick.min.js"></script>
-<script src="http://static.tugou.com/m/js/company/company.js"></script>
-<script src=" http://static.tugou.com/m/js/components/tugou-footer/js/tugou-footer.js "></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/slick.min.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/company/company.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/t-footer.js"></script>
 <script>
 function tabChange(elem)
 {

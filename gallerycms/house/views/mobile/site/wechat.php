@@ -19,12 +19,7 @@ background: url(http://pic.tugou.com/tgmobile/index/new_logo.png) no-repeat cent
 position: relative; background-color: #fff; } 
 .weixin-img{ width: 15rem; } .weixin-img img{ width: 100%; display: block; }
 </style>
-<div class="top toptitle">
-    <a href="" class="return"></a>
-    <a href="<?= Url::to(['/site/select-city']); ?>">
-	    <div class="position"><?= Yii::$app->params['currentCompany']['name']; ?></div>
-    </a>
-</div>
+<?php echo $this->render('../common/_top', ['title' => '']); ?>
 <div class="weixin-img">
     <img src="http://img.tugou.com/app/weixin/qd_s1.png" alt="关注兔狗微信">
     <img src="http://img.tugou.com/app/weixin/qd_s2.png" alt="关注兔狗微信">
