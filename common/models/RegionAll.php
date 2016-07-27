@@ -9,6 +9,12 @@ use Overtrue\Pinyin\Pinyin;
 
 class RegionAll extends PassportModel
 {
+	public $provinceInfo;
+	public $cityInfo;
+	public $countyInfo;
+	public $townInfo;
+	public $villageInfo;
+
     /**
      * @inheritdoc
      */
@@ -155,6 +161,74 @@ class RegionAll extends PassportModel
 		}
 		echo date() . '--' . $i;
 		//print_r($infos);exit();
+	}
+
+	public function getInfo($code, $levelPoints = ['province', 'city', 'country', 'town', 'village'])
+	{
+		$info = $this->findOne(['spell_one' => $code]);
+		if (empty($info)) {
+			return false;
+		}
+
+		$level = $info['level'];
+		if (!in_array($level, $levelPoints)) {
+			return ['status' => 400, 'message' => '行政级别有误', 'data' => $info];
+		}
+
+		$parentId = $info['parent_id'];
+		while ($parentId != '1') {
+			$parentInfo = $this->findOne(['region_id' => $parentId]);
+			$level = $parentInfo['level'];
+			$parentId = $parentInfo['parent_id'];
+			$info[$parentInfo['level'] . 'Info'] = $parentInfo;
+		}
+
+		return $info;
+	}
+
+	public function getInfos()
+	{
+		$infos = $this->find()->where(['status' => 1])->indexBy('region_id')->asArray()->all();
+		$datas = ['province' => [], 'city' => [], 'county' => [], 'town' => [], 'village' => []];
+		foreach ($infos as $info) {
+			$datas[$info['level']][] = $info;
+		}
+		foreach ($datas['town'] as & $town) {
+			foreach ($datas['village'] as $village) {
+				if ($village['parent_id'] == $town['region_id']) {
+					$town['villages'][] = $village;
+				}
+			}
+		}
+		foreach ($datas['county'] as & $county) {
+			foreach ($datas['town'] as $town) {
+				if ($town['parent_id'] == $county['region_id']) {
+					$county['towns'][] = $town;
+				}
+			}
+		}
+		foreach ($datas['city'] as & $city) {
+			foreach ($datas['county'] as $county) {
+				if ($county['parent_id'] == $city['region_id']) {
+					$city['countys'][] = $county;
+				}
+			}
+		}
+		foreach ($datas['province'] as & $province) {
+			foreach ($datas['city'] as $city) {
+				print_r($city);
+				if ($city['parent_id'] == $province['region_id']) {
+					$province['cities'][] = $city;
+				}
+			}
+		}
+		print_r($datas['city']);exit();
+		print_r($datas['province']);exit();
+		print_R($data['town']);exit();
+
+		
+
+		return $datas;
 	}
 
 	public function spellDeal()
