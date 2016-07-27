@@ -48,13 +48,13 @@ class Attachment extends AttachmentBase
 				'picture_design' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 300,
+    				'maxSize' => 600,
     				'type' => 'image/*',
 				],
 				'design_sketch' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 500,
+    				'maxSize' => 600,
     				'type' => 'image/*',
 				],
 			],
