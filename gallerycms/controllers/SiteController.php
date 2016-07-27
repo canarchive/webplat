@@ -11,7 +11,7 @@ class SiteController extends GallerycmsController
 	public function init()
 	{
 		$host = \Yii::$app->request->hostInfo;
-		$this->mHost = $host == \Yii::getAlias('@m-gallerycmsurl') ? true : false;
+		$this->mHost = $host == \Yii::getAlias('@m.gallerycmsurl') ? true : false;
 	}
 
     public function actionIndex()

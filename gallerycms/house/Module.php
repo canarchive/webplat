@@ -37,7 +37,7 @@ class Module extends \yii\base\Module
 
 	protected function getCurrentCompany()
 	{
-		$code = Yii::$app->request->get('company_code');
+		$code = Yii::$app->request->get('city_code');
 		$session = Yii::$app->session;
 		$currentCompany = isset($session['current_company']) ? $session['current_company'] : [];
 
@@ -47,12 +47,12 @@ class Module extends \yii\base\Module
 			}
 		}
 		
-		$code = empty($code) ? 'beijing' : $code;
+		$code = empty($code) ? 'bj' : $code;
 		$company = new Company();
-	    $info = $company->getInfoByCode($code);
+	    $info = $company->getInfoByCodeShort($code);
 		if (empty($info)) {
-			$code = 'beijing';
-	        $info = $company->getInfoByCode($code);
+			$code = 'bj';
+	        $info = $company->getInfoByCodeShort($code);
 		}
 		$info = $info->toArray();
 		$session['current_company'] = $info;

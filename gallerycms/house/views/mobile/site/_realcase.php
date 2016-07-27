@@ -3,7 +3,7 @@ use yii\helpers\Url;
 ?>
 <div class="case">
     <div class="case-title">装修实景
-	    <a href="<?= Url::to(['/house/realcase/index']); ?>">更多</a>
+	    <a href="<?= Url::to(['/house/realcase/index', 'city_code' => 'sh']); ?>">更多</a>
     </div>
     <div class="cast-list">
         <?php $i = 0; foreach ($infos as $info) { if ($i > 3) { break; } ?>
