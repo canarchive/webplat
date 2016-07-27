@@ -112,4 +112,10 @@ class Company extends MerchantModel
 		$info = $this->findOne(['code' => $code]);
 		return $info;
 	}
+
+	public function getInfoByCodeShort($code)
+	{
+		$info = $this->findOne(['code_short' => $code]);
+		return $info;
+	}
 }
