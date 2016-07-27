@@ -32,17 +32,29 @@ return [
         ],
         'urlManager' => [
             'rules' => [
-				'/ts-<view:\w+>' => '/house/feature/index',
+				Yii::getAlias('@wildurl') . '/' => '/house/site/home',
 				'/' => '/house/site/home', 
+				'/ts-<view:\w+>' => '/house/feature/index',
+
 				'/meitu' => '/house/sample/index',
 				'/meitu-<house_type:\w*>-<style:\w*>' => '/house/sample/filter',
 				'/mt-<id:\d+>' => '/house/sample/show',
+
+				Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sj-<id:\d+>' => '/house/decoration-company/show',
+				Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shangjia' => '/house/decoration-company/index',
+				Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sj-<id:\d+>' => '/house/decoration-company/show',
+				Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/gd-<id:\d+>' => '/house/decoration-company/show-working',
+				Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shijing' => '/house/realcase/index',
+				Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shj-<id:\d+>' => '/house/realcase/show',
+				Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>' => '/house/site/index',
+
 				'/shangjia' => '/house/decoration-company/index',
 				'/sj-<id:\d+>' => '/house/decoration-company/show',
 				'/gd-<id:\d+>' => '/house/decoration-company/show-working',
 				'/shijing' => '/house/realcase/index',
 				'/shj-<id:\d+>' => '/house/realcase/show',
-				'/<company_code:\w*>' => '/house/site/index', 
+				'/zx/<region_code:\w*>' => '/house/region/region',
+				//Yii::getAlias('@m.gallerycmsurl') . '/<_q:.*>' => '/house/<_q>',
 				'/<_q:.*>' => '/house/<_q>', 
             ],
         ],

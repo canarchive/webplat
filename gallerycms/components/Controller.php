@@ -15,21 +15,22 @@ class Controller extends CommonController
     {
         parent::init();
 
-        $this->isMobile = $this->clientIsMobile();
 		$this->host = \Yii::$app->request->hostInfo;
 
 		$hostPc = Yii::getAlias('@gallerycmsurl');
 		$hostMobile = Yii::getAlias('@m.gallerycmsurl');
+        //$this->isMobile = $this->clientIsMobile();
+		$this->isMobile = $this->host == $hostMobile ? true : false;
 
 		if (isset($this->module->viewPath)) {
 			$this->module->viewPath .= $this->isMobile ? '/mobile' : '/pc';
 		}
 
 		if ($this->isMobile && $this->host != $hostMobile) {
-			return $this->redirect($hostMobile)->send();
+			//return $this->redirect($hostMobile)->send();
 		}
 		if (!$this->isMobile && $this->host != $hostPc) {
-			return $this->redirect($hostPc)->send();
+			//return $this->redirect($hostPc)->send();
 		}
     }
 
