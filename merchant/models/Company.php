@@ -118,4 +118,10 @@ class Company extends MerchantModel
 		$info = $this->findOne(['code_short' => $code]);
 		return $info;
 	}
+
+	public function getInfoByIP($returnDefault = true)
+	{
+		$info = $this->findOne(['code_short' => 'bj']);
+		return $info;
+	}
 }
