@@ -5,7 +5,7 @@ use yii\helpers\Url;
 <div class="site " id="content-working">
     <?php foreach ($infos as $info) { ?>
     <div class="list">
-        <a href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id']]); ?>">
+        <a href="<?= Url::to(['/house/mobile-decoration-company/show-working', 'id' => $info['id']]); ?>">
             <div class="list01">
                 <img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>">
                 <div class="listbg"></div>

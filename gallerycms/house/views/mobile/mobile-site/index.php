@@ -36,7 +36,7 @@ $this->params['jsFiles'] = [
         <a href="javascript:void(0);" class="tugou-app">
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-tjh.png" alt="<?= Yii::$app->params['siteName']; ?>家装app">
         </a>
-        <a href="<?= Url::to(['/house/site/wechat']); ?>" class="tugou-weixin">
+        <a href="<?= Url::to(['/house/mobile-site/wechat']); ?>" class="tugou-weixin">
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-weixin.png" alt="<?= Yii::$app->params['siteName']; ?>家装微信公众号">
         </a>
         <p class="app-p">下载APP</p>
@@ -45,7 +45,7 @@ $this->params['jsFiles'] = [
     <!-- null -->
     <p class="bespoke">
         <span onclick="nTalk.im_openInPageChat();"></span>
-		<a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji']); ?>"></a>
+		<a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'sheji']); ?>"></a>
     </p>
 </div>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/swiper.min.js"></script>

@@ -3,6 +3,7 @@
 namespace gallerycms\house;
 
 use Yii;
+use yii\helpers\Url;
 use merchant\models\Company;
 
 class Module extends \yii\base\Module
@@ -38,23 +39,29 @@ class Module extends \yii\base\Module
 	protected function getCurrentCompany()
 	{
 		$code = Yii::$app->request->get('city_code');
+
 		$session = Yii::$app->session;
 		$currentCompany = isset($session['current_company']) ? $session['current_company'] : [];
-
-		if (!empty($currentCompany)) {
-			if (empty($code) || $currentCompany['code'] == $code) {
-				return $currentCompany;
-			}
+		$currentCode = isset($currentCompany['code_short']) ? $currentCompany['code_short'] : '';
+		if (is_null($code) || $currentCode == $code) {
+			return $currentCompany;
 		}
-		
-		$code = empty($code) ? 'bj' : $code;
+
 		$company = new Company();
+		if (is_null($code)) {
+			$info = $company->getInfoByIP();
+		    $session['current_company'] = $info;
+			return $info;
+		}
+
 	    $info = $company->getInfoByCodeShort($code);
 		if (empty($info)) {
-			$code = 'bj';
-	        $info = $company->getInfoByCodeShort($code);
+			$info = $company->getInfoByIP();
+		    $session['current_company'] = $info;
+
+			$url = Url::to(['/house/site/home', 'city_code' => $info['code_short']]);
+		    return Yii::$app->response->redirect($url)->send();
 		}
-		$info = $info->toArray();
 		$session['current_company'] = $info;
 		return $info;
 	}

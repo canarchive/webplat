@@ -23,7 +23,7 @@ $this->params['jsFiles'] = [
             <div class="city-title">A-E</div>
             <ul class="cities">
                 <?php foreach (Yii::$app->params['companyInfos'] as $info) { ?>
-                    <li><a href="<?= Url::to(['/house/site/index', 'company_code' => $info['code']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>站</a></li>
+                    <li><a href="<?= Url::to(['/house/mobile-site/index', 'city_code' => $info['code_short']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>站</a></li>
                 <?php } ?>
                 <!--<li class="line"></li>-->
             </ul>

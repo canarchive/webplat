@@ -3,14 +3,14 @@ use yii\helpers\Url;
 ?>
 <div class="cube">
     <div class="cube-list cubeTop">
-        <a href="<?= Url::to(['/house/decoration-company/index']); ?>" class="cube-left green">
+        <a href="<?= Url::to(['/house/mobile-decoration-company/index']); ?>" class="cube-left green">
             <span class="company"></span><p>找装修公司</p>
         </a>
         <div class="cube-right">
-            <a class="green" href="<?= Url::to(['/house/feature/index', 'view' => 'baojia']); ?>">智能报价</a>
-            <a class="green" href="<?= Url::to(['/house/feature/index', 'view' => 'sheji']); ?>">免费设计</a>
-            <a class="green" href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang']); ?>">免费验房</a>
-            <a class="green" href="<?= Url::to(['/house/feature/index', 'view' => 'jianli']); ?>">免费监理</a>
+            <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'baojia']); ?>">智能报价</a>
+            <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'sheji']); ?>">免费设计</a>
+            <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'yanfang']); ?>">免费验房</a>
+            <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'jianli']); ?>">免费监理</a>
         </div>
     </div>
     <!--<div class="cube-list">

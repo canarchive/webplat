@@ -1,4 +1,4 @@
-<div class="links-top">
+<!--<div class="links-top">
     <ul>
         <li class=" links-add ">友情链接</li>
         <li class="">栏目链接</li>
@@ -31,4 +31,4 @@
         <a href="http://meitu.tugou.com/pic-c30/" title="简约风格图片" target="_blank">简约风格图片</a>
         <a href="http://meitu.tugou.com/pic/" title="装修案例图" target="_blank">装修案例图</a>
         <a href="http://meitu.tugou.com/" title="装修效果图大全" target="_blank">装修效果图大全</a></div>
-</div>
+</div>-->
