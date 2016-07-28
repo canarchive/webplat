@@ -99,7 +99,7 @@ $(function() { //置顶
 <div class="list_con box">
     <?php foreach ($infos as $info) { ?>
     <div class="list_con_01">
-	    <a href="<?= Url::to(['/house/sample/show', 'id' => $info['id']]); ?>">
+	    <a href="<?= Url::to(['/house/mobile-sample/show', 'id' => $info['id']]); ?>">
             <span>
 			    <img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>">
                 <p>8张</p>

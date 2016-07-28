@@ -6,7 +6,7 @@ use yii\helpers\Url;
         <ul class="list_table_l" id="table_01">
 		    <?php foreach ($houseTypes as $houseType => $houseTypeName) { ?>
             <li>
-				<a href="<?= Url::to(['/house/sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
+				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
             </li>
 			<?php } ?>
         </ul>
@@ -18,7 +18,7 @@ use yii\helpers\Url;
             </li>
 		    <?php foreach ($styles as $style => $styleName) { ?>
             <li>
-				<a href="<?= Url::to(['/house/sample/filter', 'house_type' => $currentHouseType, 'style' => $style]); ?>"><?= $styleName; ?></a>
+				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $currentHouseType, 'style' => $style]); ?>"><?= $styleName; ?></a>
             </li>
 			<?php } ?>
         </ul>
@@ -30,7 +30,7 @@ use yii\helpers\Url;
             </li>
 		    <?php foreach ($houseTypes as $houseType => $houseTypeName) { ?>
             <li>
-				<a href="<?= Url::to(['/house/sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
+				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
             </li>
 			<?php } ?>
         </ul>
@@ -42,7 +42,7 @@ use yii\helpers\Url;
             </li>
 		    <?php foreach ($houseTypes as $houseType => $houseTypeName) { ?>
             <li>
-				<a href="<?= Url::to(['/house/sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
+				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
             </li>
 			<?php } ?>
         </ul>

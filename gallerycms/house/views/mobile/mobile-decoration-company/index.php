@@ -19,7 +19,7 @@ $this->params['jsFiles'] = [
 <div class="list">
     <?php foreach ($infos as $info) { ?>
 	<div class="listItem" provider="<?= $info['id']; ?>">
-	    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" style="display: inline-block;">
+	    <a href="<?= Url::to(['/house/mobile-decoration-company/show', 'id' => $info['id']]); ?>" style="display: inline-block;">
             <div class="listImg">
 				<img src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
             </div>

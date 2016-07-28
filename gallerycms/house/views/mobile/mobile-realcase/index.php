@@ -36,7 +36,7 @@ $this->params['jsFiles'] = [
     <div class="case ">
         <?php foreach ($infos as $info) { ?>
         <div class="list">
-		    <a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>">
+		    <a href="<?= Url::to(['/house/mobile-realcase/show', 'id' => $info['id']]); ?>">
                 <div class="list01">
 				    <img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>">
                     <div class="listbg"></div>

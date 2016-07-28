@@ -13,7 +13,7 @@ use yii\helpers\Url;
                         <!--<dt>[A-E]</dt>-->
                         <dd>
                             <?php foreach (Yii::$app->params['companyInfos'] as $info) { ?>
-							<a href="<?= Url::to(['/house/site/index', 'company_code' => $info['code']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>站</a>
+							<a href="<?= Url::to(['/house/site/home', 'city_code' => $info['code_short']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>站</a>
                             <?php } ?>
                     </dl>
                 </div>
