@@ -45,7 +45,7 @@ $this->params['jsFiles'] = [
     <!-- null -->
     <p class="bespoke">
         <span onclick="nTalk.im_openInPageChat();"></span>
-		<a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'sheji']); ?>"></a>
+		<a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"></a>
     </p>
 </div>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/swiper.min.js"></script>

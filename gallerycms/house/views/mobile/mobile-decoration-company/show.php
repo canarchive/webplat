@@ -10,7 +10,7 @@ $this->params['jsFiles'] = [
 ?>
 <?php echo $this->render('../common/_nav', []); ?>
 <div class="toptitle total-top">
-	<a href="<?= Url::to(['/house/mobile-decoration-company/index']); ?>" class="return"></a><?= $info['name']; ?>
+	<a href="<?= Url::to(['/house/mobile-decoration-company/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="return"></a><?= $info['name']; ?>
 </div>
 <div class="top">
     <span class="face">

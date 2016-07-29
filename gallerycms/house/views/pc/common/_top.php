@@ -28,10 +28,10 @@ use yii\helpers\Url;
 				<a href="http://www.tugou.com/passport/UserRegister/">免费注册</a>
             </li>-->
             <li id="phone-link" class="phone">
-                <a href="javascript: void(0);" target="_blank">移动端窝窝家</a>
+                <a href="javascript: void(0);" target="_blank">移动端<?= Yii::$app->params['siteName']; ?></a>
                 <div class="code">
 				<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" border="0" alt="装修网">
-                    <p>窝窝家官方微客服</p>
+                    <p><?= Yii::$app->params['siteName']; ?>官方微客服</p>
                 </div>
             </li>
             <li class="number">

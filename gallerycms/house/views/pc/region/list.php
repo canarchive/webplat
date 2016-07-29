@@ -26,14 +26,14 @@ $this->params['friendLink'] = true;
         <?php foreach ($infos as $info) { ?>
     	<li data-provider-id="<?= $info['id']; ?>">
             <div class="item_part left">
-    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" target="_blank">
+    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
     				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
                 </a>
 				<p>已服务 <?= $info['num_owner']; ?> 业主</p>
             </div>
             <div class="item_part center">
                 <p class="provider_name">
-    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
+    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
                     <span class="provider_tags">
                         <i class="icon_new icon1"><span>保障金先行赔付</span></i>
                         <i class="icon_new icon2"><span>装修施工资质权威认证</span></i>
@@ -89,19 +89,19 @@ $this->params['friendLink'] = true;
         <div class="provider_advert_free">
             <ul>
                 <li style="background-position: 0 -638px;">
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang']); ?>">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <p class="title">免费上门验房</p>
 						<p class="content">资深验房专家上门验房<br>专业仪器检测房屋质量</p>
                     </a>
                 </li>
                 <li style="background-position: -230px -638px;">
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji']); ?>">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <p class="title">免费3套设计方案</p>
 						<p class="content">3套设计方案比较<br>合理规划空间</p>
                     </a>
                 </li>
                 <li style="background-position: -460px -638px;">
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia']); ?>">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <p class="title">免费3份报价清单</p>
 						<p class="content">3份报价清单比较<br>避免价格猫腻</p>
                     </a>

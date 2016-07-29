@@ -7,7 +7,7 @@ use yii\helpers\Url;
     <div class="items padTop35">
         <!--直播工地 杭州-->
         <?php $i = 0; foreach ($infos as $info) { if ($i > 3) { break; } ?>
-			<a <?php if ($i == 3) { echo 'class="last"'; } ?>href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id']]); ?>" target="_blank">
+			<a <?php if ($i == 3) { echo 'class="last"'; } ?>href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 			<img src="<?= $info['thumb']; ?>" width="278px" height="218px">
 			<div class="node"><?= $info['status']; ?></div>
             <div class="recommend">

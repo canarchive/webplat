@@ -26,7 +26,7 @@ $this->params['friendLink'] = true;
             <div class="pd-rc-case">
                 <div class="pd-showcase">
                     <?php foreach ($infos as $info) { ?>
-					<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>" target="_blank">
+					<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
                         <div class="case-item">
 							<div><img class="case-img" src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>"></div>
                             <div class="ch-case-footer">

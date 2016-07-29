@@ -7,7 +7,7 @@ use yii\helpers\Url;
             <?php foreach ($infos as $info) { ?>
             <div class="case-item">
                 <figure>
-				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>">
+				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
 						<img alt="<?= $info['name']; ?>" src="<?= $info['thumb']; ?>">
                     </a>
 					<p class="desc"><?= $info['community_name']; ?></p>
