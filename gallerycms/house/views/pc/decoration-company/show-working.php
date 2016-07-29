@@ -22,8 +22,8 @@ $statusDatas = $info->statusDatas;
 <div class="pd-header">
     <div class="crumbs">
 	    <a href="/">团家汇</a><span class="sep">&gt;</span>
-		<a href="<?= Url::to(['/house/decoration-company/index']); ?>">装修公司</a><span class="sep">&gt;</span>
-		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id']]); ?>"><?= $merchantInfo['name']; ?></a><span class="sep">&gt;</span>
+		<a href="<?= Url::to(['/house/decoration-company/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a><span class="sep">&gt;</span>
+		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"><?= $merchantInfo['name']; ?></a><span class="sep">&gt;</span>
         <a>直播工地</a><span class="sep">&gt;</span>
 		<a ><span class="btn-crumbs"><?= $info['owner_name']; ?>的家<i class="i-del"></i></span></a>
     </div>

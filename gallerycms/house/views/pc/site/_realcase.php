@@ -6,7 +6,7 @@ use yii\helpers\Url;
     <p>精选成功案例，快来看看兔狗装出的家！</p>
     <div class="items padTop15">
         <?php foreach ($infos as $info) { ?>
-		<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>" target="_blank">
+		<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 		    <img src="<?= $info['thumb']; ?>" width="277px" height="279px">
             <div class="recommend clearfix">
                 <div class="word fn-left">

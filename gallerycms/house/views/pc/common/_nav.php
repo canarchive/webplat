@@ -7,7 +7,7 @@ $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] :
     <div class="content">
         <div>
 		    <a href="<?= Url::to(['/house/site/home', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
-			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/jz-logo.png" alt="窝窝家互联网家装平台"></a>
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/jz-logo.png" alt="<?= Yii::$app->params['siteName']; ?>互联网家装平台"></a>
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/logo-word.png"></div>
         <ul class="nav">
 		    <li data-tabid="index" <?php if ($currentNav == 'index') { echo 'class="on"'; } ?>>
@@ -21,10 +21,10 @@ $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] :
 				<a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">实景作品</a>
             </li>
             <li data-tabid="provider">
-				<a href="<?= Url::to(['/house/decoration-company/index']); ?>">装修公司</a>
+				<a href="<?= Url::to(['/house/decoration-company/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a>
             </li>
 		    <li data-tabid="provider" <?php if ($currentNav == 'free') { echo 'class="on"'; } ?>>
-			    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang']); ?>">免费服务</a>
+			    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">免费服务</a>
             </li>
         </ul>
     </div>

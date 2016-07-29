@@ -22,15 +22,23 @@ class Controller extends CommonController
         //$this->isMobile = $this->clientIsMobile();
 		$this->isMobile = $this->host == $hostMobile ? true : false;
 
-		if (isset($this->module->viewPath)) {
-			$this->module->viewPath .= $this->isMobile ? '/mobile' : '/pc';
+		$url = Yii::$app->request->url;
+		$cityCode = $this->module->currentCityCode;
+		$redirect = strpos($url, 'index.php') !== false ? true : false;
+		$redirect = empty($redirect) ? $this->isMobile && $this->host != $hostMobile : $redirect;
+		$redirect = empty($redirect) ? !$this->isMobile && $this->host == $hostMobile : $redirect;
+		$redirect = empty($redirect) ? $this->host == $hostMobile && is_null($cityCode) && $url == '/' : $redirect;
+		$redirect = empty($redirect) ? !is_null($cityCode) && $cityCode != Yii::$app->params['currentCompany']['code_short'] : $redirect;
+		if ($redirect) {
+			$rule = $this->isMobile ? '/house/mobile-site/index' : '/house/site/home';
+			$url = Url::to([$rule, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
+			header("Location:$url");
+		    //return Yii::$app->response->redirect($url)->send();
+			exit();
 		}
 
-		if ($this->isMobile && $this->host != $hostMobile) {
-			//return $this->redirect($hostMobile)->send();
-		}
-		if (!$this->isMobile && $this->host != $hostPc) {
-			//return $this->redirect($hostPc)->send();
+		if (isset($this->module->viewPath)) {
+			$this->module->viewPath .= $this->isMobile ? '/mobile' : '/pc';
 		}
     }
 

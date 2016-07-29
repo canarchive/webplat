@@ -169,7 +169,7 @@ use yii\helpers\Url;
             <?php $i = 1; foreach ($realcaseInfos as $info) { if ($i > 3) { break; } ?>
             <div class="case-item">
                 <figure>
-				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $info['id']]); ?>">
+				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
 						<img alt="<?= $info['name']; ?>" src="<?= $info['thumb']; ?>">
                     </a>
 					<p class="desc"><?= $info['community_name']; ?></p>
@@ -192,7 +192,7 @@ use yii\helpers\Url;
             <?php $i = 1; foreach ($workingInfos as $info) { if ($i > 3) { break; } ?>
             <div class="case-item">
                 <figure>
-				    <a data-url="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id']]); ?>">
+				    <a data-url="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
 					    <img alt="直播工地" src="<?= $info['thumb']; ?>">
                     </a>
 					<p class="desc"><?= $info['status']; ?></p>

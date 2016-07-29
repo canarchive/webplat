@@ -12,6 +12,7 @@ class Module extends \yii\base\Module
      * @inheritdoc
      */
     public $defaultRoute = '';
+	public $currentCityCode;
 
     public function init()
     {
@@ -38,12 +39,12 @@ class Module extends \yii\base\Module
 
 	protected function getCurrentCompany()
 	{
-		$code = Yii::$app->request->get('city_code');
-
+		$code = $this->currentCityCode = Yii::$app->request->get('city_code');
 		$session = Yii::$app->session;
+		//$session['current_company'] = [];
 		$currentCompany = isset($session['current_company']) ? $session['current_company'] : [];
 		$currentCode = isset($currentCompany['code_short']) ? $currentCompany['code_short'] : '';
-		if (is_null($code) || $currentCode == $code) {
+		if (!empty($currentCode) && (is_null($code) || $currentCode == $code)) {
 			return $currentCompany;
 		}
 
@@ -55,13 +56,7 @@ class Module extends \yii\base\Module
 		}
 
 	    $info = $company->getInfoByCodeShort($code);
-		if (empty($info)) {
-			$info = $company->getInfoByIP();
-		    $session['current_company'] = $info;
-
-			$url = Url::to(['/house/site/home', 'city_code' => $info['code_short']]);
-		    return Yii::$app->response->redirect($url)->send();
-		}
+		$info = empty($info) ? $company->getInfoByIP() : $info;
 		$session['current_company'] = $info;
 		return $info;
 	}
