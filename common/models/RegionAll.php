@@ -216,18 +216,12 @@ class RegionAll extends PassportModel
 		}
 		foreach ($datas['province'] as & $province) {
 			foreach ($datas['city'] as $city) {
-				print_r($city);
 				if ($city['parent_id'] == $province['region_id']) {
 					$province['cities'][] = $city;
 				}
 			}
 		}
-		print_r($datas['city']);exit();
-		print_r($datas['province']);exit();
-		print_R($data['town']);exit();
-
-		
-
+		//print_r($datas['city']);exit();
 		return $datas;
 	}
 
@@ -249,16 +243,5 @@ class RegionAll extends PassportModel
 
 		}
 			
-	}
-
-	protected function _initDatas()
-	{
-		//INSERT INTO `wc_region_all` (`region_id`, `parent_id`, `name`, `level`) SELECT `province_id`, 1, `province_name`, 'province' FROM `wc_region_provnice`;
-		//INSERT INTO `wc_region_all` (`region_id`, `parent_id`, `name`, `level`) SELECT `city_id`, `province_id`, `city_name`, 'city' FROM `wc_region_city`;
-		//INSERT INTO `wc_region_all` (`region_id`, `parent_id`, `name`, `level`) SELECT `county_id`, `city_id`, `county_name`, 'county' FROM `wc_region_county`;
-		//INSERT INTO `wc_region_all` (`region_id`, `parent_id`, `name`, `level`) SELECT `town_id`, `county_id`, `town_name`, 'town' FROM `wc_region_town`;
-		//INSERT INTO `wc_region_all` (`region_id`, `parent_id`, `name`, `level`) SELECT `village_id`, `town_id`, `village_name`, 'village' FROM `wc_region_village`;
-
-		//INSERT INTO `wc_region_all_mid1` (`id`, `region_id`, `parent_id`, `name`, `spell`, `name_short`, `spell_short`, `level`, `status`, `status_ext`, `num_acount` SELECT `id`, `region_id`, `parent_id`, `name`, `spell`, `name_short`, `spell_short`, `level`, `status`, `status_ext`, COUNT(*) FROM `wc_region_all GROUP BY `spell`;
 	}
 }
