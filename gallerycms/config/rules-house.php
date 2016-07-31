@@ -5,12 +5,22 @@ return [
     //Yii::getAlias('@gallerycmsurl') . '/' => '/house/site/home', 
     Yii::getAlias('@m.gallerycmsurl') . '/' => '/house/mobile-site/home', 
 
-    Yii::getAlias('@gallerycmsurl') . '/meitu' => '/house/sample/index',
-    Yii::getAlias('@gallerycmsurl') . '/meitu-<house_type:\w*>-<style:\w*>' => '/house/sample/filter',
+    Yii::getAlias('@gallerycmsurl') . '/info-<action:\w+>' => '/house/info/<action>',
+    Yii::getAlias('@gallerycmsurl') . '/map' => '/house/site/map',
+	[
+		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
+		'route'	=> '/house/sample/index',
+		'defaults' => ['page' => 1, 'tag' => '']
+	],
     Yii::getAlias('@gallerycmsurl') . '/mt-<id:\d+>' => '/house/sample/show',
 
-    Yii::getAlias('@m.gallerycmsurl') . '/meitu' => '/house/mobile-sample/index',
-    Yii::getAlias('@m.gallerycmsurl') . '/meitu-<house_type:\w*>-<style:\w*>' => '/house/mobile-sample/filter',
+    Yii::getAlias('@m.gallerycmsurl') . '/info-<action:\w+>' => '/house/mobile-info/<action>',
+    Yii::getAlias('@m.gallerycmsurl') . '/map' => '/house/mobile-site/map',
+	[
+		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
+		'route'	=> '/house/mobile-sample/index',
+		'defaults' => ['page' => 1, 'tag' => '']
+	],
     Yii::getAlias('@m.gallerycmsurl') . '/mt-<id:\d+>' => '/house/mobile-sample/show',
 
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/ts-<view:\w+>' => '/house/mobile-feature/index',
@@ -28,7 +38,12 @@ return [
     Yii::getAlias('@wildurl') . '/gd-<id:\d+>' => '/house/decoration-company/show-working',
     Yii::getAlias('@wildurl') . '/shijing' => '/house/realcase/index',
     Yii::getAlias('@wildurl') . '/shj-<id:\d+>' => '/house/realcase/show',
-    Yii::getAlias('@wildurl') . '/zx/<region_code:\w*>' => '/house/region/region',
+    //Yii::getAlias('@wildurl') . '/zx/<region_code:\w*>' => '/house/region/region',
+	[
+		'pattern' => Yii::getAlias('@wildurl') . '/zx/<county>/<vtown>',
+		'route'	=> '/house/region/region',
+		'defaults' => ['vtown' => '']
+	],
     //Yii::getAlias('@m.gallerycmsurl') . '/<_q:.*>' => '/house/<_q>',
     //'/<_q:.*>' => '/house/<_q>', 
 ];

@@ -15,7 +15,7 @@ $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] :
             </li>
 
             <li data-tabid="meitu">
-				<a href="<?= Url::to(['/house/sample/index']); ?>">装修案例</a>
+				<a href="<?= Url::to(['/house/sample/index', 'page' => 1, 'tag' => '']); ?>">装修案例</a>
             </li>
             <li data-tabid="realcase">
 				<a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">实景作品</a>

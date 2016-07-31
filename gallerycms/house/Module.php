@@ -45,7 +45,7 @@ class Module extends \yii\base\Module
 		$currentCompany = isset($session['current_company']) ? $session['current_company'] : [];
 		$currentCode = isset($currentCompany['code_short']) ? $currentCompany['code_short'] : '';
 		if (!empty($currentCode) && (is_null($code) || $currentCode == $code)) {
-			return $currentCompany;
+			//return $currentCompany;
 		}
 
 		$company = new Company();
