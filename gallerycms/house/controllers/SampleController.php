@@ -3,6 +3,7 @@
 namespace gallerycms\house\controllers;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 use gallerycms\components\HouseController;
 use gallerycms\house\models\HouseSample;
 
@@ -13,26 +14,22 @@ class SampleController extends HouseController
 		return $this->_list();
 	}
 
-	public function actionFilter()
-	{
-		return $this->_list();
-	}
-
 	protected function _list()
 	{
-		$houseType = Yii::$app->request->get('house_type', '');
-		$style = Yii::$app->request->get('style', '');
+		$tag = Yii::$app->request->get('tag', '');
 		$model = new HouseSample();
+		$houseSortInfos = $model->houseSortInfos;
+		$tagInfos = $model->formatTag($tag, $houseSortInfos);
+		if ($tagInfos === false) {
+            throw new NotFoundHttpException('页面不存在');
+		}
+
 		$infos = $model->getInfos([]);
-		$filterInfos = [
-			'currentHouseType' => empty($houseType) ? 'all' : $houseType,
-			'currentStyle' => empty($style) ? 'all' : $style,
-			'houseTypes' => $model->houseTypeInfos,
-			'styles' => $model->styleInfos,
-		];
 		$datas = [
 			'infos' => $infos,
-			'filterInfos' => $filterInfos,
+			'tagInfos' => $tagInfos,
+			'houseSortInfos' => $houseSortInfos,
+			'model' => $model,
 		];
 
 		$tdkInfos = [

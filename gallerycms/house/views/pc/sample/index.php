@@ -27,17 +27,14 @@ $(function() {
     <div class="cont">
         <div class="main">
             <div class="crumbs">
-                <a href="/">首页</a><span class="sep">&gt;</span>
-				<a href="<?= Url::to(['/house/sample/index']); ?>">装修案例</a><span class="sep last">&gt;</span>
+			<a href="<?= Url::to(['/house/site/home', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">首页</a><span class="sep">&gt;</span>
+				<a href="<?= Url::to(['/house/sample/index', 'page' => 1, 'tag' => '']); ?>">装修案例</a><span class="sep last">&gt;</span>
                 <span class="sep">&gt;</span>
-				<?php if (!empty($filterInfos['currentHouseType']) && isset($filterInfos['houseTypes'][$filterInfos['currentHouseType']])) { ?>
-				<a href="<?= Url::to(['/house/sample/filter', 'house_type' => 'all', 'style' => $filterInfos['currentStyle']]); ?>"><span class="btn-crumbs"><?= $filterInfos['houseTypes'][$filterInfos['currentHouseType']]; ?><i class="i-del"></i></span></a>
-                <?php } ?>
-				<?php if (!empty($filterInfos['currentStyle']) && isset($filterInfos['styles'][$filterInfos['currentStyle']])) { ?>
-				<a href="<?= Url::to(['/house/sample/filter', 'house_type' => $filterInfos['currentHouseType'], 'style' => 'all']); ?>"><span class="btn-crumbs"><?= $filterInfos['styles'][$filterInfos['currentStyle']]; ?><i class="i-del"></i></span></a>
+                <?php foreach ($tagInfos as $tagKey => $tagValue) { if (empty($tagValue)) { continue; } ?>
+				<a href="<?= Url::to(['/house/sample/index', 'tag' => $model->createTag($tagInfos, [$tagKey => '']), 'page' => 1]); ?>"><span class="btn-crumbs"><?= $houseSortInfos[$tagKey]['values'][$tagValue]; ?><i class="i-del"></i></span></a>
                 <?php } ?>
             </div>
-            <?php echo $this->render('_filter', $filterInfos); ?>
+            <?php echo $this->render('_filter', ['houseSortInfos' => $houseSortInfos, 'tagInfos' => $tagInfos, 'model' => $model]); ?>
             <div class="showlist">
                 <ul class="showlist-ul clearfix">
                     <?php foreach ($infos as $info) { ?>

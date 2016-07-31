@@ -3,30 +3,75 @@
 namespace gallerycms\house\controllers;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 use gallerycms\components\Controller as GallerycmsController;
-use common\models\RegionAll;
+use common\models\RegionCounty;
+use common\models\RegionTown;
+use common\models\RegionVillage;
 use merchant\models\Merchant;
 
+/**
+ * 基于县级、乡镇、社区村委等地区关键字，组织页面
+ */
 class RegionController extends GallerycmsController
 {
+	/**
+	 * 地区关键字页面入口，获取县级地区代码，获取县级地区信息;
+	 * 如果县级地区后面带有乡镇或社区等地区参数，则会继续获取乡镇或社区的相关信息
+	 */
 	public function actionRegion()
 	{
-		$regionCode = Yii::$app->request->get('region_code');
-		if (empty($regionCode)) {
-			exit('404s');
+		$county = Yii::$app->request->get('county');
+		if (empty($county)) {
+            throw new NotFoundHttpException('参数有误');
 		}
 
-		$regionAll = new RegionAll();
-		$regionInfo = $regionAll->getInfo($regionCode, ['county', 'town', 'village']);
-		if (empty($regionInfo) || $regionInfo['status'] == 400) {
-			exit('404');
+		$cityInfo = Yii::$app->params['currentCompany'];
+		$regionCounty = new RegionCounty();
+		$countyInfo = $regionCounty->getInfo(['spell_one' => $county, 'parent_id' => $cityInfo['region_code']]);
+		if (empty($countyInfo) || $countyInfo['status'] != 1) {
+            throw new NotFoundHttpException('信息有误');
 		}
 
-		$level = $regionInfo['level'];
-		if ($level == 'county') {
-			return $this->regionList($regionInfo);
+		// 没有乡镇和社区信息，则直接渲染相关的列表页
+		$vtown = Yii::$app->request->get('vtown');
+		if (empty($vtown)) {
+            throw new NotFoundHttpException('参数有误!');
 		}
-		return $this->regionShow($regionInfo);
+
+		// 乡镇地区是t_开头的代码，社区是v_开头的代码
+		$prefix = substr($vtown, 0, 2);
+		$code = substr($vtown, 2);
+		$prefixValids = ['t_', 'v_'];
+		if (!in_array($prefix, $prefixValids) || empty($code)) {
+            throw new NotFoundHttpException('参数有误!');
+		}
+
+		$datas = [
+			'countyInfo' => $countyInfo,
+			'villageInfo' => [],
+			'townInfo' => [],
+			'isVillage' => false,
+		];
+		if ($prefix == 'v_') {
+			$regionVillage = new RegionVillage();
+		    $villageInfo = $regionVillage->getInfo(['spell_one' => $code]);
+			print_r($villageInfo);
+			if (empty($villageInfo)) {
+                throw new NotFoundHttpException('信息有误!');
+			}
+			$datas['villageInfo'] = $villageInfo;
+			$datas['isVillage'] = true;
+		}
+		$regionTown = new RegionTown();
+		$where = $datas['isVillage'] ? ['region_id' => $villageInfo['parent_id']] : ['spell_one' => $code];
+		$townInfo = $regionTown->getInfo($where);
+		if (empty($townInfo) || $townInfo['parent_id'] != $countyInfo['region_id']) {
+            throw new NotFoundHttpException('信息有误!');
+		}
+		$datas['townInfo'] = $townInfo;
+
+		return $this->regionShow($datas);
 	}
 
 	public function actionHome()

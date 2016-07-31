@@ -43,11 +43,9 @@ class SiteController extends GallerycmsController
 		return $this->render('wechat');
 	}
 
-	public function actionSitemap()
+	public function actionMap()
 	{
-		$datas = [
-			'regionInfos' => $this->getRegionInfos(),
-		];
+		$datas = $this->getMapInfos();
 		return $this->render('sitemap', $datas);
 	}
 
@@ -72,11 +70,16 @@ class SiteController extends GallerycmsController
 		return $infos;
 	}
 
-	protected function getRegionInfos()
+	protected function getMapInfos()
 	{
-		$model = new RegionAll();
-		$infos = $model->getInfos();
+		$modelSample = new HouseSample();
+		$modelRegion = new RegionAll();
+		$datas = [
+			'houseSortInfos' => $modelSample->houseSortInfos,
+			'infos' => $modelRegion->getInfos(),
+			'modelSample' => $modelSample,
+		];
 
-		return $infos;
+		return $datas;
 	}
 }
