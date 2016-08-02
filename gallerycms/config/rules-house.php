@@ -7,6 +7,7 @@ return [
 
     Yii::getAlias('@gallerycmsurl') . '/info-<action:\w+>' => '/house/info/<action>',
     Yii::getAlias('@gallerycmsurl') . '/map' => '/house/site/map',
+    Yii::getAlias('@gallerycmsurl') . '/map-<city_code:\w+>' => '/house/site/map-more',
 	[
 		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
 		'route'	=> '/house/sample/index',
@@ -22,6 +23,8 @@ return [
 		'defaults' => ['page' => 1, 'tag' => '']
 	],
     Yii::getAlias('@m.gallerycmsurl') . '/mt-<id:\d+>' => '/house/mobile-sample/show',
+
+    Yii::getAlias('@m.gallerycmsurl') . '/select-city' => '/house/mobile-site/select-city',
 
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/ts-<view:\w+>' => '/house/mobile-feature/index',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shangjia' => '/house/mobile-decoration-company/index',

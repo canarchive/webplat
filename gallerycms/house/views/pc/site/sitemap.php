@@ -62,5 +62,25 @@ $this->params['jsFiles'] = [
             </dl>
             <?php } ?>
         </div>
+        <div class="subtitle">
+		    <span>装修热搜</span>
+        </div>
+        <div class="list">
+            <?php foreach ($regionInfos as $info) { ?>
+            <dl class="list-hot">
+                <dt><?= $info['name']; ?>:</dt>
+                <dd>
+                    <?php foreach ($info['countyInfos'] as $countyInfo) { ?>
+                    <span>
+					    <a target="_blank" title="<?= $countyInfo['name']; ?>" href="<?= Url::to(['/house/region/region', 'city_code' => $info['code_short'], 'county' => $countyInfo['spell_one'], 'vtown' => '']); ?>"><?= $countyInfo['name_short']; ?></a>
+                    </span>
+                    <?php } ?>
+                    <span>
+					    <a target="_blank" title="" href="<?= Url::to(['/house/site/map-more', 'city_code' => $info['code_short']]); ?>">更多>>></a>
+                    </span>
+                </dd>
+            </dl>
+            <?php } ?>
+        </div>
     </div>
 </div>

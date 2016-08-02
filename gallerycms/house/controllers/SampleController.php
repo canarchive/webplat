@@ -33,9 +33,12 @@ class SampleController extends HouseController
 		];
 
 		$tdkInfos = [
-            'title' => '【装修案例效果图】装修案例图片_装修设计案例-{{SITENAME}}装修效果图',
-            'keyword' => '装修案例效果图,装修案例图片,装修设计案例',
-            'description' => '{{SITENAME}}装修案例效果图专区,提供最新装修案例图片,装修设计案例包括简约,现代,中式,欧式,美式,田园等装修效果图',
+            //'title' => '【装修案例效果图】装修案例图片_装修设计案例-{{SITENAME}}装修效果图',
+            //'keyword' => '装修案例效果图,装修案例图片,装修设计案例',
+            //'description' => '{{SITENAME}}装修案例效果图专区,提供最新装修案例图片,装修设计案例包括简约,现代,中式,欧式,美式,田园等装修效果图',
+			'title' => '',
+			'keyword' => '',
+			'description' => '',
 		];
 		Yii::$app->params['tdkInfos'] = $tdkInfos;
 		return $this->render('index', $datas);

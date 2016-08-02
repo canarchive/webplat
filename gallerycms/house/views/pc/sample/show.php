@@ -11,6 +11,7 @@ $this->params['jsFiles'] = [
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
 	'common', 'provider/pd-common', 'provider/pd-casedetail',
 ];
+$this->params['currentNav'] = 'sample';
 $this->params['friendLink'] = true;
 
 $this->params['showPage'] = true;

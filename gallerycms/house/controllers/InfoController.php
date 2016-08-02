@@ -12,18 +12,21 @@ class InfoController extends HouseController
 	public function actionAboutus()
 	{
 		$datas = [];
+		Yii::$app->params['seoTitle'] = '关于我们-' . Yii::$app->params['seoTitle'];
 		return $this->render('aboutus', $datas);
 	}
 
 	public function actionJoinus()
 	{
 		$datas = [];
+		Yii::$app->params['seoTitle'] = '加入我们-' . Yii::$app->params['seoTitle'];
 		return $this->render('joinus', $datas);
 	}
 
 	public function actionStatement()
 	{
 		$datas = [];
+		Yii::$app->params['seoTitle'] = '声明-' . Yii::$app->params['seoTitle'];
 		return $this->render('statement', $datas);
 	}
 }

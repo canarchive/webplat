@@ -11,7 +11,7 @@ $this->params['jsFiles'] = [
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
 	'common', 'provider/pd-common', 'provider/pd-index',
 ];
-$this->params['controllerForJs'] = 'ProductsController@index';
+$this->params['currentNav'] = 'company';
 $this->params['friendLink'] = true;
 
 //$info = ['id' => 1, 'name' => '可猛的装修公司', 'address' => '北京中南海'];
