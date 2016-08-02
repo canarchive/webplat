@@ -80,42 +80,53 @@ class RegionCounty extends PassportModel
 		return $info;
 	}
 
-	public function getInfos()
+	public function getMapInfos()
 	{
-		$infos = $this->find()->where(['status' => 1])->indexBy('region_id')->asArray()->all();
-		$datas = ['province' => [], 'city' => [], 'county' => [], 'town' => [], 'village' => []];
+		$infos = $this->find()->where(['status' => 1])->asArray()->all();
+		$companyInfos = Yii::$app->params['companyInfos'];
+		$datas = [];
 		foreach ($infos as $info) {
-			$datas[$info['level']][] = $info;
+			$datas[$info['parent_id']][] = $info;
 		}
-		foreach ($datas['town'] as & $town) {
-			foreach ($datas['village'] as $village) {
-				if ($village['parent_id'] == $town['region_id']) {
-					$town['villages'][] = $village;
-				}
+
+		foreach ($companyInfos as $key => & $companyInfo) {
+			$parentCode = $companyInfo['region_code'];
+			if (!isset($datas[$parentCode])) {
+				unset($companyInfos[$key]);
+				continue;
 			}
+			$companyInfo = $companyInfo->toArray();
+			$companyInfo['countyInfos'] = $datas[$companyInfo['region_code']];
 		}
-		foreach ($datas['county'] as & $county) {
-			foreach ($datas['town'] as $town) {
-				if ($town['parent_id'] == $county['region_id']) {
-					$county['towns'][] = $town;
-				}
-			}
+		return $companyInfos;
+	}
+
+	public function getMapMoreInfos($regionId)
+	{
+		$infos = $this->find()->where(['parent_id' => $regionId])->asArray()->all();
+		$prefix = substr($regionId, 0, 3);
+
+		$villageModel = new RegionTown();
+		$sql = "SELECT * FROM `wc_region_village` WHERE `status` = 1 AND `region_id` LIKE '{$prefix}%'";
+		$villageInfos = $villageModel->findBySql($sql)->asArray()->all();
+		$townDatas = [];
+		foreach ($villageInfos as $villageInfo) {
+			$townDatas[$villageInfo['parent_id']][] = $villageInfo;
 		}
-		foreach ($datas['city'] as & $city) {
-			foreach ($datas['county'] as $county) {
-				if ($county['parent_id'] == $city['region_id']) {
-					$city['countys'][] = $county;
-				}
-			}
+
+		$townModel = new RegionTown();
+		$sql = "SELECT * FROM `wc_region_town` WHERE `status` = 1 AND `region_id` LIKE '{$prefix}%'";
+		$townInfos = $townModel->findBySql($sql)->asArray()->all();
+		$countyDatas = [];
+		foreach ($townInfos as $townInfo) {
+			$townInfo['villageInfos'] = isset($townDatas[$townInfo['region_id']]) ? $townDatas[$townInfo['region_id']] : [];
+			$countyDatas[$townInfo['parent_id']][] = $townInfo;
 		}
-		foreach ($datas['province'] as & $province) {
-			foreach ($datas['city'] as $city) {
-				if ($city['parent_id'] == $province['region_id']) {
-					$province['cities'][] = $city;
-				}
-			}
+
+		foreach ($infos as & $info) {
+			$info['townInfos'] = isset($countyDatas[$info['region_id']]) ? $countyDatas[$info['region_id']] : [];
 		}
-		//print_r($datas['city']);exit();
-		return $datas;
+
+		return $infos;
 	}
 }
