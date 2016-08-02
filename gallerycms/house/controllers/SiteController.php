@@ -7,7 +7,7 @@ use gallerycms\components\Controller as GallerycmsController;
 use merchant\models\Realcase;
 use merchant\models\Working;
 use gallerycms\house\models\HouseSample;
-use common\models\RegionAll;
+use common\models\RegionCounty;
 
 class SiteController extends GallerycmsController
 {
@@ -24,7 +24,7 @@ class SiteController extends GallerycmsController
 			'sampleInfos' => $this->getSampleInfos(),
 		];
 		$tdkInfos = [
-			'title' => '{{CITYNAME}}室内装修-{{CITYNAME}}房屋装修{{CITYNAME}}房子装修-{{CITYNAME}}室内设计--{{SITENAME}}装修网',
+			'title' => '{{CITYNAME}}室内装修-{{CITYNAME}}房屋装修{{CITYNAME}}房子装修-{{CITYNAME}}室内设计--{{CITYNAME}}{{SITENAME}}装修网',
 			'keyword' => '室内装修,房屋装修，房子装修，室内设计，',
 			'description' => '【{{SITENAME}}】中国家装首选平台，免费提供{{CITYNAME}}多家装修公司进行多对一服务，让装修业主找到真正属于自己喜欢的装修公司。提供：室内装修,房屋装修，房子装修，室内设计，等装修设计一站式服务。',
 		];
@@ -47,6 +47,13 @@ class SiteController extends GallerycmsController
 	{
 		$datas = $this->getMapInfos();
 		return $this->render('sitemap', $datas);
+	}
+
+	public function actionMapMore()
+	{
+		$datas = $this->getMapMoreInfos();
+		//print_r($datas);exit();
+		return $this->render('sitemap-more', $datas);
 	}
 
 	protected function getSampleInfos()
@@ -73,11 +80,24 @@ class SiteController extends GallerycmsController
 	protected function getMapInfos()
 	{
 		$modelSample = new HouseSample();
-		$modelRegion = new RegionAll();
+		$modelRegion = new RegionCounty();
 		$datas = [
 			'houseSortInfos' => $modelSample->houseSortInfos,
-			'infos' => $modelRegion->getInfos(),
+			'regionInfos' => $modelRegion->getMapInfos(),
 			'modelSample' => $modelSample,
+		];
+
+		return $datas;
+	}
+
+	protected function getMapMoreInfos()
+	{
+		$companyInfo = Yii::$app->params['currentCompany'];
+		$parentId = $companyInfo['region_code'];
+		$modelRegion = new RegionCounty();
+		$datas = [
+			'infos' => $modelRegion->getMapMoreInfos($parentId),
+			'companyInfo' => $companyInfo,
 		];
 
 		return $datas;

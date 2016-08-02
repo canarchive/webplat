@@ -11,7 +11,7 @@ $this->params['jsFiles'] = [
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
 	'common', 'lib/bootstrap.carousel',
 ];
-$this->params['controllerForJs'] = 'ProductsController@index';
+$this->params['currentNav'] = 'company';
 $this->params['friendLink'] = true;
 
 ?>

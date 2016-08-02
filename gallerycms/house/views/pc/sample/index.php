@@ -11,7 +11,7 @@ $this->params['jsFiles'] = [
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
-$this->params['controllerForJs'] = 'ProductsController@index';
+$this->params['currentNav'] = 'sample';
 $this->params['friendLink'] = true;
 ?>
 <style rel="stylesheet">

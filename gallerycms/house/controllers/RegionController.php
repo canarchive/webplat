@@ -29,14 +29,14 @@ class RegionController extends GallerycmsController
 		$cityInfo = Yii::$app->params['currentCompany'];
 		$regionCounty = new RegionCounty();
 		$countyInfo = $regionCounty->getInfo(['spell_one' => $county, 'parent_id' => $cityInfo['region_code']]);
-		if (empty($countyInfo) || $countyInfo['status'] != 1) {
+		if (empty($countyInfo)) {
             throw new NotFoundHttpException('信息有误');
 		}
 
 		// 没有乡镇和社区信息，则直接渲染相关的列表页
 		$vtown = Yii::$app->request->get('vtown');
 		if (empty($vtown)) {
-            throw new NotFoundHttpException('参数有误!');
+			return $this->regionList($countyInfo);
 		}
 
 		// 乡镇地区是t_开头的代码，社区是v_开头的代码
@@ -56,7 +56,6 @@ class RegionController extends GallerycmsController
 		if ($prefix == 'v_') {
 			$regionVillage = new RegionVillage();
 		    $villageInfo = $regionVillage->getInfo(['spell_one' => $code]);
-			print_r($villageInfo);
 			if (empty($villageInfo)) {
                 throw new NotFoundHttpException('信息有误!');
 			}
@@ -74,17 +73,11 @@ class RegionController extends GallerycmsController
 		return $this->regionShow($datas);
 	}
 
-	public function actionHome()
+	public function actionPublish()
 	{
-		$model = new RegionAll();
-		$infos = $model->updateSpell();
-		exit();
-	}
-
-	public function actionDeal()
-	{
-		$model = new RegionAll();
-		$infos = $model->spellDeal();
+		$model = new RegionVillage();
+		$infos = $model->publish();
+		print_r($infos);
 		exit();
 	}
 

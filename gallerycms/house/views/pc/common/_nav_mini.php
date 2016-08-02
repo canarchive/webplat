@@ -10,19 +10,19 @@ $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] :
             <li class="nav-logo">
 			<a href="<?= Url::to(['/house/site/home', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"><span></span></a>
             </li>
-            <li class="nav-cell" data-id="index">
+			<li class="nav-cell <?php if ($currentNav == 'index') { echo 'active'; } ?>" data-id="index">
 			    <a href="<?= Url::to(['/house/site/home', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">首页</a>
             </li>
-            <li class="nav-cell" data-id="meitu">
+			<li class="nav-cell <?php if ($currentNav == 'sample') { echo 'active'; } ?>" data-id="meitu">
 				<a href="<?= Url::to(['/house/sample/index', 'page' => 1, 'tag' => '']); ?>">装修案例</a>
             </li>
-            <li class="nav-cell" data-id="realcase">
+			<li class="nav-cell <?php if ($currentNav == 'realcase') { echo 'active'; } ?>" data-id="realcase">
 				<a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">实景作品</a>
             </li>
-            <li class="nav-cell" data-id="provider">
+			<li class="nav-cell <?php if ($currentNav == 'company') { echo 'active'; } ?>" data-id="provider">
 				<a href="<?= Url::to(['/house/decoration-company/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a>
             </li>
-            <li class="nav-cell" data-id="keeper">
+			<li class="nav-cell <?php if ($currentNav == 'free') { echo 'active'; } ?>" data-id="keeper">
 			    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">免费服务</a>
             </li>
         </ul>
