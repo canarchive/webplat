@@ -9,10 +9,9 @@ $params = array_merge(
 return [
     'id' => 'app-website',
     'basePath' => dirname(__DIR__),
-	//'viewPath' => '@website/views/1yyg',
-	//'viewPath' => '@website/views/basey',
-	'viewPath' => '@website/views/tmall',
-	'layout' => null,
+	'viewPath' => '@website/views/default',
+	//'viewPath' => '@website/views/tmall',
+	//'layout' => null,
     'bootstrap' => ['log'],
     'controllerNamespace' => 'website\controllers',
     'components' => [

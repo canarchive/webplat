@@ -4,7 +4,7 @@ namespace website\controllers;
 
 use website\components\Controller as WebsiteController;
 
-class SiteController extends WebsiteController
+class RealTimeController extends WebsiteController
 {
     public function actionIndex()
     {
