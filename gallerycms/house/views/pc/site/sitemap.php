@@ -31,10 +31,10 @@ $this->params['jsFiles'] = [
 					    <a href="<?= Url::to(['/house/site/home', 'city_code' => $info['code_short']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>站</a>
                     </span>
                     <span>
-					    <a href="<?= Url::to(['/house/decoration-company/index', 'city_code' => $info['code_short']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>装修公司</a>
+					    <a href="<?= Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => $info['code_short']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>装修公司</a>
                     </span>
                     <span>
-					    <a href="<?= Url::to(['/house/realcase/index', 'city_code' => $info['code_short']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>实景案例</a>
+					    <a href="<?= Url::to(['/house/realcase/index', 'page' => 1, 'city_code' => $info['code_short']]); ?>" title="<?= $info['name_full']; ?>"><?= $info['name']; ?>实景案例</a>
                     </span>
                     <?php foreach (['sheji' => '免费设计', 'yanfang' => '免费验房', 'jianli' => '免费监理'] as $keyView => $valueView) { ?>
                     <span>

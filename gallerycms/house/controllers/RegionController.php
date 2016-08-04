@@ -95,11 +95,9 @@ class RegionController extends GallerycmsController
 		return $this->render('list', $datas);
 	}
 
-	protected function regionShow($info)
+	protected function regionShow($datas)
 	{
-		$datas = [
-			'info' => $info,
-		];
+		$info = $datas['isVillage'] ? $datas['villageInfo'] : $datas['townInfo'];
 		$tdkInfos = $this->_tdkInfos('show', $info);
 		Yii::$app->params['tdkInfos'] = $tdkInfos;
 		return $this->render('show', $datas);
@@ -109,14 +107,14 @@ class RegionController extends GallerycmsController
 	{
         $datas = [
 			'list' => [
-			    'title' => '{{CITYNAME}}装修公司_{{CITYNAME}}装修公司大全|排名 - {{CITYNAME}}{{SITENAME}}装修网',
-                'keyword' => '{{CITYNAME}}装修公司,{{CITYNAME}}装修公司大全,{{CITYNAME}}装修公司排名',
-			    'description' => '{{SITENAME}}{{CITYNAME}}装修网是一家致力于为广大{{CITYNAME}}业主提供家装、家居、建材等装修服务的家装平台,专业正规{{CITYNAME}}装修公司推荐,帮助{{CITYNAME}}业主轻松搞定装修!',
+			    'title' => "{{CITYNAME}}-{$info['name_short']}装修公司哪家最好-{{CITYNAME}}-{$info['name_short']}装修公司十大排名-{{CITYNAME}}-{$info['name_short']}装修网站大全-【{{CITYNAME}}{{SITENAME}}】",
+			    'keyword' => "装修公司哪家好，装修网站，装修公司排名，装修公司十大排名，装修网站大全，装修公司大全",
+			    'description' => "【{{SITENAME}}】{{CITYNAME}}装修网罗列出{{CITYNAME}}-{$info['name_short']}装修公司网站大全，帮业主快速了解{{CITYNAME}}-{$info['name']}装修公司哪家好？{{CITYNAME}}-{$info['name_short']}装修公司十大排名，从而解决您的装修问题。",
 			],
 			'show' => [
-                'title' => '【免费验房】验房注意事项_验房公司_验房流程-{{SITENAME}}免费验房',
+                'title' => "【{{CITYNAME}}-{$info['name_short']}免费验房】验房注意事项_验房公司_验房流程-{{CITYNAME}}{{SITENAME}}免费验房",
                 'keyword' => '免费验房,验房注意事项,验房公司,验房流程',
-                'description' => '{{SITENAME}}免费验房服务,给您提供验房注意事项,最优质的验房公司,以及详细的验房流程,全方面检测房屋质量,让您装修有保障！',
+                'description' => "{{CITYNAME}}{{SITENAME}}-{$info['name_short']}免费验房服务,给您提供验房注意事项,最优质的验房公司,以及详细的验房流程,全方面检测房屋质量,让您装修有保障！",
 			],
 		];
 

@@ -21,7 +21,7 @@ $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] :
 				<a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">实景作品</a>
             </li>
 			<li data-tabid="provider" <?php if ($currentNav == 'company') { echo 'class="on"'; } ?>>
-				<a href="<?= Url::to(['/house/decoration-company/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a>
+				<a href="<?= Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a>
             </li>
 		    <li data-tabid="provider" <?php if ($currentNav == 'free') { echo 'class="on"'; } ?>>
 			    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">免费服务</a>

@@ -21,12 +21,12 @@ $this->params['jsFiles'] = [
         <h1 class="title">网站地图</h1>
 		<?php foreach ($infos as $info) { ?>
         <div class="subtitle">
-		    <span><?= $info['name_short']; ?></span>
+			<span><a target="_blank" title="<?= $info['name']; ?>" href="<?= Url::to(['/house/region/region', 'city_code' => Yii::$app->params['currentCompany']['code_short'], 'county' => $info['spell_one'], 'vtown' => '']); ?>"><?= $info['name_short']; ?></a></span>
         </div>
         <div class="list">
             <?php foreach ($info['townInfos'] as $town) { ?>
             <dl class="list-hot">
-                <dt><?= $town['name_short']; ?>:</dt>
+				<dt><a target="_blank" title="<?= $town['name']; ?>" href="<?= Url::to(['/house/region/region', 'city_code' => Yii::$app->params['currentCompany']['code_short'], 'county' => $info['spell_one'], 'vtown' => 't_' . $town['spell_one']]); ?>"><?= $town['name_short']; ?></a>:</dt>
                 <dd>
                     <?php foreach ($town['villageInfos'] as $village) { ?>
                     <span>
