@@ -56,7 +56,7 @@ class DecorationCompanyController extends HouseController
 		}
 
 		$tdkInfos = [
-            'title' => "{{CITYNAME}}{$info['name']}-{$info['merchantInfo']['name']}",
+            'title' => "{{CITYNAME}}{$info['name']}-{$info['merchantInfo']['name']}-{{CITYNAME}}-{{SITENAME}}",
             'keyword' => "{{CITYNAME}}{$info['name']},{$info['merchantInfo']['name']}",
             'description' => "【南鸿】浙江南鸿装饰股份有限公司提供{{CITYNAME}}{$info['name']}装修施工的每个细节，{{CITYNAME}}业主可以清楚知道装修的每个环节。装修施工选择{$info['merchantInfo']['name']}，就是选择放心! ",
 		];
