@@ -25,9 +25,12 @@ return [
     Yii::getAlias('@m.gallerycmsurl') . '/mt-<id:\d+>' => '/house/mobile-sample/show',
 
     Yii::getAlias('@m.gallerycmsurl') . '/select-city' => '/house/mobile-site/select-city',
-
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/ts-<view:\w+>' => '/house/mobile-feature/index',
-    Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shangjia' => '/house/mobile-decoration-company/index',
+	[
+		'pattern' => Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shangjia/<page:\d+>',
+		'route'	=> '/house/mobile-decoration-company/index',
+		'defaults' => ['page' => 1]
+	],
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sj-<id:\d+>' => '/house/mobile-decoration-company/show',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/gd-<id:\d+>' => '/house/mobile-decoration-company/show-working',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shijing' => '/house/mobile-realcase/index',
@@ -36,7 +39,11 @@ return [
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>' => '/house/mobile-site/index',
 
     Yii::getAlias('@wildurl') . '/ts-<view:\w+>' => '/house/feature/index',
-    Yii::getAlias('@wildurl') . '/shangjia' => '/house/decoration-company/index',
+	[
+		'pattern' => Yii::getAlias('@wildurl') . '/shangjia/<page:\d+>',
+		'route' => '/house/decoration-company/index',
+		'defaults' => ['page' => 1],
+	],
     Yii::getAlias('@wildurl') . '/sj-<id:\d+>' => '/house/decoration-company/show',
     Yii::getAlias('@wildurl') . '/gd-<id:\d+>' => '/house/decoration-company/show-working',
     Yii::getAlias('@wildurl') . '/shijing' => '/house/realcase/index',

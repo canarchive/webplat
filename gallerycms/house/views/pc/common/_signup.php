@@ -3,7 +3,7 @@
 <div class="appoinment-bottom show" style="left: -150%;">
     <div class="page-container">
         <a href="javascript:void(0);">
-			<img class="logo" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/appoinment-bottom-logo.png">
+			<img class="logo" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/appoinment-bottom-logo.png">
         </a>
         <div class="content-box">
             <div class="apply-form">

@@ -3,7 +3,7 @@ use yii\helpers\Url;
 ?>
 <div class="cube">
     <div class="cube-list cubeTop">
-        <a href="<?= Url::to(['/house/mobile-decoration-company/index']); ?>" class="cube-left green">
+        <a href="<?= Url::to(['/house/mobile-decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="cube-left green">
             <span class="company"></span><p>找装修公司</p>
         </a>
         <div class="cube-right">

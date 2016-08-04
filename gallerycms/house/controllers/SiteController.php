@@ -46,6 +46,7 @@ class SiteController extends GallerycmsController
 	public function actionMap()
 	{
 		$datas = $this->getMapInfos();
+		Yii::$app->params['seoTitle'] = '网站地图-' . Yii::$app->params['seoTitle'];
 		return $this->render('sitemap', $datas);
 	}
 
@@ -53,6 +54,7 @@ class SiteController extends GallerycmsController
 	{
 		$datas = $this->getMapMoreInfos();
 		//print_r($datas);exit();
+		Yii::$app->params['seoTitle'] = $datas['companyInfo']['name'] . '网站地图-' . Yii::$app->params['seoTitle'];
 		return $this->render('sitemap-more', $datas);
 	}
 
