@@ -2,8 +2,9 @@
 <!--首页底部浮动报名条-->
 <div class="appoinment-bottom show" style="left: -150%;">
     <div class="page-container">
-        <a href="http://www.tugou.com/topic/kpzx2/" target="_blank">
-            <img class="logo" src="http://img.tugou.com/index/appoinment-bottom-logo.png"></a>
+        <a href="javascript:void(0);">
+			<img class="logo" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/appoinment-bottom-logo.png">
+        </a>
         <div class="content-box">
             <div class="apply-form">
                 <p class="tip">已有
@@ -23,19 +24,20 @@
                             <option value="">市/地区</option></select>
                     </div>
                 </div>
-                <input name="applyBtn" type="button" value=""></div>
-            <!-- <img class="qrcode-box" src="http://img.tugou.com/themes/default/togo_ewm.jpg"> -->
+				<input name="applyBtn" type="button" value="">
+            </div>
             <div class="qrcode-box">
                 <p class="faultlayout">&nbsp;</p>
-                <img class="ewm" src="http://img.tugou.com/index/appoinment-bottom-ewm.jpg">
-                <p class="desc">详情咨询装修管家</p></div>
+				<img class="ewm" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/appoinment-bottom-ewm.jpg">
+				<p class="desc">详情咨询装修管家</p>
+            </div>
         </div>
-        <div class="close_button">
-            <a href="javascript:;">×</a></div>
+        <div class="close_button"><a href="javascript:;">×</a></div>
     </div>
 </div>
 <!--缩略版-->
 <div class="appoinment-bottom-collapse">
     <a href="javascript:;">
-        <img src="http://img.tugou.com/index/appoinment-bottom-collapse.png"></a>
+		<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/appoinment-bottom-collapse.png">
+    </a>
 </div>

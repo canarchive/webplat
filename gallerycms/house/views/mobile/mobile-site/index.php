@@ -9,7 +9,7 @@ $this->params['jsFiles'] = [
 ];
 ?>
 <div class="toptitle">
-    <a href="<?= Url::to(['/site/select-city']); ?>">
+    <a href="<?= Url::to(['/house/mobile-site/select-city']); ?>">
 	    <div class="position"><?= Yii::$app->params['currentCompany']['name']; ?></div>
     </a>
 </div>

@@ -1,5 +1,5 @@
 <!-- 2016-05-19 在线客服系统 -->
-<div class="apply-bar app-hide">
+<!--<div class="apply-bar app-hide">
     <ul>
         <li class="consult-submit" onclick="nTalk.im_openInPageChat();">
 			<span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询
@@ -30,3 +30,4 @@
 }
 </script>
 <script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
+-->
