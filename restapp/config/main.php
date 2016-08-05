@@ -21,6 +21,7 @@ return [
         'rest-client' => [
             'class' => 'restapp\tool\Module',
             'baseUrl' => Yii::getAlias('@restappurl'),
+			'allowedIPs' => ['*'],
         ],
     ],
     'components' => [
