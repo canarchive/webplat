@@ -10,15 +10,8 @@ use common\helpers\Tree;
 
 class CategoryController extends AdminController
 {
-    public function behaviors()
-    {
-        return [];
-    }	
+	protected $modelClass = 'website\models\Category';
 
-    /**
-     * Lists all Category models.
-     * @return mixed
-     */
     public function actionListinfo()
     {
 		$action = \Yii::$app->request->get('action');
@@ -46,81 +39,27 @@ class CategoryController extends AdminController
 		return $datas;
 	}
 
-    /**
-     * Displays a single AuthItem model.
-     * @param  string $id
-     * @return mixed
-     */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
-        
-        return $this->render('view', ['model' => $model]);
-	}
+		return $this->_viewInfo($id);
+    }
 
-    /**
-     * Creates a new Category model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionAdd()
     {
-        $model = new Category;
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['listinfo']);
-        }
-
-        return $this->render('add', [
-            'model' => $model,
-        ]);
+		return $this->_addInfo(new Category());
     }
 
-    /**
-     * Updates an existing Category model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param  integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
+    public function actionUpdate($id = 0)
     {
-        $model = $this->findModel($id);
+		if (Yii::$app->request->isAjax) {
+		    return $this->_updateByAjax();
+		}
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['listinfo', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+		return $this->_updateInfo($id);
     }
 
-    /**
-     * Deletes an existing Category model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param  integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['listinfo']);
-    }
-
-    /**
-     * Finds the Category model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param  integer $id
-     * @return Category the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Category::findOne($id)) !== null) {
-            return $model;
-		} 
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+		return $this->_deleteInfo($id);
     }
 }

@@ -39,4 +39,13 @@ class Type extends WebsiteModel
             'status' => '状态',
         ];
     }
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '暂停',
+			'1' => '正常',
+		];
+		return $datas;
+	}
 }

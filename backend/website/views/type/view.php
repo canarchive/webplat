@@ -5,8 +5,10 @@ $detailViewParams = [
     'attributes' => [
 		'id',
         'name',
-        'logo',
-        'category_id',
+		[
+			'attribute' => 'status',
+			'value' => $model->statusInfos[$model->status],
+		],
     ],
 ];
 

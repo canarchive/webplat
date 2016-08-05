@@ -6,7 +6,12 @@ $gridViewParams = [
     'columns' => [
         'id',
         'name',
-        'status',
+		[
+			'attribute' => 'status',
+			'value' => function($model) {
+				return $model->statusInfos[$model->status];
+			}
+        ],
     ],
 ];
 
