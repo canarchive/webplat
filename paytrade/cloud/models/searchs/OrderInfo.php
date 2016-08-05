@@ -1,18 +1,18 @@
 <?php
 
-namespace paytrade\models\searchs;
+namespace paytrade\cloud\models\searchs;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use paytrade\models\Orderinfo as OrderinfoModel;
+use paytrade\cloud\models\OrderInfo as OrderInfoModel;
 
-class OrderInfo extends OrderinfoModel
+class OrderInfo extends OrderInfoModel
 {
     public function search($params)
     {
-        $query = OrderinfoModel::find()
-            ->from(OrderinfoModel::tableName());
+        $query = OrderInfoModel::find()
+            ->from(OrderInfoModel::tableName());
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 

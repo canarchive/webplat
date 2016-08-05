@@ -10,7 +10,7 @@ use backend\components\AdminController;
 
 class CloudBetController extends AdminController
 {
-	protected $modelClass = 'paytrade\models\Bet';
+	protected $modelClass = 'paytrade\cloud\models\Bet';
 
     public function actionListinfo()
     {

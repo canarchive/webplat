@@ -1,6 +1,6 @@
 <?php
 
-namespace paytrade\models;
+namespace paytrade\cloud\models;
 
 class AccountUnusual extends Account
 {
