@@ -1,11 +1,11 @@
 <?php
 
-namespace paytrade\models\searchs;
+namespace paytrade\cloud\models\searchs;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use paytrade\models\Cart as CartModel;
+use paytrade\cloud\models\Cart as CartModel;
 
 class Cart extends CartModel
 {

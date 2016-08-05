@@ -3,14 +3,14 @@
 namespace backend\paytrade\controllers;
 
 use Yii;
-use paytrade\models\Shipment;
-use paytrade\models\searchs\Shipment as ShipmentSearch;
+use paytrade\cloud\models\Shipment;
+use paytrade\cloud\models\searchs\Shipment as ShipmentSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class ShipmentController extends AdminController
+class CloudShipmentController extends AdminController
 {
-	protected $modelClass = 'paytrade\models\Shipment';
+	protected $modelClass = 'paytrade\cloud\models\Shipment';
 
     public function actionListinfo()
     {

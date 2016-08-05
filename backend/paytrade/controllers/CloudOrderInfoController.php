@@ -3,14 +3,14 @@
 namespace backend\paytrade\controllers;
 
 use Yii;
-use paytrade\models\Orderinfo;
-use paytrade\models\searchs\Orderinfo as OrderinfoSearch;
+use paytrade\cloud\models\OrderInfo;
+use paytrade\cloud\models\searchs\OrderInfo as OrderInfoSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class OrderinfoController extends AdminController
+class CloudOrderInfoController extends AdminController
 {
-	protected $modelClass = 'paytrade\models\OrderInfo';
+	protected $modelClass = 'paytrade\cloud\models\OrderInfo';
 
     public function actionListinfo()
     {

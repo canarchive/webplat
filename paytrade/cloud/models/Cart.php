@@ -1,6 +1,6 @@
 <?php
 
-namespace paytrade\models;
+namespace paytrade\cloud\models;
 
 use common\models\PaytradeModel;
 use website\models\GoodsSnapup;

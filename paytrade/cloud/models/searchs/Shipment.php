@@ -1,11 +1,11 @@
 <?php
 
-namespace paytrade\models\searchs;
+namespace paytrade\cloud\models\searchs;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use paytrade\models\Shipment as ShipmentModel;
+use paytrade\cloud\models\Shipment as ShipmentModel;
 
 class Shipment extends ShipmentModel
 {
