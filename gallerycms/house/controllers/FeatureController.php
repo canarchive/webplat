@@ -43,19 +43,19 @@ class FeatureController extends GallerycmsController
 		];*/
 		$datas = [
 			'yanfang' => [
-                'title' => '【{{CITYNAME}}免费验房】验房注意事项_验房公司_验房流程-{{CITYNAME}}{{SITENAME}}免费验房',
-                'keyword' => '免费验房,验房注意事项,验房公司,验房流程',
-                'description' => '{{CITYNAME}}{{SITENAME}}免费验房服务,给您提供验房注意事项,最优质的验房公司,以及详细的验房流程,全方面检测房屋质量,让您装修有保障！',
+                'title' => '{{CITYNAME}}免费验房_验房注意事项_验房公司_验房流程-【{{CITYNAME}}{{SITENAME}}】',
+                'keyword' => '{{CITYNAME}}免费验房,{{CITYNAME}}验房注意事项,{{CITYNAME}}验房公司,{{CITYNAME}}验房流程',
+                'description' => '【{{CITYNAME}}{{SITENAME}}】免费验房服务,给您提供验房注意事项,最优质的验房公司,以及详细的验房流程,全方面检测房屋质量,让您装修有保障！',
 			],
 			'sheji' => [
-				'title' => '{{CITYNAME}}免费上门量房-{{CITYNAME}}免费设计出图-【{{SITENAME}}】',
-				'keyword' => '装修免费上门量房，装修免费设计，装修免费出图',
-				'description' => '【{{SITENAME}}】{{CITYNAME}}装修网，免费量房让您足不出户，享受装修多对一VIP服务，马上在线预约吧，比比哪家更满意！让装修变得更简单。免费提供{{CITYNAME}}业主，免费上门量房，免费设计，免费报价服务。',
+				'title' => '{{CITYNAME}}装修免费上门量房_{{CITYNAME}}装修免费设计出图-【{{CITYNAME}}{{SITENAME}}】',
+				'keyword' => '{{CITYNAME}}装修免费上门量房,{{CITYNAME}}装修免费设计,{{CITYNAME}}装修免费出图',
+				'description' => '【{{CITYNAME}}{{SITENAME}}】{{CITYNAME}}装修网,免费量房让您足不出户,享受装修多对一VIP服务,马上在线预约吧,比比哪家更满意！让装修变得更简单。免费提供{{CITYNAME}}业主,免费上门量房,免费设计,免费报价服务。',
 			],
 			'jianli' => [
-				'title' => '{{CITYNAME}}免费监理-【{{CITYNAME}}{{SITENAME}}】',
-				'keyword' => '免费装修监理，免费家装监理',
-				'description' => '【{{SITENAME}}】{{CITYNAME}}家装首选平台，{{CITYNAME}}专业团队，一对一免费监理服务，装修设计一站式服务。',
+				'title' => '{{CITYNAME}}{{CITYNAME}}免费装修监理_{{CITYNAME}}免费家装监理-【{{CITYNAME}}{{SITENAME}}】',
+				'keyword' => '{{CITYNAME}}免费装修监理,{{CITYNAME}}免费家装监理',
+				'description' => '【{{SITENAME}}】{{CITYNAME}}家装首选平台,{{CITYNAME}}专业团队,一对一免费监理服务,装修设计一站式服务。',
 			],
 		];
 

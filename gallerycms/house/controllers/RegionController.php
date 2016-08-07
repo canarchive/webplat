@@ -70,7 +70,7 @@ class RegionController extends GallerycmsController
 		}
 		$datas['townInfo'] = $townInfo;
 
-		return $this->regionShow($datas);
+		return $this->regionList($datas);
 	}
 
 	public function actionPublish()
@@ -81,15 +81,16 @@ class RegionController extends GallerycmsController
 		exit();
 	}
 
-	protected function regionList($regionInfo)
+	protected function regionList($datas)
 	{
+		$regionInfo = isset($datas['isVillage']) ? ($datas['isVillage'] ? $datas['villageInfo'] : $datas['townInfo']) : $datas;
 		$model = new Merchant();
 		$infos = $model->getInfos();
 		$datas = [
 			'infos' => $infos,
 		];
 
-		$tdkInfos = $this->_tdkInfos('list', $regionInfo);
+		$tdkInfos = $this->_tdkInfos('show', $regionInfo);
 		Yii::$app->params['tdkInfos'] = $tdkInfos;
 
 		return $this->render('list', $datas);
@@ -112,9 +113,9 @@ class RegionController extends GallerycmsController
 			    'description' => "【{{SITENAME}}】{{CITYNAME}}装修网罗列出{{CITYNAME}}-{$info['name_short']}装修公司网站大全，帮业主快速了解{{CITYNAME}}-{$info['name']}装修公司哪家好？{{CITYNAME}}-{$info['name_short']}装修公司十大排名，从而解决您的装修问题。",
 			],
 			'show' => [
-                'title' => "【{{CITYNAME}}-{$info['name_short']}免费验房】验房注意事项_验房公司_验房流程-{{CITYNAME}}{{SITENAME}}免费验房",
-                'keyword' => '免费验房,验房注意事项,验房公司,验房流程',
-                'description' => "{{CITYNAME}}{{SITENAME}}-{$info['name_short']}免费验房服务,给您提供验房注意事项,最优质的验房公司,以及详细的验房流程,全方面检测房屋质量,让您装修有保障！",
+				'title' => "{{CITYNAME}}{$info['name_short']}家装公司排名_{{CITYNAME}}{$info['name_short']}装饰装潢设计-【{{CITYNAME}}{{SITENAME}}】",
+				'keyword' => "{CITYNAME}}{$info['name_short']}家装公司排名，{{CITYNAME}}{$info['name_short']}装潢设计，{{CITYNAME}}{$info['name_short']}装修网，{{CITYNAME}}{$info['name_short']}装饰公司",
+				'description' => "【{{CITYNAME}}{{SITENAME}}】为您提供{{CITYNAME}}{$info['name_short']}家装公司排名大全，并免费提供{{CITYNAME}}{$info['name_short']}装修上门量房设计等服务，以及装饰装潢报价与设计方案。进行多对一装修设计量房报价服务,让装修业主找到真正属于自己喜欢的装修设计公司。",
 			],
 		];
 
