@@ -6,7 +6,7 @@ $jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
 
 $tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos'] : [];
 $tdkPlaceholder = ['{{CITYNAME}}', '{{SITENAME}}'];
-$tdkReplace = [Yii::$app->params['currentCompany']['name'], Yii::$app->params['siteNameBase']];
+$tdkReplace = [Yii::$app->params['currentCompany']['name'], Yii::$app->params['siteName']];
 foreach ($tdkInfos as $tdKKey => & $tdkValue) {
 	$tdkValue = str_replace($tdkPlaceholder, $tdkReplace, $tdkValue);
 }
@@ -38,7 +38,7 @@ $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Y
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta name="mobile-agent" content="format=html5;url=http://m./bj/" />
-<link rel="alternate" media="only screen and (max-width:750px)" href="http://m.tugou.com/bj/" />
+<link rel="alternate" media="only screen and (max-width:750px)" href="" />
 <title><?= $seoTitle; ?></title>
 <meta name="keywords" content="<?= $seoKeyword; ?>" />
 <meta name="description" content="<?= $seoDescription; ?>" />
