@@ -21,4 +21,9 @@ class SiteController extends SpreadController
 		$data['time'] = time();
 		$session['session_spread_info'] = $data;
 	}
+
+	public function actionStat()
+	{
+		return '';
+	}
 }

@@ -41,6 +41,7 @@ return [
 				'jz-signup' => '/decoration/signup/index',
 				'jz-signup-tview' => '/decoration/signup/tview',
 				'jz-signup-cms' => '/decoration/signup/cms',
+				'stat' => '/site/stat',
 		        //'/jz-<controller:\w+>/<action:\w+>' => '/decoration/<controller>/<action>',
 			],
 		],
