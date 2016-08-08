@@ -73,11 +73,16 @@ jQuery(document).ready(function($) {
 <?= $content; ?>
 <!--底部-->
 <link type="text/css" rel="stylesheet" href="//at.alicdn.com/t/font_1463989160_300939.css" />
+<input type="hidden" id="position" value="" />
+<input type="hidden" id="position_name" value="" />
 <?php echo $this->render('../common/_custom_service', []); ?>
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_footer_base', []); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 </div>
+<!--<div style="display:none">
+    <img src="http://spread.tuanjiahui.com/stat.html?channel=bd&kw=aa测试" />
+</div>-->
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/nav.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/ProvinceJson.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/CityJson.js"></script>

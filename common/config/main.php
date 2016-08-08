@@ -1,4 +1,5 @@
 <?php
+//ini_set("session.cookie_domain",'.tuanjiahui.com');
 return [
     'timeZone'=>'Asia/Shanghai',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
@@ -25,6 +26,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        /*'session' => [
+            'cookieParams' => [
+                'domain' => '.tuanjiahui.com',
+                'lifetime' => 0,
+                'httpOnly' => true,
+                'path' => '/',
+            ],
+		],*/
 		'request' => [
 			'class' => 'common\components\Request',
 		],
