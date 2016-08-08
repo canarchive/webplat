@@ -17,6 +17,8 @@ class SignupForm extends Model
 	public $message;
 	public $position;
 	public $position_name;
+	public $city_input;
+	public $area_input;
 	public $isMobile;
 	public $decorationModel;
 
@@ -29,7 +31,8 @@ class SignupForm extends Model
             [['mobile', 'name'], 'filter', 'filter' => 'trim'],
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
-			[['message', 'info_id', 'position', 'position_name'], 'safe'],
+			//[['city_input', 'area_input'], 'default', 'value' => ''],
+			[['city_input', 'area_input', 'message', 'info_id', 'position', 'position_name'], 'safe'],
         ];
     }
 
@@ -46,9 +49,10 @@ class SignupForm extends Model
 		}
 
 		$conversionModel = new \spread\models\Conversion();
-		$positionInfos = $conversionModel->getPositionInfos();
-		$positionStr = isset($positionInfos[$this->position]) ? $positionInfos[$this->position] : $this->position;
-		$note = $positionStr . '#' . strip_tags($this->position_name);
+		//$positionInfos = $conversionModel->getPositionInfos();
+		//$positionStr = isset($positionInfos[$this->position]) ? $positionInfos[$this->position] : $this->position;
+		//$note = $positionStr . '#' . strip_tags($this->position_name);
+		$note = strip_tags($this->position_name);
 		$data = array(
 			'mobile' => $this->mobile,
 			'name' => $this->name,
@@ -61,6 +65,8 @@ class SignupForm extends Model
 			'info_name' => $this->decorationModel->name,
 			'type' => $this->decorationModel->type,
 			'city' => $this->decorationModel->city,
+			'city_input' => empty(strip_tags($this->city_input)) ? '' : strip_tags($this->city_input),
+			'area_input' => empty(strip_tags($this->area_input)) ? 0 : strip_tags($this->area_input),
 			'decorationModel' => $this->decorationModel,
 
 		);

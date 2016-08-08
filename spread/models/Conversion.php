@@ -50,7 +50,7 @@ class Conversion extends Visit
 			'info_name' => $data['info_name'],
 			'position' => $data['position'],
 			'message' => $data['message'],
-			'note' => '',
+			'note' => $data['note'],
 		];
 
 		$session = \Yii::$app->session;

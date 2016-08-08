@@ -14,7 +14,7 @@ class SignupController extends spreadController
 
 	public function behaviors()
     {
-        //header("Access-Control-Allow-Origin:*");
+		return [];
         return ArrayHelper::merge([
             [
                 'class' => Cors::className(),
@@ -30,6 +30,9 @@ class SignupController extends spreadController
     {
 		//var_dump($action);exit();
 	    if (in_array($action->id, ['cms'])) {
+			$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+		    header("Access-Control-Allow-Credentials: true");
+            header("Access-Control-Allow-Origin: {$origin}");
         	$this->enableCsrfValidation = false;
         }
         return parent::beforeAction($action);

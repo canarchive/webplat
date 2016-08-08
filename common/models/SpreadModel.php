@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use spread\models\Attachment as AttachmentSpread;
+
 class SpreadModel extends BaseModel
 {
     public static function getDb()
@@ -11,6 +13,6 @@ class SpreadModel extends BaseModel
 
 	protected function getAttachmentModel()
 	{
-		return new \spread\models\Attachment();
+		return new AttachmentSpread();
 	}
 }

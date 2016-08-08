@@ -10,6 +10,7 @@ use backend\components\AdminController;
 
 class DecorationOwnerController extends AdminController
 {
+	protected $modelClass = 'spread\decoration\models\DecorationOwner';
 	public $ownerInfo;
 
     /**
@@ -72,11 +73,11 @@ class DecorationOwnerController extends AdminController
 		}
 
         $model = $this->findModel($id);
-        $modelOwner = \spread\groupon\models\Owner::findOne(['mobile' => $model->mobile]);
+        $modelOwner = \spread\decoration\models\Owner::findOne(['mobile' => $model->mobile]);
 		$this->ownerInfo = $modelOwner;
 
-		$ownerHouseInfos = \spread\groupon\models\OwnerHouse::findAll(['mobile' => $model->mobile]);
-		$callbackLogInfos = \spread\groupon\models\CallbackLog::findAll(['mobile' => $model->mobile]);
+		$ownerHouseInfos = \spread\decoration\models\OwnerHouse::findAll(['mobile' => $model->mobile]);
+		$callbackLogInfos = \spread\decoration\models\CallbackLog::findAll(['mobile' => $model->mobile]);
 
 		$data = [
 			'model' => $model,
@@ -95,10 +96,10 @@ class DecorationOwnerController extends AdminController
 
 		if ($table == 'owner_house') {
 			$fields = ['mobile', 'decoration_id', 'address', 'house_area', 'house_sort', 'house_type', 'buy_furniture', 'buy_building', 'renovation_at', 'renovation_step', 'renovation_budget', 'renovation_company'];
-			$model = new \spread\groupon\models\OwnerHouse();
+			$model = new \spread\decoration\models\OwnerHouse();
 		} elseif ($table == 'callback') {
 			$fields = ['mobile', 'content', 'note'];
-			$model = new \spread\groupon\models\CallbackLog();
+			$model = new \spread\decoration\models\CallbackLog();
 		} else {
 			return ['status' => 400, 'message' => '参数错误'];
 		}
@@ -142,13 +143,13 @@ class DecorationOwnerController extends AdminController
 			}
 			break;
 		case 'owner':
-			$model = \spread\groupon\models\Owner::findOne($infoId);
+			$model = \spread\decoration\models\Owner::findOne($infoId);
 			break;
 		case 'owner_house':
-			$model = \spread\groupon\models\OwnerHouse::findOne($infoId);
+			$model = \spread\decoration\models\OwnerHouse::findOne($infoId);
 			break;
 		case 'callback':
-			$model = \spread\groupon\models\CallbackLog::findOne($infoId);
+			$model = \spread\decoration\models\CallbackLog::findOne($infoId);
 			break;
 		}
 		$model->$field = $value;
@@ -156,19 +157,4 @@ class DecorationOwnerController extends AdminController
 
 		return ['status' => 200, 'message' => 'OK'];
 	}
-
-    /**
-     * Finds the DecorationOwner model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param  string        $id
-     * @return DecorationOwner      the loaded model
-     * @throws HttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = DecorationOwner::findOne($id)) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');		
-    }
 }

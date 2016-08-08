@@ -14,7 +14,7 @@ class DecorationController extends AdminController
 
     public function actionListinfo()
     {
-		$action = \Yii::$app->request->get('action');
+		$action = Yii::$app->request->get('action');
 		if (in_array($action, array('infoAjax'))) {
 			$data = $this->$action();
 			return $data;
@@ -27,13 +27,13 @@ class DecorationController extends AdminController
 
 	protected function infoAjax()
 	{
-		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-		$groupon = new Groupon();
-		$companyId = \Yii::$app->request->get('company_id');
+		$decoration = new Decoration();
+		$companyId = Yii::$app->request->get('company_id');
 
 		$orderBy = ['id' => SORT_DESC];
-		$infos = $groupon->find()->where(['company_id' => $companyId])->orderBy($orderBy)->asArray()->all();
+		$infos = $decoration->find()->where(['company_id' => $companyId])->orderBy($orderBy)->asArray()->all();
 		$data = [];
 		foreach ($infos as $info) {
 			$data[$info['id']] = $info['name'];
