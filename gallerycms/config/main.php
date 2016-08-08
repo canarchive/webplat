@@ -18,14 +18,6 @@ return [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
         ],
-	'session' => [
-    'cookieParams' => [
-        'domain' => '.tuanjiahui.com',
-        'lifetime' => 0,
-        'httpOnly' => true,
-        'path' => '/',
-    ],
-],	
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

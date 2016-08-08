@@ -8,8 +8,8 @@
         <div class="content-box">
             <div class="apply-form">
                 <p class="tip">已有
-                    <em class="ifocus"></em>位业主 成功领取装修大礼包</p>
-                <input name="apply_type" type="hidden" value="7">
+					<em class="ifocus"><?php echo '2382'; ?> </em>位业主 成功领取装修大礼包</p>
+                <input name="apply_type" type="hidden" value="4">
                 <div class="part_left">
                     <input name="name" type="text" placeholder="您的姓名">
                     <input name="phone" type="text" placeholder="手机号码"></div>
