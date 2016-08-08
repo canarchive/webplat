@@ -4,7 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use \merchant\models\Attachment;
+use \merchant\models\Attachment As AttachmentMerchant;
 use merchant\models\Merchant;
 
 class MerchantModel extends BaseModel
@@ -16,7 +16,7 @@ class MerchantModel extends BaseModel
 
 	protected function getAttachmentModel()
 	{
-		return new Attachment();
+		return new AttachmentMerchant();
 	}
 
 	protected function getMerchantInfos()
