@@ -124,6 +124,7 @@ class Working extends MerchantModel
 			$info['house_type'] = $info->houseTypeInfos[$info->house_type];
 			$info['style'] = $info->styleInfos[$info->style];
 			$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
+			$info['status'] = $info->statusInfos[$info->status];
 			$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
 		}
 
