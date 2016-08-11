@@ -27,7 +27,7 @@ return [
         //'title' => '【装修案例效果图】装修案例图片_装修设计案例-{{SITENAME}}装修效果图',
         //'keyword' => '装修案例效果图,装修案例图片,装修设计案例',
         //'description' => '{{SITENAME}}装修案例效果图专区,提供最新装修案例图片,装修设计案例包括简约,现代,中式,欧式,美式,田园等装修效果图',
-        'title' => "{$tagStr}装修案例风格_{$tagStr}家装实景图片欣赏_{$pageStr}-【{{SITENAME}}】",
+        'title' => "{$tagStr}装修案例风格_{$tagStr}家装实景图片欣赏{$pageStr}-【{{SITENAME}}】",
         'keyword' => "{$tagStr}装修案例,{$tagStr}装修风格,{$tagStr}装修实景图,{$tagStr}装修图片欣赏",
         'description' => "【{{SITENAME}}】装修图片频道为您提供{$tagStr}装修案例风格,{$tagStr}家装实景图片欣赏,包括客厅、卧室、厨房、书房、阳台、电视墙、卫生间等系列室内装修设计图片。",
     ],

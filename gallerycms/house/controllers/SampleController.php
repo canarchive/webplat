@@ -62,11 +62,19 @@ class SampleController extends HouseController
 		if (empty($info)) {
             return $this->redirect('/')->send();
 		}
+		$houseSortInfos = $model->houseSortInfos;
+		$tagStr = '';
+		foreach ($houseSortInfos as $tagKey => $tagValue) {
+			if (empty($info[$tagKey])) {
+				continue;
+			}
+			$tagStr .= $tagValue['values'][$info[$tagKey]];
+		}
 
 		$tdkInfos = [
-            'title' => "{$info['name']}_{$info['house_type']}设计装潢案例_装修效果图-【{{SITENAME}}】",
-            'keyword' => "{$info['name']},{$info['house_type']}设计装潢案例",
-            'description' => "【{{SITENAME}}】装修效果图专区,为您提供国内外专业全面的{$info['name']} {$info['house_type']}设计装潢案例,涵盖最流行的{$info['name']} {$info['house_type']}设计装潢案例大全、案例,找装修图,上{{SITENAME}}。",
+            'title' => "{$info['name']}_{$tagStr}设计装潢案例_装修效果图-【{{SITENAME}}】",
+            'keyword' => "{$info['name']},{$tagStr},设计装潢案例",
+            'description' => "【{{SITENAME}}】装修效果图专区,为您提供国内外专业全面的{$info['name']} {$tagStr}设计装潢案例,涵盖最流行的{$info['name']}{$tagStr}设计装潢案例大全、案例,找装修图,上{{SITENAME}}。",
 		];
 		Yii::$app->params['tdkInfos'] = $tdkInfos;
 		$datas = [

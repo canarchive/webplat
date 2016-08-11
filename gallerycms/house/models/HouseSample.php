@@ -131,6 +131,7 @@ class HouseSample extends GallerycmsModel
 		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
 		foreach ($infos as $key => & $info) {
 			$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
+			//$info['style'] = $info->styleInfos[$info->style];
 		}
 
         //$cache->set($keyCache, $infos);

@@ -43,7 +43,7 @@ $(function() {
                             <div class="ptx-img">
 							    <a href="<?= Url::to(['/house/sample/show', 'id' => $info['id']]); ?>" target="_blank">
 								    <img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>" />
-									<span>7张</span>
+									<!--<span>7张</span>-->
                                 </a>
                                 <div class="handler hand_new">
                                     <a class="handler-design" href="javascript:;">免费户型设计</a>
@@ -97,12 +97,13 @@ $(function() {
         <a class="btn-popclose" href="javascript:;" onclick="hidePopMask($('.pop'));">关闭</a></div>
 </div>
 <script type="text/javascript">$(function() {
-        bindPopupForm($('.handler a'));
-    })</script>
-
-<script type="text/javascript" src="http://static.tugou.com/js/meitu.js"></script>
+    bindPopupForm($('.handler a'));
+})
+</script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/meitu.js"></script>
 <script type="text/javascript">$(function() {
-        bindPopupForm($('.handler a'));
-        bindFilter();
-    });</script>
-<?php echo $this->render('../common/_signup', []); ?>
+    bindPopupForm($('.handler a'));
+    bindFilter();
+});
+</script>
+<?php echo $this->render('../common/_signup', ['type' => 5]); ?>
