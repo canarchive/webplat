@@ -11,7 +11,6 @@ $this->params['jsFiles'] = [
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
-$this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
 ?>
 
@@ -20,7 +19,7 @@ $this->params['friendLink'] = true;
     <!--报名 轮播部分-->
     <?php echo $this->render('_signup_slice', []); ?>
     <!--找装修公司 388主材包 一口价模块-->
-    <?php //echo $this->render('_product', []); ?>
+    <?php echo $this->render('_product', []); ?>
     <!--服务保障-->
     <?php echo $this->render('_service', []); ?>
     <!--实景作品-->
@@ -39,4 +38,4 @@ $this->params['friendLink'] = true;
     <?php echo $this->render('_service_flow', []); ?>
 </div>
 <!--首页底部浮动报名条-->
-<?php echo $this->render('../common/_signup', []); ?>
+<?php echo $this->render('../common/_signup', ['type' => 4]); ?>

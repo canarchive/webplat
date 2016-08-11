@@ -5,15 +5,15 @@ use yii\helpers\Url;
     <!--立即预约表单-->
     <div class="appointment-form fn-left">
         <div class="title-tab clearfix">
-            <a class="on" href="javascript:;">免费验房</a>
-            <a href="javascript:;">免费设计报价</a>
-			<a href="javascript:;">免费监理</a>
+            <a class="on" href="javascript:;">免费量房</a>
+            <a href="javascript:;">免费设计</a>
+			<a href="javascript:;">免费报价</a>
         </div>
         <div class="body">
             <div class="title-tip padBtm20">
-                <p class="show">验房专家上门验房，全面检测房屋质量</p>
+                <p class="show">免费专业设计师上门量房，布局规划</p>
                 <p>免费获取3份设计 选取最满意设计稿</p>
-                <p>权威监理上门严格验收，确保工程质量</p>
+                <p>权威报价，确保工程质量</p>
             </div>
             <div class="apply-form">
                 <input name="apply_type" type="hidden" value="1" />

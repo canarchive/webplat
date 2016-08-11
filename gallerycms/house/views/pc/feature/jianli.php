@@ -46,7 +46,7 @@ $this->params['currentNav'] = 'free';
             </div>
         </div>
         <div class="page31">
-            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/jg-md.jpg" class="img">
+            <!--<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/jg-md.jpg" class="img">
             <ul class="jgmd">
                 <li id="jgmd-first">
                     <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/jg1.jpg"></li>
@@ -58,7 +58,7 @@ $this->params['currentNav'] = 'free';
                     <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/jg4.jpg"></li>
                 <li>
                     <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/jg5.jpg"></li>
-            </ul>
+            </ul>-->
             <div class="vise">
                 <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/jgm.jpg" class="mg">
                 <ul class="jgm">

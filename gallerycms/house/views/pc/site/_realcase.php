@@ -3,7 +3,7 @@ use yii\helpers\Url;
 ?>
 <div class="scene line-bg">
     <h3>实景作品 所见即所得</h3>
-    <p>精选成功案例，快来看看兔狗装出的家！</p>
+    <p>真实作品，实景案例！</p>
     <div class="items padTop15">
         <?php foreach ($infos as $info) { ?>
 		<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">

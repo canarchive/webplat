@@ -77,7 +77,7 @@ $merchantInfo = $info->merchantInfo;
 							<option value="">市/地区</option>
                         </select>
                     </div>
-					<input name="apply" type="button" value="立即获取" />i
+					<input name="apply" type="button" value="立即获取" />
                 </div>
             </div>
         </div>

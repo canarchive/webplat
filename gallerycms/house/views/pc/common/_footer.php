@@ -7,19 +7,19 @@ use yii\helpers\Url;
         <div class="four-good main-cont">
             <div class="item1">
                 <p>好设计</p>
-                <p>优秀设计，实景体验</p>
+                <p>精品设计，极致体验</p>
             </div>
             <div class="item2">
                 <p>好材料</p>
-                <p>优质主材，源头直供</p>
+                <p>环保主材，品质保障</p>
             </div>
             <div class="item3">
                 <p>好施工</p>
-                <p>标准工艺，严苛施工</p>
+                <p>标准工艺，细节严苛</p>
             </div>
             <div class="item4">
                 <p>好服务</p>
-                <p>装修管家，专业服务</p>
+                <p>权威监理，全程监控</p>
             </div>
         </div>
     </div>
@@ -41,9 +41,9 @@ use yii\helpers\Url;
             <div class="map padTop10 fn-left">
                 <p>网站服务</p>
                 <div>
-		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费验房</a>
-		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费设计报价</a>
-		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'jianli', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费监理</a>
+		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费量房</a>
+		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费设计</a>
+		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费报价</a>
                 </div>
             </div>
         </div>

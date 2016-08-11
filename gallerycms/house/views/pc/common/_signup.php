@@ -1,4 +1,6 @@
-<!--首页底部浮动报名条-->
+<?php
+$formType = isset($type) ? $type : 4;
+?>
 <!--首页底部浮动报名条-->
 <div class="appoinment-bottom show" style="left: -150%;">
     <div class="page-container">
@@ -7,21 +9,24 @@
         </a>
         <div class="content-box">
             <div class="apply-form">
-                <p class="tip">已有
-					<em class="ifocus"><?php echo '2382'; ?> </em>位业主 成功领取装修大礼包</p>
-                <input name="apply_type" type="hidden" value="4">
+                <p class="tip">已有<em class="ifocus"><?php echo '2382'; ?> </em>位业主 成功领取装修大礼包</p>
+				<input name="apply_type" type="hidden" value="<?= $formType; ?>">
                 <div class="part_left">
                     <input name="name" type="text" placeholder="您的姓名">
-                    <input name="phone" type="text" placeholder="手机号码"></div>
+					<input name="phone" type="text" placeholder="手机号码">
+                </div>
                 <div class="part_right">
                     <div class="squatre">
                         <input name="areaInputted" type="text" placeholder="建筑面积">
-                        <span>㎡</span></div>
+						<span>㎡</span>
+                    </div>
                     <div class="select-group clearfix js-region-select-group">
                         <select class="js-province" name="province" id="province">
-                            <option value="">省/市</option></select>
+							<option value="">省/市</option>
+                        </select>
                         <select class="js-city" name="city" id="city">
-                            <option value="">市/地区</option></select>
+							<option value="">市/地区</option>
+                        </select>
                     </div>
                 </div>
 				<input name="applyBtn" type="button" value="">
