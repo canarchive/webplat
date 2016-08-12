@@ -1,80 +1,131 @@
 <?php
-
 use yii\helpers\Html;
-use yii\helpers\Url;
+
+foreach ($urlInfos as $code => $info) {
+	$info['pc-url'] = 'http://' . str_replace('{{DOMAIN}}', $domain, $info['pc-url']);
+	$info['mobile-url'] = Yii::getAlias('@m.gallerycmsurl') . $info['mobile-url'];
+    $info['title'] = isset($tdkInfos[$code]) ? $tdkInfos[$code]['title'] : '';
+    $info['keyword'] = isset($tdkInfos[$code]) ? $tdkInfos[$code]['keyword'] : '';
+    $info['description'] = isset($tdkInfos[$code]) ? $tdkInfos[$code]['description'] : '';
+	$urlInfos[$code] = $info;
+}
+//print_r($urlInfos) ;
 ?>
 <div class="row">
     <div class="box col-md-12">
-        <?php $i = 1; foreach ($infos as $database => $tables) { ?>
         <div class="box-inner">
-            <div data-original-title="" class="box-header well">
-			    <h2><i class="glyphicon glyphicon-user"></i><?= $database; ?></h2>
-                <div class="box-icon"> </div>
-            </div>
             <div class="box-content">
                 <table class="table table-striped table-bordered responsive">
                     <tbody>
-                    <?php foreach ($tables as $table => $info) { ?>
-                    <tr>
-					    <td><?= $table; ?></td>
-                        <td><?= $info['comment']; ?></td>
+                    <?php $i = 0; foreach ($urlInfos as $code => $info) { ?>
+                    <?php if ($i % 4 == 0) { echo '<tr>'; }?>
 						<td>
-						    <a data-pjax="0" aria-label="查看" title="查看" href="javascript:showInfo(<?= $i; ?>);" class="btn-setting-log">
-							    <span class="glyphicon glyphicon-eye-open" ><input type="hidden" id="data_<?= $i; ?>" value='<?= json_encode($info['fields']); ?>' /></span>
-                            </a>
+                            <a href="<?= $info['pc-url']; ?>" target="_blank"><?= $info['name']; ?></a>--
+                            <a href="<?= $info['mobile-url']; ?>" target="_blank">(移动端)</a>
                         </td>
-                    </tr>
+                    <?php if ($i % 4 == 3) { echo '</tr>'; }?>
                     <?php $i++; } ?>
+                    <?php if ($i % 4 != 3) { echo '</tr>'; }?>
                     </tbody>
                 </table>
             </div>
         </div>
-        <?php } ?>
     </div>
+    <!--/span-->
 </div>
-<script>
-function showInfo(id)
-{
-	var data = $("#data_" + id).val();
-	data = eval('(' + data + ')');
-	console.log(data);
-	var content = '';
-	$.each(data, function(index,item) { 
-        content += '<tr><th>' + index + '</th><td>' + item + '</td></tr>';
-    }); 	
-   	$('#content_view').html(content);
-   	$('#logModal').modal('show');
-}
-</script>
-<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="logModal" class="modal fade in" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="box col-md-12">
-                        <div class="box-inner">
-                            <div class="box-header well" data-original-title="">
-                                <h2>
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                    字段列表详情
-                                </h2>
-                                <div class="box-icon"></div>
-                            </div>
-                            <div class="box-content">
-                                <table class="table table-striped table-bordered detail-view" id="w0">
-                                    <tbody id="content_view"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a data-dismiss="modal" class="btn btn-default" href="#">Close</a>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-content">
+                <table class="table table-striped table-bordered responsive">
+                    <thead>
+                    <tr>
+					    <th>通配符名称</th>
+					    <th>描述</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+					    <td>{{SITENAME}}</td>
+						<td>网站名称-<?= Yii::$app->params['siteName']; ?></td>
+                    </tr>
+                    <tr>
+					    <td>{{CITYNAME}}</td>
+						<td>当前分站名称，如"北京","武汉"等</td>
+                    </tr>
+                    <tr>
+					    <td>{{INFONAME}}</td>
+						<td>当前信息的名称，如"混搭三居清新森林系装修案例"等</td>
+                    </tr>
+                    <tr>
+					    <td>{{TAGSTR}}</td>
+						<td>信息列表中的标签信息，如”地中海风格三居“等</td>
+                    </tr>
+                    <tr>
+					    <td>{{PAGESTR}}</td>
+						<td>信息列表中的页数信息，如”第二页“等</td>
+                    </tr>
+                    <tr>
+					    <td>{{BASETITLE}}</td>
+						<td>基本的页面标题:<?= Yii::$app->params['seoTitle']; ?></td>
+                    </tr>
+                    <tr>
+					    <td>{{BASEKEYWORD}}</td>
+						<td>基本的页面标题:<?= Yii::$app->params['seoKeyword']; ?></td>
+                    </tr>
+                    <tr>
+					    <td>{{BASEDESCRIPTION}}</td>
+						<td>基本的页面标题:<?= Yii::$app->params['seoDescription']; ?></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+    <!--/span-->
+</div>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-content">
+                <?php foreach ($urlInfos as $info) { ?>
+                <table class="table table-striped table-bordered responsive">
+                    <tbody>
+                    <tr>
+					    <td>url名称</td>
+					    <td><?= $info['name']; ?></td>
+                    </tr>
+                    <tr>
+					    <td>PC-url</td>
+                        <td><a href="<?= $info['pc-url']; ?>" target="_blank"><?= $info['pc-url']; ?></a></td>
+                    </tr>
+                    <tr>
+					    <td>移动端-url</td>
+                        <td><a href="<?= $info['mobile-url']; ?>" target="_blank"><?= $info['mobile-url']; ?></a></td>
+                    </tr>
+                    <?php if (!empty($info['title'])) { ?>
+                    <tr>
+					    <td>页面标题</td>
+					    <td><?= $info['title']; ?></td>
+                    </tr>
+                    <?php } ?>
+                    <?php if (!empty($info['keyword'])) { ?>
+                    <tr>
+					    <td>关键字</td>
+					    <td><?= $info['keyword']; ?></td>
+                    </tr>
+                    <?php } ?>
+                    <?php if (!empty($info['description'])) { ?>
+                    <tr>
+					    <td>描述</td>
+					    <td><?= $info['description']; ?></td>
+                    </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
 </div>
