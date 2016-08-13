@@ -11,4 +11,8 @@ class HouseController extends Controller
 
     }
 
+	protected function _redirectRule()
+	{
+		return $this->isMobile ? '/house/mobile-site/index' : '/house/site/home';
+	}
 }
