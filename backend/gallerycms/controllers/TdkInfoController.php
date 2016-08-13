@@ -6,7 +6,7 @@ use Yii;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class HouseTdkController extends AdminController
+class TdkInfoController extends AdminController
 {
 	protected $modelClass = '';//gallerycms\models\HouseTdk';
 
