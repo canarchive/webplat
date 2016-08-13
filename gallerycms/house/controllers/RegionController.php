@@ -90,9 +90,8 @@ class RegionController extends GallerycmsController
 			'infos' => $infos,
 		];
 
-		$tdkInfos = $this->_tdkInfos('show', $regionInfo);
-		Yii::$app->params['tdkInfos'] = $tdkInfos;
-
+		$dataTdk = ['{{INFONAME}}' => $regionInfo['name_short']];
+		$this->getTdkInfos('region-region', $dataTdk);
 		return $this->render('list', $datas);
 	}
 

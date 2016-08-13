@@ -21,7 +21,8 @@ foreach ($urlInfos as $code => $info) {
                     <?php if ($i % 4 == 0) { echo '<tr>'; }?>
 						<td>
                             <a href="<?= $info['pc-url']; ?>" target="_blank"><?= $info['name']; ?></a>--
-                            <a href="<?= $info['mobile-url']; ?>" target="_blank">(移动端)</a>
+                            <a href="<?= $info['mobile-url']; ?>" target="_blank">(移动端)</a>--
+							<a href="#tdk-<?= $code; ?>">(tdk)</a>
                         </td>
                     <?php if ($i % 4 == 3) { echo '</tr>'; }?>
                     <?php $i++; } ?>
@@ -65,7 +66,7 @@ foreach ($urlInfos as $code => $info) {
 					    <td>{{PAGESTR}}</td>
 						<td>信息列表中的页数信息，如”第二页“等</td>
                     </tr>
-                    <tr>
+                    <!--<tr>
 					    <td>{{BASETITLE}}</td>
 						<td>基本的页面标题:<?= Yii::$app->params['seoTitle']; ?></td>
                     </tr>
@@ -76,7 +77,7 @@ foreach ($urlInfos as $code => $info) {
                     <tr>
 					    <td>{{BASEDESCRIPTION}}</td>
 						<td>基本的页面标题:<?= Yii::$app->params['seoDescription']; ?></td>
-                    </tr>
+                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -88,8 +89,8 @@ foreach ($urlInfos as $code => $info) {
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-content">
-                <?php foreach ($urlInfos as $info) { ?>
-                <table class="table table-striped table-bordered responsive">
+                <?php foreach ($urlInfos as $code => $info) { ?>
+				<table class="table table-striped table-bordered responsive" id="tdk-<?= $code; ?>">
                     <tbody>
                     <tr>
 					    <td>url名称</td>
