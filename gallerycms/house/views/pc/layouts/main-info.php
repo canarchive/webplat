@@ -1,9 +1,10 @@
 <?php
 use yii\helpers\Url;
 
-$seoTitle = Yii::$app->params['seoTitle'];
-$seoKeyword = Yii::$app->params['seoKeyword'];
-$seoDescription = Yii::$app->params['seoDescription'];
+$tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos'] : [];
+$seoTitle = isset($tdkInfos['title']) ? $tdkInfos['title'] : Yii::$app->params['seoTitle'];
+$seoKeyword = isset($tdkInfos['keyword']) ? $tdkInfos['keyword'] : Yii::$app->params['seoKeyword'];
+$seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Yii::$app->params['seoDescription'];
 ?>
 <!doctype html>
 <!--[if IE 6]><html lang="zh-cn" class="ielt7  ielt8  ielt9 ielt10 "><![endif]-->

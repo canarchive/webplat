@@ -18,22 +18,22 @@ return [
     'decoration-company-show-working' => [
         'title' => "{{CITYNAME}}{{INFONAME}}_{{MERCHANTNAME}}-【{{CITYNAME}}{{SITENAME}}】",
         'keyword' => "{{CITYNAME}}{{INFONAME}},{{MERCHANTNAME}}",
-        'description' => "【{{SITENAME}}】【南鸿】浙江南鸿装饰股份有限公司提供{{CITYNAME}}{{INFONAME}}装修施工的每个细节,{{CITYNAME}}业主可以清楚知道装修的每个环节。装修施工选择{{MERCHANTNAME}},就是选择放心! ",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】浙江{{MERCHANTNAME}}公司提供{{CITYNAME}}{{INFONAME}}装修施工的每个细节,{{CITYNAME}}业主可以清楚知道装修的每个环节。装修施工选择{{MERCHANTNAME}},就是选择放心! ",
     ],
-    'realcase-list' => [
-        'title' => '{{CITYNAME}}装修效果图-{{CITYNAME}}装修设计-{{CITYNAME}}装修实例图片大全-{{CITYNAME}}{{SITENAME}}装修设计效果图',
-        'keyword' => '装修效果图，装修设计，装修实例，装修图片大全，装修图片',
-        'description' => '【{{SITENAME}}】装修设计效果图大全为您提供{{CITYNAME}}多家装修公司与多种风格的装修设计效果图图片，聚集了各种风格的客厅、卧室、电视墙、卫生间等装修效果供大家装修欣赏与参考。',
+    'realcase-index' => [
+        'title' => '{{CITYNAME}}装修效果图_{{CITYNAME}}装修设计_{{CITYNAME}}装修实例图片大全-{{CITYNAME}}装修设计效果图-【{{CITYNAME}}{{SITENAME}}】',
+        'keyword' => '装修效果图,装修设计,装修实例,装修图片大全,装修图片',
+        'description' => '【{{CITYNAME}}{{SITENAME}}】装修设计效果图大全为您提供{{CITYNAME}}多家装修公司与多种风格的装修设计效果图图片,聚集了各种风格的客厅、卧室、电视墙、卫生间等装修效果供大家装修欣赏与参考。',
     ],
     'realcase-show' => [
-        'title' => "{{INFONAME}}-{{MERCHANTNAME}}-{{CITYNAME}}-{{SITENAME}}",
-        'keyword' => "{{INFONAME}}-{{MERCHANTNAME}}",
-        'description' => "{{INFONAME}} 由{{MERCHANTNAME}}负责设计施工，每一处的装修细节都是经过{{MERCHANTNAME}}细心设计和施工的。装修选择{{MERCHANTNAME}}，就是选择放心!",
+        'title' => "{{INFONAME}}_{{MERCHANTNAME}}-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}},{{MERCHANTNAME}}",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}} 由{{MERCHANTNAME}}负责设计施工,每一处的装修细节都是经过{{MERCHANTNAME}}细心设计和施工的。装修选择{{MERCHANTNAME}},就是选择放心!",
     ],
     'region-region' => [
         'title' => "{{CITYNAME}}{{INFONAME}}家装公司排名_{{CITYNAME}}{{INFONAME}}装饰装潢设计-【{{CITYNAME}}{{SITENAME}}】",
-        'keyword' => "{CITYNAME}}{{INFONAME}}家装公司排名，{{CITYNAME}}{{INFONAME}}装潢设计，{{CITYNAME}}{{INFONAME}}装修网，{{CITYNAME}}{{INFONAME}}装饰公司",
-        'description' => "【{{CITYNAME}}{{SITENAME}}】为您提供{{CITYNAME}}{{INFONAME}}家装公司排名大全，并免费提供{{CITYNAME}}{{INFONAME}}装修上门量房设计等服务，以及装饰装潢报价与设计方案。进行多对一装修设计量房报价服务,让装修业主找到真正属于自己喜欢的装修设计公司。",
+        'keyword' => "{CITYNAME}}{{INFONAME}}家装公司排名,{{CITYNAME}}{{INFONAME}}装潢设计,{{CITYNAME}}{{INFONAME}}装修网,{{CITYNAME}}{{INFONAME}}装饰公司",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】为您提供{{CITYNAME}}{{INFONAME}}家装公司排名大全,并免费提供{{CITYNAME}}{{INFONAME}}装修上门量房设计等服务,以及装饰装潢报价与设计方案。进行多对一装修设计量房报价服务,让装修业主找到真正属于自己喜欢的装修设计公司。",
     ],
     'feature-yanfang' => [
         'title' => '{{CITYNAME}}免费验房_验房注意事项_验房公司_验房流程-【{{CITYNAME}}{{SITENAME}}】',
@@ -50,8 +50,8 @@ return [
         'keyword' => '{{CITYNAME}}免费装修监理,{{CITYNAME}}免费家装监理',
         'description' => '【{{SITENAME}}】{{CITYNAME}}家装首选平台,{{CITYNAME}}专业团队,一对一免费监理服务,装修设计一站式服务。',
     ],
-    'sample-list' => [
-        'title' => "{{TAGSTR}}装修案例风格_{{TAGSTR}}家装实景图片欣赏{{PAGESTR}}-【{{SITENAME}}】",
+    'sample-index' => [
+        'title' => "{{TAGSTR}}装修案例风格_{{TAGSTR}}家装实景图片欣赏{{PAGESTR}}【{{SITENAME}}】",
         'keyword' => "{{TAGSTR}}装修案例,{{TAGSTR}}装修风格,{{TAGSTR}}装修实景图,{{TAGSTR}}装修图片欣赏",
         'description' => "【{{SITENAME}}】装修图片频道为您提供{{TAGSTR}}装修案例风格,{{TAGSTR}}家装实景图片欣赏,包括客厅、卧室、厨房、书房、阳台、电视墙、卫生间等系列室内装修设计图片。",
     ],
@@ -61,39 +61,39 @@ return [
         'description' => "【{{SITENAME}}】装修效果图专区,为您提供国内外专业全面的{{INFONAME}} {{TAGSTR}}设计装潢案例,涵盖最流行的{{INFONAME}} {{TAGSTR}}设计装潢案例大全、案例,找装修图,上{{SITENAME}}。",
     ],
 	'info-aboutus' => [
-	    'title' => '关于我们_{{BASETITLE}}',
-	    'keyword' => '关于我们,{{BASEKEYWORD}}',
-	    'description' => '【{{SITENAME}}】关于{{SITENAME}}，{{BASEDESCRIPTION}}',
+	    'title' => '关于我们-【{{SITENAME}}】',
+	    'keyword' => '关于我们,{{SITENAME}}',
+	    'description' => '【{{SITENAME}}】关于{{SITENAME}}',
 	],
 	'info-joinus' => [
-	    'title' => '加入我们_{{BASETITLE}}',
-	    'keyword' => '加入我们,{{BASEKEYWORD}}',
-	    'description' => '【{{SITENAME}}】加入{{SITENAME}}，{{BASEDESCRIPTION}}',
+	    'title' => '加入我们-【{{SITENAME}}】',
+	    'keyword' => '加入我们,{{SITENAME}}',
+	    'description' => '【{{SITENAME}}】加入{{SITENAME}}',
 	],
 	'info-statement' => [
-	    'title' => '版权声明_{{BASETITLE}}',
-	    'keyword' => '版权声明,{{BASEKEYWORD}}',
-	    'description' => '【{{SITENAME}}】版权声明，{{BASEDESCRIPTION}}',
+	    'title' => '版权声明-【{{SITENAME}}】',
+	    'keyword' => '版权声明,{{SITENAME}}',
+	    'description' => '【{{SITENAME}}】版权声明',
 	],
 	
 	'site-select-city' => [
-	    'title' => '城市分站_{{BASETITLE}}',
-	    'keyword' => '城市分站,{{BASEKEYWORD}}',
-	    'description' => '【{{SITENAME}}】城市分站，{{BASEDESCRIPTION}}',
+	    'title' => '城市分站-【{{SITENAME}}】',
+	    'keyword' => '城市分站,{{SITENAME}}',
+	    'description' => '【{{SITENAME}}】城市分站',
 	],
-	'info-map' => [
-	    'title' => '网站地图_{{BASETITLE}}',
-	    'keyword' => '网站地图,{{BASEKEYWORD}}',
-	    'description' => '【{{SITENAME}}】网站地图，{{BASEDESCRIPTION}}',
+	'site-map' => [
+	    'title' => '网站地图-【{{SITENAME}}】',
+	    'keyword' => '网站地图,{{SITENAME}}',
+	    'description' => '【{{SITENAME}}】网站地图',
 	],
-	'info-map-more' => [
-	    'title' => '地区分布网站地图_{{BASETITLE}}',
-	    'keyword' => '地区分布网站地图,{{BASEKEYWORD}}',
-	    'description' => '【{{SITENAME}}】地区分布网站地图，{{BASEDESCRIPTION}}',
+	'site-map-more' => [
+	    'title' => '地区分布网站地图-【{{SITENAME}}】',
+	    'keyword' => '地区分布网站地图,{{SITENAME}}',
+	    'description' => '【{{SITENAME}}】地区分布网站地图',
 	],
 	'info-wechat' => [
-	    'title' => '微信_{{BASETITLE}}',
-	    'keyword' => '微信,{{BASEKEYWORD}}',
-	    'description' => '【{{SITENAME}}】微信，{{BASEDESCRIPTION}}',
+	    'title' => '微信-【{{SITENAME}}】',
+	    'keyword' => '微信,{{SITENAME}}',
+	    'description' => '【{{SITENAME}}】微信',
 	],
 ];

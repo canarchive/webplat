@@ -40,17 +40,10 @@ class SampleController extends HouseController
 			$tagStr .= $houseSortInfos[$tagKey]['values'][$tagValue];
 		}
 		//$tagStr = rtrim($tagStr, '-');
-		$pageStr = $page > 1 ? "第{$page}页" : '';
+		$pageStr = $page > 1 ? "_第{$page}页-" : '-';
 
-		$tdkInfos = [
-            //'title' => '【装修案例效果图】装修案例图片_装修设计案例-{{SITENAME}}装修效果图',
-            //'keyword' => '装修案例效果图,装修案例图片,装修设计案例',
-            //'description' => '{{SITENAME}}装修案例效果图专区,提供最新装修案例图片,装修设计案例包括简约,现代,中式,欧式,美式,田园等装修效果图',
-			'title' => "{$tagStr}装修案例风格_{$tagStr}家装实景图片欣赏_{$pageStr}-【{{SITENAME}}】",
-			'keyword' => "{$tagStr}装修案例,{$tagStr}装修风格,{$tagStr}装修实景图,{$tagStr}装修图片欣赏",
-			'description' => "【{{SITENAME}}】装修图片频道为您提供{$tagStr}装修案例风格,{$tagStr}家装实景图片欣赏,包括客厅、卧室、厨房、书房、阳台、电视墙、卫生间等系列室内装修设计图片。",
-		];
-		Yii::$app->params['tdkInfos'] = $tdkInfos;
+		$dataTdk = ['{{TAGSTR}}' => $tagStr, '{{PAGESTR}}' => $pageStr];
+		$this->getTdkInfos('sample-index', $dataTdk);
 		return $this->render('index', $datas);
 	}
 
@@ -71,12 +64,8 @@ class SampleController extends HouseController
 			$tagStr .= $tagValue['values'][$info[$tagKey]];
 		}
 
-		$tdkInfos = [
-            'title' => "{$info['name']}_{$tagStr}设计装潢案例_装修效果图-【{{SITENAME}}】",
-            'keyword' => "{$info['name']},{$tagStr},设计装潢案例",
-            'description' => "【{{SITENAME}}】装修效果图专区,为您提供国内外专业全面的{$info['name']} {$tagStr}设计装潢案例,涵盖最流行的{$info['name']}{$tagStr}设计装潢案例大全、案例,找装修图,上{{SITENAME}}。",
-		];
-		Yii::$app->params['tdkInfos'] = $tdkInfos;
+		$dataTdk = ['{{INFONAME}}' => $info['name'], '{{TAGSTR}}' => $tagStr];
+		$this->getTdkInfos('sample-show', $dataTdk);
 		$datas = [
 			'info' => $info,
 		];

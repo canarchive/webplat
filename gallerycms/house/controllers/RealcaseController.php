@@ -16,16 +16,7 @@ class RealcaseController extends HouseController
 			'infos' => $infos,
 		];
 
-		$tdkInfos = [
-            //'title' => '【装修案例】装修实景案例大全|{{SITENAME}}家装',
-            //'keyword' => '装修案例 , 装修实景案例大全 , {{SITENAME}}家装',
-            //'description' => '装修案例大全由{{SITENAME}}家装提供，装修实景案例效果图中每一个装修案例都是装修公司的良心作品。装修选择{{SITENAME}}家装，就是选择更多优质装修公司!',
-			'title' => '{{CITYNAME}}装修效果图-{{CITYNAME}}装修设计-{{CITYNAME}}装修实例图片大全-{{CITYNAME}}{{SITENAME}}装修设计效果图',
-			'keyword' => '装修效果图，装修设计，装修实例，装修图片大全，装修图片',
-			'description' => '【{{SITENAME}}】装修设计效果图大全为您提供{{CITYNAME}}多家装修公司与多种风格的装修设计效果图图片，聚集了各种风格的客厅、卧室、电视墙、卫生间等装修效果供大家装修欣赏与参考。',
-		];
-		Yii::$app->params['tdkInfos'] = $tdkInfos;
-
+		$this->getTdkInfos('realcase-index');
 		return $this->render('index', $datas);
 	}
 

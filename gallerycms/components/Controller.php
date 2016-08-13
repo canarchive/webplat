@@ -103,38 +103,39 @@ class Controller extends CommonController
 		return $datas;
 	}		
 
-	public function getCompanyInfos()
+	public function getTdkInfos($index, $datas = [])
 	{
-		static $datas = null;
-		if (is_null($datas)) {
-		    $company = new Company();
-		    $datas = $company->getInfos();
-		}
+		$default = [
+			'title' => Yii::$app->params['seoTitle'],
+			'keyword' => Yii::$app->params['seoKeyword'],
+			'description' => Yii::$app->params['seoDescription'],
+		];
+		$infos = require(Yii::getAlias('@gallerycms') . '/config/params-tdk.php');
+		$info = isset($infos[$index]) ? $infos[$index] : $default;
 
-		return $datas;
-	}
+		$placeholder = array_merge(
+			[
+				'{{CITYNAME}}', 
+				'{{SITENAME}}',
+				'{{BASETITLE}}',
+				'{{BASEKEYWORD}}',
+				'{{BASEDESCRIPTION}}',
+			], array_keys($datas)
+		);
+		$replace = array_merge(
+			[
+				Yii::$app->params['currentCompany']['name'], 
+				Yii::$app->params['siteName'],
+				$default['title'],
+				$default['keyword'],
+				$default['description'],
+			], array_values($datas)
+		);
+        foreach ($info as $key => $value) {
+            $info[$key] = str_replace($placeholder, $replace, $value);
+        }
 
-	public function getCurrentCompany()
-	{
-		$code = Yii::$app->request->get('company_code');
-		$session = Yii::$app->session;
-		$currentCompany = isset($session['current_company']) ? $session['current_company'] : [];
-
-		if (!empty($currentCompany)) {
-			if (empty($code) || $currentCompany['code'] == $code) {
-				return $currentCompany;
-			}
-		}
-		
-		$code = empty($code) ? 'beijing' : $code;
-		$company = new Company();
-	    $info = $company->getInfoByCode($code);
-		if (empty($info)) {
-			$code = 'beijing';
-	        $info = $company->getInfoByCode($code);
-		}
-		$info = $info->toArray();
-		$session['current_company'] = $info;
-		return $info;
+		Yii::$app->params['tdkInfos'] = $info;
+		return ;
 	}
 }

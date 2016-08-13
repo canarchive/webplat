@@ -1,5 +1,6 @@
 <?php
 return [
+    Yii::getAlias('@gallerycmsurl') . '/test' => '/house/site/test', 
     //Yii::getAlias('@wildurl') . '/' => '/house/site/home',
     ['pattern' => Yii::getAlias('@wildurl') . '/', 'route' => '/house/site/home', 'suffix' => ''],
     //Yii::getAlias('@gallerycmsurl') . '/' => '/house/site/home', 
@@ -25,6 +26,7 @@ return [
 	],
     Yii::getAlias('@m.gallerycmsurl') . '/mt-<id:\d+>' => '/house/mobile-sample/show',
 
+    Yii::getAlias('@m.gallerycmsurl') . '/wechat' => '/house/mobile-info/wechat',
     Yii::getAlias('@m.gallerycmsurl') . '/select-city' => '/house/mobile-site/select-city',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/ts-<view:\w+>' => '/house/mobile-feature/index',
 	[

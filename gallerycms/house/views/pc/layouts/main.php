@@ -5,11 +5,6 @@ $cssFiles = isset($this->params['cssFiles']) ? $this->params['cssFiles'] : [];
 $jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
 
 $tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos'] : [];
-$tdkPlaceholder = ['{{CITYNAME}}', '{{SITENAME}}'];
-$tdkReplace = [Yii::$app->params['currentCompany']['name'], Yii::$app->params['siteName']];
-foreach ($tdkInfos as $tdKKey => & $tdkValue) {
-	$tdkValue = str_replace($tdkPlaceholder, $tdkReplace, $tdkValue);
-}
 $seoTitle = isset($tdkInfos['title']) ? $tdkInfos['title'] : Yii::$app->params['seoTitle'];
 $seoKeyword = isset($tdkInfos['keyword']) ? $tdkInfos['keyword'] : Yii::$app->params['seoKeyword'];
 $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Yii::$app->params['seoDescription'];

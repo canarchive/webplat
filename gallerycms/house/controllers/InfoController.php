@@ -26,7 +26,17 @@ class InfoController extends HouseController
 	public function actionStatement()
 	{
 		$datas = [];
-		Yii::$app->params['seoTitle'] = '声明-' . Yii::$app->params['seoTitle'];
+		//Yii::$app->params['seoTitle'] = '声明-' . Yii::$app->params['seoTitle'];
+		$this->getTdkInfos('info-statement');
+		//print_r(Yii::$app->params['tdkInfos']);
 		return $this->render('statement', $datas);
+	}
+
+	public function actionWechat()
+	{
+		$this->layout = 'main';
+		$this->getTdkInfos('info-wechat');
+		//print_r(Yii::$app->params['tdkInfos']);exit();
+		return $this->render('wechat');
 	}
 }
