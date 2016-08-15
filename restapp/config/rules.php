@@ -21,15 +21,15 @@ return [
  	'PUT,PATCH <module>/carts/<id>' => '<module>/cart/update',
     'DELETE <module>/carts/<id>' => '<module>/cart/delete',
     'GET,HEAD <module>/carts/<id>' => '<module>/cart/view',
-    'GET,HEAD <module>/carts/all' => '<module>/cart/clear',
+    'POST <module>/carts/clear' => '<module>/cart/clear',
     'POST <module>/carts' => '<module>/cart/create',
     'GET,HEAD <module>/carts' => '<module>/cart/index',
 
- 	'PUT,PATCH <module>/order-infos/<id>' => '<module>/order-info/update',
-    'DELETE <module>/order-infos/<id>' => '<module>/order-info/delete',
-    'GET,HEAD <module>/order-infos/<id>' => '<module>/order-info/view',
-    'POST <module>/order-infos' => '<module>/order-info/create',
-    'GET,HEAD <module>/order-infos' => '<module>/order-info/index',
+ 	'PUT,PATCH <module>/orders/<id>' => '<module>/order-info/update',
+    'DELETE <module>/orders/<id>' => '<module>/order-info/delete',
+    'GET,HEAD <module>/orders/<id>' => '<module>/order-info/view',
+    'POST <module>/orders' => '<module>/order-info/create',
+    'GET,HEAD <module>/orders' => '<module>/order-info/index',
 
     'POST <module>/accounts' => '<module>/account/create',
     'POST <module>/accounts/ask' => '<module>/account/ask',
@@ -67,5 +67,8 @@ return [
 
     'GET,HEAD <module>/brands' => '<module>/brand/index',
     'GET,HEAD <module>/brands/<id>' => '<module>/brand/view',
+
+    'GET,HEAD <module>/shipments' => '<module>/shipment/index',
+    'GET,HEAD <module>/shipments/<id>' => '<module>/shipment/view',
 
 ];

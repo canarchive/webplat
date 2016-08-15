@@ -17,7 +17,7 @@ class GoodsController extends Controller
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
-		$_POST['user_id'] = $identity->id;
+		//$_POST['user_id'] = $identity->id;
 		$searchModel = new \website\models\searchs\GoodsSnapup();
 		return $this->_index($searchModel);
     }

@@ -8,12 +8,12 @@ use yii\web\NotFoundHttpException;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\QueryParamAuth;
 use restapp\components\Controller;
-use paytrade\models\Cart;
-use paytrade\models\CheckOrder;
+use paytrade\cloud\models\Cart;
+use paytrade\cloud\models\CheckOrder;
 
 class CartController extends Controller
 {
-    public $modelClass = 'paytrade\models\Cart';
+    public $modelClass = 'paytrade\cloud\models\Cart';
 
     public function actionIndex()
     {
@@ -50,7 +50,6 @@ class CartController extends Controller
 
 		return $this->_operate('delete', $params);
     }
-
 	public function actionClear()
 	{
 		return $this->_operate('clear', []);
@@ -58,7 +57,7 @@ class CartController extends Controller
 
 	protected function _operate($action, $params)
 	{
-		$params['userId'] = 1;//\Yii::$app->user->id;
+		$params['userId'] = Yii::$app->user->id;
 
 		$model = new Cart();
 		$method = $action . 'Info';

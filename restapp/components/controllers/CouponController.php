@@ -16,7 +16,7 @@ class CouponController extends Controller
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
-		$_POST['user_id'] = $identity->id;
+		$_GET['user_id'] = $identity->id;
 		$searchModel = new \paytrade\models\searchs\Coupon();
 		return $this->_index($searchModel);
     }

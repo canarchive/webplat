@@ -16,7 +16,7 @@ class GoodsCommentController extends Controller
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
-		$_POST['user_id'] = $identity->id;
+		//$_POST['user_id'] = $identity->id;
 		$searchModel = new \website\models\searchs\GoodsComment();
 		return $this->_index($searchModel);
     }
