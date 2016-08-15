@@ -20,8 +20,9 @@ foreach ($urlInfos as $code => $info) {
                     <?php $i = 0; foreach ($urlInfos as $code => $info) { ?>
                     <?php if ($i % 4 == 0) { echo '<tr>'; }?>
 						<td>
-                            <a href="<?= $info['pc-url']; ?>" target="_blank"><?= $info['name']; ?></a>--
-                            <a href="<?= $info['mobile-url']; ?>" target="_blank">(移动端)</a>--
+						    <?= $info['name']; ?>--
+						    <?php if (isset($info['pc-url'])) { ?><a href="<?= $info['pc-url']; ?>" target="_blank">PC</a>--<?php } ?>
+							<?php if (isset($info['mobile-url'])) { ?><a href="<?= $info['mobile-url']; ?>" target="_blank">(移动端)</a>--<?php } ?>
 							<a href="#tdk-<?= $code; ?>">(tdk)</a>
                         </td>
                     <?php if ($i % 4 == 3) { echo '</tr>'; }?>
