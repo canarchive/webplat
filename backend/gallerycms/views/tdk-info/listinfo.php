@@ -2,8 +2,12 @@
 use yii\helpers\Html;
 
 foreach ($urlInfos as $code => $info) {
-	$info['pc-url'] = 'http://' . str_replace('{{DOMAIN}}', $domain, $info['pc-url']);
-	$info['mobile-url'] = Yii::getAlias('@m.gallerycmsurl') . $info['mobile-url'];
+	if (isset($info['pc-url'])) { 
+	    $info['pc-url'] = 'http://' . str_replace('{{DOMAIN}}', $domain, $info['pc-url']);
+	}
+	if (isset($info['mobile-url'])) {
+	    $info['mobile-url'] = Yii::getAlias('@m.gallerycmsurl') . $info['mobile-url'];
+	}
     $info['title'] = isset($tdkInfos[$code]) ? $tdkInfos[$code]['title'] : '';
     $info['keyword'] = isset($tdkInfos[$code]) ? $tdkInfos[$code]['keyword'] : '';
     $info['description'] = isset($tdkInfos[$code]) ? $tdkInfos[$code]['description'] : '';
@@ -97,14 +101,18 @@ foreach ($urlInfos as $code => $info) {
 					    <td>url名称</td>
 					    <td><?= $info['name']; ?></td>
                     </tr>
+                    <?php if (isset($info['pc-url'])) { ?>
                     <tr>
 					    <td>PC-url</td>
                         <td><a href="<?= $info['pc-url']; ?>" target="_blank"><?= $info['pc-url']; ?></a></td>
                     </tr>
+                    <?php } ?>
+                    <?php if (isset($info['mobile-url'])) { ?>
                     <tr>
 					    <td>移动端-url</td>
                         <td><a href="<?= $info['mobile-url']; ?>" target="_blank"><?= $info['mobile-url']; ?></a></td>
                     </tr>
+                    <?php } ?>
                     <?php if (!empty($info['title'])) { ?>
                     <tr>
 					    <td>页面标题</td>
