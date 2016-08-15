@@ -24,7 +24,8 @@ foreach ($urlInfos as $code => $info) {
                     <?php $i = 0; foreach ($urlInfos as $code => $info) { ?>
                     <?php if ($i % 4 == 0) { echo '<tr>'; }?>
 						<td>
-						    <?php if (isset($info['pc-url'])) { ?><a href="<?= $info['pc-url']; ?>" target="_blank"><?= $info['name']; ?></a>--<?php } ?>
+						    <?= $info['name']; ?>--
+						    <?php if (isset($info['pc-url'])) { ?><a href="<?= $info['pc-url']; ?>" target="_blank">PC</a>--<?php } ?>
 							<?php if (isset($info['mobile-url'])) { ?><a href="<?= $info['mobile-url']; ?>" target="_blank">(移动端)</a>--<?php } ?>
 							<a href="#tdk-<?= $code; ?>">(tdk)</a>
                         </td>
