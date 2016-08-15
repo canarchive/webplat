@@ -3,13 +3,13 @@
 namespace gallerycms\house\controllers;
 
 use Yii;
-use gallerycms\components\Controller as GallerycmsController;
+use gallerycms\components\HouseController;
 use merchant\models\Realcase;
 use merchant\models\Working;
 use gallerycms\house\models\HouseSample;
 use common\models\RegionCounty;
 
-class SiteController extends GallerycmsController
+class SiteController extends HouseController
 {
 	public function actionHome()
 	{
