@@ -1,5 +1,5 @@
 <div class="banner">
-    <img src="http://img.tugou.com/group/joinus.jpg">
+    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-info/images/joinus.jpg">
 </div>
 <div class="content">
     <div class="joinus">

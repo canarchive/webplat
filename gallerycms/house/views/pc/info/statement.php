@@ -1,5 +1,5 @@
 <div class="banner">
-    <img src="http://img.tugou.com/group/copyright.jpg">
+    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-info/images/copyright.jpg">
 </div>
 <div class="content">
     <div class="copyright">
