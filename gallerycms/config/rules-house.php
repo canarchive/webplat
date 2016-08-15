@@ -20,7 +20,7 @@ return [
     Yii::getAlias('@m.gallerycmsurl') . '/info-<action:\w+>' => '/house/mobile-info/<action>',
     Yii::getAlias('@m.gallerycmsurl') . '/map' => '/house/mobile-site/map',
 	[
-		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
+		'pattern' => Yii::getAlias('@m.gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
 		'route'	=> '/house/mobile-sample/index',
 		'defaults' => ['page' => 1, 'tag' => '']
 	],

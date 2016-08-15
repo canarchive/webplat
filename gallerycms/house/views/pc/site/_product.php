@@ -10,7 +10,7 @@
         </a>
         <a class="item last group" href="" target="_blank">
             <p class="title">质量有保障</p>
-			<p class="padTop150"><span class="padSpan3">五大关键节点验收</span><br/>第三方监理全程跟进，保障质量</p>
+			<p class="padTop150"><span class="padSpan3">五大关键节点验收</span><br/>第三方监理全程跟进</p>
         </a>
     </div>
 </div>
