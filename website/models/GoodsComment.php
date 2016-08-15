@@ -2,6 +2,7 @@
 
 namespace website\models;
 
+use Yii;
 use common\models\WebsiteModel;
 
 class GoodsComment extends WebsiteModel
@@ -20,6 +21,18 @@ class GoodsComment extends WebsiteModel
     public function rules()
     {
         return [
+            [['user_id', 'goods_id', 'content'], 'required'],
+			[['created_at'], 'default', 'value' => Yii::$app->params['currentTime']],
+			[['ip'], 'default', 'value' => function($model, $attribute) {
+		        $ip = \Yii::$app->request->getIP();
+				return $ip;
+			}],
+			[['city'], 'default', 'value' => function($model, $attribute) {
+		        $city = \common\components\IP::find($model->ip);
+		        $city = is_array($city) ? implode('-', $city) : $city;
+				return $city;
+			}],
+			[['status'], 'default', 'value' => 0],
         ];
     }
 

@@ -6,6 +6,7 @@ return [
 
 	'currentTime' => time(),
 	'baseTitle' => 'website',
+	'smsSignName' => '【团购会】',
 	'bankInfos' => require(__DIR__ . '/bank.php'),
 	'genderInfos' => ['0' => '保密', '1' => '男', '2' => '女'],
 
