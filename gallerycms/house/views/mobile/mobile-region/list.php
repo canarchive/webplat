@@ -3,6 +3,7 @@ use yii\helpers\Url;
 
 $this->params['cssFiles'] = [
 	'mobile/base', 'mobile/mainz', 'mobile/top',
+	'lib/total',
 ];
 $this->params['jsFiles'] = [
 	'm_resize', 'jquery', 'common', 'lib/total',

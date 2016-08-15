@@ -3,6 +3,7 @@ use yii\helpers\Url;
 
 $this->params['cssFiles'] = [
 	'dpl', 'company/company', 'swiper', 't-footer',
+	'lib/total',
 ];
 $this->params['jsFiles'] = [
 	'jquery-1.11.3.min', 'common', 'lib/total',

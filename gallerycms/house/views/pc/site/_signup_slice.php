@@ -30,9 +30,9 @@ use yii\helpers\Url;
 				<input name="applyBtn" type="button" value="我要预约" />
             </div>
             <p class="apply-tip">
-                <span>注：同一小区同批验房达到5户，可安排免费上门验房服务。</span>
-                <span class="hide">注：每户业主可同时获取3份设计比较，挑选最适合方案后个性化修改。</span>
-				<span class="hide">注：需在装修开工前预约资深监理师傅，提前安排验房时间。</span>
+			    <span>已为<?= '234224'; ?>位业主提供装修服务</span>
+			    <span class="hide">已为<?= '234224'; ?>位业主提供装修服务</span>
+			    <span class="hide">已为<?= '234224'; ?>位业主提供装修服务</span>
             </p>
         </div>
     </div>
