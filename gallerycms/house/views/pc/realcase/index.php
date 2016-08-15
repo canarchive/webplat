@@ -15,9 +15,7 @@ $this->params['jsFiles'] = [
 $this->params['currentNav'] = 'realcase';
 $this->params['friendLink'] = true;
 ?>
-<div class="banner">
-	<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/case_banner.jpg">
-</div>
+<div class="banner"></div>
 <div class="pd-main">
     <div class="pd-main-body pd-channel">
         <div class="crumbs"></div>

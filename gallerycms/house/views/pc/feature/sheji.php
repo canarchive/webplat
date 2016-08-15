@@ -18,9 +18,9 @@ $this->params['currentNav'] = 'free';
     <div class="content2" id="content2">
         <div id="bg2">
             <div class="position">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg21.jpg">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg22.jpg">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg23.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg2.jpg" height="498px">
+                <!--<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg22.jpg">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg23.jpg">-->
                 <div class="arrow01"></div>
                 <div class="float apply_form">
                     <div class="title">申请免费设计</div>
