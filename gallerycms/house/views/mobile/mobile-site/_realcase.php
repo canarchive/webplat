@@ -17,15 +17,3 @@ use yii\helpers\Url;
         <?php $i++; } ?>
     </div>
 </div>
-<!--<div class="case">
-    <div class="type-list">
-        <a href="http://m.tugou.com/meitu/case-a56/">一居室</a>
-        <a href="http://m.tugou.com/meitu/case-a57/">二居室</a>
-        <a href="http://m.tugou.com/meitu/case-a58/">三居室</a>
-        <a href="http://m.tugou.com/meitu/case-a60/">复式</a>
-        <a href="http://m.tugou.com/meitu/case-c66/">简约</a>
-        <a href="http://m.tugou.com/meitu/case-c73/">混搭</a>
-        <a href="http://m.tugou.com/meitu/case-c69/">中式</a>
-		<a href="http://m.tugou.com/meitu/case-c72/">美式</a>
-    </div>
-</div>-->

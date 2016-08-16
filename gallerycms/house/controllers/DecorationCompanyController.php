@@ -23,13 +23,23 @@ class DecorationCompanyController extends HouseController
 
 	public function actionShow()
 	{
+		return $this->_show('index');
+	}
+
+	public function actionRealcase()
+	{
+		return $this->_show('realcase');
+	}
+
+	protected function _show($actionId)
+	{
         $datas = $this->getShowDatas();
         if (empty($datas)) {
             return $this->redirect('/')->send();
         }
 		$dataTdk = ['{{INFONAME}}' => $datas['info']['name']];
 		$this->getTdkInfos('decoration-company-show', $dataTdk);
-		return $this->render('show', $datas);
+		return $this->render($actionId, $datas);
 	}
 
 	public function actionShowWorking()
@@ -64,6 +74,7 @@ class DecorationCompanyController extends HouseController
             'realcaseInfos' => $info->getRealcaseInfos(),
             'workingInfos' => $info->getWorkingInfos(),
             'designerInfos' => $info->getDesignerInfos(),
+            'commentInfos' => [],//$info->getDesignerInfos(),
         ];
 		//print_r($datas);exit();
 

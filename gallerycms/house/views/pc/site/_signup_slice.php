@@ -29,10 +29,10 @@ use yii\helpers\Url;
                 </div>
 				<input name="applyBtn" type="button" value="我要预约" />
             </div>
-            <p class="apply-tip">
-			    <span>已为<?= '234224'; ?>位业主提供装修服务</span>
-			    <span class="hide">已为<?= '234224'; ?>位业主提供装修服务</span>
-			    <span class="hide">已为<?= '234224'; ?>位业主提供装修服务</span>
+            <p class="apply-tip" style="text-align: center;">
+			    <span>已为<em class="ifocus">2382</em>位业主提供装修服务</span>
+			    <span class="hide">已为<em class="ifocus">2382</em>位业主提供装修服务</span>
+			    <span class="hide">已为<em class="ifocus">2382</em>位业主提供装修服务</span>
             </p>
         </div>
     </div>

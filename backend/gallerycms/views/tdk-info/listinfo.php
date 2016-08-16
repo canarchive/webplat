@@ -39,6 +39,7 @@ foreach ($urlInfos as $code => $info) {
     </div>
     <!--/span-->
 </div>
+<?php if(in_array(Yii::$app->params['managerInfo']['username'], ['wangcanliang', '曾滨'])) { ?>
 <div class="row">
     <div class="box col-md-12">
         <div class="box-inner">
@@ -139,3 +140,4 @@ foreach ($urlInfos as $code => $info) {
     </div>
     <!--/span-->
 </div>
+<?php } ?>

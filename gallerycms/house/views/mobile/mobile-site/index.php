@@ -26,7 +26,7 @@ $this->params['jsFiles'] = [
     <!-- 装修工地 -->
     <?php echo $this->render('_working', ['infos' => $workingInfos]); ?>
     <!-- 装修经验 -->
-    <?php echo $this->render('_experience', []); ?>
+    <?php //echo $this->render('_experience', []); ?>
     <!-- 为什么选择<?= Yii::$app->params['siteName']; ?>靠谱装修 -->
     <div class="why">
         <h1>为什么选择<?= Yii::$app->params['siteName']; ?>家装</h1>

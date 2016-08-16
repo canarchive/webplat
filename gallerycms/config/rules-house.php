@@ -34,7 +34,10 @@ return [
 		'route'	=> '/house/mobile-decoration-company/index',
 		'defaults' => ['page' => 1]
 	],
-    Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sj-<id:\d+>' => '/house/mobile-decoration-company/show',
+    Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sjsj-<id:\d+>' => '/house/mobile-decoration-company/realcase',
+    Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sjgd-<id:\d+>' => '/house/mobile-decoration-company/working',
+    Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sjdp-<id:\d+>' => '/house/mobile-decoration-company/comment',
+    Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/sjjj-<id:\d+>' => '/house/mobile-decoration-company/info',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/gd-<id:\d+>' => '/house/mobile-decoration-company/show-working',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shijing' => '/house/mobile-realcase/index',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shj-<id:\d+>' => '/house/mobile-realcase/show',
