@@ -18,7 +18,7 @@ $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Y
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
-<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/favicon.ico" />
 <title><?= $seoTitle; ?></title>
 <meta name="keywords" content="<?= $seoKeyword; ?>" />
 <meta name="description" content="<?= $seoDescription; ?>" />

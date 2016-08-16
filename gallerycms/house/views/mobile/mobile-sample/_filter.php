@@ -2,49 +2,18 @@
 use yii\helpers\Url;
 ?>
 <div class="list_table">
+    <?php $i = 1; foreach ($houseSortInfos as $sortKey => $sortInfo) { ?>
     <div class="table_one">
-        <ul class="list_table_l" id="table_01">
-		    <?php foreach ($houseTypes as $houseType => $houseTypeName) { ?>
+		<ul class="list_table_l" id="table_0<?= $i; ?>">
             <li>
-				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
+			    <a href="<?= Url::to(['/house/mobile-sample/index', 'page' => 1, 'tag' => $model->createTag($tagInfos, [$sortKey => ''])]); ?>">不限</a></li>
+            </li>
+			<?php foreach ($sortInfo['values'] as $key => $value) { $tag = $model->createTag($tagInfos, [$sortKey => $key]); ?>
+            <li>
+				<a href="<?= Url::to(['/house/mobile-sample/index', 'page' => 1, 'tag' => $tag]); ?>"><?= $value; ?></a>
             </li>
 			<?php } ?>
         </ul>
     </div>
-    <div class="table_one">
-        <ul class="list_table_l" id="table_02">
-            <li>
-                <a href="http://m.tugou.com/meitu/case-a58/">不限</a></li>
-            </li>
-		    <?php foreach ($styles as $style => $styleName) { ?>
-            <li>
-				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $currentHouseType, 'style' => $style]); ?>"><?= $styleName; ?></a>
-            </li>
-			<?php } ?>
-        </ul>
-    </div>
-    <!--<div class="table_one">
-        <ul class="list_table_l" id="table_03">
-            <li>
-                <a href="http://m.tugou.com/meitu/case-a58/">不限</a></li>
-            </li>
-		    <?php foreach ($houseTypes as $houseType => $houseTypeName) { ?>
-            <li>
-				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
-            </li>
-			<?php } ?>
-        </ul>
-    </div>-->
-    <!--<div class="table_one">
-        <ul class="list_table_l" id="table_04">
-            <li>
-                <a href="http://m.tugou.com/meitu/case-a58/">不限</a></li>
-            </li>
-		    <?php foreach ($houseTypes as $houseType => $houseTypeName) { ?>
-            <li>
-				<a href="<?= Url::to(['/house/mobile-sample/filter', 'house_type' => $houseType, 'style' => $currentStyle]); ?>"><?= $houseTypeName; ?></a>
-            </li>
-			<?php } ?>
-        </ul>
-    </div>-->
+    <?php $i++; } ?>
 </div>

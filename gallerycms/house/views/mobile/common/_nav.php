@@ -14,7 +14,7 @@ use yii\helpers\Url;
 					<a href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>" class="total-one">首页</a>
                 </li>
                 <li>
-				    <a href="<?= Url::to(['/house/mobile-sample/index']); ?>" class="total-two">装修案例</a>
+				    <a href="<?= Url::to(['/house/mobile-sample/index', 'page' => 1, 'tag' => '']); ?>" class="total-two">装修案例</a>
                 </li>
                 <li>
 				    <a href="<?= Url::to(['/house/mobile-realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="total-three">实景作品</a>

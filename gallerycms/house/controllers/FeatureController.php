@@ -10,7 +10,7 @@ class FeatureController extends GallerycmsController
 	public function actionIndex()
 	{
 		$view = Yii::$app->request->get('view');
-		$views = ['sheji', 'jianli', 'yanfang'];
+		$views = ['sheji', 'jianli', 'yanfang', 'kaopu', 'baojia'];
 
 		$view = in_array($view, $views) ? $view : 'yanfang';
 		$datas = [
