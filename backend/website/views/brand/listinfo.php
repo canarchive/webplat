@@ -27,7 +27,12 @@ $gridViewParams = [
                 return  date('Y-m-d H:i:s',$model->updated_at);
             },
         ],
-        'status',
+        [
+            'attribute' => 'status',
+            'value' => function($model) {
+                return $model->statusInfos[$model->status];
+            }
+        ],
 		'description',
     ],
 ];

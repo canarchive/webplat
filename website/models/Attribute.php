@@ -2,6 +2,7 @@
 
 namespace website\models;
 
+use yii\helpers\ArrayHelper;
 use common\models\WebsiteModel;
 
 /**
@@ -20,11 +21,23 @@ class Attribute extends WebsiteModel
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['orderlist', 'category_id'], 'default', 'value' => 0],
+            [['name', 'type_id'], 'required'],
+            [['orderlist', 'status'], 'default', 'value' => 0],
+            [['values'], 'safe'],
         ];
     }
 
@@ -43,5 +56,20 @@ class Attribute extends WebsiteModel
             'updated_at' => '更新时间',
             'status' => '状态',
         ];
+    }
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '停用',
+			'1' => '正常',
+		];
+		return $datas;
+	}
+
+    public function getTypeInfos()
+    {
+        $infos = ArrayHelper::map(Type::find()->all(), 'id', 'name');
+        return $infos;
     }
 }

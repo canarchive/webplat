@@ -78,11 +78,10 @@ class Goods extends WebsiteModel
 
 	public function afterSave($insert, $changedAttributes)
 	{
-		$attachment = new \website\models\Attachment();
 		$fields = ['main_photo'];
-		$this->_updateSingleAttachment($attachment, 'goods', $fields);
+		$this->_updateSingleAttachment('goods', $fields);
 
-		$this->_updateMulAttachment($attachment, 'goods', 'picture');
+		$this->_updateMulAttachment('goods', 'picture');
 
         parent::afterSave($insert, $changedAttributes);
 		return true;

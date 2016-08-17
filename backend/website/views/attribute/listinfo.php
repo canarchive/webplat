@@ -6,7 +6,12 @@ $gridViewParams = [
     'columns' => [
         'id',
         'name',
-        'type_id',
+        [
+            'attribute' => 'type_id',
+            'value' => function($model) {
+                return $model->typeInfos[$model->type_id];
+            }
+        ],
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
@@ -19,7 +24,12 @@ $gridViewParams = [
                 return  date('Y-m-d H:i:s',$model->updated_at);
             },
         ],
-        'status',
+        [
+            'attribute' => 'status',
+            'value' => function($model) {
+                return $model->statusInfos[$model->status];
+            }
+        ]
     ],
 ];
 
