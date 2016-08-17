@@ -10,6 +10,8 @@ use backend\components\AdminController;
 
 class IndexSortController extends AdminController
 {
+	protected $modelClass = 'website\models\IndexSort';
+
     public function actionListinfo()
     {
         $searchModel = new IndexSortSearch();
@@ -38,13 +40,5 @@ class IndexSortController extends AdminController
     public function actionDelete($id)
     {
 		return $this->_deleteInfo($id);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = IndexSort::findOne($id)) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');		
     }
 }

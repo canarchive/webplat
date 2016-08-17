@@ -67,8 +67,7 @@ class Brand extends WebsiteModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['logo'];
-		$attachment = new \website\models\Attachment();
-		$this->_updateSingleAttachment($attachment, 'brand', $fields);
+		$this->_updateSingleAttachment('brand', $fields);
 
 		return true;
 	}	

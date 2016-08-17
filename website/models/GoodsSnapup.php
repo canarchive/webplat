@@ -85,4 +85,14 @@ class GoodsSnapup extends WebsiteModel
 
 		return ['status' => 200, 'message' => 'OK'];
 	}
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '进行中',
+			'1' => '完成',
+			'99' => '中止',
+		];
+		return $datas;
+	}
 }

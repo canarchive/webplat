@@ -17,12 +17,12 @@ class Attachment extends AttachmentBase
 
     public static function getDb()
     {
-        return \Yii::$app->dbWebsite;
+        return \Yii::$app->db;
     }	
 
-	public function getFieldInfos($table = null, $field = null)
+	protected function _fieldInfos()
 	{
-		$infos = [
+		return [
 			'brand' => [
 				'logo' => [
         			'isSingle' => true,
@@ -60,21 +60,5 @@ class Attachment extends AttachmentBase
 				],
 			],
 		];
-
-		if (is_null($table) && is_null($field)) {
-			return $infos;
-		}
-
-		if (!isset($infos[$table])) {
-			return false;
-		}
-		if (is_null($field)) {
-			return $infos[$table];
-		}
-		if (!isset($infos[$table][$field])) {
-			return false;
-		}
-
-		return $infos[$table][$field];
 	}
 }
