@@ -36,7 +36,7 @@ class Bet extends PaytradeModel
             'created_at' => '创建时间',
             'created_at_ext' => '毫秒数',
             'ip' => 'IP地址',
-            'status' => '状态，0：未中奖；1：中奖；',
+            'status' => '状态',
         ];
     }
 
@@ -70,5 +70,14 @@ class Bet extends PaytradeModel
 		}
 
 		return $model->sn + 1;
+	}
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '未中奖',
+			'1' => '中奖',
+		];
+		return $datas;
 	}
 }
