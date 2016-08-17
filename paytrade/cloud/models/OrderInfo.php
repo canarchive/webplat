@@ -141,4 +141,10 @@ class OrderInfo extends PaytradeModel
 
 		return true;
 	}
+
+	public function getStatusInfos()
+	{
+		$orderStatus = new OrderStatus();
+		return $orderStatus->statusInfos;
+	}
 }
