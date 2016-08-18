@@ -23,23 +23,20 @@ class DecorationCompanyController extends HouseController
 
 	public function actionShow()
 	{
-		return $this->_show('index');
-	}
-
-	public function actionRealcase()
-	{
-		return $this->_show('realcase');
-	}
-
-	protected function _show($actionId)
-	{
+		$action = Yii::$app->request->get('action');
+		$actions = ['sjjj' => 'info', 'sjsj' => 'realcase', 'sjgd' => 'working', 'sj' => 'showindex', 'sjdp' => 'comment', 'sjsjs' => 'designer'];
+		if (!in_array($action, array_keys($actions))) {
+			$action = 'sj';
+            //throw new NotFoundHttpException('信息有误');
+		}
         $datas = $this->getShowDatas();
+		$datas['action'] = $actions[$action];
         if (empty($datas)) {
             return $this->redirect('/')->send();
         }
 		$dataTdk = ['{{INFONAME}}' => $datas['info']['name']];
 		$this->getTdkInfos('decoration-company-show', $dataTdk);
-		return $this->render($actionId, $datas);
+		return $this->render($actions[$action], $datas);
 	}
 
 	public function actionShowWorking()

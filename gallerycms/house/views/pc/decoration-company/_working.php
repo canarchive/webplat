@@ -36,7 +36,5 @@ use yii\helpers\Url;
         </div>
     </div>
     <?php } ?>
-    <div class="page">
-        <p></p>
-    </div>
+    <div class="page"><p></p></div>
 </div>

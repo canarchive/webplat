@@ -19,7 +19,7 @@ $this->params['jsFiles'] = [
 <ul id="company-list">
     <?php foreach ($infos as $info) { ?>
     <li class="clearfix company-item" provider="<?= $info['id']; ?>">
-	    <a href="<?= Url::to(['/house/mobile-decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="company-link">
+	    <a href="<?= Url::to(['/house/mobile-decoration-company/show', 'id' => $info['id'], 'action' => 'sjsj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="company-link">
 			<img class="company-logo" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
             <div class="company-info clearfix">
                 <div class="info-left">
