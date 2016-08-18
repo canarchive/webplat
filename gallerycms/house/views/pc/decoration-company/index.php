@@ -26,14 +26,14 @@ $this->params['friendLink'] = true;
         <?php foreach ($infos as $info) { ?>
     	<li data-provider-id="<?= $info['id']; ?>">
             <div class="item_part left">
-    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
     				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
                 </a>
 				<p>已服务 <?= $info['num_owner']; ?> 业主</p>
             </div>
             <div class="item_part center">
                 <p class="provider_name">
-    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
+    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
                     <span class="provider_tags">
                         <i class="icon_new icon1"><span>保障金先行赔付</span></i>
                         <i class="icon_new icon2"><span>装修施工资质权威认证</span></i>

@@ -46,7 +46,7 @@ return [
         'description' => '【{{CITYNAME}}{{SITENAME}}】{{CITYNAME}}装修网,免费量房让您足不出户,享受装修多对一VIP服务,马上在线预约吧,比比哪家更满意！让装修变得更简单。免费提供{{CITYNAME}}业主,免费上门量房,免费设计,免费报价服务。',
     ],
     'feature-jianli' => [
-        'title' => '{{CITYNAME}}{{CITYNAME}}免费装修监理_{{CITYNAME}}免费家装监理-【{{CITYNAME}}{{SITENAME}}】',
+        'title' => '{{CITYNAME}}免费装修监理_{{CITYNAME}}免费家装监理-【{{CITYNAME}}{{SITENAME}}】',
         'keyword' => '{{CITYNAME}}免费装修监理,{{CITYNAME}}免费家装监理',
         'description' => '【{{SITENAME}}】{{CITYNAME}}家装首选平台,{{CITYNAME}}专业团队,一对一免费监理服务,装修设计一站式服务。',
     ],
