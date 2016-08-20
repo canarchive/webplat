@@ -10,8 +10,33 @@ return [
         'keyword' => '{{CITYNAME}}装修公司哪家好,{{CITYNAME}}装修网站,{{CITYNAME}}装修公司排名,{{CITYNAME}}装修公司十大排名,{{CITYNAME}}装修网站大全,{{CITYNAME}}装修公司大全',
         'description' => '【{{SITENAME}}】{{CITYNAME}}装修网罗列出{{CITYNAME}}装修公司网站大全,帮业主快速了解{{CITYNAME}}装修公司哪家好？{{CITYNAME}}装修公司十大排名,从而解决您的装修问题。',
     ],
-    'decoration-company-show' => [
+    'decoration-company-showindex' => [
         'title' => "{{INFONAME}}_{{CITYNAME}}{{INFONAME}}公司-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}},{{INFONAME}}公司,{{CITYNAME}}{{SITENAME}}官网",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}}是{{CITYNAME}}{{SITENAME}}官网提供的装修设计公司。{{INFONAME}}免费为广大{{CITYNAME}}业主提供专业的验房、设计、监理服务。了解{{INFONAME}}怎么样？速上{{CITYNAME}}{{SITENAME}}官网！",
+    ],
+    'decoration-company-realcase' => [
+        'title' => "{{INFONAME}}案例_{{CITYNAME}}{{INFONAME}}公司-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}},{{INFONAME}}公司,{{CITYNAME}}{{SITENAME}}官网",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}}是{{CITYNAME}}{{SITENAME}}官网提供的装修设计公司。{{INFONAME}}免费为广大{{CITYNAME}}业主提供专业的验房、设计、监理服务。了解{{INFONAME}}怎么样？速上{{CITYNAME}}{{SITENAME}}官网！",
+    ],
+    'decoration-company-working' => [
+        'title' => "{{INFONAME}}工地_{{CITYNAME}}{{INFONAME}}公司-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}},{{INFONAME}}公司,{{CITYNAME}}{{SITENAME}}官网",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}}是{{CITYNAME}}{{SITENAME}}官网提供的装修设计公司。{{INFONAME}}免费为广大{{CITYNAME}}业主提供专业的验房、设计、监理服务。了解{{INFONAME}}怎么样？速上{{CITYNAME}}{{SITENAME}}官网！",
+    ],
+    'decoration-company-comment' => [
+        'title' => "{{INFONAME}}怎么样_{{CITYNAME}}{{INFONAME}}公司-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}},{{INFONAME}}公司,{{CITYNAME}}{{SITENAME}}官网",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}}是{{CITYNAME}}{{SITENAME}}官网提供的装修设计公司。{{INFONAME}}免费为广大{{CITYNAME}}业主提供专业的验房、设计、监理服务。了解{{INFONAME}}怎么样？速上{{CITYNAME}}{{SITENAME}}官网！",
+    ],
+    'decoration-company-info' => [
+        'title' => "{{INFONAME}}详情_{{CITYNAME}}{{INFONAME}}公司-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}},{{INFONAME}}公司,{{CITYNAME}}{{SITENAME}}官网",
+        'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}}是{{CITYNAME}}{{SITENAME}}官网提供的装修设计公司。{{INFONAME}}免费为广大{{CITYNAME}}业主提供专业的验房、设计、监理服务。了解{{INFONAME}}怎么样？速上{{CITYNAME}}{{SITENAME}}官网！",
+    ],
+    'decoration-company-designer' => [
+        'title' => "{{INFONAME}}设计师_{{CITYNAME}}{{INFONAME}}公司-【{{CITYNAME}}{{SITENAME}}】",
         'keyword' => "{{INFONAME}},{{INFONAME}}公司,{{CITYNAME}}{{SITENAME}}官网",
         'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}}是{{CITYNAME}}{{SITENAME}}官网提供的装修设计公司。{{INFONAME}}免费为广大{{CITYNAME}}业主提供专业的验房、设计、监理服务。了解{{INFONAME}}怎么样？速上{{CITYNAME}}{{SITENAME}}官网！",
     ],
@@ -46,6 +71,16 @@ return [
         'description' => '【{{CITYNAME}}{{SITENAME}}】{{CITYNAME}}装修网,免费量房让您足不出户,享受装修多对一VIP服务,马上在线预约吧,比比哪家更满意！让装修变得更简单。免费提供{{CITYNAME}}业主,免费上门量房,免费设计,免费报价服务。',
     ],
     'feature-jianli' => [
+        'title' => '{{CITYNAME}}免费装修监理_{{CITYNAME}}免费家装监理-【{{CITYNAME}}{{SITENAME}}】',
+        'keyword' => '{{CITYNAME}}免费装修监理,{{CITYNAME}}免费家装监理',
+        'description' => '【{{SITENAME}}】{{CITYNAME}}家装首选平台,{{CITYNAME}}专业团队,一对一免费监理服务,装修设计一站式服务。',
+    ],
+    'feature-baojia' => [
+        'title' => '{{CITYNAME}}免费装修监理_{{CITYNAME}}免费家装监理-【{{CITYNAME}}{{SITENAME}}】',
+        'keyword' => '{{CITYNAME}}免费装修监理,{{CITYNAME}}免费家装监理',
+        'description' => '【{{SITENAME}}】{{CITYNAME}}家装首选平台,{{CITYNAME}}专业团队,一对一免费监理服务,装修设计一站式服务。',
+    ],
+    'feature-kaopu' => [
         'title' => '{{CITYNAME}}免费装修监理_{{CITYNAME}}免费家装监理-【{{CITYNAME}}{{SITENAME}}】',
         'keyword' => '{{CITYNAME}}免费装修监理,{{CITYNAME}}免费家装监理',
         'description' => '【{{SITENAME}}】{{CITYNAME}}家装首选平台,{{CITYNAME}}专业团队,一对一免费监理服务,装修设计一站式服务。',

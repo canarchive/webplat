@@ -10,10 +10,35 @@ return [
 		'pc-url' => 'bj.{{DOMAIN}}/shangjia.html',
 		'mobile-url' => '/bj/shangjia.html',
     ],
-    'decoration-company-show' => [
-		'name' => '商家详情',
+    'decoration-company-showindex' => [
+		'name' => '商家首页',
 		'pc-url' => 'bj.{{DOMAIN}}/sj-1.html',
-		'mobile-url' => '/bj/sj-1.html',
+		//'mobile-url' => '/bj/sj-1.html',
+    ],
+    'decoration-company-realcase' => [
+		'name' => '商家案例',
+		'pc-url' => 'bj.{{DOMAIN}}/sjsj-1.html',
+		'mobile-url' => '/bj/sjsj-1.html',
+    ],
+    'decoration-company-working' => [
+		'name' => '商家工地',
+		'pc-url' => 'bj.{{DOMAIN}}/sjgd-1.html',
+		'mobile-url' => '/bj/sjgd-1.html',
+    ],
+    'decoration-company-designer' => [
+		'name' => '商家设计师',
+		'pc-url' => 'bj.{{DOMAIN}}/sjsjs-1.html',
+		//'mobile-url' => '/bj/sjsjs-1.html',
+    ],
+    'decoration-company-comment' => [
+		'name' => '商家点评',
+		'pc-url' => 'bj.{{DOMAIN}}/sjdp-1.html',
+		'mobile-url' => '/bj/sjdp-1.html',
+    ],
+    'decoration-company-info' => [
+		'name' => '商家详情',
+		'pc-url' => 'bj.{{DOMAIN}}/sjjj-1.html',
+		'mobile-url' => '/bj/sjjj-1.html',
     ],
     'decoration-company-show-working' => [
 		'name' => '工地详情',
@@ -59,6 +84,16 @@ return [
 		'name' => '免费监理',
 		'pc-url' => 'bj.{{DOMAIN}}/ts-jianli.html',
 		'mobile-url' => '/bj/ts-jianli.html',
+    ],
+    'feature-baojia' => [
+		'name' => '免费报价',
+		'pc-url' => 'bj.{{DOMAIN}}/ts-baojia.html',
+		'mobile-url' => '/bj/ts-baojia.html',
+    ],
+    'feature-kaopu' => [
+		'name' => '靠谱装修',
+		'pc-url' => 'bj.{{DOMAIN}}/ts-kaopu.html',
+		'mobile-url' => '/bj/ts-kaopu.html',
     ],
     'sample-list' => [
 		'name' => '案例列表',
