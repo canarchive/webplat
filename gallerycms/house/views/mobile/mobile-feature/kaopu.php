@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html>
+<?php
+use yii\helpers\Url;
 
-<head>
-<meta charset="UTF-8">
-<link rel="canonical" href="http://www.tugou.com/topic/kaopu/" />
-<meta name="applicable-device" content="mobile" />
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>1分钟找到靠谱装修公司-兔狗家装</title>
-<meta name="keywords" content="1分钟找到靠谱装修公司,装修公司大全,装修公司排名" />
-<meta name="description" content="兔狗家装齐聚全国优质装修公司，为广大装修业主提供家装、家居、建材等装修服务，让您1分钟找到靠谱装修公司。兔狗家装携装修公司,帮助装修业主轻松搞定装修!" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<meta name="format-detection" content="telephone=no">
-<meta name="format-detection" content="address=no">
-<meta content="false" name="twcClient" id="twcClient" />
-<script type="text/javascript" src="http://static.tugou.com/js/lib/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="http://static.tugou.com/m/css/special/oneMinute.css" />
-<script type="text/javascript" src="http://static.tugou.com/m/js/rem50.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/mobile/m-free-index.js"></script>
-</head>
-
-<body>
+$this->params['cssFiles'] = [
+	'oneMinute', //'free_index',
+];
+$this->params['jsFiles'] = [
+	'jquery', 'rem50', 'free-index',
+];
+$this->params['bodyClass'] = 'design';
+?>
 <div class="top toptitle">
     <a href="http://m.tugou.com" class="return"></a>
     <a href="http://m.tugou.com/index/CitySelection">

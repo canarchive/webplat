@@ -29,14 +29,15 @@ class DecorationCompanyController extends HouseController
 			$action = 'sj';
             //throw new NotFoundHttpException('信息有误');
 		}
+		$currentAction = $actions[$action];
         $datas = $this->getShowDatas();
-		$datas['action'] = $actions[$action];
+		$datas['action'] = $currentAction;
         if (empty($datas)) {
             return $this->redirect('/')->send();
         }
 		$dataTdk = ['{{INFONAME}}' => $datas['info']['name']];
-		$this->getTdkInfos('decoration-company-show', $dataTdk);
-		return $this->render($actions[$action], $datas);
+		$this->getTdkInfos('decoration-company-' . $currentAction, $dataTdk);
+		return $this->render($currentAction, $datas);
 	}
 
 	public function actionShowWorking()

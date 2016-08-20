@@ -13,10 +13,10 @@
 	<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/online-service.png" width="100%" alt="在线咨询" />
 </div>
 <script type="text/javascript">var NTKF_PARAM = {
-    "siteid": "kf_9262"
+    "siteid": ''//"kf_9262"
     /*网站siteid*/
     ,
-    "settingid": "kf_9262_1463469263605"
+    "settingid": ''//"kf_9262_1463469263605"
     /*代码ID*/
     ,
     "uid": ""
@@ -29,4 +29,4 @@
     /*会员等级*/
 }
 </script>
-<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9262" charset="utf-8"></script>
+<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=" charset="utf-8"></script>
