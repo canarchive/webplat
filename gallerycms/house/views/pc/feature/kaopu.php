@@ -63,7 +63,7 @@ $this->params['currentNav'] = 'free';
 </div>
 <div class="white">
     <div class="center">
-        <p class="title">为什么选择兔狗靠谱装修</p>
+        <p class="title">为什么选择<?= Yii::$app->params['siteNameBase']; ?>靠谱装修</p>
         <ul class="list">
             <li>
                 <div class="list-1"></div>
@@ -102,7 +102,7 @@ $this->params['currentNav'] = 'free';
 </div>
 <div class="gray">
     <div class="center">
-        <p class="title">兔狗如何确保靠谱装修</p>
+        <p class="title"><?= Yii::$app->params['siteNameBase']; ?>如何确保靠谱装修</p>
         <ul class="ensure">
             <li>
                 <div class="ensure-1"></div>
@@ -112,7 +112,7 @@ $this->params['currentNav'] = 'free';
             <li>
                 <div class="ensure-2"></div>
                 <p class="con-title">统一施工工艺标准</p>
-                <p class="synopsis">装修公司按照兔狗标准施工工艺
+                <p class="synopsis">装修公司按照<?= Yii::$app->params['siteNameBase']; ?>标准施工工艺
                     <br/>有效提升施工品质</p></li>
             <li>
                 <div class="ensure-3"></div>
@@ -129,12 +129,12 @@ $this->params['currentNav'] = 'free';
 </div>
 <div class="white">
     <div class="center">
-        <p class="title">兔狗精选靠谱装修公司</p>
-        <img class="provider" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute2.jpg" alt="兔狗精选靠谱装修公司"></div>
+        <p class="title"><?= Yii::$app->params['siteNameBase']; ?>精选靠谱装修公司</p>
+        <img class="provider" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute2.jpg" alt="<?= Yii::$app->params['siteNameBase']; ?>精选靠谱装修公司"></div>
 </div>
 <div class="gray">
     <div class="center">
-        <p class="title">TA们都选择了兔狗家装</p>
+        <p class="title">TA们都选择了<?= Yii::$app->params['siteNameBase']; ?>家装</p>
         <div class="xinxi">
             <div class="xinxi-left">
                 <div class="signed_box">

@@ -14,7 +14,7 @@
         </li>
         <li>
             <a href="/loan/">
-                <p class="act-title act-blue">兔狗装修贷</p>
+                <p class="act-title act-blue"><?= Yii::$app->params['siteNameBase']; ?>装修贷</p>
 				<p class="act-bz">0利息0抵押0担保<br/>最高可贷30万</p>
             </a>
         </li>

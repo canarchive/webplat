@@ -18,10 +18,10 @@ $this->params['formPosition'] = 'sample-show';
 $this->params['formPositionName'] = $info['id'] . '_' . $info['name'];
 $this->params['showPage'] = true;
 ?>
-<!-- 兔狗主页导航栏 -->
+<!-- <?= Yii::$app->params['siteNameBase']; ?>主页导航栏 -->
 <?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>
 <div class="pd-header">
-    <!-- 兔狗主页导航栏 -->
+    <!-- <?= Yii::$app->params['siteNameBase']; ?>主页导航栏 -->
     <!-- <div class="pd-for-nav"></div> -->
     <!-- 面包屑导航主页样式 -->
     <div class="crumbs">
@@ -69,4 +69,3 @@ $this->params['showPage'] = true;
         </div>
     </div>
 </div>
-<style type="text/css">.beian{ width: 15px; height: 15px; display: inline-block; background: url(http://img.tugou.com/index/footer-beian.png) no-repeat; background-size: 100%; position: relative; top: 2px; }</style>

@@ -3,7 +3,7 @@ use yii\helpers\Url;
 
 $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] : 'index';
 ?>
-<!-- 兔狗主页导航栏 -->
+<!-- 主页导航栏 -->
 <nav class="tugou-new-nav">
     <div class="nav-body">
         <ul>
