@@ -313,7 +313,7 @@
             <input name="apply_type" type="hidden" value="54">
             <input type="hidden" id="remark" value="移动美图列表">
             <input type="button" class="win_sub" id="apply_button" value="立即申请" />
-            <span class="note" style="text-align: center;">全国服务热线400-8617-000</span></form>
+            <span class="note" style="text-align: center;">全国服务热线<?= Yii::$app->params['siteHotline']; ?></span></form>
         <div class="close">
             <a href="javascript:;"></a>
         </div>

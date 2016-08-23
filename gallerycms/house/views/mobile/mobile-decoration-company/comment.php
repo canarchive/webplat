@@ -72,8 +72,8 @@ $this->params['jsFiles'] = [
     </form>
 </div>
 <div class="alert" style="display: none;">请输入姓名</div>
-<script src="http://static.tugou.com/js/slick.min.js"></script>
-<script src="http://static.tugou.com/m/js/company/company.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/slick.min.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/company/company-m.js"></script>
 <script type="text/javascript">var backEndItems = [{
         "nickname": "\u5239\u90a3\u82b3\u534e",
         "avatar": "http:\/\/pic.tugou.com\/app\/headicon.png",
@@ -160,4 +160,5 @@ $this->params['jsFiles'] = [
     }];</script>
 <script type="text/javascript " src="//cdn.bootcss.com/vue/1.0.24/vue.min.js "></script>
 <script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-<script src="http://static.tugou.com/m/js/provider/comment.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/comment.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/m_mobile.js"></script>

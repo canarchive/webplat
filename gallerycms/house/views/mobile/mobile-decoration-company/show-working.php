@@ -19,10 +19,9 @@ $statusDatas = $info->statusDatas;
 
 <div class="siteTop">
     <div class="site-face">
-        <i>
-            <img src="http://img.tugou.com/company/face04.png"></i>
+	    <i><img src="<?= $info['thumb']; ?>"></i>
     </div>
-	<p class="sitename"><?= $info['community_name']; ?>的家</p>
+	<p class="sitename"><?= $info['owner_name']; ?>的家</p>
 	<h1 class="sitetype"><?= $info['community_name']; ?>&nbsp;&nbsp;<?= $info['area']; ?>㎡&nbsp;&nbsp;<?= $info['decoration_type'] . $info['decoration_price']; ?>万&nbsp;&nbsp;</h1>
 </div>
 <!--<div class="label">
@@ -141,11 +140,13 @@ $statusDatas = $info->statusDatas;
 </div>
 <div class="alert" style="display: none;">请输入姓名</div>
 <script type="text/javascript">var myApply = new applyForm($(".apply-container"));
-    //$(".apply-btn").click(function() {
-        //myApply.show();
-//});
+    $(".apply-btn").click(function() {
+        myApply.show();
+});
 </script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/building_diary/swiper/js/swiper.js"></script>
-<script src=" http://static.tugou.com/m/js/components/tugou-footer/js/tugou-footer.js "></script>
-<script src="http://static.tugou.com/m/js/company/companyList.js"></script>
-<script src="http://static.tugou.com/m/js/company/sitedetail.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/swiper.js"></script>
+<!--<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/t-footer.js "></script>-->
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/m_mobile.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/appOpenEmbed.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/company/companyList.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/company/sitedetail.js"></script>

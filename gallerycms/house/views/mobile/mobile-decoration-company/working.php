@@ -75,7 +75,15 @@ $this->params['jsFiles'] = [
     </form>
 </div>
 <div class="alert" style="display: none;">请输入姓名</div>
-<script src="http://static.tugou.com/js/slick.min.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/slick.min.js"></script>
 <script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-<script src="http://static.tugou.com/m/js/provider/site.js"></script>
-<script src="http://static.tugou.com/m/js/company/company.js"></script>
+<script>
+//延迟加载图片
+$(function(){
+	$('img.lazy').lazyload({
+		effect : "fadeIn"
+	});
+})
+</script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/company/company-m.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/m_mobile.js"></script>

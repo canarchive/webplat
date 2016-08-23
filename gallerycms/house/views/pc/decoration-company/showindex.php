@@ -260,7 +260,7 @@ $this->params['showPage'] = true;
             <p class="title">免费为我做设计</p>
             <p class="subtitle">免费获取3份设计选取满意设计稿</p></div>
         <div class="apply_form">
-            <input name="apply_type" type="hidden" value="6">
+		    <input name="apply_type" type="hidden" value="company-showindex">
             <input name="apply_provider" type="hidden" value="195">
             <input name="name" type="text" placeholder="您的姓名">
             <input name="phone" type="text" placeholder="手机号码">
@@ -271,7 +271,7 @@ $this->params['showPage'] = true;
                     <option value="">市/地区</option></select>
             </div>
             <input name="apply" type="button" value="立即预约">
-            <p class="sm">全国服务热线400-8617-000
+            <p class="sm">全国服务热线<?= Yii::$app->params['siteHotline']; ?>
                 <br>为了方便我们联系，请留下您的联系方式，我们将严格保密</p></div>
     </div>
 </div>

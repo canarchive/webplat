@@ -35,6 +35,8 @@ class RealcaseController extends HouseController
             'description' => "{$info['name']} 由{$info['merchantInfo']['name']}负责设计施工，每一处的装修细节都是经过{$info['merchantInfo']['name']}细心设计和施工的。装修选择{$info['merchantInfo']['name']}，就是选择放心!",
 		];
 		Yii::$app->params['tdkInfos'] = $tdkInfos;
+		$dataTdk = ['{{INFONAME}}' => $info['name'], '{{MERCHANTNAME}}' => $info['merchantInfo']['name']];
+		$this->getTdkInfos('realcase-show', $dataTdk);
 		$datas = [
 			'info' => $info,
 		];
