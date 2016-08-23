@@ -15,9 +15,9 @@ $this->params['currentNav'] = 'free';
 ?>
 <div class="minute-banner">
     <div class="banner-img">
-        <img src="http://img.tugou.com/special/minute/minute_banner1.jpg" alt="1分钟找到靠谱装修公司">
-        <img src="http://img.tugou.com/special/minute/minute_banner2.jpg" alt="1分钟找到靠谱装修公司">
-        <img src="http://img.tugou.com/special/minute/minute_banner3.jpg" alt="1分钟找到靠谱装修公司">
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute_banner1.jpg" alt="1分钟找到靠谱装修公司">
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute_banner2.jpg" alt="1分钟找到靠谱装修公司">
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute_banner3.jpg" alt="1分钟找到靠谱装修公司">
         <div class="float apply_form" id="form">
             <h1 class="form-title">申请靠谱装修</h1>
             <p class="form-p">您的信息将被严格保密，请准确填写</p>
@@ -41,7 +41,7 @@ $this->params['currentNav'] = 'free';
     </div>
 </div>
 <div class="process">
-    <img src="http://img.tugou.com/special/minute/minute1.jpg" alt="1分钟找到靠谱装修公司"></div>
+    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute1.jpg" alt="1分钟找到靠谱装修公司"></div>
 <div class="gray">
     <div class="center">
         <p class="title">为什么3家装修公司PK</p>
@@ -130,7 +130,7 @@ $this->params['currentNav'] = 'free';
 <div class="white">
     <div class="center">
         <p class="title">兔狗精选靠谱装修公司</p>
-        <img class="provider" src="http://img.tugou.com/special/minute/minute2.jpg" alt="兔狗精选靠谱装修公司"></div>
+        <img class="provider" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute2.jpg" alt="兔狗精选靠谱装修公司"></div>
 </div>
 <div class="gray">
     <div class="center">
@@ -306,17 +306,17 @@ $this->params['currentNav'] = 'free';
             </div>
             <div class="xinxi-right">
                 <div class="case">
-                    <a href="http://hz.tugou.com/realcase/898.html" target="_blank">
-                        <img src="http://img.tugou.com/special/minute/minute3.jpg" alt="环宇天下·三室两厅·简约·半包9万">
-                        <img class="face" src="http://img.tugou.com/special/minute/minute5.png" alt="">
+                    <a href="javascript: void(0);" target="_blank">
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute3.jpg" alt="环宇天下·三室两厅·简约·半包9万">
+                        <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute5.png" alt="">
                         <p class="place">环宇天下-张先生
                             <span>120㎡</span></p>
                         <p class="type">三室两厅 | 简约 | 半包9万</p></a>
                 </div>
                 <div class="case">
-                    <a href="http://hz.tugou.com/realcase/507.html" target="_blank">
-                        <img src="http://img.tugou.com/special/minute/minute4.jpg" alt="万家星城·两室两厅·混搭·半包11万">
-                        <img class="face" src="http://img.tugou.com/special/minute/minute6.png" alt="">
+                    <a href="javascript:void(0);" target="_blank">
+                        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute4.jpg" alt="万家星城·两室两厅·混搭·半包11万">
+                        <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute6.png" alt="">
                         <p class="place">万家星城-李小姐
                             <span>90㎡</span></p>
                         <p class="type">两室两厅 | 混搭 | 全包11万</p></a>

@@ -22,10 +22,10 @@ use yii\helpers\Url;
         </div>
         <ul class="login fn-right" id="roof-nav">
             <!--<li id="login-link" class="word hide no-icon">
-				<a href="http://www.tugou.com/passport/UserLogin/">登录</a>
+				<a href="/passport/UserLogin/">登录</a>
             </li>
             <li id="register-link" class="hide no-icon">
-				<a href="http://www.tugou.com/passport/UserRegister/">免费注册</a>
+				<a href="/passport/UserRegister/">免费注册</a>
             </li>-->
             <li id="phone-link" class="phone">
                 <a href="javascript: void(0);" target="_blank">移动端<?= Yii::$app->params['siteName']; ?></a>

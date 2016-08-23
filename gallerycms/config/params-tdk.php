@@ -41,9 +41,9 @@ return [
         'description' => '找装修设计师，就上【{{SITENAME}}】，这里汇集了{{INFONAME}}装修公司最优秀的室内设计师和装修业内最知名的装修设计师。',
     ],
     'decoration-company-show-working' => [
-        'title' => "{{CITYNAME}}{{INFONAME}}_{{MERCHANTNAME}}-【{{CITYNAME}}{{SITENAME}}】",
-        'keyword' => "{{CITYNAME}}{{INFONAME}},{{MERCHANTNAME}}",
-        'description' => "【{{CITYNAME}}{{SITENAME}}】浙江{{MERCHANTNAME}}公司提供{{CITYNAME}}{{INFONAME}}装修施工的每个细节,{{CITYNAME}}业主可以清楚知道装修的每个环节。装修施工选择{{MERCHANTNAME}},就是选择放心! ",
+        'title' => "{{INFONAME}}装修公司施工直播案例-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}}装修公司，{{INFONAME}}装修案例，{{INFONAME}}装修施工",
+		'description' => "【{{CITYNAME}}{{SITENAME}}】为您提供{{MERCHANTNAME}}装修施工现状图片与{{INFONAME}}装修案例和{{INFONAME}}装修户型图，为有装修需求的业主提供户型设计图与装修设计案例等装修施工报价参考。",
     ],
     'realcase-index' => [
         'title' => '{{CITYNAME}}装修效果图_{{CITYNAME}}装修设计_{{CITYNAME}}装修实例图片大全-{{CITYNAME}}装修设计效果图-【{{CITYNAME}}{{SITENAME}}】',
@@ -51,9 +51,9 @@ return [
         'description' => '【{{CITYNAME}}{{SITENAME}}】装修设计效果图大全为您提供{{CITYNAME}}多家装修公司与多种风格的装修设计效果图图片,聚集了各种风格的客厅、卧室、电视墙、卫生间等装修效果供大家装修欣赏与参考。',
     ],
     'realcase-show' => [
-        'title' => "{{INFONAME}}_{{MERCHANTNAME}}-【{{CITYNAME}}{{SITENAME}}】",
-        'keyword' => "{{INFONAME}},{{MERCHANTNAME}}",
-        'description' => "【{{CITYNAME}}{{SITENAME}}】{{INFONAME}} 由{{MERCHANTNAME}}负责设计施工,每一处的装修细节都是经过{{MERCHANTNAME}}细心设计和施工的。装修选择{{MERCHANTNAME}},就是选择放心!",
+        'title' => "{{INFONAME}}装修案例_{{MERCHANTNAME}}装修公司户型图-【{{CITYNAME}}{{SITENAME}}】",
+        'keyword' => "{{INFONAME}}装修案例,{{MERCHANTNAME}}装修公司户型图",
+		'description' => "【{{CITYNAME}}{{SITENAME}}】为您提供{{INFONAME}}装修案例和{{MERCHANTNAME}}装修公司户型图，为有装修需求的业主提供户型设计图与装修设计案例等装修报价参考。",
     ],
     'region-region' => [
         'title' => "{{CITYNAME}}{{INFONAME}}家装公司排名_{{CITYNAME}}{{INFONAME}}装饰装潢设计-【{{CITYNAME}}{{SITENAME}}】",

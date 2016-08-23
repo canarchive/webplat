@@ -63,15 +63,7 @@ $(function() {
                 </ul>
             </div>
             <!--<div class="page">
-                <p>
-                    <a class="btnpage on">1</a>
-                    <a class="btnpage" href="http://meitu.tugou.com/case/p_2/">2</a>
-                    <a class="btnpage" href="http://meitu.tugou.com/case/p_3/">3</a>
-                    <a class="btnpage" href="http://meitu.tugou.com/case/p_4/">4</a>
-                    <a class="btnpage" href="http://meitu.tugou.com/case/p_5/">5</a>
-                    <a href="http://meitu.tugou.com/case/p_2/">下一页</a>
-                    <a href="http://meitu.tugou.com/case/p_54/">末页</a>
-                </p>
+                <p></p>
             </div>-->
         </div>
     </div>

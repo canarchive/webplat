@@ -15,10 +15,10 @@ $this->params['currentNav'] = 'free';
 ?>
 <div class="content-baojia">
     <div class="center">
-        <img class="img01" src="http://img.tugou.com/special/price-title.png" alt="兔狗装修报价">
+        <img class="img01" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/price-title.png" alt="兔狗装修报价">
         <h1 class="paragraph">10秒算出花多少，装修预算早知道！</h1>
-        <img class="img02" src="http://img.tugou.com/special/baojia02.jpg" alt="兔狗装修报价">
-        <img class="img03" src="http://img.tugou.com/special/baojia03.jpg" alt="兔狗装修报价">
+        <img class="img02" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/baojia02.jpg" alt="兔狗装修报价">
+        <img class="img03" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/baojia03.jpg" alt="兔狗装修报价">
         <div class="form-list">
             <div class="form apply_form">
                 <p>请正确填写您的真实信息</p>
