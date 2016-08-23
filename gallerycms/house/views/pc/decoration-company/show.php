@@ -97,9 +97,6 @@ $this->params['showPage'] = true;
     <div id="pd-fault-footer"></div>
 </section>
 <?php echo $this->render('../common/_pop_mask', []); ?>
-<style type="text/css">
-.beian{ width: 15px; height: 15px; display: inline-block; background: url(http://img.tugou.com/index/footer-beian.png) no-repeat; background-size: 100%; position: relative; top: 2px; }
-</style>
 <script>
 function tabChange(elem)
 {

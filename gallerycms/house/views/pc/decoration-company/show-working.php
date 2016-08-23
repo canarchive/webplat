@@ -93,9 +93,8 @@ $statusDatas = $info->statusDatas;
         </div>
         <div class="pd-contact-us">
             <span class="pd-line-arrow"></span>
-            <img src="http://img.tugou.com/provider/ewm-hangzhou.jpg" alt="兔狗二维码">
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" alt="兔狗二维码">
             <p class="sm">快扫我!!! <br>立即看到你家的装修进度</p>
         </div>
     </div>
 </div>
-<style type="text/css">.beian{ width: 15px; height: 15px; display: inline-block; background: url(http://img.tugou.com/index/footer-beian.png) no-repeat; background-size: 100%; position: relative; top: 2px; }</style>
