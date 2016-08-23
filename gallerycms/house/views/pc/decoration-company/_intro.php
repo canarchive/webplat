@@ -6,7 +6,7 @@ use yii\helpers\Url;
     <!-- 面包屑导航主页样式 -->
     <div class="crumbs">
         <a href="/">首页</a><span class="sep">&gt;</span>
-		<a href="<?= Url::to(['/house/decoration-company/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a><span class="sep">&gt;</span>
+		<a href="<?= Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a><span class="sep">&gt;</span>
         <a href="javascript:void(0);">
 		    <span class="btn-crumbs"><?= $info['name']; ?><i class="i-del"></i></span>
         </a>

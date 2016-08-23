@@ -38,7 +38,11 @@ return [
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/gd-<id:\d+>' => '/house/mobile-decoration-company/show-working',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shijing' => '/house/mobile-realcase/index',
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shj-<id:\d+>' => '/house/mobile-realcase/show',
-    Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/zx/<region_code:\w*>' => '/house/mobile-region/region',
+	[
+		'pattern' => Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w*>/zx/<county>/<vtown>',
+		'route'	=> '/house/region/region',
+		'defaults' => ['vtown' => '', 'page' => 1]
+	],
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>' => '/house/mobile-site/index',
 
     Yii::getAlias('@wildurl') . '/ts-<view:\w+>' => '/house/feature/index',

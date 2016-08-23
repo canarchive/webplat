@@ -65,7 +65,7 @@ $this->params['showPage'] = true;
                     <option value="">市/地区</option></select>
             </div>
             <input name="apply" type="button" value="立即预约">
-            <p class="sm">全国服务热线400-8617-000
+            <p class="sm">全国服务热线<?= Yii::$app->params['siteHotline']; ?>
                 <br>为了方便我们联系，请留下您的联系方式，我们将严格保密</p></div>
     </div>
 </div>

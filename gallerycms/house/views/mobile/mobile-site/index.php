@@ -36,16 +36,16 @@ $this->params['jsFiles'] = [
         <a href="javascript:void(0);" class="tugou-app">
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-tjh.png" alt="<?= Yii::$app->params['siteName']; ?>家装app">
         </a>
-        <a href="<?= Url::to(['/house/mobile-site/wechat']); ?>" class="tugou-weixin">
+        <a href="<?= Url::to(['/house/mobile-info/wechat']); ?>" class="tugou-weixin">
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-weixin.png" alt="<?= Yii::$app->params['siteName']; ?>家装微信公众号">
         </a>
-        <p class="app-p">下载APP</p>
+		<p class="app-p"><a href="tel:<?= Yii::$app->params['siteHotline']; ?>"><?= Yii::$app->params['siteHotline']; ?></a></p>
 		<p class="weixin-p">微信公众号</p>
     </div>
     <!-- null -->
     <p class="bespoke">
         <span onclick="nTalk.im_openInPageChat();"></span>
-		<a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"></a>
+		<a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"></a>
     </p>
 </div>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/swiper.min.js"></script>

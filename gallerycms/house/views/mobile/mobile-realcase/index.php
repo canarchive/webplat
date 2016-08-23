@@ -25,7 +25,7 @@ $(function() {
 </script>
 <?php echo $this->render('../common/_nav', []); ?>
 <div class="toptitle total-top">
-    <a href="/" class="return"></a>装修实景
+    <a href="/" class="return"></a>装修实景ss
 </div>
 <div class="center">
     <!-- 装修实景 -->
@@ -52,6 +52,7 @@ $(function() {
     </div>
 </div>
 <div id="list_top" class="list_top"></div>
+<div class="alert" style="display:none">请输入姓名</div>
 <?php echo $this->render('../common/_footer_button', []); ?>
 <!--弹出层-->
 <div class="win_all">
@@ -79,4 +80,5 @@ $(function() {
 </div>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/slick.min.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/company/new-case.js"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/t-footer.js "></script>
+<!--<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/t-footer.js"></script>-->
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/m_mobile.js"></script>

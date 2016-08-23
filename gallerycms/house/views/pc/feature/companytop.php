@@ -580,7 +580,7 @@
                 </select>
             </div>
             <input name="apply" type="button" value="免费预约" />
-            <p>全国服务热线400-8617-000<br />为了方便我们联系，请留下您的联系方式，我们将严格保密</p>
+            <p>全国服务热线<?= Yii::$app->params['siteHotline']; ?><br />为了方便我们联系，请留下您的联系方式，我们将严格保密</p>
         </div>
     </div>
 </div>

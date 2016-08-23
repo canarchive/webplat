@@ -45,10 +45,9 @@ $this->params['showPage'] = true;
                 </div>
                 <div class="pd-bd-userimg">
                     <div>
-                        <a href="/site/831.html">
-                            <img alt="施工图" src="" class="img-item"></a>
-                        <a href="/site/831.html">
-                            <img alt="施工图" src="" class="img-item"></a>
+        				<a href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
+        				    <img alt="直播工地" src="<?= $info['thumb']; ?>">
+                        </a>
                     </div>
                     <p>严格按照设计图纸进行制作，吊顶高度适中，基层清洁和底子灰结合牢固，无空鼓。</p>
                 </div>
@@ -77,7 +76,7 @@ $this->params['showPage'] = true;
                     <option value="">市/地区</option></select>
             </div>
             <input name="apply" type="button" value="立即预约">
-            <p class="sm">全国服务热线400-8617-000
+            <p class="sm">全国服务热线<?= Yii::$app->params['siteHotline']; ?>
                 <br>为了方便我们联系，请留下您的联系方式，我们将严格保密</p></div>
     </div>
 </div>
