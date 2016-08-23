@@ -31,7 +31,7 @@ $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Y
     <div class="header">
         <div class="logo">
 			<a href="<?= Yii::getAlias('@gallerycmsurl'); ?>">
-			    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/citytogo_logo.png" alt="兔狗科技">
+			    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/citytogo_logo.png" alt="<?= Yii::$app->params['siteNameBase']; ?>科技">
             </a>
         </div>
         <ul class="nav">
