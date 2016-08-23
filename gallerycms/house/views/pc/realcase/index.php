@@ -61,4 +61,4 @@ $this->params['friendLink'] = true;
     </div>
 </div>
 <?php echo $this->render('../common/_pop_mask', []); ?>
-<?php echo $this->render('../common/_signup', []); ?>
+<?php echo $this->render('../common/_signup', ['type' => 'realcase-index-bottom']); ?>

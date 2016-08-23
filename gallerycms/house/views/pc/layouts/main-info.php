@@ -60,10 +60,10 @@ $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Y
 		    <p><?= Yii::$app->params['siteCopyRightInfo']; ?></p>
 			<p><?= Yii::$app->params['siteIcpInfo']; ?></p>
         </div>
-        <div class="links-right">
+        <!--<div class="links-right">
             <a></a>
             <a href="https://credit.szfw.org/CX20151215012655370386.html" target='_blank' rel=”nofollow”></a>
-        </div>
+        </div>-->
     </div>
 </div>
 </body>

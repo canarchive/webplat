@@ -3,17 +3,16 @@ use yii\helpers\Url;
 
 $this->params['cssFiles'] = [
 	'layouts/page_header', 'layouts/page_footer', 'dpl', 'common', 'lib/footer',
-	'common', 'lib/footer',
+	'service/baojia',
 ];
 $this->params['jsFiles'] = [
 	'mtogo', 'lib/jquery-1.11.3.min', 'lib/jquery.lazyload',
 	'components/placeholder', 'components/switch',
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
-	'common', 'index', 'components/jquery.bxslider.min', 
+	'common', 
 ];
 $this->params['currentNav'] = 'free';
 ?>
-<link rel="stylesheet" type="text/css" href="http://static.tugou.com/css/service/baojia.css"></head>
 <div class="content-baojia">
     <div class="center">
         <img class="img01" src="http://img.tugou.com/special/price-title.png" alt="兔狗装修报价">
@@ -117,4 +116,4 @@ $this->params['currentNav'] = 'free';
         </div>
     </div>
 </div>
-<script src="http://static.tugou.com/js/service/baojia.js"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/baojia.js"></script>

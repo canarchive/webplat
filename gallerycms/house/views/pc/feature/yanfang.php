@@ -27,7 +27,7 @@ $this->params['currentNav'] = 'free';
                     <div class="fbody">
                         <p>验房专家上门验房，全面检测房屋质量</p>
                         <div class="apply_form">
-                            <input name="apply_type" type="hidden" value="4" />
+						    <input name="apply_type" type="hidden" value="<?= $view; ?>" />
                             <input name="name" type="text" placeholder="您的姓名" />
                             <input name="phone" type="text" placeholder="手机号码" />
                             <div class="select-group clearfix js-region-select-group">

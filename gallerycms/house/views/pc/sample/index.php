@@ -13,6 +13,7 @@ $this->params['jsFiles'] = [
 ];
 $this->params['currentNav'] = 'sample';
 $this->params['friendLink'] = true;
+$this->params['formPosition'] = 'sample-index';
 ?>
 <style rel="stylesheet">
 .page_header img, .page_footer img { display: inline; } 
@@ -45,7 +46,7 @@ $(function() {
 								    <img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>" />
 									<!--<span>7张</span>-->
                                 </a>
-                                <div class="handler hand_new">
+								<div class="handler hand_new" data-itemid="<?= $info['id'] . '-' . $info['name']; ?>">
                                     <a class="handler-design" href="javascript:;">免费户型设计</a>
 									<a class="handler-price" href="javascript:;">免费获取报价</a>
                                 </div>
@@ -106,4 +107,4 @@ $(function() {
     bindFilter();
 });
 </script>
-<?php echo $this->render('../common/_signup', ['type' => 5]); ?>
+<?php echo $this->render('../common/_signup', ['type' => 'sample-index']); ?>

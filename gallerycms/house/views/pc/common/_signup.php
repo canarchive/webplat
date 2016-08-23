@@ -33,7 +33,7 @@ $formType = isset($type) ? $type : 4;
             </div>
             <div class="qrcode-box">
                 <p class="faultlayout">&nbsp;</p>
-				<img class="ewm" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/appoinment-bottom-ewm.jpg">
+				<img class="ewm" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg">
 				<p class="desc">详情咨询装修管家</p>
             </div>
         </div>

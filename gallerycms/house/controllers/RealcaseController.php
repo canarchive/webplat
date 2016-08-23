@@ -10,7 +10,6 @@ class RealcaseController extends HouseController
 {
 	public function actionIndex()
 	{
-$this->layout = null;
 		$model = new Realcase();
 		$infos = $model->getInfos([]);
 		$datas = [

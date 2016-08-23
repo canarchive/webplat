@@ -3,5 +3,4 @@
 	<?= Yii::$app->params['siteHotline']; ?>&nbsp;&nbsp;<?= Yii::$app->params['siteIcpInfo']; ?>
 </p>
 <!--电话-->
-<p class="tel"><a href="tel:4008617000">预约热线：<?= Yii::$app->params['siteHotline']; ?></a></p>
-
+<p class="tel"><a href="tel:<?= Yii::$app->params['siteHotline']; ?>">预约热线：<?= Yii::$app->params['siteHotline']; ?></a></p>

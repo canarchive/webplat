@@ -58,7 +58,7 @@ use yii\helpers\Url;
         </div>
         <div class="item code fn-right">
             <a>
-			    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/togo_ewm.jpg" border="0" alt="装修网"></a>
+			    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" border="0" alt="装修网"></a>
             <p>微信扫一扫&nbsp;&nbsp;装修没烦恼</p>
         </div>
     </div>
