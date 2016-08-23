@@ -89,6 +89,8 @@ return [
 		'name' => '免费报价',
 		'pc-url' => 'bj.{{DOMAIN}}/ts-baojia.html',
 		'mobile-url' => '/bj/ts-baojia.html',
+		'pc-source' => 'http://www.tugou.com/free/price/',
+		'mobile-source' => 'http://m.tugou.com/free/price/',
     ],
     'feature-kaopu' => [
 		'name' => '靠谱装修',
@@ -145,5 +147,6 @@ return [
 		'name' => '微信',
 		//'pc-url' => 'cms.{{DOMAIN}}/wechat.html',
 		'mobile-url' => '/wechat.html',
+		'mobile-source' => 'http://m.tugou.com/act/weixin.html',
 	],
 ];

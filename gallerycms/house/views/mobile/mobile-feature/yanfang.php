@@ -26,7 +26,7 @@ $this->params['bodyClass'] = 'design';
         </div>
         <div class="freeone">
             <p class="free" id="order">申请免费验房</p>
-            <?php echo $this->render('../common/_form', ['title' => '免费申请', 'type' => '56']); ?>
+            <?php echo $this->render('../common/_form', ['title' => '免费申请', 'type' => $view]); ?>
             <p class="apply-subdesc">同一小区同批验房达到5户，可安排免费上门验房服务。</p>
         </div>
         <!--个性化装修方案-->

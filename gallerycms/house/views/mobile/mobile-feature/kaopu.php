@@ -10,14 +10,15 @@ $this->params['jsFiles'] = [
 $this->params['bodyClass'] = 'design';
 ?>
 <div class="top toptitle">
-    <a href="http://m.tugou.com" class="return"></a>
-    <a href="http://m.tugou.com/index/CitySelection">
-        <div class="position">全国</div></a>
+    <a href="javascript:history.go(-1);" class="return"></a>
+    <a href="<?= Url::to(['/house/mobile-site/select-city']); ?>">
+	    <div class="position"><?= Yii::$app->params['currentCompany']['name']; ?></div>
+    </a>
 </div>
 <div class="container">
     <div class="banner">
-        <img src="http://img.tugou.com/special/minute/m_minute_banner.jpg" alt="1分钟找到靠谱装修公司">
-        <img src="http://img.tugou.com/special/minute/m_minute_1.jpg" alt="1分钟找到靠谱装修公司"></div>
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_banner.jpg" alt="1分钟找到靠谱装修公司">
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_1.jpg" alt="1分钟找到靠谱装修公司"></div>
     <div class="freeone" id="form">
         <h1 class="free" id="order">申请靠谱装修</h1>
         <p class="note">您的信息将被严格保密，请准确填写</p>
@@ -32,27 +33,27 @@ $this->params['bodyClass'] = 'design';
                 <select name="city" id="city" class="city_per city_select city js-city">
                     <option value="0">市/地区</option></select>
             </div>
-            <input type="hidden" value="34" id="type" name="apply_type">
+            <input type="hidden" value="kaopu" id="type" name="apply_type">
             <input type="button" value="立即免费预约" class="submit-btn" name="apply">
             <p class="number">已有
                 <span class="ifocus"></span>人找到靠谱装修公司</p></form>
     </div>
     <div class="pk">
         <p class="title">为什么要3家装修公司PK</p>
-        <img src="http://img.tugou.com/special/minute/m_minute_2.jpg" alt="为什么要3家装修公司PK">
-        <img src="http://img.tugou.com/special/minute/m_minute_3.jpg" alt="为什么要3家装修公司PK"></div>
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_2.jpg" alt="为什么要3家装修公司PK">
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_3.jpg" alt="为什么要3家装修公司PK"></div>
     <div class="merit">
-        <p class="title">为什么选择兔狗靠谱装修</p>
-        <img src="http://img.tugou.com/special/minute/m_minute_4.jpg" alt="为什么选择兔狗靠谱装修"></div>
+        <p class="title">为什么选择<?= Yii::$app->params['siteNameBase']; ?>靠谱装修</p>
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_4.jpg" alt="为什么选择<?= Yii::$app->params['siteNameBase']; ?>靠谱装修"></div>
     <div class="ensure">
-        <p class="title">兔狗如何确保靠谱装修</p>
-        <img src="http://img.tugou.com/special/minute/m_minute_5.jpg" alt="兔狗如何确保靠谱装修">
-        <img src="http://img.tugou.com/special/minute/m_minute_6.jpg" alt="兔狗如何确保靠谱装修"></div>
+        <p class="title"><?= Yii::$app->params['siteNameBase']; ?>如何确保靠谱装修</p>
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_5.jpg" alt="<?= Yii::$app->params['siteNameBase']; ?>如何确保靠谱装修">
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_6.jpg" alt="<?= Yii::$app->params['siteNameBase']; ?>如何确保靠谱装修"></div>
     <div class="company">
-        <p class="title">兔狗精选靠谱装修公司</p>
-        <img src="http://img.tugou.com/special/minute/m_minute_7.jpg" alt="兔狗精选靠谱装修公司"></div>
+        <p class="title"><?= Yii::$app->params['siteNameBase']; ?>精选靠谱装修公司</p>
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m_minute_7.jpg" alt="<?= Yii::$app->params['siteNameBase']; ?>精选靠谱装修公司"></div>
     <div class="info">
-        <p class="title">TA们都选择了兔狗家装</p>
+        <p class="title">TA们都选择了<?= Yii::$app->params['siteNameBase']; ?>家装</p>
         <div class="signed_box">
             <div class="signed_list list">
                 <ul class="signed_list_body">
@@ -222,7 +223,7 @@ $this->params['bodyClass'] = 'design';
     </div>
 </div>
 <div class="index-add" style="clear: both;color: #999;font-size: 0.5rem;line-height: 1.5;text-align: center;">
-    <p>杭州兔狗科技有限公司&nbsp;&nbsp;0571-85866119&nbsp;&nbsp;浙ICP备14016529号</p>
+    <p><?= Yii::$app->params['siteCopyRightInfo']; ?>&nbsp;&nbsp;<a href="tel:<?= Yii::$app->params['siteHotline']; ?>"><?= Yii::$app->params['siteHotline']; ?></a>&nbsp;&nbsp;<?= Yii::$app->params['siteIcpInfo']; ?></p>
 </div>
 </body>
 <script>$('input[name="apply"]').on('click',
@@ -245,8 +246,3 @@ $(".today").html(GetDateStr(0));
 $(".yesterday").html(GetDateStr( - 1));
 $(".before-yesterday").html(GetDateStr( - 2));</script>
 <script type="text/javascript" src="http://static.tugou.com/js/service/list_scroll.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/city_list.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/js/m_common.js"></script>
-<script type="text/javascript" src="http://static.tugou.com/m/js/m-region.js"></script>
-
-</html>

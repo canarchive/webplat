@@ -8,6 +8,8 @@ $tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos']
 $seoTitle = isset($tdkInfos['title']) ? $tdkInfos['title'] : Yii::$app->params['seoTitle'];
 $seoKeyword = isset($tdkInfos['keyword']) ? $tdkInfos['keyword'] : Yii::$app->params['seoKeyword'];
 $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Yii::$app->params['seoDescription'];
+$formPosition = isset($this->params['formPosition']) ? $this->params['formPosition'] : '';
+$formPositionName = isset($this->params['formPositionName']) ? $this->params['formPositionName'] : '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,11 +39,19 @@ $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Y
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/js/' . $jsFile . '.js'; ?>"></script>
 <?php } } ?>
+
+<script type="text/javascript">
+window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
+window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
+window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';
+</script>
 </head>
 <body class="<?php if (isset($this->params['bodyClass'])) { echo $this->params['bodyClass']; } ?>">
 <?= $content; ?>
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_custom_service', []); ?>
+<input type="hidden" id="position" value="<?= $formPosition; ?>" />
+<input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 </div>
 </body>

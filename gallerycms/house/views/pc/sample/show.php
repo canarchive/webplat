@@ -14,6 +14,8 @@ $this->params['jsFiles'] = [
 $this->params['currentNav'] = 'sample';
 $this->params['friendLink'] = true;
 
+$this->params['formPosition'] = 'sample-show';
+$this->params['formPositionName'] = $info['id'] . '_' . $info['name'];
 $this->params['showPage'] = true;
 ?>
 <!-- 兔狗主页导航栏 -->
@@ -50,7 +52,7 @@ $this->params['showPage'] = true;
                 <h3>个性定制我的家</h3>
                 <p class="title sm pd-apply-title">免费获取3套设计方案，省40%装修款</p>
                 <div class="apply_form">
-                    <input name="apply_type" type="hidden" value="12" />
+                    <input name="apply_type" type="hidden" value="sample-show" />
                     <input name="name" type="text" placeholder="您的姓名" />
                     <input name="phone" type="text" placeholder="手机号码" />
                     <div class="select-group clearfix js-region-select-group">

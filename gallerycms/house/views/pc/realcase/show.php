@@ -15,6 +15,8 @@ $this->params['currentNav'] = 'realcase';
 $this->params['friendLink'] = true;
 
 $this->params['showPage'] = true;
+$this->params['formPosition'] = 'realcase-show';
+$this->params['formPositionName'] = $info['id'] . '_' . $info['name'];
 $merchantInfo = $info->merchantInfo;
 ?>
 <!-- 兔狗主页导航栏 -->
@@ -54,19 +56,19 @@ $merchantInfo = $info->merchantInfo;
         <p class="pd-btn"><span class="pd-icon-next"></span>下一篇:<a class="pd-next" href=""></a></p></div>-->
     </div>
     <div class="pd-right-bar">
-        <div class="pd-keeper">
+        <!--<div class="pd-keeper">
             <img class="user-head" src="http://pic.tugou.com/crm_admin_avator/1451700012_6354589.jpeg" alt="装修管家">
             <p class="pd-keeper-name">装修管家
                 <a role="name">小南</a></p>
             <img class="keeper-dimcode" src="http://pic.tugou.com/crm_admin_avator/1451700077_1848445.jpeg" alt="装修二维码">
             <p>扫我立即获取装修清单</p>
-        </div>
+        </div>-->
         <div class="pd-applyfix">
             <div class="aside-apply">
                 <h3>个性定制我的家</h3>
                 <p class="title sm pd-apply-title">免费获取3套设计方案，省40%装修款</p>
                 <div class="apply_form">
-                    <input name="apply_type" type="hidden" value="12" />
+                    <input name="apply_type" type="hidden" value="realcase-show" />
                     <input name="name" type="text" placeholder="您的姓名" />
                     <input name="phone" type="text" placeholder="手机号码" />
                     <div class="select-group clearfix js-region-select-group">

@@ -5,7 +5,7 @@ $this->params['cssFiles'] = [
     'mobile/m_country',
 ];
 $this->params['jsFiles'] = [
-    'jquery', 'common', 'mobile/m_country', 'mobile/city',
+    'jquery', 'common', 'm_country', 'city',
 ];
 ?>
 <div class="container">
@@ -39,8 +39,8 @@ $this->params['jsFiles'] = [
             <a href="javascript:void(0);" class="close-box"></a>
             <p class="sorry">Sorry!</p>
             <p class="soon">您所在的城市即将开通！</p>
-			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/QR-code.jpg" alt="" class="QR-code" />
-            <p class="wechat">添加微信号：<span>togojiazhuang</span></br>关注兔狗家装资讯</p>
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" alt="" class="QR-code" />
+            <p class="wechat">添加微信号：<span>tuanjiahui</span></br>关注团家汇</p>
             <p class="telphone">全国统一热线：<?= Yii::$app->params['siteHotline']; ?></p>
         </div>
     </div>

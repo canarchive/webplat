@@ -8,6 +8,8 @@ $tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos']
 $seoTitle = isset($tdkInfos['title']) ? $tdkInfos['title'] : Yii::$app->params['seoTitle'];
 $seoKeyword = isset($tdkInfos['keyword']) ? $tdkInfos['keyword'] : Yii::$app->params['seoKeyword'];
 $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Yii::$app->params['seoDescription'];
+$formPosition = isset($this->params['formPosition']) ? $this->params['formPosition'] : '';
+$formPositionName = isset($this->params['formPositionName']) ? $this->params['formPositionName'] : '';
 ?>
 <!doctype html>
 <!--[if IE 6]>
@@ -68,8 +70,8 @@ jQuery(document).ready(function($) {
 <?= $content; ?>
 <!--底部-->
 <link type="text/css" rel="stylesheet" href="//at.alicdn.com/t/font_1463989160_300939.css" />
-<input type="hidden" id="position" value="" />
-<input type="hidden" id="position_name" value="" />
+<input type="hidden" id="position" value="<?= $formPosition; ?>" />
+<input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
 <?php echo $this->render('../common/_custom_service', []); ?>
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_footer_base', []); ?>
