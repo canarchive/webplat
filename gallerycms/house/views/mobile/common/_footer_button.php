@@ -2,8 +2,10 @@
 <footer class="tugou-footer app-hide">
     <table class="footer-bar">
         <tr>
-            <td class="qq-btn" style="border-right:none;width: 38.2%" onclick="nTalk.im_openInPageChat();">
+            <td class="qq-btn" style="border-right:none;width: 38.2%">
+			    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3237822793&site=qq&menu=yes">
                 <span class="icon-consult"></span>在线咨询</span>
+                </a>
             </td>
             <td style="width:61.8%" class="apply-btn">免费预约设计</td></tr>
     </table>

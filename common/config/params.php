@@ -15,7 +15,7 @@ return [
 	'siteCopyRightInfo' => '© 2016 - 2020 北京市诚聚互联科技有限公司 版权所有',
 	'siteIcpInfo' => '网站备案号 京ICP备15002642号-3',
 	'siteHotline' => '400-6218-718',	
-	'siteJoinusTel' => '400-6218-719',	
+	'siteJoinusTel' => '13611055052',	
 	'siteName' => '团家汇官网',
 	'siteNameBase' => '团家汇',
 ];

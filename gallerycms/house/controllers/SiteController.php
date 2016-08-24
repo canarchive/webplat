@@ -97,8 +97,11 @@ class SiteController extends HouseController
 
 	public function actionTest()
 	{
-		echo $this->id;
-		echo $this->action->id;
+		//echo $this->id;
+		//echo $this->action->id;
+		$owner = new \merchant\models\Owner();
+		$infos = $owner->getInfos(['company_id' => 1]);
+		print_r($infos);
 		$tdkInfo = $this->getTdkInfos('site-index');
 		print_r($tdkInfo);
 	}

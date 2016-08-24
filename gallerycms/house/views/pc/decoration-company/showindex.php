@@ -34,146 +34,31 @@ $this->params['showPage'] = true;
                                 <th>小区</th>
                                 <th>面积</th>
                                 <th>风格</th>
-                                <th>预算</th>
                                 <tr></thead>
                         <tbody>
                             <!-- 默认封装真实的全部数据，保持上下table 的header一致 -->
+                            <?php foreach ($ownerInfos as $ownerInfo) { ?>
                             <tr>
-                                <td>杨先生</td>
-                                <td>东货厂路40号</td>
-                                <td>78m&sup2;</td>
-                                <td>混搭</td>
-                                <td>4-5万</td></td>
+							    <td><?= $ownerInfo['name']; ?></td>
+							    <td><?= $ownerInfo['community_name']; ?></td>
+								<td><?= $ownerInfo['area']; ?>m&sup2;</td>
+							    <td><?= $ownerInfo['decoration_type']; ?></td>
                             </tr>
-                            <tr>
-                                <td>许女士</td>
-                                <td>格林云墅</td>
-                                <td>89m&sup2;</td>
-                                <td>混搭</td>
-                                <td>6-7万</td></td>
-                            </tr>
-                            <tr>
-                                <td>史女士</td>
-                                <td>满庭春</td>
-                                <td>87m&sup2;</td>
-                                <td>简约</td>
-                                <td>6-7万</td></td>
-                            </tr>
-                            <tr>
-                                <td>曹先生</td>
-                                <td>德顺园</td>
-                                <td>98m&sup2;</td>
-                                <td>欧式</td>
-                                <td>10-12万</td></td>
-                            </tr>
-                            <tr>
-                                <td>徐女士</td>
-                                <td>东王庄</td>
-                                <td>70m&sup2;</td>
-                                <td>美式</td>
-                                <td>6-7万</td></td>
-                            </tr>
-                            <tr>
-                                <td>赵女士</td>
-                                <td>住总万科橙</td>
-                                <td>78m&sup2;</td>
-                                <td>简约</td>
-                                <td>6-7万</td></td>
-                            </tr>
-                            <tr>
-                                <td>陈女士</td>
-                                <td>方安苑</td>
-                                <td>270m&sup2;</td>
-                                <td>简约</td>
-                                <td>30-40万</td></td>
-                            </tr>
-                            <tr>
-                                <td>刘女士</td>
-                                <td>采育镇波尔多</td>
-                                <td>180m&sup2;</td>
-                                <td>简约</td>
-                                <td>12-14万</td></td>
-                            </tr>
-                            <tr>
-                                <td>贾女士</td>
-                                <td>孔雀城英国宫</td>
-                                <td>80m&sup2;</td>
-                                <td>简约</td>
-                                <td>5-6万</td></td>
-                            </tr>
-                            <tr>
-                                <td>刘先生</td>
-                                <td>马家堡</td>
-                                <td>63m&sup2;</td>
-                                <td>简约</td>
-                                <td>3-4万</td></td>
-                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
                 <div class="pd-m-tbody">
                     <table class="pd-table pd-tbody">
                         <tbody>
+                            <?php foreach ($ownerInfos as $ownerInfo) { ?>
                             <tr>
-                                <td>杨先生</td>
-                                <td>东货厂路40号</td>
-                                <td>78m&sup2;</td>
-                                <td>混搭</td>
-                                <td>4-5万</td></tr>
-                            <tr>
-                                <td>许女士</td>
-                                <td>格林云墅</td>
-                                <td>89m&sup2;</td>
-                                <td>混搭</td>
-                                <td>6-7万</td></tr>
-                            <tr>
-                                <td>史女士</td>
-                                <td>满庭春</td>
-                                <td>87m&sup2;</td>
-                                <td>简约</td>
-                                <td>6-7万</td></tr>
-                            <tr>
-                                <td>曹先生</td>
-                                <td>德顺园</td>
-                                <td>98m&sup2;</td>
-                                <td>欧式</td>
-                                <td>10-12万</td></tr>
-                            <tr>
-                                <td>徐女士</td>
-                                <td>东王庄</td>
-                                <td>70m&sup2;</td>
-                                <td>美式</td>
-                                <td>6-7万</td></tr>
-                            <tr>
-                                <td>赵女士</td>
-                                <td>住总万科橙</td>
-                                <td>78m&sup2;</td>
-                                <td>简约</td>
-                                <td>6-7万</td></tr>
-                            <tr>
-                                <td>陈女士</td>
-                                <td>方安苑</td>
-                                <td>270m&sup2;</td>
-                                <td>简约</td>
-                                <td>30-40万</td></tr>
-                            <tr>
-                                <td>刘女士</td>
-                                <td>采育镇波尔多</td>
-                                <td>180m&sup2;</td>
-                                <td>简约</td>
-                                <td>12-14万</td></tr>
-                            <tr>
-                                <td>贾女士</td>
-                                <td>孔雀城英国宫</td>
-                                <td>80m&sup2;</td>
-                                <td>简约</td>
-                                <td>5-6万</td></tr>
-                            <tr>
-                                <td>刘先生</td>
-                                <td>马家堡</td>
-                                <td>63m&sup2;</td>
-                                <td>简约</td>
-                                <td>3-4万</td></tr>
+							    <td><?= $ownerInfo['name']; ?></td>
+							    <td><?= $ownerInfo['community_name']; ?></td>
+								<td><?= $ownerInfo['area']; ?>m&sup2;</td>
+							    <td><?= $ownerInfo['decoration_type']; ?></td>
+                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

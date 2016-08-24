@@ -11,7 +11,7 @@ $this->params['bodyClass'] = 'design';
 ?>
 <div class="container pricing">
     <div class="top toptitle">
-        <a href="javascript:history.go(-1);" class="return"></a><?= $title; ?>
+        <a href="javascript:history.go(-1);" class="return"></a>
         <a href="<?= Url::to(['/house/mobile-site/select-city']); ?>">
 	        <div class="position"><?= Yii::$app->params['currentCompany']['name']; ?></div>
         </a>

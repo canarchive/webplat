@@ -51,10 +51,11 @@ use yii\helpers\Url;
             <p>客服热线：
 				<span><?= Yii::$app->params['siteHotline']; ?></span>
             </p>
-            <p>商家加盟：
+            <p>商家合作：
 				<span><?= Yii::$app->params['siteJoinusTel']; ?></span>
             </p>
-			<a onclick="nTalk.im_openInPageChat();">在线咨询</a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3237822793&site=qq&menu=yes">在线咨询</a>
+			<!--<a onclick="nTalk.im_openInPageChat();">在线咨询</a>-->
         </div>
         <div class="item code fn-right">
             <a>

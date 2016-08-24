@@ -1,6 +1,6 @@
 <div class="jy line-bg">
     <h3>装修经验</h3>
-    <p>实用装修经验，避免施工猫腻！</p>
+    <p>实用装修经验，避免施工猫腻</p>
     <div class="items padTop35">
         <div>
             <a href="/topic/jy/16/" target="_blank">

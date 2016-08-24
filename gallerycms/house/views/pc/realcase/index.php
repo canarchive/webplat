@@ -31,20 +31,20 @@ $this->params['friendLink'] = true;
                                 <div class="ch-left">
 								    <p class="ch-case-title"><?= $info['community_name']; ?></p>
                                     <p class="ch-case-info">
-                                        <span role="construction">别墅</span>
-                                        <span role="style">美式</span>
-										<span role="detail">半包30万</span>
+									<span role="construction"><?= $info['house_type']; ?></span>
+										<span role="style"><?= $info['style']; ?></span>
+										<span role="detail"><?= $info['decoration_type'] . $info['decoration_price']; ?>万</span>
                                     </p>
                                 </div>
                                 <div class="ch-right">
                                     <span class="ch-icon-foot"></span>
-                                    <p class="ch-dat-fork">314</p></div>
+									<p class="ch-dat-fork"><?= rand(1000,9999); ?></p></div>
                             </div>
                         </div>
                     </a>
                     <?php } ?>
                 </div>
-                <div class="page">
+                <!--<div class="page">
                     <p>
                         <a class="btnpage on">1</a>
                         <a class="btnpage" href="/realcase/p_2/">2</a>
@@ -54,7 +54,7 @@ $this->params['friendLink'] = true;
                         <a href="/realcase/p_2/">下一页</a>
                         <a href="/realcase/p_11/">末页</a>
                     </p>
-                </div>
+                </div>-->
             </div>
         </div>
         <div id="pd-fault-footer"></div>

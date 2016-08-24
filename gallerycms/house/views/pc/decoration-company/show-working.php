@@ -32,7 +32,7 @@ $statusDatas = $info->statusDatas;
 <div class="pd-main">
     <div class="pd-step">
         <div class="pd-user-basic">
-            <img class="user-head" src=" http://img.tugou.com/company/face03.png" alt="用户头像">
+		    <img class="user-head" src="<?= $info['avatar']; ?>" alt="用户头像">
             <div class="user-info">
                 <p><a role="name"><?= $info['owner_name']; ?>的家</a></p>
                 <p>

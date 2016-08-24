@@ -1,6 +1,6 @@
 <div class="new-sign line-bg">
     <h3>最近签约 他们都选了<?= Yii::$app->params['siteNameBase']; ?></h3>
-    <p>真实业主评价，您的装修您做主！</p>
+    <p>真实业主评价，您的装修您做主</p>
     <div class="cont clearfix padTop35">
         <div class="carousel fn-left">
             <div class="clearfix">

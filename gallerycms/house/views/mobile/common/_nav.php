@@ -23,7 +23,7 @@ use yii\helpers\Url;
 				    <a href="<?= Url::to(['/house/mobile-decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="total-four">装修公司</a>
                 </li>
                 <li>
-			        <a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="total-five">免费服务</a>
+			        <a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="total-five">装修服务</a>
                 </li>
             </ul>
         </div>

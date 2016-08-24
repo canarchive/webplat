@@ -61,7 +61,9 @@ class SampleController extends HouseController
 			if (empty($info[$tagKey])) {
 				continue;
 			}
-			$tagStr .= $tagValue['values'][$info[$tagKey]];
+			$str = $tagValue['values'][$info[$tagKey]];
+			$tagStr .= $str;
+			$info[$tagKey] = $str;
 		}
 
 		$dataTdk = ['{{INFONAME}}' => $info['name'], '{{TAGSTR}}' => $tagStr];

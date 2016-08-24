@@ -1,8 +1,10 @@
 <!-- 在线客服系统 -->
 <div class="apply-bar app-hide">
     <ul>
-        <li class="consult-submit" onclick="nTalk.im_openInPageChat();">
+        <li class="consult-submit">
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3237822793&site=qq&menu=yes">
 			<span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询
+            </a>
         </li>
         <li class="apply-submit">
 			<a href="javascript:;">立即申请</a>

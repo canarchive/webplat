@@ -42,17 +42,17 @@ use yii\helpers\Url;
         <div class="center-bar">
             <ul class="bxslider">
                 <li>
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner1.jpg" alt="一分钟找到靠谱装修公司">
                     </a>
                 </li>
                 <li>
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+				    <a href="<?= Url::to(['/house/sample/index', 'page' => 1, 'tag' => '']); ?>" target="_blank">
 					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner_kpzx2.jpg" alt="靠谱装修季">
                     </a>
                 </li>
                 <li>
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner_al.jpg" alt="装修经验">
                     </a>
                 </li>
