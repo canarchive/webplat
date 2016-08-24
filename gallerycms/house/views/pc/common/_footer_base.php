@@ -13,7 +13,7 @@
             </div>
             <!--<div class="links-right">
                 <a></a>
-                <a id='___szfw_logo___' href='https://credit.szfw.org/CX20151215012655370386.html' target='_blank' rel="nofollow"></a>
+                <a id='___szfw_logo___' href='https://credit.szfw.org/' target='_blank' rel="nofollow"></a>
                 <a></a>
             </div>-->
         </div>

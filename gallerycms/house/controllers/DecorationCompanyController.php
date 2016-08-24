@@ -73,6 +73,7 @@ class DecorationCompanyController extends HouseController
             'workingInfos' => $info->getWorkingInfos(),
             'designerInfos' => $info->getDesignerInfos(),
             'commentInfos' => [],//$info->getDesignerInfos(),
+			'ownerInfos' => $this->_getOwnerInfos(),
         ];
 		//print_r($datas);exit();
 

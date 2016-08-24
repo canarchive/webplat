@@ -3,9 +3,9 @@
 namespace gallerycms\house\controllers;
 
 use Yii;
-use gallerycms\components\Controller as GallerycmsController;
+use gallerycms\components\HouseController;
 
-class FeatureController extends GallerycmsController
+class FeatureController extends HouseController
 {
 	public function actionIndex()
 	{
@@ -14,6 +14,7 @@ class FeatureController extends GallerycmsController
 
 		$view = in_array($view, $views) ? $view : 'yanfang';
 		$datas = [
+			'ownerInfos' => $this->_getOwnerInfos(),
 			'view' => $view,
 			'communityInfo' => [],
 		];

@@ -27,13 +27,13 @@ $this->params['showPage'] = true;
                 <div class="pd-bd-userinfo">
                     <div class="user-header">
         			    <a href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
-        					<img alt="用户头像" src="/company/face03.png" class="pd-bd-user">
+						    <img alt="用户头像" src="<?= $info['avatar']; ?>" class="pd-bd-user">
                         </a>
         				<p class="pd-bd-status"><span></span><?= $info['status']; ?></p>
                     </div>
                     <div class="user-profile">
                         <p>
-        					<a href="<?= Url::to(['/house/working/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="pd-btn" role="user-name"><?= $info['owner_name']; ?></a>
+        					<a href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="pd-btn" role="user-name"><?= $info['owner_name']; ?></a>
                         </p>
                         <p>
         				    <a role="building"><?= $info['community_name']; ?></a>
