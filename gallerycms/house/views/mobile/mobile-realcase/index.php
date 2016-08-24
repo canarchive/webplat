@@ -25,7 +25,7 @@ $(function() {
 </script>
 <?php echo $this->render('../common/_nav', []); ?>
 <div class="toptitle total-top">
-    <a href="/" class="return"></a>装修实景ss
+    <a href="/" class="return"></a>装修实景
 </div>
 <div class="center">
     <!-- 装修实景 -->

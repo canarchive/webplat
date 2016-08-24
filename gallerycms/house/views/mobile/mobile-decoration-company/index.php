@@ -40,7 +40,7 @@ $this->params['jsFiles'] = [
             <table>
                 <tr>
                     <td width="18">
-                        <img class="sale" src="http://static.tugou.com/m/img/provider/hui.png"></td>
+					    <img class="sale" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/hui.png"></td>
                     <td class="content">电视、电冰箱、空调等大家电百分百中奖
                         <br/>688元保养家套餐免费送
                         <br/>卫浴洁具套餐免费送
@@ -55,7 +55,7 @@ $this->params['jsFiles'] = [
 <div class="bottomFixedArea">
     <div class="onlineContact" onclick="nTalk.im_openInPageChat();">
         <div class="consult">
-            <img src="http://img.tugou.com/consultant/m-consult.png" />
+		    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/m-consult.png" />
             <span>在线咨询</span></div>
     </div>
     <div class="apply">免费申请设计报价</div></div>

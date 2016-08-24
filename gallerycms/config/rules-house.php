@@ -17,7 +17,8 @@ return [
 	],
     Yii::getAlias('@gallerycmsurl') . '/mt-<id:\d+>' => '/house/sample/show',
 
-    Yii::getAlias('@m.gallerycmsurl') . '/info-<action:\w+>' => '/house/mobile-info/<action>',
+    Yii::getAlias('@m.gallerycmsurl') . '/bm-result' => '/house/mobile-signup/result',
+    //Yii::getAlias('@m.gallerycmsurl') . '/info-<action:\w+>' => '/house/mobile-info/<action>',
     Yii::getAlias('@m.gallerycmsurl') . '/map' => '/house/mobile-site/map',
 	[
 		'pattern' => Yii::getAlias('@m.gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
@@ -40,7 +41,7 @@ return [
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>/shj-<id:\d+>' => '/house/mobile-realcase/show',
 	[
 		'pattern' => Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w*>/zx/<county>/<vtown>',
-		'route'	=> '/house/region/region',
+		'route'	=> '/house/mobile-region/region',
 		'defaults' => ['vtown' => '', 'page' => 1]
 	],
     Yii::getAlias('@m.gallerycmsurl') . '/<city_code:\w+>' => '/house/mobile-site/index',

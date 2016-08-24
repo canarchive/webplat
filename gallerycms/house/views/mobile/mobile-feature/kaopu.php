@@ -245,4 +245,4 @@ function GetDateStr(AddDayCount) {
 $(".today").html(GetDateStr(0));
 $(".yesterday").html(GetDateStr( - 1));
 $(".before-yesterday").html(GetDateStr( - 2));</script>
-<script type="text/javascript" src="http://static.tugou.com/js/service/list_scroll.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/js/list_scroll.js"></script>

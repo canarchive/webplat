@@ -39,7 +39,7 @@ $this->params['jsFiles'] = [
 <div class="placeholder-footer app-hide"></div>
 <footer class="bottomFixedArea app-hide">
     <div class="onlineContact" onclick="nTalk.im_openInPageChat();">
-        <img class="consult" src="http://static.tugou.com/m/img/provider/consult.png" />
+	    <img class="consult" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/consult.png" />
         <span class="content">在线咨询</span></div>
     <div class="apply-btn">免费申请设计报价</div></footer>
 <div class="apply-container">
