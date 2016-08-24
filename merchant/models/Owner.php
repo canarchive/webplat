@@ -2,7 +2,6 @@
 
 namespace merchant\models;
 
-use Yii;
 use yii\helpers\ArrayHelper;
 use common\models\MerchantModel;
 use spread\models\CustomService;
@@ -10,19 +9,16 @@ use spread\models\CustomService;
 /**
  * This is the model class for table "merchant".
  */
-class Working extends MerchantModel
+class Owner extends MerchantModel
 {
-	public $serviceInfo;
-	public $statusDatas;
 	public $merchantInfo;
-	public $avatar;
     
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%working}}';
+        return '{{%owner}}';
     }
 
     /**
@@ -42,11 +38,10 @@ class Working extends MerchantModel
     public function rules()
     {
         return [
-            [['name', 'merchant_id'], 'required'],
+            [['name', 'company_id'], 'required'],
 			[['thumb', 'orderlist'], 'integer'],
-			[['thumb', 'service_id', 'orderlist', 'decoration_price'], 'default', 'value' => '0'],
-			[['status'], 'default', 'value' => ''],
-			[['owner_name', 'owner_mobile', 'decoration_type', 'community_name', 'house_type', 'style', 'area', 'description'], 'safe'],
+			[['thumb', 'orderlist', 'decoration_price', 'status'], 'default', 'value' => '0'],
+			[['mobile', 'decoration_type', 'community_name', 'house_type', 'style', 'area', 'description'], 'safe'],
         ];
     }
 
@@ -58,18 +53,16 @@ class Working extends MerchantModel
         return [
             'id' => 'ID',
             'name' => '名称',
+			'company_id' => '分站ID',
 			'merchant_id' => '所属公司',
-			'service_id' => '装修管家',
 			'house_type' => '户型',
 			'style' => '风格',
 			'area' => '面积',
-			'owner_name' => '业主名字',
-			'owner_mobile' => '业主电话',
+			'mobile' => '业主电话',
 			'community_name' => '小区名字',
 			'decoration_type' => '装修类型',
 			'decoration_price' => '装修价格',
             'thumb' => '缩略图',
-            'picture_living' => '效果图',
 			'orderlist' => '排序',
             'description' => '描述',
             'status' => '是否显示',
@@ -80,8 +73,11 @@ class Working extends MerchantModel
 
 	public function getStatusInfos()
 	{
-		$status = new WorkingStatus();
-		return $status->statusInfos;
+		$datas = [
+			'0' => '停用',
+			'1' => '正常',
+		];
+		return $datas;
 	}
 
 	public function afterSave($insert, $changedAttributes)
@@ -89,7 +85,7 @@ class Working extends MerchantModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['thumb'];
-		$this->_updateSingleAttachment('merchant', $fields);
+		$this->_updateSingleAttachment('owner', $fields);
 
 		return true;
 	}	
@@ -109,14 +105,9 @@ class Working extends MerchantModel
 	protected function _formatInfo($info)
 	{
 		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
-		$info['house_type'] = $info->houseTypeInfos[$info->house_type];
-		$info['style'] = $info->styleInfos[$info->style];
 		$info['status'] = $info->statusInfos[$info->status];
-		$info['avatar'] = strpos($info['owner_name'], '女士') !== false ? Yii::getAlias('@asseturl') . '/gallerycms/home/images/face04.png' : Yii::getAlias('@asseturl') . '/gallerycms/home/images/face03.png';
 		$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
 		$info['serviceInfo'] = CustomService::findOne($info['service_id'])->toArray();
-		$workingStatus = new WorkingStatus();
-		$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
 		$info['merchantInfo'] = Merchant::findOne($info['merchant_id']);
 
 		return $info;
@@ -125,15 +116,9 @@ class Working extends MerchantModel
 	public function getInfos($where, $limit = 100)
 	{
 		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
-		$serviceModel = new CustomService();
 		foreach ($infos as $key => & $info) {
 			$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
-			$info['house_type'] = $info->houseTypeInfos[$info->house_type];
-			$info['style'] = $info->styleInfos[$info->style];
 			$info['status'] = $info->statusInfos[$info->status];
-			$info['avatar'] = strpos($info['owner_name'], '女士') !== false ? Yii::getAlias('@asseturl') . '/gallerycms/home/images/face04.png' : Yii::getAlias('@asseturl') . '/gallerycms/home/images/face03.png';
-			$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
-			$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
 		}
 
         //$cache->set($keyCache, $infos);
