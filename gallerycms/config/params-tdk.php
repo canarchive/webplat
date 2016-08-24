@@ -116,12 +116,12 @@ return [
 	    'keyword' => '城市分站,{{SITENAME}}',
 	    'description' => '【{{SITENAME}}】城市分站',
 	],
-	'site-map' => [
+	'info-map' => [
 	    'title' => '网站地图-【{{SITENAME}}】',
 	    'keyword' => '网站地图,{{SITENAME}}',
 	    'description' => '【{{SITENAME}}】网站地图',
 	],
-	'site-map-more' => [
+	'info-map-more' => [
 	    'title' => '地区分布网站地图-【{{SITENAME}}】',
 	    'keyword' => '地区分布网站地图,{{SITENAME}}',
 	    'description' => '【{{SITENAME}}】地区分布网站地图',

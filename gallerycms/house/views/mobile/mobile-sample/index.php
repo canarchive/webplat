@@ -152,7 +152,7 @@ $(function() {
                 if (data) {
                     //每次加载时模拟加载图片
                     for (var i = 0; i < 20; i++) {
-                        html = "<div class='list_con_01'><a href='" + "http://m.tugou.com/meitu/s" + data[i].suit_id + ".html'><span><img src =http://pic.tugou.com/" + data[i].Coverimg + '@218h_288w_1e_1c ><p class="description">' + data[i].pic_num + '张</p></span><h2>' + data[i].title + '</h2></a></div>';
+                        html = "<div class='list_con_01'><a href='" + "/meitu/s" + data[i].suit_id + ".html'><span><img src =http://pic.tugou.com/" + data[i].Coverimg + '@218h_288w_1e_1c ><p class="description">' + data[i].pic_num + '张</p></span><h2>' + data[i].title + '</h2></a></div>';
                         $minUl = getMinUl();
                         $minUl.append(html);
                     }

@@ -3,10 +3,10 @@
 </div>
 <div class="content">
     <div class="joinus">
-        <ul class="join">
+        <!--<ul class="join">
             <li class="on">社会招聘<p></p></li>
             <li class="school">校园招聘<p></p></li>
-        </ul>
+        </ul>-->
         <div class="recruit">
             <ul class="recruit-ul">
                 <li>

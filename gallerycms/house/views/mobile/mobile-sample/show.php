@@ -61,13 +61,13 @@ $(function() { //置顶
     <ul class="rp-list">
         <li class="rp-item">
             <div class="img-box">
-                <a href="http://m.tugou.com/meitu/s2129.html">
-                    <img src="http://pic.tugou.com/meitu/20160715175012_7215.jpeg@280w" alt="温馨混搭风格小户型单身公寓装潢案例" /></a>
+                <a href="/meitu/s2129.html">
+                    <img src="" alt="温馨混搭风格小户型单身公寓装潢案例" /></a>
                 <p class="img-count">7张</p></div>
             <p class="rp-description">温馨混搭风格小户型单…</p></li>
     </ul>
 </div>-->
-<!-- <div class="m_more"><a href="http://m.tugou.com/meitu/s2122.html" title="创意混搭复古雅致一居室装潢案例">点击查看下一组案例 &gt;</a></div> -->
+<!-- <div class="m_more"><a href="/meitu/s2122.html" title="创意混搭复古雅致一居室装潢案例">点击查看下一组案例 &gt;</a></div> -->
 <div class="list_fo"></div>
 <?php echo $this->render('../common/_footer_button', []); ?>
 <div class="apply-container">
