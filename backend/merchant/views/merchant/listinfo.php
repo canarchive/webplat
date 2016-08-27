@@ -58,10 +58,10 @@ $gridViewParams = [
             'value' => function($model) {
                 $menus = $this->context->menuInfos['menus'];
                 $opeStr = '';
-                $elems = ['merchant_merchant-realcase_add', 'merchant_merchant_designer_add', 'merchant_merchant_working_add'];
+                $elems = ['merchant_merchant-realcase_add', 'merchant_merchant-designer_add', 'merchant_merchant-working_add'];
                 foreach ($elems as $elem) {
                     if (isset($menus[$elem])) {
-                    $opeStr .= "<a href='{$menus[$elem]['url']}?merchant_id={$model->id}'>{$menus[$elem]['name']}</a>";
+                    $opeStr .= "<a href='{$menus[$elem]['url']}?merchant_id={$model->id}'>{$menus[$elem]['name']}</a><br />";
                     }
                 }
                 return $opeStr;

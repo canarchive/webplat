@@ -25,7 +25,10 @@ class RealcaseController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Realcase());
+		$data = [
+			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
+		];
+		return $this->_addInfo(new Realcase($data));
     }
 
     public function actionUpdate($id = 0)
