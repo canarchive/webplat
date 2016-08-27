@@ -130,7 +130,7 @@ class SignupForm extends Model
         $mobile = $data['mobile'];
 
 		//$message = $this->decorationModel['sms'];
-		$message = '您已预约成功，我们的装修顾问会在15分钟内联系您！【一起装修网】';
+		$message = '您已预约成功，我们的装修顾问会在15分钟内联系您！【团家汇】';
 
 		$smser = new Smser('company');
         $smser->send($mobile, $message, 'decoration_signup');
