@@ -34,7 +34,7 @@ $formType = isset($type) ? $type : 4;
             <div class="qrcode-box">
                 <p class="faultlayout">&nbsp;</p>
 				<img class="ewm" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg">
-				<p class="desc">详情咨询装修管家</p>
+				<p class="desc">关注官方微信号</p>
             </div>
         </div>
         <div class="close_button"><a href="javascript:;">×</a></div>

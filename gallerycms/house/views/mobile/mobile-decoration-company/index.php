@@ -27,11 +27,11 @@ $this->params['jsFiles'] = [
 					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/zheng.png" alt="" class="company-icon" />
 					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/huan.png" alt="" class="company-icon" />
                     </div>
-                    <p class="note note-st">已服务&nbsp;<span class="stg-orange">3620</span>&nbsp;户业主</p>
-                    <p class="note note-nd">口碑值&nbsp;<span class="stg-blue">381</span></p>
+					<p class="note note-st">已服务&nbsp;<span class="stg-orange"><?= $info['num_owner']; ?></span>&nbsp;户业主</p>
+					<p class="note note-nd">口碑值&nbsp;<span class="stg-blue"><?= $info['praise']; ?></span></p>
                 </div>
                 <div class="info-right">
-                    <p class="score J_score">4.9</p>
+				    <p class="score J_score"><?= $info['score']; ?></p>
                     <p class="describe">业主评分</p>
                 </div>
             </div>

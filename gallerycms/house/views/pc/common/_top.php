@@ -31,7 +31,7 @@ use yii\helpers\Url;
                 <a href="javascript: void(0);" target="_blank">移动端<?= Yii::$app->params['siteName']; ?></a>
                 <div class="code">
 				<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" border="0" alt="装修网">
-                    <p><?= Yii::$app->params['siteName']; ?>官方微客服</p>
+                    <p>关注官方微信号</p>
                 </div>
             </li>
             <li class="number">
