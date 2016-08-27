@@ -27,17 +27,17 @@ $this->params['jsFiles'] = [
     <?php echo $this->render('_working', ['infos' => $workingInfos]); ?>
     <!-- 装修经验 -->
     <?php //echo $this->render('_experience', []); ?>
-    <!-- 为什么选择<?= Yii::$app->params['siteName']; ?>靠谱装修 -->
+    <!-- 为什么选择<?= Yii::$app->params['siteNameBase']; ?>靠谱装修 -->
     <div class="why">
-        <h1>为什么选择<?= Yii::$app->params['siteName']; ?>家装</h1>
-		<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-why.png" alt="为什么选择<?= Yii::$app->params['siteName']; ?>靠谱装修">
+        <h1>为什么选择<?= Yii::$app->params['siteNameBase']; ?></h1>
+		<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-why.png" alt="为什么选择<?= Yii::$app->params['siteNameBase']; ?>靠谱装修">
     </div>
     <div class="app-weixin">
         <a href="javascript:void(0);" class="tugou-app">
-			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-tjh.png" alt="<?= Yii::$app->params['siteName']; ?>家装app">
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-dh.png" alt="<?= Yii::$app->params['siteNameBase']; ?>家装app">
         </a>
         <a href="<?= Url::to(['/house/mobile-info/wechat']); ?>" class="tugou-weixin">
-			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-weixin.png" alt="<?= Yii::$app->params['siteName']; ?>家装微信公众号">
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-weixin.png" alt="<?= Yii::$app->params['siteNameBase']; ?>家装微信公众号">
         </a>
 		<p class="app-p"><a href="tel:<?= Yii::$app->params['siteHotline']; ?>"><?= Yii::$app->params['siteHotline']; ?></a></p>
 		<p class="weixin-p">微信公众号</p>

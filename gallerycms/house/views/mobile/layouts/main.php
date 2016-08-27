@@ -41,7 +41,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <?php } } ?>
 
 <script type="text/javascript">
-window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
+window.BASE_URL = "<?= Yii::getAlias('@m.gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';
 </script>

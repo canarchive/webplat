@@ -134,7 +134,7 @@ $this->params['currentNav'] = 'free';
 </div>
 <div class="gray">
     <div class="center">
-        <p class="title">TA们都选择了<?= Yii::$app->params['siteNameBase']; ?>家装</p>
+        <p class="title">TA们都选择了<?= Yii::$app->params['siteNameBase']; ?></p>
         <div class="xinxi">
             <div class="xinxi-left">
                 <div class="signed_box">
@@ -157,7 +157,7 @@ $this->params['currentNav'] = 'free';
                     <a href="javascript: void(0);" target="_blank">
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute3.jpg" alt="环宇天下·三室两厅·简约·半包9万">
                         <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute5.png" alt="">
-                        <p class="place">环宇天下-张先生
+                        <p class="place">白领家园-赵先生
                             <span>120㎡</span></p>
                         <p class="type">三室两厅 | 简约 | 半包9万</p></a>
                 </div>
@@ -165,8 +165,8 @@ $this->params['currentNav'] = 'free';
                     <a href="javascript:void(0);" target="_blank">
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute4.jpg" alt="万家星城·两室两厅·混搭·半包11万">
                         <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute6.png" alt="">
-                        <p class="place">万家星城-李小姐
-                            <span>90㎡</span></p>
+                        <p class="place">创意园小区-张女士
+                            <span>80㎡</span></p>
                         <p class="type">两室两厅 | 混搭 | 全包11万</p></a>
                 </div>
             </div>

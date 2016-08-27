@@ -47,7 +47,7 @@
             </tr>
             <tr>
                 <td class="first">
-                    <div><p>108道标准施工工艺<br>手机直播工地，装修进度全程掌握<br>权威监理5次上门严格验收</p></div>
+                    <div><p>标准施工工艺<br>手机直播工地，装修进度全程掌握<br>权威监理5次上门严格验收</p></div>
                 </td>
                 <td class="middle">施 工</td>
                 <td class="last">

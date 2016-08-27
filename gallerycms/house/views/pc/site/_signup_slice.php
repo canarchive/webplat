@@ -42,8 +42,8 @@ use yii\helpers\Url;
         <div class="center-bar">
             <ul class="bxslider">
                 <li>
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
-					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner1.jpg" alt="一分钟找到靠谱装修公司">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner_al.jpg" alt="装修经验">
                     </a>
                 </li>
                 <li>
@@ -53,7 +53,7 @@ use yii\helpers\Url;
                 </li>
                 <li>
 				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
-					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner_al.jpg" alt="装修经验">
+					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner1.jpg" alt="一分钟找到靠谱装修公司">
                     </a>
                 </li>
             </ul>
@@ -63,9 +63,9 @@ use yii\helpers\Url;
     </div>
     <!--免费上门验房、免费设计、免费报价-->
     <div class="advert">
-	    <a class="item" href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
-            <p class="padTop25">免费上门验房</p>
-            <p class="padTop10">资深验房专家上门验房<br />专业仪器检测房屋质量</p>
+	    <a class="item" href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+            <p class="padTop25">免费上门量房</p>
+            <p class="padTop10">3家装修公司PK<br />杜绝增项漏项</p>
         </a>
 		<a class="item " href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
             <p class="padTop25">免费3套设计方案</p>
@@ -73,7 +73,7 @@ use yii\helpers\Url;
         </a>
 		<a class="item last" href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
             <p class="padTop25">在线报价器</p>
-			<p class="padTop10">一分钟解决预算难题<br />装修省40%</p>
+			<p class="padTop10">30秒解决预算难题<br />装修省40%</p>
         </a>
     </div>
 </div>
