@@ -60,7 +60,7 @@ $this->params['friendLink'] = true;
                 </p>
             </div>
             <div class="item_part right">
-                <p>业主评分<br /><strong>4.9</strong></p>
+			    <p>业主评分<br /><strong><?= $info['score']; ?></strong></p>
             </div>
         </li>
         <?php } ?>

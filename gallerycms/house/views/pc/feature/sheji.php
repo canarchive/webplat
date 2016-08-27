@@ -78,7 +78,7 @@ $this->params['currentNav'] = 'free';
             <ul class="img3">
                 <li class="li1">
                     <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bj7.jpg">
-                    <p>1分钟获取预算清单</p>
+                    <p>30秒获取预算清单</p>
                     <span>不满意可重复修改</span></li>
                 <li class="li2">
                     <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bj8.jpg">

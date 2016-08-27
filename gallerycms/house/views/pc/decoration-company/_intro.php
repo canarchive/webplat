@@ -16,7 +16,7 @@ use yii\helpers\Url;
 			<img src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" class="pd-logo">
             <p class="pd-btn-design pd-btn free-order-pop">免费设计与报价</p>
             <p class="pd-hh-usercount">已服务&nbsp;&nbsp;
-                <a>2631</a>&nbsp;&nbsp;位业主</p>
+	            <a><?= $info['num_owner']; ?></a>&nbsp;&nbsp;位业主</p>
         </div>
         <div class="pd-hh-desc">
             <div class="pd-name"><h1><?= $info['name']; ?></h1></div>
@@ -29,8 +29,8 @@ use yii\helpers\Url;
                     <span class="pd-icon pd-icon-carry"></span>直播工地:
 					<a class="pd-current-cnt"><?= $info['num_working']; ?></a>
                 </p>
-                <!--<p>业主评分:<a class="pd-current-cnt J_score">4.81</a></p>
-                <p>口碑值:<a class="pd-current-cnt">210</a></p>-->
+				<p>业主评分:<a class="pd-current-cnt J_score"><?= $info['score']; ?></a></p>
+				<p>口碑值:<a class="pd-current-cnt"><?= $info['praise']; ?></a></p>
             </div>
             <div class="pd-introduction J_word">
 			    <p><?= $info['brief']; ?></p>

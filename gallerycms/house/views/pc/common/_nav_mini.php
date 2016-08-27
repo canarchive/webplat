@@ -30,8 +30,8 @@ $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] :
             <span data-icon="mobile"></span>
             <span role="desc">移动端<?= Yii::$app->params['siteName']; ?></span>
             <div class="dim-code">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" border="0" alt="装修网">
-                <p><?= Yii::$app->params['siteName']; ?>官方微客服</p>
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" border="0" alt="装修网" width="103px" height="103px">
+                <p>关注官方微信号</p>
             </div>
         </div>
     </div>

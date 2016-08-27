@@ -12,12 +12,12 @@ use yii\helpers\Url;
         </li>
         <li class="break-line"></li>
         <li>
-            <span class="num">381</span>
+		    <span class="num"><?= $info['praise']; ?></span>
 			<p class="msg">口碑值</p>
         </li>
         <li class="break-line"></li>
         <li>
-            <span class="num J_score">4.88</span>
+		    <span class="num J_score"><?= $info['score']; ?></span>
 			<p class="msg">业主评分</p>
         </li>
     </ul>
