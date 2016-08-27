@@ -12,9 +12,6 @@ class Merchant extends MerchantModel
 {
 	public $companyInfo;
 	public $aptitude;
-	public $num_owner;
-	public $num_realcase;
-	public $num_working;
     
     /**
      * @inheritdoc
@@ -43,7 +40,7 @@ class Merchant extends MerchantModel
         return [
             [['name'], 'required'],
 			[['logo', 'picture'], 'integer'],
-			[['logo', 'picture', 'company_id', 'category_id', 'status'], 'default', 'value' => '0'],
+			[['logo', 'picture', 'company_id', 'category_id', 'status', 'num_owner', 'num_realcase', 'num_working', 'score', 'praise'], 'default', 'value' => '0'],
 			[['aptitude', 'sort', 'hotline', 'postcode', 'brief', 'address', 'description'], 'safe'],
         ];
     }
@@ -66,6 +63,11 @@ class Merchant extends MerchantModel
 			'hotline' => '电话',
 			'postcode' => '邮编',
 			'address' => '地址',
+			'num_owner' => '业主数',
+			'num_realcase' => '实景数',
+			'num_working' => '工地数',
+			'score' => '评分',
+			'praise' => '口碑值',
             'description' => '描述',
             'status' => '是否显示',
             'created_at' => '创建时间',
@@ -192,9 +194,6 @@ class Merchant extends MerchantModel
 		$infos = $this->find()->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
 		foreach ($infos as $key => & $info) {
 			$info['logo'] = $info->getAttachmentUrl($info['logo']);
-			$info['num_owner'] = 2389;
-			$info['num_realcase'] = 10;
-			$info['num_realcase'] = 2;
 		}
 
         //$cache->set($keyCache, $infos);

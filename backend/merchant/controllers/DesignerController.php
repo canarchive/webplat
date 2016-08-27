@@ -25,7 +25,10 @@ class DesignerController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Designer());
+		$data = [
+			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
+		];
+		return $this->_addInfo(new Designer($data));
     }
 
     public function actionUpdate($id = 0)
