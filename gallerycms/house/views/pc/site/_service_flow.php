@@ -4,31 +4,31 @@
     <div class="items padTop35">
         <a>
             <div class="border item1"><i></i></div>
-            <p>填写信息<br/>发布装修需求</p>
+            <p>填写发布装修需求</p>
         </a>
         <a>
             <div class="border item2"><i></i></div>
-            <p>设计师上门量房<br/>出3套装修方案</p>
+            <p>设计师免费上门量房</p>
         </a>
         <a>
             <div class="border item3"><i></i></div>
-            <p>对比3套方案<br/>选择到满意为止</p>
+            <p>对比3套方案报价</p>
         </a>
         <a>
             <div class="border item4"><i></i></div>
-            <p>签订正式装修合同<br/>&nbsp;</p>
+            <p>签订正式装修合同</p>
         </a>
         <a>
             <div class="border item5"><i></i></div>
-            <p>确定开工时间<br/>开始施工</p>
+            <p>标准化环保施工</p>
         </a>
         <a>
             <div class="border item6"><i></i></div>
-            <p>第三方监理上门验收<br/>保障施工</p>
+            <p>第三方监理节点验收</p>
         </a>
         <a class="last">
             <div class="border item7"></div>
-            <p>竣工验收<br/>给出服务评价</p>
+            <p>竣工验收服务评价</p>
         </a>
     </div>
 </div>
