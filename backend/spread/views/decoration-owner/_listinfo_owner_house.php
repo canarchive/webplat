@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 
 $tableName = 'owner_house';
-$modelNew = new \spread\groupon\models\OwnerHouse();
+$modelNew = new \spread\decoration\models\OwnerHouse();
 
 ?>
 <div class="row">
@@ -32,7 +32,7 @@ function addHouseInfo()
 	var data = {
 	    'operation': 'add',
 		'table': '<?= $tableName; ?>',
-	    'mobile': '<?= $modelOwner->mobile; ?>',
+	    'mobile': '<?= $modelUser->mobile; ?>',
 		'decoration_id': '<?= empty($modelDecorationOwner) ? 0 : $modelDecorationOwner->decoration_id; ?>'
 	};
 	for (var field in dataValues) {

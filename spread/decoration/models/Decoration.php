@@ -98,7 +98,8 @@ class Decoration extends spreadModel
 		$info['picture'] = $info->getAttachmentUrl($info['picture']);
 		$info['picture_small'] = $info->getAttachmentUrl($info['picture_small']);
 		$info['map'] = $info->getAttachmentUrl($info['map']);
-		$info['merchantInfo'] = \merchant\models\Merchant::findOne($info['merchant_id'])->toArray();
+		//$info['merchantInfo'] = \merchant\models\Merchant::findOne($info['merchant_id'])->toArray();
+		$info['merchantInfo'] = \merchant\models\Merchant::findOne($info['merchant_id']);
 		$info['cityName'] = isset($this->cityInfos[$info['city']]) ? $this->cityInfos[$info['city']] : '';
 
 		return $info;

@@ -34,6 +34,7 @@ if (!empty($model)) {
     echo $this->render('_base_info', ['model' => $model, 'modelUser' => $modelUser]);
 }
 echo $this->render('_base_user', ['model' => $model, 'modelUser' => $modelUser]);
+echo $this->render('_listinfo_owner_house', ['modelDecorationOwner' => $model, 'modelUser' => $modelUser, 'ownerHouseInfos' => $ownerHouseInfos]);
 echo $this->render('_listinfo_callback', ['modelActivityUser' => $model, 'modelUser' => $modelUser, 'callbackInfos' => $callbackInfos]);
 ?>
 <script>
@@ -122,4 +123,54 @@ $(document).ready(function(){
     //ShowSuccessMessage("Hello success!", 5000); // 第二个参数life是指消息显示时间
     //ShowErrorMessage("Hello error!", 5000);
 });
+
+function addElemForOwner(data)
+{
+    var url = '';
+    var table = data.table;
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function(response) {
+            var status = response.status;
+            if (status == 200) {
+                if (table == 'callback') {
+                    var newContent = "<tr>"
+                        + "<td>" + response.created_at + "</td>"
+                        + "<td>" + response.created_at + "</td>"
+                        + "<td>" + data.content + "</td>"
+                        + "<td><textarea onchange='updateElemForOwner(\"callback\", " + response.id + ", \"note\", this.value)' row=\"2\" name=\"note\">" + data.note + "</textarea></td?";
+                        + "</tr>";
+                } else if (table == 'owner_house') {
+                    newContent = response.content;
+                }
+                alert('信息添加成功');
+                $("#" + table + "_infos").append(newContent);
+            } else {
+                alert(response.message);
+            }
+        }
+    });
+}
+
+
+function updateElemForOwner(table, info_id, field, value)
+{
+    var url = '';
+    var data = {
+        'table': table,
+        'info_id': info_id,
+        'field': field,
+        'value': value
+    };
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function(data,status) {
+            alert("Data: " + data + "\nStatus: " + status);
+        }
+    });
+}
 </script>

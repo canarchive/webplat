@@ -25,12 +25,14 @@ trait UserTrait
 			$mobile = $modelUser->mobile;
 		}
 		$callbackInfos = \spread\models\Callback::findAll(['mobile' => $mobile]);
+		$ownerHouseInfos = \spread\decoration\models\OwnerHouse::findAll(['mobile' => $model->mobile]);
 
 		$data = [
 			'type' => $type,
 			'model' => $model,
 			'modelUser' => $modelUser,
 			'callbackInfos' => $callbackInfos,
+			'ownerHouseInfos' => $ownerHouseInfos,
 		];
 
 		return $data;
@@ -42,11 +44,10 @@ trait UserTrait
 		$tables = ['callback'];
 		$table = \Yii::$app->request->post('table');
 
-		/*if ($table == 'user_house') {
-			$fields = ['mobile', 'shoot_id', 'address', 'house_area', 'house_sort', 'house_type', 'buy_furniture', 'buy_building', 'renovation_at', 'renovation_step', 'renovation_budget', 'renovation_company'];
-			$model = new \spread\models\UserHouse();
-		} else*/
-		if ($table == 'callback') {
+		if ($table == 'owner_house') {
+			$fields = ['mobile', 'decoration_id', 'address', 'house_area', 'house_sort', 'house_type', 'buy_furniture', 'buy_building', 'renovation_at', 'renovation_step', 'renovation_budget', 'renovation_company'];
+			$model = new \spread\decoration\models\OwnerHouse();
+		} else if ($table == 'callback') {
 			$fields = ['mobile', 'content', 'note'];
 			$model = new \spread\models\Callback();
 		} else {
@@ -58,9 +59,9 @@ trait UserTrait
 		}
 		$model->insert(false);
 		$content = '';
-		/*if ($table === 'user_house') {
+		if ($table === 'owner_house') {
 			$content = $this->renderPartial('_user_house', ['model' => $model]);
-		}*/
+		}
 
 		$return = [
 			'status' => 200, 
