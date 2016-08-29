@@ -49,7 +49,7 @@ $this->params['showPage'] = true;
     <div class="pd-right-bar">
         <div class="pd-applyfix">
             <div class="aside-apply">
-                <h3>个性定制我的家</h3>
+                <h3>免费获取设计方案</h3>
                 <p class="title sm pd-apply-title">免费获取3套设计方案，省40%装修款</p>
                 <div class="apply_form">
                     <input name="apply_type" type="hidden" value="sample-show" />
@@ -63,7 +63,7 @@ $this->params['showPage'] = true;
 							<option value="">市/地区</option>
                         </select>
                     </div>
-					<input name="apply" type="button" value="立即获取" />i
+					<input name="apply" type="button" value="立即获取" />
                 </div>
             </div>
         </div>

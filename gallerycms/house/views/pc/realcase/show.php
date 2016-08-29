@@ -65,7 +65,7 @@ $merchantInfo = $info->merchantInfo;
         </div>-->
         <div class="pd-applyfix">
             <div class="aside-apply">
-                <h3>个性定制我的家</h3>
+                <h3>免费获取设计方案</h3>
                 <p class="title sm pd-apply-title">免费获取3套设计方案，省40%装修款</p>
                 <div class="apply_form">
                     <input name="apply_type" type="hidden" value="realcase-show" />

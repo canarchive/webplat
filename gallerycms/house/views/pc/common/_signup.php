@@ -9,7 +9,7 @@ $formType = isset($type) ? $type : 4;
         </a>
         <div class="content-box">
             <div class="apply-form">
-                <p class="tip">已有<em class="ifocus"><?php echo '2382'; ?> </em>位业主 成功领取装修大礼包</p>
+                <p class="tip">已有<em class="ifocus"><?php echo '32382'; ?> </em>位业主 成功在线预约装修服务</p>
 				<input name="apply_type" type="hidden" value="<?= $formType; ?>">
                 <div class="part_left">
                     <input name="name" type="text" placeholder="您的姓名">
