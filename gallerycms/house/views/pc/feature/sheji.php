@@ -23,7 +23,7 @@ $this->params['currentNav'] = 'free';
                 <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg23.jpg">-->
                 <div class="arrow01"></div>
                 <div class="float apply_form">
-                    <div class="title">申请免费设计</div>
+                    <div class="title">免费量房设计</div>
                     <div class="fbody">
                         <p>免费获取3份设计&nbsp;选取最满意设计稿</p>
                         <div class="apply_form">

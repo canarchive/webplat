@@ -33,7 +33,7 @@ $this->params['jsFiles'] = [
 		<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-why.png" alt="为什么选择<?= Yii::$app->params['siteNameBase']; ?>靠谱装修">
     </div>
     <div class="app-weixin">
-        <a href="javascript:void(0);" class="tugou-app">
+	    <a href="tel:<?= Yii::$app->params['siteHotline']; ?>" class="tugou-app">
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/index-dh.png" alt="<?= Yii::$app->params['siteNameBase']; ?>家装app">
         </a>
         <a href="<?= Url::to(['/house/mobile-info/wechat']); ?>" class="tugou-weixin">

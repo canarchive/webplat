@@ -11,9 +11,9 @@ use yii\helpers\Url;
         </div>
         <div class="body">
             <div class="title-tip padBtm20">
-                <p class="show">免费专业设计师上门量房，布局规划</p>
-                <p>免费获取3份设计 选取最满意设计稿</p>
-                <p>权威报价，确保工程质量</p>
+                <p class="show">免费3家装修公司上门量房，布局规划</p>
+                <p>免费获取3家设计方案 空间合理布局</p>
+                <p>获取3套装修报价，预算立省40%</p>
             </div>
             <div class="apply-form">
                 <input name="apply_type" type="hidden" value="1" />
@@ -65,7 +65,7 @@ use yii\helpers\Url;
     <div class="advert">
 	    <a class="item" href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
             <p class="padTop25">免费上门量房</p>
-            <p class="padTop10">3家装修公司PK<br />杜绝增项漏项</p>
+            <p class="padTop10">3家装修公司量房<br />合理布局规划</p>
         </a>
 		<a class="item " href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
             <p class="padTop25">免费3套设计方案</p>

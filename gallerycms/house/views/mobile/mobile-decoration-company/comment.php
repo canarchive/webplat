@@ -38,7 +38,7 @@ $this->params['jsFiles'] = [
     <div class="onlineContact" onclick="nTalk.im_openInPageChat();">
         <img class="consult" src="http://static.tugou.com/m/img/provider/consult.png" />
         <span class="content">在线咨询</span></div>
-    <div class="apply-btn">免费申请设计报价</div></footer>
+    <div class="apply-btn">申请免费量房</div></footer>
 <!--免费为我做设计-->
 <div class="apply-container">
     <form class="pop-apply-form">

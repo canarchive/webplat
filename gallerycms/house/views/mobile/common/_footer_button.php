@@ -7,7 +7,7 @@
                 <span class="icon-consult"></span>在线咨询</span>
                 </a>
             </td>
-            <td style="width:61.8%" class="apply-btn">免费预约设计</td></tr>
+            <td style="width:61.8%" class="apply-btn">申请免费量房</td></tr>
     </table>
 </footer>
 <script type="text/javascript">
