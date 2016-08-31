@@ -3,9 +3,13 @@ use yii\helpers\Url;
 
 $cssFiles = isset($this->params['cssFiles']) ? $this->params['cssFiles'] : [];
 $jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
-$seoTitle = Yii::$app->params['seoTitle'];
-$seoKeyword = Yii::$app->params['seoKeyword'];
-$seoDescription = Yii::$app->params['seoDescription'];
+
+$tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos'] : [];
+$seoTitle = isset($tdkInfos['title']) ? $tdkInfos['title'] : Yii::$app->params['seoTitle'];
+$seoKeyword = isset($tdkInfos['keyword']) ? $tdkInfos['keyword'] : Yii::$app->params['seoKeyword'];
+$seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Yii::$app->params['seoDescription'];
+$formPosition = isset($this->params['formPosition']) ? $this->params['formPosition'] : '';
+$formPositionName = isset($this->params['formPositionName']) ? $this->params['formPositionName'] : '';
 ?>
 <!doctype html>
 <!--[if IE 6]>
@@ -31,7 +35,7 @@ $seoDescription = Yii::$app->params['seoDescription'];
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta name="mobile-agent" content="format=html5;url=http://m./bj/" />
-<link rel="alternate" media="only screen and (max-width:750px)" href="http://m.tugou.com/bj/" />
+<link rel="alternate" media="only screen and (max-width:750px)" href="" />
 <title><?= $seoTitle; ?></title>
 <meta name="keywords" content="<?= $seoKeyword; ?>" />
 <meta name="description" content="<?= $seoDescription; ?>" />
@@ -45,9 +49,9 @@ $seoDescription = Yii::$app->params['seoDescription'];
 <?php } } ?>
 
 <script type="text/javascript">
-window.BASE_URL = "<?= Yii::getAlias('@spreadurl'); ?>";
+window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
-window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup.html'; ?>';
+window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';
 jQuery(document).ready(function($) {
     $("img").lazyload({
 		placeholder: "<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/grey.gif",
@@ -58,17 +62,24 @@ jQuery(document).ready(function($) {
 </script>
 </head>
 <body>
-<!--顶部-->
-<?php echo $this->render('../common/_top', []); ?>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/login.js"></script>
-<!--logo 导航-->
-<?php echo $this->render('../common/_nav', []); ?>
+<?php if (!isset($this->params['showPage'])) { ?>
+<?php echo $this->render('../common/_top', []); // 顶部 ?>
+<!--<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/login.js"></script>-->
+<?php echo $this->render('../common/_nav', []); //logo 导航 ?>
+<?php } ?>
 <?= $content; ?>
 <!--底部-->
+<link type="text/css" rel="stylesheet" href="//at.alicdn.com/t/font_1463989160_300939.css" />
+<input type="hidden" id="position" value="<?= $formPosition; ?>" />
+<input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
+<?php echo $this->render('../common/_custom_service', []); ?>
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_footer_base', []); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 </div>
+<!--<div style="display:none">
+    <img src="http://spread.tuanjiahui.com/stat.html?channel=bd&kw=aa测试" />
+</div>-->
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/nav.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/ProvinceJson.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/CityJson.js"></script>
