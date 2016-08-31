@@ -1,3 +1,6 @@
+<?php
+$this->params['inSpread'] = true;
+?>
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/swiper.css?v=1">
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/common.css?v=1">
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/mianfeibaomingV823.css" /></head>
@@ -80,7 +83,6 @@
     <input type="hidden" id="info_id" value="1" />
     <input type="hidden" id="position" value="h5liangfang" />
     <input type="hidden" id="position_name" value="h5量房" />
-    <input type="hidden" id="_csrf" name="_csrf" value="VjBQOEhwYlInRwp2eCYzPT5fO3UyChM.AVgzSjsJUwsaZmh8D0UTMA==">
     <div class="banner">
         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/mfsjbanner.png" /></div>
     <div class="list" id="list">
