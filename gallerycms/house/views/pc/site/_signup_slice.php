@@ -30,9 +30,9 @@ use yii\helpers\Url;
 				<input name="applyBtn" type="button" value="我要预约" />
             </div>
             <p class="apply-tip" style="text-align: center;">
-			    <span>已为<em class="ifocus">2382</em>位业主提供装修服务</span>
-			    <span class="hide">已为<em class="ifocus">2382</em>位业主提供装修服务</span>
-			    <span class="hide">已为<em class="ifocus">2382</em>位业主提供装修服务</span>
+			    <span>已为<em class="ifocus">32382</em>位业主提供装修服务</span>
+			    <span class="hide">已为<em class="ifocus">32382</em>位业主提供装修服务</span>
+			    <span class="hide">已为<em class="ifocus">32382</em>位业主提供装修服务</span>
             </p>
         </div>
     </div>
@@ -47,12 +47,12 @@ use yii\helpers\Url;
                     </a>
                 </li>
                 <li>
-				    <a href="<?= Url::to(['/house/sample/index', 'page' => 1, 'tag' => '']); ?>" target="_blank">
+				    <a href="<?= Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner_kpzx2.jpg" alt="靠谱装修季">
                     </a>
                 </li>
                 <li>
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 					    <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/banner1.jpg" alt="一分钟找到靠谱装修公司">
                     </a>
                 </li>
@@ -63,9 +63,9 @@ use yii\helpers\Url;
     </div>
     <!--免费上门验房、免费设计、免费报价-->
     <div class="advert">
-	    <a class="item" href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
-            <p class="padTop25">免费上门量房</p>
-            <p class="padTop10">3家装修公司量房<br />合理布局规划</p>
+	    <a class="item" href="<?= Url::to(['/house/feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+            <p class="padTop25">免费找装修公司</p>
+            <p class="padTop10">3家装修公司PK<br />比比谁家服务好</p>
         </a>
 		<a class="item " href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
             <p class="padTop25">免费3套设计方案</p>
