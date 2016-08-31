@@ -52,7 +52,7 @@ class DetailController extends Controller
 
 	public function actionFeature()
     {
-$this->layout = false;
+		//$this->layout = false;
 		if (empty($this->mHost) && $this->isMobile) {
 			//$url = Yii::getAlias('@m2spreadurl') . Yii::$app->request->getUrl();
 			//$this->redirect($url)->send();
