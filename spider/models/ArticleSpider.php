@@ -3,7 +3,6 @@ namespace spider\models;
 
 use common\models\Article;
 use common\models\ArticleTag;
-use common\models\Gather;
 use common\models\Tag;
 
 class ArticleSpider
