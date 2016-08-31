@@ -2,6 +2,7 @@
 
 namespace spread\decoration\controllers;
 
+use Yii;
 use yii\helpers\Url;
 use spread\components\Controller;
 use spread\decoration\models\SignupForm;
@@ -16,12 +17,12 @@ class DetailController extends Controller
 		parent::init();
 
 		$this->isMobile = $this->clientIsMobile();
-        $this->host = \Yii::$app->request->hostInfo;
+        $this->host = Yii::$app->request->hostInfo;
 		$this->mHost = false;
-		if (in_array($this->host, \Yii::$app->params['mHosts'])) {
+		if (in_array($this->host, Yii::$app->params['mHosts'])) {
 			$this->mHost = true;
 		}
-		\Yii::$app->params['isMobile'] = $this->isMobile;
+		Yii::$app->params['isMobile'] = $this->isMobile;
 	}
 
 
@@ -34,7 +35,7 @@ class DetailController extends Controller
     public function actionIndex()
     {
 		if (empty($this->mHost) && $this->isMobile) {
-			$url = \Yii::getAlias('@m2spreadurl') . \Yii::$app->request->getUrl();
+			$url = Yii::getAlias('@m2spreadurl') . Yii::$app->request->getUrl();
 			$this->redirect($url)->send();
 		}
 
@@ -51,29 +52,28 @@ class DetailController extends Controller
 
 	public function actionFeature()
     {
+$this->layout = false;
 		if (empty($this->mHost) && $this->isMobile) {
-			$url = \Yii::getAlias('@m2spreadurl') . \Yii::$app->request->getUrl();
-			$this->redirect($url)->send();
+			//$url = Yii::getAlias('@m2spreadurl') . Yii::$app->request->getUrl();
+			//$this->redirect($url)->send();
 		}
-
-		$this->layout = '@spread/decoration/views/tview/pc/main';
 
         $datas = $this->getDatas();
         if (empty($datas)) {
             return $this->redirect('/')->send();
         }
 
-		$view = \Yii::$app->request->get('view');
-		$views = ['index', 'inspector', 'supervisor', 'design'];
+		$view = Yii::$app->request->get('view');
+		$views = ['baojia', 'sheji', 'kaopu', 'liangfang', 'bjnew', 'manyi'];
 		$view = !in_array($view, $views) ? 'index' : $view;
+		$datas['view'] = $view;
 
-		$view = "/tview/pc/{$view}";
         return $this->render($view, $datas);   
     }
 
     protected function getDatas()
     {
-        $id = \Yii::$app->getRequest()->get('id');
+        $id = Yii::$app->getRequest()->get('id');
         $model = new \spread\decoration\models\Decoration();
      	$where = ['id' => $id];
 		$info = $model->getInfo($where);
@@ -81,7 +81,7 @@ class DetailController extends Controller
 			return false;
 		}
 		
-        $urlFull = \Yii::$app->request->hostInfo . \Yii::$app->request->getUrl();
+        $urlFull = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
         $signupForm = new SignupForm();
         $datas = [
             'model' => $signupForm,
@@ -94,14 +94,14 @@ class DetailController extends Controller
 
     protected function getCache($key)
     {
-        $infos = \Yii::$app->cacheRedis->get($key);
+        $infos = Yii::$app->cacheRedis->get($key);
 
         return $infos;
     }
 
     protected function setCache($key, $data)
     {
-        \Yii::$app->cacheRedis->set($key, $data);
+        Yii::$app->cacheRedis->set($key, $data);
 
         return ;
     }
