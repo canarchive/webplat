@@ -33,12 +33,18 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
+<?php if (isset($this->params['inSpread'])) { ?>
+<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/spread') . '/house/' . $cssFile . '.css?v=151020'; ?>" />
+<?php } else { ?>
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/css/' . $cssFile . '.css?v=151020'; ?>" />
-<?php } } ?>
+<?php } } } ?>
 
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
+<?php if (isset($this->params['inSpread'])) { ?>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/spread') . '/house/' . $jsFile . '.js'; ?>"></script>
+<?php } else { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/js/' . $jsFile . '.js'; ?>"></script>
-<?php } } ?>
+<?php } } } ?>
 
 <script type="text/javascript">
 window.BASE_URL = "<?= Yii::getAlias('@m.gallerycmsurl'); ?>";
@@ -48,8 +54,11 @@ window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>'
 </head>
 <body class="<?php if (isset($this->params['bodyClass'])) { echo $this->params['bodyClass']; } ?>">
 <?= $content; ?>
+<?php if (isset($this->params['inSpread'])) { ?>
+<?php } else { ?>
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_custom_service', []); ?>
+<?php } ?>
 <input type="hidden" id="position" value="<?= $formPosition; ?>" />
 <input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
