@@ -7,9 +7,9 @@ use yii\helpers\Url;
             <span class="company"></span><p>找装修公司</p>
         </a>
         <div class="cube-right">
+            <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">靠谱装修</a>
             <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">智能报价</a>
             <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">免费设计</a>
-            <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">免费验房</a>
             <a class="green" href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'jianli', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">免费监理</a>
         </div>
     </div>
