@@ -65,39 +65,6 @@ $this->params['bodyClass'] = 'bg-f2';
         <input type="hidden" id="_csrf" name="_csrf" value="NTBwQmpGdVpUVCkJWBkDP0x.GhQHKR0TQkgKCh0jTDlFUT8TUgUPIw==">
         <li class="last">
             <a id="ksjs" href="javascript:;" class="btn btn-block btn-orange btn-line f16 mt3 mb3 zp-btn-price">开始计算</a>
-            <script type="text/javascript">$(function() {
-                    $('#ksjs').click(function() {
-
-                        var $data = {};
-                        //$data.action1= 'mflfApi';
-                        $data.mobile = $('#txtmobile').val();
-                        $data.name = $('#txtarea').val();
-                        $data.select_city = $('#selectcity').html();
-                        //$data.source = $("#tit").html();
-                        $data.url = document.location.href;
-                        $data.referer = document.referrer || document.location.href;
-                        $data.position = 'baojia';
-                        $data.position_name = "报价";
-                        $data.info_id = $("#info_id").val();
-                        $data._csrf = $("#_csrf").val();
-
-                        $.ajax({
-                            type: 'POST',
-                            data: $data,
-                            url: '/jz-signup.html',
-                            dataType: "json",
-                            success: function(data) {
-                                if (data.status == 200) {
-
-} else if (data.status == 400) {
-                                    alert(data.msg);
-                                } else {
-                                    alert('报名失败');
-                                }
-                            } //end success
-                        }) // end ajax
-                    })
-                });</script>
         </li>
     </ul>
     <div class="pd-lr4 bg-ff mt3 border-top border-bottom">
