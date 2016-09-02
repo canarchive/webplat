@@ -51,14 +51,14 @@ class Controller extends YiiController
 
 	public function beforeAction($action)
 	{
-		$spread = Yii::getAlias('@spread', false);
+		/*$spread = Yii::getAlias('@spread', false);
 		$channel = Yii::$app->getRequest()->get('channel');
 		$method = Yii::$app->getRequest()->method;
 		$isMobile = $this->clientIsMobile();
 		if ($spread && $channel && $method == 'GET') {
 			$visit = new \spread\models\Visit();
 			$visit->writeVisitLog($isMobile);
-		}
+		}*/
 
         return parent::beforeAction($action);
 	}
