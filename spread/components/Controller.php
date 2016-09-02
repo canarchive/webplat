@@ -6,6 +6,8 @@ use common\components\Controller as CommonController;
 
 class Controller extends CommonController
 {
+	public $host;
+	public $isMobile;
     public function init()
     {
         parent::init();

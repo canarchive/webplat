@@ -2,6 +2,7 @@
 
 namespace spread\controllers;
 
+use Yii;
 use spread\components\Controller as SpreadController;
 
 class SiteController extends SpreadController
@@ -24,6 +25,16 @@ class SiteController extends SpreadController
 
 	public function actionStat()
 	{
-		return '';
+		$channel = Yii::$app->getRequest()->get('channel');
+		$method = Yii::$app->getRequest()->method;
+		$isMobile = $this->clientIsMobile();
+		if ($channel && $method == 'GET') {
+			$visit = new \spread\models\Visit();
+			$visit->writeVisitLog($isMobile);
+		}
+		print_R($_GET);
+print_r($_SERVER);
+		echo 1;//Yii::getAlias('@asseturl') . '/common/images/blank.gif';
+		exit();
 	}
 }

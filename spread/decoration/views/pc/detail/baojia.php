@@ -27,7 +27,7 @@ $this->params['currentNav'] = 'free';
                     <input name="scene" type="hidden" value="" />
                     <input name="name" type="text" placeholder="您的姓名">
                     <input name="phone" type="tel" placeholder="手机号码">
-                    <div class="form-inline clearfix">
+                    <!--<div class="form-inline clearfix">
                         <input class="form-element fn-left" name="sms_code" type="text" placeholder="验证码" />
                         <div class="get-pin-wrapper clearfix fn-left" style="position: relative;">
                             <input class="form-element fn-left btn get-pin" type="button" value="获取验证码" />
@@ -46,7 +46,7 @@ $this->params['currentNav'] = 'free';
                                 </dl>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <input name="size" type="text" placeholder="面积" value="">
                     <input name="remark" type="hidden" value="在线报价">
                     <div class="select-group clearfix js-region-select-group">
@@ -56,13 +56,13 @@ $this->params['currentNav'] = 'free';
                             <option value="">市/地区</option></select>
                     </div>
                     <span class="unit">m²</span>
-                    <div class="select-group clearfix js-region-select-group baojia-type">
+                    <!--<div class="select-group clearfix js-region-select-group baojia-type">
                         <select name="level" id="level">
                             <option value="0">装修档次</option>
                             <option value="1">普通装修</option>
                             <option value="2">中档装修</option>
                             <option value="3">高端装修</option></select>
-                    </div>
+                    </div>-->
                 </div>
                 <p class="baojia">已有
                     <span class="ifocus"></span>人成功获取报价</p></div>

@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $cssFiles = isset($this->params['cssFiles']) ? $this->params['cssFiles'] : [];
 $jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
@@ -49,6 +50,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <script type="text/javascript">
 window.BASE_URL = "<?= Yii::getAlias('@m.gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
+window.SPREAD_URL = '<?= Yii::getAlias('@web'); ?>';
 window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';
 </script>
 </head>
@@ -61,6 +63,7 @@ window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>'
 <?php } ?>
 <input type="hidden" id="position" value="<?= $formPosition; ?>" />
 <input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 </div>
 </body>

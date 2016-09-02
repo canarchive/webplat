@@ -10,7 +10,7 @@ use spread\decoration\models\SignupForm;
 
 class SignupController extends spreadController
 {
-	//public $enableCsrfValidation = false;
+	public $enableCsrfValidation = false;
 
 	public function behaviors()
     {
