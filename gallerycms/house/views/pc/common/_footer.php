@@ -28,8 +28,8 @@ use yii\helpers\Url;
             <div class="map padTop10 fn-left">
                 <p>关于我们</p>
                 <div>
-				    <a href="<?= Url::to(['/house/info/aboutus']); ?>" rel="nofollow" target="_blank">关于我们</a>
-					<a href="<?= Url::to(['/house/info/joinus']); ?>" rel="nofollow" target="_blank">加入我们</a>
+				    <a href="<?= Url::to(['/house/info/aboutus']); ?>" rel="nofollow" >关于我们</a>
+					<a href="<?= Url::to(['/house/info/joinus']); ?>" rel="nofollow" >加入我们</a>
                 </div>
             </div>
             <div class="map padTop10 fn-left">
@@ -41,9 +41,9 @@ use yii\helpers\Url;
             <div class="map padTop10 fn-left">
                 <p>网站服务</p>
                 <div>
-		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费量房</a>
-		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费设计</a>
-		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">免费报价</a>
+		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" >靠谱装修</a>
+		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" >免费设计</a>
+		            <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" >免费报价</a>
                 </div>
             </div>
         </div>

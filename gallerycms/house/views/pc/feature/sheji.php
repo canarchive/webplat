@@ -12,6 +12,8 @@ $this->params['jsFiles'] = [
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
 $this->params['currentNav'] = 'free';
+$this->params['formPosition'] = 'sheji';
+$this->params['formPositionName'] = '设计';
 ?>
 <?php echo $this->render('_nav', ['view' => $view]); ?>
 <div class="content" id="biaodan">
@@ -27,7 +29,7 @@ $this->params['currentNav'] = 'free';
                     <div class="fbody">
                         <p>免费获取3份设计&nbsp;选取最满意设计稿</p>
                         <div class="apply_form">
-                            <input name="apply_type" type="hidden" value="5" />
+                            <input name="apply_type" type="hidden" value="sheji" />
                             <input name="name" type="text" placeholder="您的姓名" />
                             <input name="phone" type="text" placeholder="手机号码" />
                             <div class="select-group clearfix js-region-select-group">

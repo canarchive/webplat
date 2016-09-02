@@ -88,6 +88,7 @@ class RegionController extends GallerycmsController
 		$infos = $model->getInfos();
 		$datas = [
 			'infos' => $infos,
+			'regionInfo' => $regionInfo,
 		];
 
 		$dataTdk = ['{{INFONAME}}' => $regionInfo['name_short']];

@@ -3,7 +3,7 @@ use yii\helpers\Html;
 
 foreach ($urlInfos as $code => $info) {
 	if (isset($info['pc-url'])) { 
-	    $info['pc-url'] = 'http://' . str_replace('{{DOMAIN}}', $domain, $info['pc-url']);
+	    $info['pc-url'] = 'http://' . str_replace(['{{DOMAIN}}', '{{CMS-DOMAIN}}'], [$domain, $cmsDomain], $info['pc-url']);
 	}
 	if (isset($info['mobile-url'])) {
 	    $info['mobile-url'] = Yii::getAlias('@m.gallerycmsurl') . $info['mobile-url'];
@@ -13,7 +13,6 @@ foreach ($urlInfos as $code => $info) {
     $info['description'] = isset($tdkInfos[$code]) ? $tdkInfos[$code]['description'] : '';
 	$urlInfos[$code] = $info;
 }
-//print_r($urlInfos) ;
 ?>
 <div class="row">
     <div class="box col-md-12">

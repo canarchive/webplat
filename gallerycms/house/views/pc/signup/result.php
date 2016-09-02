@@ -31,8 +31,7 @@ $(function() {
                 <p class="beizhu">装修管家将在24小时之内联系您，请保持电话通畅哦！</p></div>
             <a class="return-index" href="javascript:history.go(-1)">返回上页</a>
 			<p class="sc-hotline">咨询热线：<?= Yii::$app->params['siteHotline']; ?></p></div>
-        <div class="ewm">
-            <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/app-down.jpg" width="108" height="108" alt="" /></div>
+        <div class="ewm"></div>
     </div>
 </div>
 <!--end success-->

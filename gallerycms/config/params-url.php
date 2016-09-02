@@ -99,53 +99,53 @@ return [
     ],
     'sample-list' => [
 		'name' => '案例列表',
-		'pc-url' => 'cms.{{DOMAIN}}/meitu.html',
+		'pc-url' => '{{CMS-DOMAIN}}/meitu.html',
 		'mobile-url' => '/meitu.html',
     ],
     'sample-list-1' => [
 		'name' => '案例列表',
-		'pc-url' => 'cms.{{DOMAIN}}/meitu/h_two-s_mediterranean-a_50.html',
+		'pc-url' => '{{CMS-DOMAIN}}/meitu/h_two-s_mediterranean-a_50.html',
 		'mobile-url' => '/meitu/h_two-s_mediterranean-a_50.html',
     ],
     'sample-show' => [
 		'name' => '案例详情',
-		'pc-url' => 'cms.{{DOMAIN}}/mt-1.html',
+		'pc-url' => '{{CMS-DOMAIN}}/mt-1.html',
 		'mobile-url' => '/mt-1.html',
     ],
 	'info-aboutus' => [
 		'name' => '关于我们',
-		'pc-url' => 'cms.{{DOMAIN}}/info-aboutus.html',
+		'pc-url' => '{{CMS-DOMAIN}}/info-aboutus.html',
 		//'mobile-url' => '/info-aboutus.html',
 	],
 	'info-joinus' => [
 		'name' => '加入我们',
-		'pc-url' => 'cms.{{DOMAIN}}/info-joinus.html',
+		'pc-url' => '{{CMS-DOMAIN}}/info-joinus.html',
 		//'mobile-url' => '/info-joinus.html',
 	],
 	'info-statement' => [
 		'name' => '声明',
-		'pc-url' => 'cms.{{DOMAIN}}/info-statement.html',
+		'pc-url' => '{{CMS-DOMAIN}}/info-statement.html',
 		//'mobile-url' => '/info-statemnt.html',
 	],
 	
 	'site-select-city' => [
 		'name' => '城市分站',
-		//'pc-url' => 'cms.{{DOMAIN}}/select-city.html',
+		//'pc-url' => '{{CMS-DOMAIN}}/select-city.html',
 		'mobile-url' => '/select-city.html',
 	],
 	'info-map' => [
 		'name' => '网站地图',
-		'pc-url' => 'cms.{{DOMAIN}}/map.html',
+		'pc-url' => '{{CMS-DOMAIN}}/map.html',
 		//'mobile-url' => '/map.html',
 	],
 	'info-map-more' => [
 		'name' => '地区网站地图',
-		'pc-url' => 'cms.{{DOMAIN}}/map-bj.html',
+		'pc-url' => '{{CMS-DOMAIN}}/map-bj.html',
 		//'mobile-url' => '/map-bj.html',
 	],
 	'info-wechat' => [
 		'name' => '微信',
-		//'pc-url' => 'cms.{{DOMAIN}}/wechat.html',
+		//'pc-url' => '{{CMS-DOMAIN}}/wechat.html',
 		'mobile-url' => '/wechat.html',
 		'mobile-source' => 'http://m.tugou.com/act/weixin.html',
 	],

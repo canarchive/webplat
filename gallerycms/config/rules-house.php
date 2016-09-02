@@ -3,7 +3,7 @@ return [
     Yii::getAlias('@gallerycmsurl') . '/test' => '/house/site/test', 
     //Yii::getAlias('@wildurl') . '/' => '/house/site/home',
     ['pattern' => Yii::getAlias('@wildurl') . '/', 'route' => '/house/site/home', 'suffix' => ''],
-    //Yii::getAlias('@gallerycmsurl') . '/' => '/house/site/home', 
+    Yii::getAlias('@gallerycmsurl') . '/' => '/house/site/home', 
     Yii::getAlias('@m.gallerycmsurl') . '/' => '/house/mobile-site/home', 
 
     Yii::getAlias('@gallerycmsurl') . '/bm-result' => '/house/signup/result',

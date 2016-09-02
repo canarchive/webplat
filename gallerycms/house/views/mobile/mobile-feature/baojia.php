@@ -8,6 +8,8 @@ $this->params['jsFiles'] = [
 	'jquery', 'free-index', 'baojia',
 ];
 $this->params['bodyClass'] = 'design';
+$this->params['formPosition'] = 'baojia';
+$this->params['formPositionName'] = '报价';
 ?>
 <div class="container pricing">
     <div class="top toptitle">
@@ -35,32 +37,32 @@ $this->params['bodyClass'] = 'design';
                     <input type="text" name="name" class="name" id="name" placeholder="您的姓名" value="" /></div>
                 <div class="input">
                     <input type="tel" name="phone" class="phone" id="phone" placeholder="手机号码" value="" /></div>
-                <div class="input">
+                <!--<div class="input">
                     <input type="text" name="sms_code" class="sms_code" id="sms_code" placeholder="请输入验证码" value="" />
-                    <a class="captcha" id="captcha">获取验证码</a></div>
+                    <a class="captcha" id="captcha">获取验证码</a></div>-->
                 <div class="input">
                     <input type="text" name="area" class="area" id="area" placeholder="面积" value="" />
                     <span>m&sup2;</span></div>
-                <input type="hidden" value="65" id="type" name="type">
+                <input type="hidden" value="baojia" id="type" name="apply_type">
                 <div class="input-select js-region-select-group clearfix" style="border-bottom: none;">
                     <select name="province" id="province" class="city_select province js-province">
                         <option value="0">省/市</option></select>
                     <select name="city" id="city" class="city_select city js-city">
                         <option value="0">市/地区</option></select>
                 </div>
-                <div class="input-select">
+                <!--<div class="input-select">
                     <span class="select-icon"></span>
                     <select name="level" id="level">
                         <option value="0">装修档次</option>
                         <option value="1">普通装修</option>
                         <option value="2">中档装修</option>
                         <option value="3">高端装修</option></select>
-                </div>
+                </div>-->
                 <input type="hidden" id="city_id" value="" />
                 <input type="button" value="免费申请" id="entirety_baojia" class="submit-btn" /></form>
             <!-- <p class="pro-num">每户业主可同时获取3份设计报价，省40%装修款。</p> -->
             <p class="pro-num">已有
-                <span class="ifocus"></span>户业主获取装修报价</p>
+                <span class="ifocus">32382</span>户业主获取装修报价</p>
             <div class="alert" style="display:none;">请输入姓名</div></div>
     </div>
     <div class="price-special" style="border-bottom: 1px solid #e5e5e5;">

@@ -53,6 +53,15 @@ window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>'
 <input type="hidden" id="position" value="<?= $formPosition; ?>" />
 <input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
+    <?php
+    $channelSpread = Yii::$app->request->get('channel');
+    if (!empty($channelSpread)) {
+		$urlPre = strval(Yii::$app->request->referrer);
+		$statUrl = Yii::getAlias('@spreadurl') . '/stat.html?' . Yii::$app->request->queryString . '&url_pre=' . $urlPre;
+		//$statStr = "<img src='{$statUrl}' />";
+        echo "<script type='text/javascript' src='{$statUrl}'></script>";
+	}
+    ?>
 </div>
 </body>
 </html>
