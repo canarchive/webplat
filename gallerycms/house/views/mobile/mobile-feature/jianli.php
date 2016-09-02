@@ -8,6 +8,8 @@ $this->params['jsFiles'] = [
 	'jquery', 'free-index',
 ];
 $this->params['bodyClass'] = 'design';
+$this->params['formPosition'] = 'jianli';
+$this->params['formPositionName'] = '免费监理';
 ?>
 <div class="container">
     <?php echo $this->render('../common/_top', ['title' => '']); ?>
@@ -26,7 +28,7 @@ $this->params['bodyClass'] = 'design';
         </div>
         <div class="freeone">
             <p class="free" id="order">申请免费监理</p>
-            <?php echo $this->render('../common/_form', ['title' => '免费申请', 'type' => '57']); ?>
+            <?php echo $this->render('../common/_form', ['title' => '免费申请', 'type' => 'jianli']); ?>
             <p class="apply-subdesc">需在装修开工前预约资深监理师傅，提前安排验房时间。</p>
         </div>
         <!--个性化装修方案-->

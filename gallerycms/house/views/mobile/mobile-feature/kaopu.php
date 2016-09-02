@@ -8,6 +8,8 @@ $this->params['jsFiles'] = [
 	'jquery', 'rem50', 'free-index',
 ];
 $this->params['bodyClass'] = 'design';
+$this->params['formPosition'] = 'kaopu';
+$this->params['formPositionName'] = '靠谱';
 ?>
 <div class="top toptitle">
     <a href="javascript:history.go(-1);" class="return"></a>

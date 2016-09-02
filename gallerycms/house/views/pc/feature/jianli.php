@@ -12,6 +12,8 @@ $this->params['jsFiles'] = [
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
 $this->params['currentNav'] = 'free';
+$this->params['formPosition'] = 'jianli';
+$this->params['formPositionName'] = '免费监理';
 ?>
 <?php echo $this->render('_nav', ['view' => $view]); ?>
 <div class="content" id="biaodan">
@@ -27,7 +29,7 @@ $this->params['currentNav'] = 'free';
                     <div class="fbody">
                         <p>权威管理上门严格验收，确保工程质量</p>
                         <div class="apply_form">
-                            <input name="apply_type" type="hidden" value="6" />
+                            <input name="apply_type" type="hidden" value="jianli" />
                             <input name="name" type="text" placeholder="您的姓名" />
                             <input name="phone" type="text" placeholder="手机号码" />
                             <div class="select-group clearfix js-region-select-group">

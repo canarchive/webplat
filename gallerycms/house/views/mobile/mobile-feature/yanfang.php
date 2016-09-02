@@ -8,6 +8,8 @@ $this->params['jsFiles'] = [
 	'jquery', 'free-index',
 ];
 $this->params['bodyClass'] = 'design';
+$this->params['formPosition'] = 'yanfang';
+$this->params['formPositionName'] = '免费验房';
 ?>
 <div class="container">
     <?php echo $this->render('../common/_top', ['title' => '']); ?>

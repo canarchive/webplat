@@ -12,6 +12,8 @@ $this->params['jsFiles'] = [
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
 $this->params['currentNav'] = 'free';
+$this->params['formPosition'] = 'kaopu';
+$this->params['formPositionName'] = '靠谱';
 ?>
 <div class="minute-banner">
     <div class="banner-img">

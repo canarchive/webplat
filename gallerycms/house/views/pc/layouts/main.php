@@ -76,10 +76,16 @@ jQuery(document).ready(function($) {
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_footer_base', []); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
+    <?php
+    $channelSpread = Yii::$app->request->get('channel');
+    if (!empty($channelSpread)) {
+		$urlPre = strval(Yii::$app->request->referrer);
+		$statUrl = Yii::getAlias('@spreadurl') . '/stat.html?' . Yii::$app->request->queryString . '&url_pre=' . $urlPre;
+		//$statStr = "<img src='{$statUrl}' />";
+        echo "<script type='text/javascript' src='{$statUrl}'></script>";
+	}
+    ?>
 </div>
-<!--<div style="display:none">
-    <img src="http://spread.tuanjiahui.com/stat.html?channel=bd&kw=aa测试" />
-</div>-->
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/nav.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/ProvinceJson.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/CityJson.js"></script>

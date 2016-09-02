@@ -12,6 +12,8 @@ $this->params['jsFiles'] = [
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
 $this->params['currentNav'] = 'free';
+$this->params['formPosition'] = 'yanfang';
+$this->params['formPositionName'] = '免费验房';
 ?>
 <?php echo $this->render('_nav', ['view' => $view]); ?>
 <div class="content" id="biaodan">
