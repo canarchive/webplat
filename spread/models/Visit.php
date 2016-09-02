@@ -2,6 +2,7 @@
 
 namespace spread\models;
 
+use Yii;
 use common\models\SpreadModel;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
@@ -47,9 +48,9 @@ class Visit extends SpreadModel
 	{
         $data = [];
         $attributeParams = $this->getAttributeParams();
-        $channel = \Yii::$app->getRequest()->get('channel');
+        $channel = Yii::$app->getRequest()->get('channel');
         foreach ($attributeParams as $field => $param) {
-            $paramValue = (\Yii::$app->getRequest()->get($param, ''));
+            $paramValue = (Yii::$app->getRequest()->get($param, ''));
 			if ($field == 'keyword') {
 				$tmp = mb_convert_encoding($paramValue, 'utf-8');
 				$paramValue = $paramValue == $tmp ? $paramValue : mb_convert_encoding($paramValue, 'utf-8', 'gbk');
@@ -63,17 +64,28 @@ class Visit extends SpreadModel
             $data[$field] = $paramValue;
         }
 
-        $hostInfo = \Yii::$app->request->hostInfo;
-        $url = urlencode(\Yii::$app->request->getUrl());
-		$pathInfo = \Yii::$app->request->pathInfo;
-		//$queryString = \Yii::$app->request->queryString;
-		$data['url'] = $hostInfo . '/' . $pathInfo;
-		$data['url_full'] = $url;
+        //$hostInfo = Yii::$app->request->hostInfo;
+        //$url = urlencode(Yii::$app->request->getUrl());
+		//$pathInfo = Yii::$app->request->pathInfo;
+		//$queryString = Yii::$app->request->queryString;
+		$urlFull = Yii::$app->request->referrer;
+		$urlFull = empty($urlFull) ? '' : $urlFull;
+		$urlBase = substr($urlFull, 0, strpos($urlFull, '?'));
+		$urlBase = empty($urlBase) ? $urlFull : $urlBase;
+		$data['url'] = $urlBase;
+		$data['url_full'] = $urlFull;
         $data['from_type'] = $isMobile ? 'h5' : 'pc';
+
+		$urlFullPre = Yii::$app->request->get('url_pre', '');
+		$urlPre = substr($urlFullPre, 0, strpos($urlFullPre, '?'));
+		$urlPre = empty($urlPre) ? $urlFullPre : $urlPre;
+		$data['url_pre'] = $urlPre;
+		$data['url_full_pre'] = $urlFullPre;
+		$data['keyword_search'] = $this->_getKeywordSearch($urlFullPre);
 
         $this->insert(true, $data);
 
-		$session = \Yii::$app->session;
+		$session = Yii::$app->session;
 		$data['time'] = time();
 		$session['session_spread_info'] = $data;
 
@@ -91,7 +103,7 @@ class Visit extends SpreadModel
 		$attributes['created_at'] = $time;
 		$attributes['created_day'] = date('Ymd', $time);
 		$attributes['created_hour'] = date('H', $time);
-		$attributes['ip'] = \Yii::$app->getRequest()->getIP();
+		$attributes['ip'] = Yii::$app->getRequest()->getIP();
 		//$attributes['ip'] = '123.57.148.73';
 		$city = \common\components\IP::find($attributes['ip']);
 		$city = is_array($city) ? implode('-', $city) : $city;
@@ -155,5 +167,10 @@ class Visit extends SpreadModel
 		];
 
 		return $datas;
+	}
+
+	protected function _getKeywordSearch($url)
+	{
+		return '';
 	}
 }
