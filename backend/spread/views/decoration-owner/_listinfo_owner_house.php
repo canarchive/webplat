@@ -9,9 +9,7 @@ $modelNew = new \spread\decoration\models\OwnerHouse();
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-content" id="owner_house_infos">
-                <?php foreach ($ownerHouseInfos as $model) { 
-                    echo $this->render('_owner_house', ['model' => $model]);
-                } ?>
+                <?php echo $this->render('_owner_house', ['ownerHouseInfos' => $ownerHouseInfos]); ?>
             </div>
             <div class="box-content">
 				<?php echo $this->render('_owner_house_add', ['modelNew' => $modelNew]); ?>

@@ -11,19 +11,15 @@ $modelNew = new \spread\models\Callback();
                 <table class="table table-striped table-bordered responsive">
 					<thead>
 						<tr>
-                            <th><?= $modelNew->getAttributeLabel('created_at'); ?></th>
-                            <th><?= $modelNew->getAttributeLabel('updated_at'); ?></th>
                             <th><?= $modelNew->getAttributeLabel('content'); ?></th>
-                            <th><?= $modelNew->getAttributeLabel('note'); ?></th>
+                            <th><?= $modelNew->getAttributeLabel('created_at'); ?></th>
                         </tr>
                     </thead>
 					<tbody id="callback_infos">
                     <?php foreach ($callbackInfos as $model) { ?>
 						<tr>
-							<td><?= date('Y-m-d H:i:s', $model->created_at); ?></td>
-							<td><?= date('Y-m-d H:i:s', $model->updated_at); ?></td>
 							<td><?= $model->content; ?></td>
-                            <td><?= Html::textarea('note', $model->note, ['row' => 2, 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'note', this.value)"]); ?></td>
+							<td><?= date('Y-m-d H:i:s', $model->created_at); ?></td>
 						</tr>
                     <?php } ?>
                     </tbody>
@@ -34,13 +30,11 @@ $modelNew = new \spread\models\Callback();
 					<thead>
 						<tr>
                             <th><?= $modelNew->getAttributeLabel('content'); ?></th>
-                            <th><?= $modelNew->getAttributeLabel('note'); ?></th>
                         </tr>
                     </thead>
 					<tbody>
 						<tr>
-					        <td><?= Html::textarea('content', '', ['id' => 'callback_content', 'row' => 2]); ?></td>
-					        <td><?= Html::textarea('note', '', ['id' => 'callback_note', 'row' => 2]); ?></td>
+					        <td><?= Html::textarea('content', '', ['id' => 'callback_content', 'rows' => '5', 'cols' => '150']); ?></td>
 						</tr>
                     </tbody>
                 </table>
