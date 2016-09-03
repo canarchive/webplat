@@ -2,6 +2,8 @@
 use yii\helpers\Url;
 
 $this->params['inSpread'] = true;
+$this->params['formPosition'] = 'hd-manyi';
+$this->params['formPositionName'] = '活动推广-满意';
 ?>
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/css/main.css?v=20160330164500" />
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/css/list.css?v=20160407151706" />
@@ -62,24 +64,24 @@ $this->params['inSpread'] = true;
                         <b>我已阅读并接受《装修常见问题条款》</b>
                     </a>
                 </span>-->
+                <input type="hidden" id="form_type" value="hd-manyi" />
                 <input id="bid_submit" data-ptag="1002_1_1_295" type="button" value="免费户型设计"></form>
-            <mark class="mark">·风投C轮投资2亿美金，互联网装修领导者
-                <br />·更专业的装修服务平台，800万业主的共同选择</mark></section>
+			<mark class="mark">已为<strong style="color: #ff8c1b;">32382</strong>位业主提供装修服务</mark></section>
     </article>
     <figure class="index_fig">
-        <img class=" lazy" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/index_img_01.jpg" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/grey.gif?v=1384541692" alt="<?= Yii::$app->params['siteNameBase']; ?>已经为全国250个城市近800万业主,提供了专业的装修服务" />
+        <img class=" lazy" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/index_img_01.jpg" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/grey.gif?v=1384541692" alt="<?= Yii::$app->params['siteNameBase']; ?>已覆盖28个城市近60万业主,提供了专业的装修服务" />
         <figcaption>
             <h1>覆盖更广</h1>
             <em class="ico_quotation"></em>
-            <p><?= Yii::$app->params['siteNameBase']; ?>已经为全国250个城市近800万业主
+            <p><?= Yii::$app->params['siteNameBase']; ?>已覆盖28个城市近60万业主
                 <br/>提供了专业的装修服务</p></figcaption>
     </figure>
     <figure class="index_fig">
-        <img class=" lazy" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/index_img_02.jpg" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/grey.gif?v=1384541692" alt="96%的业主反馈，在<?= Yii::$app->params['siteNameBase']; ?>找装修公司比其他渠道便宜20%" />
+        <img class=" lazy" data-original="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/index_img_02.jpg" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/images/grey.gif?v=1384541692" alt="95%的业主反馈，在<?= Yii::$app->params['siteNameBase']; ?>找装修公司比其他渠道便宜20%" />
         <figcaption>
             <h1>装修更省</h1>
             <em class="ico_quotation"></em>
-            <p>96%的业主反馈，在<?= Yii::$app->params['siteNameBase']; ?>找装修公司
+            <p>95%的业主反馈，在<?= Yii::$app->params['siteNameBase']; ?>找装修公司
                 <br/>比其他渠道便宜20%</p></figcaption>
     </figure>
     <figure class="index_fig">
