@@ -60,6 +60,15 @@ class Controller extends YiiController
 			$visit->writeVisitLog($isMobile);
 		}*/
 
+		Yii::$app->params['statUrl'] = '';
+        $channelSpread = Yii::$app->request->get('channel');
+        if (!empty($channelSpread)) {
+    		$urlPre = strval(Yii::$app->request->referrer);
+    		$statUrl = Yii::getAlias('@spreadurl') . '/stat.html?' . Yii::$app->request->queryString . '&url_pre=' . $urlPre;
+    		//$statStr = "<img src='{$statUrl}' />";
+			Yii::$app->params['statUrl'] = "<script type='text/javascript' src='{$statUrl}'></script>";
+    	}
+
         return parent::beforeAction($action);
 	}
 
