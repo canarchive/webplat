@@ -8,8 +8,8 @@ return [
 
     Yii::getAlias('@gallerycmsurl') . '/bm-result' => '/house/signup/result',
     Yii::getAlias('@gallerycmsurl') . '/info-<action:\w+>' => '/house/info/<action>',
-    Yii::getAlias('@gallerycmsurl') . '/map' => '/house/site/map',
-    Yii::getAlias('@gallerycmsurl') . '/map-<city_code:\w+>' => '/house/site/map-more',
+    Yii::getAlias('@gallerycmsurl') . '/mapinner' => '/house/site/map',
+    Yii::getAlias('@gallerycmsurl') . '/mapinner-<city_code:\w+>' => '/house/site/map-more',
 	[
 		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
 		'route'	=> '/house/sample/index',

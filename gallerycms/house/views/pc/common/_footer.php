@@ -35,7 +35,6 @@ use yii\helpers\Url;
             <div class="map padTop10 fn-left">
                 <p>网站信息</p>
                 <div>
-				    <a href="<?= Url::to(['/house/site/map']); ?>">网站地图</a>
 					<a href="<?= Url::to(['/house/info/statement']); ?>">声明</a></div>
             </div>
             <div class="map padTop10 fn-left">

@@ -133,14 +133,14 @@ return [
 		//'pc-url' => '{{CMS-DOMAIN}}/select-city.html',
 		'mobile-url' => '/select-city.html',
 	],
-	'info-map' => [
+	'site-map' => [
 		'name' => '网站地图',
-		'pc-url' => '{{CMS-DOMAIN}}/map.html',
+		'pc-url' => '{{CMS-DOMAIN}}/mapinner.html',
 		//'mobile-url' => '/map.html',
 	],
-	'info-map-more' => [
+	'site-map-more' => [
 		'name' => '地区网站地图',
-		'pc-url' => '{{CMS-DOMAIN}}/map-bj.html',
+		'pc-url' => '{{CMS-DOMAIN}}/mapinner-bj.html',
 		//'mobile-url' => '/map-bj.html',
 	],
 	'info-wechat' => [
