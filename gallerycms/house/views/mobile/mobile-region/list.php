@@ -96,7 +96,7 @@ $this->params['jsFiles'] = [
             <div class="form-btn-group">
                 <input type="button" id="entirety" value="免费申请" class="submit-btn" /></div>
             <div class="form-notice">
-                <span class="font-mark">注：</span>同一小区同批验房达到5户，可安排免费上门验房服务</div></div>
+                <span class="font-mark">注：</span>找装修公司，团家汇比其他渠道便宜20%</div></div>
         <span class="form-close"></span>
     </form>
 </div>
