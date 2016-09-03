@@ -156,7 +156,7 @@ $this->params['formPositionName'] = '靠谱';
             </div>
             <div class="xinxi-right">
                 <div class="case">
-                    <a href="javascript: void(0);" target="_blank">
+				    <a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute3.jpg" alt="环宇天下·三室两厅·简约·半包9万">
                         <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute5.png" alt="">
                         <p class="place">白领家园-赵先生
@@ -164,7 +164,7 @@ $this->params['formPositionName'] = '靠谱';
                         <p class="type">三室两厅 | 简约 | 半包9万</p></a>
                 </div>
                 <div class="case">
-                    <a href="javascript:void(0);" target="_blank">
+				    <a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute4.jpg" alt="万家星城·两室两厅·混搭·半包11万">
                         <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute6.png" alt="">
                         <p class="place">创意园小区-张女士
