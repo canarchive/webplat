@@ -1,6 +1,8 @@
 <?php
 $this->params['inSpread'] = true;
 $this->params['bodyClass'] = 'bg-f2';
+$this->params['formPosition'] = 'hd-baojia';
+$this->params['formPositionName'] = '活动推广-报价';
 ?>
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/h5_common.css?v=1">
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/h5_icon_font.css?v=1">
@@ -17,7 +19,7 @@ $this->params['bodyClass'] = 'bg-f2';
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/logo.png" alt="一起装修网">
         </div>
         <div class="f12 text_tit">
-            <p>中国家装十大电商平台<span>&nbsp;&nbsp;7年服务700万用户</span></p>
+		    <p>找装修公司就选<?= Yii::$app->params['siteNameBase']; ?></p>
         </div>
     </div>
 </header>
@@ -28,7 +30,7 @@ $this->params['bodyClass'] = 'bg-f2';
     <div class="mask-layer1 zp-mask-layer1"></div>
     <!-- 标题栏 end -->
     <!-- 表格视图-->
-    <ul class="msg-list pd-lr4 msg-list-icon bg-ff border-bottom">
+    <ul class="msg-list pd-lr4 msg-list-icon bg-ff border-bottom" id="formStart">
         <li>
             <a data-target="zp-decoration-city">
                 <i class="media-object iconfont icone684 l"></i>
@@ -60,9 +62,7 @@ $this->params['bodyClass'] = 'bg-f2';
         </li>
         <input type="hidden" id="user_tel" value="" />
         <input type="hidden" id="info_id" value="1" />
-        <input type="hidden" id="position" value="pcbaom" />
-        <input type="hidden" id="position_name" value="PC报名页" />
-        <input type="hidden" id="_csrf" name="_csrf" value="NTBwQmpGdVpUVCkJWBkDP0x.GhQHKR0TQkgKCh0jTDlFUT8TUgUPIw==">
+        <input type="hidden" id="form_type" value="hd-liangfang" />
         <li class="last">
             <a id="ksjs" href="javascript:;" class="btn btn-block btn-orange btn-line f16 mt3 mb3 zp-btn-price">开始计算</a>
         </li>
@@ -92,16 +92,14 @@ $this->params['bodyClass'] = 'bg-f2';
                 <span class="w-25">其他</span>
                 <span class="w-25">
                     <strong class="cMdGray fN ml3 mr3 price-other">0</strong>元</span></li>
-            <li class="text-center last">
-                <span>
-                    <a href="javascript:" class="btn btn-white btn-ckmx f16 btn-detail">查看预算明细</a></span>
-            </li>
+            <li class="text-center last"></li>
         </ul>
         <ul class="tips-info cGray mb3">
             <li>
                 <i class="iconfont icone69c cOrange mr2 fl f16"></i>本价格为毛坯房半包估算价格（不含水电报价），旧房价格由实际工程量决定。</li>
             <li class="mt2">
                 <i class="iconfont icone69c cOrange mr2 fl f16"></i>稍后装修管家将致电您，为您提供免费装修咨询服务。</li>
+            <li class="text-center last"></li>
         </ul>
     </div>
     <a style="display: none" class="cGBlue block-more f16 no-bg" href="/baojia/b0a0o0/">点击查看其他人的报价

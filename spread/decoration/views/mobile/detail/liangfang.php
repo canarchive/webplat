@@ -1,5 +1,7 @@
 <?php
 $this->params['inSpread'] = true;
+$this->params['formPosition'] = 'hd-liangfang';
+$this->params['formPositionName'] = '活动推广-量房';
 ?>
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/swiper.css?v=1">
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/common.css?v=1">
@@ -10,79 +12,18 @@ $this->params['inSpread'] = true;
     <div class="tit_top">
         <div class="left">
             <a href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/logo.png" alt="一起装修网"></a>
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/logo.png" alt="<?= Yii::$app->params['siteNameBase']; ?>"></a>
         </div>
         <div class="f12 text_tit">
-            <p>中国家装十大电商平台
-                <span>&nbsp;&nbsp;7年服务700万用户</span></p>
+		    <p>找装修公司就选<?= Yii::$app->params['siteNameBase']; ?></p>
         </div>
     </div>
 </header>
-<!--主导航（默认隐藏） start-->
-<div class="main-nav-icon clearfix">
-    <ul>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon.png" alt="首页"></a>
-            <span class="fN f14">
-                <a href="#">首页</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>xiaoguotu/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_01.png" alt="看效果图"></a>
-            <span class="fN f14">
-                <a href="#">看效果图</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>news/zhuangxiu-liucheng-static/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_02.png" alt="装修流程"></a>
-            <span class="fN f14">
-                <a href="#">装修流程</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>news/hots-149/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_03.png" alt="装修预算"></a>
-            <span class="fN f14">
-                <a href="#">装修预算</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>news/zhuangxiu-xuancaigonglue/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_04.png" alt="选材攻略"></a>
-            <span class="fN f14">
-                <a href="#">选材攻略</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>tuan/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_05.png" alt="现场团购"></a>
-            <span class="fN f14">
-                <a href="#">现场团购</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="http://m.beijing.17house.com/shops/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_06.png" alt="建材家具"></a>
-            <span class="fN f14">
-                <a href="#">建材家具</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>index/bbs/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_07.png" alt="装修论坛"></a>
-            <span class="fN f14">
-                <a href="#">装修论坛</a></span>
-        </li>
-        <li>
-            <a rel="nofollow" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>apps/">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/icon_08.png" alt="装修App"></a>
-            <span class="fN f14">
-                <a href="#">装修App</a></span>
-        </li>
-    </ul>
-</div>
-<!--主导航（默认隐藏） end-->
+<?php //echo $this->render('_liangfang_nav', []); ?>
 <div class="main">
     <input type="hidden" id="user_tel" value="" />
     <input type="hidden" id="info_id" value="1" />
-    <input type="hidden" id="position" value="h5liangfang" />
-    <input type="hidden" id="position_name" value="h5量房" />
+    <input type="hidden" id="form_type" value="hd-liangfang" />
     <div class="banner">
         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/mfsjbanner.png" /></div>
     <div class="list" id="list">
@@ -127,8 +68,6 @@ $this->params['inSpread'] = true;
             <form method="post" action="" class="form6-yuyue form6-yuyue_on" id="form6-yuyue">
                 <input type="text" name="rname" value="" class="ipt" maxlength="10" placeholder="请输入您的姓名">
                 <input type="tel" name="mobile" value="" class="ipt" maxlength="11" placeholder="请输入手机号码">
-                <input type="hidden" value="" id="referer" name="referer" />
-                <input type="hidden" value="<?= Yii::getAlias('@m.gallerycmsurl'); ?>liangfang.html" id="yuyuesource" name="yuyuesource" />
                 <div class="select">
                     <select name="rcity" class="ipt">
                         <option value="">请选择房屋所在城市</option>
@@ -147,8 +86,7 @@ $this->params['inSpread'] = true;
                 <input type="submit" value="预约免费设计" class="ipt ipt-submit"></form>
             <div class="statement">
                 <b class="cRedorange">我们承诺:</b>
-                <br>一起装修网提供该项
-                <span class="cRedorange">免费服务，绝不产生任何费用，</span>为了您的利益以及我们的口碑，您的隐私将被严格保密。</div></div>
+                <br>为了您的利益以及我们的口碑，您的隐私将被严格保密。</div></div>
         <div class="tu-box">
             <div class="tu-box-list">
                 <h2>免费的设计服务</h2>
@@ -158,7 +96,7 @@ $this->params['inSpread'] = true;
                         <div class="tu-box-list-con">
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/tuone.png" alt="" />
                             <span>资深设计师</span>
-                            <p>根据您的生活习惯及户型特点指派资深设计师</p>
+                            <p>根据您的需求及户型指派资深设计师</p>
                         </div>
                     </li>
                     <li>
@@ -174,7 +112,7 @@ $this->params['inSpread'] = true;
                         <div class="tu-box-list-con">
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/tuthree.png" alt="" />
                             <span>免费设计方案及报价</span>
-                            <p>24小时内出方案</p>
+                            <p>48小时内出方案</p>
                         </div>
                     </li>
                     <li>
@@ -248,7 +186,7 @@ $this->params['inSpread'] = true;
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/yangban1.png" alt="" />
                         <div class="star-people">
                             <p>
-                                <span>李多多</span>经验5年</p>
+                                <span>周大卫</span>经验5年</p>
                             <p>擅长：简约、田园等风格</p>
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/liduoduo.png" alt="" /></div>
                     </li>
@@ -256,7 +194,7 @@ $this->params['inSpread'] = true;
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/yangban2.png" alt="" />
                         <div class="star-people">
                             <p>
-                                <span>李现闯</span>经验4年</p>
+                                <span>曾飞</span>经验4年</p>
                             <p>擅长：田园、欧式等风格</p>
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/lixianchuang.png" alt="" /></div>
                     </li>
@@ -264,7 +202,7 @@ $this->params['inSpread'] = true;
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/yangban3.png" alt="" />
                         <div class="star-people">
                             <p>
-                                <span>张科</span>经验6年</p>
+                                <span>王明</span>经验6年</p>
                             <p>擅长：田园、欧式等风格</p>
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/zhangke.png" alt="" /></div>
                     </li>
@@ -272,7 +210,7 @@ $this->params['inSpread'] = true;
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/yangban1.png" alt="" />
                         <div class="star-people">
                             <p>
-                                <span>任燕</span></span>经验5年</p>
+                                <span>朱晓燕</span></span>经验5年</p>
                             <p>擅长：简约、欧式等风格</p>
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/renyan.png" alt="" /></div>
                     </li>
@@ -281,22 +219,6 @@ $this->params['inSpread'] = true;
         </div>
     </section>
 </div>
-<!--<div class="btns" id="btns">
-<p>预约免费设计</p>
-</div>-->{literal}
-<!-- 引入微信js -->
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" charset="utf-8"></script>
-<!-- 分享设置 -->
-<script type="text/javascript">window.shareData = {
-        tTitle: '0元户型设计 把家大扩容',
-        // 标题
-        tContent: '买70㎡的房，住100㎡的家',
-        // 内容
-        sendFriendLink: 'http://m.beijing.17house.com/zhuangxiu/sheji/',
-        // 链接
-		imgUrl: '<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/images/mian.jpg',
-        // 图片
-    }</script>
 <!-- 引入小猪js -->
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/js/zepto.min.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/js/swiper.min.js"></script>

@@ -19,6 +19,7 @@ class SignupForm extends Model
 	public $position_name;
 	public $city_input;
 	public $area_input;
+	public $form_type;
 	public $isMobile;
 	public $decorationModel;
 	public $quoteInfo = [];
@@ -33,7 +34,7 @@ class SignupForm extends Model
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
 			//[['city_input', 'area_input'], 'default', 'value' => ''],
-			[['city_input', 'area_input', 'message', 'info_id', 'position', 'position_name'], 'safe'],
+			[['city_input', 'area_input', 'form_type', 'message', 'info_id', 'position', 'position_name'], 'safe'],
         ];
     }
 
@@ -67,6 +68,7 @@ class SignupForm extends Model
 			'type' => $this->decorationModel->type,
 			'city' => $this->decorationModel->city,
 			'city_input' => empty(strip_tags($this->city_input)) ? '' : strip_tags($this->city_input),
+			'form_type' => empty(strip_tags($this->form_type)) ? '' : strip_tags($this->form_type),
 			'area_input' => empty(strip_tags($this->area_input)) ? 0 : strip_tags($this->area_input),
 			'decorationModel' => $this->decorationModel,
 
