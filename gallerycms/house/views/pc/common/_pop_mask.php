@@ -19,7 +19,7 @@
             </div>
             <input name="apply" type="button" value="免费预约" />
 			<p>全国服务热线<?= Yii::$app->params['siteHotline']; ?><br />
-				为了方便我们联系，请留下您的联系方式，我们将严格保密
+                找装修公司，<?= Yii::$app->params['siteNameBase']; ?>比其他渠道便宜20%
 			</p>
         </div>
     </div>

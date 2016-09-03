@@ -73,7 +73,7 @@ use yii\helpers\Url;
         </a>
 		<a class="item last" href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
             <p class="padTop25">在线报价器</p>
-			<p class="padTop10">30秒解决预算难题<br />装修省40%</p>
+			<p class="padTop10">10秒解决预算难题<br />装修省40%</p>
         </a>
     </div>
 </div>
