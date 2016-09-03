@@ -12,6 +12,8 @@ $this->params['jsFiles'] = [
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
 $this->params['friendLink'] = true;
+$this->params['formPosition'] = 'index';
+$this->params['formPositionName'] = '首页量房';
 ?>
 
 <div class="main-cont">
@@ -38,4 +40,4 @@ $this->params['friendLink'] = true;
     <?php echo $this->render('_service_flow', []); ?>
 </div>
 <!--首页底部浮动报名条-->
-<?php echo $this->render('../common/_signup', ['type' => 4]); ?>
+<?php echo $this->render('../common/_signup', ['type' => 'index-bottom', 'positionName' => '首页底部']); ?>

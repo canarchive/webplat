@@ -16,7 +16,7 @@ use yii\helpers\Url;
                 <p>获取3套装修报价，预算立省40%</p>
             </div>
             <div class="apply-form">
-                <input name="apply_type" type="hidden" value="1" />
+                <input name="apply_type" type="hidden" value="index-liangfang" />
                 <input name="name" type="text" placeholder="您的姓名" class="inputEl" />
                 <input name="phone" type="text" placeholder="手机号码" class="inputEl" />
                 <div class="select-group clearfix js-region-select-group">
