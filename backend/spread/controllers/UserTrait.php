@@ -48,7 +48,8 @@ trait UserTrait
 			$fields = ['mobile', 'decoration_id', 'address', 'house_area', 'house_sort', 'house_type', 'buy_furniture', 'buy_building', 'renovation_at', 'renovation_step', 'renovation_budget', 'renovation_company'];
 			$model = new \spread\decoration\models\OwnerHouse();
 		} else if ($table == 'callback') {
-			$fields = ['mobile', 'content', 'note'];
+			//$fields = ['mobile', 'content', 'note'];
+			$fields = ['mobile', 'content'];
 			$model = new \spread\models\Callback();
 		} else {
 			return ['status' => 400, 'message' => '参数错误'];

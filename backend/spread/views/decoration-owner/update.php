@@ -33,7 +33,7 @@ use yii\bootstrap\ActiveForm;
 if (!empty($model)) {
     echo $this->render('_base_info', ['model' => $model, 'modelUser' => $modelUser]);
 }
-echo $this->render('_base_user', ['model' => $model, 'modelUser' => $modelUser]);
+//echo $this->render('_base_user', ['model' => $model, 'modelUser' => $modelUser]);
 echo $this->render('_listinfo_owner_house', ['modelDecorationOwner' => $model, 'modelUser' => $modelUser, 'ownerHouseInfos' => $ownerHouseInfos]);
 echo $this->render('_listinfo_callback', ['modelActivityUser' => $model, 'modelUser' => $modelUser, 'callbackInfos' => $callbackInfos]);
 ?>
@@ -51,10 +51,8 @@ function addElemForUser(data)
 			if (status == 200) {
 				if (table == 'callback') {
 					var newContent = "<tr>"
-						+ "<td>" + response.created_at + "</td>"
-						+ "<td>" + response.created_at + "</td>"
 						+ "<td>" + data.content + "</td>"
-						+ "<td><textarea onchange='updateElemForUser(\"callback\", " + response.id + ", \"note\", this.value)' row=\"2\" name=\"note\">" + data.note + "</textarea></td?";
+						+ "<td>" + response.created_at + "</td>"
 						+ "</tr>";
 				} else if (table == 'user_house') {
 					var newContent = response.content;
@@ -137,10 +135,8 @@ function addElemForOwner(data)
             if (status == 200) {
                 if (table == 'callback') {
                     var newContent = "<tr>"
-                        + "<td>" + response.created_at + "</td>"
-                        + "<td>" + response.created_at + "</td>"
                         + "<td>" + data.content + "</td>"
-                        + "<td><textarea onchange='updateElemForOwner(\"callback\", " + response.id + ", \"note\", this.value)' row=\"2\" name=\"note\">" + data.note + "</textarea></td?";
+                        + "<td>" + response.created_at + "</td>"
                         + "</tr>";
                 } else if (table == 'owner_house') {
                     newContent = response.content;
