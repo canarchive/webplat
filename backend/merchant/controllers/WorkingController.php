@@ -25,7 +25,10 @@ class WorkingController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Working());
+		$data = [
+			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
+		];
+		return $this->_addInfo(new Working($data));
     }
 
     public function actionUpdate($id = 0)
