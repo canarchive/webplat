@@ -10,7 +10,7 @@ return [
     'id' => 'app-merchant',
     'basePath' => dirname(__DIR__),
 	//'viewPath' => '@merchant/views',
-	'layout' => null,
+	//'layout' => null,
     'bootstrap' => ['log'],
     'controllerNamespace' => 'merchant\controllers',
     'components' => [
@@ -34,8 +34,7 @@ return [
 	        'enablePrettyUrl' => true,
             'enableStrictParsing' => false,
             'showScriptName' => false,
-            'rules' => [
-			],
+			'rules' => require(__DIR__ . '/rules.php'),
 		],
     ],
 
