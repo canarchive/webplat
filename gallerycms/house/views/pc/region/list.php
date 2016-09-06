@@ -11,9 +11,10 @@ $this->params['jsFiles'] = [
 	'components/fixItem', 'components/city_list', 'components/form_select_controller',
 	'common', 'lib/bootstrap.carousel',
 ];
-$this->params['controllerForJs'] = 'ProductsController@index';
 $this->params['friendLink'] = true;
 
+$this->params['formPosition'] = 'region';
+$this->params['formPositionName'] = $regionInfo['name'];
 ?>
 <script type="text/javascript">$(function() {
     setCookie('page_flag', 'provider');
@@ -24,7 +25,7 @@ $this->params['friendLink'] = true;
     <h1>推荐装修公司</h1>
     <ul class="provider_list">
         <?php foreach ($infos as $info) { ?>
-    	<li data-provider-id="<?= $info['id']; ?>">
+    	<li data-provider-id="<?= $info['id'] . '-' . $info['name']; ?>">
             <div class="item_part left">
     		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
     				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
@@ -72,7 +73,7 @@ $this->params['friendLink'] = true;
 				<p class="subtitle">优质装修公司免费出方案，预算省40%</p>
             </div>
             <div class="apply_form">
-                <input name="apply_type" type="hidden" value="8" />
+                <input name="apply_type" type="hidden" value="region" />
                 <input name="name" type="text" placeholder="您的姓名" />
                 <input name="phone" type="text" placeholder="手机号码" />
                 <div class="select-group clearfix js-region-select-group">
@@ -163,6 +164,7 @@ function triggerPopForm(btn) {
     var setProvider = function(btn, container) {
         var providerId = $(btn).parents('.provider_list li').data('providerId');
         $('input[name="apply_provider"]', container).val(providerId);
+		$("#position_name").val(providerId + '-<?= $regionInfo['name_short']; ?>');
     };
 }
 

@@ -1,5 +1,6 @@
 <?php
-$formType = isset($type) ? $type : 4;
+$formType = isset($type) ? $type : 'index';
+$positionName = isset($positionName) ? $positionName : '';
 ?>
 <!--首页底部浮动报名条-->
 <div class="appoinment-bottom show" style="left: -150%;">
@@ -11,13 +12,14 @@ $formType = isset($type) ? $type : 4;
             <div class="apply-form">
                 <p class="tip">已有<em class="ifocus"><?php echo '32382'; ?> </em>位业主 成功在线预约装修服务</p>
 				<input name="apply_type" type="hidden" value="<?= $formType; ?>">
+				<input name="position_name" type="hidden" value="<?= $positionName; ?>">
                 <div class="part_left">
                     <input name="name" type="text" placeholder="您的姓名">
 					<input name="phone" type="text" placeholder="手机号码">
                 </div>
                 <div class="part_right">
                     <div class="squatre">
-                        <input name="areaInputted" type="text" placeholder="建筑面积">
+                        <input name="size" type="text" placeholder="建筑面积">
 						<span>㎡</span>
                     </div>
                     <div class="select-group clearfix js-region-select-group">

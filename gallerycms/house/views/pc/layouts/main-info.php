@@ -25,6 +25,7 @@ $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Y
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-info/css/group_header.css">
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/lib/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-info/js/group.js"></script>
+<?= $this->render('@gallerycms/house/views/_stat', []); // 顶部 ?>
 </head>
 <body>
 <div class="group-header">

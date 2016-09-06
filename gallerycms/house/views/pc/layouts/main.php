@@ -34,7 +34,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <meta name="applicable-device" content="pc" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta http-equiv="Cache-Control" content="no-transform" />
-<meta name="mobile-agent" content="format=html5;url=http://m./bj/" />
+<meta name="mobile-agent" content="format=html5;url=<?= Yii::getAlias('@m.gallerycmsurl'); ?>" />
 <link rel="alternate" media="only screen and (max-width:750px)" href="" />
 <title><?= $seoTitle; ?></title>
 <meta name="keywords" content="<?= $seoKeyword; ?>" />
@@ -43,11 +43,9 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/gallerycms') . '/home/css/' . $cssFile . '.css?v=151020'; ?>" />
 <?php } } ?>
-
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/home/js/' . $jsFile . '.js'; ?>"></script>
 <?php } } ?>
-
 <script type="text/javascript">
 window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
@@ -60,6 +58,7 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
+<?= $this->render('@gallerycms/house/views/_stat', []); // 顶部 ?>
 </head>
 <body>
 <?php if (!isset($this->params['showPage'])) { ?>
@@ -76,10 +75,8 @@ jQuery(document).ready(function($) {
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_footer_base', []); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
+<?= Yii::$app->params['statUrl']; ?>
 </div>
-<!--<div style="display:none">
-    <img src="http://spread.tuanjiahui.com/stat.html?channel=bd&kw=aa测试" />
-</div>-->
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/nav.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/ProvinceJson.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/CityJson.js"></script>

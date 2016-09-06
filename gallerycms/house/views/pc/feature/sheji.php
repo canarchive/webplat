@@ -12,13 +12,15 @@ $this->params['jsFiles'] = [
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
 $this->params['currentNav'] = 'free';
+$this->params['formPosition'] = 'sheji';
+$this->params['formPositionName'] = '设计';
 ?>
 <?php echo $this->render('_nav', ['view' => $view]); ?>
 <div class="content" id="biaodan">
     <div class="content2" id="content2">
         <div id="bg2">
             <div class="position">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg2.jpg" height="498px">
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg3.jpg" height="498px">
                 <!--<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg22.jpg">
                 <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bg23.jpg">-->
                 <div class="arrow01"></div>
@@ -27,7 +29,7 @@ $this->params['currentNav'] = 'free';
                     <div class="fbody">
                         <p>免费获取3份设计&nbsp;选取最满意设计稿</p>
                         <div class="apply_form">
-                            <input name="apply_type" type="hidden" value="5" />
+                            <input name="apply_type" type="hidden" value="sheji" />
                             <input name="name" type="text" placeholder="您的姓名" />
                             <input name="phone" type="text" placeholder="手机号码" />
                             <div class="select-group clearfix js-region-select-group">
@@ -78,7 +80,7 @@ $this->params['currentNav'] = 'free';
             <ul class="img3">
                 <li class="li1">
                     <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bj7.jpg">
-                    <p>30秒获取预算清单</p>
+                    <p>10秒获取预算清单</p>
                     <span>不满意可重复修改</span></li>
                 <li class="li2">
                     <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/bj8.jpg">

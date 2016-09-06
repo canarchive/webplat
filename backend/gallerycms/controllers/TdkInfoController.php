@@ -18,6 +18,7 @@ class TdkInfoController extends AdminController
 			'tdkInfos' => $tdkInfos,
 			'urlInfos' => $urlInfos,
 			'domain' => Yii::$app->params['baseDomain'],
+			'cmsDomain' => str_replace('http://', '', Yii::getAlias('@gallerycmsurl')),
 		];
         return $this->render('listinfo', $datas);
     }

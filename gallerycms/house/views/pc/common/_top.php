@@ -18,7 +18,7 @@ use yii\helpers\Url;
                     </dl>
                 </div>
             </div>
-			<span class="border">全国领先互联网家装平台</span>
+			<span class="border">找装修公司就上团家汇</span>
         </div>
         <ul class="login fn-right" id="roof-nav">
             <!--<li id="login-link" class="word hide no-icon">
@@ -28,7 +28,7 @@ use yii\helpers\Url;
 				<a href="/passport/UserRegister/">免费注册</a>
             </li>-->
             <li id="phone-link" class="phone">
-                <a href="javascript: void(0);" target="_blank">移动端<?= Yii::$app->params['siteName']; ?></a>
+                <a href="javascript: void(0);" target="_blank">关注官方微信号</a>
                 <div class="code">
 				<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" border="0" alt="装修网">
                     <p>关注官方微信号</p>

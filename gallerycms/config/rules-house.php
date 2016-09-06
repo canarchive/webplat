@@ -3,13 +3,13 @@ return [
     Yii::getAlias('@gallerycmsurl') . '/test' => '/house/site/test', 
     //Yii::getAlias('@wildurl') . '/' => '/house/site/home',
     ['pattern' => Yii::getAlias('@wildurl') . '/', 'route' => '/house/site/home', 'suffix' => ''],
-    //Yii::getAlias('@gallerycmsurl') . '/' => '/house/site/home', 
+    Yii::getAlias('@gallerycmsurl') . '/' => '/house/site/home', 
     Yii::getAlias('@m.gallerycmsurl') . '/' => '/house/mobile-site/home', 
 
     Yii::getAlias('@gallerycmsurl') . '/bm-result' => '/house/signup/result',
     Yii::getAlias('@gallerycmsurl') . '/info-<action:\w+>' => '/house/info/<action>',
-    Yii::getAlias('@gallerycmsurl') . '/map' => '/house/site/map',
-    Yii::getAlias('@gallerycmsurl') . '/map-<city_code:\w+>' => '/house/site/map-more',
+    Yii::getAlias('@gallerycmsurl') . '/mapinner' => '/house/site/map',
+    Yii::getAlias('@gallerycmsurl') . '/mapinner-<city_code:\w+>' => '/house/site/map-more',
 	[
 		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
 		'route'	=> '/house/sample/index',
