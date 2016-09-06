@@ -9,50 +9,10 @@ use merchant\models\ResetPasswordForm;
 use merchant\models\SignupForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use merchant\components\Controller as MerchantController;
 
 class SiteController extends MerchantController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup', 'signin', 'index'],
-                'rules' => [
-                    [
-                        'actions' => ['signup', 'signin', 'findpwd', 'index'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-                'denyCallback' => function ($rule, $action) {
-					if (in_array($action->id, ['index', 'logout'])) { 
-		                return Yii::$app->response->redirect(Url::to(['site/signin']))->send();
-					} else {
-		                return Yii::$app->response->redirect(\Yii::$app->params['homeDomain'])->send();
-					}
-                },
-            ],
-            /*'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-			],*/
-        ];
-    }
-
     public function init()
     {
         parent::init();
@@ -82,6 +42,9 @@ class SiteController extends MerchantController
 
     public function actionSignin()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $model = new SigninForm();
 		//$wrongTimes = $model->wrongTimes('check');
         if ($model->load(Yii::$app->request->post()) && $model->signin()) {
@@ -125,7 +88,6 @@ class SiteController extends MerchantController
 
         return $this->render('signup', [
             'model' => $model,
-			'returnUrl' => $this->returnUrl,
 			'infos' => $infos,
 			'message' => $message,
         ]);
