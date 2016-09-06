@@ -31,19 +31,7 @@ return [
             'errorAction' => 'site/error',
         ],
 		'urlManager' => [
-            'rules' => [
-                'detail-<id:\d+>' => '/decoration/detail/index',
-				'bm-<view:\w+>-<id:\d+>' => 'decoration/detail/feature',
-				'jzhd-<type:\w+>-<city:\w+>' => '/decoration/detail/spread',
-				'<view:(price|design|measure)>-<type:\w+>-<city:\w+>' => 'decoration/detail/inner',
-				'hd-<id:\d+>' => 'shoot/detail/index',
-				'submit' => 'shoot/signup/submit',
-				'jz-signup' => '/decoration/signup/index',
-				'jz-signup-tview' => '/decoration/signup/tview',
-				'jz-signup-cms' => '/decoration/signup/cms',
-				'stat' => '/site/stat',
-		        //'/jz-<controller:\w+>/<action:\w+>' => '/decoration/<controller>/<action>',
-			],
+			'rules' => require(__DIR__ . '/rules-decoration.php'),
 		],
     ],
 

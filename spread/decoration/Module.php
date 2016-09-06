@@ -3,17 +3,8 @@
 namespace spread\decoration;
 
 use Yii;
+use gallerycms\components\ModuleBase;
 
-class Module extends \yii\base\Module
+class Module extends ModuleBase
 {
-    /**
-     * @inheritdoc
-     */
-    public $defaultRoute = '';
-
-    public function init()
-    {
-        parent::init();
-		//\Yii::configure($this, require(__DIR__ . '/config.php'));
-    }
 }

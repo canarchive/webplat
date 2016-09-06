@@ -19,8 +19,10 @@ class SignupForm extends Model
 	public $position_name;
 	public $city_input;
 	public $area_input;
+	public $form_type;
 	public $isMobile;
 	public $decorationModel;
+	public $quoteInfo = [];
 
     /**
      * @inheritdoc
@@ -32,7 +34,7 @@ class SignupForm extends Model
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
 			//[['city_input', 'area_input'], 'default', 'value' => ''],
-			[['city_input', 'area_input', 'message', 'info_id', 'position', 'position_name'], 'safe'],
+			[['city_input', 'area_input', 'form_type', 'message', 'info_id', 'position', 'position_name'], 'safe'],
         ];
     }
 
@@ -66,6 +68,7 @@ class SignupForm extends Model
 			'type' => $this->decorationModel->type,
 			'city' => $this->decorationModel->city,
 			'city_input' => empty(strip_tags($this->city_input)) ? '' : strip_tags($this->city_input),
+			'form_type' => empty(strip_tags($this->form_type)) ? '' : strip_tags($this->form_type),
 			'area_input' => empty(strip_tags($this->area_input)) ? 0 : strip_tags($this->area_input),
 			'decorationModel' => $this->decorationModel,
 
@@ -90,12 +93,16 @@ class SignupForm extends Model
 		$decorationOwner->updateAfterInsert($conversionInfo);
 		$decorationOwner->user->updateAfterInsert();
 
+		if ($this->area_input > 20 && $this->area_input < 500) {
+			$this->quoteInfo = $this->_getQuteInfo($this->area_input);
+		}
+
 		$serviceModel = $decorationOwner->user->dealService($data);
 		$this->sendSmsService($data, $serviceModel);
 		$data['service_code'] = $serviceModel->code;
 
 		$this->sendSms($data, $serviceModel->mobile);
-		return ['status' => 200, 'message' => 'OK'];
+		return ['status' => 200, 'message' => 'OK', 'quoteInfo' => $this->quoteInfo];
 	}
 
 	protected function isValidate()
@@ -130,7 +137,9 @@ class SignupForm extends Model
         $mobile = $data['mobile'];
 
 		//$message = $this->decorationModel['sms'];
-		$message = '您已预约成功，我们的装修顾问会在15分钟内联系您！【团家汇】';
+		$siteName = Yii::$app->params['siteNameBase'];
+		$hotline = Yii::$app->params['siteHotline'];
+		$message = "【{$siteName}】您已成功预约，装修顾问会在15分钟内回访了解您的具体装修需求，请保持您的电话畅通，详情咨询{$hotline}";
 
 		$smser = new Smser('company');
         $smser->send($mobile, $message, 'decoration_signup');
@@ -148,4 +157,11 @@ class SignupForm extends Model
         
         return true;
     }
+
+	protected function _getQuteInfo($area)
+	{
+		$quote = new Quote(); 
+		$info = $quote->getResult($area);
+		return $info;
+	}
 }

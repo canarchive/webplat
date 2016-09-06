@@ -12,6 +12,9 @@ $gridViewParams = [
 		'name',
 		'mobile',
 		'channel',
+		'form_type',
+		'city_input',
+		'area_input',
 		[
 			'attribute' => 'position',
 			'value' => function($model) {
