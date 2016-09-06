@@ -31,20 +31,18 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <meta name="format-detection" content="address=no">
 <meta content="false" name="twcClient" id="twcClient" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/css/' . $cssFile . '.css?v=151020'; ?>" />
 <?php } } ?>
-
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/js/' . $jsFile . '.js'; ?>"></script>
 <?php } } ?>
-
 <script type="text/javascript">
 window.BASE_URL = "<?= Yii::getAlias('@m.gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';
 </script>
+<?= $this->render('@gallerycms/house/views/_stat', []); // 顶部 ?>
 </head>
 <body class="<?php if (isset($this->params['bodyClass'])) { echo $this->params['bodyClass']; } ?>">
 <?= $content; ?>

@@ -36,8 +36,7 @@ $this->params['formPositionName'] = '靠谱';
                             <option value="">市/地区</option></select>
                     </div>
                     <input name="apply" type="button" value="立即免费预约" />
-                    <p class="number">已有
-                        <span class="ifocus"></span>人找到靠谱装修公司</p></div>
+                    <p class="number">已有<span class="ifocus">32382</span>人找到靠谱装修公司</p></div>
             </div>
         </div>
     </div>

@@ -67,7 +67,7 @@ $this->params['formPositionName'] = '报价';
                     </div>-->
                 </div>
                 <p class="baojia">已有
-                    <span class="ifocus"></span>人成功获取报价</p></div>
+                    <span class="ifocus">32382</span>人成功获取报价</p></div>
             <div class="anniu"></div>
             <div class="detail">
                 <p class="total">您的装修预算为
@@ -118,4 +118,5 @@ $this->params['formPositionName'] = '报价';
         </div>
     </div>
 </div>
+<input type="hidden" id="show_quote" value="1" />
 <script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/baojia.js"></script>

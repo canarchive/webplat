@@ -28,7 +28,7 @@ $this->params['jsFiles'] = [
                 <p class="community"><?= $info['community_name']; ?></p>
                 <p class="msg">
 				    <span class="type"><?= $info['community_name']; ?></span>
-					<span class="intro">已有440人咨询</span>
+					<span class="intro">已有32382人咨询</span>
                 </p>
             </a>
         </li>

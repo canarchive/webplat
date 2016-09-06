@@ -2,6 +2,7 @@
 namespace gallerycms\components;
 
 use Yii;
+use yii\helpers\Url;
 
 class HouseController extends Controller
 {
@@ -13,7 +14,11 @@ class HouseController extends Controller
 
 	protected function _redirectRule()
 	{
-		return $this->isMobile ? '/house/mobile-site/index' : '/house/site/home';
+        $rule = $this->isMobile ? '/house/mobile-site/index' : '/house/site/home';
+        $url = Url::to([$rule, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
+        header("Location:$url");
+        //return Yii::$app->response->redirect($url)->send();
+        exit();
 	}
 
 	protected function _getOwnerInfos()
