@@ -95,4 +95,4 @@ $this->params['formPositionName'] = '报价';
         <p class="beizhu">* 报价仅供参考，真实报价以实际量房为准</p></div>
     <div class="price-special" style="margin-top: 0.4rem">
         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/images/price-img-m.png" width="100%" alt="" /></div>
-    <p class="copyright" style="margin-bottom: 2.2rem; background: #fff">杭州<?= Yii::$app->params['siteNameBase']; ?>科技有限公司 浙ICP备14016529号 0571-85866119</p></div>
+    <p class="copyright" style="margin-bottom: 2.2rem; background: #fff"><?= Yii::$app->params['siteIcpInfo']; ?></p></div>

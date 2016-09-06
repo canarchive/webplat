@@ -37,8 +37,7 @@ $this->params['formPositionName'] = '靠谱';
             </div>
             <input type="hidden" value="kaopu" id="type" name="apply_type">
             <input type="button" value="立即免费预约" class="submit-btn" name="apply">
-            <p class="number">已有
-                <span class="ifocus"></span>人找到靠谱装修公司</p></form>
+            <p class="number">已有<span class="ifocus">32382</span>人找到靠谱装修公司</p></form>
     </div>
     <div class="pk">
         <p class="title">为什么要3家装修公司PK</p>
@@ -64,7 +63,7 @@ $this->params['formPositionName'] = '靠谱';
 								<span class="signed_city"><?= Yii::$app->params['currentCompany']['name']; ?></span>
     						    <span class="signed_name"><?= $ownerInfo['name']; ?></span>
     							<span class="signed_area"><?= $ownerInfo['community_name']; ?></span>
-    							<span class="signed_amount"><?= $ownerInfo['area']; ?>㎡</span>
+    							<span class="signed_amount"><?= intval($ownerInfo['area']); ?>㎡</span>
     							<span class="signed_company"><?= $ownerInfo['decoration_type']; ?></span></li>
                             <?php } ?>
                 </ul>

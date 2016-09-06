@@ -18,8 +18,8 @@ class Controller extends CommonController
 		$this->host = \Yii::$app->request->hostInfo;
 		$hostPc = Yii::getAlias('@gallerycmsurl');
 		$hostMobile = Yii::getAlias('@m.gallerycmsurl');
-        //$this->isMobile = $this->clientIsMobile();
-		$this->isMobile = $this->host == $hostMobile ? true : false;
+        $this->isMobile = $this->clientIsMobile();
+		//$this->isMobile = $this->host == $hostMobile ? true : false;
 
 		$url = Yii::$app->request->url;
 		$cityCode = isset($this->module->currentCityCode) ? $this->module->currentCityCode : null;
@@ -30,11 +30,7 @@ class Controller extends CommonController
 		$redirect = empty($redirect) ? $this->host == $hostPc && is_null($cityCode) && $url == '/' : $redirect;
 		$redirect = empty($redirect) ? !is_null($cityCode) && $cityCode != Yii::$app->params['currentCompany']['code_short'] : $redirect;
 		if ($redirect) {
-			$rule = $this->_redirectRule();
-			$url = Url::to([$rule, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
-			header("Location:$url");
-		    //return Yii::$app->response->redirect($url)->send();
-			exit();
+			$this->_redirectRule();
 		}
 
 		if (isset($this->module->viewPath)) {
@@ -75,6 +71,11 @@ class Controller extends CommonController
         }
 
 		Yii::$app->params['tdkInfos'] = $info;
+		return ;
+	}
+
+	protected function _redirectRule()
+	{
 		return ;
 	}
 }
