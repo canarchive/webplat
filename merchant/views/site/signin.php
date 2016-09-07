@@ -32,6 +32,7 @@ $this->params['bodyClass'] = 'auth-back';
         </div>
     </div>
     <div class="row site-width">
-        <div class="account-footer">luosimao.com &copy; 2016 上海铁壳网络科技有限公司</div></div>
+	    <div class="account-footer"><?= Yii::$app->params['siteCopyRightInfo']; ?></div>
+    </div>
 </div>
 <div class="reg-back"></div>

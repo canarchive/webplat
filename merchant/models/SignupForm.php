@@ -14,6 +14,8 @@ class SignupForm extends Model
     public $mobile;
     public $mobileCode;
     public $captcha;
+	public $email;
+	public $truename;
     public $password;
     public $passwordConfirm;
 
@@ -25,16 +27,18 @@ class SignupForm extends Model
     {
         return [
             ['mobile', 'filter', 'filter' => 'trim'],
-            [['mobile', 'password', 'mobileCode'], 'required'],
+            //[['mobile', 'password', 'mobileCode'], 'required'],
+            [['mobile', 'password'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
             ['mobile', 'unique', 'targetClass' => '\merchant\models\User', 'message' => 'This mobile address has already been taken.'],
 
-            ['mobileCode', 'required'],
-			['mobileCode', 'checkCode'],
+            //['mobileCode', 'required'],
+			//['mobileCode', 'checkCode'],
             //['captcha', 'captcha'],
 			//['aggreement', 'compare', 'compareValue' => 1, 'operator' => '=='],
             ['password', 'string', 'min' => 6],
-			['passwordConfirm', 'compare','compareAttribute'=>'password'],
+			['email', 'email'],
+			//['passwordConfirm', 'compare','compareAttribute'=>'password'],
         ];
     }
 
