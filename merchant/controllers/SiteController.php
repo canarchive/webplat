@@ -42,6 +42,7 @@ class SiteController extends MerchantController
 
     public function actionSignin()
     {
+		$this->layout = 'main-base';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -66,14 +67,15 @@ class SiteController extends MerchantController
 
     public function actionSignup()
     {
+		$this->layout = 'main-base';
         $model = new SignupForm();
 
 		$infos = [];
 		$message = '';
         if ($model->load(Yii::$app->request->post(), '')) {
-		    $model->mobile = $_POST['username'];
-		    $model->passwordConfirm = $_POST['r_password'];
-		    $model->mobileCode = $_POST['activation_code'];
+		    //$model->mobile = $_POST['username'];
+		    //$model->passwordConfirm = $_POST['r_password'];
+		    //$model->mobileCode = $_POST['activation_code'];
 			$message = '请填写完整的注册信息';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
@@ -85,6 +87,8 @@ class SiteController extends MerchantController
 		    $message = isset($error[$field]) ? $error[$field] : $message;
 			$infos = $model->toArray();
         }
+//print_r($model->getErrors());
+//print_r($infos);exit();
 
         return $this->render('signup', [
             'model' => $model,

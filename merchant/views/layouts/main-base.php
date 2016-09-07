@@ -39,10 +39,11 @@ window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>'
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 </div>
 <?php 
-$jsFooterFiles = ['jquery-2.1.0', 'foundation.min', 'app', 'api'];
+$jsFooterFiles = ['jquery-2.1.0', 'foundation.min', 'app'];
 $jsFooterFiles = isset($this->params['jsFooterFiles']) ? $this->params['jsFooterFiles'] : $jsFooterFiles;
 foreach ($jsFooterFiles as $jsFile) { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/merchant') . '/lview/js/' . $jsFile . '.js'; ?>"></script>
 <?php } ?>
+<script src="//captcha.luosimao.com/static/dist/api.js"></script>
 </body>
 </html>
