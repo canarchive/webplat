@@ -14,6 +14,7 @@ $this->params['jsFiles'] = [
 $this->params['currentNav'] = 'company';
 $this->params['friendLink'] = true;
 
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <script type="text/javascript">$(function() {
     setCookie('page_flag', 'provider');

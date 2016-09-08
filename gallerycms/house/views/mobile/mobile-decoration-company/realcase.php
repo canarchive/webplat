@@ -9,6 +9,7 @@ $this->params['jsFiles'] = [
 	'jquery-1.11.3.min', 'common', 'slideApply', 'lib/total',
 	'rem50',
 ];
+$this->context->pcMappingUrl = Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sjsj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <?php echo $this->render('../common/_nav', []); ?>
 <div class="toptitle total-top">

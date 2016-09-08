@@ -14,6 +14,7 @@ $this->params['jsFiles'] = [
 $this->params['friendLink'] = true;
 $this->params['formPosition'] = 'index';
 $this->params['formPositionName'] = '首页量房';
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-site/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 
 <div class="main-cont">

@@ -27,6 +27,8 @@ class SampleController extends HouseController
 		$page = Yii::$app->request->get('page');
 		$infos = $model->getInfos([]);
 		$datas = [
+			'tag' => $tag,
+			'page' => $page,
 			'infos' => $infos,
 			'tagInfos' => $tagInfos,
 			'houseSortInfos' => $houseSortInfos,

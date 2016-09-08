@@ -11,6 +11,7 @@ $this->params['jsFiles'] = [
 
 $merchantInfo = $info->merchantInfo;
 $statusDatas = $info->statusDatas;
+$this->context->pcMappingUrl = Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <?php echo $this->render('../common/_nav', []); ?>
 <div class="toptitle total-top">

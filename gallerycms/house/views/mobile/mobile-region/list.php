@@ -8,6 +8,7 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
 	'rem50', 'jquery', 'common', 'lib/total', 'slideApply',
 ];
+$this->context->pcMappingUrl = Url::to(['/house/region/region', 'city_code' => Yii::$app->params['currentCompany']['code_short'], 'county' => $countyInfo['spell_one'], 'vtown' => $regionInfo['spell_one'] == $countyInfo['spell_one'] ? '' : $regionInfo['spell_one'], 'page' => 1]);
 ?>
 <?php echo $this->render('../common/_nav', []); ?>
 

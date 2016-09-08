@@ -10,6 +10,7 @@ $this->params['jsFiles'] = [
 ];
 $this->params['formPosition'] = 'sample-show';
 $this->params['formPositionName'] = $info['id'] . '_' . $info['name'];
+$this->context->pcMappingUrl = Url::to(['/house/sample/show', 'id' => $info['id']]);
 ?>
 <script>
 $(function() { //置顶

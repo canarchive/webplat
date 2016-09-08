@@ -9,6 +9,7 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
 	'jquery', 'common', 'm_index', 'lib/total', 'slideApply',
 ];
+$this->context->pcMappingUrl = Url::to(['/house/sample/index', 'page' => $page, 'tag' => $tag]);
 ?>
 <script>
 $(document).ready(function() {

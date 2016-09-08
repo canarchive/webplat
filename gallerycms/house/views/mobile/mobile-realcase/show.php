@@ -9,6 +9,7 @@ $this->params['jsFiles'] = [
 	'rem50', 'jquery-1.11.3.min', 'slideApply', 'lib/total', 
 	'appOpenEmbed', 'company/companyList',
 ];
+$this->context->pcMappingUrl = Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <style type="text/css">body { background-color: #fff; }</style>
 
