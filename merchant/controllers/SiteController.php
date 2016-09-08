@@ -13,11 +13,13 @@ use merchant\components\Controller as MerchantController;
 
 class SiteController extends MerchantController
 {
+	public $homeUrl; 
+	
     public function init()
     {
         parent::init();
 	    //$this->layoutPath = Yii::getAlias('@app/info/views');
-		
+		$this->homeUrl = Url::to(['/info/index']);
     }
 
     /**
@@ -44,25 +46,31 @@ class SiteController extends MerchantController
     {
 		$this->layout = 'main-base';
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+		    return Yii::$app->response->redirect($this->homeUrl)->send();
         }
         $model = new SigninForm();
+		$message = '';
 		//$wrongTimes = $model->wrongTimes('check');
-        if ($model->load(Yii::$app->request->post()) && $model->signin()) {
-            return $this->goBack();
-        } else {
-            return $this->render('signin', [
-                'model' => $model,
-				//'showCaptcha' => $wrongTimes > 5 ? 1 : 0,
-            ]);
+        if ($model->load(Yii::$app->request->post(), '')) {
+			if ($model->signin()) {
+                return $this->goBack();
+			}
+		    $error = $model->getFirstErrors();
+		    $field = key($error);
+		    $message = isset($error[$field]) ? $error[$field] : $message;
         }
+        return $this->render('signin', [
+            'model' => $model,
+			'message' => $message,
+	        //'showCaptcha' => $wrongTimes > 5 ? 1 : 0,
+        ]);
     }
 
     public function actionLogout()
     {
         Yii::$app->user->logout();
 
-		return $this->redirect($this->homeDomain);
+		return $this->goHome();
     }
 
     public function actionSignup()
@@ -73,13 +81,11 @@ class SiteController extends MerchantController
 		$infos = [];
 		$message = '';
         if ($model->load(Yii::$app->request->post(), '')) {
-		    //$model->mobile = $_POST['username'];
-		    //$model->passwordConfirm = $_POST['r_password'];
-		    //$model->mobileCode = $_POST['activation_code'];
+		    $model->truename = $_POST['username'];
 			$message = '请填写完整的注册信息';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-		            return Yii::$app->response->redirect($this->returnUrl)->send();
+		            return Yii::$app->response->redirect($this->homeUrl)->send();
                 }
             }
 		    $error = $model->getFirstErrors();

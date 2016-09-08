@@ -19,10 +19,11 @@ use yii\helpers\Html;
                     <input type="text" name="username" id="username" require data-validate="username" autocomplete="off" value=""></div>
                 <div class="small-12 columns">
                     <label for="password" class="tit">密码：</label>
-                    <input type="password" name="password" id="password" require onpaste="return false" data-validate="password" data-equal="confirmpassword" autocomplete="off" /></div>
+					<input type="password" name="password" id="password" require onpaste="return false" data-validate="password" data-equal="confirmpassword" autocomplete="off" />
+                </div>
                 <div class="small-12 columns">
                     <label for="email" class="tit">电子邮箱：</label>
-                    <input type="text" name="email" id="email" require data-validate="email" value="" /></div>
+                    <input type="text" name="email" id="email"require data-validate="email" value="" /></div>
                 <div class="small-12 columns">
                     <label for="captcha" class="tit">人机验证：</label>
                     <div class="l-captcha" data-site-key="2d632ed66b5d66d95530f0dcb78b9e62" data-width="100%" style="margin-bottom:10px;" data-callback="getRegResponse"></div>
