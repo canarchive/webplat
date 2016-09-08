@@ -18,6 +18,7 @@ $this->params['showPage'] = true;
 $this->params['formPosition'] = 'realcase-show';
 $this->params['formPositionName'] = $info['id'] . '_' . $info['name'];
 $merchantInfo = $info->merchantInfo;
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <!-- <?= Yii::$app->params['siteNameBase']; ?>主页导航栏 -->
 <?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>

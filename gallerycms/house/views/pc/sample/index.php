@@ -14,6 +14,7 @@ $this->params['jsFiles'] = [
 $this->params['currentNav'] = 'sample';
 $this->params['friendLink'] = true;
 $this->params['formPosition'] = 'sample-index';
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-sample/index', 'page' => $page, 'tag' => $tag]);
 ?>
 <style rel="stylesheet">
 .page_header img, .page_footer img { display: inline; } 

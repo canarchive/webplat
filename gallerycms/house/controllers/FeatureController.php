@@ -3,6 +3,7 @@
 namespace gallerycms\house\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use gallerycms\components\HouseController;
 
 class FeatureController extends HouseController
@@ -20,6 +21,8 @@ class FeatureController extends HouseController
 		];
 		
 		$this->getTdkInfos('feature-' . $view);
+		$this->mobileMappingUrl = Url::to(['/house/mobile-feature/index', 'view' => $view, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
+		$this->pcMappingUrl = Url::to(['/house/feature/index', 'view' => $view, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 		return $this->render($view, $datas);
 	}
 }

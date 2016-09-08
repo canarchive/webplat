@@ -60,7 +60,7 @@ return [
 	[
 		'pattern' => Yii::getAlias('@wildurl') . '/zx/<county>/<vtown>',
 		'route'	=> '/house/region/region',
-		'defaults' => ['vtown' => '']
+		'defaults' => ['vtown' => '', 'page' => 1]
 	],
     //Yii::getAlias('@m.gallerycmsurl') . '/<_q:.*>' => '/house/<_q>',
     //'/<_q:.*>' => '/house/<_q>', 

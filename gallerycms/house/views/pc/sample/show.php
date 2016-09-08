@@ -17,6 +17,7 @@ $this->params['friendLink'] = true;
 $this->params['formPosition'] = 'sample-show';
 $this->params['formPositionName'] = $info['id'] . '_' . $info['name'];
 $this->params['showPage'] = true;
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-sample/show', 'id' => $info['id']]);
 ?>
 <!-- <?= Yii::$app->params['siteNameBase']; ?>主页导航栏 -->
 <?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>

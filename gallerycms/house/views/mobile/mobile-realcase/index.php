@@ -9,6 +9,7 @@ $this->params['jsFiles'] = [
 	'jquery-1.11.3.min', 'common', 'lib/total',
 ];
 //'实景作品频道';
+$this->context->pcMappingUrl = Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <style>
 .case .list01 .channel{ font-size: 0.5rem;margin-top: 1.5rem; }

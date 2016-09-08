@@ -36,7 +36,7 @@ class RegionController extends GallerycmsController
 		// 没有乡镇和社区信息，则直接渲染相关的列表页
 		$vtown = Yii::$app->request->get('vtown');
 		if (empty($vtown)) {
-			return $this->regionList($countyInfo);
+			return $this->regionList(['countyInfo' => $countyInfo]);
 		}
 
 		// 乡镇地区是t_开头的代码，社区是v_开头的代码
@@ -83,11 +83,12 @@ class RegionController extends GallerycmsController
 
 	protected function regionList($datas)
 	{
-		$regionInfo = isset($datas['isVillage']) ? ($datas['isVillage'] ? $datas['villageInfo'] : $datas['townInfo']) : $datas;
+		$regionInfo = isset($datas['isVillage']) ? ($datas['isVillage'] ? $datas['villageInfo'] : $datas['townInfo']) : $datas['countyInfo'];
 		$model = new Merchant();
 		$infos = $model->getInfos();
 		$datas = [
 			'infos' => $infos,
+			'countyInfo' => $datas['countyInfo'],
 			'regionInfo' => $regionInfo,
 		];
 

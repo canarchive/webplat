@@ -15,6 +15,7 @@ $this->params['friendLink'] = true;
 
 $this->params['formPosition'] = 'region';
 $this->params['formPositionName'] = $regionInfo['name'];
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-region/region', 'city_code' => Yii::$app->params['currentCompany']['code_short'], 'county' => $countyInfo['spell_one'], 'vtown' => $regionInfo['spell_one'] == $countyInfo['spell_one'] ? '' : $regionInfo['spell_one'], 'page' => 1]);
 ?>
 <script type="text/javascript">$(function() {
     setCookie('page_flag', 'provider');

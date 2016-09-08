@@ -8,6 +8,7 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
 	'rem50', 'jquery', 'common', 'lib/total', 'slideApply',
 ];
+$this->context->pcMappingUrl = Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <?php echo $this->render('../common/_nav', []); ?>
 

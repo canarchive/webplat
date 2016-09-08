@@ -18,6 +18,7 @@ $this->params['showPage'] = true;
 //print_R($info);exit();
 $merchantInfo = $info->merchantInfo;
 $statusDatas = $info->statusDatas;
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>
 <div class="pd-header">
