@@ -4,4 +4,6 @@ return [
     '/cp-<code:\w+>' => '/product/index',
 	'signin' => 'site/signin',
 	'signup' => 'site/signup',
+
+	'self' => '/info/index',
 ];

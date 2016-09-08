@@ -8,6 +8,13 @@ use merchant\components\LoginedController;
 
 class InfoController extends LoginedController
 {
+	public function actionIndex()
+	{
+		$datas = [
+			'userInfo' => $this->userInfo,
+		];
+        return $this->render('index', $datas);
+	}
     public function actionSetting()
     {
 		$user = \Yii::$app->user->getIdentity();

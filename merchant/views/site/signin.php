@@ -1,34 +1,38 @@
 <?php
 use yii\helpers\Url;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 $this->params['bodyClass'] = 'auth-back';
 ?>
 <div class="account-container">
     <div class="logo">
-        <a href="https://luosimao.com/"></a>
+	    <a href="<?= Yii::getAlias('@merchanturl'); ?>"></a>
     </div>
     <div class="wrapper">
         <h3 class="wrapper-title">用户登录</h3>
         <div class="row site-width">
-            <form action="https://my.luosimao.com/auth/login" method="post" id="loginForm">
-                <input type="hidden" name="return_to" value="" />
+            <?php $form = ActiveForm::begin(['options' => ['id' => 'loginForm']]); ?>
                 <div class="small-12 columns">
                     <label for="username" class="tit">用户名：</label>
                     <input type="text" class="form-text" name="username" placeholder="输入用户名或Email" id="username" autocomplete="off" require value="" /></div>
                 <div class="small-12 columns">
                     <label for="username" class="tit">密码：</label>
-                    <input type="password" class="form-text" name="password" placeholder="输入密码" id="password" autocomplete="off" require /></div>
+                    <input type="password" class="form-text" name="password" placeholder="输入密码" id="password" autocomplete="off" require />
+					<?php if (!empty($message)) { ?><span class="error">用户名或密码错误</span><?php } ?>
+                </div>
                 <div class="small-12 columns">
                     <label for="username" class="tit">人机验证：</label>
-                    <div class="l-captcha" data-width="100%" data-callback="getResponse" data-site-key="e7b4d20489b69bab25771f9236e2c4be" style="margin-bottom:10px;"></div>
+                    <div class="l-captcha" data-site-key="2d632ed66b5d66d95530f0dcb78b9e62" data-width="100%" style="margin-bottom:10px;" data-callback="getRegResponse"></div>
                 </div>
                 <div class="small-12 columns">
                     <input type="submit" class="button radius success expand" value="立即登录" />
                     <div class="reg-goto">
-                        <a href="https://my.luosimao.com/auth/register">立即注册</a>&nbsp;&nbsp;&nbsp;
-                        <a href="https://my.luosimao.com/auth/forgot_password">忘了密码？</a></div>
+                        <a href='<?= Url::to(['site/signup']); ?>'>立即注册</a>&nbsp;&nbsp;&nbsp;
+						<!--<a href="/forgot_password">忘了密码？</a>-->
+                    </div>
                 </div>
-            </form>
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
     <div class="row site-width">

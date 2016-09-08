@@ -169,4 +169,9 @@ class User extends AuthBase
 		
 		return array_combine(array_keys($merchant_id), array_keys($merchant_id));
 	}
+
+	public function getInfo($where)
+	{
+        return static::findOne($where);
+	}
 }

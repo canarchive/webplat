@@ -50,7 +50,7 @@ class SigninForm extends Model
      *
      * @return boolean whether the user is logged in successfully
      */
-    public function login()
+    public function signin()
     {
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
@@ -67,7 +67,8 @@ class SigninForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = MerchantUser::findByUsername($this->username);
+			$userModel = new User();
+            $this->_user = $userModel->getInfo(['mobile' => $this->username]);
         }
 
         return $this->_user;

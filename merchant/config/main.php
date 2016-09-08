@@ -42,10 +42,11 @@ return [
     'as access' => [
         'class' => 'merchant\components\AccessControl',
         'allowActions' => [
-			'info/*',
+			//'info/*',
 			'site/index',
 			'site/signin',
 			'site/signup',
+			'site/logout',
 			'product/*',
             'debug/*',
         ]

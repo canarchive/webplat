@@ -44,6 +44,7 @@ $jsFooterFiles = isset($this->params['jsFooterFiles']) ? $this->params['jsFooter
 foreach ($jsFooterFiles as $jsFile) { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/merchant') . '/lview/js/' . $jsFile . '.js'; ?>"></script>
 <?php } ?>
+<?php if (isset($this->params['jsFooterString'])) { echo $this->params['jsFooterString']; } ?>
 <script src="//captcha.luosimao.com/static/dist/api.js"></script>
 </body>
 </html>
