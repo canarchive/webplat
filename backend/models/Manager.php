@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use common\models\AuthBase;
@@ -84,7 +85,7 @@ class Manager extends AuthBase
 
     public function checkOldPassword()
     {
-        $result = \Yii::$app->security->validatePassword($this->oldpassword, $this->getOldAttribute('password'));
+        $result = Yii::$app->security->validatePassword($this->oldpassword, $this->getOldAttribute('password'));
         if (!$result) {
             $this->addError('oldpassword', '旧密码错误');
         }
@@ -123,7 +124,7 @@ class Manager extends AuthBase
             if ($this->isNewRecord) {
                 $this->status = self::STATUS_NOACTIVE;
             }
-			if (\Yii::$app->controller->id == 'site') {
+			if (Yii::$app->controller->id == 'site') {
 				return true;
 			}
             if (!empty($this->password_new)) {
@@ -139,11 +140,11 @@ class Manager extends AuthBase
 	{
         parent::afterSave($insert, $changedAttributes);
 
-		if (\Yii::$app->controller->id == 'site' || in_array($this->scenario, ['edit-info', 'edit-password'])) {
+		if (Yii::$app->controller->id == 'site' || in_array($this->scenario, ['edit-info', 'edit-password'])) {
 			return true;
 		}
 		$id = $this->attributes['id'];
-        $manager = \Yii::$app->getAuthManager();
+        $manager = Yii::$app->getAuthManager();
         $manager->revokeAll($this->id);
 		foreach ((array) $this->roles as $roleName) {
 			if (empty($roleName)) {
@@ -167,15 +168,35 @@ class Manager extends AuthBase
 
 	public function getRoles()
 	{
-        $roles = \yii\helpers\ArrayHelper::getColumn(\Yii::$app->getAuthManager()->getRolesByUser($this->id), 'name');
+        $roles = \yii\helpers\ArrayHelper::getColumn(Yii::$app->getAuthManager()->getRolesByUser($this->id), 'name');
 		return $roles;
 	}
 
 	public function getRoleInfos()
 	{
-        $manager = \Yii::$app->getAuthManager();
+        $manager = Yii::$app->getAuthManager();
 		$roles = $manager->getRoles();
 		
 		return array_combine(array_keys($roles), array_keys($roles));
+	}
+
+	public function getInfos($where = [])
+	{
+		$infos = self::find()->all();
+
+		return $infos;
+	}
+
+	public function getInfosByRoles($roles)
+	{
+		$ids = [];
+		foreach ($roles as $role) {
+            $idsTmp = Yii::$app->getAuthManager()->getUserIdsByRole($role);
+			$ids = array_merge($ids, $idsTmp);
+		}
+
+		$infos = self::find()->where(['id' => $ids, 'status' => 1])->all();
+
+		return $infos;
 	}
 }
