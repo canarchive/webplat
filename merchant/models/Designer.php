@@ -80,12 +80,6 @@ class Designer extends MerchantModel
 		return true;
 	}	
 
-	public function getMerchantInfos()
-	{
-		$infos = ArrayHelper::map(\merchant\models\Merchant::find()->all(), 'id', 'name');
-		return $infos;
-	}
-
 	public function getInfos($where, $limit = 100)
 	{
 		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
