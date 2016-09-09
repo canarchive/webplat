@@ -6,6 +6,10 @@ $detailViewParams = [
 		'id',
 		'code',
         'name',
+		[
+			'attribute' => 'status',
+			'value' => isset($model->managerAllInfos[$model->manager_id]) ? $model->managerAllInfos[$model->manager_id] : '',
+		],
 		'mobile',
 		[
 			'attribute' => 'status',
