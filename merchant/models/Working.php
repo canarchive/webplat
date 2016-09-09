@@ -2,6 +2,7 @@
 
 namespace merchant\models;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 use common\models\MerchantModel;
 use spread\models\CustomService;
@@ -14,6 +15,7 @@ class Working extends MerchantModel
 	public $serviceInfo;
 	public $statusDatas;
 	public $merchantInfo;
+	public $avatar;
     
     /**
      * @inheritdoc
@@ -107,6 +109,11 @@ class Working extends MerchantModel
 	protected function _formatInfo($info)
 	{
 		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
+		$info['house_type'] = $info->houseTypeInfos[$info->house_type];
+		$info['style'] = $info->styleInfos[$info->style];
+		$info['status'] = $info->statusInfos[$info->status];
+		$info['avatar'] = strpos($info['owner_name'], '女士') !== false ? Yii::getAlias('@asseturl') . '/gallerycms/home/images/face04.png' : Yii::getAlias('@asseturl') . '/gallerycms/home/images/face03.png';
+		$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
 		$info['serviceInfo'] = CustomService::findOne($info['service_id'])->toArray();
 		$workingStatus = new WorkingStatus();
 		$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
@@ -123,6 +130,8 @@ class Working extends MerchantModel
 			$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
 			$info['house_type'] = $info->houseTypeInfos[$info->house_type];
 			$info['style'] = $info->styleInfos[$info->style];
+			$info['status'] = $info->statusInfos[$info->status];
+			$info['avatar'] = strpos($info['owner_name'], '女士') !== false ? Yii::getAlias('@asseturl') . '/gallerycms/home/images/face04.png' : Yii::getAlias('@asseturl') . '/gallerycms/home/images/face03.png';
 			$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
 			$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
 		}

@@ -1,11 +1,19 @@
 <?php
+use yii\helpers\Url;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-        'name',
+		[
+			'format' => 'raw',
+            'attribute' => 'name',
+			'value' => function($model) {
+				$url = Yii::getAlias('@gallerycmsurl') . Url::to(['/realcase/show', 'id' => $model->id]);
+				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
+			},
+		],
 		[
 			'format' => 'raw',
 			'attribute' => 'thumb',

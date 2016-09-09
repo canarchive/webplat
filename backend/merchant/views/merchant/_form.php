@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use merchant\models\Category;
 use yii\helpers\Url;
 use common\widgets\FileUploadUI;
 use merchant\models\Attachment;
@@ -38,7 +37,11 @@ $model->aptitude = $attachmentModel->getFieldIds('merchant', 'aptitude', $model-
         ],
     ]);
     ?>
-    <?= $form->field($model, 'category_id')->dropDownList($model->categoryInfos, ['prompt' => Yii::t('admin-common', 'Select Category')]); ?>
+    <?= $form->field($model, 'num_owner')->textInput() ?>
+    <?= $form->field($model, 'num_realcase')->textInput() ?>
+    <?= $form->field($model, 'num_working')->textInput() ?>
+    <?= $form->field($model, 'score')->textInput() ?>
+    <?= $form->field($model, 'praise')->textInput() ?>
     <?= $form->field($model, 'hotline')->textInput() ?>
     <?= $form->field($model, 'postcode')->textInput() ?>
     <?= $form->field($model, 'address')->textInput() ?>

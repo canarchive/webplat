@@ -1,11 +1,19 @@
 <?php
+use yii\helpers\Url;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-        'name',
+		[
+			'format' => 'raw',
+            'attribute' => 'name',
+			'value' => function($model) {
+				$url = Yii::getAlias('@gallerycmsurl') . Url::to(['/decoration-company/show', 'id' => $model->id]);
+				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
+			},
+		],
 		[
 			'format' => 'raw',
 			'attribute' => 'logo',
@@ -50,10 +58,10 @@ $gridViewParams = [
             'value' => function($model) {
                 $menus = $this->context->menuInfos['menus'];
                 $opeStr = '';
-                $elems = ['merchant_merchant-realcase_add', 'merchant_merchant_designer_add', 'merchant_merchant_working_add'];
+                $elems = ['merchant_merchant-realcase_add', 'merchant_merchant-designer_add', 'merchant_merchant-working_add'];
                 foreach ($elems as $elem) {
                     if (isset($menus[$elem])) {
-                    $opeStr .= "<a href='{$menus[$elem]['url']}?merchant_id={$model->id}'>{$menus[$elem]['name']}</a>";
+                    $opeStr .= "<a href='{$menus[$elem]['url']}?merchant_id={$model->id}'>{$menus[$elem]['name']}</a><br />";
                     }
                 }
                 return $opeStr;
