@@ -6,6 +6,12 @@ $tableName = 'activity_user';
 <div class="row">
     <div class="box col-md-12">
         <div class="box-inner">
+		    <div data-original-title="" class="box-header well">
+                <h2>业主报名信息</h2>
+                <div class="box-icon">
+                     <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                </div>
+            </div> 
             <div class="box-content">
                 <table class="table table-striped table-bordered responsive">
                     <thead>

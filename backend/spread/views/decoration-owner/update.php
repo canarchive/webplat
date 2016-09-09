@@ -34,63 +34,9 @@ if (!empty($model)) {
     echo $this->render('_base_info', ['model' => $model, 'modelUser' => $modelUser]);
 }
 //echo $this->render('_base_user', ['model' => $model, 'modelUser' => $modelUser]);
-echo $this->render('_listinfo_owner_house', ['modelDecorationOwner' => $model, 'modelUser' => $modelUser, 'ownerHouseInfos' => $ownerHouseInfos]);
+echo $this->render('_listinfo_owner_house', ['modelDecorationOwner' => $model, 'modelUser' => $modelUser, 'ownerHouseInfos' => $ownerHouseInfos, 'ownerMerchantInfos' => $ownerMerchantInfos]);
 echo $this->render('_listinfo_callback', ['modelActivityUser' => $model, 'modelUser' => $modelUser, 'callbackInfos' => $callbackInfos]);
 ?>
-<script>
-function addElemForUser(data)
-{
-	var url = '';
-	var table = data.table;
-    $.ajax({
-	    type: "POST",
-	    url: url,
-		data: data,
-        success: function(response) {
-			var status = response.status;
-			if (status == 200) {
-				if (table == 'callback') {
-					var newContent = "<tr>"
-						+ "<td>" + data.content + "</td>"
-						+ "<td>" + response.created_at + "</td>"
-						+ "</tr>";
-				} else if (table == 'user_house') {
-					var newContent = response.content;
-				}
-                ShowSuccessMessage("信息添加成功", 3000);
-				$("#" + table + "_infos").append(newContent);
-			} else {
-                ShowErrorMessage(response.message, 3000);
-			}
-		}
-	});
-}
-
-function updateElemForUser(table, info_id, field, value)
-{
-	var url = '';
-	var data = {
-	    'table': table,
-		'info_id': info_id,
-		'field': field,
-		'value': value
-	};
-	console.log(data);
-    $.ajax({
-	    type: "POST",
-	    url: url,
-		data: data,
-		dataType: "json",
-        success: function(data) {
-			if (data.status == 200) {
-                ShowSuccessMessage("信息编辑成功", 3000);
-			} else {
-                ShowErrorMessage(data.message, 3000);
-			}			
-		}
-	});
-}
-</script>
 <script type="text/javascript">
 $(document).ready(function(){
     //提示成功信息    
@@ -122,51 +68,55 @@ $(document).ready(function(){
     //ShowErrorMessage("Hello error!", 5000);
 });
 
-function addElemForOwner(data)
+function addElemForUser(data)
 {
-    var url = '';
-    var table = data.table;
+	var url = '';
+	var table = data.table;
     $.ajax({
-        type: "POST",
-        url: url,
-        data: data,
+	    type: "POST",
+	    url: url,
+		data: data,
         success: function(response) {
-            var status = response.status;
-            if (status == 200) {
-                if (table == 'callback') {
-                    var newContent = "<tr>"
-                        + "<td>" + data.content + "</td>"
-                        + "<td>" + response.created_at + "</td>"
-                        + "</tr>";
-                } else if (table == 'owner_house') {
-                    newContent = response.content;
-                }
-                alert('信息添加成功');
-                $("#" + table + "_infos").append(newContent);
-            } else {
-                alert(response.message);
-            }
-        }
-    });
+			var status = response.status;
+			if (status == 200) {
+				if (table == 'callback') {
+					var newContent = "<tr>"
+						+ "<td>" + data.content + "</td>"
+						+ "<td>" + response.created_at + "</td>"
+						+ "</tr>";
+				} else if (table == 'owner_house' || table == 'owner_merchant') {
+					var newContent = response.content;
+				}
+                ShowSuccessMessage("信息添加成功", 3000);
+				$("#" + table + "_infos").prepend(newContent);
+			} else {
+                ShowErrorMessage(response.message, 3000);
+			}
+		}
+	});
 }
 
-
-function updateElemForOwner(table, info_id, field, value)
+function updateElemForUser(table, info_id, field, value)
 {
-    var url = '';
-    var data = {
-        'table': table,
-        'info_id': info_id,
-        'field': field,
-        'value': value
-    };
+	var url = '';
+	var data = {
+	    'table': table,
+		'info_id': info_id,
+		'field': field,
+		'value': value
+	};
     $.ajax({
-        type: "POST",
-        url: url,
-        data: data,
-        success: function(data,status) {
-            alert("Data: " + data + "\nStatus: " + status);
-        }
-    });
+	    type: "POST",
+	    url: url,
+		data: data,
+		dataType: "json",
+        success: function(data) {
+			if (data.status == 200) {
+                ShowSuccessMessage("信息编辑成功", 3000);
+			} else {
+                ShowErrorMessage(data.message, 3000);
+			}			
+		}
+	});
 }
 </script>
