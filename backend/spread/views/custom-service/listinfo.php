@@ -7,6 +7,13 @@ $gridViewParams = [
         'id',
 		'code',
         'name',
+		[
+            'attribute' => 'mananger_id',
+			'value' => function($model) {
+				$return  = isset($model->managerAllInfos[$model->manager_id]) ? $model->managerAllInfos[$model->manager_id] : '';
+				return $return;
+			}
+		],
 		'mobile',
 		'serviced_num',
 		'serviced_times',
