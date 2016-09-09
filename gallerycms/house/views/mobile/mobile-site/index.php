@@ -7,6 +7,7 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
 	'jquery', 'rem50',
 ];
+$this->context->pcMappingUrl = Url::to(['/house/site/home', 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <div class="toptitle">
     <a href="<?= Url::to(['/house/mobile-site/select-city']); ?>">

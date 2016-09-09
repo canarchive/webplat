@@ -34,7 +34,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <meta name="applicable-device" content="pc" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta http-equiv="Cache-Control" content="no-transform" />
-<meta name="mobile-agent" content="format=html5;url=http://m./bj/" />
+<meta name="mobile-agent" content="format=html5;url=<?= $this->context->mobileMappingUrl; ?>" />
 <link rel="alternate" media="only screen and (max-width:750px)" href="" />
 <title><?= $seoTitle; ?></title>
 <meta name="keywords" content="<?= $seoKeyword; ?>" />
@@ -43,12 +43,14 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
 <link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/gallerycms') . '/home/css/' . $cssFile . '.css?v=151020'; ?>" />
 <?php } } ?>
-
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/home/js/' . $jsFile . '.js'; ?>"></script>
 <?php } } ?>
-
 <script type="text/javascript">
+var isMobile = '<?= intval($this->context->isMobile); ?>';
+if (isMobile == 1) {
+    //window.location.href = "<?= $this->context->mobileMappingUrl; ?>";
+}
 window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';
@@ -60,6 +62,7 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
+<?= $this->render('@gallerycms/house/views/_stat', []); // 顶部 ?>
 </head>
 <body>
 <?php if (!isset($this->params['showPage'])) { ?>

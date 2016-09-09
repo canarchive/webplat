@@ -9,6 +9,7 @@ $this->params['jsFiles'] = [
 	'rem50', 'jquery-1.11.3.min', 'slideApply', 'lib/total', 
 	'appOpenEmbed', 'company/companyList',
 ];
+$this->context->pcMappingUrl = Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <style type="text/css">body { background-color: #fff; }</style>
 
@@ -83,7 +84,7 @@ $this->params['jsFiles'] = [
             <div class="form-btn-group">
                 <input type="button" value="免费申请" class="submit-btn win_sub" id="apply_button" /></div>
             <div class="form-notice">
-                <span class="font-mark">注：</span>同一小区同批验房达到5户，可安排免费上门验房服务</div></div>
+                <span class="font-mark">注：</span>找装修公司，团家汇比其他渠道便宜20%</div></div>
         <span class="form-close"></span>
     </form>
 </div>

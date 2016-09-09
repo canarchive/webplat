@@ -11,6 +11,7 @@ $this->params['jsFiles'] = [
 
 $merchantInfo = $info->merchantInfo;
 $statusDatas = $info->statusDatas;
+$this->context->pcMappingUrl = Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <?php echo $this->render('../common/_nav', []); ?>
 <div class="toptitle total-top">
@@ -117,7 +118,7 @@ $statusDatas = $info->statusDatas;
             <div class="form-btn-group">
                 <input type="button" value="免费申请" class="submit-btn win_sub" id="apply_button" /></div>
             <div class="form-notice">
-                <span class="font-mark">注：</span>同一小区同批验房达到5户，可安排免费上门验房服务</div></div>
+                <span class="font-mark">注：</span>找装修公司，团家汇比其他渠道便宜20%</div></div>
         <span class="form-close"></span>
     </form>
 </div>

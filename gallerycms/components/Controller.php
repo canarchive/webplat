@@ -10,6 +10,8 @@ class Controller extends CommonController
 {
 	public $isMobile;
 	public $host;
+    public $pcMappingUrl;
+    public $mobileMappingUrl;
 
     public function init()
     {
@@ -18,27 +20,25 @@ class Controller extends CommonController
 		$this->host = \Yii::$app->request->hostInfo;
 		$hostPc = Yii::getAlias('@gallerycmsurl');
 		$hostMobile = Yii::getAlias('@m.gallerycmsurl');
-        //$this->isMobile = $this->clientIsMobile();
-		$this->isMobile = $this->host == $hostMobile ? true : false;
+        $this->isMobile = $this->clientIsMobile();
+		//$this->isMobile = $this->host == $hostMobile ? true : false;
+		$this->pcMappingUrl = $hostPc;
+		$this->mobileMappingUrl = $hostMobile;
 
 		$url = Yii::$app->request->url;
 		$cityCode = isset($this->module->currentCityCode) ? $this->module->currentCityCode : null;
 		$redirect = strpos($url, 'index.php') !== false ? true : false;
-		$redirect = empty($redirect) ? $this->isMobile && $this->host != $hostMobile : $redirect;
-		$redirect = empty($redirect) ? !$this->isMobile && $this->host == $hostMobile : $redirect;
+		//$redirect = empty($redirect) ? $this->isMobile && $this->host != $hostMobile : $redirect;
+		//$redirect = empty($redirect) ? !$this->isMobile && $this->host == $hostMobile : $redirect;
 		$redirect = empty($redirect) ? $this->host == $hostMobile && is_null($cityCode) && $url == '/' : $redirect;
 		$redirect = empty($redirect) ? $this->host == $hostPc && is_null($cityCode) && $url == '/' : $redirect;
 		$redirect = empty($redirect) ? !is_null($cityCode) && $cityCode != Yii::$app->params['currentCompany']['code_short'] : $redirect;
 		if ($redirect) {
-			$rule = $this->_redirectRule();
-			$url = Url::to([$rule, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
-			header("Location:$url");
-		    //return Yii::$app->response->redirect($url)->send();
-			exit();
+			$this->_redirectRule();
 		}
 
 		if (isset($this->module->viewPath)) {
-			$this->module->viewPath .= $this->isMobile ? '/mobile' : '/pc';
+			$this->module->viewPath .= $this->host == $hostMobile ? '/mobile' : '/pc';
 		}
     }
 
@@ -75,6 +75,11 @@ class Controller extends CommonController
         }
 
 		Yii::$app->params['tdkInfos'] = $info;
+		return ;
+	}
+
+	protected function _redirectRule()
+	{
 		return ;
 	}
 }
