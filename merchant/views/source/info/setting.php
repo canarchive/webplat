@@ -7,7 +7,18 @@ $this->params['jsFooterFiles'] = [
 ];
 ?>
 <div class="container">
-    <?= $this->render('_nav', ['curAction' => 'setting']); ?>
+    <aside class="sidebar">
+        <ul class="side-list">
+            <li>
+                <a href="https://my.luosimao.com/">服务概览</a></li>
+            <li>
+                <a href="https://my.luosimao.com/article">网站公告</a></li>
+            <li class="active">
+                <a href="https://my.luosimao.com/auth/setting">账号设置</a></li>
+            <li>
+                <a href="https://my.luosimao.com/user/user_log">安全日志</a></li>
+        </ul>
+    </aside>
     <section class="main-wrap dash-main-wrap">
         <div class="pager-block">
             <div class="pager-title-block">

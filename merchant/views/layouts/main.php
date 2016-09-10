@@ -10,52 +10,53 @@ use yii\helpers\Url;
                 <div class="row doc-width">
                     <div class="small-12 columns">
                         <div class="logo">
-                            <a href="https://luosimao.com/" title="返回首页">Luosimao</a></div>
+							<a href="<?= Yii::getAlias('@merchanturl'); ?>" title="返回首页">tuanjiahui</a>
+                        </div>
                         <div class="menu right">
-                            <a href="https://my.luosimao.com/auth/login" class="button tiny radius success" title="登录">登录</a>
-                            <a href="https://my.luosimao.com/auth/register" class="button tiny radius info" title="注册luosimao会员">注册</a></div>
+                            <?php if (Yii::$app->user->isGuest) { ?>
+						    <a href="<?= Url::to(['/site/signin']); ?>" class="button tiny radius success" title="登录">登录</a>
+							<a href="<?= Url::to(['/site/signup']); ?>" class="button tiny radius info" title="注册tuanjiahui会员">注册</a>
+                            <?php } else { ?>
+                            <span class="is-login">
+							    <a href="<?= Url::to(['/info/index']); ?>" class="button radius success tiny" title="进入管理中心">进入管理中心</a>
+                            </span>
+                            <?php } ?>
+                        </div>
                         <nav class="nav right">
-                            <a href="https://luosimao.com/" title="首页" class="active">首页</a>
-                            <a href="https://luosimao.com/service/sms" title="短信发送服务与价格">短信服务</a>
-                            <a href="https://luosimao.com/service/mail" title="邮件发送服务与价格">邮件服务</a>
-                            <a href="https://luosimao.com/service/voice" title="语音验证码服务与价格">语音验证</a>
-                            <a href="https://luosimao.com/service/captcha" title="人机验证">人机验证</a>
-                            <a href="https://luosimao.com/docs/guid/" title="Luosimao平台使用指南">使用指南</a>
-                            <a href="https://luosimao.com/docs/api/" title="短信接口及语音接口介绍">API接口</a></nav>
+						    <a href="<?= Yii::getAlias('@merchanturl'); ?>" title="首页" class="active">首页</a>
+							<a href="<?= Url::to(['/document/index']); ?>" title="Tuanjiahui平台使用指南">使用指南</a>
+                        </nav>
                     </div>
                 </div>
             </div>
             <header class="header-mini show-for-small">
-                <div class="left logo">
-                    <a href="https://luosimao.com/"></a>
-                </div>
+                <div class="left logo"><a href="<?= Yii::getAlias('@merchanturl'); ?>"></a></div>
                 <div class="menu right">
-                    <a href="#" class="right-off-canvas-toggle">
-                        <i class="fa fa-bars"></i>
-                    </a>
+                    <a href="#" class="right-off-canvas-toggle"><i class="fa fa-bars"></i></a>
                 </div>
             </header>
             <aside class="right-off-canvas-menu side-panel">
+                <?php if (!Yii::$app->user->isGuest) { ?>
+                <div class="user-block"><span class="name">iamwangcan</span></div>
+                <?php } ?>
                 <nav class="nav">
                     <ul class="nav-list">
                         <li>
-                            <a href="https://luosimao.com/" title="首页">首页</a></li>
+						    <a href="<?= Yii::getAlias('@merchanturl'); ?>" title="首页">首页</a>
+                        </li>
                         <li>
-                            <a href="https://luosimao.com/service/sms" title="短信发送服务与价格">短信服务</a></li>
+						<a href="<?= Url::to(['/document/index']); ?>" title="Tuanjiahui平台使用指南">使用指南</a>
+                        </li>
+                        <?php if (Yii::$app->user->isGuest) { ?>
                         <li>
-                            <a href="https://luosimao.com/service/mail" title="邮件发送服务与价格">邮件服务</a></li>
+							<a href="<?= Url::to(['/site/signin']); ?>" class="button small radius success expand" title="登录">登录</a>
+                        </li>
                         <li>
-                            <a href="https://luosimao.com/service/voice" title="语音验证码服务与价格">语音验证</a></li>
-                        <li>
-                            <a href="https://luosimao.com/service/captcha" title="人机验证">人机验证</a></li>
-                        <li>
-                            <a href="https://luosimao.com/docs/guid/" title="Luosimao平台使用指南">使用指南</a></li>
-                        <li>
-                            <a href="https://luosimao.com/docs/api/" title="短信接口及语音接口介绍">API接口</a></li>
-                        <li>
-                            <a href="https://my.luosimao.com/auth/login" class="button small radius success expand" title="登录">登录</a></li>
-                        <li>
-                            <a href="https://my.luosimao.com/auth/register" class="button small radius info expand" title="注册luosimao会员">注册</a></li>
+							<a href="<?= Url::to(['/site/signup']); ?>" class="button small radius info expand" title="注册tuanjiahui会员">注册</a>
+                        </li>
+                        <?php } else { ?>
+						<li><a href="<?= Url::to(['/info/index']); ?>" class="button radius success small expand" title="进入管理中心">进入管理中心</a></li>
+                        <?php } ?>
                     </ul>
                 </nav>
             </aside>
@@ -64,45 +65,23 @@ use yii\helpers\Url;
         <footer class="footer">
             <div class="row site-width">
                 <div class="small-12 columns">
-                    <div class="company-logo">
-                        <a href="http://www.techsylar.com/" target="_blank" title="Techsylar.Inc"></a>
-                    </div>
                     <div class="footer-inner">
                         <div class="bottom-link">
-                            <a href="https://luosimao.com/docs/about" title="关于我们">关于我们</a>
-                            <a href="https://luosimao.com/docs/guid/31" title="隐私政策">隐私政策</a>
-                            <a href="https://luosimao.com/docs/guid/18" title="服务条款">服务条款</a>
-                            <a href="https://luosimao.com/docs/about/27" title="联系我们">联系我们</a>
-                            <a href="https://luosimao.com/docs/api" title="短信接口">接口文档</a>
-                            <a href="http://weibo.com/luosimaocom/" target="_blank" title="新浪微博">新浪微博</a></div>
+						    <a href="<?= Yii::getAlias('@gallerycmsurl') . '/info-aboutus.html'; ?>" title="关于我们">关于我们</a>
+							<a href="<?= Url::to(['/document/index', 'code' => 'yszc']); ?>" title="隐私政策">隐私政策</a>
+							<a href="<?= Url::to(['/document/index', 'code' => 'fwtk']); ?>" title="隐私政策">隐私政策</a>
+                        </div>
                         <div class="company-info ">
                             <div class="footer-tips ">
-                                <span class="bottom-tips">客服热线 021-31234560 &nbsp;</span>
-                                <span class="bottom-tips">客服工作时间 9:00-18:00（周日和节日除外）</span></div>&copy; 2016 铁壳网络
-                            <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备11011422号</a>增值电信经营许可证 B2-20150858
-                            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010702001336">
-                                <img src="//s.luosimao.com/images/website/beian.png" style="margin-right:5px" />沪公网安备 31010702001336号</a></div>
+							    <span class="bottom-tips">客服热线 <?= Yii::$app->params['siteHotline']; ?> &nbsp;</span>
+								<span class="bottom-tips">客服工作时间 9:00-18:00（周日和节日除外）</span>
+							</div>
+							<a href="javascript: void(0);"><?= Yii::$app->params['siteIcpInfo']; ?></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </footer>
-        <script>var _hmt = _hmt || []; (function() {
-                var hm = document.createElement("script");
-                hm.src = "//hm.baidu.com/hm.js?588936199c3632c17bd6fb753b9bc3a6";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();</script>
-        <!--Kefuzu Chat Script Start-->
-        <script type="text/javascript">var __kc = __kc || {};
-            __kc.o = 'xYqLOt8sL3oa'; (function() {
-                var kc = document.createElement('script');
-                kc.type = 'text/javascript';
-                kc.async = true;
-                kc.src = ('https:' == document.location.protocol ? 'https://': 'http://') + 'v1.kefuzu.com/static/v1/dist/widget.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(kc, s);
-            })();</script>
-        <!--Kefuzu Chat Script End-->
         <a class="exit-off-canvas"></a>
     </div>
 </div>
