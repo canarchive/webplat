@@ -21,7 +21,7 @@ class MerchantModel extends BaseModel
 
 	protected function getMerchantInfos($where = [])
 	{
-		$infos = ArrayHelper::map(Merchant::find($where)->all(), 'id', 'name');
+		$infos = ArrayHelper::map(Merchant::find()->where($where)->all(), 'id', 'name');
 		return $infos;
 	}
 
