@@ -32,11 +32,12 @@ class OwnerMerchant extends MerchantModel
     {
     }
 
-	public function getMerchantInfos($where = [])
+	public function getMerchantInfos()
 	{
-		$infos = parent::getMerchantInfos(['is_spider' => 0]);
+		$infos = $this->_getMerchantInfos(['is_spider' => 0]);
 		return $infos;
 	}
+
 	public function getStatusInfos()
 	{
 		$datas = [

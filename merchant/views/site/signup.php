@@ -26,7 +26,7 @@ use yii\helpers\Html;
                     <input type="text" name="email" id="email"require data-validate="email" value="" /></div>
                 <div class="small-12 columns">
                     <label for="captcha" class="tit">人机验证：</label>
-                    <div class="l-captcha" data-site-key="2d632ed66b5d66d95530f0dcb78b9e62" data-width="100%" style="margin-bottom:10px;" data-callback="getRegResponse"></div>
+					<div class="l-captcha" data-site-key="<?= Yii::$app->params['luosimaoCaptcha']['siteKey']; ?>" data-width="100%" style="margin-bottom:10px;" data-callback="getRegResponse"></div>
                 </div>
                 <!--<div class="small-12 columns">点击下方的“注册”按钮即代表我同意
                     <a href="https://luosimao.com/docs/guid/18" target="_blank">《Luosimao 服务协议》</a></div>-->

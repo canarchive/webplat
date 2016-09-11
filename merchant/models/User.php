@@ -5,6 +5,7 @@ namespace merchant\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 use common\models\AuthBase;
 
 /**
@@ -16,7 +17,6 @@ class User extends AuthBase
     const STATUS_ACTIVE = 1;
     const STATUS_LOCK = 99;
 
-	public $merchant_id;
     public $password_new_repeat;
     public $oldpassword;
     public $password_new;
@@ -48,8 +48,8 @@ class User extends AuthBase
     public function scenarios()
     {
         return [
-            'create' => ['email', 'password_new', 'password_new_repeat', 'status', 'auth_role', 'merchant_id'],
-            'update' => ['email', 'password_new', 'password_new_repeat', 'status', 'auth_role', 'merchant_id'],
+            'create' => ['mobile', 'truename', 'email', 'password', 'status', 'merchant_id'],
+            'update' => ['truename', 'email', 'password_new', 'status', 'merchant_id'],
             //'edit-password' => ['oldpassword', 'password_new', 'password_new_repeat'],
         ];
     }
@@ -61,10 +61,7 @@ class User extends AuthBase
     {
         return [
 			[['oldpassword'], 'required'],
-            [['oldpassword'], 'checkOldPassword', 'on' => ['edit-password']],
-            ['password_new', 'required', 'on' => ['create', 'edit-password']],
-            ['password_new', 'string', 'min' => 6, 'when' => function($model) { return $model->password_new != ''; }],
-            ['password_new', 'compare', 'on' => ['edit-password']],
+			[['status'], 'default', 'value' => 0],
 			[['truename', 'email', 'mobile', 'status', 'merchant_id'], 'safe', 'on' => ['create', 'update']],
         ];
     }
@@ -78,7 +75,6 @@ class User extends AuthBase
 		if ($this->oldpassword == $this->password) {
             $this->addError('oldpassword', '新密码不能跟旧密码相同');
 		}
-
     }
 
     /**
@@ -93,6 +89,7 @@ class User extends AuthBase
 			'login_num' => '登录次数',
             'password' => '密码',
             'oldpassword' => '旧密码',
+            'password_new' => '新密码',
             'password_new_repeat' => '确认密码',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
@@ -107,37 +104,18 @@ class User extends AuthBase
     {
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
-                $this->status = self::STATUS_NOACTIVE;
+				$this->setPassword($this->password);
+            } else if (!empty($this->password_new)) {
+			    $this->setPassword($this->password_new);
             }
-			if (\Yii::$app->controller->id == 'site') {
-				return true;
-			}
-            if (!empty($this->password_new)) {
-			$this->setPassword($this->password_new, 'password');
-            }
-            return true;
         }
 
-        return false;
+        return true;
     }
 
 	public function afterSave($insert, $changedAttributes)
 	{
         parent::afterSave($insert, $changedAttributes);
-
-		if (\Yii::$app->controller->id == 'site' || in_array($this->scenario, ['edit-info', 'edit-password'])) {
-			return true;
-		}
-		$id = $this->attributes['id'];
-        $manager = \Yii::$app->getAuthManager();
-        $manager->revokeAll($this->id);
-		foreach ((array) $this->merchant_id as $roleName) {
-			if (empty($roleName)) {
-				continue;
-			}
-            $role = $manager->getRole($roleName);
-            $manager->assign($role, $id);
-		}
 
 		return true;
 	}
@@ -166,8 +144,8 @@ class User extends AuthBase
     }  
 	public function getMerchantInfos()
 	{
-		
-		return array_combine(array_keys($merchant_id), array_keys($merchant_id));
+		$infos = ArrayHelper::map(Merchant::find()->where(['is_spider' => 0])->all(), 'id', 'name');
+		return $infos;
 	}
 
 	public function getInfo($where)

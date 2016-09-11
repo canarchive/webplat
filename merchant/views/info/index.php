@@ -70,13 +70,15 @@ $this->params['jsFooterFiles'] = [
             <div class="small-12 medium-4 large-3 columns">
                 <div class="aside-section account-info">
                     <div class="hd">
-                        <a href="https://my.luosimao.com/auth/setting" class="right">修改</a>
-                        <h5>账户信息</h5></div>
+					    <a href="<?= Url::to(['/info/setting']); ?>" class="right">修改</a>
+						<h5>账户信息</h5>
+                    </div>
                     <div class="bd">
-                        <label>用户名</label>iamwangcan
-                        <label>电子邮件</label>iamwangcan@163.com
-                        <label>联系电话</label>13811974106
-                        <div class="panel callout radius">请确保联系方式正确及畅通,便于我们及时通知相关事务</div></div>
+					    <label>用户名</label><?= $userInfo['truename']; ?>
+                        <label>电子邮件</label><?= $userInfo['email']; ?>
+						<label>联系电话</label><?= $userInfo['mobile']; ?>
+						<div class="panel callout radius">请确保联系方式正确及畅通,便于我们及时通知相关事务</div>
+                    </div>
                 </div>
             </div>
         </div>

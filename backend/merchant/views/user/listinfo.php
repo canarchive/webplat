@@ -1,39 +1,26 @@
 <?php
-use yii\helpers\Url;
-
 $gridViewParams = [
     'dataProvider' => $dataProvider,
     //'filterModel' => $searchModel,
     'columns' => [
-        'id',
+		'id',
+        'truename',
+        'mobile',
 		[
-			'format' => 'raw',
-            'attribute' => 'name',
-			'value' => function($model) {
-				$url = Yii::getAlias('@gallerycmsurl') . Url::to(['/realcase/show', 'id' => $model->id]);
-				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
-			},
-		],
-		[
-			'format' => 'raw',
-			'attribute' => 'thumb',
-			'value' => function($model) {
-				return $model->getAttachmentImg($model->thumb);
-			}
-		],
-		[
-            'attribute' => 'merchant_id',
+            'attribute' => 'merchant',
 			'value' => function($model) {
 				$return = isset($model->merchantInfos[$model->merchant_id]) ? $model->merchantInfos[$model->merchant_id] : '';
 				return $return;
 			},
 		],
 		[
-            'attribute' => 'service_id',
+			'format' => 'raw',
+			'attribute' => 'email',
 			'value' => function($model) {
-				return $model->serviceInfos[$model->service_id];
-			},
-		],
+				return Yii::$app->formatter->asEmail($model->email);
+			}
+        ],
+        'login_num',
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
@@ -47,10 +34,16 @@ $gridViewParams = [
             },
         ],
 		[
+            'attribute' => 'last_at',
+            'value'=> function($model){
+                return  date('Y-m-d H:i:s',$model->last_at);
+            },
+        ],
+		[
             'attribute' => 'status',
 			'value' => function($model) {
 				return $model->statusInfos[$model->status];
-			}
+			},
 		],
     ],
 ];

@@ -90,4 +90,10 @@ class Designer extends MerchantModel
         //$cache->set($keyCache, $infos);
 		return $infos;
 	}		
+
+	public function getMerchantInfos()
+	{
+		$infos = $this->_getMerchantInfos(['is_spider' => 0]);
+		return $infos;
+	}
 }
