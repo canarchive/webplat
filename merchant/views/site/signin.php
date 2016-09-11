@@ -23,7 +23,7 @@ $this->params['bodyClass'] = 'auth-back';
                 </div>
                 <div class="small-12 columns">
                     <label for="username" class="tit">人机验证：</label>
-                    <div class="l-captcha" data-site-key="2d632ed66b5d66d95530f0dcb78b9e62" data-width="100%" style="margin-bottom:10px;" data-callback="getRegResponse"></div>
+					<div class="l-captcha" data-site-key="<?= Yii::$app->params['luosimaoCaptcha']['siteKey']; ?>" data-width="100%" style="margin-bottom:10px;" data-callback="getRegResponse"></div>
                 </div>
                 <div class="small-12 columns">
                     <input type="submit" class="button radius success expand" value="立即登录" />

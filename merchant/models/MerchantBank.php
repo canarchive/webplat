@@ -81,9 +81,9 @@ class MerchantBank extends MerchantModel
 		return $datas;
 	}
 
-	protected function getMerchantInfos()
+	public function getMerchantInfos()
 	{
-		$infos = ArrayHelper::map(Merchant::find()->all(), 'id', 'name');
+		$infos = $this->_getMerchantInfos(['is_spider' => 0]);
 		return $infos;
 	}
 

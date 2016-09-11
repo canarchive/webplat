@@ -19,7 +19,7 @@ class MerchantModel extends BaseModel
 		return new AttachmentMerchant();
 	}
 
-	protected function getMerchantInfos($where = [])
+	protected function _getMerchantInfos($where = [])
 	{
 		$infos = ArrayHelper::map(Merchant::find()->where($where)->all(), 'id', 'name');
 		return $infos;

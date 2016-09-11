@@ -67,4 +67,10 @@ class MerchantUser extends MerchantModel
 		];
 		return $datas;
 	}
+
+	public function getMerchantInfos()
+	{
+		$infos = $this->getMerchantInfos(['is_spider' => 0]);
+		return $infos;
+	}
 }
