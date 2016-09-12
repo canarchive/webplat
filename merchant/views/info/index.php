@@ -5,6 +5,8 @@ $this->params['jsFooterFiles'] = [
 	'jquery-2.1.0', 'foundation.min', 'highcharts.src',
 	'footable', 'echarts.min', 'main_v2',
 ];
+$merchantInfo = $this->context->merchantInfo;
+Yii::$app->params['seoTitle'] = '商家面板-' . Yii::$app->params['seoTitle'];
 ?>
 <div class="container">
 	<?= $this->render('_nav', ['curAction' => 'index']); ?>
@@ -15,55 +17,15 @@ $this->params['jsFooterFiles'] = [
         </div>
         <div class="row full-width dash-item-list">
             <div class="small-12 medium-8 large-9 columns">
-                <div class="row full-width dash-shopping">
-                    <div class="small-12 columns">
-                        <div class="item">
-                            <div class="hd">
-                                <h5>购买记录</h5></div>
-                            <div class="bd">
-                                <table class="table table-bordered table-striped footable order-list-table">
-                                    <thead>
-                                        <tr>
-                                            <th data-hide="phone,tablet">订单号</th>
-                                            <th>订单详细</th>
-                                            <th data-hide="phone">商品数量</th>
-                                            <th data-hide="phone">支付方式</th>
-                                            <th>金额</th>
-                                            <th data-hide="phone,tablet">时间</th>
-                                            <th>状态</th>
-                                            <th data-hide="phone">操作</th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td height="36">#1107216</td>
-                                            <td>短信10,000条标准包</td>
-                                            <td>1</td>
-                                            <td>
-                                                <span class="label info radius">在线支付</span></td>
-                                            <td>￥850.00</td>
-                                            <td>2016-03-11 09:05:44</td>
-                                            <td>
-                                                <a href="https://my.luosimao.com/shop/order_list/3">
-                                                    <span class="label success radius">已完成</span></a>
-                                            </td>
-                                            <td>-</td></tr>
-                                        <tr>
-                                            <td height="36">#1107215</td>
-                                            <td>短信10,000条标准包</td>
-                                            <td>1</td>
-                                            <td>
-                                                <span class="label info radius">在线支付</span></td>
-                                            <td>￥850.00</td>
-                                            <td>2016-03-11 08:55:46</td>
-                                            <td>
-                                                <a href="https://my.luosimao.com/shop/order_list/2">
-                                                    <span class="label secondary radius">已取消</span></a>
-                                            </td>
-                                            <td>-</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                <div class="aside-section account-info">
+                    <div class="hd">
+					    <!--<a href="<?= Url::to(['/info/setting']); ?>" class="right">修改</a>-->
+						<h5>商家信息</h5>
+                    </div>
+                    <div class="bd">
+					    <label>商家名</label><?php $merchantName = isset($merchantInfo['name']) ? $merchantInfo['name'] : ''; echo $merchantName; ?>
+					    <label>商家地址</label><?php $merchantAddress = isset($merchantInfo['address']) ? $merchantInfo['address'] : ''; echo $merchantAddress; ?>
+						<div class="panel callout radius">请确保商家信息准确无误！</div>
                     </div>
                 </div>
             </div>

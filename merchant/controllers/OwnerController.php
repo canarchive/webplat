@@ -5,13 +5,21 @@ use Yii;
 use yii\helpers\Url;
 use yii\filters\AccessControl;
 use merchant\components\LoginedController;
+use merchant\models\OwnerMerchant;
 
 class OwnerController extends LoginedController
 {
 	public function actionIndex()
 	{
+		$merchantId = 3;//isset($this->merchantInfo['id']) ? $this->merchantInfo['id'] : 0;
+
+		$infos = [];
+		if ($merchantId > 0) {
+		    $ownerMerchant = new OwnerMerchant();
+			$infos = $ownerMerchant->getInfos(['merchant_id' => $merchantId]);
+		}
 		$datas = [
-			'userInfo' => $this->userInfo,
+			'infos' => $infos,
 		];
         return $this->render('index', $datas);
 	}

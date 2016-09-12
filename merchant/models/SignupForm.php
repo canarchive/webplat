@@ -63,6 +63,7 @@ class SignupForm extends Model
 			$data = [
 				'mobile' => $this->mobile,
 				'password' => $this->password,
+				'truename' => strip_tags($this->truename),
 			];
             return $user->registerUser($data);
         }

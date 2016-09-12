@@ -2,10 +2,12 @@
 namespace merchant\components;
 
 use Yii;
+use merchant\models\Merchant;
 
 class LoginedController extends Controller
 {
-	protected $userInfo;
+	public $userInfo;
+	public $merchantInfo;
 
 	public $layout = 'main-logined';
 
@@ -13,5 +15,7 @@ class LoginedController extends Controller
 	{
 		parent::init();
 		$this->userInfo = Yii::$app->user->getIdentity();
+		$merchant = new Merchant();
+		$this->merchantInfo = $merchant->getInfo($this->userInfo['merchant_id']);
 	}
 }

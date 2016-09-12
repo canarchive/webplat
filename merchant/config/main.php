@@ -43,7 +43,7 @@ return [
         'class' => 'merchant\components\AccessControl',
         'allowActions' => [
 			//'info/*',
-			'site/index',
+			//'site/index',
 			'site/signin',
 			'site/signup',
 			'site/logout',

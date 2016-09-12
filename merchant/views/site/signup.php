@@ -2,6 +2,7 @@
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+Yii::$app->params['seoTitle'] = '商家注册-' . Yii::$app->params['seoTitle'];
 ?>
 <div class="account-container">
     <div class="logo">
