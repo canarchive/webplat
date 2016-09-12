@@ -26,7 +26,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-sample/show', 'id' =>
     <!-- <div class="pd-for-nav"></div> -->
     <!-- 面包屑导航主页样式 -->
     <div class="crumbs">
-	    <a href="/">团家汇</a><span class="sep">&gt;</span>
+	    <a href="/"><?= Yii::$app->params['siteNameBase']; ?></a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/sample/index', 'page' => 1, 'tag' => '']); ?>">装修案例</a><span class="sep">&gt;</span>
 		<a ><span class="btn-crumbs"><?= $info['name']; ?><i class="i-del"></i></span></a>
     </div>
