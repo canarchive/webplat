@@ -18,7 +18,7 @@ class User extends AuthBase
     const STATUS_LOCK = 99;
 
     public $password_new_repeat;
-    public $oldpassword;
+    public $password_old;
     public $password_new;
 
     public static function getDb()
@@ -50,7 +50,8 @@ class User extends AuthBase
         return [
             'create' => ['mobile', 'truename', 'email', 'password', 'status', 'merchant_id'],
             'update' => ['truename', 'email', 'password_new', 'status', 'merchant_id'],
-            //'edit-password' => ['oldpassword', 'password_new', 'password_new_repeat'],
+            'edit' => ['truename', 'email', 'mobile', 'password', 'password_new_repeat', 'password_new', 'password_old'],
+            //'edit-password' => ['password_old', 'password_new', 'password_new_repeat'],
         ];
     }
 
@@ -60,21 +61,23 @@ class User extends AuthBase
     public function rules()
     {
         return [
-			[['oldpassword'], 'required'],
-			[['status'], 'default', 'value' => 0],
+			[['password_old'], 'required', 'on' => ['edit']],
+			[['status', 'merchant_id'], 'default', 'value' => 0],
+            [['password_old'], 'checkPasswordOld', 'on' => ['edit']],
+            ['password_new', 'string', 'min' => 6, 'when' => function($model) { return $model->password_new != ''; }],
+            ['password_new', 'compare', 'on' => ['edit']],
+			[['truename', 'email', 'mobile', 'password_new', 'password_new_repeat'], 'safe', 'on' => ['edit']],
 			[['truename', 'email', 'mobile', 'status', 'merchant_id'], 'safe', 'on' => ['create', 'update']],
         ];
     }
 
-    public function checkOldPassword()
+    public function checkPasswordOld()
     {
-        $result = \Yii::$app->security->validatePassword($this->oldpassword, $this->getOldAttribute('password'));
+        $result = \Yii::$app->security->validatePassword($this->password_old, $this->getOldAttribute('password'));
         if (!$result) {
-            $this->addError('oldpassword', '旧密码错误');
+            $this->addError('password_old', '旧密码错误');
         }
-		if ($this->oldpassword == $this->password) {
-            $this->addError('oldpassword', '新密码不能跟旧密码相同');
-		}
+		return $result;
     }
 
     /**
@@ -88,7 +91,7 @@ class User extends AuthBase
             'truename' => '真实姓名',
 			'login_num' => '登录次数',
             'password' => '密码',
-            'oldpassword' => '旧密码',
+            'password_old' => '旧密码',
             'password_new' => '新密码',
             'password_new_repeat' => '确认密码',
             'created_at' => '创建时间',
@@ -103,6 +106,9 @@ class User extends AuthBase
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
+		    if (Yii::$app->controller->id == 'site') {
+				return true;
+			}
             if ($this->isNewRecord) {
 				$this->setPassword($this->password);
             } else if (!empty($this->password_new)) {

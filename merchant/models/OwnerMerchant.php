@@ -49,4 +49,10 @@ class OwnerMerchant extends MerchantModel
 
 		return $datas;
 	}
+
+	public function getInfos($where, $limit = 500)
+	{
+		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['id' => SORT_DESC])->limit($limit)->all();
+		return $infos;
+	}
 }

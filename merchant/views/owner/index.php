@@ -6,6 +6,8 @@ $this->params['jsFooterFiles'] = [
 	'jquery-2.1.0', 'foundation.min',
 	'main',
 ];
+$this->params['currentNav'] = 'owner';
+Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTitle'];
 ?>
 <nav class="top-bar show-for-small" data-topbar>
     <div class="topbar-title">
@@ -62,25 +64,21 @@ $this->params['jsFooterFiles'] = [
                                 <tr>
                                     <th data-hide="phone" class="num">ID</th>
                                     <th data-hide="phone,tablet" class="time">手机号</th>
-                                    <th data-hide="phone,tablet" class="time">报名时间</th>
                                     <th data-hide="phone,tablet" class="time">派单时间</th>
                                     <th class="status">状态</th>
                                     <th class="content">业主描述</th>
-                                    <th data-hide="phone" class="ctr">操作</th></tr>
+                                    <!--<th data-hide="phone" class="ctr">操作</th></tr>-->
                             </thead>
                             <tbody>
+                                <?php foreach ($infos as $info) { ?>
                                 <tr>
-                                    <td>2</td>
-                                    <td>13811974106</td>
-                                    <td>2016-09-06 15:58:33</td>
-                                    <td>2016-09-06 15:58:33</td>
-                                    <td>
-                                        <span class="label radius success">已生效</span></td>
-                                    <td>您已成功预约，装修顾问会在15分钟内联系您，了解您的具体装修需求，请保持您的电话畅通，详情请致电###。如非本人操作，请忽略!【团家汇】</td>
-                                    <td>
-										<a data-id="1364" class="button tiny secondary radius template-delete">删除</a>
-                                    </td>
+								    <td><?= $info['id']; ?></td>
+								    <td><?= $info['mobile']; ?></td>
+								    <td><?= date('Y-m-d', $info['created_at']); ?></td>
+								    <td><?= $info->statusInfos[$info['status']]; ?></td>
+								    <td><?= $info['note']; ?></td>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                         <div class="pagination-centered"></div>
