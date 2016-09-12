@@ -23,7 +23,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
 <?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>
 <div class="pd-header">
     <div class="crumbs">
-	    <a href="/">团家汇</a><span class="sep">&gt;</span>
+	    <a href="/"><?= Yii::$app->params['siteNameBase']; ?></a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"><?= $merchantInfo['name']; ?></a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id'], 'action' => 'sjgd', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">直播工地</a><span class="sep">&gt;</span>

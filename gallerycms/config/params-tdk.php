@@ -78,12 +78,12 @@ return [
     'feature-baojia' => [
         'title' => '{{CITYNAME}}装修报价、价格_{{CITYNAME}}装修得花多少钱-【{{SITENAME}}】',
         'keyword' => '{{CITYNAME}}装修报价，{{CITYNAME}}装修价格，{{CITYNAME}}装修得花多少钱',
-        'description' => '{{CITYNAME}}装修得花多少钱？就用团家汇装修智能报价软件。只需30秒，即可免费为您获得最新装修价格报价以及装修相关明细费用。从而避开装修猫腻，让装修立省30%。',
+        'description' => '{{CITYNAME}}装修得花多少钱？就用窝窝家装修智能报价软件。只需30秒，即可免费为您获得最新装修价格报价以及装修相关明细费用。从而避开装修猫腻，让装修立省30%。',
     ],
     'feature-kaopu' => [
         'title' => '{{CITYNAME}}装修公司靠谱排行榜_{{CITYNAME}}装修公司推荐-【{{SITENAME}}】',
         'keyword' => '{{CITYNAME}}装修公司靠谱排行榜，{{CITYNAME}}装修公司推荐',
-        'description' => '装修是大事，如何找到靠谱装修公司？就来【{{SITENAME}}】，团家汇给大家汇集了{{CITYNAME}}装修公司靠谱排行榜大全与{{CITYNAME}}装修公司推荐，并同时提供三家装修公司让装修业主免费对比，让>装修业主真正找到靠谱装修公司。',
+        'description' => '装修是大事，如何找到靠谱装修公司？就来【{{SITENAME}}】，窝窝家给大家汇集了{{CITYNAME}}装修公司靠谱排行榜大全与{{CITYNAME}}装修公司推荐，并同时提供三家装修公司让装修业主免费对比，让>装修业主真正找到靠谱装修公司。',
     ],
     'sample-index' => [
         'title' => "{{TAGSTR}}装修案例风格_{{TAGSTR}}家装实景图片欣赏{{PAGESTR}}【{{SITENAME}}】",

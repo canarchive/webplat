@@ -69,7 +69,7 @@ $this->context->pcMappingUrl = Url::to(['/house/decoration-company/show', 'id' =
             <div class="form-btn-group">
                 <input type="button" value="免费申请" class="submit-btn win_sub" id="apply_button" /></div>
             <div class="form-notice">
-                <span class="font-mark">注：</span>找装修公司，团家汇比其他渠道便宜20%</div></div>
+                <span class="font-mark">注：</span>找装修公司，<?= Yii::$app->params['siteNameBase']; ?>比其他渠道便宜20%</div></div>
         <span class="form-close"></span>
     </form>
 </div>
