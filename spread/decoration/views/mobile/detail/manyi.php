@@ -110,7 +110,6 @@ $this->params['formPositionName'] = '活动推广-满意';
         </nav>
     </article>
 </section>
-<input type="hidden" id="info_id" value="1" />
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/sea.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/seaconfig.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/component.js?v=1"></script>

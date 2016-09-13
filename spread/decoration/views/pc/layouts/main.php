@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $cssFiles = isset($this->params['cssFiles']) ? $this->params['cssFiles'] : [];
 $jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
@@ -70,6 +71,7 @@ jQuery(document).ready(function($) {
 <?= $content; ?>
 <!--底部-->
 <link type="text/css" rel="stylesheet" href="//at.alicdn.com/t/font_1463989160_300939.css" />
+<input type="hidden" id="info_id" value="1" />
 <input type="hidden" id="position" value="<?= $formPosition; ?>" />
 <input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
 <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
@@ -77,7 +79,7 @@ jQuery(document).ready(function($) {
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_footer_base', []); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
-<?= Yii::$app->params['statUrl']; ?>
+<?php $statUrl = str_replace(Yii::getAlias('@spreadurl'), '', Yii::$app->params['statUrl']); echo $statUrl; ?>
 </div>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/nav.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/ProvinceJson.js"></script>

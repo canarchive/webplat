@@ -22,7 +22,6 @@ $this->params['formPositionName'] = '活动推广-量房';
 <?php //echo $this->render('_liangfang_nav', []); ?>
 <div class="main">
     <input type="hidden" id="user_tel" value="" />
-    <input type="hidden" id="info_id" value="1" />
     <input type="hidden" id="form_type" value="hd-liangfang" />
     <div class="banner">
         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/mfsjbanner.png" /></div>

@@ -64,7 +64,7 @@ class DecorationOwner extends SpreadModel
             'name' => $data['name'],
 			'from_type' => $data['from_type'],
 			'type' => $data['type'],
-			'city' => $data['city'],
+			//'city' => $data['city'],
 			'city_input' => $data['city_input'],
 			'area_input' => $data['area_input'],
             'message' => $data['message'],
@@ -144,6 +144,7 @@ class DecorationOwner extends SpreadModel
 		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
 			$this->signup_channel = $conversionInfo['channel'];
 			$this->keyword = $conversionInfo['keyword'];
+			$this->city_code = $conversionInfo['city_code'];
 			$this->update(false);
 		}
 		return ;

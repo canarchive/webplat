@@ -2,6 +2,10 @@
 namespace spread\components;
 
 use Yii;
+<<<<<<< HEAD
+=======
+use yii\helpers\Url;
+>>>>>>> spread
 use common\components\Controller as CommonController;
 
 class Controller extends CommonController
@@ -26,14 +30,19 @@ class Controller extends CommonController
 		$redirect = empty($redirect) ? $this->host == $hostMobile && is_null($cityCode) && $url == '/' : $redirect;
 		if ($redirect) {
 			$rule = $this->_redirectRule();
-			$url = Url::to([$rule, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
+			/*$url = Url::to([$rule, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 			header("Location:$url");
 		    //return Yii::$app->response->redirect($url)->send();
-			exit();
+			exit();*/
 		}
 
 		if (isset($this->module->viewPath)) {
 			$this->module->viewPath .= $this->isMobile ? '/mobile' : '/pc';
 		}
     }
+
+	protected function _redirectRule()
+	{
+	}
+
 }

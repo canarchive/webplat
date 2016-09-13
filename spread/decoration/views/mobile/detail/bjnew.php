@@ -61,7 +61,6 @@ $this->params['formPositionName'] = '活动推广-报价';
             </a>
         </li>
         <input type="hidden" id="user_tel" value="" />
-        <input type="hidden" id="info_id" value="1" />
         <input type="hidden" id="form_type" value="hd-liangfang" />
         <li class="last">
             <a id="ksjs" href="javascript:;" class="btn btn-block btn-orange btn-line f16 mt3 mb3 zp-btn-price">开始计算</a>
