@@ -64,7 +64,8 @@ class Controller extends YiiController
         $channelSpread = Yii::$app->request->get('channel');
         if (!empty($channelSpread)) {
     		$urlPre = strval(Yii::$app->request->referrer);
-    		$statUrl = Yii::getAlias('@spreadurl') . '/stat.html?' . Yii::$app->request->queryString . '&url_pre=' . $urlPre;
+			$cityCode = Yii::$app->request->get('city_code', '');
+    		$statUrl = Yii::getAlias('@spreadurl') . '/stat.html?' . Yii::$app->request->queryString . '&city_code=' . $cityCode . '&url_pre=' . $urlPre;
     		//$statStr = "<img src='{$statUrl}' />";
 			Yii::$app->params['statUrl'] = "<script type='text/javascript' src='{$statUrl}'></script>";
     	}
