@@ -8,6 +8,8 @@ $this->params['cssFiles'] = [
 $this->params['jsFiles'] = [
 	'rem50', 'jquery', 'common', 'lib/total', 'slideApply',
 ];
+$this->params['formPosition'] = 'merchant-list';
+$this->params['formPositionName'] = '商家列表';
 $this->context->pcMappingUrl = Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <?php echo $this->render('../common/_nav', []); ?>

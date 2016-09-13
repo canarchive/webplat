@@ -3,7 +3,7 @@
 </div>
 <div class="content">
     <div class="con-body">
-<p class="con-p"><strong><?= Yii::$app->params['siteNameBase']; ?></strong>隶属于北京诚聚互联科技有限公司，致力于让更多的网友体验到实实在在的装修体验，在这里可以挑案例、挑小区、挑设计师，挑公司，挑装修风格。目前齐装网已成为广大业主装修青睐的装修综合门户网站。</p>
+<p class="con-p"><strong><?= Yii::$app->params['siteNameBase']; ?></strong>隶属于北京诚创互联科技有限公司，致力于让更多的网友体验到实实在在的装修体验，在这里可以挑案例、挑小区、挑设计师，挑公司，挑装修风格。目前齐装网已成为广大业主装修青睐的装修综合门户网站。</p>
 <p class="con-p"><strong>团队优势</strong></p>
 <p class="con-p"><?= Yii::$app->params['siteNameBase']; ?>是一个年轻富有朝气和创造力的网站，公司不仅为广大的业主、装饰公司提供了交流合作的平台，也为众多有理想抱负的年轻人提供了展示自我的舞台。<?= Yii::$app->params['siteNameBase']; ?>注重企业团队建设，重视人才培养，因材施用，各展其能，将每一个队员的力量都凝结起来，齐心协力，共创辉煌。</p>
 <p class="con-p"><strong>技术优势</strong></p>
