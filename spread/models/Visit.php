@@ -71,6 +71,14 @@ class Visit extends SpreadModel
 		$data['url_full'] = $url;
         $data['from_type'] = $isMobile ? 'h5' : 'pc';
 
+		$urlFullPre = Yii::$app->request->get('url_pre', '');
+		$urlPre = substr($urlFullPre, 0, strpos($urlFullPre, '?'));
+		$urlPre = empty($urlPre) ? $urlFullPre : $urlPre;
+		$data['url_pre'] = $urlPre;
+		$data['url_full_pre'] = $urlFullPre;
+		$data['keyword_search'] = $this->_getKeywordSearch($urlFullPre);
+		$data['city_code'] = Yii::$app->request->get('city_code', '');
+
         $this->insert(true, $data);
 
 		$session = \Yii::$app->session;
