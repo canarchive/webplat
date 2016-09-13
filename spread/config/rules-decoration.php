@@ -1,7 +1,7 @@
 <?php
 $rules = [
     'detail-<id:\d+>' => '/decoration/detail/index',
-    'bm-<view:\w+>-<id:\d+>' => 'decoration/detail/feature',
+    'bm-<view:\w+>-<city_code:\w+>' => 'decoration/detail/feature',
     'jzhd-<type:\w+>-<city:\w+>' => '/decoration/detail/spread',
     //'<view:(price|design|measure)>-<type:\w+>-<city:\w+>' => 'decoration/detail/inner',
     'hd-<id:\d+>' => 'shoot/detail/index',

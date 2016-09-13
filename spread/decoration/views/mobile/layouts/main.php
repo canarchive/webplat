@@ -51,7 +51,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 window.BASE_URL = "<?= Yii::getAlias('@m.gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 window.SPREAD_URL = '<?= Yii::getAlias('@web'); ?>';
-window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup.html'; ?>';
+window.signupUrl = '<?= Yii::getAlias('@web') . '/jz-signup.html'; ?>';
 </script>
 </head>
 <body class="<?php if (isset($this->params['bodyClass'])) { echo $this->params['bodyClass']; } ?>">
@@ -61,11 +61,12 @@ window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup.html'; ?>';
 <?php echo $this->render('../common/_footer', []); ?>
 <?php echo $this->render('../common/_custom_service', []); ?>
 <?php } ?>
+<input type="hidden" id="info_id" value="1" />
 <input type="hidden" id="position" value="<?= $formPosition; ?>" />
 <input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
 <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
-<?= Yii::$app->params['statUrl']; ?>
+<?php $statUrl = str_replace(Yii::getAlias('@spreadurl'), '', Yii::$app->params['statUrl']); echo $statUrl; ?>
 </div>
 </body>
 </html>

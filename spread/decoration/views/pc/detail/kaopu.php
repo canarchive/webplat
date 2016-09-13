@@ -12,6 +12,8 @@ $this->params['jsFiles'] = [
 	'common', 'index', 'components/jquery.bxslider.min', 
 ];
 $this->params['currentNav'] = 'free';
+$this->params['formPosition'] = 'hd-kaopu';
+$this->params['formPositionName'] = '活动-靠谱';
 ?>
 <div class="minute-banner">
     <div class="banner-img">
@@ -34,8 +36,7 @@ $this->params['currentNav'] = 'free';
                             <option value="">市/地区</option></select>
                     </div>
                     <input name="apply" type="button" value="立即免费预约" />
-                    <p class="number">已有
-                        <span class="ifocus"></span>人找到靠谱装修公司</p></div>
+                    <p class="number">已有<span class="ifocus">32382</span>人找到靠谱装修公司</p></div>
             </div>
         </div>
     </div>
@@ -154,7 +155,7 @@ $this->params['currentNav'] = 'free';
             </div>
             <div class="xinxi-right">
                 <div class="case">
-                    <a href="javascript: void(0);" target="_blank">
+				    <a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute3.jpg" alt="环宇天下·三室两厅·简约·半包9万">
                         <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute5.png" alt="">
                         <p class="place">白领家园-赵先生
@@ -162,7 +163,7 @@ $this->params['currentNav'] = 'free';
                         <p class="type">三室两厅 | 简约 | 半包9万</p></a>
                 </div>
                 <div class="case">
-                    <a href="javascript:void(0);" target="_blank">
+				    <a href="<?= Url::to(['/house/realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute4.jpg" alt="万家星城·两室两厅·混搭·半包11万">
                         <img class="face" src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/minute6.png" alt="">
                         <p class="place">创意园小区-张女士
