@@ -2,10 +2,7 @@
 namespace spread\components;
 
 use Yii;
-<<<<<<< HEAD
-=======
 use yii\helpers\Url;
->>>>>>> spread
 use common\components\Controller as CommonController;
 
 class Controller extends CommonController
