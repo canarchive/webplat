@@ -51,15 +51,23 @@ class Visit extends SpreadModel
         foreach ($attributeParams as $field => $param) {
             $paramValue = (\Yii::$app->getRequest()->get($param, ''));
 			if ($field == 'keyword') {
-				$tmp = mb_convert_encoding($paramValue, 'utf-8');
-				$paramValue = $paramValue == $tmp ? $paramValue : mb_convert_encoding($paramValue, 'utf-8', 'gbk');
+                if (!preg_match('%^(?:
+                    [\x09\x0A\x0D\x20-\x7E]              # ASCII
+                    | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
+                    | \xE0[\xA0-\xBF][\x80-\xBF]         # excluding overlongs
+                    | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
+                    | \xED[\x80-\x9F][\x80-\xBF]         # excluding surrogates
+                    | \xF0[\x90-\xBF][\x80-\xBF]{2}      # planes 1-3
+                    | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
+                    | \xF4[\x80-\x8F][\x80-\xBF]{2}      # plane 16
+                    )*$%xs', $paramValue)
+                ) {
+                    //$paramValue = utf8_encode($paramValue);
+				    $paramValue = mb_convert_encoding($paramValue, 'utf-8', 'gbk');
+                }
+				//$tmp = mb_convert_encoding($paramValue, 'utf-8');
+				//$paramValue = $paramValue == $tmp ? $paramValue : mb_convert_encoding($paramValue, 'utf-8', 'gbk');
 			}
-            /*if ($field == 'keyword' && strpos($channel, 'sembd') !== false) {
-                $paramValue = rawurldecode($paramValue);
-                //$encoding1 =mb_detect_encoding($paramValue);
-                $paramValue = mb_convert_encoding($paramValue, 'utf-8', 'gb2312');// : $paramValue;
-				$paramValue = preg_match('/\\\\x[0-9a-zA-Z]/', $paramValue, $r) ? '' : $paramValue;
-			}*/
             $data[$field] = $paramValue;
         }
 
