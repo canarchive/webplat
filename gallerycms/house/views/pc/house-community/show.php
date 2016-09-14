@@ -39,7 +39,7 @@ $this->params['currentNav'] = 'free';
                         <input name="apply" type="button" value="免费申请" />
                         <b>
                             <a>注：</a>
-                            <span>找装修公司，团家汇比其他渠道便宜20%</span></b>
+                            <span>找装修公司，<?= Yii::$app->params['siteNameBase']; ?>比其他渠道便宜20%</span></b>
                     </div>
                 </div>
             </div>

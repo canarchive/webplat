@@ -15,6 +15,7 @@ $this->params['currentNav'] = 'company';
 $this->params['friendLink'] = true;
 
 $this->params['showPage'] = true;
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/show', 'id' => $info['id'], 'action' => 'sjdp', 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <link rel="stylesheet" type="text/css" href="http://static.tugou.com/css/provider/pd-comment.css">
 <?php echo $this->render('_intro', ['info' => $info]); ?>

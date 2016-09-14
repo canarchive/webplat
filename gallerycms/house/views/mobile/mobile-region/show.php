@@ -27,7 +27,7 @@ $this->params['bodyClass'] = 'design';
         <div class="freeone">
             <p class="free" id="order">申请免费验房</p>
             <?php echo $this->render('../common/_form', ['title' => '免费申请', 'type' => '56']); ?>
-            <p class="apply-subdesc">找装修公司，团家汇比其他渠道便宜20%。</p>
+            <p class="apply-subdesc">找装修公司，<?= Yii::$app->params['siteNameBase']; ?>比其他渠道便宜20%。</p>
         </div>
         <!--个性化装修方案-->
         <div class="image-show">

@@ -11,7 +11,7 @@ return [
     Yii::getAlias('@gallerycmsurl') . '/mapinner' => '/house/site/map',
     Yii::getAlias('@gallerycmsurl') . '/mapinner-<city_code:\w+>' => '/house/site/map-more',
 	[
-		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
+		'pattern' => Yii::getAlias('@gallerycmsurl') . '/meitu/<page:\d*>/<tag>',
 		'route'	=> '/house/sample/index',
 		'defaults' => ['page' => 1, 'tag' => '']
 	],
@@ -21,9 +21,9 @@ return [
     //Yii::getAlias('@m.gallerycmsurl') . '/info-<action:\w+>' => '/house/mobile-info/<action>',
     Yii::getAlias('@m.gallerycmsurl') . '/map' => '/house/mobile-site/map',
 	[
-		'pattern' => Yii::getAlias('@m.gallerycmsurl') . '/meitu/<tag>/<page:\d*>',
+		'pattern' => Yii::getAlias('@m.gallerycmsurl') . '/meitu/<page:\d*>/<tag>',
 		'route'	=> '/house/mobile-sample/index',
-		'defaults' => ['page' => 1, 'tag' => '']
+		'defaults' => ['tag' => '', 'page' => 1]
 	],
     Yii::getAlias('@m.gallerycmsurl') . '/mt-<id:\d+>' => '/house/mobile-sample/show',
 
@@ -60,7 +60,7 @@ return [
 	[
 		'pattern' => Yii::getAlias('@wildurl') . '/zx/<county>/<vtown>',
 		'route'	=> '/house/region/region',
-		'defaults' => ['vtown' => '']
+		'defaults' => ['vtown' => '', 'page' => 1]
 	],
     //Yii::getAlias('@m.gallerycmsurl') . '/<_q:.*>' => '/house/<_q>',
     //'/<_q:.*>' => '/house/<_q>', 

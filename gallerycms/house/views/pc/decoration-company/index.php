@@ -14,6 +14,9 @@ $this->params['jsFiles'] = [
 $this->params['currentNav'] = 'company';
 $this->params['friendLink'] = true;
 
+$this->params['formPosition'] = 'merchant-list';
+$this->params['formPositionName'] = '商家列表';
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <script type="text/javascript">$(function() {
     setCookie('page_flag', 'provider');
@@ -24,16 +27,16 @@ $this->params['friendLink'] = true;
     <h1>推荐装修公司</h1>
     <ul class="provider_list">
         <?php foreach ($infos as $info) { ?>
-    	<li data-provider-id="<?= $info['id']; ?>">
+    	<li data-provider-id="<?= $info['id'] . '-' . $info['name']; ?>">
             <div class="item_part left">
-    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
     				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
                 </a>
 				<p>已服务 <?= $info['num_owner']; ?> 业主</p>
             </div>
             <div class="item_part center">
                 <p class="provider_name">
-    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
+    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" title="<?= $info['name']; ?>"><?= $info['name']; ?></a>
                     <span class="provider_tags">
                         <i class="icon_new icon1"><span>保障金先行赔付</span></i>
                         <i class="icon_new icon2"><span>装修施工资质权威认证</span></i>
@@ -60,7 +63,7 @@ $this->params['friendLink'] = true;
                 </p>
             </div>
             <div class="item_part right">
-			    <p>业主评分<br /><strong><?= $info['score']; ?></strong></p>
+                <p>业主评分<br /><strong><?= $info['score']; ?></strong></p>
             </div>
         </li>
         <?php } ?>
@@ -72,7 +75,7 @@ $this->params['friendLink'] = true;
 				<p class="subtitle">优质装修公司免费出方案，预算省40%</p>
             </div>
             <div class="apply_form">
-                <input name="apply_type" type="hidden" value="8" />
+                <input name="apply_type" type="hidden" value="merchant-list" />
                 <input name="name" type="text" placeholder="您的姓名" />
                 <input name="phone" type="text" placeholder="手机号码" />
                 <div class="select-group clearfix js-region-select-group">
@@ -163,6 +166,7 @@ function triggerPopForm(btn) {
     var setProvider = function(btn, container) {
         var providerId = $(btn).parents('.provider_list li').data('providerId');
         $('input[name="apply_provider"]', container).val(providerId);
+		$("#position_name").val(providerId + '-商家列表');
     };
 }
 

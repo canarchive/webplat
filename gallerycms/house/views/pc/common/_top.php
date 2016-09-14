@@ -18,7 +18,7 @@ use yii\helpers\Url;
                     </dl>
                 </div>
             </div>
-			<span class="border">找装修公司就上团家汇</span>
+			<span class="border">找装修公司就上<?= Yii::$app->params['siteNameBase']; ?></span>
         </div>
         <ul class="login fn-right" id="roof-nav">
             <!--<li id="login-link" class="word hide no-icon">

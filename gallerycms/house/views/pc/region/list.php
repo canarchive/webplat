@@ -15,6 +15,7 @@ $this->params['friendLink'] = true;
 
 $this->params['formPosition'] = 'region';
 $this->params['formPositionName'] = $regionInfo['name'];
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-region/region', 'city_code' => Yii::$app->params['currentCompany']['code_short'], 'county' => $countyInfo['spell_one'], 'vtown' => $regionInfo['spell_one'] == $countyInfo['spell_one'] ? '' : $regionInfo['spell_one'], 'page' => 1]);
 ?>
 <script type="text/javascript">$(function() {
     setCookie('page_flag', 'provider');
@@ -27,14 +28,14 @@ $this->params['formPositionName'] = $regionInfo['name'];
         <?php foreach ($infos as $info) { ?>
     	<li data-provider-id="<?= $info['id'] . '-' . $info['name']; ?>">
             <div class="item_part left">
-    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
+    		    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
     				<img class="provider_avatar" src="<?= $info['logo']; ?>" alt="<?= $info['name']; ?>" />
                 </a>
 				<p>已服务 <?= $info['num_owner']; ?> 业主</p>
             </div>
             <div class="item_part center">
                 <p class="provider_name">
-    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" title="<?= $info['name']; ?>" target="_blank"><?= $info['name']; ?></a>
+    			    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" title="<?= $info['name']; ?>"><?= $info['name']; ?></a>
                     <span class="provider_tags">
                         <i class="icon_new icon1"><span>保障金先行赔付</span></i>
                         <i class="icon_new icon2"><span>装修施工资质权威认证</span></i>
@@ -61,7 +62,7 @@ $this->params['formPositionName'] = $regionInfo['name'];
                 </p>
             </div>
             <div class="item_part right">
-                <p>业主评分<br /><strong>4.9</strong></p>
+                <p>业主评分<br /><strong><?= $info['score']; ?></strong></p>
             </div>
         </li>
         <?php } ?>
@@ -90,21 +91,21 @@ $this->params['formPositionName'] = $regionInfo['name'];
         <div class="provider_advert_free">
             <ul>
                 <li style="background-position: 0 -638px;">
-				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'yanfang', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
-                        <p class="title">免费上门验房</p>
-						<p class="content">资深验房专家上门验房<br>专业仪器检测房屋质量</p>
+				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
+                        <p class="title">免费找装修公司</p>
+						<p class="content">3家装修公司PK<br />比比谁家服务好</p>
                     </a>
                 </li>
                 <li style="background-position: -230px -638px;">
 				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'sheji', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                         <p class="title">免费3套设计方案</p>
-						<p class="content">3套设计方案比较<br>合理规划空间</p>
+						<p class="content">3套设计方案比较<br />合理规范空间</p>
                     </a>
                 </li>
                 <li style="background-position: -460px -638px;">
 				    <a href="<?= Url::to(['/house/feature/index', 'view' => 'baojia', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
-                        <p class="title">免费3份报价清单</p>
-						<p class="content">3份报价清单比较<br>避免价格猫腻</p>
+                        <p class="title">在线报价器</p>
+						<p class="content">10秒解决预算难题<br />装修省40%</p>
                     </a>
                 </li>
             </ul>

@@ -15,7 +15,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="canonical" href="<?= Yii::getAlias('@gallerycmsurl'); ?>" />
+<link rel="canonical" href="<?= $this->context->pcMappingUrl; ?>" />
 <meta name="applicable-device" content="mobile" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Cache-Control" content="no-transform">
@@ -38,6 +38,10 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/js/' . $jsFile . '.js'; ?>"></script>
 <?php } } ?>
 <script type="text/javascript">
+var isMobile = '<?= intval($this->context->isMobile); ?>';
+if (isMobile == 0) {
+    //window.location.href = "<?= $this->context->pcMappingUrl; ?>";
+}
 window.BASE_URL = "<?= Yii::getAlias('@m.gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>';

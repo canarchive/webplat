@@ -14,6 +14,7 @@ $this->params['jsFiles'] = [
 ];
 $this->params['currentNav'] = 'realcase';
 $this->params['friendLink'] = true;
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-realcase/index', 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <div class="banner"></div>
 <div class="pd-main">

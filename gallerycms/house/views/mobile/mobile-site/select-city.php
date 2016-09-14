@@ -40,7 +40,7 @@ $this->params['jsFiles'] = [
             <p class="sorry">Sorry!</p>
             <p class="soon">您所在的城市即将开通！</p>
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/img/wechat.jpg" alt="" class="QR-code" />
-            <p class="wechat">添加微信号：<span>tuanjiahui</span></br>关注团家汇</p>
+            <p class="wechat">添加微信号：<span>tuanjiahui</span></br>关注<?= Yii::$app->params['siteNameBase']; ?></p>
             <p class="telphone">全国统一热线：<?= Yii::$app->params['siteHotline']; ?></p>
         </div>
     </div>

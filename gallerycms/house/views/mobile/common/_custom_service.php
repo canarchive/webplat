@@ -23,4 +23,4 @@ var NTKF_PARAM = {
     "userlevel": "0" //会员等级
 }
 </script>
-<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=" charset="utf-8"></script>
+<!--<script type="text/javascript" src="http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=" charset="utf-8"></script>-->

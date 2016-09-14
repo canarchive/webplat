@@ -18,6 +18,7 @@ $this->params['showPage'] = true;
 $this->params['formPosition'] = 'realcase-show';
 $this->params['formPositionName'] = $info['id'] . '_' . $info['name'];
 $merchantInfo = $info->merchantInfo;
+$this->context->mobileMappingUrl = Url::to(['/house/mobile-realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]);
 ?>
 <!-- <?= Yii::$app->params['siteNameBase']; ?>主页导航栏 -->
 <?php echo $this->render('../common/_nav_mini', []); // 内容页顶部 ?>
@@ -26,7 +27,7 @@ $merchantInfo = $info->merchantInfo;
     <!-- <div class="pd-for-nav"></div> -->
     <!-- 面包屑导航主页样式 -->
     <div class="crumbs">
-	    <a href="/">团家汇</a><span class="sep">&gt;</span>
+	    <a href="/"><?= Yii::$app->params['siteNameBase']; ?></a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"><?= $merchantInfo['name']; ?></a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id'], 'action' => 'sjsj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">实景案例</a><span class="sep">&gt;</span>
