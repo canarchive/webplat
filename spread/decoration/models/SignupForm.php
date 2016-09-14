@@ -94,7 +94,7 @@ class SignupForm extends Model
 		$decorationOwner->user->updateAfterInsert();
 
 		if ($this->area_input > 20 && $this->area_input < 500) {
-			$this->quoteInfo = $this->_getQuteInfo($this->area_input);
+			$this->quoteInfo = $this->_getQuoteInfo($this->area_input);
 		}
 
 		$serviceModel = $decorationOwner->user->dealService($data);
@@ -158,7 +158,7 @@ class SignupForm extends Model
         return true;
     }
 
-	protected function _getQuteInfo($area)
+	public function _getQuoteInfo($area)
 	{
 		$quote = new Quote(); 
 		$info = $quote->getResult($area);

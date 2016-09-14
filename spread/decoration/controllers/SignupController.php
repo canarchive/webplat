@@ -75,6 +75,7 @@ class SignupController extends spreadController
 			$data = [
 				'status' => '400',
 				'message' => $message,
+				'quoteInfo' => $model->area_input > 0 ? $model->_getQuoteInfo($model->area_input) : [],
 				//'model' => $model,
 			];
 			return $data;
