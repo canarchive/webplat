@@ -64,28 +64,36 @@ class DetailController extends Controller
         }
 
 		$view = Yii::$app->request->get('view');
-		$views = ['baojia', 'sheji', 'kaopu', 'liangfang', 'bjnew', 'manyi'];
+		$views = ['shangjia', 'baojia', 'sheji', 'kaopu', 'liangfang', 'bjnew', 'manyi'];
 		$view = !in_array($view, $views) ? 'index' : $view;
 		$datas['view'] = $view;
+		if (in_array($view, ['kaopu', 'shangjia'])) {
+		    $owner = new \merchant\models\Owner();
+			$datas['ownerInfos'] = $owner->getInfos([], 20);
+			if ($view == 'shangjia') {
+		        $model = new \merchant\models\Merchant();
+		        $datas['infos'] = $model->getInfos();
+			}
+		}
 
         return $this->render($view, $datas);   
     }
 
     protected function getDatas()
     {
-        $id = Yii::$app->getRequest()->get('id');
+        /*$id = Yii::$app->getRequest()->get('id');
         $model = new \spread\decoration\models\Decoration();
      	$where = ['id' => $id];
 		$info = $model->getInfo($where);
 		if (empty($info)) {
 			return false;
-		}
+		}*/
 		
         $urlFull = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
         $signupForm = new SignupForm();
         $datas = [
             'model' => $signupForm,
-            'info' => $info,
+            //'info' => $info,
             'host' => $this->host,
         ];
 

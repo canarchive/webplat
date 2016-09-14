@@ -139,4 +139,10 @@ class Working extends MerchantModel
         //$cache->set($keyCache, $infos);
 		return $infos;
 	}		
+
+	public function getMerchantInfos()
+	{
+		$infos = $this->getMerchantInfos(['is_spider' => 0]);
+		return $infos;
+	}
 }

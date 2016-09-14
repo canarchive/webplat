@@ -66,7 +66,7 @@ class SignupForm extends Model
 			'info_id' => $this->info_id,
 			'info_name' => $this->decorationModel->name,
 			'type' => $this->decorationModel->type,
-			'city' => $this->decorationModel->city,
+			//'city' => $this->decorationModel->city,
 			'city_input' => empty(strip_tags($this->city_input)) ? '' : strip_tags($this->city_input),
 			'form_type' => empty(strip_tags($this->form_type)) ? '' : strip_tags($this->form_type),
 			'area_input' => empty(strip_tags($this->area_input)) ? 0 : strip_tags($this->area_input),

@@ -17,6 +17,7 @@ return [
         'user' => [
             'identityClass' => 'merchant\models\User',
             'enableAutoLogin' => true,
+			'loginUrl' => ['/site/signin'],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -36,6 +37,19 @@ return [
             'showScriptName' => false,
 			'rules' => require(__DIR__ . '/rules.php'),
 		],
+    ],
+
+    'as access' => [
+        'class' => 'merchant\components\AccessControl',
+        'allowActions' => [
+			//'info/*',
+			//'site/index',
+			'site/signin',
+			'site/signup',
+			'site/logout',
+			'product/*',
+            'debug/*',
+        ]
     ],
 
     'params' => $params,

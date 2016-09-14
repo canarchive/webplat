@@ -24,7 +24,8 @@ $gridViewParams = [
 		[
             'attribute' => 'merchant_id',
 			'value' => function($model) {
-				return $model->merchantInfos[$model->merchant_id];
+				$return = isset($model->merchantInfos[$model->merchant_id]) ? $model->merchantInfos[$model->merchant_id] : '';
+				return $return;
 			},
 		],
 		[

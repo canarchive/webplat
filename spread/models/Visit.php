@@ -82,6 +82,7 @@ class Visit extends SpreadModel
 		$data['url_pre'] = $urlPre;
 		$data['url_full_pre'] = $urlFullPre;
 		$data['keyword_search'] = $this->_getKeywordSearch($urlFullPre);
+		$data['city_code'] = Yii::$app->request->get('city_code', '');
 
         $this->insert(true, $data);
 

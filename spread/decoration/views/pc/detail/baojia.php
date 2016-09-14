@@ -12,6 +12,8 @@ $this->params['jsFiles'] = [
 	'common', 
 ];
 $this->params['currentNav'] = 'free';
+$this->params['formPosition'] = 'hd-baojia';
+$this->params['formPositionName'] = '活动-报价';
 ?>
 <div class="content-baojia">
     <div class="center">
@@ -23,7 +25,7 @@ $this->params['currentNav'] = 'free';
             <div class="form apply_form">
                 <p>请正确填写您的真实信息</p>
                 <div class="fbody">
-                    <input name="apply_type" type="hidden" value="29" />
+                    <input name="apply_type" type="hidden" value="baojia" />
                     <input name="scene" type="hidden" value="" />
                     <input name="name" type="text" placeholder="您的姓名">
                     <input name="phone" type="tel" placeholder="手机号码">
@@ -65,7 +67,7 @@ $this->params['currentNav'] = 'free';
                     </div>-->
                 </div>
                 <p class="baojia">已有
-                    <span class="ifocus"></span>人成功获取报价</p></div>
+                    <span class="ifocus">32382</span>人成功获取报价</p></div>
             <div class="anniu"></div>
             <div class="detail">
                 <p class="total">您的装修预算为
@@ -116,4 +118,5 @@ $this->params['currentNav'] = 'free';
         </div>
     </div>
 </div>
+<input type="hidden" id="show_quote" value="1" />
 <script src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/js/baojia.js"></script>

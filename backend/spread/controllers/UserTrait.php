@@ -26,6 +26,7 @@ trait UserTrait
 		}
 		$callbackInfos = \spread\models\Callback::findAll(['mobile' => $mobile]);
 		$ownerHouseInfos = \spread\decoration\models\OwnerHouse::findAll(['mobile' => $model->mobile]);
+		$ownerMerchantInfos = \merchant\models\OwnerMerchant::findAll(['mobile' => $model->mobile]);
 
 		$data = [
 			'type' => $type,
@@ -33,6 +34,7 @@ trait UserTrait
 			'modelUser' => $modelUser,
 			'callbackInfos' => $callbackInfos,
 			'ownerHouseInfos' => $ownerHouseInfos,
+			'ownerMerchantInfos' => $ownerMerchantInfos,
 		];
 
 		return $data;
@@ -51,6 +53,9 @@ trait UserTrait
 			//$fields = ['mobile', 'content', 'note'];
 			$fields = ['mobile', 'content'];
 			$model = new \spread\models\Callback();
+		} else if ($table == 'owner_merchant') {
+			$fields = ['mobile', 'note', 'house_id', 'merchant_id'];
+			$model = new \merchant\models\OwnerMerchant();
 		} else {
 			return ['status' => 400, 'message' => '参数错误'];
 		}
@@ -62,6 +67,8 @@ trait UserTrait
 		$content = '';
 		if ($table === 'owner_house') {
 			$content = $this->renderPartial('_user_house', ['model' => $model]);
+		} else if ($table == 'owner_merchant') {
+			$content = $this->renderPartial('_user_merchant', ['model' => $model]);
 		}
 
 		$return = [
@@ -77,7 +84,7 @@ trait UserTrait
 
 	protected function _update()
 	{
-		$tables = ['activity_user', 'user', 'user_house', 'callback'];
+		$tables = ['activity_user', 'user', 'owner_house', 'callback'];
 		$table = \Yii::$app->request->post('table');
 		$infoId = \Yii::$app->request->post('info_id');
 		$field = \Yii::$app->request->post('field');
@@ -96,9 +103,9 @@ trait UserTrait
 		case 'user':
 			$model = \spread\models\User::findOne($infoId);
 			break;
-		/*case 'user_house':
-			$model = \spread\models\UserHouse::findOne($infoId);
-			break;*/
+		case 'owner_house':
+			$model = \spread\decoration\models\OwnerHouse::findOne($infoId);
+			break;
 		case 'callback':
 			$model = \spread\models\Callback::findOne($infoId);
 			break;
