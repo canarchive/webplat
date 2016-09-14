@@ -53,6 +53,7 @@ window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 window.SPREAD_URL = '<?= Yii::getAlias('@web'); ?>';
 window.signupUrl = '<?= Yii::getAlias('@web') . '/jz-signup.html'; ?>';
 </script>
+<?= $this->render('@spread/decoration/views/_stat', []); // 顶部 ?>
 </head>
 <body class="<?php if (isset($this->params['bodyClass'])) { echo $this->params['bodyClass']; } ?>">
 <?= $content; ?>

@@ -61,6 +61,7 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
+<?= $this->render('@spread/decoration/views/_stat', []); // 顶部 ?>
 </head>
 <body>
 <?php if (!isset($this->params['showPage'])) { ?>
