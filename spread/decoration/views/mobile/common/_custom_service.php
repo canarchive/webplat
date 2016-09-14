@@ -2,7 +2,7 @@
 <div class="apply-bar app-hide">
     <ul>
         <li class="consult-submit">
-			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3237822793&site=qq&menu=yes">
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?= Yii::$app->params['siteCustomServiceQQ']; ?>&site=qq&menu=yes">
 			<span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询
             </a>
         </li>

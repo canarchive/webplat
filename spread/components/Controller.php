@@ -17,7 +17,7 @@ class Controller extends CommonController
 		$hostPc = Yii::getAlias('@spreadurl');
 		$hostMobile = Yii::getAlias('@m.spreadurl');
         //$this->isMobile = $this->clientIsMobile();
-		$this->isMobile = $this->host == $hostMobile ? true : false;
+		$this->isMobile = in_array($this->host, Yii::$app->params['mHosts']) ? true : false;
 
 		$url = Yii::$app->request->url;
 		$cityCode = isset($this->module->currentCityCode) ? $this->module->currentCityCode : null;
