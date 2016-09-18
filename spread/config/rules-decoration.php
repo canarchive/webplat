@@ -10,6 +10,7 @@ $rules = [
     'jz-signup-tview' => '/decoration/signup/tview',
     'jz-signup-cms' => '/decoration/signup/cms',
     'stat' => '/site/stat',
+	'hdenter' => '/site/hdenter',
     //'/jz-<controller:\w+>/<action:\w+>' => '/decoration/<controller>/<action>',
 ];
 

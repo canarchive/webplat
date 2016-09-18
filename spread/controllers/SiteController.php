@@ -9,10 +9,9 @@ class SiteController extends SpreadController
 {
     public function actionIndex()
     {
-		session_start();
-		print_r($_SESSION);
-		exit('spread');
-		//$this->redirect();
+		$url = Yii::getAlias('@gallerycmsurl');
+        header("Location:$url");
+		exit();
     }
 
 	public function actionTg()
@@ -75,4 +74,17 @@ class SiteController extends SpreadController
         echo $str;
         exit();
     }
+
+	public function actionHdenter()
+	{
+		$urlSource = Yii::$app->request->get('url_source', '');
+		$url = http_build_query($_GET);
+		if (isset($_GET['url_source'])) {
+			unset($_GET['url_source']);
+		}
+		$queryStr = http_build_query($_GET);
+		$url = $urlSource . '&' . $queryStr;
+		
+		header("Location:$url");
+	}
 }

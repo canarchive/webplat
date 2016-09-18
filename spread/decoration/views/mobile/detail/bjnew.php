@@ -1,8 +1,8 @@
 <?php
 $this->params['inSpread'] = true;
 $this->params['bodyClass'] = 'bg-f2';
-$this->params['formPosition'] = 'hd-baojia';
-$this->params['formPositionName'] = '活动推广-报价';
+$this->params['formPosition'] = 'hd-bjnew';
+$this->params['formPositionName'] = '活动推广-报价new';
 ?>
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/h5_common.css?v=1">
 <link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/h5_icon_font.css?v=1">
@@ -19,7 +19,7 @@ $this->params['formPositionName'] = '活动推广-报价';
 			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/logo.png" alt="一起装修网">
         </div>
         <div class="f12 text_tit">
-		    <p>找装修公司就选<?= Yii::$app->params['siteNameBase']; ?></p>
+		    <p>中国家装十大电商平台   7年服务700万用户</p>
         </div>
     </div>
 </header>
