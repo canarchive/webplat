@@ -4,7 +4,7 @@ namespace spider\models;
 
 use common\models\SpiderModel;
 
-class SiteAbstract extends SpiderModel
+class CompanylistAbstract extends SpiderModel
 {
     /**
      * @inheritdoc
@@ -50,14 +50,5 @@ class SiteAbstract extends SpiderModel
 			'1' => '正常',
 		];
 		return $datas;
-	}
-
-	public function companylist()
-	{
-		$code = $this->code;
-		$class = 'spider\house\models\\' . ucfirst($code) . 'Spider';
-		$object = new $class();
-
-		return $object->companylist();
 	}
 }

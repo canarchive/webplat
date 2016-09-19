@@ -3,18 +3,18 @@
 namespace backend\spider\controllers;
 
 use Yii;
-use spider\house\models\HouseSite;
-use spider\house\models\searchs\HouseSite as HouseSiteSearch;
+use spider\house\models\HouseCompanylist;
+use spider\house\models\searchs\HouseCompanylist as HouseCompanylistSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class HouseSiteController extends AdminController
+class HouseCompanylistController extends AdminController
 {
-	protected $modelClass = 'spider\house\models\HouseSite';
+	protected $modelClass = 'spider\house\models\HouseCompanylist';
 
     public function actionListinfo()
     {
-        $searchModel = new HouseSiteSearch();
+        $searchModel = new HouseCompanylistSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -25,7 +25,7 @@ class HouseSiteController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new HouseSite());
+		return $this->_addInfo(new HouseCompanylist());
     }
 
     public function actionUpdate($id = 0)
@@ -42,7 +42,4 @@ class HouseSiteController extends AdminController
 		return $this->_deleteInfo($id);
     }
 
-	public function actionSpiderCompanylist()
-	{
-	}
 }

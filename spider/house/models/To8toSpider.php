@@ -1,39 +1,22 @@
 <?php
 namespace spider\house\models;
 
+use Yii;
 use Goutte\Client;
 
-class YiichinaSpider extends ArticleSpider
+class To8toSpider
 {
-    private $_url;
+    private $configInfo;
+    protected $category = [];//网站文章分类
+    protected $baseUrl = '';//网站域名
+    protected $name = '';//网站名称
 
     /**
      * 构造方法，初始化采集网站属性
      */
 	public function __construct()
 	{
-        $this->name = 'Yiichina';
-        $this->baseUrl = 'http://www.yiichina.com';
-        $this->category = [
-            '教程'=>'http://www.yiichina.com/tutorial',
-            '扩展'=>'http://www.yiichina.com/extension',
-            '源码'=>'http://www.yiichina.com/code',
-        ];
-    }
-
-    /**
-     * 采集执行函数,调用 getPages ，获取所有分页 ；然后调用 urls ，获取每页文章的文章url，并将他们存入队列
-     */
-	public function process()
-	{
-        foreach ($this->category as $category => $url) {
-            $pages = $this->getPages($url, $category);
-            if($pages){
-                foreach($pages as $p){
-                    $this->urls($category,$p);
-                }
-            }
-        }
+		$this->configInfo = require Yii::getAlias('@spider') . '/config/to8to.php';
     }
 
     /**
@@ -108,20 +91,6 @@ class YiichinaSpider extends ArticleSpider
         }
         return '';
     }
-}
-namespace spider\models;
-
-use common\models\Article;
-use common\models\ArticleTag;
-use common\models\Gather;
-use common\models\Tag;
-
-class ArticleSpider
-{
-    protected $category = [];//网站文章分类
-    protected $baseUrl = '';//网站域名
-    protected $name = '';//网站名称
-
     /**
      * 判断文章是否采集
      * @param $url

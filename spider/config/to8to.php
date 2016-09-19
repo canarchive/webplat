@@ -1,9 +1,9 @@
 <?php
-$cityCodes = [
+return [
+    'cityCodes' => [
 	'bj', 'sh',
 ];
 $companyList = "http://{$cityCode}.to8to.com/company/list_{$page}.html";
-$cId = '1009502';
 $companyShowUrls = [
 	'index' => "http://{$cityCode}.to8to.com/zs/{$cId}/",
 	'info' => "http://bj.to8to.com/zs/company1009502/",
