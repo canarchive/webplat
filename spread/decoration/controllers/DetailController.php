@@ -52,7 +52,6 @@ class DetailController extends Controller
 
 	public function actionFeature()
     {
-		//$this->layout = false;
 		if (empty($this->mHost) && $this->isMobile) {
 			//$url = Yii::getAlias('@m2spreadurl') . Yii::$app->request->getUrl();
 			//$this->redirect($url)->send();
@@ -64,7 +63,7 @@ class DetailController extends Controller
         }
 
 		$view = Yii::$app->request->get('view');
-		$views = ['shangjia', 'baojia', 'sheji', 'kaopu', 'liangfang', 'bjnew', 'manyi'];
+		$views = ['shangjia', 'baojia', 'sheji', 'kaopu', 'liangfang', 'bjnew', 'manyi', 'znbj'];
 		$view = !in_array($view, $views) ? 'index' : $view;
 		$datas['view'] = $view;
 		if (in_array($view, ['kaopu', 'shangjia'])) {
@@ -74,6 +73,9 @@ class DetailController extends Controller
 		        $model = new \merchant\models\Merchant();
 		        $datas['infos'] = $model->getInfos();
 			}
+		}
+		if ($view == 'znbj') {
+		    $this->layout = false;
 		}
 
         return $this->render($view, $datas);   
