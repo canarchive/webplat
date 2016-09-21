@@ -29,7 +29,7 @@ $menusJson = Json::encode($menus);
 
 	<link id="bs-css" href="<?= Yii::getAlias('@asseturl/backend'); ?>/css/bootstrap-cerulean.min.css" rel="stylesheet">
     <script src="<?= Yii::getAlias('@asseturl'); ?>/bower_components/jquery/jquery.min.js"></script>
-    <link rel="shortcut icon" href="<?= Yii::getAlias('@asseturl/backend'); ?>img/favicon.ico">
+    <link rel="shortcut icon" href="<?= Yii::getAlias('@asseturl/backend'); ?>/img/favicon-fb.ico">
 
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
