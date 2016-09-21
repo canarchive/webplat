@@ -52,10 +52,18 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
 window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup.html'; ?>';
+window.SPREAD_URL = '<?= Yii::getAlias('@web'); ?>';
 </script>
 <?= $this->render('@spread/decoration/views/_stat', []); // 顶部 ?>
 </head>
 <body>
 <?= $content; ?>
+<input type="hidden" id="info_id" value="1" />
+<input type="hidden" id="position" value="<?= $formPosition; ?>" />
+<input type="hidden" id="position_name" value="<?= $formPositionName; ?>" />
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
+<div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
+<?php $statUrl = str_replace(Yii::getAlias('@spreadurl'), '', Yii::$app->params['statUrl']); echo $statUrl; ?>
+</div>
 </body>
 </html>

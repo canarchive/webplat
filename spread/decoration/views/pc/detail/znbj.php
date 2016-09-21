@@ -24,7 +24,6 @@ $this->params['formPositionName'] = '活动-报价';
 <script>
    var jq = jQuery.noConflict();
 window.BASEDOMAIN = '.<?= Yii::$app->params['baseDomain']; ?>';
-alert(window.BASEDOMAIN);
 </script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/to8torsas.js" type="text/javascript"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/tender.js" type="text/javascript"></script>
@@ -166,25 +165,27 @@ alert(window.BASEDOMAIN);
                 <!--<h3>计算结果</h3>-->
                 <div class="bj_res_con">
                     <div class="bj_res_t clear">您的装修预算约
-                        <b id="bprice">？</b>
+                        <b id="money">？</b>
                         <span>元</span></div>
                     <ul class="bj_res_ul">
                         <li class="clear">
-                            <span>材料费：</span>
-                            <strong id="materialPay">
-                                <em>？</em>元</strong></li>
+                            <span>卧室：</span>
+                            <strong><em id="price-ws">？</em>元</strong></li>
                         <li class="clear">
-                            <span>人工费：</span>
-                            <strong id="artificialPay">
-                                <em>？</em>元</strong></li>
+                            <span>客厅：</span>
+                            <strong><em id="price-kt">？</em>元</strong></li>
                         <li class="clear">
-                            <span>设计费：</span>
-                            <strong id="designPay">
-                                <em>？</em>元</strong></li>
+                            <span>厨房：</span>
+                            <strong><em id="price-cf">？</em>元</strong></li>
                         <li class="clear">
-                            <span>质检费：</span>
-                            <strong id="qualityPay">
-                                <em>？</em>元</strong></li>
+                            <span>卫生间：</span>
+                            <strong><em id="price-wsj">？</em>元</strong></li>
+                        <li class="clear">
+                            <span>阳台：</span>
+                            <strong><em id="price-yt">？</em>元</strong></li>
+                        <li class="clear">
+                            <span>其他：</span>
+                            <strong><em id="price-other">？</em>元</strong></li>
                     </ul>
                 </div>
                 <div class="bj_explain" style="display:none">
@@ -285,22 +286,4 @@ jQuery(function() {
     }
 });
 </script>
-<div style="display:none;">
-    <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/GlobalProvinces.js?v=1460516531" type="text/javascript"></script>
-    <script type="text/javascript">var gpm = new GlobalProvincesModule;
-        try {
-            headerFooter.init();
-        } catch(e) {}</script>
-    <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/referrerPathRecord.js?v=1444910373" type="text/javascript"></script>
-</div>
-<link type="text/css" rel="stylesheet" href="http://static.to8to.com/css/start/popupsubModal.css?v=1419877120">
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/subModal.js?v=1467783705" type="text/javascript"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/3e5c2a19dc2ac1471a747.js?v=1469619289" type="text/javascript"></script>
-<script type="text/javascript">try {
-        goTopInit();
-    } catch(e) {}
-    jq('.zxzs-set').click(function(e) {
-        e.preventDefault();
-        var ptag = jq(this).attr('dataptag'); (typeof clickStream !== 'undefined') && clickStream.getCvParams(ptag); //埋点
-        window.location.href = jq(this).attr('href');
-    });</script>
