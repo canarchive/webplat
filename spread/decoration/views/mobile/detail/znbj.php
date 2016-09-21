@@ -94,24 +94,32 @@ $(function() {
     <section class="calu-result">
         <h1 id="changeTxt">装修报价</h1>
         <div id='bj'>
-            <h2 id="tubatu_totle">0
+            <h2 id="money">0
                 <span>元</span></h2>
             <div class="calu-content">
                 <p id="tubatu_rg">
-                    <b>人工费：</b>
-                    <strong>0<em>元</em></strong>
+                    <b>卧室：</b>
+                    <strong id="price-ws">0<em>元</em></strong>
                 </p>
                 <p id="tubatu_cl">
-                    <b>材料费：</b>
-                    <strong>0<em>元</em></strong>
+                    <b>客厅：</b>
+                    <strong id="price-kt">0<em>元</em></strong>
                 </p>
                 <p id="tubatu_sj">
-                    <b>设计费：</b>
-                    <strong>0<em>元</em></strong>
+                    <b>厨房：</b>
+                    <strong id="price-cf">0<em>元</em></strong>
                 </p>
                 <p id="tubatu_zj">
-                    <b>质检费：</b>
-                    <strong>0<em>元</em></strong>
+                    <b>卫生间：</b>
+                    <strong id="price-wsj">0<em>元</em></strong>
+                </p>
+                <p id="tubatu_yt">
+                    <b>阳台：</b>
+                    <strong id="price-yt">0<em>元</em></strong>
+                </p>
+                <p id="tubatu_other">
+                    <b>其他：</b>
+                    <strong id="price-other">0<em>元</em></strong>
                 </p>
             </div>
         </div>
