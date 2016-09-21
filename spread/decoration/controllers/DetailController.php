@@ -74,8 +74,8 @@ class DetailController extends Controller
 		        $datas['infos'] = $model->getInfos();
 			}
 		}
-		if ($view == 'znbj') {
-		    $this->layout = false;
+		if (in_array($view, ['liangfang', 'bjnew', 'manyi', 'znbj'])) {
+		    $this->layout = 'main-base';
 		}
 
         return $this->render($view, $datas);   

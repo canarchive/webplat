@@ -1,12 +1,10 @@
 <?php
-$this->params['inSpread'] = true;
+$this->params['cssFiles'] = [
+	'liangfang/css/swiper', 'liangfang/css/common', 'liangfang/css/mianfeibaomingV823',
+];
 $this->params['formPosition'] = 'hd-liangfang';
 $this->params['formPositionName'] = '活动推广-量房';
 ?>
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/swiper.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/common.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/css/mianfeibaomingV823.css" /></head>
-
 <!--页头 end-->
 <header class="cWhite cMdGray clearfix">
     <div class="tit_top">
