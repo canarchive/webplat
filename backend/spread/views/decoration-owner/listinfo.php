@@ -5,12 +5,13 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-		[
+		/*[
 			'attribute' => 'decoration_id',
 			'value' => function($model) {
 				return $model->decoration_id;
 			},
-		],
+			],*/
+		'city_code',
         'name',
 		'mobile',
 		'keyword',

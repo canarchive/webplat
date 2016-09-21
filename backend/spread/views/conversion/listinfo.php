@@ -6,8 +6,9 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
 		'id',
-		'info_id',
-		'info_name',
+		//'info_id',
+		//'info_name',
+		'city_code',
         'from_type',
 		'name',
 		'mobile',
