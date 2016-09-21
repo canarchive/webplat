@@ -32,7 +32,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <meta content="false" name="twcClient" id="twcClient" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
-<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/css/' . $cssFile . '.css?v=151020'; ?>" />
+<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/css/' . $cssFile . '.css'; ?>" />
 <?php } } ?>
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl/gallerycms') . '/house-m/js/' . $jsFile . '.js'; ?>"></script>
