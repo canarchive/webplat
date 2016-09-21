@@ -1,18 +1,15 @@
 <?php
-$this->params['inSpread'] = true;
+$this->params['cssFiles'] = [
+	'baojia/css/h5_common', 'baojia/css/h5_icon_font', 'baojia/css/swiper', 'baojia/css/common',
+	'baojia/css/icon_font', 'baojia/css/decoration-budget',
+];
+$this->params['jsFiles'] = [
+	'baojia/js/jquery-1.11.3.min',
+];
 $this->params['bodyClass'] = 'bg-f2';
 $this->params['formPosition'] = 'hd-bjnew';
 $this->params['formPositionName'] = '活动推广-报价new';
 ?>
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/h5_common.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/h5_icon_font.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/swiper.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/common.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/icon_font.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/mycom_part.css?v=1">
-<link rel="stylesheet" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/css/decoration-budget.css?v=1">
-
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/js/jquery-1.11.3.min.js"></script>
 <header class="cWhite cMdGray clearfix">
     <div class="tit_top">
         <div class="left">
