@@ -153,4 +153,4 @@ $this->params['formPositionName'] = '活动推广-报价new';
     </div>
 </div>
 <!-- 正文 end -->
-<script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/js/main.js?v=1" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/js/require.js?v=1"></script>
+<script data-main="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/js/main.js" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/js/require.js"></script>

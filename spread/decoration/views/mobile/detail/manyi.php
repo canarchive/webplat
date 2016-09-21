@@ -110,7 +110,7 @@ $this->params['formPositionName'] = '活动推广-满意';
 </section>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/sea.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/seaconfig.js"></script>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/component.js?v=1"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/component.js"></script>
 <footer>
     <article>
         <p class="copy">Copyright © 2015 <?= Yii::$app->params['siteNameBase']; ?> All Rights Reserved

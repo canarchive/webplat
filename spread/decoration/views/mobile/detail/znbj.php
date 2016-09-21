@@ -328,11 +328,11 @@ if (browser.versions.iPad) {
 </script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/to8torsas.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/mobiscroll.core.js"></script>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/mobiscroll.scroller.js?20160612"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/mobiscroll.scroller.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/mobiscroll.scroller.android-ics.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/mobiscroll.i18n.zh.js"></script>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/fabiao_endalert.js?20160618"></script>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/fabiao_select.js?20160618"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/fabiao_endalert.js"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/fabiao_select.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/zbcommon.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/common.min.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj-h5/js/seoStatis.min.js"></script>

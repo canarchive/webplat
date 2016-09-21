@@ -197,8 +197,8 @@ window.BASEDOMAIN = '.<?= Yii::$app->params['baseDomain']; ?>';
             </div>
         </div>
     </div>
-    <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/zxbj_new_two.js?v=1467882103" type="text/javascript"></script>
-    <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/GlobalProvinces.js?v=1460516531" type="text/javascript"></script>
+    <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/zxbj_new_two.js" type="text/javascript"></script>
+    <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/GlobalProvinces.js" type="text/javascript"></script>
     <script type="text/javascript">var gpm = new GlobalProvincesModule; //城市类
         gpm.def_province = ["省/市", ""];
         gpm.def_city1 = ["市/地区", ""];
@@ -286,4 +286,4 @@ jQuery(function() {
     }
 });
 </script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/3e5c2a19dc2ac1471a747.js?v=1469619289" type="text/javascript"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/znbj/js/3e5c2a19dc2ac1471a747.js" type="text/javascript"></script>

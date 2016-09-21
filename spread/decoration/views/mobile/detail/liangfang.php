@@ -220,4 +220,4 @@ $this->params['formPositionName'] = '活动推广-量房';
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/js/zepto.min.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/js/swiper.min.js"></script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/js/common.js"></script>
-<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/js/yuyueliangfang.js?v=8"></script>
+<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/js/yuyueliangfang.js"></script>

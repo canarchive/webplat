@@ -41,7 +41,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <meta name="description" content="<?= $seoDescription; ?>" />
 <link rel="shortcut icon" href="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/favicon.ico" />
 <?php if (isset($cssFiles)) { foreach ($cssFiles as $cssFile) { ?>
-<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/spread') . '/house/' . $cssFile . '.css?v=151020'; ?>" />
+<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl/spread') . '/house/' . $cssFile . '.css'; ?>" />
 <?php } } ?>
 
 <?php if (isset($jsFiles)) { foreach ($jsFiles as $jsFile) { ?>
