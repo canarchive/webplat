@@ -88,10 +88,10 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
         </div>
     </section>
 </div>
-<script src="//s.luosimao.com/js/jquery-2.1.0.js?v=201608251421.js"></script>
-<script src="//s.luosimao.com/js/plugin/table/footable.js?v=201608251421.js"></script>
-<script src="//s.luosimao.com/js/plugin/tooltip/tooltips.js?v=201608251421.js"></script>
-<script src="//s.luosimao.com/js/foundation.min.js?v=201608251421.js"></script>
-<script src="//s.luosimao.com/js/mustache.js?v=201608251421.js"></script>
-<script src="//s.luosimao.com/js/module/sms.js?v=201608251421.js"></script>
+<script src="//s.luosimao.com/js/jquery-2.1.0.js"></script>
+<script src="//s.luosimao.com/js/plugin/table/footable.js"></script>
+<script src="//s.luosimao.com/js/plugin/tooltip/tooltips.js"></script>
+<script src="//s.luosimao.com/js/foundation.min.js"></script>
+<script src="//s.luosimao.com/js/mustache.js"></script>
+<script src="//s.luosimao.com/js/module/sms.js"></script>
 
