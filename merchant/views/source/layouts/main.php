@@ -86,12 +86,6 @@ use yii\helpers\Url;
                 </div>
             </div>
         </footer>
-        <script>var _hmt = _hmt || []; (function() {
-                var hm = document.createElement("script");
-                hm.src = "//hm.baidu.com/hm.js?588936199c3632c17bd6fb753b9bc3a6";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();</script>
         <!--Kefuzu Chat Script Start-->
         <script type="text/javascript">var __kc = __kc || {};
             __kc.o = 'xYqLOt8sL3oa'; (function() {
