@@ -1,14 +1,12 @@
 <?php
 use yii\helpers\Url;
 
-$this->params['inSpread'] = true;
+$this->params['cssFiles'] = [
+	'manyi/css/main', 'manyi/css/list', 'manyi/css/tmypage',
+];
 $this->params['formPosition'] = 'hd-manyi';
 $this->params['formPositionName'] = '活动推广-满意';
 ?>
-<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/css/main.css?v=20160330164500" />
-<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/css/list.css?v=20160407151706" />
-<link rel="stylesheet" type="text/css" href="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/css/tmypage.css?v=20151204000857" />
-
 <article class="tmyCon tmy_index">
 <header>
     <a href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>" class="addres">
@@ -112,7 +110,7 @@ $this->params['formPositionName'] = '活动推广-满意';
 </section>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/sea.js"></script>
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/seaconfig.js"></script>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/component.js?v=1"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/component.js"></script>
 <footer>
     <article>
         <p class="copy">Copyright © 2015 <?= Yii::$app->params['siteNameBase']; ?> All Rights Reserved
