@@ -38,6 +38,9 @@ return [
         ],
     ],
 	'modules' => [
+		'house' => [
+			'class' => 'spider\house\Module',
+		],
 	],
     'params' => $params,
 ];
