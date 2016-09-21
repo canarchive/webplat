@@ -10,10 +10,11 @@ $this->params['formPositionName'] = '活动推广-量房';
     <div class="tit_top">
         <div class="left">
             <a href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>">
-                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/logo.png" alt="<?= Yii::$app->params['siteNameBase']; ?>"></a>
+                <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/logo-o.png" alt="<?= Yii::$app->params['siteNameBase']; ?>"></a>
         </div>
         <div class="f12 text_tit">
-		    <p>找装修公司就选<?= Yii::$app->params['siteNameBase']; ?></p>
+            <p>中国家装十大电商平台   7年服务700万用户</p>
+		    <!--<p>找装修公司就上<?= Yii::$app->params['siteNameBase']; ?></p>-->
         </div>
     </div>
 </header>
@@ -22,7 +23,7 @@ $this->params['formPositionName'] = '活动推广-量房';
     <input type="hidden" id="user_tel" value="" />
     <input type="hidden" id="form_type" value="hd-liangfang" />
     <div class="banner">
-        <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/mfsjbanner.png" /></div>
+        <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/mfsjbanner-o.png" /></div>
     <div class="list" id="list">
         <dl>
             <dt>
@@ -183,7 +184,7 @@ $this->params['formPositionName'] = '活动推广-量房';
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/yangban1.png" alt="" />
                         <div class="star-people">
                             <p>
-                                <span>周大卫</span>经验5年</p>
+                                <span>田静</span>经验5年</p>
                             <p>擅长：简约、田园等风格</p>
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/liduoduo.png" alt="" /></div>
                     </li>
@@ -191,7 +192,7 @@ $this->params['formPositionName'] = '活动推广-量房';
                         <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/yangban2.png" alt="" />
                         <div class="star-people">
                             <p>
-                                <span>曾飞</span>经验4年</p>
+                                <span>王飞</span>经验4年</p>
                             <p>擅长：田园、欧式等风格</p>
                             <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/liangfang/images/lixianchuang.png" alt="" /></div>
                     </li>
