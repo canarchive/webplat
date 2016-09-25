@@ -12,9 +12,8 @@ class CompanylistAbstract extends SpiderModel
     public function rules()
     {
         return [
-            [['name', 'url'], 'required'],
-            [['status'], 'default', 'value' => 0],
-			[['url_mobile', 'description'], 'safe'],
+            [['status', 'page', 'updated_at'], 'default', 'value' => 0],
+			[['url_source', 'url_base', 'site_code', 'rules'], 'safe'],
         ];
     }
 

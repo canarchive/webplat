@@ -1,7 +1,23 @@
 <?php
 return [
-    'cityCodes' => [
-	'bj', 'sh',
+    'cityInfos' => [
+		'bj' => [
+			'listpage' => 73,
+		],
+		'sh' => [
+			'listpage' => 53,
+		], 
+		'hz' => [
+			'listpage' => 59,
+		], 
+		'wh' => [
+			'listpage' => 32,
+		], 
+		'cd' => [
+			'listpage' => 40,
+		],
+	],
+	'companylist' => 'http://{{CITYCODE}}.to8to.com/company/list_{{PAGE}}.html',
 ];
 $companyList = "http://{$cityCode}.to8to.com/company/list_{$page}.html";
 $companyShowUrls = [

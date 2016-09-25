@@ -15,6 +15,24 @@ class SpiderController extends GallerycmsController
 
 	public function actionCompanylist()
 	{
+		$siteInfo = $this->siteInfo();
+		$siteInfo->companylist();
+	}
+
+	public function actionSpiderList()
+	{
+		$siteInfo = $this->siteInfo();
+		$siteInfo->spiderList();
+	}
+
+	public function actionDealList()
+	{
+		$siteInfo = $this->siteInfo();
+		$siteInfo->dealList();
+	}
+
+	protected function siteInfo()
+	{
 		$siteId = Yii::$app->request->get('id');
 		if (empty($siteId)) {
 			exit('param error');
@@ -25,7 +43,6 @@ class SpiderController extends GallerycmsController
 			exit('info empty');
 		}
 
-
-		$siteInfo->companylist();
+		return $siteInfo;
 	}
 }
