@@ -1,9 +1,42 @@
 <?php
 return [
-    'cityCodes' => [
-	'bj', 'sh',
+    'cityInfos' => [
+		'bj' => [
+			'listpage' => 73,
+		],
+		'sh' => [
+			'listpage' => 53,
+		], 
+		'hz' => [
+			'listpage' => 59,
+		], 
+		'wh' => [
+			'listpage' => 32,
+		], 
+		'cd' => [
+			'listpage' => 40,
+		],
+		'sz' => [
+			'listpage' => 84,
+		],
+		'gz' => [
+			'listpage' => 43,
+		],
+		'wx' => [
+			'listpage' => 20,
+		],
+		'xa' => [
+			'listpage' => 35,
+		],
+		'xm' => [
+			'listpage' => 16,
+		],
+		'zz' => [
+			'listpage' => 37,
+		],
+	],
+	'companylist' => 'http://{{CITYCODE}}.to8to.com/company/list_{{PAGE}}.html',
 ];
-$companyList = "http://{$cityCode}.to8to.com/company/list_{$page}.html";
 $companyShowUrls = [
 	'index' => "http://{$cityCode}.to8to.com/zs/{$cId}/",
 	'info' => "http://bj.to8to.com/zs/company1009502/",
