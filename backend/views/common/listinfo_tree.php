@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 
 $menuInfos = $this->context->menuInfos;
 $this->title = $menuInfos['menuTitle'];
+$this->params['haveTreeList'] = true;
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
