@@ -62,20 +62,26 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
                         <table class="table table-bordered sms-template-list footable">
                             <thead>
                                 <tr>
-                                    <th data-hide="phone" class="num">ID</th>
-                                    <th data-hide="phone,tablet" class="time">手机号</th>
                                     <th data-hide="phone,tablet" class="time">派单时间</th>
-                                    <th class="status">状态</th>
-                                    <th class="content">业主描述</th>
+                                    <th data-hide="phone,tablet" class="time">姓名</th>
+                                    <th data-hide="phone,tablet" class="time">手机号</th>
+                                    <th data-hide="phone,tablet" class="time">小区</th>
+                                    <th data-hide="phone,tablet" class="time">面积</th>
+                                    <th data-hide="phone,tablet" class="time">户型</th>
+                                    <!--<th class="status">状态</th>-->
+                                    <th class="content">详情</th>
                                     <!--<th data-hide="phone" class="ctr">操作</th></tr>-->
                             </thead>
                             <tbody>
                                 <?php foreach ($infos as $info) { ?>
                                 <tr>
-								    <td><?= $info['id']; ?></td>
+								    <td><?= date('Y-m-d H:i:s', $info['created_at']); ?></td>
+								    <td><?= $info['ownerName']; ?></td>
 								    <td><?= $info['mobile']; ?></td>
-								    <td><?= date('Y-m-d', $info['created_at']); ?></td>
-								    <td><?= $info->statusInfos[$info['status']]; ?></td>
+								    <td><?= $info['houseAddress']; ?></td>
+								    <td><?= $info['houseArea']; ?></td>
+								    <td><?= $info['houseType']; ?></td>
+								    <!--<td><?= $info->statusInfos[$info['status']]; ?></td>-->
 								    <td><?= $info['note']; ?></td>
                                 </tr>
                                 <?php } ?>

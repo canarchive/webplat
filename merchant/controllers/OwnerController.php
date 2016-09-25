@@ -17,6 +17,8 @@ class OwnerController extends LoginedController
 		if ($merchantId > 0) {
 		    $ownerMerchant = new OwnerMerchant();
 			$infos = $ownerMerchant->getInfos(['merchant_id' => $merchantId]);
+			foreach ($infos as $info) {
+			}
 		}
 		$datas = [
 			'infos' => $infos,
