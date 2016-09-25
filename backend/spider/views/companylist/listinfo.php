@@ -5,21 +5,16 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-		'name',
+		'site_code',
+		'city_code',
+		'page',
 		[
 			'format' => 'raw',
-			'attribute' => 'url',
+			'attribute' => 'url_source',
 			'value' => function($model) {
-				return Yii::$app->formatter->asUrl($model->url);
+				return Yii::$app->formatter->asUrl($model->url_source, ['target' => '_blank']);
 			},
 		],
-		[
-			'format' => 'raw',
-            'attribute' => 'created_at',
-            'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->created_at);
-            },
-        ],
 		[
             'attribute' => 'updated_at',
             'value'=> function($model){
@@ -32,7 +27,6 @@ $gridViewParams = [
 				return $model->statusInfos[$model->status];
 			}
 		],
-		'description',
     ],
 ];
 

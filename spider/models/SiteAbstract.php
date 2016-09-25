@@ -54,10 +54,28 @@ class SiteAbstract extends SpiderModel
 
 	public function companylist()
 	{
+		$object = $this->getSpiderObject();
+		return $object->companylist($this->code);
+	}
+
+	public function spiderList()
+	{
+		$object = $this->getSpiderObject();
+		return $object->spiderList($this->code);
+	}
+
+	public function dealList()
+	{
+		$object = $this->getSpiderObject();
+		return $object->dealList($this->code);
+	}
+
+	protected function getSpiderObject()
+	{
 		$code = $this->code;
 		$class = 'spider\house\models\\' . ucfirst($code) . 'Spider';
 		$object = new $class();
 
-		return $object->companylist();
+		return $object;
 	}
 }
