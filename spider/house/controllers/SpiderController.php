@@ -8,27 +8,24 @@ use spider\house\models\HouseSite as Site;
 
 class SpiderController extends GallerycmsController
 {
-    public function actionIndex()
+    public function actionSpider()
     {
-        return $this->render('index');
+		$siteInfo = $this->siteInfo();
+		$action = Yii::$app->request->get('action');
+		$siteInfo->spider($action);
+    }
+
+    public function actionDeal()
+    {
+		$siteInfo = $this->siteInfo();
+		$action = Yii::$app->request->get('action');
+		$siteInfo->deal($action);
     }
 
 	public function actionCompanylist()
 	{
 		$siteInfo = $this->siteInfo();
 		$siteInfo->companylist();
-	}
-
-	public function actionSpiderList()
-	{
-		$siteInfo = $this->siteInfo();
-		$siteInfo->spiderList();
-	}
-
-	public function actionDealList()
-	{
-		$siteInfo = $this->siteInfo();
-		$siteInfo->dealList();
 	}
 
 	protected function siteInfo()
