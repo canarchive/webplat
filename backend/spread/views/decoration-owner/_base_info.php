@@ -38,8 +38,8 @@ $tableName = 'activity_user';
                 <table class="table table-striped table-bordered responsive">
                     <thead>
                     <tr>
-						<th><?= $model->getAttributeLabel('valid_status'); ?></th>
-					    <th><?= $model->getAttributeLabel('callback_at'); ?></th>
+						<th><?= $model->getAttributeLabel('invalid_status'); ?></th>
+					    <th><?= $model->getAttributeLabel('status'); ?></th>
 					    <th><?= $model->getAttributeLabel('callback_again'); ?></th>
 					    <th><?= $model->getAttributeLabel('keyword'); ?></th>
 					    <th><?= $model->getAttributeLabel('note'); ?></th>
@@ -49,31 +49,43 @@ $tableName = 'activity_user';
                     <tbody>
                     <tr>
 					    <td>
-						其他原因：<input type="text" name="valid_status" value="" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'valid_status', this.value);"/>
     					<?= Html::dropDownList(
-    						"valid_status", 
-    						$model->valid_status, 
-    						$model->validStatusInfos, 
+    						"invalid_status", 
+    						$model->invalid_status, 
+    						$model->invalidStatusInfos, 
     						[
     							'prompt' => '全部', 
     							'class' => 'form-control',
-								'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'valid_status', this.value)",
+								'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'invalid_status', this.value)",
     						]
     					); ?>
                         </td>
 					    <td>
-                        <?php if ($model->callback_at > 0) { echo Yii::$app->Formatter->asRelativeTime($model->callback_at, $model->signup_at); } else { echo Html::radio('callback_at', false, ['label' => '标识为已回访', 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'callback_at', this.value)"]); } ?>
-					    <td>
     					<?= Html::dropDownList(
-    						"callback_again", 
-    						$model->callback_again, 
-    						$model->callbackAgainInfos, 
+    						"status", 
+    						$model->status, 
+    						$model->statusInfos, 
     						[
     							'prompt' => '全部', 
     							'class' => 'form-control',
-								'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'callback_again', this.value)",
+								'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'status', this.value)",
     						]
     					); ?>
+                        </td>
+					    <td>
+
+						<input class="form-control" type="text" id="callback_again" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'callback_again', this.value)">
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#callback_again').datetimepicker({locale: 'zh-CN', format: 'YYYY-MM-DD HH:mm:ss'})
+							.on('changeDate', function(ev){
+								alert('sss');
+								    if (ev.date.valueOf() < date-start-display.valueOf()){
+									}
+							});
+							//$('#callback_again').onchange = function () { alert('ss'); }
+                        });
+                    </script>
                         </td>
 					    <td><?= $model->keyword; ?></td>
 					    <td><?= $model->note; ?></td>

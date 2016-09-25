@@ -26,9 +26,9 @@ $gridViewParams = [
 		'message',
 		'note',
 		[
-			'attribute' => 'valid_status',
+			'attribute' => 'invalid_status',
 			'value' => function($model) {
-				$value = isset($model->validStatusInfos[$model->valid_status]) ? $model->validStatusInfos[$model->valid_status] : $model->valid_status;
+				$value = isset($model->invalidStatusInfos[$model->invalid_status]) ? $model->invalidStatusInfos[$model->invalid_status] : $model->invalid_status;
 				return $value;
 			},
 		],

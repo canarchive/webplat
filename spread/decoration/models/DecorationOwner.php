@@ -36,9 +36,9 @@ class DecorationOwner extends SpreadModel
 			'message' => '留言',
 			'note' => '备注',
 			'keyword' => '搜索关键字',
-			'valid_status' => '是否有效',
+			'invalid_status' => '无效原因',
 			'callback_at' => '第一次回访',
-			'callback_again' => '是否再次回访',
+			'callback_again' => '再次回访时间',
 			'status' => '状态',
         ];
     }
@@ -114,7 +114,7 @@ class DecorationOwner extends SpreadModel
         return true;
     }        
 
-	public function getValidStatusInfos()
+	public function getInvalidStatusInfos()
 	{
 		$datas = [
 			'' => '未知',
@@ -126,6 +126,21 @@ class DecorationOwner extends SpreadModel
 			'no_near' => '太远了',
 		];
 
+		return $datas;
+	}
+
+	public function getStatusInfos()
+	{
+		$datas = [
+			'0' => '未回访',
+			'1' => '预约跟进',
+			'3' => '已派单',
+			'4' => '跟踪中',
+			'5' => '量房',
+			'6' => '未量房',
+			'7' => '签约',
+			'8' => '未签约',
+		];
 		return $datas;
 	}
 

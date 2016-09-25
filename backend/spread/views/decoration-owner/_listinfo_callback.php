@@ -7,6 +7,21 @@ $modelNew = new \spread\models\Callback();
 <div class="row">
     <div class="box col-md-12">
         <div class="box-inner">
+            <div class="box-content">
+                <table class="table table-striped table-bordered responsive">
+					<thead>
+						<tr>
+                            <th><?= $modelNew->getAttributeLabel('content'); ?></th>
+                        </tr>
+                    </thead>
+					<tbody>
+						<tr>
+					        <td><?= Html::textarea('content', '', ['id' => 'callback_content', 'rows' => '5', 'cols' => '150']); ?></td>
+						</tr>
+                    </tbody>
+                </table>
+                <?= Html::submitButton(Yii::t('admin-common', 'Create'), ['class' => 'btn btn-success', 'onclick' => "addCallback();"]) ?>
+            </div>
 		    <div data-original-title="" class="box-header well">
                 <h2>回访日志信息</h2>
                 <div class="box-icon">
@@ -30,21 +45,6 @@ $modelNew = new \spread\models\Callback();
                     <?php } ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="box-content">
-                <table class="table table-striped table-bordered responsive">
-					<thead>
-						<tr>
-                            <th><?= $modelNew->getAttributeLabel('content'); ?></th>
-                        </tr>
-                    </thead>
-					<tbody>
-						<tr>
-					        <td><?= Html::textarea('content', '', ['id' => 'callback_content', 'rows' => '5', 'cols' => '150']); ?></td>
-						</tr>
-                    </tbody>
-                </table>
-                <?= Html::submitButton(Yii::t('admin-common', 'Create'), ['class' => 'btn btn-success', 'onclick' => "addCallback();"]) ?>
             </div>
         </div>
     </div>

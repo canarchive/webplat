@@ -30,7 +30,7 @@ $tableName = 'owner_merchant';
                 ]
             ); } else { echo $model->statusInfos[$model->status]; } ?>
             </td>
-            <td><?= Html::textarea('note', $model->note, ['rows' => 5, 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'note', this.value)"]); ?></td>
+            <td><?= Html::textarea('note', $model->note, ['rows' => 2, 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'note', this.value)"]); ?></td>
         </tr>
         <?php } ?>
     </tbody>
