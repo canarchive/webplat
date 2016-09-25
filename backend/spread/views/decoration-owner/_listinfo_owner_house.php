@@ -27,7 +27,7 @@ $modelOwnerMerchantNew = new \merchant\models\OwnerMerchant();
                      <a class="btn btn-minimize btn-round btn-default" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
                 </div>
             </div> 
-            <div class="box-content" id="owner_house_infos">
+            <div class="box-content">
                 <?php echo $this->render('_owner_house', ['ownerHouseInfos' => $ownerHouseInfos]); ?>
             </div>
         </div>

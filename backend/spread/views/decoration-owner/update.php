@@ -98,6 +98,7 @@ function addElemForUser(data)
 
 function updateElemForUser(table, info_id, field, value)
 {
+	alert(table);
 	var url = '';
 	var data = {
 	    'table': table,

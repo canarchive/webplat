@@ -31,4 +31,5 @@ $tableName = 'owner_house';
                 ]
             ); ?>
             </td>
+			<td><a href="javascript: void(0);" onclick="$('#house_id').val(<?= $model->id; ?>); $('#house_show').html('<?= $model->address; ?>'); $('#sendto_merchant').show();">派单</a></td>
         </tr>

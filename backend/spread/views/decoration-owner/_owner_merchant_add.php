@@ -26,7 +26,7 @@ $tableName = 'owner_house';
                 ]
             ); ?>
             </td>
-			<td><?= Html::textarea('note', '', ['id' => 'note', 'rows' => '5', 'cols' => '150']); ?></td>
+			<td><?= Html::textarea('note', '', ['id' => 'note', 'rows' => '2', 'cols' => '80']); ?></td>
         </tr>
     </tbody>
 </table>
