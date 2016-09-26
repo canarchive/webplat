@@ -28,6 +28,12 @@ class SpiderController extends GallerycmsController
 		$siteInfo->companylist();
 	}
 
+	public function actionFileDown()
+	{
+		$siteInfo = $this->siteInfo();
+		$siteInfo->fileDown();
+	}
+
 	protected function siteInfo()
 	{
 		$siteId = Yii::$app->request->get('id');
