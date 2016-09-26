@@ -74,6 +74,10 @@ $menusJson = Json::encode($menus);
 
 <?php $this->endBody() ?>
 
+<?php if (isset($this->params['haveTreeList'])) { ?>
+<script src="http://static.acanstudio.com/backend/js/jquery.treetable.js"></script>
+<script src="http://static.acanstudio.com/backend/js/jquery.treeview.js"></script>
+<?php } ?>
 <script language="javascript">
 $(document).ready(function(){
   var current_theme = $.cookie('current_theme')==null ? 'cerulean' :$.cookie('current_theme');

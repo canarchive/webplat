@@ -41,7 +41,7 @@ class OwnerHouse extends SpreadModel
             'id' => '房屋信息ID',
             'owner_id' => '业主ID',
             'mobile' => '手机号',
-			'address' => '地址',
+			'address' => '小区',
             'house_type' => '户型',
             'house_sort' => '房屋类别',
             'house_area' => '房屋面积',
