@@ -78,7 +78,7 @@ class SignupForm extends Model
 		//$infoExist = DecorationOwner::findOne(['mobile' => $this->mobile]);
 		$noCheckDecorationSignined = isset(Yii::$app->params['noCheckDecorationSignined']) ? Yii::$app->params['noCheckDecorationSignined'] : false;
 		if (!$noCheckDecorationSignined && !empty($infoExist)) {
-			$this->addError('error', '这个手机号已经报名了本场家装活动');
+			$this->addError('error', '您的手机号已报名成功');
 			return false;
 		}
 
