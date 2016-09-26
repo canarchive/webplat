@@ -40,6 +40,7 @@ class SiteController extends MerchantController
 
     public function actionIndex()
     {
+		return Yii::$app->response->redirect($this->homeUrl)->send();
         return $this->render('index');
     }
 
