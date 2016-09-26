@@ -2,6 +2,8 @@
 
 namespace spider\models;
 
+use Yii;
+use yii\helpers\FileHelper;
 use common\models\SpiderModel;
 
 class SiteAbstract extends SpiderModel
@@ -64,6 +66,43 @@ class SiteAbstract extends SpiderModel
 		$object = $this->getSpiderObject('Deal');
 		$method = $action;
 		return $object->$method($this->code);
+	}
+
+	public function fileDown()
+	{
+        $model = new Attachment();
+        $where = ['source_status' => 0];
+        $infos = $model->find()->where($where)->limit(500)->all();
+		$pathBase = Yii::$app->params['pathParams']['default'] . '/';
+        foreach ($infos as $info) {
+			$pathInfo = pathinfo($info['source_url']);
+			$extName = isset($pathInfo['extension']) ? $pathInfo['extension'] : '';
+			$extName = $pos = strpos($extName, '?') ? substr($extName, 0, strpos($extName, '?')) : $extName;
+
+            $key = md5($info['source_id'] . $info['name']);
+			$code = substr($info['source_site_code'], 0, 1) . '_';
+			$base = "{$code}{$info['info_table']}/{$info['info_field']}";
+            for ($i = 0; $i < 1; ++$i) {
+                if (($prefix = substr($key, $i + $i, 2)) !== false) {
+                    $base .= "/{$prefix}";
+                }
+            }
+			$file = $pathBase . $base . "/{$key}.{$extName}";
+			if (!file_exists($file)) {
+            FileHelper::createDirectory(dirname($file));
+			$content = file_get_contents($info['source_url']);
+			file_put_contents($file, $content);
+			}
+
+			$info->extname = $extName;
+			$info->filepath = str_replace($pathBase, '', $file);
+			$info->size = filesize($file);
+            $info->type = FileHelper::getMimeType($file);
+			$info->source_status = 1;
+			$info->created_at = Yii::$app->params['currentTime'];
+			$info->update(false);
+			//print_r($info);exit();
+		}
 	}
 
 	protected function getSpiderObject($type)

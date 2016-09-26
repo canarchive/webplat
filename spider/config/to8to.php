@@ -36,6 +36,11 @@ return [
 		],
 	],
 	'companylist' => 'http://{{CITYCODE}}.to8to.com/company/list_{{PAGE}}.html',
+	'showUrls' => [
+		'certificate' => 'http://{{CITYCODE}}.to8to.com/zs/{{INFOID}}/integrity-certificate-1.html',
+		'intro' => 'http://{{CITYCODE}}.to8to.com/zs/company{{INFOID}}/',
+		'integrity' => 'http://{{CITYCODE}}.to8to.com/zs/integrity{{INFOID}}/',
+	],
 ];
 $companyShowUrls = [
 	'index' => "http://{$cityCode}.to8to.com/zs/{$cId}/",

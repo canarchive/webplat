@@ -21,6 +21,8 @@ class SiteController extends SpiderController
 			$url = $urlBase . '/house/spider/spider.html?id=1&action=' . $action;
 			$content .= "<a href='{$url}' target='_blank'>{$info['name']}</a><br />";
 		}
+		$downUrl = $urlBase . '/house/spider/file-down.html?id=1';
+		$content .= "<a href='{$downUrl}' target='_blank'>下载文件</a><br />";
 		$content .= '<br /><h3>信息处理</h3>';
 		$dealActions = Yii::$app->params['dealActions'];
 		foreach ($dealActions as $action => $info) {
