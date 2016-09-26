@@ -11,7 +11,7 @@ class OwnerController extends LoginedController
 {
 	public function actionIndex()
 	{
-		$merchantId = 3;//isset($this->merchantInfo['id']) ? $this->merchantInfo['id'] : 0;
+		$merchantId = isset($this->merchantInfo['id']) ? $this->merchantInfo['id'] : 0;
 
 		$infos = [];
 		if ($merchantId > 0) {
