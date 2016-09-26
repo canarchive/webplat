@@ -5,7 +5,7 @@ use yii\helpers\Url;
     <h3>实景作品 所见即所得</h3>
     <p>真实作品，实景案例</p>
     <div class="items padTop15">
-        <?php foreach ($infos as $info) { ?>
+        <?php $i = 0; foreach ($infos as $info) { if ($i > 3) { continue; }?>
 		<a href="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 		    <img src="<?= $info['thumb']; ?>" width="277px" height="279px">
             <div class="recommend clearfix">
@@ -15,6 +15,6 @@ use yii\helpers\Url;
                 </div>
             </div>
         </a>
-        <?php } ?>
+        <?php $i++;} ?>
     </div>
 </div>
