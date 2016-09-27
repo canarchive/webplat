@@ -142,7 +142,7 @@ class Merchant extends MerchantModel
 	{
 		$info['logo'] = $info->getAttachmentUrl($info['logo']);
 		$info['picture'] = $info->getAttachmentUrl($info['picture']);
-		$info['companyInfo'] = Company::findOne($info['company_id'])->toArray();
+		//$info['companyInfo'] = Company::findOne($info['company_id'])->toArray();
 
         $condition = [ 
             'info_table' => 'merchant',
@@ -189,9 +189,9 @@ class Merchant extends MerchantModel
 		return $infos;
 	}
 
-	public function getInfos($limit = 100)
+	public function getInfos($where, $limit = 100)
 	{
-		$infos = $this->find()->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
+		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
 		foreach ($infos as $key => & $info) {
 			$info['logo'] = $info->getAttachmentUrl($info['logo']);
 		}
