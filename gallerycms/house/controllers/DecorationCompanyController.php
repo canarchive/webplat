@@ -12,7 +12,8 @@ class DecorationCompanyController extends HouseController
 	public function actionIndex()
 	{
 		$model = new Merchant();
-		$infos = $model->getInfos();
+		$where = ['city_code' => Yii::$app->params['currentCompany']['code_short'], 'status' => 1];
+		$infos = $model->getInfos($where);
 		$datas = [
 			'infos' => $infos,
 		];
