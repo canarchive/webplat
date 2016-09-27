@@ -63,7 +63,7 @@ class DetailController extends Controller
         }
 
 		$view = Yii::$app->request->get('view');
-		$views = ['shangjia', 'baojia', 'sheji', 'kaopu', 'liangfang', 'bjnew', 'manyi', 'znbj'];
+		$views = ['shangjia', 'baojia', 'sheji', 'kaopu', 'liangfang', 'bjnew', 'manyi', 'znbj', 'sjlf'];
 		$view = !in_array($view, $views) ? 'index' : $view;
 		$datas['view'] = $view;
 		if (in_array($view, ['kaopu', 'shangjia'])) {
@@ -74,8 +74,9 @@ class DetailController extends Controller
 		        $datas['infos'] = $model->getInfos();
 			}
 		}
-		if (in_array($view, ['liangfang', 'bjnew', 'manyi', 'znbj'])) {
+		if (in_array($view, ['liangfang', 'bjnew', 'manyi', 'znbj', 'sjlf'])) {
 		    $this->layout = 'main-base';
+			//$this->layout = false;
 		}
 
         return $this->render($view, $datas);   
