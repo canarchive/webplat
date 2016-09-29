@@ -23,6 +23,7 @@ class SignupForm extends Model
 	public $isMobile;
 	public $decorationModel;
 	public $quoteInfo = [];
+	public $existOwner;
 
     /**
      * @inheritdoc
@@ -79,6 +80,7 @@ class SignupForm extends Model
 		$noCheckDecorationSignined = isset(Yii::$app->params['noCheckDecorationSignined']) ? Yii::$app->params['noCheckDecorationSignined'] : false;
 		if (!$noCheckDecorationSignined && !empty($infoExist)) {
 			$this->addError('error', '您的手机号已报名成功');
+			$this->existOwner = true;
 			return false;
 		}
 

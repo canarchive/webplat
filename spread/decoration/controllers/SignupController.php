@@ -73,7 +73,7 @@ class SignupController extends spreadController
 			$errors = $model->getFirstErrors('error');
 			$message = isset($errors['error']) ? $errors['error'] : '报名失败，请您重试！';
 			$data = [
-				'status' => '400',
+				'status' => $model->existOwner ? '200' : '400',
 				'message' => $message,
 				'quoteInfo' => $model->area_input > 0 ? $model->_getQuoteInfo($model->area_input) : [],
 				//'model' => $model,

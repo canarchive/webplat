@@ -32,11 +32,6 @@ $this->params['formPositionName'] = '活动-设计量房pc';
 			cursor:pointer;
 		}
 </style>
-<script>
-window.signupUrl = '';
-</script>
-</head>
-<body>
 <!-- 头部 -->
 <div class="header btn_data-tit" data-tit="申请预约免费设计量房">
   <div class="siteNav">
@@ -52,14 +47,14 @@ window.signupUrl = '';
                 <li>注册</li>
                 <li>我要装修</li>
                 <li class="customerService" id="CSDexc" >客户服务<i></i></li>
-                <li class="last">400-689-1717</li>
+                <li class="last"><?= Yii::$app->params['siteHotline']; ?></li>
             </ul>
 			<ul class="siteNavBgRS">
                 <li></li>
                 <li class="owen">个人中心<i></i></li>
                 <li>我要装修</li>
                 <li class="customerService" id="CSDexs">客户服务<i></i></li>
-                <li class="last">客服电话：400-689-1717</li>
+                <li class="last">客服电话：<?= Yii::$app->params['siteHotline']; ?></li>
             </ul>
 			<ul class="siteNavBgRS_list">
               <li>
@@ -84,7 +79,7 @@ window.signupUrl = '';
               <div class="dropDownTop clear">
                   <div class="DDTleft">
                     电话投诉
-                    400-689-1717
+                    <?= Yii::$app->params['siteHotline']; ?>
                    <i></i>团购保障
                     <i></i>帮助中心
                   </div>
@@ -99,7 +94,7 @@ window.signupUrl = '';
                     
                       <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/sina.png" alt="首页-客户服务-新浪微博" width="30px" height="25px">
 
-                    <span>关注一起装修网新浪微博</span>
+                    <span>关注<?= Yii::$app->params['siteNameBase']; ?>新浪微博</span>
                     立即关注
                </div>
             </div>
@@ -112,7 +107,7 @@ window.signupUrl = '';
       <div class="loginCity">
           <div class="logo">
             
-                 <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/logo1.png" alt="一起装修网logo">
+                 <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/logo1.png" alt="<?= Yii::$app->params['siteNameBase']; ?>logo">
             
           </div>
           <div class="border"></div>
@@ -175,8 +170,6 @@ window.signupUrl = '';
 	                    <li class="nav_hd_list" id="nav_hd_list">
                 <a class="nhla" href="" >新房装修<i></i></a>
                 <ul class="NHList a">
-                    <li><a href="" >377套餐</a></li>
-                    <li><a href="" >677套餐</a></li>
                 </ul>
            </li>
 	       	                   <li class="nav_hd_list">
@@ -368,7 +361,7 @@ window.signupUrl = '';
                         </div>
                     </div>
                     <div class="intro">
-                        <p class="f12 cGray mt5">96%的业主反馈，参加一起装修网团购会价更实惠。</p>
+                        <p class="f12 cGray mt5">96%的业主反馈，参加<?= Yii::$app->params['siteNameBase']; ?>团购会价更实惠。</p>
                         <p class="f14 mt10" id="newgroupon"><a href="">2016年7月9日-10日我报名参加端午材家具团购会，一起去吧！</a></p>
                         <ul class="cOrange f12 mt10">
                             <li class="mt5"><span class="inline-cj">超低折扣</span>折扣直逼底价，支持多渠道比价</li>
@@ -385,7 +378,7 @@ window.signupUrl = '';
     <!--offerlayer改动在此结束-->
     
     
-			<div class="index_box clearfix btn_data-tit" data-tit="申请677整装套餐装修">
+			<div class="index_box clearfix btn_data-tit" data-tit="申请整装套餐装修">
 			    <div class=" h260" id="box">
 				        <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/banner.png">
 			    </div>
@@ -602,7 +595,6 @@ window.signupUrl = '';
 										<span>陈女士     108㎡     138****508     30分钟前</span>&nbsp;<span>齐先生     117㎡     150****137     38分钟前</span>
 								</div>
 									<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/js/swiper.min.js"></script>
-									<!--<script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/js/idangerous.swiper.min.js"></script>-->
 									<script>		    
 									  var mySwiper = new Swiper('.swiper-container',{
 									    slidesPerView: 2,
@@ -773,7 +765,7 @@ window.signupUrl = '';
 				</ul>
 		</div>
 		<div class="main5_div4">
-				<span data-tit="申请预约免费设计量房" class="btn_data-tit "><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/SQ_img.png"></span><span class="span111 btn_data-tit"  data-tit="立即预约一起装修网装修报价"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/js_img.png"></span>
+				<span data-tit="申请预约免费设计量房" class="btn_data-tit "><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/SQ_img.png"></span><span class="span111 btn_data-tit"  data-tit="立即预约<?= Yii::$app->params['siteNameBase']; ?>装修报价"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/js_img.png"></span>
 		</div>
 		</div>
 		<div class="main6 btn_data-tit " data-tit="免费预约人气设计师">
@@ -793,7 +785,7 @@ window.signupUrl = '';
 								<span class="main6_div2_li_s2_ss"><i>立即咨询</i></span>
 							</span>
 							<span class="main6_div2_li_s3">
-								<span><i class="main6_li_ss1">包佳敏</i><i class="main6_li_ss2">经验6年</i></span>
+								<span><i class="main6_li_ss1">史敏</i><i class="main6_li_ss2">经验6年</i></span>
 							</span>
 							<span class="main6_div2_li_s4">擅长:田园、欧式、简约等风格</span>
 						</li>
@@ -801,7 +793,7 @@ window.signupUrl = '';
 							<span class="main6_div2_li_s1"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/p2.png"/></span>
 							<span class="main6_div2_li_s2"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/touxiang1.png"><span class="main6_div2_li_s2_ss"><i>立即咨询</i></span></span>
 							<span class="main6_div2_li_s3">
-								<span><i class="main6_li_ss1">郭静霞</i><i class="main6_li_ss2">经验5年</i></span>
+								<span><i class="main6_li_ss1">梁静</i><i class="main6_li_ss2">经验5年</i></span>
 							</span>
 							<span class="main6_div2_li_s4">擅长:风水、格局改造，软装搭配</span>
 						</li>
@@ -809,7 +801,7 @@ window.signupUrl = '';
 							<span class="main6_div2_li_s1"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/p3.png"/></span>
 							<span class="main6_div2_li_s2"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/touxiang2.png"><span class="main6_div2_li_s2_ss"><i>立即咨询</i></span></span>
 							<span class="main6_div2_li_s3">
-								<span><i class="main6_li_ss1">刘莹</i><i class="main6_li_ss2">经验5年</i></span>
+								<span><i class="main6_li_ss1">方圆圆</i><i class="main6_li_ss2">经验5年</i></span>
 							</span>
 							<span class="main6_div2_li_s4">擅长:巧妙划分空间，色彩搭配</span>
 						</li>
@@ -817,7 +809,7 @@ window.signupUrl = '';
 							<span class="main6_div2_li_s1"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/p4.png"/></span>
 							<span class="main6_div2_li_s2"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/touxiang3.png"><span class="main6_div2_li_s2_ss"><i>立即咨询</i></span></span>
 							<span class="main6_div2_li_s3">
-								<span><i class="main6_li_ss1">赵佳衡</i><i class="main6_li_ss2">经验5年</i></span>
+								<span><i class="main6_li_ss1">王磊</i><i class="main6_li_ss2">经验5年</i></span>
 							</span>
 							<span class="main6_div2_li_s4">擅长:榻榻米、书房等局部改造装饰</span>
 						</li>
@@ -825,7 +817,7 @@ window.signupUrl = '';
 							<span class="main6_div2_li_s1"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/p5.png"/></span>
 							<span class="main6_div2_li_s2"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/touxiang4.png"><span class="main6_div2_li_s2_ss"><i>立即咨询</i></span></span>
 							<span class="main6_div2_li_s3">
-								<span><i class="main6_li_ss1">戴炜</i><i class="main6_li_ss2">经验6年</i></span>
+								<span><i class="main6_li_ss1">李海</i><i class="main6_li_ss2">经验6年</i></span>
 							</span>
 							<span class="main6_div2_li_s4">擅长:收纳空间改善，细节装饰</span>
 						</li>
@@ -834,7 +826,7 @@ window.signupUrl = '';
 
 		</div>
 		<!--main7-->
-		<div class="main7 btn_data-tit" data-tit="申请免费体验一起装修网服务">
+		<div class="main7 btn_data-tit" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务">
 			<p class="ttit"><b>真实工地直播</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上网就能看到装修中的家<span>更多&nbsp;></span></p>
 			<!--图片-->
 			<ul class="list_img">
@@ -843,7 +835,7 @@ window.signupUrl = '';
 					<p></p>
 					<ul>
 						<li>
-							<span>张先生</span>
+							<span>刘先生</span>
 							<span>二居室80㎡</span>
 							<span>43260元</span>
 						</li>
@@ -944,25 +936,25 @@ window.signupUrl = '';
 				<dl>
 					<dt><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/sunwei_img.jpg" /></dt>
 					<dd>
-						<span>孙伟</span><br />师傅水平很高，也很负责，监理经验丰富，意见很有用...
+						<span>赵先生</span><br />师傅水平很高，也很负责，监理经验丰富，意见很有用...
 					</dd>
 				</dl>
 				<dl>
 					<dt><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/wangxiansheng_img.jpg" /></dt>
 					<dd>
-						<span>王先生</span><br />选门窗的时候很纠结，主要由于正赶上节能改造，街道免...
+						<span>罗先生</span><br />选门窗的时候很纠结，主要由于正赶上节能改造，街道免...
 					</dd>
 				</dl>
 				<dl>
 					<dt><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/zhaonvshi_img.jpg" /></dt>
 					<dd>
-						<span>赵女士</span><br />5月23日上午8点半，欧十时力门业的 时师傅、李师傅...
+						<span>曲女士</span><br />5月23日上午8点半，欧十时力门业的 时师傅、李师傅...
 					</dd>
 				</dl>
 				<dl>
 					<dt><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/hexiansheng_img.jpg" /></dt>
 					<dd>
-						<span>何先生</span><br />何先生记得接触大运豪门是在一起网组织的团购会上，大运豪门...
+						<span>万先生</span><br />何先生记得接触大运豪门是在一起网组织的团购会上，大运豪门...
 					</dd>
 				</dl>
 			</div>
@@ -971,8 +963,8 @@ window.signupUrl = '';
 		<!--main7END-->
 		<!--main8-->
 		<div class="main8">
-			<p class="ttit  btn_data-tit" data-tit="申请免费体验一起装修网服务"><b>小区工地案例</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已为<em>58341</em>位业主查看了小区真实案例</p>
-			<ul class="btn_data-tit" data-tit="申请免费体验一起装修网服务">
+			<p class="ttit  btn_data-tit" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务"><b>小区工地案例</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已为<em>58341</em>位业主查看了小区真实案例</p>
+			<ul class="btn_data-tit" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务">
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/xiaoqu_img1.jpg" class="big" /><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/xiaoqu_img1_txt.png" class="img-txt" /></li>
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/xiaoqu_img2.jpg" class="big" /><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/xiaoqu_img2_txt.png" class="img-txt" /></li>
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/xiaoqu_img3.jpg" class="big" /><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/xiaoqu_img3_txt.png" class="img-txt" /></li>
@@ -981,7 +973,7 @@ window.signupUrl = '';
 				<!--表 -->
                 <form method="post" action="" class="biao_yuyue2" id="biao_yuyue2">
                     <div class="biao-data">
-                        <b>申请677整装套餐装修</b>
+                        <b>申请整装套餐</b>
                     </div>
                     <div class="selected">
                         <input type="text" id="source2" class="ipt source" value="请选择房屋所在城市"/>
@@ -1011,8 +1003,8 @@ window.signupUrl = '';
 		<!--main8END-->
 		<!--main9-->
 		<div class="main9" >
-			<p class="ttit"><b class="btn_data-tit" data-tit="申请免费体验一起装修网480道工艺">施工工艺</b><em class="wid btn_data-tit" data-tit="申请免费体验一起装修网服务"></em><b class="btn_data-tit" data-tit="申请免费体验一起装修网服务">品质保障</b></p>
-			<ul class="ul_img btn_data-tit" data-tit="申请免费体验一起装修网480道工艺">
+			<p class="ttit"><b class="btn_data-tit" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>480道工艺">施工工艺</b><em class="wid btn_data-tit" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务"></em><b class="btn_data-tit" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务">品质保障</b></p>
+			<ul class="ul_img btn_data-tit" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>480道工艺">
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/gongyi_img1.jpg" /></li>
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/gongyi_img2.jpg" /></li>
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/gongyi_img3.jpg" /></li>
@@ -1020,7 +1012,7 @@ window.signupUrl = '';
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/gongyi_img5.jpg" /></li>
 				<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/gongyi_img6.jpg" /></li>
 			</ul>
-			<div class="rigth btn_data-tit"  data-tit="申请免费体验一起装修网服务">
+			<div class="rigth btn_data-tit"  data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务">
 				<p><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/footer_banner.jpg" /><span><b>最值得信赖装修平台</b><br />中国建筑装饰协会权威评定</span></p>
 				<ul class="L_ul">
 					<li><b>200万套</b><br />房屋装修经验</li>
@@ -1035,7 +1027,7 @@ window.signupUrl = '';
 					<li><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/footer_nav5.jpg" /><br />施工保障保障</li>
 				</ul>
 				<div class="text">
-					<b>一起装修网郑重承诺：</b>为切实保障业主利益，不发布虚假广告，自觉抵制假货、假冒知名商品，保证业主的知情权、选择权，不虚标价格、折扣和团购数据，不误导、侵害业主的合法权益，认真解决业主投诉，主动接受工商、通信管理等有关政府部门、行业组织、业主和媒体的监督。
+					<b><?= Yii::$app->params['siteNameBase']; ?>郑重承诺：</b>为切实保障业主利益，不发布虚假广告，自觉抵制假货、假冒知名商品，保证业主的知情权、选择权，不虚标价格、折扣和团购数据，不误导、侵害业主的合法权益，认真解决业主投诉，主动接受工商、通信管理等有关政府部门、行业组织、业主和媒体的监督。
 				</div>
 			</div>
 		</div>
@@ -1049,7 +1041,7 @@ window.signupUrl = '';
 			<div class="Er" id="Er">
 				<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/close.png" class="close" alt="关闭" /><!--关闭按钮-->
 				<p class="P_tit"><b>恭喜您预约成功</b></p>
-				<p>扫一扫，关注一起装修网官方微信号</p>
+				<p>扫一扫，关注<?= Yii::$app->params['siteNameBase']; ?>官方微信号</p>
 				<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/Er.jpg" class=" M" />
 				<p>网页即将跳转到首页...</p>
 			</div>
@@ -1058,8 +1050,8 @@ window.signupUrl = '';
             <form method="post" action="" class="biao_yuyue" id="biao_yuyue">
                 <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/close.png" class="close" alt="关闭" /><!--关闭按钮-->
                 <div class="biao-data">
-                    <b id="tit">申请677整装套餐装修</b>
-                    <p>已有<span>18888</span>人报名</p>
+                    <b id="tit">申请整装套餐</b>
+                    <p>已有<span>197l8</span>人报名</p>
                 </div>
                 <input type="text" name="rname" value="" class="ipt"  id="byName" maxlength="10" val=""  data-value="请填写您的姓名">
                 <input type="tel" name="mobile" value="" class="ipt"  id="byTel" maxlength="11" val=""  data-value="填写手机号，预约上门量房">
@@ -1092,7 +1084,7 @@ window.signupUrl = '';
 	</div>
 	<!-- end main -->
 	 <!-- 底部 -->
-  <div class="subFooter btn_data-tit" style="float:left;" data-tit="申请免费体验一起装修网服务">
+  <div class="subFooter btn_data-tit" style="float:left;" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务">
 
       <div class="subFooterBG">
           <div class="subFooterT">
@@ -1220,18 +1212,9 @@ window.signupUrl = '';
                   </li>
               </ul>
               <ul class="last">
-                <li>
-                    <p>联系我们</p>
-                  </li>
-                  <li>
-                                              业主服务：400-689-1717                  </li>
-                  <li>
-                                              商务合作：
-                                                              建材刘经理15801661858 崔经理 15901555865                  			                     </li>
-                  <li>
-                       已合作商家意见反馈：
-                                                胡经理13716578678  										
-                  </li>
+                <li><p>联系我们</p></li>
+				  <li>业主服务：<?= Yii::$app->params['siteHotline']; ?></li>
+				  <li>商务合作：周经理<?= Yii::$app->params['siteJoinusTel']; ?></li>
               </ul>
               <div class="SFBlist">
 			  <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/source_53d88ed69ef36.png" alt="微信二维码" width="80px" height="80px">
@@ -1247,11 +1230,11 @@ window.signupUrl = '';
   </div>
 
 <!-- 版权 -->
-<div class="copyRight btn_data-tit" style="float:left;" data-tit="申请免费体验一起装修网服务">
+<div class="copyRight btn_data-tit" style="float:left;" data-tit="申请免费体验<?= Yii::$app->params['siteNameBase']; ?>服务">
   <div class="subcoptRight">
       <div class="SCRleft">
           <ul>
-                <li class="first"><a >关于一起装修网</a></li>
+                <li class="first"><a >关于<?= Yii::$app->params['siteNameBase']; ?></a></li>
                 <li><a >团购活动</a></li>
                 <li><a >媒体报道</a></li>
                 <li><a >合作单位</a></li>
@@ -1260,13 +1243,7 @@ window.signupUrl = '';
                 <li><a >联系我们</a></li>
 				<li class="last"><a >网站地图</a></li>
             </ul>
-            <p>
-              <a  title="京ICP备10039249号">京ICP备10039249号</a>
-                <a title="京ICP证120045号">京ICP证120045号</a>
-                 <a  title="京公网安备11010502023450">京公网安备11010502023450</a>
-                 <span>|</span>
-                 <span>Coptyright&nbsp;&copy;&nbsp;2009-2016&nbsp;17house.com,All&nbsp;rights&nbsp;reserved.</span>
-             </p>
+            <p><a  title="<?= Yii::$app->params['siteIcpInfo']; ?>"><?= Yii::$app->params['siteIcpInfo']; ?></a></p>
         </div>
         <div class="SCRright">
             <a >

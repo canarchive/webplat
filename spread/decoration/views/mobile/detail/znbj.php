@@ -87,7 +87,7 @@ $(function() {
                 </label>
             </div>-->
             <div>
-                <input type="tel" id="newPhone" name="phone" placeholder="输入号码，报价结果将发送到您的手机"></div>
+                <input type="tel" id="newPhone" name="phone" placeholder="输入号码，查询装修报价"></div>
 			<input id="zxd-form-submit" class="ptag-set" type="button" dataptag="2_4_19_594" value="立即计算">
         </form>
     </div>
@@ -141,7 +141,7 @@ $(function() {
         <a href="" class="zxbj-zxb2 publick-click-stream" data-ptag="2_4_19_817"></a>
     </figure>-->
     <div id="bottom_bj">
-        <input type="tel" id="mfyy_phone" placeholder="输入手机号，免费预约土巴兔装修服务" />
+	    <input type="tel" id="mfyy_phone" placeholder="输入手机号，免费预约<?= Yii::$app->params['siteName']; ?>装修服务" />
         <input type="button" id="mfyy-submit" value="免费预约" /></div>
 </section>
 <section class="fill-msg2" id="msgOne">

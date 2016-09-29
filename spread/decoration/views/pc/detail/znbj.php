@@ -151,7 +151,7 @@ window.BASEDOMAIN = '.<?= Yii::$app->params['baseDomain']; ?>';
                             <div class="element">
                                 <div class="text_wrap">
                                     <input type="text" class="text" name="phone">
-                                    <em class="text_lbl">报价结果将发送到您的手机</em></div>
+                                    <em class="text_lbl">输入手机号获取报价结果</em></div>
                             </div>
                         </div>
                         <div class="form_line bj_btn">
