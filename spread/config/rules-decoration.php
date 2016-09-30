@@ -6,6 +6,7 @@ $rules = [
     'jz-signup-cms' => '/decoration/signup/cms',
     'stat' => '/site/stat',
 	'hdenter' => '/site/hdenter',
+	'/' => '/site/index',
 ];
 
 $gallerycmsRules = require Yii::getAlias('@gallerycms') . '/config/rules-house.php';
