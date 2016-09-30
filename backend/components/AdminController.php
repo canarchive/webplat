@@ -187,6 +187,7 @@ class AdminController extends Controller
     {
 		$modelClass = $this->modelClass;
         if (($model = $modelClass::findOne($id)) !== null) {
+			$this->_checkRecordPriv($model);
             return $model;
         }
 		if ($throwException) {
@@ -195,4 +196,8 @@ class AdminController extends Controller
 
 		return false;
     }
+
+	protected function _checkRecordPriv($model)
+	{
+	}
 }
