@@ -9,7 +9,7 @@ $formName = $model->formName();
 <div class="box col-md-12">
     <div class="box-inner">
         <div class="box-header well" data-original-title="">
-            <h2><i class="glyphicon glyphicon-edit"></i>对话管理</h2>
+            <h2><i class="glyphicon glyphicon-edit"></i>检索条件</h2>
         </div>
         <div class="box-create">
             <?php
@@ -21,12 +21,24 @@ $formName = $model->formName();
             ]);
             ?>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">渠道</label>
+                <label class="control-label col-md-1">状态</label>
                 <div class="col-md-2">
 					<?= Html::dropDownList(
-						"{$formName}[channel]", 
+						"{$formName}[status]", 
 						0, 
-						$channelInfos, 
+						$model->statusInfos, 
+						[
+							'prompt' => '全部', 
+							'class' => 'form-control',
+						]
+					) ?>
+				</div>
+                <label class="control-label col-md-1">无效原因</label>
+                <div class="col-md-2">
+					<?= Html::dropDownList(
+						"{$formName}[invalid_status]", 
+						0, 
+						$model->invalidStatusInfos, 
 						[
 							'prompt' => '全部', 
 							'class' => 'form-control',
@@ -35,18 +47,6 @@ $formName = $model->formName();
 				</div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">来源</label>
-                <div class="col-md-2">
-					<?= Html::dropDownList(
-						"{$formName}[from_type]", 
-						0, 
-						$fromTypeInfos, 
-						[
-							'prompt' => '全部', 
-							'class' => 'form-control',
-						]
-					) ?>
-				</div>
                 <label class="control-label col-md-1">报名时间</label>
                 <div class="col-md-2">
 				    <input class="form-control" type="text" id="created_at_start" name="<?= "{$formName}[created_at_start]"; ?>" >

@@ -25,8 +25,8 @@ $detailViewParams = [
             'value'=> date('Y-m-d H:i:s',$model->signin_at),
         ],
 		[
-			'attribute' => 'valid_status',
-			'value' => $model->validStatusInfos[$model->valid_status],
+			'attribute' => 'invalid_status',
+			'value' => $model->invalidStatusInfos[$model->invalid_status],
 		],
 		[
 			'attribute' => 'callback_again',
