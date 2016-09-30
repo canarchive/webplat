@@ -2,7 +2,7 @@
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
-    //'filterModel' => $searchModel,
+    'filterModel' => $searchModel,
     'columns' => [
         'id',
 		/*[
@@ -35,10 +35,11 @@ $gridViewParams = [
 		[
             'attribute' => 'callback_again',
 			'value' => function($model) {
-				return $model->callbackAgainInfos[$model->callback_again];
+                return  date('Y-m-d H:i:s',$model->callback_again);
 			}
 		]
     ],
 ];
 
-echo $this->render('@app/views/common/listinfo', ['gridViewParams'  => $gridViewParams]);
+$searchContent = $this->render('_search', array_merge($searchDatas, ['model' => $searchModel]));
+echo $this->render('@app/views/common/listinfo', ['gridViewParams'  => $gridViewParams, 'searchContent' => $searchContent]);

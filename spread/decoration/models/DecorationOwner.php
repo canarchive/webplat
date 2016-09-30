@@ -154,14 +154,15 @@ class DecorationOwner extends SpreadModel
 		return $datas;
 	}
 
-	public function updateAfterInsert($conversionInfo)
+	public function updateAfterInsert($conversionInfo, $serviceId)
 	{
+		$this->service_id = $serviceId;
 		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
 			$this->signup_channel = $conversionInfo['channel'];
 			$this->keyword = $conversionInfo['keyword'];
 			$this->city_code = $conversionInfo['city_code'];
-			$this->update(false);
 		}
+		$this->update(false);
 		return ;
 	}
 }

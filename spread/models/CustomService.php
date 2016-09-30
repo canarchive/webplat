@@ -34,7 +34,7 @@ class CustomService extends spreadModel
     public function rules()
     {
         return [
-            [['name', 'mobile'], 'required'],
+            [['name', 'mobile', 'manager_id'], 'required'],
 			[['status', 'serviced_num', 'serviced_times', 'distributed_at'], 'default', 'value' => 0],
 			[['code', 'status'], 'safe'],
         ];

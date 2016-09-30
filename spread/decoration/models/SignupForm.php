@@ -92,7 +92,6 @@ class SignupForm extends Model
 
 		$conversionInfo = $conversionModel->successLog($data);
 		$this->decorationModel->updateAfterInsert();
-		$decorationOwner->updateAfterInsert($conversionInfo);
 		$decorationOwner->user->updateAfterInsert();
 
 		if ($this->area_input > 20 && $this->area_input < 500) {
@@ -100,6 +99,7 @@ class SignupForm extends Model
 		}
 
 		$serviceModel = $decorationOwner->user->dealService($data);
+		$decorationOwner->updateAfterInsert($conversionInfo, $serviceModel->id);
 		$this->sendSmsService($data, $serviceModel);
 		$data['service_code'] = $serviceModel->code;
 

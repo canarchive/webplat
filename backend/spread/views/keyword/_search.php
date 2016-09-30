@@ -5,6 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 $formName = $model->formName();
 ?>
+<div class="row">
 <div class="box col-md-12">
     <div class="box-inner">
         <div class="box-header well" data-original-title="">
@@ -48,4 +49,5 @@ $formName = $model->formName();
             <?php ActiveForm::end(); ?>
         </div>
     </div>
+</div>
 </div>
