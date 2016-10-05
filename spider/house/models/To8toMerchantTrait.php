@@ -2,9 +2,13 @@
 
 namespace spider\house\models;
 
+use Yii;
+use Symfony\Component\DomCrawler\Crawler;
+use spider\models\Merchant;
+
 trait To8toMerchantTrait
 {
-    public function getCompanyList($siteCode)
+    public function merchantListUrl($siteCode)
     {
         $listUrl = $this->configInfo['companylist'];
         $cityInfos = $this->configInfo['cityInfos'];
@@ -21,7 +25,7 @@ trait To8toMerchantTrait
         echo rtrim($sql, ",\n");exit();
     }
 
-    public function companyList($siteCode)
+    public function merchantListSpider($siteCode)
     {
         $model = new HouseCompanylist();
         $where = ['site_code' => $siteCode, 'status' => 0];
@@ -41,7 +45,7 @@ trait To8toMerchantTrait
         }
     }
 
-    public function companyShow($siteCode)
+    public function merchantShowSpider($siteCode)
     {
         $model = new Merchant();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
@@ -63,7 +67,7 @@ trait To8toMerchantTrait
         }
     }
 
-    public function companyList($siteCode)
+    public function merchantList($siteCode)
     {
         $model = new HouseCompanylist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'page' => [1, 2, 3, 4, 5]];
@@ -130,7 +134,7 @@ trait To8toMerchantTrait
         }
     }
 
-    public function companyShow($siteCode)
+    public function merchantShow($siteCode)
     {
         $model = new Merchant();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 1, 'source_status_deal' => 0];
@@ -247,6 +251,45 @@ trait To8toMerchantTrait
             }
 			$info->description = $description;
 			$info->update(false);
+        }
+    }
+
+	public function infosListUrl($siteCode)
+	{
+        $model = new Merchant();
+        $where = ['source_site_code' => $siteCode, 'source_status_spider' => 1];
+        $infos = $model->find()->where($where)->limit(500)->all();
+		$infoUrls = $this->configInfo['infoUrls'];
+		foreach ($infos as $info) {
+            $sql = "INSERT INTO `ws_house_infolist` (`site_code`, `source_id`, `type`, `url_source`, `city_code`, `page`) VALUES";
+			foreach ($infoUrls as $type => $url) {
+                $urlSource = str_replace(['{{CITYCODE}}', '{{INFOID}}', '{{PAGE}}'], [$info['city_code'], $info['source_id'], 1], $url);
+                $sql .= "('{$info['source_site_code']}', '{$info['source_id']}', '{$type}', '{$urlSource}', '{$info['city_code']}', '1'),\n";
+			}
+			$sql = rtrim($sql, ",\n");
+			$this->db->createCommand($sql)->execute();
+			$info->source_status_spider = 2;
+			$info->update();
+		}
+	}
+
+    public function infosListSpider($siteCode)
+    {
+        $model = new HouseInfolist();
+        $where = ['site_code' => $siteCode, 'status' => 0];
+        $infos = $model->find()->where($where)->limit(500)->all();
+        foreach ($infos as $info) {
+            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            $info->status = 1;
+            $info->updated_at = Yii::$app->params['currentTime'];
+            //print_r($info);exit();
+            if ($this->fileExist($file)) {
+                $info->update();
+                continue;
+            }
+            $content = file_get_contents($info['url_source']);
+            $this->writeFile($file, $content);
+            $info->update();
         }
     }
 }
