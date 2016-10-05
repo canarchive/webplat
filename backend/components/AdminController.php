@@ -2,6 +2,7 @@
 namespace backend\components;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\components\Controller;
 
