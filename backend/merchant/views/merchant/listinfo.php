@@ -24,7 +24,8 @@ $gridViewParams = [
 		[
             'attribute' => 'company_id',
 			'value' => function($model) {
-				return $model->companyInfos[$model->company_id];
+				$return isset($model->companyInfos[$model->company_id]) ? $model->companyInfos[$model->company_id] : '';
+				return $return;
 			},
 		],
 		[
