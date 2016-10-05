@@ -2,9 +2,10 @@
 namespace spider\models;
 
 use Yii;
+use common\models\SpiderModel;
 use yii\helpers\FileHelper;
 
-class SpiderAbstract
+class SpiderAbstract extends SpiderModel
 {
 	
 	public function fileExist($file)
