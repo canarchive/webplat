@@ -56,14 +56,14 @@ class SiteAbstract extends SpiderModel
 
 	public function spider($action)
 	{
-		$object = $this->getSpiderObject('Spider');
+		$object = $this->getSpiderObject();
 		$method = $action;
 		return $object->$method($this->code);
 	}
 
 	public function deal($action)
 	{
-		$object = $this->getSpiderObject('Deal');
+		$object = $this->getSpiderObject();
 		$method = $action;
 		return $object->$method($this->code);
 	}
@@ -105,10 +105,10 @@ class SiteAbstract extends SpiderModel
 		}
 	}
 
-	protected function getSpiderObject($type)
+	protected function getSpiderObject()
 	{
 		$code = $this->code;
-		$class = 'spider\house\models\\' . ucfirst($code) . $type;
+		$class = 'spider\house\models\\' . ucfirst($code);
 		$object = new $class();
 
 		return $object;
