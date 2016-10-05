@@ -9,7 +9,15 @@ use spider\models\Merchant;
 
 class To8toSpider extends SpiderAbstract
 {
+    use To8toRealcaseTrait;
+    use To8toMerchantTrait;
+
     private $configInfo;
+
+    public static function tableName()
+    {
+        return '{{%detail}}';
+    }
 
     /**
      * 构造方法，初始化采集网站属性
@@ -19,30 +27,32 @@ class To8toSpider extends SpiderAbstract
         $this->configInfo = require Yii::getAlias('@spider') . '/config/to8to.php';
     }
 
-    public function getCompanyList($siteCode)
-    {
-        $listUrl = $this->configInfo['companylist'];
-        $cityInfos = $this->configInfo['cityInfos'];
-        $sql = "INSERT INTO `ws_house_companylist` (`site_code`, `url_source`, `url_base`, `city_code`, `page`) VALUES";
-        foreach ($cityInfos as $code => $info) {
-            $maxPage = $info['listpage'];
-            for ($i = 1; $i <= $maxPage; $i++) {
-                $url = str_replace(['{{CITYCODE}}', '{{PAGE}}'], [$code, $i], $listUrl);
-                $urlInfo = pathinfo($url);
-                $urlBase = isset($urlInfo['dirname']) ? $urlInfo['dirname'] : '';
-                $sql .= "('{$siteCode}', '{$url}', '{$urlBase}', '{$code}', '{$i}'),\n";
-            }
-        }
-        echo rtrim($sql, ",\n");exit();
-    }
+	public function getInfosList($siteCode)
+	{
+        $model = new Merchant();
+        $where = ['source_site_code' => $siteCode, 'source_status_spider' => 1];
+        $infos = $model->find()->where($where)->limit(500)->all();
+		$infoUrls = $this->configInfo['infoUrls'];
+		foreach ($infos as $info) {
+            $sql = "INSERT INTO `ws_house_infolist` (`site_code`, `source_id`, `type`, `url_source`, `city_code`, `page`) VALUES";
+			foreach ($infoUrls as $type => $url) {
+                $urlSource = str_replace(['{{CITYCODE}}', '{{INFOID}}', '{{PAGE}}'], [$info['city_code'], $info['source_id'], 1], $url);
+                $sql .= "('{$info['source_site_code']}', '{$info['source_id']}', '{$type}', '{$urlSource}', '{$info['city_code']}', '1'),\n";
+			}
+			$sql = rtrim($sql, ",\n");
+			$this->db->createCommand($sql)->execute();
+			$info->source_status_spider = 2;
+			$info->update();
+		}
+	}
 
-    public function companyList($siteCode)
+    public function infosList($siteCode)
     {
-        $model = new HouseCompanylist();
+        $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 0];
-        $infos = $model->find()->where($where)->limit(100)->all();
+        $infos = $model->find()->where($where)->limit(500)->all();
         foreach ($infos as $info) {
-            $file = $info['site_code'] . '/list/' . $info['city_code'] . '-' . $info['page'] . '.html';
+            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->status = 1;
             $info->updated_at = Yii::$app->params['currentTime'];
             //print_r($info);exit();
@@ -52,28 +62,6 @@ class To8toSpider extends SpiderAbstract
             }
             $content = file_get_contents($info['url_source']);
             $this->writeFile($file, $content);
-            $info->update();
-        }
-    }
-
-    public function companyShow($siteCode)
-    {
-        $model = new Merchant();
-        $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
-        $infos = $model->find()->where($where)->limit(100)->all();
-        $showUrls = $this->configInfo['showUrls'];
-        foreach ($infos as $info) {
-            $info->source_status_spider = 1;
-            foreach ($showUrls as $key => $value) {
-                $url = str_replace(['{{CITYCODE}}', '{{INFOID}}'], [$info['city_code'], $info['source_id']], $value);
-                $file = $info['source_site_code'] . '/show/' . $info['city_code'] . '/' . $info['source_id'] . '-' . $key . '.html';
-                if ($this->fileExist($file)) {
-                    continue;
-                }
-                $content = file_get_contents($url);
-                $this->writeFile($file, $content);
-            }
-
             $info->update();
         }
     }
