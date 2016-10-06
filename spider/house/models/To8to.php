@@ -8,8 +8,10 @@ use spider\models\Merchant;
 
 class To8to extends SpiderAbstract
 {
-    use To8toRealcaseTrait;
     use To8toMerchantTrait;
+    use To8toRealcaseTrait;
+    use To8toDesignerTrait;
+    use To8toWorkingTrait;
 
     private $configInfo;
 

@@ -8,7 +8,7 @@ return [
 		'infosListSpider' => ['name' => '商家相关信息列页'],
 		'realcaseShowSpider' => ['name' => '实景详情'],
 		'workingShowSpider' => ['name' => '工地详情'],
-		'designerShowSpider' => ['name' => '工地详情'],
+		'designerShowSpider' => ['name' => '设计师详情'],
 		//'fileDown' => ['name' => '文件采集'],
 	],
 	'dealActions' => [
