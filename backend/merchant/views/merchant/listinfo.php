@@ -11,7 +11,8 @@ $gridViewParams = [
             'attribute' => 'name',
 			'value' => function($model) {
 				$url = Yii::getAlias('@gallerycmsurl') . Url::to(['/decoration-company/show', 'id' => $model->id]);
-				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
+				//return "<a href='{$url}' target='_blank'>{$model->name}</a>";
+				return "{$model->name}";
 			},
 		],
 		[
@@ -24,14 +25,14 @@ $gridViewParams = [
 		[
             'attribute' => 'company_id',
 			'value' => function($model) {
-				$return isset($model->companyInfos[$model->company_id]) ? $model->companyInfos[$model->company_id] : '';
+				$return = isset($model->companyInfos[$model->company_id]) ? $model->companyInfos[$model->company_id] : '';
 				return $return;
 			},
 		],
 		[
             'attribute' => 'sort_id',
 			'value' => function($model) {
-				return $model->sortInfos[$model->sort];
+				$return = isset($model->sortInfos[$model->sort]) ? $model->sortInfos[$model->sort] : '';
 			},
 		],
 		'hotline',
