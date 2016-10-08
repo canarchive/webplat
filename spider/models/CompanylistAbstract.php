@@ -13,7 +13,7 @@ class CompanylistAbstract extends SpiderModel
     {
         return [
             [['status', 'page', 'updated_at'], 'default', 'value' => 0],
-			[['url_source', 'url_base', 'site_code', 'rules'], 'safe'],
+			[['url_source', 'site_code', 'rules'], 'safe'],
         ];
     }
 

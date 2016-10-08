@@ -2,10 +2,10 @@
 
 namespace spider\models;
 
-use common\models\SpiderModel;
+use common\models\MerchantModel;
 use yii\helpers\ArrayHelper;
 
-class Designer extends SpiderModel
+class Designer extends MerchantModel
 {
     public static function tableName()
     {

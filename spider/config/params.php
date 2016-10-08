@@ -1,10 +1,13 @@
 <?php
 return [
 	'spiderActions' => [
-		'merchantListUrl' => ['name' => '获取商家列表url'],
-		'merchantListSpider' => ['name' => '商家列表'],
+		//'cityList' => ['name' => '获取城市列表'],
+		//'merchantListUrl' => ['name' => '获取商家列表url'],
+		//'merchantListUrlPage' => ['name' => '获取商家全部列表url'],
+		//'merchantListSpider' => ['name' => '商家列表'],
 		'merchantShowSpider' => ['name' => '商家详情'],
 		'infosListUrl' => ['name' => '商家相关信息列表url'],
+		'infosListSpiderPage' => ['name' => '全部相关信息列表'],
 		'infosListSpider' => ['name' => '商家相关信息列页'],
 		'realcaseShowSpider' => ['name' => '实景详情'],
 		'workingShowSpider' => ['name' => '工地详情'],
@@ -12,7 +15,7 @@ return [
 		//'fileDown' => ['name' => '文件采集'],
 	],
 	'dealActions' => [
-		'merchantList' => ['name' => '商家列表'],
+		//'merchantList' => ['name' => '商家列表'],
 		'merchantShow' => ['name' => '商家详情'],
 		'realcaseList' => ['name' => '实景列表'],
 		'realcaseShow' => ['name' => '实景详情'],

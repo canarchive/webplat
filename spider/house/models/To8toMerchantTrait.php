@@ -5,6 +5,7 @@ namespace spider\house\models;
 use Yii;
 use Symfony\Component\DomCrawler\Crawler;
 use spider\models\Merchant;
+use spider\models\Attachment;
 
 trait To8toMerchantTrait
 {
@@ -12,29 +13,69 @@ trait To8toMerchantTrait
     {
         $listUrl = $this->configInfo['companylist'];
         $cityInfos = $this->configInfo['cityInfos'];
-        $sql = "INSERT INTO `ws_house_companylist` (`site_code`, `url_source`, `url_base`, `city_code`, `page`) VALUES";
+        $sql = "INSERT INTO `ws_house_companylist` (`site_code`, `url_source`, `city_code`, `page`) VALUES";
         foreach ($cityInfos as $code => $info) {
-            $maxPage = $info['listpage'];
-            for ($i = 1; $i <= $maxPage; $i++) {
-                $url = str_replace(['{{CITYCODE}}', '{{PAGE}}'], [$code, $i], $listUrl);
-                $urlInfo = pathinfo($url);
-                $urlBase = isset($urlInfo['dirname']) ? $urlInfo['dirname'] : '';
-                $sql .= "('{$siteCode}', '{$url}', '{$urlBase}', '{$code}', '{$i}'),\n";
-            }
+            $url = str_replace(['{{CITYCODE}}', '{{PAGE}}'], [$code, 1], $listUrl);
+            $sql .= "('{$siteCode}', '{$url}', '{$code}', '1'),\n";
         }
-        echo rtrim($sql, ",\n");exit();
+        $sql = rtrim($sql, ",\n");
+        $this->db->createCommand($sql)->execute();
+        echo $sql;
+    }
+    
+    public function merchantListUrlPage($siteCode)
+    {
+        $listUrl = $this->configInfo['companylist'];
+        $sql = "INSERT INTO `ws_house_companylist` (`site_code`, `url_source`, `city_code`, `page`) VALUES";
+        $model = new HouseCompanylist();
+        $where = ['site_code' => $siteCode, 'status' => 1, 'is_allpage' => 0, 'page' => 1];
+        $infos = $model->find()->where($where)->limit(100)->all();
+        $update = false;
+        foreach ($infos as $info) {
+            $file = $info['site_code'] . '/list/' . $info['city_code'] . '-' . $info['page'] . '.html';
+            $info->is_allpage = date('Ymd', Yii::$app->params['currentTime']);
+            $info->updated_at = Yii::$app->params['currentTime'];
+            if (!$this->fileExist($file)) {
+                $info->status = 0;
+                $info->update();
+                continue;
+            }
+        
+            $crawler = new Crawler();
+            $crawler->addContent($this->getContent($file));
+            $pageNode = $crawler->filter('.pages a');//->text();
+            $count = count($pageNode);
+            if ($count != 0) {
+                $lastPage = intval($pageNode->eq($count-2)->text());
+                for ($i = 2; $i <= $lastPage; $i++) {
+                    $update = true;
+                    $url = str_replace(['{{CITYCODE}}', '{{PAGE}}'], [$info['city_code'], $i], $listUrl);
+                    $urlInfo = pathinfo($url);
+                    $sql .= "('{$siteCode}', '{$url}', '{$info['city_code']}', '{$i}'),\n";
+                }
+
+            }
+            //echo count($pageNode);
+            //echo '--' . $lastPage;
+            //echo "<a href='{$info['url_source']}' target='_blank'>{$info['url_source']}</a><br />";
+            $info->update();
+        }
+        if ($update) {
+            $sql = rtrim($sql, ",\n");
+            $this->db->createCommand($sql)->execute();
+        }
+        echo $sql;
     }
 
     public function merchantListSpider($siteCode)
     {
         $model = new HouseCompanylist();
         $where = ['site_code' => $siteCode, 'status' => 0];
-        $infos = $model->find()->where($where)->limit(100)->all();
+        $infos = $model->find()->where($where)->limit(2000)->all();
         foreach ($infos as $info) {
             $file = $info['site_code'] . '/list/' . $info['city_code'] . '-' . $info['page'] . '.html';
             $info->status = 1;
             $info->updated_at = Yii::$app->params['currentTime'];
-            //print_r($info);exit();
             if ($this->fileExist($file)) {
                 $info->update();
                 continue;
@@ -45,33 +86,54 @@ trait To8toMerchantTrait
         }
     }
 
-    public function merchantShowSpider($siteCode)
+    public function merchantShowSpiderbak($siteCode)
     {
         $model = new Merchant();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
-        $infos = $model->find()->where($where)->limit(100)->all();
+        $infos = $model->find()->where($where)->limit(2000)->all();
         $showUrls = $this->configInfo['showUrls'];
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
             foreach ($showUrls as $key => $value) {
                 $url = str_replace(['{{CITYCODE}}', '{{INFOID}}'], [$info['city_code'], $info['source_id']], $value);
                 $file = $info['source_site_code'] . '/show/' . $info['city_code'] . '/' . $info['source_id'] . '-' . $key . '.html';
-                if ($this->fileExist($file)) {
-                    continue;
-                }
-                $content = file_get_contents($url);
-                $this->writeFile($file, $content);
+                $fileSource = $info['source_site_code'] . '/show/' . $info['source_city_code'] . '/' . $info['source_id'] . '-' . $key . '.html';
+				$this->changeFiles($file, $fileSource);
             }
 
             $info->update();
         }
     }
 
+    public function merchantShowSpider($siteCode)
+    {
+        $model = new Merchant();
+        $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
+        $infos = $model->find()->where($where)->limit(500)->all();
+        $showUrls = $this->configInfo['showUrls'];
+        foreach ($infos as $info) {
+            $info->source_status_spider = 1;
+            foreach ($showUrls as $key => $value) {
+                $url = str_replace(['{{CITYCODE}}', '{{INFOID}}'], [$info['city_code'], $info['source_id']], $value);
+                $file = $info['source_site_code'] . '/show/' . $info['source_city_code'] . '/' . $info['source_id'] . '-' . $key . '.html';
+                if ($this->fileExist($file)) {
+                    continue;
+                }
+                $content = @ file_get_contents($url);
+				$content || $this->writeFile($file, $content);
+                //$r = $this->writeFile($file, $content);
+            }
+
+            $r1 = $info->update(false);
+        }
+    }
+
     public function merchantList($siteCode)
     {
         $model = new HouseCompanylist();
-        $where = ['site_code' => $siteCode, 'status' => 1, 'page' => [1, 2, 3, 4, 5]];
-        $infos = $model->find()->where($where)->limit(100)->all();
+        $where = ['site_code' => $siteCode, 'status' => 1];//, 'page' => [1]];
+        $infos = $model->find()->where($where)->orderBy('id DESC')->limit(100)->all();
+		//print_r($infos);exit();
         foreach ($infos as $info) {
             $file = $info['site_code'] . '/list/' . $info['city_code'] . '-' . $info['page'] . '.html';
             $info->status = 2;
@@ -81,27 +143,46 @@ trait To8toMerchantTrait
                 $info->update();
                 continue;
             }
-            if ($info->page > 5) {
-                continue;
-            }
         
+			$spiderNum = 0;
             $crawler = new Crawler();
             $crawler->addContent($this->getContent($file));
-            $crawler->filter('.zgs_company_list ul li')->each(function ($node) use ($info) {
+            $crawler->filter('.zgs_company_list ul li')->each(function ($node) use ($info, &$spiderNum) {
                 $source_logo = $node->filter('.zgscl_logo img')->attr('src');
                 $attrs = $node->filter('h3 a');
                 $source_url = $attrs->attr('href');
+                $name = $attrs->text();
+                $source_id = str_replace('/', '', substr($source_url, strpos($source_url, 'zs/') + 3));
+
+                $existLogo = Attachment::find()->where(['info_table' => 'merchant', 'info_field' => 'logo', 'source_url' => $source_logo])->one();
+                if (!$existLogo) {
+                $aData = [
+                    'source_url' => $source_logo,
+                    'name' => $name,
+                    'path_prefix' => 'default',
+                    'url_prefix' => 'default',
+                    'filename' => $name,
+                    'description' => $name,
+                    'info_table' => 'merchant',
+                    'info_field' => 'logo',
+                    'created_at' => Yii::$app->params['currentTime'],
+                    'source_site_code' => $info['site_code'],
+                    'source_id' => $source_id,
+                    'source_status' => 0,
+                ];
+                $aModel = new Attachment($aData);
+                $aModel->insert(false);
+                }
+
                 $exist = Merchant::find()->where(['source_url' => $source_url])->one();
                 if (!$exist) {
-                $source_id = str_replace('/', '', substr($source_url, strpos($source_url, 'zs/') + 3));
-                $name = $attrs->text();
                 $address = $node->filter('.zd_three');
                 $address = $address->text();
 
-                $score = $node->filter('.koubei_number')->eq(0);
-                $score = $score->text();
-                $praise = $node->filter('.haoping-text');
-                $praise = !$praise ? $praise->text() : 0;
+                $praise = $node->filter('.koubei_number');
+                $praise = count($praise) > 0 ? $praise->text() : 0;
+                $score = $node->filter('.haoping-text');
+                $score = count($score) > 0 ? $score->text() : 0;
                 $num_owner = $node->filter('.special_service p em')->text();
                 $attr2s = $node->filter('.zd_two em');
                 foreach ($attr2s as $attr2) {
@@ -117,18 +198,20 @@ trait To8toMerchantTrait
                     }
                 }
                 $data = [
+					'source_site_code' => $info['site_code'],
                     'city_code' => $info['city_code'],
                     'is_spider' => 1,
                 ];
-                $fields = ['source_logo', 'source_id', 'source_url', 'name', 'address', 'score', 'praise', 'num_working', 'num_realcase', 'num_owner', 'num_deposit', 'num_comment'];
+                $fields = ['source_id', 'source_url', 'name', 'address', 'score', 'praise', 'num_working', 'num_realcase', 'num_owner', 'num_deposit', 'num_comment'];
                 foreach ($fields as $field) {
                     $data[$field] = trim($$field);
                 }
                 $model = new Merchant($data);
                 $model->insert(false);
-                //print_r($data);exit();
                 }
+				$spiderNum++;
             });
+			$info->spider_num = $spiderNum;
             $info->status = 2;
             $info->update(false);
         }
@@ -142,19 +225,19 @@ trait To8toMerchantTrait
         $showUrls = $this->configInfo['showUrls'];
         foreach ($infos as $info) {
             $info->source_status_deal = 1;
-			$description = '';
+            $description = '';
             foreach ($showUrls as $key => $value) {
                 $file = $info['source_site_code'] . '/show/' . $info['city_code'] . '/' . $info['source_id'] . '-' . $key . '.html';
                 if (!$this->fileExist($file)) {
-					$info->source_status_spider = 0;
+                    $info->source_status_spider = 0;
                     break;
                 }
                 $crawler = new Crawler();
                 $crawler->addContent($this->getContent($file));
-				switch ($key) {
-				case 'integrity':
+                switch ($key) {
+                case 'integrity':
                     $exist = Integrity::find()->where(['source_id' => $info['source_id']])->one();
-					if (!$exist) {
+                    if (!$exist) {
                     $integrityFields = [
                     '公司名称' => 'name', 
                     '企业类型' => 'sort',
@@ -168,52 +251,52 @@ trait To8toMerchantTrait
                     '注册号' => 'regno', 
                     '法定代表人' => 'legal_person',
                     ];
-					$integrityModel = new Integrity();
-					$crawler->filter('tbody tr')->each(function ($node) use ($integrityModel, $integrityFields) {
-						$integrityModel->haveInfo = true;
-						$key = trim($node->filter('.zgsgc_title')->text());
-						$value = trim($node->filter('.zgsgc_details')->text());
-						$fieldKey = $integrityFields[$key];
-						$integrityModel->$fieldKey = $value;
-						//echo $key . '--' . $value . '<br />';
-					});
-					if ($integrityModel->haveInfo) {
-					$integrityModel->source_id = $info['source_id'];
-					$integrityModel->source_site_code = $info['source_site_code'];
-					$integrityModel->insert(false);
-					}
-					}
-					break;
-				case 'certificate':
-					$crawler->filter('.intro_row ul li')->each(function ($node) use ($info) {
-						//$title = $node->getNode(0)->parentNode->parentNode;//->firstChild;
+                    $integrityModel = new Integrity();
+                    $crawler->filter('tbody tr')->each(function ($node) use ($integrityModel, $integrityFields) {
+                        $integrityModel->haveInfo = true;
+                        $key = trim($node->filter('.zgsgc_title')->text());
+                        $value = trim($node->filter('.zgsgc_details')->text());
+                        $fieldKey = $integrityFields[$key];
+                        $integrityModel->$fieldKey = $value;
+                        //echo $key . '--' . $value . '<br />';
+                    });
+                    if ($integrityModel->haveInfo) {
+                    $integrityModel->source_id = $info['source_id'];
+                    $integrityModel->source_site_code = $info['source_site_code'];
+                    $integrityModel->insert(false);
+                    }
+                    }
+                    break;
+                case 'certificate':
+                    $crawler->filter('.intro_row ul li')->each(function ($node) use ($info) {
+                        //$title = $node->getNode(0)->parentNode->parentNode;//->firstChild;
                         $exist = Attachment::find()->where(['info_field' => 'aptitude', 'source_url' => $info['source_url']])->one();
-					    if (!$exist) {
-						$pic = trim($node->filter('img')->attr('src'));
-						$title = trim($node->filter('span')->text());
-						$title = empty($title) ? '资质和荣誉' : $title;
-						$aData = [
-							'source_url' => $pic,
-							'name' => $title,
-							'path_prefix' => 'default',
-							'url_prefix' => 'default',
-							'filename' => $title,
-							'description' => $title,
-							'info_table' => 'merchant',
-							'info_field' => 'aptitude',
-							'created_at' => Yii::$app->params['currentTime'],
-							'source_site_code' => $info['source_site_code'],
-							'source_id' => $info['source_id'],
-							'source_status' => 0,
-						];
-						$aModel = new Attachment($aData);
-						$aModel->insert(false);
-						}
-					});
-					break;
-				case 'intro':
+                        if (!$exist) {
+                        $pic = trim($node->filter('img')->attr('src'));
+                        $title = trim($node->filter('span')->text());
+                        $title = empty($title) ? '资质和荣誉' : $title;
+                        $aData = [
+                            'source_url' => $pic,
+                            'name' => $title,
+                            'path_prefix' => 'default',
+                            'url_prefix' => 'default',
+                            'filename' => $title,
+                            'description' => $title,
+                            'info_table' => 'merchant',
+                            'info_field' => 'aptitude',
+                            'created_at' => Yii::$app->params['currentTime'],
+                            'source_site_code' => $info['source_site_code'],
+                            'source_id' => $info['source_id'],
+                            'source_status' => 0,
+                        ];
+                        $aModel = new Attachment($aData);
+                        $aModel->insert(false);
+                        }
+                    });
+                    break;
+                case 'intro':
                     $exist = Detail::find()->where(['source_id' => $info['source_id']])->one();
-					if (!$exist) {
+                    if (!$exist) {
                     $detailFields = [
                     '公司规模' => 'scale',
                     '装后服务' => 'service_response',
@@ -230,47 +313,102 @@ trait To8toMerchantTrait
                     '承接价位' => 'price',
                     '专长风格' => 'style',
                     ];
-					$detailModel = new Detail();
-					$crawler->filter('tbody tr')->each(function ($node) use ($detailModel, $detailFields) {
-						$value = trim($node->filter('.content')->text());
-						$keyObj = $node->filter('.thead');
-						$key = count($keyObj) ? $keyObj->text() : '公装';
-						$fieldKey = $detailFields[$key];
-						$detailModel->$fieldKey = $value;
-						//echo $key . '--' . $value . '<br />';
-					});
-					$detailModel->source_id = $info['source_id'];
-					$detailModel->source_site_code = $info['source_site_code'];
-					$detailModel->insert(false);
-					}
+                    $detailModel = new Detail();
+                    $crawler->filter('tbody tr')->each(function ($node) use ($detailModel, $detailFields) {
+                        $value = trim($node->filter('.content')->text());
+                        $keyObj = $node->filter('.thead');
+                        $key = count($keyObj) ? $keyObj->text() : '公装';
+                        $fieldKey = $detailFields[$key];
+                        $detailModel->$fieldKey = $value;
+                        //echo $key . '--' . $value . '<br />';
+                    });
+                    $detailModel->source_id = $info['source_id'];
+                    $detailModel->source_site_code = $info['source_site_code'];
+                    $detailModel->insert(false);
+                    }
 
-					$descriptionObj = $crawler->filter('.describe p');//->text();
-					$description = count($descriptionObj) ? $descriptionObj->text() : '';
-					break;
-				}
+                    $descriptionObj = $crawler->filter('.describe p');//->text();
+                    $description = count($descriptionObj) ? $descriptionObj->text() : '';
+                    break;
+                }
             }
-			$info->description = $description;
-			$info->update(false);
+            $info->description = $description;
+            $info->update(false);
         }
     }
 
-	public function infosListUrl($siteCode)
-	{
+    public function infosListUrl($siteCode)
+    {
         $model = new Merchant();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 1];
-        $infos = $model->find()->where($where)->limit(500)->all();
-		$infoUrls = $this->configInfo['infoUrls'];
-		foreach ($infos as $info) {
-            $sql = "INSERT INTO `ws_house_infolist` (`site_code`, `source_id`, `type`, `url_source`, `city_code`, `page`) VALUES";
-			foreach ($infoUrls as $type => $url) {
+        $infos = $model->find()->where($where)->limit(300)->all();
+        $infoUrls = $this->configInfo['infoUrls'];
+		$addNum = 0;
+        foreach ($infos as $info) {
+            foreach ($infoUrls as $type => $url) {
                 $urlSource = str_replace(['{{CITYCODE}}', '{{INFOID}}', '{{PAGE}}'], [$info['city_code'], $info['source_id'], 1], $url);
-                $sql .= "('{$info['source_site_code']}', '{$info['source_id']}', '{$type}', '{$urlSource}', '{$info['city_code']}', '1'),\n";
-			}
-			$sql = rtrim($sql, ",\n");
-			$this->db->createCommand($sql)->execute();
-			$info->source_status_spider = 2;
-			$info->update();
-		}
+                $exist = HouseInfolist::find()->where(['site_code' => $info['source_site_code'], 'url_source' => $urlSource])->one();
+                if (!$exist) {
+				$addNum++;
+                $data = [
+					'site_code' => $info['source_site_code'],
+					'source_id' => $info['source_id'],
+					'type' => $type,
+                    'url_source' => $urlSource,
+					'city_code' => $info['city_code'],
+					'source_city_code' => $info['source_city_code'],
+					'page' => 1,
+                ];
+                $aModel = new HouseInfolist($data);
+                $aModel->insert(false);
+                }
+            }
+            //$sql = rtrim($sql, ",\n");
+            //$this->db->createCommand($sql)->execute();
+            $info->source_status_spider = 2;
+            $info->update();
+        }
+		echo $addNum;
+    }
+
+    public function infosListSpiderPage($siteCode)
+    {
+        $model = new HouseInfolist();
+        $where = ['site_code' => $siteCode, 'is_allpage' => 0, 'page' => 1];
+        $infos = $model->find()->where($where)->limit(500)->all();
+        $infoUrls = $this->configInfo['infoUrls'];
+        foreach ($infos as $info) {
+            $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-1.html';
+            $info->is_allpage = date('Ymd', Yii::$app->params['currentTime']);
+            $info->updated_at = Yii::$app->params['currentTime'];
+            if (!$this->fileExist($file)) {
+                $info->status = 0;
+                $info->update();
+                continue;
+            }
+        
+            $crawler = new Crawler();
+            $crawler->addContent($this->getContent($file));
+            $pageNode = $crawler->filter('.pages a');//->text();
+			$update = false;
+            $count = count($pageNode);
+			$sql = "INSERT INTO `ws_house_infolist` (`site_code`, `source_id`, `type`, `url_source`, `city_code`, `source_city_code`, `page`) VALUES";
+            if ($count != 0) {
+                $lastPage = intval($pageNode->eq($count-2)->text());
+                for ($i = 2; $i <= $lastPage; $i++) {
+                    $update = true;
+                    $urlSource = str_replace(['{{CITYCODE}}', '{{INFOID}}', '{{PAGE}}'], [$info['city_code'], $info['source_id'], $i], $infoUrls[$info['type']]);
+					$sql .= "('{$info['site_code']}', '{$info['source_id']}', '{$info['type']}', '{$urlSource}', '{$info['city_code']}', '{$info['source_city_code']}', $i),\n";
+                }
+
+            }
+            if ($update) {
+                $sql = rtrim($sql, ",\n");
+                $this->db->createCommand($sql)->execute();
+            }
+			//echo $sql;exit();
+            $info->update();
+        }
 	}
 
     public function infosListSpider($siteCode)
@@ -279,16 +417,29 @@ trait To8toMerchantTrait
         $where = ['site_code' => $siteCode, 'status' => 0];
         $infos = $model->find()->where($where)->limit(500)->all();
         foreach ($infos as $info) {
-            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->status = 1;
             $info->updated_at = Yii::$app->params['currentTime'];
-            //print_r($info);exit();
             if ($this->fileExist($file)) {
                 $info->update();
                 continue;
             }
             $content = file_get_contents($info['url_source']);
             $this->writeFile($file, $content);
+            $info->update();
+        }
+    }
+
+    public function infosListSpiderbak($siteCode)
+    {
+        $model = new HouseInfolist();
+        $where = ['site_code' => $siteCode, 'status' => 0];
+        $infos = $model->find()->where($where)->limit(5000)->all();
+        foreach ($infos as $info) {
+            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            $fileSource = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+		    $this->changeFiles($file, $fileSource);
+            $info->status = 1;
             $info->update();
         }
     }
