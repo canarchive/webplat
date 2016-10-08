@@ -86,6 +86,30 @@ trait To8toMerchantTrait
         }
     }
 
+    public function merchantShowCheck($siteCode)
+    {
+        $model = new Merchant();
+        $where = ['source_site_code' => $siteCode, 'source_show_num' => 0];
+        $infos = $model->find()->where($where)->limit(3000)->all();
+        $showUrls = $this->configInfo['showUrls'];
+		$numAll = 0;
+        foreach ($infos as $info) {
+            $info->source_status_spider = 1;
+			$num = 0;
+            foreach ($showUrls as $key => $value) {
+                $file = $info['source_site_code'] . '/show/' . $info['source_city_code'] . '/' . $info['source_id'] . '-' . $key . '.html';
+                if ($this->fileExist($file)) {
+					$num++;
+					$numAll++;
+				}
+            }
+			$info->source_show_num = $num;
+
+            $info->update();
+        }
+		echo $numAll;
+    }
+
     public function merchantShowSpiderbak($siteCode)
     {
         $model = new Merchant();
@@ -108,24 +132,29 @@ trait To8toMerchantTrait
     public function merchantShowSpider($siteCode)
     {
         $model = new Merchant();
-        $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0, 'source_show_num' => 3];
+        $infos = $model->find()->where($where)->limit(100)->all();
         $showUrls = $this->configInfo['showUrls'];
+		$num = 0;
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
             foreach ($showUrls as $key => $value) {
                 $url = str_replace(['{{CITYCODE}}', '{{INFOID}}'], [$info['city_code'], $info['source_id']], $value);
                 $file = $info['source_site_code'] . '/show/' . $info['source_city_code'] . '/' . $info['source_id'] . '-' . $key . '.html';
                 if ($this->fileExist($file)) {
-                    continue;
+                    //continue;
                 }
-                $content = @ file_get_contents($url);
-				$content || $this->writeFile($file, $content);
+                $content = file_get_contents($url);
+				//$content = $this->getRemoteContent($url);
+
+				!$content || $this->writeFile($file, $content);
+				$num++;
                 //$r = $this->writeFile($file, $content);
             }
 
             $r1 = $info->update(false);
         }
+		echo $num;
     }
 
     public function merchantList($siteCode)
@@ -424,8 +453,9 @@ trait To8toMerchantTrait
                 $info->update();
                 continue;
             }
-            $content = file_get_contents($info['url_source']);
-            $this->writeFile($file, $content);
+            $content = @ file_get_contents($info['url_source']);
+			!$content || $this->writeFile($file, $content);
+            //$this->writeFile($file, $content);
             $info->update();
         }
     }
