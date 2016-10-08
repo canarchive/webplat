@@ -16,7 +16,7 @@ return [
 	//'siteIcpInfo' => '网站备案号 京ICP备15002642号-3',
 	'siteIcpInfo' => '网站备案号 京ICP备16042989号-1',
 	'siteHotline' => '400-6218-718',	
-	'siteJoinusTel' => '13611055052',	
+	'siteJoinusTel' => '18601626776',	
 	'siteCustomServiceQQ' => '1561915324',	
 	'siteName' => '55JIA装修网',
 	'siteNameBase' => '55JIA',

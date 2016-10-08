@@ -49,7 +49,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <script type="text/javascript">
 var isMobile = '<?= intval($this->context->isMobile); ?>';
 if (isMobile == 1) {
-    //window.location.href = "<?= $this->context->mobileMappingUrl; ?>";
+    window.location.href = "<?= $this->context->mobileMappingUrl; ?>";
 }
 window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
