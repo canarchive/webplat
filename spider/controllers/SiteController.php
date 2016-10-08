@@ -32,4 +32,10 @@ class SiteController extends SpiderController
 
 		echo $content;exit();
 	}
+
+	public function actionTest()
+	{
+		print_r($_SERVER);
+	}
+
 }
