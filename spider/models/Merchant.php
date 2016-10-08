@@ -2,13 +2,13 @@
 
 namespace spider\models;
 
-use common\models\SpiderModel;
+use common\models\MerchantModel;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "merchant".
  */
-class Merchant extends SpiderModel
+class Merchant extends MerchantModel
 {
 	public $companyInfo;
 	public $aptitude;

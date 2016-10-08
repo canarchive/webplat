@@ -13,9 +13,9 @@ trait To8toDesignerTrait
     {
         $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'type' => 'designer'];
-        $infos = $model->find()->where($where)->limit(100)->all();
+        $infos = $model->find()->where($where)->limit(500)->all();
         foreach ($infos as $info) {
-            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->updated_at = Yii::$app->params['currentTime'];
             if (!$this->fileExist($file)) {
                 $info->status = 0;
@@ -32,7 +32,7 @@ trait To8toDesignerTrait
                 if (!$exist) {
                     $name = trim($node->filter('p a')->text());
 			        $source_id = str_replace(['team-display-t', '.html'], ['', ''], basename($source_url));
-					$title = trim($node->filter('.member_name')->text());
+					$title = trim($node->filter('.member_name')->eq(1)->text());
 					$sampleNum = trim($node->filter('.detail p a span')->text());
                     $data = [
 						'name' => $name,
@@ -43,6 +43,7 @@ trait To8toDesignerTrait
                         'source_merchant_id' => $info['source_id'],
                         'source_url' => $source_url,
                         'city_code' => $info['city_code'],
+                        'source_city_code' => $info['source_city_code'],
                     ];
                     $photo = $node->filter('img')->attr('src');
 
@@ -83,8 +84,9 @@ trait To8toDesignerTrait
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
             $url = $info['source_url'];
-            $file = $siteCode . '/infosshow/' . $info['city_code'] . '/' . $info['source_merchant_id'] . '/designer/' . $info['source_id'] . '.html';
+            $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/designer/' . $info['source_id'] . '.html';
             if ($this->fileExist($file)) {
+                $info->update();
                 continue;
             }
             $content = @ file_get_contents($url);
