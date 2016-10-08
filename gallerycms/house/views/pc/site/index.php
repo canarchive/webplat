@@ -25,6 +25,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-site/index', 'city_co
     <?php echo $this->render('_product', []); ?>
     <!--服务保障-->
     <?php echo $this->render('_service', []); ?>
+    <?php //echo $this->render('_merchant', ['infos' => $merchantInfos]); ?>
     <!--实景作品-->
     <?php echo $this->render('_realcase', ['infos' => $realcaseInfos]); ?>
     <!--直播工地-->

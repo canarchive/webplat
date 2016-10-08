@@ -27,7 +27,7 @@ $(function() {
     <div class="success-con">
         <div class="sc-body">
             <div class="success-face">
-                <p class="success-text">成功预约免费验房服务</p>
+                <p class="success-text">成功预约装修服务</p>
                 <p class="beizhu">装修管家将在24小时之内联系您，请保持电话通畅哦！</p></div>
             <a class="return-index" href="javascript:history.go(-1)">返回上页</a>
 			<p class="sc-hotline">咨询热线：<?= Yii::$app->params['siteHotline']; ?></p></div>

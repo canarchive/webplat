@@ -4,6 +4,7 @@ namespace gallerycms\house\controllers;
 
 use Yii;
 use gallerycms\components\HouseController;
+use merchant\models\Merchant;
 use merchant\models\Realcase;
 use merchant\models\Working;
 use gallerycms\house\models\HouseSample;
@@ -18,7 +19,9 @@ class SiteController extends HouseController
 
 	public function actionIndex()
 	{
+		$where = ['city_code' => Yii::$app->params['currentCompany']['code_short'], 'status' => 1];
 		$datas = [
+			'merchantInfos' => $this->getMerchantInfos($where),
 			'realcaseInfos' => $this->getRealcaseInfos(),
 			'workingInfos' => $this->getWorkingInfos(),
 			'sampleInfos' => $this->getSampleInfos(),
@@ -52,6 +55,13 @@ class SiteController extends HouseController
 	{
 		$model = new HouseSample();
 		$infos = $model->getInfos([]);
+		return $infos;
+	}
+
+	protected function getMerchantInfos($where)
+	{
+		$model = new Merchant();
+		$infos = $model->getInfos($where);
 		return $infos;
 	}
 
