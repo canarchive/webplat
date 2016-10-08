@@ -13,7 +13,7 @@ trait To8toRealcaseTrait
     {
         $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'type' => 'realcase'];
-        $infos = $model->find()->where($where)->limit(100)->all();
+        $infos = $model->find()->where($where)->limit(500)->all();
         foreach ($infos as $info) {
             $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->updated_at = Yii::$app->params['currentTime'];
@@ -25,7 +25,8 @@ trait To8toRealcaseTrait
         
             $crawler = new Crawler();
             $crawler->addContent($this->getContent($file));
-            $crawler->filter('.zgs_innerpage_right ul li')->each(function ($node) use ($info) {
+			$spiderNum = 0;
+            $crawler->filter('.zgs_innerpage_right ul li')->each(function ($node) use ($info, & $spiderNum) {
                 $source_url = $node->filter('li a')->attr('href');
                 $source_url = strpos($source_url, 'http:') === false ? "http://{$info['city_code']}.to8to.com{$source_url}" : $source_url;
                 $sourceId = intval(basename($source_url));
@@ -68,7 +69,9 @@ trait To8toRealcaseTrait
                     $model = new Realcase($data);
                     $model->insert(false);
                 }
+				$spiderNum++;
             });
+			$info->spider_num = $spiderNum;
             $info->status = 2;
             $info->update(false);
         }

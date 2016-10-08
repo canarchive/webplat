@@ -14,6 +14,7 @@ class To8to extends SpiderAbstract
     use To8toRealcaseTrait;
     use To8toDesignerTrait;
     use To8toWorkingTrait;
+    use To8toCommentTrait;
 
     private $configInfo;
 
