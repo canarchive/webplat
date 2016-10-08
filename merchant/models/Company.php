@@ -10,8 +10,6 @@ use common\models\MerchantModel;
  */
 class Company extends MerchantModel
 {
-	public $region_level1;
-
     /**
      * @inheritdoc
      */
@@ -38,21 +36,13 @@ class Company extends MerchantModel
     {
 		//print_r($_POST);exit();
         return [
-            [['name', 'region_code', 'code'], 'required'],
-            ['code', 'unique', 'targetClass' => '\merchant\models\Company', 'message' => 'This code has already been taken.'],
+            [['name', 'code'], 'required'],
+            //['code', 'unique', 'targetClass' => '\merchant\models\Company', 'message' => 'This code has already been taken.'],
             [['status', 'logo'], 'default', 'value' => 0],
-			/*['region_code', 'default', 'value' => function($model, $attribute) {
-				$specials = ['11000', '12000', '310000', '71000', '81000', '82000'];
-				if (in_array($model->region_level1, $specials)) {
-					return $model->region_level1;
-				}
-				return $model->region_code;
-			}],*/
 			['code_initial', 'default', 'value' => function($model, $attribute) {
                 $spell = substr(Pinyin::letter(trim($model->name)), 0, 1);
 				return $spell;
 			}],
-			//[['postcode', 'code', 'code_initial'], 'default', 'value' => ''],
 			[['name_full', 'postcode', 'hotline', 'address', 'description'], 'safe'],
         ];
     }
@@ -66,8 +56,6 @@ class Company extends MerchantModel
             'id' => '公司ID',
 			'code' => '代码',
 			'code_initial' => '首写字母',
-			'region_level1' => '省级地区',
-			'region_code' => '地区代码',
 			'name_full' => '全称',
             'name' => '名称',
             'logo' => 'LOGO',
@@ -100,9 +88,9 @@ class Company extends MerchantModel
 		return true;
 	}	
 
-	public function getInfos()
+	public function getInfos($where = [])
 	{
-		$infos = $this->find()->orderBy(['code_initial' => SORT_ASC])->indexBy('code')->all();
+		$infos = $this->find()->where($where)->orderBy(['code_initial' => SORT_ASC])->indexBy('code')->all();
 
 		return $infos;
 	}
