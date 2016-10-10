@@ -12,14 +12,4 @@ class Comment extends MerchantModel
         return '{{%merchant_comment}}';
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-		$behaviors = [
-		    $this->timestampBehaviorComponent,
-		];
-		return $behaviors;
-    }
 }

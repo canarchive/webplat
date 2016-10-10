@@ -13,12 +13,16 @@ trait To8toRealcaseTrait
     {
         $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'type' => 'realcase'];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $infos = $model->find()->where($where)->limit(200)->all();
+		print_r($infos);
+		$numAll = $noNum = $num = 0;
         foreach ($infos as $info) {
-            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->updated_at = Yii::$app->params['currentTime'];
             if (!$this->fileExist($file)) {
-                $info->status = 0;
+				echo $file . '<br />';
+				$noNum++;
+                $info->status = -2;
                 $info->update();
                 continue;
             }
@@ -35,8 +39,8 @@ trait To8toRealcaseTrait
                 $thumb = $thumbObj->attr('src');
                 $thumbTitle = $thumbObj->attr('alt');
 
-                $exist = Attachment::find()->where(['info_table' => 'realcase', 'info_field' => 'thumb', 'source_url' => $thumb])->one();
-                if (!$exist) {
+                //$exist = Attachment::find()->select('id')->where(['info_table' => 'realcase', 'info_field' => 'thumb', 'source_url' => $thumb])->one();
+                //if (!$exist) {
                 $aData = [
                     'source_url' => $thumb,
                     'name' => $thumbTitle,
@@ -53,10 +57,10 @@ trait To8toRealcaseTrait
                 ];
                 $aModel = new Attachment($aData);
                 $aModel->insert(false);
-                }
+                //}
 
-                $existInfo = Realcase::find()->where(['source_url' => $source_url])->one();
-                if (!$existInfo) {
+                //$existInfo = Realcase::find()->select('id')->where(['source_url' => $source_url])->one();
+                //if (!$existInfo) {
                     $data = [
                         'source_site_code' => $info['site_code'],
                         'source_city_code' => $info['source_city_code'],
@@ -68,20 +72,23 @@ trait To8toRealcaseTrait
 
                     $model = new Realcase($data);
                     $model->insert(false);
-                }
+                //}
 				$spiderNum++;
             });
 			$info->spider_num = $spiderNum;
+			$numAll += $spiderNum;
             $info->status = 2;
+			$num++;
             $info->update(false);
         }
+		echo $numAll . '--' . $noNum . '--' . $num;
     }
 
     public function realcaseShowSpider($siteCode)
     {
         $model = new Realcase();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
-        $infos = $model->find()->where($where)->limit(10)->all();
+        $infos = $model->find()->where($where)->limit(300)->all();
 		$num = 0;
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
@@ -91,8 +98,13 @@ trait To8toRealcaseTrait
                 $info->update();
                 continue;
             }
+            $fileExt = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/working/' . $info['source_id'] . '.html';
+            if ($this->fileExist($fileExt)) {
+                $info->update();
+                continue;
+            }
 			//echo $url . '<br />';
-            $content = file_get_contents($url);
+            $content = @ file_get_contents($url);
             //$content = $this->getRemoteContent($url);
 			//echo strlen($content);
             if ($content) {
