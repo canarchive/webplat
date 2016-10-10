@@ -14,9 +14,10 @@ trait To8toCommentTrait
     {
         $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'type' => 'comment'];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $infos = $model->find()->where($where)->limit(300)->all();
+		$num = $numAll = 0;
         foreach ($infos as $info) {
-            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->updated_at = Yii::$app->params['currentTime'];
             if (!$this->fileExist($file)) {
                 $info->status = 0;
@@ -26,60 +27,85 @@ trait To8toCommentTrait
         
             $crawler = new Crawler();
             $crawler->addContent($this->getContent($file));
-			$spiderNum = 0;
+            $spiderNum = 0;
             $crawler->filter('.blog_dp_container ul li')->each(function ($node) use ($info, & $spiderNum) {
-				$sourceId = 0;
+                $source_id = 0;
                 $sourceUrl = $node->filter('.bdc_left span a');
-				$brief = '';
-				if (count($sourceUrl) > 0) {
-					$sourceUrl = $sourceUrl->attr('href');
-					$sourceId = intval(basename($sourceUrl));
-					$brief = $sourceUrl->text();
-				} else {
-					$brief = $node->filter('.bdc_left span span')->text();
-				}
-				//echo $info['url_source'];
-				$createdAt = $node->filter('.cmt_bd .cmt_date')->text();
-				$content = $node->filter('.cmt_bd p')->text();
-				$name = $node->filter('.bdc_right')->text();
-				$area = $node->filter('.bdc_right em')->eq(0);//->text();
-				$area = count($area) > 0 ? $area->text() : '';
-				$style = $node->filter('.bdc_right em')->eq(0);//->text();
-				$style = count($style) > 0 ? $style->text() : '';
-				$decorationPrice = $node->filter('.bdc_right em')->eq(0);//->text();
-				$decorationPrice = count($decorationPrice) > 0 ? $decorationPrice->text() : '';
-				$status = $node->filter('.bdcc_statu')->text();
-				$score = $node->filter('.bdcc_pjdetails span')->eq(0)->text();
-				$scoreService = $node->filter('.bdcc_pjdetails span')->eq(1)->text();
-				//echo $score . '--' . $status . '--' . $style . '--' . $decorationPrice . '--' . $area . '--' . $brief . '--' .$name . '--' . $content . '--' . $createdAt . '--' . $sourceId . '<br />';exit();
-
-				$fields = ['sourceId', 'brief', 'createdAt', 'content', 'name', 'area', 'style', 'decoration_price', 'status', 'score_', 'service_score'];
-				$ownerMark = md5($name.$brief.$area.$style.$decorationPrice);
-                $exist = Owner::find()->where(['source_site_code' => $info['site_code'], 'mark' => $ownerMark])->one();
-                if (!$exist) {
-                    $data = [
-						'name' => $name,
-						'brief' => $brief,
-						'area' => $area,
-						'style' => $style,
-						'decoration_price' => $decorationPrice,
-                        'source_site_code' => $info['site_code'],
-                        'source_city_code' => $info['source_city_code'],
-                        'source_id' => $sourceId,
-                        'source_merchant_id' => $info['source_id'],
-                        'city_code' => $info['city_code'],
-                    ];
-					print_r($data);
-
-                    $model = new Owner($data);
-                    //$model->insert(false);
+                $brief = '';
+                if (count($sourceUrl) > 0) {
+                    $url = $sourceUrl->attr('href');
+                    $source_id = intval(basename($url));
+                    $brief = $sourceUrl->text();
+                } else {
+                    $brief = $node->filter('.bdc_left span span')->text();
                 }
-				$spiderNum++;
+                //echo $info['url_source'];
+                $name = $node->filter('.bdc_right')->text();
+                $area = $node->filter('.bdc_left em')->eq(0);//->text();
+                $area = count($area) > 0 ? $area->text() : '';
+                $decoration_price = $node->filter('.bdc_left em')->eq(1);//->text();
+                $decoration_price = count($decoration_price) > 0 ? $decoration_price->text() : '';
+                $style = $node->filter('.bdc_left em')->eq(2);//->text();
+                $style = count($style) > 0 ? $style->text() : '';
+                $status = $node->filter('.bdcc_statu')->text();
+                $star = $node->filter('.bdcc_pjdetails span')->eq(0)->text();
+                $service_star = $node->filter('.bdcc_pjdetails span')->eq(1)->text();
+                $content = $node->filter('.cmt_bd p')->text();
+                $created_at = $node->filter('.cmt_bd .cmt_date')->text();
+                //echo $star . '--' . $status . '--' . $style . '--' . $decorationPrice . '--' . $area . '--' . $brief . '--' .$name . '--' . $content . '--' . $createdAt . '--' . $sourceId . '<br />';exit();
+
+                $fields = ['source_id', 'brief', 'created_at', 'content', 'name', 'area', 'style', 'decoration_price', 'status', 'star', 'service_star'];
+				foreach ($fields as $field) {
+					$$field = trim($$field);
+				}
+                $data = [
+                    'source_site_code' => $info['site_code'],
+                    'source_city_code' => $info['source_city_code'],
+                    'source_id' => $source_id,
+                    'source_merchant_id' => $info['source_id'],
+                    'city_code' => $info['city_code'],
+                ];
+                $ownerMark = md5($name.$brief.$area.$style.$decoration_price);
+                $exist = Owner::find()->select('id')->where(['source_site_code' => $info['site_code'], 'mark' => $ownerMark])->one();
+                //$exist = Owner::find()->where(['source_site_code' => $info['site_code'], 'mark' => $ownerMark])->one();
+				//print_r($exist);
+                if (!$exist) {
+                    $ownerFields = ['name', 'brief', 'area', 'style', 'decoration_price'];
+					$ownerData = $data;
+					foreach ($ownerFields as $ownerField) {
+						$ownerData[$ownerField] = $$ownerField;
+					}
+					$ownerData['name'] = str_replace('🌻', '', $ownerData['name']);
+					$ownerData['mark'] = $ownerMark;
+					//print_r($ownerData);
+
+                    $model = new Owner($ownerData);
+                    $model->insert(false);
+                }
+
+                $commentMark = md5($name.$brief.$area.$style.$decoration_price.$status.$content.$created_at);
+                $existComment = Comment::find()->select('id')->where(['source_site_code' => $info['site_code'], 'mark' => $commentMark])->one();
+                if (!$existComment) {
+					$commentData = $data;
+					$commentData['source_owner_mark'] = $ownerMark;
+					$commentData['content'] = $content;
+					$commentData['created_at'] = strtotime($created_at);
+					$commentData['mark'] = $commentMark;
+					$commentData['status'] = $status;
+					$commentData['design_star'] = strpos($star, '设计') !== false ? str_replace(['设计：', '分'], ['', ''], $star) : '';
+					$commentData['execution_star'] = strpos($star, '施工') !== false ? str_replace(['施工：', '分'], ['', ''], $star) : '';
+					$commentData['service_star'] = str_replace(['服务：', '分'], ['', ''], $service_star);
+					//print_r($commentData);
+
+                    $modelComment = new Comment($commentData);
+                    $modelComment->insert(false);
+                }
+                $spiderNum++;
             });
-			$info->spider_num = $spiderNum;
+            $info->spider_num = $spiderNum;
             $info->status = 2;
-            //$info->update(false);
-			exit();
+            $info->update(false);
+            //exit();
         }
     }
 
@@ -88,7 +114,7 @@ trait To8toCommentTrait
         $model = new Comment();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
         $infos = $model->find()->where($where)->limit(10)->all();
-		$num = 0;
+        $num = 0;
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
             $url = $info['source_url'];
@@ -97,19 +123,19 @@ trait To8toCommentTrait
                 $info->update();
                 continue;
             }
-			//echo $url . '<br />';
+            //echo $url . '<br />';
             $content = file_get_contents($url);
             //$content = $this->getRemoteContent($url);
-			//echo strlen($content);
+            //echo strlen($content);
             if ($content) {
-				$num++;
+                $num++;
                 $this->writeFile($file, $content);
             } else {
                 $info->source_status_spider = -1;
             }
             $info->update();
         }
-		echo $num;
+        echo $num;
     }
 
     public function commentShow($siteCode)

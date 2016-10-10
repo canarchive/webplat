@@ -13,12 +13,15 @@ trait To8toWorkingTrait
     {
         $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'type' => 'working'];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $infos = $model->find()->where($where)->limit(200)->all();
+		$numAll = $noNum = $num = 0;
         foreach ($infos as $info) {
-            $file = $info['site_code'] . '/infoslist/' . $info['city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->updated_at = Yii::$app->params['currentTime'];
             if (!$this->fileExist($file)) {
-                $info->status = 0;
+                $info->status = -2;
+				echo $file . '<br />';
+				$noNum++;
                 $info->update();
                 continue;
             }
@@ -35,8 +38,8 @@ trait To8toWorkingTrait
                 $thumb = $thumbObj->attr('src');
                 $thumbTitle = $thumbObj->attr('alt');
 
-                $exist = Attachment::find()->where(['info_table' => 'working', 'info_field' => 'thumb', 'source_url' => $thumb])->one();
-                if (!$exist) {
+                //$exist = Attachment::find()->select('id')->where(['info_table' => 'working', 'info_field' => 'thumb', 'source_url' => $thumb])->one();
+                //if (!$exist) {
                 $aData = [
                     'source_url' => $thumb,
                     'name' => $thumbTitle,
@@ -53,10 +56,10 @@ trait To8toWorkingTrait
                 ];
                 $aModel = new Attachment($aData);
                 $aModel->insert(false);
-                }
+                //}
 
-                $existInfo = Working::find()->where(['source_url' => $source_url])->one();
-                if (!$existInfo) {
+                //$existInfo = Working::find()->select('id')->where(['source_url' => $source_url])->one();
+                //if (!$existInfo) {
                     $data = [
                         'source_site_code' => $info['site_code'],
                         'source_city_code' => $info['source_city_code'],
@@ -68,31 +71,39 @@ trait To8toWorkingTrait
 
                     $model = new Working($data);
                     $model->insert(false);
-                }
+                //}
 				$spiderNum++;
             });
 			$info->spider_num = $spiderNum;
+			$num++;
+			$numAll += $spiderNum;
             $info->status = 2;
             $info->update(false);
         }
+		echo $numAll . '--' . $noNum . '--' . $num;
     }
 
     public function workingShowSpider($siteCode)
     {
         $model = new Working();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
-        $infos = $model->find()->where($where)->limit(10)->all();
+        $infos = $model->find()->where($where)->limit(200)->all();
 		$num = 0;
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
             $url = $info['source_url'];
-            $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/working/' . $info['source_id'] . '.html';
+            $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/realcase/' . $info['source_id'] . '.html';
+            if ($this->fileExist($file)) {
+                $info->update();
+                continue;
+            }
+            $fileExt = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/working/' . $info['source_id'] . '.html';
             if ($this->fileExist($file)) {
                 $info->update();
                 continue;
             }
 			//echo $url . '<br />';
-            $content = file_get_contents($url);
+            $content = @ file_get_contents($url);
             //$content = $this->getRemoteContent($url);
 			//echo strlen($content);
             if ($content) {

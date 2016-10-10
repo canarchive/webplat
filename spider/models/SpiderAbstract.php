@@ -26,7 +26,7 @@ class SpiderAbstract extends SpiderModel
 		$logFile = Yii::getAlias('@spider/runtime') . '/source/' . $file;
 		$path = dirname($logFile);
 		if (!is_dir($path)) {
-		    FileHelper::createDirectory($path);
+		    FileHelper::createDirectory($path, 0777);
 		}
 		return file_put_contents($logFile, $content);
 	}
