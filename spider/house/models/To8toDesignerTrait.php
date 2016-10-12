@@ -13,7 +13,7 @@ trait To8toDesignerTrait
     {
         $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'type' => 'designer'];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $infos = $model->find()->where($where)->limit(200)->all();
         foreach ($infos as $info) {
             $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             $info->updated_at = Yii::$app->params['currentTime'];
@@ -81,22 +81,29 @@ trait To8toDesignerTrait
         $model = new Designer();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
         $infos = $model->find()->where($where)->limit(100)->all();
+		$num = 0;
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
             $url = $info['source_url'];
             $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/designer/' . $info['source_id'] . '.html';
+			//echo $file . '<br />';
             if ($this->fileExist($file)) {
                 $info->update();
+				$num++;
                 continue;
             }
             $content = @ file_get_contents($url);
 			if ($content) {
                 $this->writeFile($file, $content);
 			} else {
+				$header = get_headers($url);
+				$info->source_url_header = isset($header[0]) ? $header[0] : '';
+				echo "{$info->source_url_header}--<a href='{$url}' target='_blank'>{$url}</a><br />";
 				$info->source_status_spider = -1;
 			}
             $info->update();
         }
+		echo $num;
     }
 
     public function designerShow($siteCode)

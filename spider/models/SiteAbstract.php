@@ -71,7 +71,7 @@ class SiteAbstract extends SpiderModel
 	public function fileDown()
 	{
         $model = new Attachment();
-        $where = ['source_status' => 0];
+        $where = ['source_status' => [-1, -2]];
         $infos = $model->find()->where($where)->limit(500)->all();
 		$pathBase = Yii::$app->params['pathParams']['default'] . '/';
         foreach ($infos as $info) {
@@ -88,17 +88,22 @@ class SiteAbstract extends SpiderModel
                 }
             }
 			$file = $pathBase . $base . "/{$key}.{$extName}";
+			$info->source_status = 1;
 			if (!file_exists($file)) {
             FileHelper::createDirectory(dirname($file));
-			$content = file_get_contents($info['source_url']);
+			$content =  @ file_get_contents(trim($info['source_url']));
+			if ($content) {
 			file_put_contents($file, $content);
+			} else {
+				echo "<a href='{$info['source_url']}' target='_blank'>{$info['source_url']}</a><br />";
+				$info->source_status = -1;
+			}
 			}
 
 			$info->extname = $extName;
 			$info->filepath = str_replace($pathBase, '', $file);
-			$info->size = filesize($file);
-            $info->type = FileHelper::getMimeType($file);
-			$info->source_status = 1;
+			$info->size = @ filesize($file);
+            $info->type = !is_null(FileHelper::getMimeType($file)) ? FileHelper::getMimeType($file) : '';
 			$info->created_at = Yii::$app->params['currentTime'];
 			$info->update(false);
 			//print_r($info);exit();

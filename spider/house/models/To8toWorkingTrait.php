@@ -103,7 +103,7 @@ trait To8toWorkingTrait
                 continue;
             }
 			//echo $url . '<br />';
-            $content = @ file_get_contents($url);
+            $content =  file_get_contents($url);
             //$content = $this->getRemoteContent($url);
 			//echo strlen($content);
             if ($content) {
