@@ -445,7 +445,7 @@ trait To8toMerchantTrait
     public function infosListSpider($siteCode)
     {
         $model = new HouseInfolist();
-        $where = ['site_code' => $siteCode, 'status' => 0];
+        $where = ['site_code' => $siteCode, 'status_ext' => -1];
         $infos = $model->find()->where($where)->limit(200)->all();
 		echo count($infos) . '<br />';
 		$num = 0;
@@ -457,7 +457,7 @@ trait To8toMerchantTrait
                 $info->update();
                 continue;
             }
-            $content =  file_get_contents($info['url_source']);
+            $content = @ file_get_contents($info['url_source']);
 			if ($content) {
 			    $this->writeFile($file, $content);
 			} else {
@@ -483,4 +483,38 @@ trait To8toMerchantTrait
             $info->update();
         }
     }
+    public function infosListSpiderCheck($siteCode)
+    {   
+        $model = new HouseInfolist();
+        /*$where = ['site_code' => $siteCode, 'status_ext' => 0]; 
+        $infos = $model->find()->where($where)->limit(8000)->all();
+        $exists = $noexists = []; 
+        foreach ($infos as $info) {
+            $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
+            if ($this->fileExist($file)) {
+                $exists[] = $info->id;
+            } else {
+                $noexists[] = $info->id;
+            }   
+        }   
+		$sql = $sqlNo = '';
+        $existStr = implode($exists, ',');
+        $noexistStr = implode($noexists, ',');
+        if ($existStr) {
+            $sql = "UPDATE `ws_house_infolist` SET `status_ext` = 1 WHERE `id` IN ({$existStr})";
+            $this->db->createCommand($sql)->execute();
+        }   
+        if ($noexistStr) {
+            $sqlNo = "UPDATE `ws_house_infolist` SET `status_ext` = -1 WHERE `id` IN ({$noexistStr})";
+            $this->db->createCommand($sqlNo)->execute();
+        }   
+		echo $sql . '<br />' . $sqlNo . '<br />';
+		echo count($exists) . '-no-' . count($noexists);*/
+        $where = ['site_code' => $siteCode, 'status_ext' => -1];
+        $infos = $model->find()->where($where)->limit(5000)->all();
+        foreach ($infos as $info) {
+            $url = $info['url_source'];
+            echo "<a href='{$url}' target='_blank'>{$url}</a><br />";
+        }
+    }   
 }
