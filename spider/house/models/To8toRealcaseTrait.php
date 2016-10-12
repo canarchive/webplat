@@ -88,11 +88,11 @@ trait To8toRealcaseTrait
     {
         $model = new Realcase();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
-        $infos = $model->find()->where($where)->limit(300)->all();
+        $infos = $model->find()->where($where)->limit(200)->all();
 		$num = 0;
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
-            $url = $info['source_url'];
+            $url = trim($info['source_url']);
             $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/realcase/' . $info['source_id'] . '.html';
             if ($this->fileExist($file)) {
                 $info->update();
@@ -111,6 +111,8 @@ trait To8toRealcaseTrait
 				$num++;
                 $this->writeFile($file, $content);
             } else {
+				$header = get_headers($url);
+				$info->source_url_header = isset($header[0]) ? $header[0] : '';
                 $info->source_status_spider = -1;
             }
             $info->update();

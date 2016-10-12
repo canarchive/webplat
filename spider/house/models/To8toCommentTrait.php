@@ -14,7 +14,7 @@ trait To8toCommentTrait
     {
         $model = new HouseInfolist();
         $where = ['site_code' => $siteCode, 'status' => 1, 'type' => 'comment'];
-        $infos = $model->find()->where($where)->limit(300)->all();
+        $infos = $model->find()->where($where)->limit(500)->all();
 		$num = $numAll = 0;
         foreach ($infos as $info) {
             $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
@@ -40,7 +40,15 @@ trait To8toCommentTrait
                     $brief = $node->filter('.bdc_left span span')->text();
                 }
                 //echo $info['url_source'];
-                $name = $node->filter('.bdc_right')->text();
+                $nameNode = $node->filter('.bdc_right');//->text();
+				$name = count($nameNode) > 0 ? $nameNode->text() : '';
+				if (count($nameNode) < 1) {
+					print_r($node);
+					echo count($nameNode);
+					echo $info['url_source'];
+					echo $brief;
+					exit();
+				}
                 $area = $node->filter('.bdc_left em')->eq(0);//->text();
                 $area = count($area) > 0 ? $area->text() : '';
                 $decoration_price = $node->filter('.bdc_left em')->eq(1);//->text();
@@ -66,7 +74,7 @@ trait To8toCommentTrait
                     'city_code' => $info['city_code'],
                 ];
                 $ownerMark = md5($name.$brief.$area.$style.$decoration_price);
-                $exist = Owner::find()->select('id')->where(['source_site_code' => $info['site_code'], 'mark' => $ownerMark])->one();
+                $exist = false;//Owner::find()->select('id')->where(['source_site_code' => $info['site_code'], 'mark' => $ownerMark])->one();
                 //$exist = Owner::find()->where(['source_site_code' => $info['site_code'], 'mark' => $ownerMark])->one();
 				//print_r($exist);
                 if (!$exist) {
@@ -84,7 +92,7 @@ trait To8toCommentTrait
                 }
 
                 $commentMark = md5($name.$brief.$area.$style.$decoration_price.$status.$content.$created_at);
-                $existComment = Comment::find()->select('id')->where(['source_site_code' => $info['site_code'], 'mark' => $commentMark])->one();
+                $existComment = false;//Comment::find()->select('id')->where(['source_site_code' => $info['site_code'], 'mark' => $commentMark])->one();
                 if (!$existComment) {
 					$commentData = $data;
 					$commentData['source_owner_mark'] = $ownerMark;
