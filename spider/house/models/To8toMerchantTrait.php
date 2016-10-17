@@ -6,6 +6,8 @@ use Yii;
 use Symfony\Component\DomCrawler\Crawler;
 use spider\models\Merchant;
 use spider\models\Attachment;
+use spider\models\Detail;
+use spider\models\Integrity;
 
 trait To8toMerchantTrait
 {
