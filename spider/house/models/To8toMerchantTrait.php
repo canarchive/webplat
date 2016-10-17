@@ -447,8 +447,8 @@ trait To8toMerchantTrait
     public function infosListSpider($siteCode)
     {
         $model = new HouseInfolist();
-        $where = ['site_code' => $siteCode, 'status_ext' => -1];
-        $infos = $model->find()->where($where)->limit(200)->all();
+        $where = ['site_code' => $siteCode, 'status' => 0];
+        $infos = $model->find()->where($where)->limit(300)->all();
 		echo count($infos) . '<br />';
 		$num = 0;
         foreach ($infos as $info) {
@@ -456,6 +456,7 @@ trait To8toMerchantTrait
             $info->status = 1;
             $info->updated_at = Yii::$app->params['currentTime'];
             if ($this->fileExist($file)) {
+			echo $file . '<br />';
                 $info->update();
                 continue;
             }
@@ -485,38 +486,37 @@ trait To8toMerchantTrait
             $info->update();
         }
     }
+
     public function infosListSpiderCheck($siteCode)
-    {   
+    {
         $model = new HouseInfolist();
-        /*$where = ['site_code' => $siteCode, 'status_ext' => 0]; 
-        $infos = $model->find()->where($where)->limit(8000)->all();
-        $exists = $noexists = []; 
+        $where = ['site_code' => $siteCode, 'status_ext' => 0];
+        $infos = $model->find()->where($where)->limit(100)->all();
+		$exists = $noexists = [];
         foreach ($infos as $info) {
             $file = $info['site_code'] . '/infoslist/' . $info['source_city_code'] . '/' . $info['source_id'] . '/' . $info['type'] . '-' . $info['page'] . '.html';
             if ($this->fileExist($file)) {
-                $exists[] = $info->id;
-            } else {
-                $noexists[] = $info->id;
-            }   
-        }   
-		$sql = $sqlNo = '';
-        $existStr = implode($exists, ',');
-        $noexistStr = implode($noexists, ',');
-        if ($existStr) {
-            $sql = "UPDATE `ws_house_infolist` SET `status_ext` = 1 WHERE `id` IN ({$existStr})";
-            $this->db->createCommand($sql)->execute();
-        }   
-        if ($noexistStr) {
-            $sqlNo = "UPDATE `ws_house_infolist` SET `status_ext` = -1 WHERE `id` IN ({$noexistStr})";
-            $this->db->createCommand($sqlNo)->execute();
-        }   
-		echo $sql . '<br />' . $sqlNo . '<br />';
-		echo count($exists) . '-no-' . count($noexists);*/
-        $where = ['site_code' => $siteCode, 'status_ext' => -1];
+				$exists[] = $info->id;
+			} else {
+				$noexists[] = $info->id;
+			}
+		}
+		$existStr = implode($exists, ',');
+		$noexistStr = implode($noexists, ',');
+		if ($existStr) {
+			$sql = "UPDATE `ws_house_infolist` SET `status_ext` = 1 WHERE `id` IN ({$existStr})";
+            //$this->db->createCommand($sql)->execute();
+		}
+		if ($noexistStr) {
+			$sqlNo = "UPDATE `ws_house_infolist` SET `status_ext` = -1 WHERE `id` IN ({$existStr})";
+            //$this->db->createCommand($sqlNo)->execute();
+		}
+		echo count($exists) . '-no-' . count($noexists);
+        /*$where = ['site_code' => $siteCode, 'status' => -1];
         $infos = $model->find()->where($where)->limit(5000)->all();
         foreach ($infos as $info) {
-            $url = $info['url_source'];
-            echo "<a href='{$url}' target='_blank'>{$url}</a><br />";
-        }
-    }   
+			$url = $info['url_source'];
+			echo "<a href='{$url}' target='_blank'>{$url}</a><br />";
+		}*/
+    }
 }
