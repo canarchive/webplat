@@ -57,5 +57,6 @@ window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup-cms.html'; ?>'
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 <?= Yii::$app->params['statUrl']; ?>
 </div>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/common') . '/js/hd.js'; ?>"></script>
 </body>
 </html>

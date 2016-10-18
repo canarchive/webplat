@@ -7,6 +7,7 @@ $jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
 
 $tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos'] : [];
 $seoTitle = isset($tdkInfos['title']) ? $tdkInfos['title'] : Yii::$app->params['seoTitle'];
+$seoTitle = isset($this->params['titlePrefix']) ? $this->params['titlePrefix'] . $seoTitle : $seoTitle;
 $seoKeyword = isset($tdkInfos['keyword']) ? $tdkInfos['keyword'] : Yii::$app->params['seoKeyword'];
 $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Yii::$app->params['seoDescription'];
 $formPosition = isset($this->params['formPosition']) ? $this->params['formPosition'] : '';

@@ -34,8 +34,8 @@ class DecorationOwner extends DecorationOwnerModel
             //$query->orFilterWhere(['like', 'message', $this->keyword]);
 		}*/
 
-		$startTime = strtotime($this->created_at_start);
-		$endTime = $this->created_at_end > 0 ? strtotime($this->created_at_end) : time();
+		$startTime = intval(strtotime($this->created_at_start));
+		$endTime = $this->created_at_end > 0 ? intval(strtotime($this->created_at_end)) : time();
 		$query->andFilterWhere(['like', 'mobile', $this->mobile]);
 		if (isset($_GET['service_id'])) {
 			$serviceIds = (array) $_GET['service_id'];
@@ -51,8 +51,8 @@ class DecorationOwner extends DecorationOwnerModel
 			'status' => $this->status,
 			'invalid_status' => $this->invalid_status,
 		]);
-        $query->andFilterWhere(['>=', 'signup_at', $startTime]);
-		$query->andFilterWhere(['<', 'signup_at', $endTime]);
+        //$query->andFilterWhere(['>=', 'signup_at', $startTime]);
+		//$query->andFilterWhere(['<', 'signup_at', $endTime]);
 
         return $dataProvider;
     }

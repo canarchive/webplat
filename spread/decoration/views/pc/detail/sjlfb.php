@@ -8,14 +8,16 @@ $this->params['cssFiles'] = [
 ];
 $this->params['jsFiles'] = [
 ];
+$this->params['titlePrefix'] = '百姓网-';
 $this->params['currentNav'] = 'free';
 $this->params['formPosition'] = 'hd-sjlfpc';
 $this->params['formPositionName'] = '活动-设计量房pc';
+Yii::$app->params['siteHotline'] = '';
 ?>
 <script>
 var isMobile = '<?= intval($this->context->isMobile); ?>';
 if (isMobile == 1) {
-    window.location.href = "<?= Yii::getAlias(Yii::$app->params['hostAliasMobile']) . Url::to(['/decoration/detail/feature', 'view' => 'manyi', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>";
+    window.location.href = "<?= Yii::getAlias(Yii::$app->params['hostAliasMobile']) . Url::to(['/decoration/detail/feature', 'view' => 'my', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>";
 }
 </script>
 <script src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/js/jquery-1.11.3.min.js"></script>
@@ -110,12 +112,10 @@ if (isMobile == 1) {
       <div class="loginCity">
           <div class="logo">
             
-                 <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/logo1.png" alt="<?= Yii::$app->params['siteNameBase']; ?>logo">
+                 <a href="http://www.baixing.com"><img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/logo_bx.png?v=1" alt="<?= Yii::$app->params['siteNameBase']; ?>logo" width="212px" height="50px"></a>
             
           </div>
-          <div class="border"></div>
           <div class="logor">
-            
               <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/logor1.png" alt="这里的天是业主的天">
         
 
@@ -1054,7 +1054,7 @@ if (isMobile == 1) {
                 <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/close.png" class="close" alt="关闭" /><!--关闭按钮-->
                 <div class="biao-data">
                     <b id="tit">申请整装套餐</b>
-                    <p>已有<span>197l8</span>人报名</p>
+                    <p>已有<span>19718</span>人报名</p>
                 </div>
                 <input type="text" name="rname" value="" class="ipt"  id="byName" maxlength="10" val=""  data-value="请填写您的姓名">
                 <input type="tel" name="mobile" value="" class="ipt"  id="byTel" maxlength="11" val=""  data-value="填写手机号，预约上门量房">
@@ -1214,11 +1214,11 @@ if (isMobile == 1) {
                     <a >投诉受理</a>
                   </li>
               </ul>
-              <ul class="last">
+              <!--<ul class="last">
                 <li><p>联系我们</p></li>
 				  <li>业主服务：<?= Yii::$app->params['siteHotline']; ?></li>
 				  <li>商务合作：周经理<?= Yii::$app->params['siteJoinusTel']; ?></li>
-              </ul>
+              </ul>-->
               <div class="SFBlist">
 			  <img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/images/source_53d88ed69ef36.png" alt="微信二维码" width="80px" height="80px">
                   <div class="weixin">
@@ -1246,7 +1246,7 @@ if (isMobile == 1) {
                 <li><a >联系我们</a></li>
 				<li class="last"><a >网站地图</a></li>
             </ul>
-            <p><a  title="<?= Yii::$app->params['siteIcpInfo']; ?>"><?= Yii::$app->params['siteIcpInfo']; ?></a></p>
+            <p><a >百姓网股份有限公司,上海市徐汇区广元西路55号浩然高科大厦18楼 All Rights Reserved</a></p>
         </div>
         <div class="SCRright">
             <a >
