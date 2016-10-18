@@ -21,18 +21,20 @@ $gridViewParams = [
 				return $model->getAttachmentImg($model->logo);
 			}
 		],
-		[
+		/*[
             'attribute' => 'company_id',
 			'value' => function($model) {
-				return $model->companyInfos[$model->company_id];
+				$return isset($model->companyInfos[$model->company_id]) ? $model->companyInfos[$model->company_id] : '';
+				return $return;
 			},
-		],
-		[
+		],*/
+		'city_code',
+		/*[
             'attribute' => 'sort_id',
 			'value' => function($model) {
 				return $model->sortInfos[$model->sort];
 			},
-		],
+			],*/
 		'hotline',
 		[
             'attribute' => 'created_at',
