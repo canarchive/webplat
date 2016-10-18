@@ -110,12 +110,13 @@ trait To8toDesignerTrait
     {
         $model = new Designer();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 1, 'source_status_deal' => 0];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $infos = $model->find()->where($where)->limit(800)->all();
         foreach ($infos as $info) {
-            $file = $siteCode . '/infosshow/' . $info['city_code'] . '/' . $info['source_merchant_id'] . '/designer/' . $info['source_id'] . '.html';
+            $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/designer/' . $info['source_id'] . '.html';
             if (!$this->fileExist($file)) {
                 $info->source_status_spider = 0;
-                break;
+                $info->update(false);
+				continue;
             }
             $crawler = new Crawler();
             $crawler->addContent($this->getContent($file));
@@ -146,6 +147,7 @@ trait To8toDesignerTrait
 			}
 
             $info->source_status_deal = 1;
+			//print_r($info);exit();
             $info->update(false);
         }
     }

@@ -88,6 +88,7 @@ trait To8toWorkingTrait
         $model = new Working();
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 0];
         $infos = $model->find()->where($where)->limit(200)->all();
+		echo count($infos);
 		$num = 0;
         foreach ($infos as $info) {
             $info->source_status_spider = 1;
@@ -120,59 +121,48 @@ trait To8toWorkingTrait
     public function workingShow($siteCode)
     {
         $model = new Working();
+		$fields = [
+			'准备开工' => 'start',
+			'水电阶段' => 'electric',
+			'泥木阶段' => 'cement',
+			'油漆阶段' => 'paint',
+			'竣工阶段' => 'finish',
+		];
         $where = ['source_site_code' => $siteCode, 'source_status_spider' => 1, 'source_status_deal' => 0];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $infos = $model->find()->where($where)->limit(600)->all();
         foreach ($infos as $info) {
-            $file = $siteCode . '/infosshow/' . $info['city_code'] . '/' . $info['source_merchant_id'] . '/working/' . $info['source_id'] . '.html';
+			///echo $info['source_url']."\n<br />";
+            $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/realcase/' . $info['source_id'] . '.html';
+			$file = !$this->fileExist($file) ? $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/working/' . $info['source_id'] . '.html' : $file;
             if (!$this->fileExist($file)) {
                 $info->source_status_spider = 0;
-                break;
+                $info->update(false);
+				continue;
             }
+			//echo $file;exit();
             $crawler = new Crawler();
             $crawler->addContent($this->getContent($file));
-            $name = trim($crawler->filter('.case_name')->text());
-            $attrs = $crawler->filter('.case_tag span');
-            foreach ($attrs as $key => $attr) {
-                $value = trim($attr->nodeValue);
-                switch ($key) {
-                case 1:
-                    $info->community_name = $value;
-                    break;
-                case 2:
-                    $info->decoration_price = $value;
-                    break;
-                case 3:
-                    $info->decoration_type = $value;
-                    break;
-                case 4:
-                    $info->area = $value;
-                    break;
-                case 5:
-                    if (strpos($value, '工期') !== false) {
-                        $info->duration = str_replace('工期：', '', $value);
+			$this->_dealOwner($crawler, $info);
 
-                    } else {
-                        $info->style = $value;
-                    }
-                    break;
-                }
-            }
-            $designerId = basename($crawler->filter('.design_ins a')->attr('href'));
-            $info->source_designer_id = str_replace(['team-display-t', '.html'], ['', ''], $designerId);
-            $info->design_concept = trim($crawler->filter('.design_ins_text div')->text());
+		    $statusNode = $crawler->filter('.case_progress .on_li')->last();
+		    $info->status = count($statusNode) > 0 ? trim($statusNode->text()) : '开工';
 
-            $crawler->filter('.design_nav_sheji .design_detail .detail_item')->each(function ($node) use ($info) {
-                $picField = 'picture';
-                $title = $node->filter('span')->text();
-                $picField = $title == '原始结构图' ? 'design_origin' : ($title == '平面结构图' ? 'design_picture' : $picField);
-
+            $crawler->filter('.design_nav_case .zgs_design_cont .cont_bd .cont_item')->each(function ($node) use ($info, $fields) {
+                $title = $node->filter('.cont_item_hd')->text();
+				//echo $title . "\n<br />";
+				if (!isset($fields[$title])) {
+					return ;
+				}
+				$picField = $fields[$title];
+				//echo $title;return;
                 $node->filter('.item_bd')->each(function ($subNode) use ($info, $picField) {
-                    $img = $subNode->filter('img')->attr('src');
+					$img = $subNode->filter('img');
+					$img = count($img) > 0 ? $img->attr('src') : '';
                     if (!in_array($img, ['', 'http://pic.to8to.com/case/'])) {
-                    $desc = $subNode->filter('.item_des')->text();
+                    $desc = trim(trim($subNode->filter('.item_des')->text()), '.');
 
-                    $exist = Attachment::find()->where(['info_table' => 'working', 'info_field' => $picField, 'source_url' => $img])->one();
-                    if (!$exist) {
+                    //$exist = Attachment::find()->where(['info_table' => 'working', 'info_field' => $picField, 'source_url' => $img])->one();
+                    //if (!$exist) {
                     $aData = [
                         'source_url' => $img,
                         'name' => $desc,
@@ -191,12 +181,13 @@ trait To8toWorkingTrait
                     $aModel = new Attachment($aData);
                     $aModel->insert(false);
                     }
-                    }
+                    //}
                     //echo $img . '-' . $desc;exit();
                 });
             });
 
             $info->source_status_deal = 1;
+			//print_r($info); exit();
             $info->update(false);
         }
     }
