@@ -24,13 +24,13 @@ $this->context->pcMappingUrl = Url::to(['/house/decoration-company/show', 'id' =
             <a href="<?= Url::to(['/house/mobile-decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
                 <img class="lazy" src="" data-original="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>">
                 <img class="avatar" src="http://img.tugou.com/company/face04.png">
-                <h3 class="name"><?= $info['owner_name']; ?>的家</h3>
+                <h3 class="name"><?= $info['ownerInfo']['brief']; ?>的家</h3>
                 <div class="msg">
                     <div class="info">
                         <p class="desc"><?= $info['status']; ?></p>
-						<p class="detail"><?= $info['area']; ?>m<sup>2</sup>&nbsp;&nbsp;<?= $info['decoration_type'] . ' ' . $info['decoration_price']; ?>万</p>
+						<p class="detail"><?= $info['ownerInfo']['area']; ?>m<sup>2</sup>&nbsp;&nbsp;<?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price']; ?>万</p>
                     </div>
-					<span class="community"><?= $info['community_name']; ?></span>
+					<span class="community"><?= $info['ownerInfo']['community_name']; ?></span>
                 </div>
             </a>
         </li>

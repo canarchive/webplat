@@ -30,11 +30,11 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-realcase/index', 'cit
 							<div><img class="case-img" src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>"></div>
                             <div class="ch-case-footer">
                                 <div class="ch-left">
-								    <p class="ch-case-title"><?= $info['community_name']; ?></p>
+								    <!--<p class="ch-case-title"><?= $info['ownerInfo']['brief']; ?></p>-->
                                     <p class="ch-case-info">
-									<span role="construction"><?= $info['house_type']; ?></span>
-										<span role="style"><?= $info['style']; ?></span>
-										<span role="detail"><?= $info['decoration_type'] . $info['decoration_price']; ?>万</span>
+									<span role="construction"><?= $info['ownerInfo']['brief']; ?></span>
+										<!--<span role="style"><?= $info['ownerInfo']['style']; ?></span>
+										<span role="detail"><?= $info['ownerInfo']['decoration_type'] . $info['ownerInfo']['decoration_price']; ?>万</span>-->
                                     </p>
                                 </div>
                                 <div class="ch-right">

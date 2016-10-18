@@ -36,7 +36,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-realcase/show', 'id' 
 </div>
 <div class="pd-main">
     <div class="pd-case-content">
-	    <p class="pd-c-title"><?= $info['community_name'] . '·' . $info['house_type'] . '·' . $info['style'] . '·' . $info['decoration_type'] . $info['decoration_price'] . '万'; ?></p>
+	    <p class="pd-c-title"><?= $info['ownerInfo']['community_name'] . '·' . $info['ownerInfo']['house_type'] . '·' . $info['ownerInfo']['style'] . '·' . $info['ownerInfo']['decoration_type'] . $info['ownerInfo']['decoration_price'] . '万'; ?></p>
         <figure class="pd-c-layout">
 		    <img src="<?= $info['picture_design']; ?>" alt="用户设计图">
             <figcaption>

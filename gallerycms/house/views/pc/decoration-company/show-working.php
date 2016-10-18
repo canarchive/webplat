@@ -27,21 +27,21 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
 		<a href="<?= Url::to(['/house/decoration-company/index', 'page' => 1, 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">装修公司</a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id'], 'action' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"><?= $merchantInfo['name']; ?></a><span class="sep">&gt;</span>
 		<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $merchantInfo['id'], 'action' => 'sjgd', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">直播工地</a><span class="sep">&gt;</span>
-		<a ><span class="btn-crumbs"><?= $info['owner_name']; ?>的家<i class="i-del"></i></span></a>
+		<a ><span class="btn-crumbs"><?= $info['ownerInfo']['brief']; ?><i class="i-del"></i></span></a>
     </div>
 </div>
 <div class="pd-main">
     <div class="pd-step">
         <div class="pd-user-basic">
-		    <img class="user-head" src="<?= $info['avatar']; ?>" alt="用户头像">
+		    <img class="user-head" src="<?= $info['thumb']; ?>" alt="用户头像">
             <div class="user-info">
-                <p><a role="name"><?= $info['owner_name']; ?>的家</a></p>
+                <p><a role="name"><?= $info['ownerInfo']['brief']; ?></a></p>
                 <p>
-				    <a role="building"><?= $info['community_name']; ?></a>
-					<a role="area"><?= $info['area']; ?>m&sup2;</a>
-					<a role="prod-category"><?= $info['decoration_type']; ?></a>
-					<a role="price"><?= $info['decoration_price']; ?>万</a>
-					<a role="style"><?= $info['style']; ?></a>
+				    <a role="building"><?= $info['ownerInfo']['community_name']; ?></a>
+					<a role="area"><?= $info['ownerInfo']['area']; ?>m&sup2;</a>
+					<a role="prod-category"><?= $info['ownerInfo']['decoration_type']; ?></a>
+					<a role="price"><?= $info['ownerInfo']['decoration_price']; ?>万</a>
+					<a role="style"><?= $info['ownerInfo']['style']; ?></a>
                 </p>
                 <!--<p>项目经理:
                     <a role="manager">舒经理</a>监理师傅:

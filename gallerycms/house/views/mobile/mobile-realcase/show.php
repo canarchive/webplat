@@ -18,8 +18,8 @@ $this->context->pcMappingUrl = Url::to(['/house/realcase/show', 'id' => $info['i
 	<a href="javascript:history.go(-1);" class="return"></a>实景作品
 </div>
 <div class="caseTop">
-    <h1><?= $info['community_name']; ?>·<?= $info['house_type']; ?>&nbsp;&nbsp;<?= $info['style']; ?>&nbsp;&nbsp;<?= $info['decoration_type'] . $info['decoration_price']; ?></h1>
-	<!--<span><?= $info['community_name']; ?></span>-->
+    <h1><?= $info['ownerInfo']['community_name']; ?>·<?= $info['ownerInfo']['house_type']; ?>&nbsp;&nbsp;<?= $info['ownerInfo']['style']; ?>&nbsp;&nbsp;<?= $info['ownerInfo']['decoration_type'] . $info['ownerInfo']['decoration_price']; ?></h1>
+	<!--<span><?= $info['ownerInfo']['community_name']; ?></span>-->
 </div>
 <div class="casedetail-list">
     <ul>
