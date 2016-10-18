@@ -11,7 +11,8 @@ class RealcaseController extends HouseController
 	public function actionIndex()
 	{
 		$model = new Realcase();
-		$infos = $model->getInfos([]);
+		$where = ['city_code' => Yii::$app->params['currentCompany']['code_short']];//, 'status' => 1];
+		$infos = $model->getInfos($where, 30);
 		$datas = [
 			'infos' => $infos,
 		];

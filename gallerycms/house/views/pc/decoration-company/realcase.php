@@ -31,13 +31,13 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
         				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
         						<img alt="<?= $info['name']; ?>" src="<?= $info['thumb']; ?>">
                             </a>
-        					<p class="desc"><?= $info['community_name']; ?></p>
+        					<p class="desc"><?= $info['ownerInfo']['brief']; ?></p>
                         </figure>
                         <p class="case-info">
-                            <img alt="装修管家" src="http://pic.tugou.com/weixin/userheader.png" class="designer-head">
-        					<a role="construction"><?= $info['house_type']; ?></a>
-        					<a role="style"><?= $info['style']; ?></a>
-        					<a role="detail"><?= $info['decoration_type'] . ' ' . $info['decoration_price']; ?>万</a>
+                            <!--<img alt="装修管家" src="http://pic.tugou.com/weixin/userheader.png" class="designer-head">-->
+        					<a role="construction"><?= $info['ownerInfo']['brief']; ?></a>
+        					<!--<a role="style"><?= $info['ownerInfo']['style']; ?></a>
+        					<a role="detail"><?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price']; ?>万</a>-->
                         </p>
                     </div>
                     <?php } ?>

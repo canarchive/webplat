@@ -23,8 +23,8 @@ class HouseController extends Controller
 
 	protected function _getOwnerInfos()
 	{
-		$companyId = Yii::$app->params['currentCompany']['id'];
-		$where = ['company_id' => $companyId];
+		$cityCode = Yii::$app->params['currentCompany']['code_short'];
+		$where = ['city_code' => $cityCode];
 		$owner = new \merchant\models\Owner();
 		$infos = $owner->getInfos($where, 20);
 

@@ -37,8 +37,8 @@ $(function() {
                 <div class="list01">
 				    <img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>">
                     <div class="listbg"></div>
-					<p><?= $info['community_name']; ?></p>
-					<p class="channel"><?= $info['house_type']; ?>&nbsp;&nbsp;<?= $info['style']; ?>&nbsp;&nbsp;<?= $info['decoration_type'] . '' . $info['decoration_price']; ?></p>
+					<p><?= $info['ownerInfo']['community_name']; ?></p>
+					<p class="channel"><?= $info['ownerInfo']['house_type']; ?>&nbsp;&nbsp;<?= $info['ownerInfo']['style']; ?>&nbsp;&nbsp;<?= $info['ownerInfo']['decoration_type'] . '' . $info['ownerInfo']['decoration_price']; ?></p>
                 </div>
                 <!--<div class="list02">
                     <a class="left">

@@ -34,13 +34,13 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
                     </div>
                     <div class="user-profile">
                         <p>
-        					<a href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="pd-btn" role="user-name"><?= $info['owner_name']; ?></a>
+        					<a href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="pd-btn" role="user-name"><?= $info['ownerInfo']['name']; ?></a>
                         </p>
                         <p>
-        				    <a role="building"><?= $info['community_name']; ?></a>
-        					<a role="area"><?= $info['area']; ?>m²</a>
-        					<a role="detail"><?= $info['decoration_type'] . ' ' . $info['decoration_price']; ?>万</a>
-        					<a role="style"><?= $info['style']; ?></a>
+        				    <a role="building"><?= $info['ownerInfo']['community_name']; ?></a>
+        					<a role="area"><?= $info['ownerInfo']['area']; ?>m²</a>
+        					<a role="detail"><?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price']; ?>万</a>
+        					<a role="style"><?= $info['ownerInfo']['style']; ?></a>
                         </p>
                         <a class="pd-btn pd-bd-booking free-order-pop">免费预约看工地</a></div>
                 </div>

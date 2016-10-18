@@ -93,19 +93,19 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
                 <p class="pd-title">装修实景
 				    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sjsj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="more">更多></a></p>
                 <div class="pd-showcase">
-                    <?php $i = 1; foreach ($realcaseInfos as $info) { if ($i > 3) { break; } ?>
+                    <?php $i = 1; foreach ($realcaseInfos as $rInfo) { if ($i > 3) { break; } ?>
                     <div class="case-item">
                         <figure>
-        				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
-        						<img alt="<?= $info['name']; ?>" src="<?= $info['thumb']; ?>">
+        				    <a data-url="<?= Url::to(['/house/realcase/show', 'id' => $rInfo['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
+        						<img alt="<?= $rInfo['name']; ?>" src="<?= $rInfo['thumb']; ?>">
                             </a>
-        					<p class="desc"><?= $info['community_name']; ?></p>
+        					<p class="desc"><?= $rInfo['ownerInfo']['brief']; ?></p>
                         </figure>
                         <p class="case-info">
-                            <img alt="装修管家" src="http://pic.tugou.com/weixin/userheader.png" class="designer-head">
-        					<a role="construction"><?= $info['house_type']; ?></a>
-        					<a role="style"><?= $info['style']; ?></a>
-        					<a role="detail"><?= $info['decoration_type'] . ' ' . $info['decoration_price']; ?>万</a>
+                            <!--<img alt="装修管家" src="http://pic.tugou.com/weixin/userheader.png" class="designer-head">-->
+        					<a role="construction"><?= $rInfo['ownerInfo']['brief']; ?></a>
+        					<!--<a role="style"><?= $rInfo['ownerInfo']['style']; ?></a>
+        					<a role="detail"><?= $rInfo['ownerInfo']['decoration_type'] . ' ' . $rInfo['ownerInfo']['decoration_price']; ?>万</a>-->
                         </p>
                     </div>
                     <?php $i++; } ?>
@@ -115,24 +115,24 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
                 <p class="pd-title">工地实拍
 				    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sjgd', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="more">更多></a></p>
                 <div class="pd-showbuild">
-                    <?php $i = 1; foreach ($workingInfos as $info) { if ($i > 3) { break; } ?>
+                    <?php $i = 1; foreach ($workingInfos as $wInfo) { if ($i > 4) { break; } ?>
                     <div class="case-item">
                         <figure>
-        				    <a data-url="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
-        					    <img alt="直播工地" src="<?= $info['thumb']; ?>">
+        				    <a data-url="<?= Url::to(['/house/decoration-company/show-working', 'id' => $wInfo['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
+        					    <img alt="直播工地" src="<?= $wInfo['thumb']; ?>">
                             </a>
-        					<p class="desc"><?= $info['status']; ?></p>
+        					<p class="desc"><?= $wInfo['status']; ?></p>
                         </figure>
                         <p class="case-info">
-        				    <a data-role="building"><?= $info['community_name']; ?></a>-
-        					<a data-role="owner"><?= $info['owner_name']; ?></a>的家
+        				    <a data-role="building"><?= $wInfo['ownerInfo']['community_name']; ?></a>-
+        					<a data-role="owner"><?= $wInfo['ownerInfo']['name']; ?></a>的家
                         </p>
                         <p class="case-subinfo sm">
-        				    <a data-role="area"><?= $info['area']; ?>m²</a>
-        				    <a data-role="price"><?= $info['decoration_type'] . ' ' . $info['decoration_price']; ?>万</a>
+        				    <a data-role="area"><?= $wInfo['ownerInfo']['area']; ?>m²</a>
+        				    <a data-role="price"><?= $wInfo['ownerInfo']['decoration_type'] . ' ' . $wInfo['ownerInfo']['decoration_price']; ?>万</a>
                         </p>
                     </div>
-                    <?php } ?>
+                    <?php $i++; } ?>
                 </div>
             </div>
         </div>

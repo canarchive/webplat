@@ -12,7 +12,7 @@ use spread\models\CustomService;
  */
 class Working extends MerchantModel
 {
-	public $serviceInfo;
+	public $ownerInfo;
 	public $statusDatas;
 	public $merchantInfo;
 	public $avatar;
@@ -80,9 +80,16 @@ class Working extends MerchantModel
 
 	public function getStatusInfos()
 	{
-		$status = new WorkingStatus();
-		return $status->statusInfos;
-	}
+		$datas = [
+			'' => '',
+			'start' => '开始',
+			'electric' => '水电',
+			'cement' => '泥木',
+			'paint' => '油漆',
+			'finish' => '竣工',
+		];
+		return $datas;
+	}	
 
 	public function afterSave($insert, $changedAttributes)
 	{
@@ -109,31 +116,22 @@ class Working extends MerchantModel
 	protected function _formatInfo($info)
 	{
 		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
-		$info['house_type'] = $info->houseTypeInfos[$info->house_type];
-		$info['style'] = $info->styleInfos[$info->style];
-		$info['status'] = $info->statusInfos[$info->status];
-		$info['avatar'] = strpos($info['owner_name'], '女士') !== false ? Yii::getAlias('@asseturl') . '/gallerycms/home/images/face04.png' : Yii::getAlias('@asseturl') . '/gallerycms/home/images/face03.png';
-		$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
-		$info['serviceInfo'] = CustomService::findOne($info['service_id'])->toArray();
-		$workingStatus = new WorkingStatus();
-		$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
+		$info['status'] = isset($info->statusInfos[$info->status]) ? $info->statusInfos[$info->status] : $info->status;
+		//$workingStatus = new WorkingStatus();
+		//$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
 		$info['merchantInfo'] = Merchant::findOne($info['merchant_id']);
 
 		return $info;
 	}
 
-	public function getInfos($where, $limit = 100)
+	public function getInfos($where, $limit = 30)
 	{
 		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
-		$serviceModel = new CustomService();
+		$ownerModel = new Owner();
 		foreach ($infos as $key => & $info) {
 			$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
-			$info['house_type'] = $info->houseTypeInfos[$info->house_type];
-			$info['style'] = $info->styleInfos[$info->style];
-			$info['status'] = $info->statusInfos[$info->status];
-			$info['avatar'] = strpos($info['owner_name'], '女士') !== false ? Yii::getAlias('@asseturl') . '/gallerycms/home/images/face04.png' : Yii::getAlias('@asseturl') . '/gallerycms/home/images/face03.png';
-			$info['decoration_type'] = $info->decorationTypeInfos[$info->decoration_type];
-			$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
+			$info['ownerInfo'] = $ownerModel->getInfo($info['owner_id']);
+			$info['status'] = isset($info->statusInfos[$info->status]) ? $info->statusInfos[$info->status] : $info->status;
 		}
 
         //$cache->set($keyCache, $infos);
