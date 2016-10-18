@@ -37,6 +37,13 @@ $gridViewParams = [
 			'value' => function($model) {
                 return  date('Y-m-d H:i:s',$model->callback_again);
 			}
+		],
+		[
+            'attribute' => 'status',
+			'value' => function($model) {
+				$value = isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $model->status;
+				return $value;
+			}
 		]
     ],
 ];

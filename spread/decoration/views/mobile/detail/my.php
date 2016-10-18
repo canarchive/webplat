@@ -2,21 +2,22 @@
 use yii\helpers\Url;
 
 $this->params['cssFiles'] = [
-	'manyi/css/main', 'manyi/css/list', 'manyi/css/tmypage',
+	'manyi/css/main', 'manyi/css/list-b', 'manyi/css/tmypage',
 ];
+$this->params['titlePrefix'] = '百姓网-';
 $this->params['formPosition'] = 'hd-manyi';
 $this->params['formPositionName'] = '活动推广-满意';
 ?>
 <script>
 var isMobile = '<?= intval($this->context->isMobile); ?>';
 if (isMobile == 0) {
-    window.location.href = "<?= Yii::getAlias(Yii::$app->params['hostAliasPc']) . Url::to(['/decoration/detail/feature', 'view' => 'sjlf', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>";
+    window.location.href = "<?= Yii::getAlias(Yii::$app->params['hostAliasPc']) . Url::to(['/decoration/detail/feature', 'view' => 'sjlfb', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>";
 }
 </script>
 <article class="tmyCon tmy_index">
 <header>
     <a href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>" class="addres">
-	    <!--<em class="ico_city"></em><span ><?= Yii::$app->params['currentCompany']['name']; ?></span>-->
+	    <em class="ico_city"></em><span ><?= Yii::$app->params['currentCompany']['name']; ?></span>
     </a>
 	<a href="javascript:;" class="logo"><?= Yii::$app->params['siteNameBase']; ?></a>
 </header>
@@ -119,7 +120,7 @@ if (isMobile == 0) {
 <script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/manyi/js/component.js"></script>
 <footer>
     <article>
-        <p class="copy">Copyright © 2015 <?= Yii::$app->params['siteNameBase']; ?> All Rights Reserved
+        <p class="copy">百姓网股份有限公司,上海市徐汇区广元西路55号浩然高科大厦18楼 All Rights Reserved
 			<br/><?= Yii::$app->params['siteIcpInfo']; ?>
 		</p>
     </article>

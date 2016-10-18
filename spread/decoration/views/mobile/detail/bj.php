@@ -13,7 +13,7 @@ $this->params['formPositionName'] = '活动推广-报价new';
 <header class="cWhite cMdGray clearfix">
     <div class="tit_top">
         <div class="left">
-			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/logo.png" alt="">
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/logo-bx1.png" alt="">
         </div>
         <div class="f12 text_tit">
 		    <p>中国家装十大电商平台   7年服务700万用户</p>

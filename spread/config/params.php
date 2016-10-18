@@ -57,5 +57,23 @@ return [
         'mobile' => true,
 		'main' => 'main-base',
     ],
+	'sjlfb' => [
+		'name' => '装修报名（17house)-百姓',
+		'pc' => true,
+		'mobile' => false,
+		'main' => 'main-base',
+	],
+    'my' => [
+        'name' => '满意(图满意）-百姓',
+        'pc' => false,
+        'mobile' => true,
+		'main' => 'main-base',
+    ],
+    'bj' => [
+        'name' => '报价-百姓',
+        'pc' => false,
+        'mobile' => true,
+		'main' => 'main-base',
+    ],
 ],
 ];
