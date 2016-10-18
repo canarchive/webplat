@@ -2,6 +2,7 @@
 
 namespace spider\models;
 
+use Yii;
 use common\models\SpiderModel;
 use yii\helpers\ArrayHelper;
 
@@ -19,6 +20,11 @@ class Attachment extends SpiderModel
     {
         return '{{%attachment}}';
     }
+
+    public static function getDb()
+    {
+        return Yii::$app->db;
+    }	
 
     /**
      * @inheritdoc
