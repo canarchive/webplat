@@ -100,7 +100,7 @@ class SignupForm extends Model
 
 		$serviceModel = $decorationOwner->user->dealService($data);
 		$decorationOwner->updateAfterInsert($conversionInfo, $serviceModel->id);
-		$this->sendSmsService($data, $serviceModel);
+		//$this->sendSmsService($data, $serviceModel);
 		$data['service_code'] = $serviceModel->code;
 
 		$this->sendSms($data, $serviceModel->mobile);
@@ -141,7 +141,7 @@ class SignupForm extends Model
 		//$message = $this->decorationModel['sms'];
 		$siteName = Yii::$app->params['siteNameBase'];
 		$hotline = Yii::$app->params['siteHotline'];
-		$message = "【{$siteName}】您已成功预约，装修顾问会在15分钟内回访了解您的具体装修需求，请保持您的电话畅通，详情咨询{$hotline}";
+		$message = "您已成功预约，装修顾问会在15分钟内回访了解您的具体装修需求，请保持您的电话畅通，详情咨询{$hotline}【{$siteName}】";
 
 		$smser = new Smser('company');
         $smser->send($mobile, $message, 'decoration_signup');
