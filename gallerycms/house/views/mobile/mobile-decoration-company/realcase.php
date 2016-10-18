@@ -25,10 +25,10 @@ $this->context->pcMappingUrl = Url::to(['/house/decoration-company/show', 'id' =
                 <div class="placeholder-img">
                     <img class="lazy" src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>">
                 </div>
-                <p class="detail"><?= $info['house_type']; ?>&nbsp;&nbsp;<?= $info['style']; ?>&nbsp;&nbsp;<?= $info['decoration_type'] . $info['decoration_price']; ?>万</p>
-                <p class="community"><?= $info['community_name']; ?></p>
+                <p class="detail"><?= $info['ownerInfo']['house_type']; ?>&nbsp;&nbsp;<?= $info['ownerInfo']['style']; ?>&nbsp;&nbsp;<?= $info['ownerInfo']['decoration_type'] . $info['ownerInfo']['decoration_price']; ?>万</p>
+                <p class="community"><?= $info['ownerInfo']['community_name']; ?></p>
                 <p class="msg">
-				    <span class="type"><?= $info['community_name']; ?></span>
+				    <span class="type"><?= $info['ownerInfo']['community_name']; ?></span>
 					<span class="intro">已有32382人咨询</span>
                 </p>
             </a>

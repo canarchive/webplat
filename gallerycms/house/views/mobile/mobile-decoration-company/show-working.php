@@ -22,8 +22,8 @@ $this->context->pcMappingUrl = Url::to(['/house/decoration-company/show-working'
     <div class="site-face">
 	    <i><img src="<?= $info['thumb']; ?>"></i>
     </div>
-	<p class="sitename"><?= $info['owner_name']; ?>的家</p>
-	<h1 class="sitetype"><?= $info['community_name']; ?>&nbsp;&nbsp;<?= $info['area']; ?>㎡&nbsp;&nbsp;<?= $info['decoration_type'] . $info['decoration_price']; ?>万&nbsp;&nbsp;</h1>
+	<p class="sitename"><?= $info['ownerInfo']['brief']; ?></p>
+	<h1 class="sitetype"><?= $info['ownerInfo']['community_name']; ?>&nbsp;&nbsp;<?= $info['ownerInfo']['area']; ?>㎡&nbsp;&nbsp;<?= $info['ownerInfo']['decoration_type'] . $info['ownerInfo']['decoration_price']; ?>万&nbsp;&nbsp;</h1>
 </div>
 <!--<div class="label">
     <ul>

@@ -74,7 +74,7 @@ class Attachment extends AttachmentBase
 				'thumb' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 300,
+    				'maxSize' => 400,
     				'type' => 'image/*',
 				],
 				'picture' => [

@@ -26,7 +26,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
             <div class="pd-self-basic">
                 <p class="pd-title">品牌简介</p>
                 <div class="pd-self-header">
-		            <img alt="pd-welcome" src="<?= $info['picture']; ?>" class="pd-image">
+		            <img alt="pd-welcome" src="<?php $picture = empty($info['picture']) ? $info['logo'] : $info['picture']; echo $picture?>" class="pd-image">
 			        <div class="pd-desc"><?= $info['description']; ?></div>
                 </div>
             </div>
@@ -66,14 +66,14 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
                     </table>
                 </div>
             </div>
-            <div class="pd-self-cert">
+            <!--<div class="pd-self-cert">
                 <p class="pd-title">资质荣誉</p>
                 <div>
                     <?php foreach ($info['aptitude'] as $aptitude) { ?>
         			<img alt="企业证书" src="<?= $aptitude['url']; ?>" class="pd-cert-item">
                     <?php } ?>
                 </div>
-            </div>
+            </div>-->
             <div class="pd-self-contact">
                 <p class="pd-title">联系我们</p>
                 <div class="sm">

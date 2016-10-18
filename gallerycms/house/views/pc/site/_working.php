@@ -10,8 +10,8 @@ use yii\helpers\Url;
 			<img src="<?= $info['thumb']; ?>" width="278px" height="218px">
 			<div class="node"><?= $info['status']; ?></div>
             <div class="recommend">
-			    <p><?= $info['community_name'] . '-' . $info['owner_name'] . '的家'; ?></p>
-				<p><?= $info['area']; ?>㎡ <?= $info['decoration_type'] . ' ' . $info['decoration_price'] . '万'; ?></p>
+			    <p><?= $info['ownerInfo']['community_name'] . '-' . $info['ownerInfo']['name'] . '的家'; ?></p>
+				<p><?= $info['ownerInfo']['area']; ?>㎡ <?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price'] . '万'; ?></p>
             </div>
         </a>
         <?php $i++; } ?>
