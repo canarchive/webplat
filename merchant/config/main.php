@@ -44,6 +44,7 @@ return [
         'allowActions' => [
 			//'info/*',
 			//'site/index',
+			'merchant-upload/*',
 			'site/signin',
 			'site/signup',
 			'site/logout',
