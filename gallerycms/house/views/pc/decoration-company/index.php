@@ -63,7 +63,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/in
                 </p>
             </div>
             <div class="item_part right">
-                <p>业主评分<br /><strong><?= $info['score']; ?></strong></p>
+                <p>业主评分<br /><strong><?php $score = $info['score'] == 0 ? 98 : intval($info['score']); echo $score; ?></strong></p>
             </div>
         </li>
         <?php } ?>
