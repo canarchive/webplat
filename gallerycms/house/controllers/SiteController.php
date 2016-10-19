@@ -22,8 +22,8 @@ class SiteController extends HouseController
 		$where = ['city_code' => Yii::$app->params['currentCompany']['code_short'], 'status' => 1];
 		$datas = [
 			'merchantInfos' => $this->getMerchantInfos($where),
-			'realcaseInfos' => $this->getRealcaseInfos(),
-			'workingInfos' => $this->getWorkingInfos(),
+			'realcaseInfos' => $this->getRealcaseInfos($where),
+			'workingInfos' => $this->getWorkingInfos($where),
 			'sampleInfos' => $this->getSampleInfos(),
 		];
 		$this->getTdkInfos('site-index');
@@ -65,17 +65,17 @@ class SiteController extends HouseController
 		return $infos;
 	}
 
-	protected function getWorkingInfos()
+	protected function getWorkingInfos($where)
 	{
 		$model = new Working();
-		$infos = $model->getInfos([]);
+		$infos = $model->getInfos($where);
 		return $infos;
 	}
 
-	protected function getRealcaseInfos()
+	protected function getRealcaseInfos($where)
 	{
 		$model = new Realcase();
-		$infos = $model->getInfos([]);
+		$infos = $model->getInfos($where);
 		return $infos;
 	}
 

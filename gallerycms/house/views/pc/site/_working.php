@@ -8,10 +8,10 @@ use yii\helpers\Url;
         <?php $i = 0; foreach ($infos as $info) { if ($i > 3) { break; } ?>
 			<a <?php if ($i == 3) { echo 'class="last"'; } ?>href="<?= Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" target="_blank">
 			<img src="<?= $info['thumb']; ?>" width="278px" height="218px">
-			<div class="node"><?= $info['status']; ?></div>
+			<!--<div class="node"><?= $info['status']; ?></div>-->
             <div class="recommend">
-			    <p><?= $info['ownerInfo']['community_name'] . '-' . $info['ownerInfo']['name'] . '的家'; ?></p>
-				<p><?= $info['ownerInfo']['area']; ?>㎡ <?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price'] . '万'; ?></p>
+			    <p><?= $info['ownerInfo']['brief']; ?></p>
+				<!--<p><?= $info['ownerInfo']['area']; ?>㎡ <?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price'] . '万'; ?></p>-->
             </div>
         </a>
         <?php $i++; } ?>

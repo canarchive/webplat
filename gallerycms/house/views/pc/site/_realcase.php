@@ -10,8 +10,8 @@ use yii\helpers\Url;
 		    <img src="<?= $info['thumb']; ?>" width="277px" height="279px">
             <div class="recommend clearfix">
                 <div class="word fn-left">
-				    <p><?= $info['ownerInfo']['community_name']; ?></p>
-					<p><?= $info['ownerInfo']['house_type']; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?= $info['ownerInfo']['style']; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price']; ?>万</p>
+				    <p><?= $info['ownerInfo']['brief']; ?></p>
+					<!--<p><?= $info['ownerInfo']['house_type']; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?= $info['ownerInfo']['style']; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?= $info['ownerInfo']['decoration_type'] . ' ' . $info['ownerInfo']['decoration_price']; ?>万</p>-->
                 </div>
             </div>
         </a>
