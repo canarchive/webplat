@@ -1,4 +1,9 @@
-<?php foreach ($cInfos as $cityCode => $cInfo) { ?>
+<?php
+$citys = [
+	'bj',
+];
+?>
+<?php foreach ($cInfos as $cityCode => $cInfo) { if (!in_array($cityCode, $citys)) { continue; } ?>
 <div id="w1" class="grid-view">
     <div class="summary"><?= $cInfo . '推广URL汇总'; ?></div>
     <table class="table table-striped table-bordered">
