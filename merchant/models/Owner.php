@@ -11,7 +11,7 @@ class Owner extends MerchantModel
 {
 	public $avatar;
 	public $serviceInfo;
-	public $merchantInfo;
+	//public $merchantInfo;
     
     public static function tableName()
     {
@@ -43,14 +43,14 @@ class Owner extends MerchantModel
         return [
             'id' => 'ID',
 			'city_code' => '城市代码',
-			'service_id' => '',
+			'service_id' => '客服ID',
 			'merchant_id' => '所属公司',
 			'designer_id' => '设计师ID',
             'thumb' => '缩略图',
             'name' => '名称',
 			'mobile' => '业主电话',
-			'brief' => '',
-			'mark' => '',
+			'brief' => '介绍',
+			'mark' => '标签',
 			'community_name' => '小区名字',
 			'house_type' => '户型',
 			'style' => '风格',
@@ -58,7 +58,7 @@ class Owner extends MerchantModel
 			'decoration_type' => '装修类型',
 			'decoration_price' => '装修价格',
 			'duration' => '工期',
-			//'orderlist' => '排序',
+			'orderlist' => '排序',
             'description' => '描述',
             'status' => '是否显示',
             'created_at' => '创建时间',
@@ -122,4 +122,17 @@ class Owner extends MerchantModel
         //$cache->set($keyCache, $infos);
 		return $infos;
 	}		
+
+	public function getDesignerInfos()
+	{
+		if (empty($this->merchant_id)) {
+			return [];
+		}
+
+		$dModel = new Designer();
+		$info = $dModel->getInfos(['merchant_id' => $this->merchant_id]);
+
+		$datas = ArrayHelper::map($info, 'id', 'name');
+		return $datas;
+	}
 }

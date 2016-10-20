@@ -11,6 +11,15 @@ use backend\components\AdminController;
 class RealcaseController extends AdminController
 {
 	protected $modelClass = 'merchant\models\Realcase';
+    use MerchantInfoTrait;
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_initInfo();
+		$this->_ownerInfo();
+    }
 
     public function actionListinfo()
     {
@@ -26,8 +35,11 @@ class RealcaseController extends AdminController
     public function actionAdd()
     {
 		$data = [
-			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
+			'city_code' => isset($this->ownerInfo['city_code']) ? $this->ownerInfo['city_code'] : '',
+			'merchant_id' => isset($this->ownerInfo['merchant_id']) ? $this->ownerInfo['merchant_id'] : '',
+			'owner_id' => isset($this->ownerInfo['id']) ? $this->ownerInfo['id'] : '',
 		];
+		print_r($data);
 		return $this->_addInfo(new Realcase($data));
     }
 

@@ -19,7 +19,6 @@ $model->aptitude = $attachmentModel->getFieldIds('merchant', 'aptitude', $model-
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'brief')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'sort')->dropDownList($model->sortInfos, ['prompt' => Yii::t('admin-common', 'Select Sort')]); ?>
-    <?= $form->field($model, 'company_id')->dropDownList($model->companyInfos, ['prompt' => Yii::t('admin-common', 'Select Company')]); ?>
     <?= $form->field($model, 'logo')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,

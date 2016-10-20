@@ -13,35 +13,30 @@ $detailViewParams = [
 		'orderlist',
 		[
 			'attribute' => 'merchant_id',
-			'value' => $model->merchantInfos[$model->merchant_id],
+			'value' => '',//$model->merchantInfos[$model->merchant_id],
 		],
 		[
 			'attribute' => 'service_id',
-			'value' => $model->serviceInfos[$model->service_id],
+			'value' => isset($model->serviceInfos[$model->service_id]) ? $model->serviceInfos[$model->service_id] : '',
 		],
 		[
 			'attribute' => 'house_type',
-			'value' => $model->houseTypeInfos[$model->house_type],
+			'value' => isset($model->houseTypeInfos[$model->house_type]) ? $model->houseTypeInfos[$model->house_type] : $model->house_type,
 		],
 		[
 			'attribute' => 'style',
-			'value' => $model->styleInfos[$model->style],
+			'value' => isset($model->styleInfos[$model->style]) ? $model->styleInfos[$model->style] : $model->style,
 		],
 		'area',
 		'community_name',
 		[
 			'attribute' => 'decoration_type',
-			'value' => $model->decorationTypeInfos[$model->decoration_type],
+			'value' => isset($model->decorationTypeInfos[$model->decoration_type]) ? $mode->decorationTypeInfos[$model->decoration_type] : $model->decoration_price,
 		],
 		'decoration_price',
 		[
-			'format' => 'raw',
-			'attribute' => 'picture_design',
-			'value' => $model->getAttachmentImg($model->picture_design, false),
-		],
-		[
 			'attribute' => 'status',
-			'value' => $model->statusInfos[$model->status],
+			'value' => isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $mnodel->status,
 		],
 		[
             'attribute' => 'created_at',

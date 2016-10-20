@@ -41,10 +41,10 @@ class Realcase extends MerchantModel
     public function rules()
     {
         return [
-            [['name', 'merchant_id'], 'required'],
+            [['city_code', 'merchant_id', 'owner_id'], 'required'],
 			[['thumb', 'picture_design', 'picture_origin', 'orderlist'], 'integer'],
-			[['thumb', 'picture_design', 'picture_origin', 'orderlist', 'status'], 'default', 'value' => '0'],
-			[['owner_id', 'design_sketch', 'picture_design', 'description'], 'safe'],
+			[['thumb', 'picture_design', 'picture_origin', 'orderlist', 'status', 'design_concept'], 'default', 'value' => '0'],
+			[['design_sketch', 'picture_design', 'description'], 'safe'],
         ];
     }
 

@@ -6,6 +6,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use common\helpers\Tree;
+use merchant\models\Merchant;
 
 class BaseModel extends ActiveRecord
 {
@@ -307,4 +308,15 @@ class BaseModel extends ActiveRecord
         ];
         return $datas;
     }
+
+	public function getMerchantInfo()
+	{
+		if (empty($this->merchant_id)) {
+			return [];
+		}
+
+		$model = new Merchant();
+		$info = $model->getInfo(['id' => $this->merchant_id]);
+		return $info;
+	}
 }

@@ -8,17 +8,19 @@ use merchant\models\Attachment;
 
 $attachmentModel = new Attachment();
 $thumb = $attachmentModel->getFieldInfos('realcase', 'thumb');
-$pictureDesign = $attachmentModel->getFieldInfos('realcase', 'picture_design');
-$designSketch = $attachmentModel->getFieldInfos('realcase', 'design_sketch');
-$model->design_sketch = $attachmentModel->getFieldIds('realcase', 'design_sketch', $model->id); 
+$merchantInfo = Yii::$app->params['merchantInfo'];
 
 ?>
 
 <div class="menu-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+	<input type="hidden" name="merchant_id" value="<?= $merchantInfo['id']; ?>" />
+	<input type="hidden" name="city_code" value="<?= Yii::$app->params['companyInfo']['code_short']; ?>" />
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'merchant_id')->dropDownList($model->merchantInfos, ['prompt' => Yii::t('admin-common', 'Select Merchant')]); ?>
+    <?= $form->field($model, 'mobile')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'service_id')->dropDownList($model->serviceInfos, ['prompt' => Yii::t('admin-common', 'Select Service')]); ?>
+    <?= $form->field($model, 'designer_id')->dropDownList($model->designerInfos, ['prompt' => Yii::t('admin-common', 'Select Designer')]); ?>
     <?= $form->field($model, 'orderlist')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'community_name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'house_type')->dropDownList($model->houseTypeInfos, ['prompt' => Yii::t('admin-common', 'Select House Type')]); ?>
@@ -26,6 +28,7 @@ $model->design_sketch = $attachmentModel->getFieldIds('realcase', 'design_sketch
     <?= $form->field($model, 'area')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'decoration_type')->dropDownList($model->decorationTypeInfos, ['prompt' => Yii::t('admin-common', 'Select Decoration Type')]); ?>
     <?= $form->field($model, 'decoration_price')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'duration')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'thumb')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
@@ -43,42 +46,7 @@ $model->design_sketch = $attachmentModel->getFieldIds('realcase', 'design_sketch
         ],
     ]);
     ?>
-    <?= $form->field($model, 'picture_design')->hiddenInput(); ?>
-    <?= FileUploadUI::widget([
-        'model' => $attachmentModel,
-        'attribute' => 'files[picture_design]',
-        'url' => ['/merchant-upload/index', 'table' => 'realcase', 'field' => 'picture_design', 'id' => $model->id],
-		'gallery' => true,
-        'fieldOptions' => [
-			'isSingle' => $pictureDesign['isSingle'],
-			'idField' => Html::getInputId($model, 'picture_design'),
-            'accept' => 'image/*'
-        ],
-        'clientOptions' => [
-		    //'dataType' => 'json',
-			'maxFileSize' => $pictureDesign['maxSize'] * 1024,
-        ],
-    ]);
-    ?>
-    <?= $form->field($model, 'design_sketch')->hiddenInput(); ?>
-    <?= FileUploadUI::widget([
-        'model' => $attachmentModel,
-        'attribute' => 'files[design_sketch]',
-        'url' => ['/merchant-upload/index', 'table' => 'realcase', 'field' => 'design_sketch', 'id' => $model->id],
-        'gallery' => true,
-        'fieldOptions' => [
-            'isSingle' => $designSketch['isSingle'],
-            'idField' => Html::getInputId($model, 'design_sketch'),
-            'accept' => 'image/*'
-        ],  
-        'clientOptions' => [
-            //'dataType' => 'json',
-            //'noShow' => true,
-            'maxFileSize' => $designSketch['maxSize'] * 1024,
-        ],  
-    ]); 
-    ?> 
-    <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
+    <?= $form->field($model, 'brief')->textarea(['rows' => 2]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>

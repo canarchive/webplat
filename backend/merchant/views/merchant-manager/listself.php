@@ -33,6 +33,7 @@ $gridViewParams = [
 				return $model->statusInfos[$model->status];
 			}
 		],
+		'description',
     ],
 ];
 

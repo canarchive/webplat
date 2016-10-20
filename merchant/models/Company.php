@@ -10,6 +10,9 @@ use common\models\MerchantModel;
  */
 class Company extends MerchantModel
 {
+	public $merchant_list;
+	public $merchant_add;
+
     /**
      * @inheritdoc
      */
@@ -37,7 +40,7 @@ class Company extends MerchantModel
 		//print_r($_POST);exit();
         return [
             [['name', 'code'], 'required'],
-            //['code', 'unique', 'targetClass' => '\merchant\models\Company', 'message' => 'This code has already been taken.'],
+            ['code_short', 'unique', 'targetClass' => '\merchant\models\Company', 'message' => 'This code short has already been taken.'],
             [['status', 'logo'], 'default', 'value' => 0],
 			['code_initial', 'default', 'value' => function($model, $attribute) {
                 $spell = substr(Pinyin::letter(trim($model->name)), 0, 1);
@@ -55,6 +58,7 @@ class Company extends MerchantModel
         return [
             'id' => '公司ID',
 			'code' => '代码',
+			'code_short' => '代码简称',
 			'code_initial' => '首写字母',
 			'name_full' => '全称',
             'name' => '名称',
@@ -62,18 +66,23 @@ class Company extends MerchantModel
 			'hotline' => '电话',
 			'postcode' => '邮编',
 			'address' => '地址',
+			'num_merchant' => '商家数',
+			'num_merchant_self' => '合作商家数',
             'description' => '描述',
             'status' => '是否显示',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
+			'merchant_list' => '商家列表',
+			'merchant_add' => '添加商家',
         ];
     }
 
 	protected function getStatusInfos()
 	{
 		$datas = [
-			'0' => '停用',
-			'1' => '正常',
+			'0' => '筹备中',
+			'1' => '启动中',
+			'2' => '运行中',
 		];
 		return $datas;
 	}	
