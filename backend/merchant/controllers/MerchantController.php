@@ -10,7 +10,15 @@ use backend\components\AdminController;
 
 class MerchantController extends AdminController
 {
+    use MerchantInfoTrait;
 	protected $modelClass = 'merchant\models\Merchant';
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_initInfo();
+    }
 
     public function actionListinfo()
     {

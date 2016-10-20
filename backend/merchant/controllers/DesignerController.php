@@ -11,6 +11,14 @@ use backend\components\AdminController;
 class DesignerController extends AdminController
 {
 	protected $modelClass = 'merchant\models\Designer';
+    use MerchantInfoTrait;
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_initInfo();
+    }
 
     public function actionListinfo()
     {
@@ -27,6 +35,7 @@ class DesignerController extends AdminController
     {
 		$data = [
 			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
+			'city_code' => isset($this->companyInfo['code_short']) ? $this->companyInfo['code_short'] : '',
 		];
 		return $this->_addInfo(new Designer($data));
     }

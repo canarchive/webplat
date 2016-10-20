@@ -34,9 +34,9 @@ class Designer extends MerchantModel
     public function rules()
     {
         return [
-            [['name', 'photo'], 'required'],
+            [['name', 'photo', 'merchant_id', 'city_code'], 'required'],
             [['orderlist', 'status', 'merchant_id'], 'default', 'value' => 0],
-			[['description', 'title', 'record', 'aptitude'], 'safe'],
+			[['description', 'city_code', 'design_concept', 'score_praise', 'score_active', 'sample_num', 'title', 'record', 'aptitude'], 'safe'],
         ];
     }
 

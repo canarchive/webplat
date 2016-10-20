@@ -25,10 +25,12 @@ $gridViewParams = [
 		'title',
 		'aptitude',
 		[
+            'format' => 'raw',
 			'attribute' => 'merchant_id',
 			'value' => function($model) {
 				if ($model->merchant_id > 0) {
-					return $model->merchantInfos[$model->merchant_id];
+				    return $model->merchantInfo['nameUrl'];
+					//return $model->merchantInfos[$model->merchant_id];
 				}
 				return '';
 			},

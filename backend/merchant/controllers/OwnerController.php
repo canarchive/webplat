@@ -11,6 +11,15 @@ use backend\components\AdminController;
 class OwnerController extends AdminController
 {
 	protected $modelClass = 'merchant\models\Owner';
+    use MerchantInfoTrait;
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_initInfo();
+    }
+
 
     public function actionListinfo()
     {
@@ -27,6 +36,7 @@ class OwnerController extends AdminController
     {
 		$data = [
 			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
+			'city_code' => isset(Yii::$app->params['companyInfo']['code_short']) ? Yii::$app->params['companyInfo']['code_short'] : '',
 		];
 		return $this->_addInfo(new Owner($data));
     }

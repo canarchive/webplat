@@ -2,6 +2,7 @@
 
 namespace merchant\models;
 
+use Yii;
 use common\models\MerchantModel;
 use yii\helpers\ArrayHelper;
 
@@ -12,6 +13,7 @@ class Merchant extends MerchantModel
 {
 	public $companyInfo;
 	public $aptitude;
+	public $nameUrl;
     
     /**
      * @inheritdoc
@@ -142,7 +144,10 @@ class Merchant extends MerchantModel
 	{
 		$info['logo'] = $info->getAttachmentUrl($info['logo']);
 		$info['picture'] = $info->getAttachmentUrl($info['picture']);
-		//$info['companyInfo'] = Company::findOne($info['company_id'])->toArray();
+		$info['companyInfo'] = Company::findOne(['code_short' => $info['city_code']])->toArray();
+		$domain = Yii::$app->params['baseDomain'];
+		$url = "http://{$info->city_code}.{$domain}/sj-{$info->id}.html";
+		$info['nameUrl'] = "<a href='{$url}' target='_blank'>{$info->name}</a>";
 
         $condition = [ 
             'info_table' => 'merchant',
