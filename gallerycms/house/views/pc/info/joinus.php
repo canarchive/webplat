@@ -13,7 +13,7 @@
                     <div class="list-li">
                         <a class="job">HR专员<span class="english">人事行政</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=HR专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=HR专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -41,7 +41,7 @@
                     <div class="list-li">
                         <a class="job">产品经理<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=产品经理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=产品经理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -65,7 +65,7 @@
                     <div class="list-li">
                         <a class="job">商务专员<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=商务专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=商务专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -91,7 +91,7 @@
                     <div class="list-li">
                         <a class="job">客服专员<span class="english">客服营销</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=客服专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=客服专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -121,7 +121,7 @@
                     <div class="list-li">
                         <a class="job">业务经理<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=业务经理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=业务经理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -150,7 +150,7 @@
                     <div class="list-li">
                         <a class="job">招商专员<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=招商专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=招商专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -175,7 +175,7 @@
                     <div class="list-li">
                         <a class="job">运营专员<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=运营专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=运营专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -200,7 +200,7 @@
                     <div class="list-li">
                         <a class="job">市场拓展专员<span class="english">市场推广</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=市场拓展专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=市场拓展专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -222,7 +222,7 @@
                     <div class="list-li">
                         <a class="job">商务谈判专员<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=商务谈判专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=商务谈判专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -246,7 +246,7 @@
                     <div class="list-li">
                         <a class="job">客户回访专员<span class="english">客服营销</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=客户回访专员" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=客户回访专员" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -269,7 +269,7 @@
                     <div class="list-li">
                         <a class="job">城市运营<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=城市运营" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=城市运营" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -294,7 +294,7 @@
                     <div class="list-li">
                         <a class="job">PHP高级工程师<span class="english">技术研发</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=PHP高级工程师" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=PHP高级工程师" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -318,7 +318,7 @@
                     <div class="list-li">
                         <a class="job">iOS开发工程师<span class="english">技术研发</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=iOS开发工程师" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=iOS开发工程师" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -344,7 +344,7 @@
                     <div class="list-li">
                         <a class="job">Android开发工程师<span class="english">技术研发</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=Android开发工程师" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=Android开发工程师" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -370,7 +370,7 @@
                     <div class="list-li">
                         <a class="job">家装产品经理<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=家装产品经理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=家装产品经理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -395,7 +395,7 @@
                     <div class="list-li">
                         <a class="job">HR实习生/人事实习生<span class="english">人事行政</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=HR实习生/人事实习生" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=HR实习生/人事实习生" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -420,7 +420,7 @@
                     <div class="list-li">
                         <a class="job">会展策划<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=会展策划" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=会展策划" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -445,7 +445,7 @@
                     <div class="list-li">
                         <a class="job">新媒体运营<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=新媒体运营" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=新媒体运营" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -470,7 +470,7 @@
                     <div class="list-li">
                         <a class="job">网络营销<span class="english">市场推广</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=网络营销" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=网络营销" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -496,7 +496,7 @@
                     <div class="list-li">
                         <a class="job">商务助理<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=商务助理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=商务助理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -522,7 +522,7 @@
                     <div class="list-li">
                         <a class="job">业务支持<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=业务支持" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=业务支持" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -548,7 +548,7 @@
                     <div class="list-li">
                         <a class="job">销售助理<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=销售助理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=销售助理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -575,7 +575,7 @@
                     <div class="list-li">
                         <a class="job">业务助理<span class="english">BD</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=业务助理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=业务助理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -600,13 +600,13 @@
                     <div class="list-li">
                         <a class="job">管理培训生<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=管理培训生" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=管理培训生" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
                         <div class="recruit-left">
                             <p class="miaoshu">岗位职责：</p>
-                            <p class="job-list">为适应飞速发展的需要，为公司的运营管理岗位进行人才储备和输送，CityTogo推出储备干部项目，每位储备干部都有明确的职业发展方向，在工作中学习专业知识，从实干中增长才能；同时定期与公司管理层沟通交流，分享经验，从职场新人成长为独当一面的专家或管理人才</p>
+                            <p class="job-list">为适应飞速发展的需要，为公司的运营管理岗位进行人才储备和输送，55jia推出储备干部项目，每位储备干部都有明确的职业发展方向，在工作中学习专业知识，从实干中增长才能；同时定期与公司管理层沟通交流，分享经验，从职场新人成长为独当一面的专家或管理人才</p>
                         </div>
                         <div class="recruit-right">
                             <p class="miaoshu">任职资格：</p>
@@ -621,7 +621,7 @@
                     <div class="list-li">
                         <a class="job">运营助理<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=运营助理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=运营助理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -646,7 +646,7 @@
                     <div class="list-li">
                         <a class="job">行政前台<span class="english">人事行政</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=行政前台" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=行政前台" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -672,7 +672,7 @@
                     <div class="list-li">
                         <a class="job">网络推广<span class="english">市场推广</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=网络推广" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=网络推广" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
@@ -698,7 +698,7 @@
                     <div class="list-li">
                         <a class="job">用户运营助理<span class="english">产品运营</span></a>
                         <a class="jianli"></a>
-                        <a href="mailto:hr@citytogo.com.cn?subject=用户运营助理" class="Highlight">投递简历</a>
+                        <a href="mailto:hr@55jia.com.cn?subject=用户运营助理" class="Highlight">投递简历</a>
                         <a class="open">&nbsp;</a>
                     </div>
                     <div class="recruit-body">
