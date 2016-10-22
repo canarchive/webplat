@@ -9,6 +9,7 @@ use merchant\models\Attachment;
 $attachmentModel = new Attachment();
 $thumb = $attachmentModel->getFieldInfos('realcase', 'thumb');
 $pictureDesign = $attachmentModel->getFieldInfos('realcase', 'picture_design');
+$pictureOrigin = $attachmentModel->getFieldInfos('realcase', 'picture_origin');
 $designSketch = $attachmentModel->getFieldInfos('realcase', 'design_sketch');
 $model->design_sketch = $attachmentModel->getFieldIds('realcase', 'design_sketch', $model->id); 
 
@@ -20,6 +21,7 @@ $ownerInfo = $this->context->ownerInfo;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 	<input type="hidden" name="owner_id" value="<?= $ownerInfo['id']; ?>" />
+    <?= $form->field($model, 'brief')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'design_concept')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'orderlist')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'thumb')->hiddenInput(); ?>
@@ -36,6 +38,23 @@ $ownerInfo = $this->context->ownerInfo;
         'clientOptions' => [
 		    //'dataType' => 'json',
 			'maxFileSize' => $thumb['maxSize'] * 1024,
+        ],
+    ]);
+    ?>
+    <?= $form->field($model, 'picture_origin')->hiddenInput(); ?>
+    <?= FileUploadUI::widget([
+        'model' => $attachmentModel,
+        'attribute' => 'files[picture_origin]',
+        'url' => ['/merchant-upload/index', 'table' => 'realcase', 'field' => 'picture_origin', 'id' => $model->id],
+		'gallery' => true,
+        'fieldOptions' => [
+			'isSingle' => $pictureOrigin['isSingle'],
+			'idField' => Html::getInputId($model, 'picture_origin'),
+            'accept' => 'image/*'
+        ],
+        'clientOptions' => [
+		    //'dataType' => 'json',
+			'maxFileSize' => $pictureOrigin['maxSize'] * 1024,
         ],
     ]);
     ?>

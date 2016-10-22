@@ -37,9 +37,9 @@ trait MerchantInfoTrait
 
 	protected function _ownerInfo()
 	{
-		$ownerId = Yii::$app->request->post('owner_id');
+		$ownerId = Yii::$app->request->post('owner_id', 0);
 		if (empty($ownerId)) {
-		    $ownerId = Yii::$app->request->get('owner_id');
+		    $ownerId = Yii::$app->request->get('owner_id', 0);
 		}
 		var_dump($ownerId);
 

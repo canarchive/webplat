@@ -15,6 +15,7 @@ class Realcase extends MerchantModel
 	public $design_sketch;
 	public $merchantInfo;
 	public $pictureDesignInfo;
+	public $name;
     
     /**
      * @inheritdoc
@@ -44,7 +45,7 @@ class Realcase extends MerchantModel
             [['city_code', 'merchant_id', 'owner_id'], 'required'],
 			[['thumb', 'picture_design', 'picture_origin', 'orderlist'], 'integer'],
 			[['thumb', 'picture_design', 'picture_origin', 'orderlist', 'status', 'design_concept'], 'default', 'value' => '0'],
-			[['design_sketch', 'picture_design', 'description'], 'safe'],
+			[['brief', 'design_sketch', 'picture_design', 'description'], 'safe'],
         ];
     }
 
@@ -55,18 +56,15 @@ class Realcase extends MerchantModel
     {
         return [
             'id' => '案例ID',
-            'name' => '名称',
+			'city_code' => '城市代码',
 			'merchant_id' => '所属公司',
-			'service_id' => '装修管家',
-			'house_type' => '户型',
-			'style' => '风格',
-			'area' => '面积',
-			'community_name' => '小区名字',
-			'decoration_type' => '装修类型',
-			'decoration_price' => '装修价格',
+			'owner_id' => '业主ID',
+            'brief' => '简介',
             'thumb' => '缩略图',
+            'picture_origin' => '户型图',
             'picture_design' => '设计图',
             'design_sketch' => '效果图',
+			'design_concept' => '设计理念',
 			'orderlist' => '排序',
             'description' => '描述',
             'status' => '是否显示',
