@@ -16,6 +16,12 @@ class Working extends MerchantModel
 	public $statusDatas;
 	public $merchantInfo;
 	public $avatar;
+	public $picture_start;
+	public $picture_electric;
+	public $picture_cement;
+	public $picture_paint;
+	public $picture_finish;
+
     
     /**
      * @inheritdoc
@@ -42,11 +48,11 @@ class Working extends MerchantModel
     public function rules()
     {
         return [
-            [['name', 'merchant_id'], 'required'],
+            [['city_code', 'merchant_id', 'owner_id'], 'required'],
 			[['thumb', 'orderlist'], 'integer'],
-			[['thumb', 'service_id', 'orderlist', 'decoration_price'], 'default', 'value' => '0'],
+			[['thumb', 'orderlist'], 'default', 'value' => '0'],
 			[['status'], 'default', 'value' => ''],
-			[['owner_name', 'owner_mobile', 'decoration_type', 'community_name', 'house_type', 'style', 'area', 'description'], 'safe'],
+			[['start_at', 'start_desc', 'electric_at', 'electric_desc', 'cement_at', 'cement_desc', 'paint_at', 'paint_desc', 'finish_at', 'finish_desc', 'description'], 'safe'],
         ];
     }
 

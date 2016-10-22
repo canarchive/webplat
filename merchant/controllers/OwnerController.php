@@ -17,7 +17,10 @@ class OwnerController extends LoginedController
 		if ($merchantId > 0) {
 		    $ownerMerchant = new OwnerMerchant();
 			$infos = $ownerMerchant->getInfos(['merchant_id' => $merchantId]);
-			foreach ($infos as $info) {
+			foreach ($infos as $key => & $info) {
+				if (!$info['view_at']) {
+					$info['mobile'] = substr_replace($info['mobile'], '******', 3, 6);
+				}
 			}
 		}
 		$datas = [
@@ -25,6 +28,18 @@ class OwnerController extends LoginedController
 		];
         return $this->render('index', $datas);
 	}
+
+	public function actionViewAjax()
+	{
+		Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		$ids = Yii::$app->request->post('ids');
+		$ownerMerchant = new OwnerMerchant();
+		$datas = $ownerMerchant->viewInfo($this->merchantInfo['id'], $ids);
+
+		return $datas;
+		//print_r($_POST);
+	}
+
     public function actionSetting()
     {
 		$user = \Yii::$app->user->getIdentity();

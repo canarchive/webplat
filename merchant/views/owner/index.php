@@ -1,10 +1,11 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $this->params['cssFiles'] = ['sms'];
 $this->params['jsFooterFiles'] = [
 	'jquery-2.1.0', 'foundation.min',
-	'main',
+	'main', 'footable', 'tooltips', 'mustache', 'sms'
 ];
 $this->params['currentNav'] = 'owner';
 Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTitle'];
@@ -17,7 +18,7 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
     <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-            <li>
+            <!--<li>
                 <a href="https://sms-my.luosimao.com/send/batch">批量发送</a></li>
             <li>
                 <a href="https://sms-my.luosimao.com/api">触发发送</a></li>
@@ -35,8 +36,7 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
                 <a href="https://sms-my.luosimao.com/api/white_list">IP白名单</a></li>
             <li>
                 <a href="https://sms-my.luosimao.com/send/push">推送设置</a></li>
-            <!-- <li><a href="https://sms-my.luosimao.com/send/black">黑名单</a></li>
-            -->
+            <li><a href="https://sms-my.luosimao.com/send/black">黑名单</a></li>-->
         </ul>
     </section>
 </nav>
@@ -65,6 +65,7 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
                                     <th data-hide="phone,tablet" class="time">派单时间</th>
                                     <th data-hide="phone,tablet" class="time">姓名</th>
                                     <th data-hide="phone,tablet" class="time">手机号</th>
+                                    <th data-hide="phone,tablet" class="time">查看时间</th>
                                     <th data-hide="phone,tablet" class="time">小区</th>
                                     <th data-hide="phone,tablet" class="time">面积</th>
                                     <th data-hide="phone,tablet" class="time">户型</th>
@@ -77,7 +78,8 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
                                 <tr>
 								    <td><?= date('Y-m-d H:i:s', $info['created_at']); ?></td>
 								    <td><?= $info['ownerName']; ?></td>
-								    <td><?= $info['mobile']; ?></td>
+									<td id="info-<?= $info->id; ?>"><?= $info['mobile']; ?> <?php if (!$info['view_at']) { echo '<a onclick="viewInfo(' . $info['id'] . ');">查看</a>'; } ?></td>
+									<td id="info_at-<?= $info->id; ?>"><?php if($info['view_at']) { echo date('Y-m-d H:i:s', $info['view_at']); } ?></td>
 								    <td><?= $info['houseAddress']; ?></td>
 								    <td><?= $info['houseArea']; ?></td>
 								    <td><?= $info['houseType']; ?></td>
@@ -94,10 +96,39 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
         </div>
     </section>
 </div>
-<script src="//s.luosimao.com/js/jquery-2.1.0.js"></script>
-<script src="//s.luosimao.com/js/plugin/table/footable.js"></script>
-<script src="//s.luosimao.com/js/plugin/tooltip/tooltips.js"></script>
-<script src="//s.luosimao.com/js/foundation.min.js"></script>
-<script src="//s.luosimao.com/js/mustache.js"></script>
-<script src="//s.luosimao.com/js/module/sms.js"></script>
+<?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->getCsrfToken(), ['id' => '_csrf']); ?>
+<script>
+function viewInfo(ids)
+{
+	if (ids == 'all') {
+		ids = 0;
+	}
+		
+	alert(ids);
+	var url = '<?= Url::to(['/owner/view-ajax']); ?>';
+	var data = {
+		'_csrf': $('#_csrf').val(),
+		'ids': ids
+	};
+
+    $.ajax({
+	    type: "POST",
+	    url: url,
+		data: data,
+        success: function(data,status) {
+			if (data.status != 200) {
+				alert(data.message);
+			} else {
+				var datas = data.datas;
+                //datas.each(function(index,item) {
+				$.each(datas, function(index, item) {
+					$('#info-' + index).text(item.mobile);
+					$('#info_at-' + index).text(item.viewAt);
+                });
+			console.log(datas);
+			}
+		}
+	});
+}
+</script>
 
