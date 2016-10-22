@@ -2,6 +2,7 @@
 
 namespace spread\decoration\models;
 
+use Yii;
 use common\models\SpreadModel;
 
 class DecorationOwner extends SpreadModel
@@ -43,10 +44,10 @@ class DecorationOwner extends SpreadModel
         ];
     }
 
-    public static function addOwner($data)
+    public static function addOwner($data, $serviceId = null)
     {
         $userModel = new \spread\models\User();
-        $user = $userModel->getUserInfo($data);
+        $user = $userModel->getUserInfo($data, $serviceId);
         if (empty($user)) {
             return false;
         }
@@ -55,7 +56,9 @@ class DecorationOwner extends SpreadModel
 		$city = \common\components\IP::find($ip);
 		$city = is_array($city) ? implode('-', $city) : $city;
         $data = [
-            'signup_at' => time(),
+            'signup_at' => Yii::$app->params['currentTime'],
+            'signup_at_first' => Yii::$app->params['currentTime'],
+            'signup_num' => 1,
 			'decoration_id' => $data['info_id'],
             'type' => $data['type'],
             'signup_ip' => $ip,
@@ -67,6 +70,7 @@ class DecorationOwner extends SpreadModel
 			//'city' => $data['city'],
 			'city_input' => $data['city_input'],
 			'area_input' => $data['area_input'],
+			'service_id' => $user->service_id,
             'message' => $data['message'],
             'note' => $data['note'],
             'user_id' => $user->id,
@@ -164,5 +168,43 @@ class DecorationOwner extends SpreadModel
 		}
 		$this->update(false);
 		return ;
+	}
+
+	public function addHandle()
+	{
+		$validator = new \common\validators\MobileValidator();
+		$valid =  $validator->validate($this->mobile);
+		if (empty($valid)) {
+            $this->addError('mobile', '手机号有误');
+			return false;
+		}
+
+		$exist = self::findOne(['mobile' => $this->mobile]);
+		if ($exist) {
+            $this->addError('mobile', '手机号已存在');
+			return false;
+		}
+
+		$data = [
+			'mobile' => $this->mobile,
+			'name' => $this->name,
+			'position' => '',
+			'note' => $this->note,
+			'message' => '',
+			'info_id' => 1,
+			'info_name' => '',
+			'type' => '',
+			'city_input' => '',
+			'form_type' => '',
+			'from_type' => 'pc',
+			'area_input' => 0,
+			'signup_channel' => $this->signup_channel,
+		];
+		$serviceId = $this->service_id ? $this->service_id : null;
+		$decorationOwner = $this->addOwner($data, $serviceId);
+		$conversionModel = new \spread\models\Conversion();
+		$conversionInfo = $conversionModel->successLog($data);
+
+		return $decorationOwner;
 	}
 }

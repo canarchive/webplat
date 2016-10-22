@@ -40,7 +40,21 @@ class DecorationOwnerController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new DecorationOwner());
+		$model = new DecorationOwner();
+		if (Yii::$app->request->isPost) {
+			$data = Yii::$app->request->post();
+			$scope = $model->formName();
+			$model->setAttributes($data[$scope], false);
+		   	$newModel = $model->addHandle();
+
+			if ($newModel) {
+                return $this->redirect(['update', 'id' => $newModel->id]);
+			}
+        }
+
+        return $this->render('add', [
+            'model' => $model,
+		]);
     }
 
     public function actionUpdate($id)

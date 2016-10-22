@@ -64,7 +64,7 @@ class User extends SpreadModel
         return true;
     }        
     
-    public function getUserInfo($data)
+    public function getUserInfo($data, $serviceId = null)
     {
         //$data['mobile'] = 13222222;
         $info = $this->findOne(['mobile' => $data['mobile']]);
@@ -74,7 +74,11 @@ class User extends SpreadModel
             return $info;
         }
 
-        $customService = CustomService::getServiceInfo();
+		if (is_null($serviceId)) {
+            $customService = CustomService::getServiceInfo();
+		} else {
+			$customService = CustomService::findOne($serviceId);
+		}
         $data = [
             'mobile' => $data['mobile'],
             'name' => $data['name'],
