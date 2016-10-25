@@ -1246,7 +1246,7 @@ if (isMobile == 1) {
                 <li><a >联系我们</a></li>
 				<li class="last"><a >网站地图</a></li>
             </ul>
-            <p><a  title="<?= Yii::$app->params['siteIcpInfo']; ?>"><?= Yii::$app->params['siteIcpInfo']; ?></a></p>
+			<p><a  title="<?= Yii::$app->params['siteIcpInfo']; ?>"><?= Yii::$app->params['siteCopyRightInfo']; ?> <?= Yii::$app->params['siteIcpInfo']; ?></a></p>
         </div>
         <div class="SCRright">
             <a >
