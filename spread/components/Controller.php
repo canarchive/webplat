@@ -46,7 +46,7 @@ class Controller extends CommonController
     protected function _getHostKey()
     {   
         $host = $this->host;
-        if (strpos($host, 'baxing.com.cn') !== false) {
+        if (strpos($host, 'toteme.cn') !== false) {
             $hostKey = 'bx';
         } else  {
             $hostKey = ''; 

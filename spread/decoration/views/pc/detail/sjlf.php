@@ -43,7 +43,7 @@ if (isMobile == 1) {
   <div class="siteNav">
       <div class="siteNavBg clear">
             <ul class="siteNavBgL">
-              <li >找装修公司，<?= Yii::$app->params['siteNameBase']; ?>比其他渠道便宜20%</li>
+              <li >找装修公司，<?= Yii::$app->params['siteNameBase']; ?>比其他渠道便宜40%</li>
             </ul>
             <ul class="siteNavBgR">
                 <li>登录</li>
@@ -1259,4 +1259,4 @@ if (isMobile == 1) {
     </div>
 </div>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/js/js.js?v4"></script>
+<script type="text/javascript" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/sjlf/js/js.js?v5"></script>

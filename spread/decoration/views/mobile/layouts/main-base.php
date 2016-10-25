@@ -51,6 +51,9 @@ window.signupUrl = '<?= Yii::getAlias('@web') . '/jz-signup.html'; ?>';
 <?= $this->render('@spread/decoration/views/_stat', []); // 顶部 ?>
 </head>
 <body class="<?php if (isset($this->params['bodyClass'])) { echo $this->params['bodyClass']; } ?>">
+<?php if (isset($this->params['kp'])) { ?>
+<script src='<?= Yii::getAlias('@m.spreadurl'); ?>/yjc.php' type='text/javascript' charset='utf-8'></script>
+<?php } ?>
 <?= $content; ?>
 <input type="hidden" id="info_id" value="1" />
 <input type="hidden" id="position" value="<?= $formPosition; ?>" />

@@ -6,6 +6,7 @@ $this->params['cssFiles'] = [
 ];
 $this->params['formPosition'] = 'hd-manyi';
 $this->params['formPositionName'] = '活动推广-满意';
+$this->params['kp'] = true;
 ?>
 <script>
 var isMobile = '<?= intval($this->context->isMobile); ?>';
