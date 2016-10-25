@@ -43,7 +43,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
 							    <td><?= $ownerInfo['name']; ?></td>
 							    <td><?= $ownerInfo['community_name']; ?></td>
 								<td><?= $ownerInfo['area']; ?>m&sup2;</td>
-							    <td><?= $ownerInfo['decoration_type']; ?></td>
+							    <td><?= $ownerInfo['style']; ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
@@ -57,38 +57,36 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
 							    <td><?= $ownerInfo['name']; ?></td>
 							    <td><?= $ownerInfo['community_name']; ?></td>
 								<td><?= $ownerInfo['area']; ?>m&sup2;</td>
-							    <td><?= $ownerInfo['decoration_type']; ?></td>
+							    <td><?= $ownerInfo['style']; ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <?php if (count($designerInfos) > 0) { $designerInfoFirst = array_pop($designerInfos); ?>
             <div class="pd-m-applystep">
                 <p class="pd-title">优秀设计师
-				<a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sjsjs', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="more">更多></a></p>
+                <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sjsjs', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="more">更多></a></p>
                 <div class="designer">
                     <div class="case">
-                        <img src="http://pic.tugou.com/designer/1451095525_4502383.jpeg" alt="设计师形象" />
-                        <p class="name">蔡建超</span>
-                            <p class="info">擅长欧式、地中海、中式风格</span>
-                                <ol class="list">
-                                    <li>
-                                        <img src="http://pic.tugou.com/designer/1451095589_983768.jpeg" alt="设计师形象" />
-                                        <p class="item-name">程振西</p>
-                                        <p class="item-type">设计师</p></li>
-                                    <li>
-                                        <img src="http://pic.tugou.com/designer/1451095638_886979.jpeg" alt="设计师形象" />
-                                        <p class="item-name">李政阳</p>
-                                        <p class="item-type">设计师</p></li>
-                                    <li>
-                                        <img src="http://pic.tugou.com/designer/1451095681_077679.jpeg" alt="设计师形象" />
-                                        <p class="item-name">吴琼</p>
-                                        <p class="item-type">设计师</p></li>
-                                </ol>
+                        <img src="<?= $designerInfoFirst['photo']; ?>" alt="设计师形象" />
+                        <p class="name"><?= $designerInfoFirst['name']; ?></span>
+                        <p class="info"><?= $designerInfoFirst['title']; ?></span>
+                        <ol class="list">
+                            <?php $i = 0; foreach ($designerInfos as $designerInfo) { if ($i > 2) { break; } ?>
+                            <li>
+                                <img src="<?= $designerInfo['photo']; ?>" alt="<?= $designerInfo['name']; ?>" />
+                                <p class="item-name"><?= $designerInfo['name']; ?></p>
+                                <p class="item-type"><?= '设计师';//$designerInfo['title']; ?></p>
+                            </li>
+                            <?php $i++; } ?>
+                        </ol>
                     </div>
                 </div>
             </div>
+            <?php } ?>
             <div class="pd-m-case">
                 <p class="pd-title">装修实景
 				    <a href="<?= Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'action' => 'sjsj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>" class="more">更多></a></p>

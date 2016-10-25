@@ -8,8 +8,8 @@ use yii\helpers\Url;
 		<a class="cast-<?php if ($i % 2 == 1) { echo 'right'; } else { echo 'left'; } ?>" href="<?= Url::to(['/house/mobile-decoration-company/show-working', 'id' => $info['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
 			<img src="<?= $info['thumb']; ?>" alt="<?= $info['name']; ?>">
             <div class="cast-word">
-			    <p><?= $info['owner_name']; ?></p>
-				<p><?= $info['community_name']; ?> <?= $info['style']; ?></p>
+			    <!--<p><?= $info['ownerInfo']['name']; ?></p>-->
+				<p><?= $info['ownerInfo']['brief']; ?> </p>
             </div>
         </a>
         <?php $i++; } ?>
