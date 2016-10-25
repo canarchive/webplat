@@ -121,13 +121,14 @@ class DecorationOwner extends SpreadModel
 	public function getInvalidStatusInfos()
 	{
 		$datas = [
-			'' => '未知',
-			'ok' => '有效',
-			'no_call' => '无效号码',
-			'no_answer' => '挂断',
-			'no_need' => '没需求',
-			'no_time' => '没时间',
-			'no_near' => '太远了',
+            '' => '未知',
+            'ok' => '有效',
+            'no_call' => '空号',
+            'double' => '重复报名',
+            'noneed' => '无房',
+            'booked' => '已定好',
+            'no_service' => '地区未开通',
+            'no_near' => '郊区',
 		];
 
 		return $datas;
@@ -136,14 +137,11 @@ class DecorationOwner extends SpreadModel
 	public function getStatusInfos()
 	{
 		$datas = [
-			'0' => '未回访',
-			'1' => '预约跟进',
-			'3' => '已派单',
-			'4' => '跟踪中',
-			'5' => '量房',
-			'6' => '未量房',
-			'7' => '签约',
-			'8' => '未签约',
+            '0' => '未回访',
+            '1' => '跟进',
+            '2' => '期房跟进',
+            '3' => '已派单',
+            '4' => '废单',
 		];
 		return $datas;
 	}

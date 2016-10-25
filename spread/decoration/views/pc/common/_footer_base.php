@@ -8,8 +8,8 @@
         ?>
         <div class="links-footer">
             <div class="links-left">
-			    <p><?= Yii::$app->params['siteCopyRightInfo']; ?></p>
-				<p><?= Yii::$app->params['siteIcpInfo']; ?>&nbsp;&nbsp; <?= Yii::$app->params['siteHotline']; ?></p>
+			    <p><?= Yii::$app->params['siteCopyRightInfo']; ?> 地址：<?= Yii::$app->params['siteAddressInfo']; ?></p>
+				<p><?= Yii::$app->params['siteIcpInfo']; ?>&nbsp;&nbsp; 联系电话：<?= Yii::$app->params['siteHotline']; ?></p>
             </div>
             <!--<div class="links-right">
                 <a></a>

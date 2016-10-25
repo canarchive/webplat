@@ -13,7 +13,11 @@ class TestController extends Controller
 	{
 		$sql = '';
 		$infos = Yii::$app->params['companyInfos'];
+		$cityCodes = ['tj', 'sjz', 'cs', 'dl'];
 		foreach ($infos as $info) {
+			if (!in_array($info['code_short'], $cityCodes)) {
+				continue;
+			}
 			$code = $info['code_short'];
 			$sql .= "UPDATE `workhouse_merchant`.`wm_merchant` SET `status` = 1 WHERE `city_code` = '{$code}' AND `status` = 0 ORDER BY `praise` DESC LIMIT 5;\n";
 			$sql .= "UPDATE `workhouse_merchant`.`wm_merchant` SET `status` = 1 WHERE `city_code` = '{$code}' AND `status` = 0 ORDER BY `praise` ASC LIMIT 5;\n";

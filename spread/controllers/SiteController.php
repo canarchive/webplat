@@ -43,7 +43,8 @@ class SiteController extends SpreadController
 			unset($_GET['url_source']);
 		}
 		$queryStr = http_build_query($_GET);
-		$url = $urlSource . '&' . $queryStr;
+		$mark = strpos($urlSource, '?') !== false ? '&' : '?';
+		$url = $urlSource . $mark . $queryStr;
 		
 		header("Location:$url");
 	}
