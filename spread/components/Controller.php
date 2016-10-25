@@ -48,10 +48,14 @@ class Controller extends CommonController
         $host = $this->host;
         if (strpos($host, 'toteme.cn') !== false) {
             $hostKey = 'bx';
+		} elseif (strpos($host, 'btcfang.cn') !== false) {
+			$hostKey = 'btc';
+			Yii::$app->params['siteCopyRightInfo'] = '北京力新国际投资招商有限公司 ';
         } else  {
             $hostKey = ''; 
         }   
 
+		Yii::$app->params['hostKey'] = $hostKey;
         Yii::$app->params['hostAliasPc'] = "@{$hostKey}spreadurl";
         Yii::$app->params['hostAliasMobile'] = "@m.{$hostKey}spreadurl";
     }
