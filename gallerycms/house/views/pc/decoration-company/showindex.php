@@ -43,7 +43,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
 							    <td><?= $ownerInfo['name']; ?></td>
 							    <td><?= $ownerInfo['community_name']; ?></td>
 								<td><?= $ownerInfo['area']; ?>m&sup2;</td>
-							    <td><?= $ownerInfo['decoration_type']; ?></td>
+							    <td><?= $ownerInfo['style']; ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
@@ -57,7 +57,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
 							    <td><?= $ownerInfo['name']; ?></td>
 							    <td><?= $ownerInfo['community_name']; ?></td>
 								<td><?= $ownerInfo['area']; ?>m&sup2;</td>
-							    <td><?= $ownerInfo['decoration_type']; ?></td>
+							    <td><?= $ownerInfo['style']; ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>

@@ -31,8 +31,8 @@ return [
         'description' => '【{{SITENAME}}】：为{{INFONAME}}装修的客户，汇集了互联网上{{INFONAME}}怎么样？{{INFONAME}}口碑、评价、好不好，等相关信息，欢迎大家查看点评。',
     ],
     'decoration-company-info' => [
-        'title' => '{{INFONAME}}网站介绍_{{INFONAME}}地址、电话-【{{CITYNAME}}{{SITENAME}}】',
-        'keyword' => '{{INFONAME}}网站，{{INFONAME}}介绍，{{INFONAME}}地址，{{INFONAME}}电话',
+        'title' => '{{INFONAME}}官网介绍_{{INFONAME}}地址、电话-【{{CITYNAME}}{{SITENAME}}】',
+        'keyword' => '{{INFONAME}}官网，{{INFONAME}}介绍，{{INFONAME}}地址，{{INFONAME}}电话',
         'description' => '找{{INFONAME}}就上【{{SITENAME}}】。这里汇集{{INFONAME}}网站介绍，{{INFONAME}}地址，{{INFONAME}}电话等{{INFONAME}}装修公司系列相关信息。',
     ],
     'decoration-company-designer' => [

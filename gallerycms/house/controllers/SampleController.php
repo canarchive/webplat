@@ -63,7 +63,12 @@ class SampleController extends HouseController
 			if (empty($info[$tagKey])) {
 				continue;
 			}
-			$str = $tagValue['values'][$info[$tagKey]];
+			$tagKeyInfo = $info[$tagKey];
+			if ($tagKey == 'area') {
+				$tagKeyInfo = ceil($tagKeyInfo / 10) * 10;
+				$tagKeyInfo = $tagKeyInfo > 130 ? 130 : $tagKeyInfo;
+			}
+			$str = $tagValue['values'][$tagKeyInfo];
 			$tagStr .= $str;
 			$info[$tagKey] = $str;
 		}
