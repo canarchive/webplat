@@ -148,6 +148,7 @@ class Merchant extends MerchantModel
 		$domain = Yii::$app->params['baseDomain'];
 		$url = "http://{$info->city_code}.{$domain}/sj-{$info->id}.html";
 		$info['nameUrl'] = "<a href='{$url}' target='_blank'>{$info->name}</a>";
+		$info['score'] = empty($info['score']) ? 98 : $info['score'];
 
         $condition = [ 
             'info_table' => 'merchant',
