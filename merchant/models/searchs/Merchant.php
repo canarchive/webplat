@@ -15,25 +15,29 @@ class Merchant extends MerchantModel
     public function rules()
     {
         return [
-            [['city_code',], 'safe'],
+            [['city_code', 'is_joined', 'num_owner', 'status'], 'safe'],
         ];
     }
 
     public function search($params)
     {
-        $query = MerchantModel::find()->orderBy('id DESC');
+        $query = MerchantModel::find();//->orderBy('id DESC');
 
-        $dataProvider = new ActiveDataProvider(['query' => $query]);
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+			//'sort' => ['attributes' => ['num_owner', 'status']],
+		]);
 
         if ($this->load($params, '') && !$this->validate()) {
             return $dataProvider;
         }
+		$this->load($params);
 
 		$query->andFilterWhere([
 			'city_code' => $this->city_code,
 			'status' => $this->status,
+			'is_joined' => $this->is_joined,
 		]);
-
 
         return $dataProvider;
     }
