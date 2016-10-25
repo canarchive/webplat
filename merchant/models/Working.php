@@ -147,7 +147,7 @@ class Working extends MerchantModel
 
 	public function getMerchantInfos()
 	{
-		$infos = $this->getMerchantInfos(['is_spider' => 0]);
+		$infos = $this->getMerchantInfos(['is_joined' => 0]);
 		return $infos;
 	}
 }
