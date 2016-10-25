@@ -44,7 +44,7 @@ $menusJson = Json::encode($menus);
 
         <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
-			<?php if ($controller->showSubnav) { ?>
+			<?php if (isset($this->params['showSubnav'])) { ?>
             <div>
                 <ul class="breadcrumb">
             <?php

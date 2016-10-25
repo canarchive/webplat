@@ -21,6 +21,12 @@ class MerchantManagerController extends AdminController
     public function actionListself()
     {
         $searchModel = new CompanySearch();
-		return $this->_listinfoInfo($searchModel);
+		$searchDatas = [];
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        return $this->render('listself', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+			'searchDatas' => $searchDatas,
+        ]);
     }
 }

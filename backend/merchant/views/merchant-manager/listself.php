@@ -1,5 +1,5 @@
 <?php
-
+$this->params['noPjax'] = true;
 $gridViewParams = [
     'dataProvider' => $dataProvider,
     //'filterModel' => $searchModel,
@@ -14,26 +14,40 @@ $gridViewParams = [
 				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
             },
 		],
-		'code_short',
-		'code',
 		'num_merchant',
 		'num_merchant_self',
-		'hotline',
-		//'postcode',
-		//'address',
-		[
-            'attribute' => 'created_at',
-            'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->created_at);
-            },
-        ],
 		[
             'attribute' => 'status',
 			'value' => function($model) {
 				return $model->statusInfos[$model->status];
 			}
 		],
-		'description',
+		[
+			'format' => 'raw',
+			'attribute' => 'merchant_list',
+            'value'=> function($model){
+                $menus = $this->context->menuInfos['menus'];
+				$menuCode = 'merchant_merchant_listinfo';
+                $opeStr = '';
+                if (isset($menus[$menuCode])) {
+                    $opeStr .= "<a href='{$menus[$menuCode]['url']}?is_joined=1&city_code={$model->code_short}' target='_blank'>{$menus[$menuCode]['name']}</a><br />";
+                }
+				return $opeStr;
+            },
+		],
+		[
+			'format' => 'raw',
+			'attribute' => 'merchant_add',
+            'value'=> function($model){
+                $menus = $this->context->menuInfos['menus'];
+				$menuCode = 'merchant_merchant_add';
+                $opeStr = '';
+                if (isset($menus[$menuCode])) {
+                    $opeStr .= "<a href='{$menus[$menuCode]['url']}?is_joined=1&city_code={$model->code_short}' target='_blank'>{$menus[$menuCode]['name']}</a><br />";
+                }
+				return $opeStr;
+            },
+		],
     ],
 ];
 

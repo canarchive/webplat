@@ -46,7 +46,7 @@ if (isset($menus[$menuCode])) {
         <!-- theme selector ends -->
 
         <ul class="collapse navbar-collapse nav navbar-nav top-menu" id="baseMenu">
-            <li class="active"><a href="javascript: void(0);">分站商家信息管理</a></li>
+		<li class="active"><b><?= Yii::$app->params['companyInfo']['name']; ?></b>---分站商家信息理</li>
         </ul>
     </div>
 </div>

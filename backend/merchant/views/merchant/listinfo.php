@@ -3,7 +3,7 @@ use yii\helpers\Url;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
-    //'filterModel' => $searchModel,
+    'filterModel' => $searchModel,
     'columns' => [
         'id',
 		[
@@ -22,13 +22,13 @@ $gridViewParams = [
 				return $model->getAttachmentImg($model->logo);
 			}
 		],
-		'city_code',
+		/*'city_code',
 		[
             'attribute' => 'sort_id',
 			'value' => function($model) {
 				$return = isset($model->sortInfos[$model->sort]) ? $model->sortInfos[$model->sort] : '';
 			},
-		],
+		],*/
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
@@ -41,22 +41,40 @@ $gridViewParams = [
 				return $model->statusInfos[$model->status];
 			}
 		],
+		'num_designer',
         [   
             'format' => 'raw',
-            'attribute' => 'operation',
+            'attribute' => 'designerinfo',
             'value' => function($model) {
+                $companyInfo = Yii::$app->params['companyInfo'];
+                $is_joined = Yii::$app->params['is_joined'];
                 $menus = $this->context->menuInfos['menus'];
                 $opeStr = '';
-                $elems = ['merchant_merchant-designer_add', 'merchant_merchant-owner_add'];
-                //$elems = ['merchant_merchant-realcase_add', 'merchant_merchant-designer_add', 'merchant_merchant-working_add', 'merchant_merchant-owner_add'];
+                $elems = ['merchant_merchant-designer_listinfo', 'merchant_merchant-designer_add'];
                 foreach ($elems as $elem) {
                     if (isset($menus[$elem])) {
-                    $opeStr .= "<a href='{$menus[$elem]['url']}?merchant_id={$model->id}'>{$menus[$elem]['name']}</a><br />";
+                    $opeStr .= "<a href='{$menus[$elem]['url']}?city_code={$companyInfo['code_short']}&is_joined={$is_joined}&merchant_id={$model->id}'>{$menus[$elem]['name']}</a><br />";
                     }
                 }
                 return $opeStr;
-                //$url = Url::to(['business-order/export']);
-                //return "<a href='{$url}?id={$model->id}'>导出</a>";
+            },  
+        ],
+		'num_owner',
+        [   
+            'format' => 'raw',
+            'attribute' => 'ownerinfo',
+            'value' => function($model) {
+                $companyInfo = Yii::$app->params['companyInfo'];
+                $is_joined = Yii::$app->params['is_joined'];
+                $menus = $this->context->menuInfos['menus'];
+                $opeStr = '';
+                $elems = ['merchant_merchant-owner_listinfo', 'merchant_merchant-owner_add'];
+                foreach ($elems as $elem) {
+                    if (isset($menus[$elem])) {
+                    $opeStr .= "<a href='{$menus[$elem]['url']}?city_code={$companyInfo['code_short']}&is_joined={$is_joined}&merchant_id={$model->id}'>{$menus[$elem]['name']}</a><br />";
+                    }
+                }
+                return $opeStr;
             },  
         ],
     ],

@@ -1,4 +1,5 @@
 <?php
+$this->params['noPjax'] = true;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,

@@ -12,6 +12,7 @@ trait MerchantInfoTrait
 	public $companyInfo;
 	public $merchantInfo;
 	public $ownerInfo;
+	public $is_joined;
 
     protected function _initInfo()
     {
@@ -31,6 +32,7 @@ trait MerchantInfoTrait
 		if (!empty($this->companyInfo) && !empty($this->merchantInfo) && $this->companyInfo['code_short'] != $this->merchantInfo['city_code']) {
 			exit('信息有误！');
 		}
+		Yii::$app->params['is_joined'] = Yii::$app->request->get('is_joined');
 		//$_POST['merchant_id'] = isset($this->merchantInfo['id']) ? $this->merchantInfo['id'] : 0;
 		//$_POST['city_code'] = isset($this->companyInfo['code_short']) ? $this->companyInfo['code_short'] : '';
 	}
