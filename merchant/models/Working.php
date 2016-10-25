@@ -12,6 +12,7 @@ use spread\models\CustomService;
  */
 class Working extends MerchantModel
 {
+	public $name;
 	public $ownerInfo;
 	public $statusDatas;
 	public $merchantInfo;

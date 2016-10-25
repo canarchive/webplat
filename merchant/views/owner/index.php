@@ -64,7 +64,7 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
                                 <tr>
                                     <th data-hide="phone,tablet" class="time">派单时间</th>
                                     <th data-hide="phone,tablet" class="time">姓名</th>
-                                    <th data-hide="phone,tablet" class="time">手机号</th>
+                                    <th class="content">手机号</th>
                                     <th data-hide="phone,tablet" class="time">查看时间</th>
                                     <th data-hide="phone,tablet" class="time">小区</th>
                                     <th data-hide="phone,tablet" class="time">面积</th>
@@ -104,7 +104,6 @@ function viewInfo(ids)
 		ids = 0;
 	}
 		
-	alert(ids);
 	var url = '<?= Url::to(['/owner/view-ajax']); ?>';
 	var data = {
 		'_csrf': $('#_csrf').val(),

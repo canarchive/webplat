@@ -121,4 +121,11 @@ class Company extends MerchantModel
 		$info = $this->findOne(['code_short' => 'bj']);
 		return $info;
 	}
+
+	private function _somesql()
+	{
+		//UPDATE `wm_company` AS `c`, (SELECT `city_code`, COUNT(*) AS `num` FROM `wm_merchant` WHERE `is_spider` = 1 GROUP BY `city_code`) AS `m` SET `c`.`num_merchant` = `m`.`num` WHERE `c`.`code_short` = `m`.`city_code`;
+		//UPDATE `wm_company` AS `c`, (SELECT `city_code`, COUNT(*) AS `num` FROM `wm_merchant` WHERE `is_spider` = 0 GROUP BY `city_code`) AS `m` SET `c`.`num_merchant_self` = `m`.`num` WHERE `c`.`code_short` = `m`.`city_code`;
+
+	}
 }
