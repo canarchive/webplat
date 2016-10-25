@@ -56,7 +56,7 @@ class OwnerMerchant extends MerchantModel
 	}
 	public function getMerchantInfos()
 	{
-		$infos = $this->_getMerchantInfos(['is_spider' => 0]);
+		$infos = $this->_getMerchantInfos(['is_joined' => 0]);
 		return $infos;
 	}
 
