@@ -75,5 +75,11 @@ return [
         'mobile' => true,
 		'main' => 'main-base',
     ],
+	'sj' => [
+		'name' => 'PC报名（jia)',
+		'pc' => true,
+		'mobile' => false,
+		'main' => 'main-base',
+	],
 ],
 ];
