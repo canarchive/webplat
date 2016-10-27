@@ -42,7 +42,7 @@ class Merchant extends MerchantModel
         return [
             [['name'], 'required'],
 			[['logo', 'picture'], 'integer'],
-			[['logo', 'picture', 'company_id', 'category_id', 'status', 'num_owner', 'num_realcase', 'num_working', 'score', 'praise'], 'default', 'value' => '0'],
+			[['logo', 'picture', 'category_id', 'status', 'num_owner', 'num_realcase', 'num_working', 'score', 'praise'], 'default', 'value' => '0'],
 			[['aptitude', 'sort', 'hotline', 'postcode', 'brief', 'address', 'description'], 'safe'],
         ];
     }

@@ -150,7 +150,7 @@ class User extends AuthBase
     }  
 	public function getMerchantInfos()
 	{
-		$infos = ArrayHelper::map(Merchant::find()->where(['is_joined' => 0])->all(), 'id', 'name');
+		$infos = ArrayHelper::map(Merchant::find()->where(['is_joined' => 1])->all(), 'id', 'name');
 		return $infos;
 	}
 

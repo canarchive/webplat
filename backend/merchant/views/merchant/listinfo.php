@@ -29,6 +29,15 @@ $gridViewParams = [
 				$return = isset($model->sortInfos[$model->sort]) ? $model->sortInfos[$model->sort] : '';
 			},
 		],*/
+        [   
+            'format' => 'raw',
+            'attribute' => 'orderlist',
+            'value' => function($model) {
+                $appMenus = $this->context->menuInfos['appMenus'];
+                $updateUrl = isset($appMenus['update']) ? $appMenus['update']['url'] : ''; 
+                return '<input name="orderlist" type="text" style="width:50px;" value="' . $model->orderlist . '" class="input-text-c" onchange="updateElemByAjax(\'' . $updateUrl . '\', ' . $model->id . ', \'orderlist\', this.value);">';
+            },  
+        ],
 		[
             'attribute' => 'created_at',
             'value'=> function($model){

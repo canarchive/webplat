@@ -127,6 +127,10 @@ class Working extends MerchantModel
 		//$workingStatus = new WorkingStatus();
 		//$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
 		$info['merchantInfo'] = Merchant::findOne($info['merchant_id']);
+		$ownerModel = new Owner();
+		$ownerInfo = $info['ownerInfo'] = $ownerModel->getInfo(['id' => $info->owner_id]);
+		//$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
+		$info['name'] = $ownerInfo['community_name'] . ' ' . $ownerInfo['style'] . ' ' . $ownerInfo['area'] . '平米 ' . $ownerInfo['decoration_price'] . '万元';
 
 		return $info;
 	}
@@ -147,7 +151,7 @@ class Working extends MerchantModel
 
 	public function getMerchantInfos()
 	{
-		$infos = $this->getMerchantInfos(['is_joined' => 0]);
+		$infos = $this->getMerchantInfos(['is_joined' => 1]);
 		return $infos;
 	}
 }
