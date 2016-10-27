@@ -119,7 +119,7 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
         				    <a data-url="<?= Url::to(['/house/decoration-company/show-working', 'id' => $wInfo['id'], 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>">
         					    <img alt="直播工地" src="<?= $wInfo['thumb']; ?>">
                             </a>
-        					<p class="desc"><?= $wInfo['status']; ?></p>
+							<!--<p class="desc"><?= $wInfo['status']; ?></p>-->
                         </figure>
                         <p class="case-info">
         				    <a data-role="building"><?= $wInfo['ownerInfo']['community_name']; ?></a>-

@@ -3,6 +3,7 @@
 namespace gallerycms\house\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use gallerycms\components\HouseController;
 use merchant\models\Merchant;
 use merchant\models\Working;
@@ -32,6 +33,13 @@ class DecorationCompanyController extends HouseController
 		}
 		$currentAction = $actions[$action];
         $datas = $this->getShowDatas();
+
+		$info = $datas['info'];
+        if ($info['city_code'] != Yii::$app->params['currentCompany']['code_short']) {
+            $url = Url::to(['/house/decoration-company/show', 'id' => $info['id'], 'city_code' => $info['city_code'], 'action' => $action]);
+            return $this->redirect($url, 301)->send();
+        }
+
 		$datas['action'] = $currentAction;
         if (empty($datas)) {
             return $this->redirect('/')->send();
@@ -49,6 +57,11 @@ class DecorationCompanyController extends HouseController
 		if (empty($info)) {
             return $this->redirect('/')->send();
 		}
+
+        if ($info['city_code'] != Yii::$app->params['currentCompany']['code_short']) {
+            $url = Url::to(['/house/decoration-company/show-working', 'id' => $info['id'], 'city_code' => $info['city_code']]);
+            return $this->redirect($url, 301)->send();
+        }
 
 		$datas = [
 			'info' => $info,
