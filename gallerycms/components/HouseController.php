@@ -25,7 +25,7 @@ class HouseController extends Controller
 	{
 		$cityCode = Yii::$app->params['currentCompany']['code_short'];
 		$where = ['city_code' => $cityCode];
-		$owner = new \merchant\models\Owner();
+		$owner = new \merchant\house\models\Owner();
 		$infos = $owner->getInfos($where, 20);
 
 		return $infos;

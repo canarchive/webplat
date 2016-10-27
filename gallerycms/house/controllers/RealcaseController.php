@@ -5,7 +5,7 @@ namespace gallerycms\house\controllers;
 use Yii;
 use yii\helpers\Url;
 use gallerycms\components\HouseController;
-use merchant\models\Realcase;
+use merchant\house\models\Realcase;
 
 class RealcaseController extends HouseController
 {
