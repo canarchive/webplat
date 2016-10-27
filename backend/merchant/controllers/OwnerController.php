@@ -3,14 +3,14 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Owner;
-use merchant\models\searchs\Owner as OwnerSearch;
+use merchant\house\models\Owner;
+use merchant\house\models\searchs\Owner as OwnerSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class OwnerController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Owner';
+	protected $modelClass = 'merchant\house\models\Owner';
     use MerchantInfoTrait;
 
     public function init()

@@ -1,11 +1,11 @@
 <?php
 
-namespace merchant\models\searchs;
+namespace merchant\house\models\searchs;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use merchant\models\Realcase as RealcaseModel;
+use merchant\house\models\Realcase as RealcaseModel;
 
 class Realcase extends RealcaseModel
 {

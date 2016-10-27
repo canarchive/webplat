@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "brand".
  */
-class MerchantUser extends MerchantModel
+class Category extends MerchantModel
 {
 
     /**
@@ -16,18 +16,7 @@ class MerchantUser extends MerchantModel
      */
     public static function tableName()
     {
-        return '{{%merchant_user}}';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-		$behaviors = [
-		    $this->timestampBehaviorComponent,
-		];
-		return $behaviors;
+        return '{{%merchant_category}}';
     }
 
     /**
@@ -37,10 +26,19 @@ class MerchantUser extends MerchantModel
     {
         return [
             [['name'], 'required'],
-            //[['orderlist'], 'integer'],
+            ['name', 'unique', 'targetClass' => '\merchant\models\Category', 'message' => 'This name has already been taken.'],
+            [['orderlist'], 'integer'],
             [['orderlist'], 'default', 'value' => 0],
+			[['status', 'description'], 'safe'],
         ];
     }
+
+	public function getInfos()
+	{
+		$infos = $this->find()->select(['id', 'name'])->indexBy('id')->asArray()->all();
+
+		return $infos;
+	}
 
     /**
      * @inheritdoc
@@ -66,11 +64,5 @@ class MerchantUser extends MerchantModel
 			'1' => '正常',
 		];
 		return $datas;
-	}
-
-	public function getMerchantInfos()
-	{
-		$infos = $this->getMerchantInfos(['is_joined' => 1]);
-		return $infos;
 	}
 }

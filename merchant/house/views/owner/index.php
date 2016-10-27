@@ -104,7 +104,7 @@ function viewInfo(ids)
 		ids = 0;
 	}
 		
-	var url = '<?= Url::to(['/owner/view-ajax']); ?>';
+	var url = '<?= Url::to(['/house/owner/view-ajax']); ?>';
 	var data = {
 		'_csrf': $('#_csrf').val(),
 		'ids': ids

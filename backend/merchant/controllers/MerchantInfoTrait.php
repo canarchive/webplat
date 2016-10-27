@@ -5,7 +5,7 @@ namespace backend\merchant\controllers;
 use Yii;
 use merchant\models\Company;
 use merchant\models\Merchant;
-use merchant\models\Owner;
+use merchant\house\models\Owner;
 
 trait MerchantInfoTrait
 {
