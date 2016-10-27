@@ -4,7 +4,7 @@ namespace gallerycms\components;
 use Yii;
 use yii\helpers\Url;
 use common\components\Controller as CommonController;
-use merchant\models\Company;
+use merchant\house\models\Company;
 
 class Controller extends CommonController
 {

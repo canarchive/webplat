@@ -8,7 +8,7 @@ use gallerycms\components\Controller as GallerycmsController;
 use common\models\RegionCounty;
 use common\models\RegionTown;
 use common\models\RegionVillage;
-use merchant\models\Merchant;
+use merchant\house\models\Merchant;
 
 /**
  * 基于县级、乡镇、社区村委等地区关键字，组织页面

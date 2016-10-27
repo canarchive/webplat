@@ -4,9 +4,9 @@ namespace gallerycms\house\controllers;
 
 use Yii;
 use gallerycms\components\HouseController;
-use merchant\models\Merchant;
-use merchant\models\Realcase;
-use merchant\models\Working;
+use merchant\house\models\Merchant;
+use merchant\house\models\Realcase;
+use merchant\house\models\Working;
 use gallerycms\house\models\HouseSample;
 use common\models\RegionCounty;
 
@@ -109,7 +109,7 @@ class SiteController extends HouseController
 	{
 		//echo $this->id;
 		//echo $this->action->id;
-		$owner = new \merchant\models\Owner();
+		$owner = new \merchant\house\models\Owner();
 		$infos = $owner->getInfos(['company_id' => 1]);
 		print_r($infos);
 		$tdkInfo = $this->getTdkInfos('site-index');
