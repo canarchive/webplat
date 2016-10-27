@@ -70,7 +70,7 @@ class MerchantUser extends MerchantModel
 
 	public function getMerchantInfos()
 	{
-		$infos = $this->getMerchantInfos(['is_joined' => 0]);
+		$infos = $this->getMerchantInfos(['is_joined' => 1]);
 		return $infos;
 	}
 }

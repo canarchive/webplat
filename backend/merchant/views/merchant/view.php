@@ -10,14 +10,10 @@ $detailViewParams = [
 			'value' => $model->getAttachmentImg($model->logo, false),
 		],
         'name',
-		[
-			'attribute' => 'company_id',
-			'value' => $model->companyInfos[$model->company_id],
-		],
-		[
+		/*[
 			'attribute' => 'sort',
 			'value' => $model->sortInfos[$model->sort],
-		],
+		],*/
         'num_owner',
         'num_realcase',
         'num_working',

@@ -118,8 +118,9 @@ class Realcase extends MerchantModel
 		$info['pictureDesignInfo'] = $pictureDesign;
 
 		$ownerModel = new Owner();
-		$info['ownerInfo'] = $ownerModel->getInfo(['id' => $info->owner_id]);
+		$ownerInfo = $info['ownerInfo'] = $ownerModel->getInfo(['id' => $info->owner_id]);
 		//$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
+		$info['name'] = $ownerInfo['community_name'] . ' ' . $ownerInfo['style'] . ' ' . $ownerInfo['area'] . '平米 ' . $ownerInfo['decoration_price'] . '万元';
 
         $condition = [ 
             'info_table' => 'realcase',
@@ -158,7 +159,7 @@ class Realcase extends MerchantModel
 
 	public function getMerchantInfos()
 	{
-		$infos = $this->_getMerchantInfos(['is_joined' => 0]);
+		$infos = $this->_getMerchantInfos(['is_joined' => 1]);
 		return $infos;
 	}
 }

@@ -15,7 +15,7 @@ class Merchant extends MerchantModel
     public function rules()
     {
         return [
-            [['city_code', 'is_joined', 'num_owner', 'status'], 'safe'],
+            [['name', 'city_code', 'is_joined', 'num_owner', 'status'], 'safe'],
         ];
     }
 
@@ -32,6 +32,9 @@ class Merchant extends MerchantModel
             return $dataProvider;
         }
 		$this->load($params);
+		if (!empty($this->name)) {
+            $query->andFilterWhere(['like', 'name', $this->name]);
+		}
 
 		$query->andFilterWhere([
 			'city_code' => $this->city_code,

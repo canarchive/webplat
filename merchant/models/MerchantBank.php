@@ -83,7 +83,7 @@ class MerchantBank extends MerchantModel
 
 	public function getMerchantInfos()
 	{
-		$infos = $this->_getMerchantInfos(['is_joined' => 0]);
+		$infos = $this->_getMerchantInfos(['is_joined' => 1]);
 		return $infos;
 	}
 
