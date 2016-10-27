@@ -19,7 +19,7 @@ Yii::$app->params['seoTitle'] = '商家面板-' . Yii::$app->params['seoTitle'];
             <div class="small-12 medium-8 large-9 columns">
                 <div class="aside-section account-info">
                     <div class="hd">
-					    <!--<a href="<?= Url::to(['/info/setting']); ?>" class="right">修改</a>-->
+					    <!--<a href="<?= Url::to(['/house/info/setting']); ?>" class="right">修改</a>-->
 						<h5>商家信息</h5>
                     </div>
                     <div class="bd">
@@ -32,7 +32,7 @@ Yii::$app->params['seoTitle'] = '商家面板-' . Yii::$app->params['seoTitle'];
             <div class="small-12 medium-4 large-3 columns">
                 <div class="aside-section account-info">
                     <div class="hd">
-					    <a href="<?= Url::to(['/info/setting']); ?>" class="right">修改</a>
+					    <a href="<?= Url::to(['/house/info/setting']); ?>" class="right">修改</a>
 						<h5>账户信息</h5>
                     </div>
                     <div class="bd">

@@ -1,11 +1,11 @@
 <?php
-namespace merchant\controllers;
+namespace merchant\house\controllers;
 
 use Yii;
 use yii\helpers\Url;
 use yii\filters\AccessControl;
 use merchant\components\LoginedController;
-use merchant\models\OwnerMerchant;
+use merchant\house\models\OwnerMerchant;
 
 class OwnerController extends LoginedController
 {

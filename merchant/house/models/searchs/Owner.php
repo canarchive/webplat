@@ -1,11 +1,11 @@
 <?php
 
-namespace merchant\models\searchs;
+namespace merchant\house\models\searchs;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use merchant\models\Owner as OwnerModel;
+use merchant\house\models\Owner as OwnerModel;
 
 class Owner extends OwnerModel
 {

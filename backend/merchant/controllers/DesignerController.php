@@ -3,14 +3,14 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Designer;
-use merchant\models\searchs\Designer as DesignerSearch;
+use merchant\house\models\Designer;
+use merchant\house\models\searchs\Designer as DesignerSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class DesignerController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Designer';
+	protected $modelClass = 'merchant\house\models\Designer';
     use MerchantInfoTrait;
 
     public function init()

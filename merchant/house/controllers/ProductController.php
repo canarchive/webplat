@@ -1,5 +1,5 @@
 <?php
-namespace merchant\controllers;
+namespace merchant\house\controllers;
 
 use Yii;
 use yii\helpers\Url;
