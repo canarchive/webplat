@@ -3,6 +3,7 @@
 namespace gallerycms\house\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use gallerycms\components\HouseController;
 use merchant\models\Realcase;
 
@@ -29,6 +30,11 @@ class RealcaseController extends HouseController
 		if (empty($info)) {
             return $this->redirect('/')->send();
 		}
+
+        if ($info['city_code'] != Yii::$app->params['currentCompany']['code_short']) {
+            $url = Url::to(['/house/realcase/show', 'id' => $info['id'], 'city_code' => $info['city_code']]);
+            return $this->redirect($url, 301)->send();
+        }
 
 		$tdkInfos = [
             'title' => "{$info['name']}-{$info['merchantInfo']['name']}-{{CITYNAME}}-{{SITENAME}}",
