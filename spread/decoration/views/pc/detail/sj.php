@@ -11,6 +11,12 @@ $this->params['currentNav'] = 'free';
 $this->params['formPosition'] = 'hd-sjpc';
 $this->params['formPositionName'] = '活动-设计量房pc';
 ?>
+<script>
+var isMobile = '<?= intval($this->context->isMobile); ?>';
+if (isMobile == 1) {
+    window.location.href = "<?= Yii::getAlias(Yii::$app->params['hostAliasMobile']) . Url::to(['/decoration/detail/feature', 'view' => 'bjnew', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>";
+}
+</script>
 <style>.layer_content_v2 .rank_li .get_code_v2{display:block;height:16px;line-height:16px;color:#ff875a;position: absolute;right: 15px;top:18px;z-index: 4;}</style></head>
 
 <body>
