@@ -72,7 +72,7 @@ body {
     <h1 class="page_error_code text-primary"><?= $name; ?></h1>
     <h1 class="page_error_info"><?= $message; ?></h1>
     <div class="text-center page_error_btn">
-	    <a class="btn btn-primary btn-lg" href='<?= Yii::getAlias('@shooturl'); ?>'>
+	    <a class="btn btn-primary btn-lg" href='<?= Yii::getAlias('@web'); ?>'>
 			<i class='fa fa-location-arrow'></i> &nbsp; 返回首页
         </a>&nbsp;
         <?php if (!empty($referrer)) { ?>

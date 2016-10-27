@@ -24,7 +24,7 @@ class Luosimao extends SmserAbstract
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         
-		$key = $this->configInfo['uid'] . ':' . $this->configInfo['key'];
+		$key = $this->configInfo['uid'] . ':key-' . $this->configInfo['key'];
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, $key);
         
@@ -37,6 +37,7 @@ class Luosimao extends SmserAbstract
         
 		$noSendMessage = isset(\Yii::$app->params['noSendMessage']) ? \Yii::$app->params['noSendMessage'] : false;
 		$result	= $noSendMessage ? false : curl_exec($ch);
+		//var_dump($result);exit();
         //$res  = curl_error( $ch );
         curl_close($ch);
 
