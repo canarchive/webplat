@@ -12,6 +12,7 @@ return [
             'showScriptName' => false,
 			'suffix' => '.html',
             'rules' => [
+		        ['pattern' => '/merchant-upload/<table:\w+>/<field:\w+>', 'route' => '/merchant-upload/index', 'host' => Yii::getAlias('@merchanturl')],
             ],
         ],
 		'assetManager' => [

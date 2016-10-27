@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luosimao语音服务:语音验证码，提供语音验证验证服务，验证号码真实性|Luosimao.com</title>
+        <meta name="keywords" content="语音验证码，电话验证，手机号验证，语音接口发送" />
+        <meta name="description" content="luosima语音验证服务：用于语音外呼验证手机号真实性" />
+        <meta name="author" content="Luosimao,Techsylar.inc">
+        <link rel="stylesheet" href="//s.luosimao.com/bower/asset/website.css?v=201608251421.css" />
+        <script src="//s.luosimao.com/js/modernizr.js?v=201608251421.js"></script>
+    </head>
+    
+    <body>
+        <div class="off-canvas-wrap">
+            <div class="inner-wrap">
+                <div class="header hide-for-small">
+                    <div class="row doc-width">
+                        <div class="small-12 columns">
+                            <div class="logo">
+                                <a href="https://luosimao.com/" title="返回首页">Luosimao</a></div>
+                            <div class="menu right">
+                                <a href="https://my.luosimao.com/auth/login" class="button tiny radius success" title="登录">登录</a>
+                                <a href="https://my.luosimao.com/auth/register" class="button tiny radius info" title="注册luosimao会员">注册</a></div>
+                            <nav class="nav right">
+                                <a href="https://luosimao.com/" title="首页">首页</a>
+                                <a href="https://luosimao.com/service/sms" title="短信发送服务与价格">短信服务</a>
+                                <a href="https://luosimao.com/service/mail" title="邮件发送服务与价格">邮件服务</a>
+                                <a href="https://luosimao.com/service/voice" title="语音验证码服务与价格" class="active">语音验证</a>
+                                <a href="https://luosimao.com/service/captcha" title="人机验证">人机验证</a>
+                                <a href="https://luosimao.com/docs/guid/" title="Luosimao平台使用指南">使用指南</a>
+                                <a href="https://luosimao.com/docs/api/" title="短信接口及语音接口介绍">API接口</a></nav>
+                        </div>
+                    </div>
+                </div>
+                <header class="header-mini show-for-small">
+                    <div class="left logo">
+                        <a href="https://luosimao.com/"></a>
+                    </div>
+                    <div class="menu right">
+                        <a href="#" class="right-off-canvas-toggle">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </header>
+                <aside class="right-off-canvas-menu side-panel">
+                    <nav class="nav">
+                        <ul class="nav-list">
+                            <li>
+                                <a href="https://luosimao.com/" title="首页">首页</a></li>
+                            <li>
+                                <a href="https://luosimao.com/service/sms" title="短信发送服务与价格">短信服务</a></li>
+                            <li>
+                                <a href="https://luosimao.com/service/mail" title="邮件发送服务与价格">邮件服务</a></li>
+                            <li>
+                                <a href="https://luosimao.com/service/voice" title="语音验证码服务与价格">语音验证</a></li>
+                            <li>
+                                <a href="https://luosimao.com/service/captcha" title="人机验证">人机验证</a></li>
+                            <li>
+                                <a href="https://luosimao.com/docs/guid/" title="Luosimao平台使用指南">使用指南</a></li>
+                            <li>
+                                <a href="https://luosimao.com/docs/api/" title="短信接口及语音接口介绍">API接口</a></li>
+                            <li>
+                                <a href="https://my.luosimao.com/auth/login" class="button small radius success expand" title="登录">登录</a></li>
+                            <li>
+                                <a href="https://my.luosimao.com/auth/register" class="button small radius info expand" title="注册luosimao会员">注册</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+                <div class="voice-banner">
+                    <div class="row site-width">
+                        <div class="small-12 columns">
+                            <h1>比短信更加低成本/安全/便捷的语音验证</h1>
+                            <h2>为您的业务提供更加稳定的验证服务</h2>
+                            <div class="sub">
+                                <a href="#voice_test" class="button success small radius" title="立即免费测试">立即免费测试</a>
+                                <a href="#voice_price" class="button primary small radius" title="查看语音验证价格">查看价格列表</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="voice-showcase">
+                    <div class="row site-width">
+                        <div class="small-12 columns">
+                            <div class="title">
+                                <h3>什么是语音验证?</h3></div>
+                            <div class="des">语音验证，是将验证码通过语音电话直接呼到用户手机，从而实现电话语音播报验证码的一种新型验证方式。语音验证的出现，解决了用户可能因各种主客观问题，无法接收到短信验证码的问题，使用户验证过程更为轻松、高效，从而达到用户体验最优化的效果，为网站及软件带来用户，更给企业管理者带来更持久稳定的运营。</div>
+                            <div class="voice-progress">
+                                <img src="//s.luosimao.com/images/website/voice_showcase.png" alt="语音验证基本流程" /></div>
+                            <div class="showcase-list">
+                                <ul class="small-block-grid-1 medium-block-grid-3">
+                                    <li class="item-1">提交验证码发送请求</li>
+                                    <li class="item-2">用户收听验证码</li>
+                                    <li class="item-3">验证成功</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="voice-des">
+                    <div class="row site-width">
+                        <div class="small-12 columns">
+                            <div class="title">
+                                <h3>语音验证的优势</h3></div>
+                            <ul class="small-block-grid-1 medium-block-grid-3 des-list">
+                                <li>
+                                    <div class="icon">
+                                        <img src="//s.luosimao.com/images/website/voice_send.png" alt="高成功率" /></div>
+                                    <div class="name">高成功率</div>
+                                    <div class="des">利用接通率极高的平台网络电话，为企业和开发者提供语音验证接口，为解决长期以来短信验证码不稳定、经常收不到的问题提供了一个更好的解决方案。</div></li>
+                                <li>
+                                    <div class="icon">
+                                        <img src="//s.luosimao.com/images/website/voice_guard.png" alt="更安全的验证" /></div>
+                                    <div class="name">更安全</div>
+                                    <div class="des">用户绑定了手机，只可用绑定过的号码接听指定电话并获取随机密码，才能进行登录、转账等一系列的操作，避免账户资料外泄、金额被盗刷等一系列悲剧的发生。</div></li>
+                                <li>
+                                    <div class="icon">
+                                        <img src="//s.luosimao.com/images/website/voice_user.png" alt="获取真实用户" /></div>
+                                    <div class="name">更真实</div>
+                                    <div class="des">只有通过验证的用户才可以注册，这样保证了企业用户/会员通讯信息的真实性、准确性，杜绝了空号、虚假注册、批量注册、误填等问题，为今后的网站活动宣传等奠定真实用户基础。</div></li>
+                            </ul>
+                            <div class="text-center see-more">
+                                <a href="http://luosimao.com/docs/api/51" target="_blank" title="查看语音验证码开发文档" class="button success small radius">查看语音验证码开发文档</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="voice-price" id="voice_price">
+                    <div class="row site-width">
+                        <div class="title">
+                            <h3>调用语音验证码接口，以向手机终端发起语音通话的形式告知验证码，按次计费</h3></div>
+                        <ul class="price-list small-block-grid-1 large-block-grid-5">
+                            <li>
+                                <div class="item">
+                                    <p class="name">1万次语音包</p>
+                                    <p class="price">￥550</p>
+                                    <p class="des">包含10,000次通话
+                                        <br/>￥0.055/次
+                                        <br/>永久使用</p>
+                                    <p class="sub">
+                                        <a href="https://my.luosimao.com/auth/register?goods=25" class="button expand success radius small" title="立即购买1万次语音包">立即购买</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <p class="name">5万次语音包</p>
+                                    <p class="price">￥2500</p>
+                                    <p class="des">包含50,000次通话
+                                        <br/>￥0.05/次
+                                        <br/>永久使用</p>
+                                    <p class="sub">
+                                        <a href="https://my.luosimao.com/auth/register?goods=30" class="button expand success radius small" title="立即购买5万次语音包">立即购买</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item hot-sale">
+                                    <p class="name">10万次语音包</p>
+                                    <p class="price">￥4500</p>
+                                    <p class="des">包含100,000次通话
+                                        <br/>￥0.045/次
+                                        <br/>永久使用</p>
+                                    <p class="sub">
+                                        <a href="https://my.luosimao.com/auth/register?goods=26" class="button expand success radius small" title="立即购买10万次语音包">立即购买</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <p class="name">20万次语音包</p>
+                                    <p class="price">￥8000</p>
+                                    <p class="des">包含200,000次通话
+                                        <br/>￥0.04/次
+                                        <br/>永久使用</p>
+                                    <p class="sub">
+                                        <a href="https://my.luosimao.com/auth/register?goods=28" class="button expand success radius small" title="立即购买10万次语音包">立即购买</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <p class="name">40万次语音包</p>
+                                    <p class="price">￥14000</p>
+                                    <p class="des">包含400,000次通话
+                                        <br/>￥0.035/次
+                                        <br/>永久使用</p>
+                                    <p class="sub">
+                                        <a href="https://my.luosimao.com/auth/register?goods=31" class="button expand success radius small" title="立即购买10万次语音包">立即购买</a></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="voice-test" id="voice_test">
+                    <div class="row site-width">
+                        <div class="title">
+                            <h3>免费语音验证测试</h3></div>
+                        <div class="inner">
+                            <div class="small-12 columns">
+                                <label>请输入手机号：</label>
+                                <input type="text" class="mobile" required autocomplete="off" /></div>
+                            <div class="small-12 columns">
+                                <div class="l-captcha" data-site-key="e7b4d20489b69bab25771f9236e2c4be"></div>
+                            </div>
+                            <div class="small-12 columns">
+                                <div class="testing-sub">
+                                    <a href="#" class="button success radius small sender" title="发送测试语音验证">发送测试语音验证</a></div>
+                            </div>
+                        </div>
+                        <div class="small-12 columns">
+                            <p class="muted">您即将收到一通来自
+                                <span class="label info radius">021-31587030</span>的电话，请注意接听</p>
+                            <div class="test-limited">每个号码每天限测试三次</div></div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="row site-width">
+                        <div class="small-12 columns">
+                            <div class="company-logo">
+                                <a href="http://www.techsylar.com/" target="_blank" title="Techsylar.Inc"></a>
+                            </div>
+                            <div class="footer-inner">
+                                <div class="bottom-link">
+                                    <a href="https://luosimao.com/docs/about" title="关于我们">关于我们</a>
+                                    <a href="https://luosimao.com/docs/guid/31" title="隐私政策">隐私政策</a>
+                                    <a href="https://luosimao.com/docs/guid/18" title="服务条款">服务条款</a>
+                                    <a href="https://luosimao.com/docs/about/27" title="联系我们">联系我们</a>
+                                    <a href="https://luosimao.com/docs/api" title="短信接口">接口文档</a>
+                                    <a href="http://weibo.com/luosimaocom/" target="_blank" title="新浪微博">新浪微博</a></div>
+                                <div class="company-info ">
+                                    <div class="footer-tips ">
+                                        <span class="bottom-tips">客服热线 021-31234560 &nbsp;</span>
+                                        <span class="bottom-tips">客服工作时间 9:00-18:00（周日和节日除外）</span></div>&copy; 2016 铁壳网络
+                                    <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备11011422号</a>增值电信经营许可证 B2-20150858
+                                    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010702001336">
+                                        <img src="//s.luosimao.com/images/website/beian.png" style="margin-right:5px" />沪公网安备 31010702001336号</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <script>var _hmt = _hmt || []; (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?588936199c3632c17bd6fb753b9bc3a6";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();</script>
+                <!--Kefuzu Chat Script Start-->
+                <script type="text/javascript">var __kc = __kc || {};
+                    __kc.o = 'xYqLOt8sL3oa'; (function() {
+                        var kc = document.createElement('script');
+                        kc.type = 'text/javascript';
+                        kc.async = true;
+                        kc.src = ('https:' == document.location.protocol ? 'https://': 'http://') + 'v1.kefuzu.com/static/v1/dist/widget.js';
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(kc, s);
+                    })();</script>
+                <!--Kefuzu Chat Script End-->
+                <a href="#" class="exit-off-canvas"></a>
+            </div>
+        </div>
+        <div id="myModal" class="reveal-modal tiny test-modal" data-reveal>
+            <h5>提示信息</h5>
+            <p class="message"></p>
+            <a class="close-reveal-modal">&#215;</a></div>
+        <script src="//s.luosimao.com/js/jquery-2.1.0.js?v=201608251421.js"></script>
+        <script src="//s.luosimao.com/js/foundation.min.js?v=201608251421.js"></script>
+        <script src="//s.luosimao.com/js/module/app.js?v=201608251421.js"></script>
+        <script src="//captcha.luosimao.com/static/dist/api.js"></script>
+    </body>
+
+</html>
