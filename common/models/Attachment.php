@@ -327,6 +327,7 @@ class Attachment extends BaseModel
 	 */
 	public function deleteInfo($where, $noDeleteIds)
 	{
+		return ;
 		$infos = $this->find()->where($where)->all();
     	foreach ($infos as $info) {
 			if (in_array($info->id, (array) $noDeleteIds)) {
