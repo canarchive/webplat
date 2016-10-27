@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 $this->params['cssFiles'] = [
 	'baojia/css/h5_common', 'baojia/css/h5_icon_font', 'baojia/css/swiper', 'baojia/css/common',
 	'baojia/css/icon_font', 'baojia/css/decoration-budget',
@@ -10,6 +11,12 @@ $this->params['bodyClass'] = 'bg-f2';
 $this->params['formPosition'] = 'hd-bjnew';
 $this->params['formPositionName'] = '活动推广-报价new';
 ?>
+<script>
+var isMobile = '<?= intval($this->context->isMobile); ?>';
+if (isMobile == 0) {
+    window.location.href = "<?= Yii::getAlias(Yii::$app->params['hostAliasPc']) . Url::to(['/decoration/detail/feature', 'view' => 'sj', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>";
+}
+</script>
 <header class="cWhite cMdGray clearfix">
     <div class="tit_top">
         <div class="left">
