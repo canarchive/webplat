@@ -171,30 +171,6 @@ class Merchant extends MerchantModel
 		return $info;
 	}
 
-	public function getRealcaseInfos()
-	{
-		$model = new Realcase();
-		$infos = $model->getInfos(['merchant_id' => $this->id]);
-
-		return $infos;
-	}
-
-	public function getWorkingInfos()
-	{
-		$model = new Working();
-		$infos = $model->getInfos(['merchant_id' => $this->id]);
-
-		return $infos;
-	}
-
-	public function getDesignerInfos()
-	{
-		$model = new Designer();
-		$infos = $model->getInfos(['merchant_id' => $this->id]);
-
-		return $infos;
-	}
-
 	public function getInfos($where, $limit = 100)
 	{
 		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['orderlist' => SORT_DESC])->limit($limit)->all();
