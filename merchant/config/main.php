@@ -53,5 +53,11 @@ return [
         ]
     ],
 
+    'modules' => [
+        'house' => [
+            'class' => 'merchant\house\Module',
+        ],
+    ],
+
     'params' => $params,
 ];

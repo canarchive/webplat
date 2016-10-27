@@ -1,9 +1,9 @@
 <?php
 return [
-    ['pattern' => Yii::getAlias('@merchanturl') . '/', 'route' => '/site/index', 'suffix' => ''],
-    '/cp-<code:\w+>' => '/product/index',
-	'signin' => 'site/signin',
-	'signup' => 'site/signup',
+    ['pattern' => Yii::getAlias('@merchanturl') . '/', 'route' => '/house/site/index', 'suffix' => ''],
+    '/cp-<code:\w+>' => '/house/product/index',
+	'signin' => '/house/site/signin',
+	'signup' => '/housesite/signup',
 
-	'self' => '/info/index',
+	'self' => '/house/info/index',
 ];
