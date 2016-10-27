@@ -20,7 +20,7 @@ class SiteController extends MerchantController
         parent::init();
 	    //$this->layoutPath = Yii::getAlias('@app/info/views');
 		//$this->homeUrl = Url::to(['/info/index']);
-		$this->homeUrl = Url::to(['/info/index']);
+		$this->homeUrl = Url::to(['/house/info/index']);
     }
 
     /**
