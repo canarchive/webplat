@@ -14,6 +14,7 @@ class DecorationOwnerController extends AdminController
 {
 	public $isService;
 	public $serviceInfos;
+	public $getData;
 
     use UserTrait;
 	protected $modelClass = 'spread\decoration\models\DecorationOwner';
@@ -24,12 +25,42 @@ class DecorationOwnerController extends AdminController
         return parent::beforeAction($action);
 	}
 
+    public function actionListnew()
+    {   
+        $this->getData['status'] = 0;
+		return $this->actionListinfo();
+    }   
+
+    public function actionListbad()
+    {   
+        $this->getData['status'] = 4;
+		return $this->actionListinfo();
+    }   
+
+    public function actionListgood()
+    {   
+        $this->getData['status'] = 3;
+		return $this->actionListinfo();
+    }   
+
+    public function actionListfollow()
+    {   
+        $this->getData['status'] = 1;
+		return $this->actionListinfo();
+    }   
+
+    public function actionListnewfollow()
+    {   
+        $this->getData['status'] = 2;
+		return $this->actionListinfo();
+    }   
+
     public function actionListinfo()
     {
 		if ($this->isService) {
 			$_GET['service_id'] = array_keys($this->serviceInfos);
 		}
-        $searchModel = new DecorationOwnerSearch();
+        $searchModel = new DecorationOwnerSearch($this->getData);
 		return $this->_listinfoInfo($searchModel);
     }
 

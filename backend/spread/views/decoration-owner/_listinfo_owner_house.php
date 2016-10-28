@@ -5,7 +5,7 @@ $tableName = 'owner_house';
 $modelNew = new \spread\decoration\models\OwnerHouse();
 
 $tableNameMerchant = 'owner_merchant';
-$modelOwnerMerchantNew = new \merchant\models\OwnerMerchant();
+$modelOwnerMerchantNew = new \merchant\house\models\OwnerMerchant();
 ?>
 <div class="row">
     <div class="box col-md-12">

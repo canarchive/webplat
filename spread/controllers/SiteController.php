@@ -28,6 +28,7 @@ class SiteController extends SpreadController
 		$method = Yii::$app->getRequest()->method;
 		$isMobile = $this->clientIsMobile();
 		if ($channel && $method == 'GET') {
+			echo $channel;
 			$visit = new \spread\models\Visit();
 			$visit->writeVisitLog($isMobile);
 		}
@@ -45,6 +46,9 @@ class SiteController extends SpreadController
 		$queryStr = http_build_query($_GET);
 		$mark = strpos($urlSource, '?') !== false ? '&' : '?';
 		$url = $urlSource . $mark . $queryStr;
+        if (strpos($url, 'hd_55jia_com') !== false) {
+            $url = Yii::getAlias('@m.spreadurl') . '/bm-bjnew-bj.html';
+        }
 		
 		header("Location:$url");
 	}

@@ -26,7 +26,7 @@ trait UserTrait
 		}
 		$callbackInfos = \spread\models\Callback::findAll(['mobile' => $mobile]);
 		$ownerHouseInfos = \spread\decoration\models\OwnerHouse::findAll(['mobile' => $model->mobile]);
-		$ownerMerchantInfos = \merchant\models\OwnerMerchant::findAll(['mobile' => $model->mobile]);
+		$ownerMerchantInfos = \merchant\house\models\OwnerMerchant::findAll(['mobile' => $model->mobile]);
 
 		$data = [
 			'type' => $type,
@@ -55,7 +55,7 @@ trait UserTrait
 			$model = new \spread\models\Callback();
 		} else if ($table == 'owner_merchant') {
 			$fields = ['mobile', 'note', 'house_id', 'merchant_id'];
-			$model = new \merchant\models\OwnerMerchant();
+			$model = new \merchant\house\models\OwnerMerchant();
 		} else {
 			return ['status' => 400, 'message' => '参数错误'];
 		}
