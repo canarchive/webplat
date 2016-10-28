@@ -17,8 +17,8 @@ class RealcaseController extends AdminController
     {
         parent::init();
 
-		$this->_initInfo();
 		$this->_ownerInfo();
+		$this->_initInfo();
     }
 
     public function actionListinfo()

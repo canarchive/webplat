@@ -18,6 +18,9 @@ trait MerchantInfoTrait
     {
 	    $this->layout = 'main';
 		$merchantId = Yii::$app->request->get('merchant_id', 0);
+		$merchantId = empty($merchantId) ? Yii::$app->request->post('merchant_id') : $merchantId;
+		$merchantId = empty($merchantId) && isset($this->ownerInfo['merchant_id']) ? $this->ownerInfo['merchant_id'] : $merchantId;
+
     	$merchantModel = new Merchant();
     	$this->merchantInfo = $merchantModel->findOne($merchantId);
     	Yii::$app->params['merchantInfo'] = $this->merchantInfo;

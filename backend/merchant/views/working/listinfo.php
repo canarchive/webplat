@@ -22,15 +22,13 @@ $gridViewParams = [
 			}
 		],
 		[
+			'format' => 'raw',
             'attribute' => 'merchant_id',
 			'value' => function($model) {
-				return '';//$model->merchantInfos[$model->merchant_id];
-			},
-		],
-		[
-            'attribute' => 'service_id',
-			'value' => function($model) {
-				return $model->serviceInfos[$model->service_id];
+				if ($model->merchant_id > 0) {
+				    return $model->merchantInfo['nameUrl'];
+				}
+				return '';
 			},
 		],
 		[
@@ -48,7 +46,7 @@ $gridViewParams = [
 		[
             'attribute' => 'status',
 			'value' => function($model) {
-				return $model->statusInfos[$model->status];
+				return isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $model->status;
 			}
 		],
     ],
