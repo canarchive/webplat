@@ -43,7 +43,7 @@ trait MerchantInfoTrait
 		if (empty($ownerId)) {
 		    $ownerId = Yii::$app->request->get('owner_id', 0);
 		}
-		var_dump($ownerId);
+		//var_dump($ownerId);
 
 		$this->ownerInfo = Owner::findOne($ownerId);
 	}

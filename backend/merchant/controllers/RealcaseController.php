@@ -3,14 +3,14 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Realcase;
-use merchant\models\searchs\Realcase as RealcaseSearch;
+use merchant\house\models\Realcase;
+use merchant\house\models\searchs\Realcase as RealcaseSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class RealcaseController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Realcase';
+	protected $modelClass = 'merchant\house\models\Realcase';
     use MerchantInfoTrait;
 
     public function init()
