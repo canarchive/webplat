@@ -16,6 +16,7 @@ $model->aptitude = $attachmentModel->getFieldIds('merchant', 'aptitude', $model-
 <div class="menu-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+	<input type="hidden" name="city_code" value="<?= $this->context->companyInfo['code_short']; ?>" />
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'brief')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'sort')->dropDownList($model->sortInfos, ['prompt' => Yii::t('admin-common', 'Select Sort')]); ?>

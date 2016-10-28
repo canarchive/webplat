@@ -7,12 +7,13 @@ $menuCodes = [
 	'merchant_merchant-designer_listinfo',
 	'merchant_merchant-working_listinfo',
 	'merchant_merchant-realcase_listinfo',
+	'merchant_merchant-comment_listinfo',
 	//'merchant_merchant_listinfo',
 ];
 $currentMenu = Yii::$app->params['currentMenu'];
 $currentController = $currentMenu['controller'];
-$companyInfo = Yii::$app->params['companyInfo'];
-$is_joined = Yii::$app->params['is_joined'];
+$companyInfo = $this->context->companyInfo;
+$is_joined = $this->context->is_joined;
 ?>
 <div class="col-sm-2 col-lg-2">
     <div class="sidebar-nav">

@@ -3,26 +3,27 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Merchant;
-use merchant\models\searchs\Merchant as MerchantSearch;
+use merchant\house\models\MerchantComment;
+use merchant\house\models\searchs\MerchantComment as MerchantCommentSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
-class MerchantController extends AdminController
+class MerchantCommentController extends AdminController
 {
+	protected $modelClass = 'merchant\house\models\MerchantComment';
     use MerchantInfoTrait;
-	protected $modelClass = 'merchant\models\Merchant';
 
     public function init()
     {
         parent::init();
 
+		$this->_ownerInfo();
 		$this->_initInfo();
     }
 
     public function actionListinfo()
     {
-        $searchModel = new MerchantSearch();
+        $searchModel = new MerchantCommentSearch();
 		return $this->_listinfoInfo($searchModel);
     }
 
@@ -34,10 +35,11 @@ class MerchantController extends AdminController
     public function actionAdd()
     {
 		$data = [
-			'city_code' => isset($this->companyInfo['code_short']) ? $this->companyInfo['code_short'] : '',
-			'is_joined' => $this->is_joined,
+			'city_code' => isset($this->ownerInfo['city_code']) ? $this->ownerInfo['city_code'] : '',
+			'merchant_id' => isset($this->ownerInfo['merchant_id']) ? $this->ownerInfo['merchant_id'] : '',
+			'owner_id' => isset($this->ownerInfo['id']) ? $this->ownerInfo['id'] : '',
 		];
-		return $this->_addInfo(new Merchant($data));
+		return $this->_addInfo(new MerchantComment($data));
     }
 
     public function actionUpdate($id = 0)

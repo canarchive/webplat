@@ -10,34 +10,21 @@ use merchant\house\models\Owner;
 trait MerchantInfoTrait
 {
 	public $companyInfo;
-	public $merchantInfo;
+	public $merchantId;
 	public $ownerInfo;
 	public $is_joined;
+	public $owner_id;
+	public $merchant_id;
 
     protected function _initInfo()
     {
 	    $this->layout = 'main';
-		$merchantId = Yii::$app->request->get('merchant_id', 0);
-		$merchantId = empty($merchantId) ? Yii::$app->request->post('merchant_id') : $merchantId;
-		$merchantId = empty($merchantId) && isset($this->ownerInfo['merchant_id']) ? $this->ownerInfo['merchant_id'] : $merchantId;
-
-    	$merchantModel = new Merchant();
-    	$this->merchantInfo = $merchantModel->findOne($merchantId);
-    	Yii::$app->params['merchantInfo'] = $this->merchantInfo;
-
 		$cityCode = Yii::$app->request->get('city_code', '');
-		if (empty($cityCode)) {
-			$cityCode = isset($this->merchantInfo['city_code']) ? $this->merchantInfo['city_code'] : '';
-		}
 		$companyModel = new Company();
 		$this->companyInfo = $companyModel->getInfoByCodeShort($cityCode);
-		Yii::$app->params['companyInfo'] = $this->companyInfo;
-		if (!empty($this->companyInfo) && !empty($this->merchantInfo) && $this->companyInfo['code_short'] != $this->merchantInfo['city_code']) {
-			exit('信息有误！');
-		}
-		Yii::$app->params['is_joined'] = Yii::$app->request->get('is_joined');
-		//$_POST['merchant_id'] = isset($this->merchantInfo['id']) ? $this->merchantInfo['id'] : 0;
-		//$_POST['city_code'] = isset($this->companyInfo['code_short']) ? $this->companyInfo['code_short'] : '';
+		$this->is_joined = Yii::$app->request->get('is_joined');
+		$this->owner_id = Yii::$app->request->get('owner_id');
+		$this->merchant_id = Yii::$app->request->get('merchant_id');
 	}
 
 	protected function _ownerInfo()
@@ -46,7 +33,6 @@ trait MerchantInfoTrait
 		if (empty($ownerId)) {
 		    $ownerId = Yii::$app->request->get('owner_id', 0);
 		}
-		//var_dump($ownerId);
 
 		$this->ownerInfo = Owner::findOne($ownerId);
 	}

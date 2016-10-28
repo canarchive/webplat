@@ -1,27 +1,25 @@
 <?php
-$this->context->companyInfo = $model->companyInfo;
+
 $detailViewParams = [
     'model' => $model,
     'attributes' => [
 		'id',
 		[
 			'format' => 'raw',
-			'attribute' => 'logo',
-			'value' => $model->getAttachmentImg($model->logo, false),
+			'attribute' => 'thumb',
+			'value' => $model->getAttachmentImg($model->thumb, false),
 		],
         'name',
-		/*[
-			'attribute' => 'sort',
-			'value' => $model->sortInfos[$model->sort],
-		],*/
-        'num_owner',
-        'num_realcase',
-        'num_working',
-        'score',
-        'praise',
-        'hotline',
-		'postcode',
-		'address',
+		'orderlist',
+		[
+			'attribute' => 'merchant_id',
+			'value' => $model->merchantInfo['nameUrl'],
+		],
+		[
+			'format' => 'raw',
+			'attribute' => 'picture_design',
+			'value' => $model->getAttachmentImg($model->picture_design, false),
+		],
 		[
 			'attribute' => 'status',
 			'value' => $model->statusInfos[$model->status],
