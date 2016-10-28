@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$modelNew = new \merchant\models\OwnerMerchant();
+$modelNew = new \merchant\house\models\OwnerMerchant();
 $tableName = 'owner_merchant';
 ?>
 <table class="table table-striped table-bordered responsive">

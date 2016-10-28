@@ -21,7 +21,7 @@ $formName = $model->formName();
             ]);
             ?>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">状态</label>
+                <!--<label class="control-label col-md-1">状态</label>
                 <div class="col-md-2">
 					<?= Html::dropDownList(
 						"{$formName}[status]", 
@@ -32,7 +32,8 @@ $formName = $model->formName();
 							'class' => 'form-control',
 						]
 					) ?>
-				</div>
+				</div>-->
+                <?php if ($model->status == 4) { ?>
                 <label class="control-label col-md-1">无效原因</label>
                 <div class="col-md-2">
 					<?= Html::dropDownList(
@@ -45,6 +46,7 @@ $formName = $model->formName();
 						]
 					) ?>
 				</div>
+                <?php } ?>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">报名时间</label>
