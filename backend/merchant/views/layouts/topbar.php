@@ -5,12 +5,13 @@ $menus = $this->context->menuInfos['menus'];
 $menuCode = 'merchant_merchant_manager';
 $cityUrl = '';
 if (isset($menus[$menuCode])) {
-    $cityUrl .= "<a href='{$menus[$menuCode]['url']}?city_code='>{$menus[$menuCode]['name']}</a>&nbsp;&nbsp;";
+    $cityUrl .= "<a href='{$menus[$menuCode]['url']}'>{$menus[$menuCode]['name']}</a>&nbsp;&nbsp;";
 }
 $menuCode = 'merchant_merchant_self_manager';
 if (isset($menus[$menuCode])) {
-    $cityUrl .= "<a href='{$menus[$menuCode]['url']}?city_code='>{$menus[$menuCode]['name']}</a>";
+    $cityUrl .= "<a href='{$menus[$menuCode]['url']}'>{$menus[$menuCode]['name']}</a>";
 }
+$companyInfo = $this->context->companyInfo;
 ?>
 <!-- topbar starts -->
 <div class="navbar navbar-default" role="navigation">
@@ -46,7 +47,7 @@ if (isset($menus[$menuCode])) {
         <!-- theme selector ends -->
 
         <ul class="collapse navbar-collapse nav navbar-nav top-menu" id="baseMenu">
-		<li class="active"><b><?= Yii::$app->params['companyInfo']['name']; ?></b>---分站商家信息理</li>
+		<li class="active"><b><?= $companyInfo['name']; ?></b>---分站商家信息理</li>
         </ul>
     </div>
 </div>

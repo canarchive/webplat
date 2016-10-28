@@ -15,7 +15,7 @@ class Merchant extends MerchantModel
     public function rules()
     {
         return [
-            [['name', 'city_code', 'is_joined', 'num_owner', 'status'], 'safe'],
+            [['name', 'city_code', 'is_joined', 'status'], 'safe'],
         ];
     }
 

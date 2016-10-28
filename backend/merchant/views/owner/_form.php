@@ -8,15 +8,15 @@ use merchant\models\Attachment;
 
 $attachmentModel = new Attachment();
 $thumb = $attachmentModel->getFieldInfos('realcase', 'thumb');
-$merchantInfo = Yii::$app->params['merchantInfo'];
+$context = $this->context;
 
 ?>
 
 <div class="menu-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-	<input type="hidden" name="merchant_id" value="<?= $merchantInfo['id']; ?>" />
-	<input type="hidden" name="city_code" value="<?= Yii::$app->params['companyInfo']['code_short']; ?>" />
+	<input type="hidden" name="merchant_id" value="<?= $context->merchant_id; ?>" />
+	<input type="hidden" name="city_code" value="<?= $context->companyInfo['code_short']; ?>" />
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'mobile')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'service_id')->dropDownList($model->serviceInfos, ['prompt' => Yii::t('admin-common', 'Select Service')]); ?>

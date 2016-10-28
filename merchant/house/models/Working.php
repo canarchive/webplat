@@ -15,7 +15,7 @@ class Working extends MerchantModel
 	public $name;
 	public $ownerInfo;
 	public $statusDatas;
-	public $merchantInfo;
+	//public $merchantInfo;
 	public $avatar;
 	public $picture_start;
 	public $picture_electric;
@@ -126,7 +126,7 @@ class Working extends MerchantModel
 		$info['status'] = isset($info->statusInfos[$info->status]) ? $info->statusInfos[$info->status] : $info->status;
 		//$workingStatus = new WorkingStatus();
 		//$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
-		$info['merchantInfo'] = Merchant::findOne($info['merchant_id']);
+		//$info['merchantInfo'] = Merchant::findOne($info['merchant_id']);
 		$ownerModel = new Owner();
 		$ownerInfo = $info['ownerInfo'] = $ownerModel->getInfo(['id' => $info->owner_id]);
 		//$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);

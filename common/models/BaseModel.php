@@ -7,6 +7,8 @@ use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use common\helpers\Tree;
 use merchant\models\Merchant;
+use merchant\house\models\Owner;
+use merchant\models\Company;
 
 class BaseModel extends ActiveRecord
 {
@@ -317,6 +319,28 @@ class BaseModel extends ActiveRecord
 
 		$model = new Merchant();
 		$info = $model->getInfo(['id' => $this->merchant_id]);
+		return $info;
+	}
+
+	public function getCompanyInfo()
+	{
+		if (!isset($this->city_code) || empty($this->city_code)) {
+			return [];
+		}
+
+		$model = new Company();
+		$info = $model->getInfoByCodeShort($this->city_code);
+		return $info;
+	}
+
+	public function getOwnerInfo()
+	{
+		if (!isset($this->owner_id) || empty($this->owner_id)) {
+			return [];
+		}
+
+		$model = new Owner();
+		$info = $model->getInfo(['id' => $this->owner_id]);
 		return $info;
 	}
 }

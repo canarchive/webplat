@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+$this->params['noPjax'] = true;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,

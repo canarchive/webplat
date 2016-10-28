@@ -36,7 +36,7 @@ class OwnerController extends AdminController
     {
 		$data = [
 			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
-			'city_code' => isset(Yii::$app->params['companyInfo']['code_short']) ? Yii::$app->params['companyInfo']['code_short'] : '',
+			'city_code' => isset($this->companyInfo['code_short']) ? $this->companyInfo['code_short'] : '',
 		];
 		return $this->_addInfo(new Owner($data));
     }
