@@ -30,4 +30,11 @@ class Merchant extends MerchantBase
 		return $infos;
 	}
 
+	public function getCommentInfos()
+	{
+		$model = new MerchantComment();
+		$infos = $model->getInfos(['merchant_id' => $this->id]);
+
+		return $infos;
+	}
 }
