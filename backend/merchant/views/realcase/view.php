@@ -13,27 +13,8 @@ $detailViewParams = [
 		'orderlist',
 		[
 			'attribute' => 'merchant_id',
-			'value' => $model->merchantInfos[$model->merchant_id],
+			'value' => $model->merchantInfo['nameUrl'],
 		],
-		[
-			'attribute' => 'service_id',
-			'value' => $model->serviceInfos[$model->service_id],
-		],
-		[
-			'attribute' => 'house_type',
-			'value' => $model->houseTypeInfos[$model->house_type],
-		],
-		[
-			'attribute' => 'style',
-			'value' => $model->styleInfos[$model->style],
-		],
-		'area',
-		'community_name',
-		[
-			'attribute' => 'decoration_type',
-			'value' => $model->decorationTypeInfos[$model->decoration_type],
-		],
-		'decoration_price',
 		[
 			'format' => 'raw',
 			'attribute' => 'picture_design',

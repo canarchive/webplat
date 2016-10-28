@@ -3,22 +3,22 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Working;
-use merchant\models\searchs\Working as WorkingSearch;
+use merchant\house\models\Working;
+use merchant\house\models\searchs\Working as WorkingSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class WorkingController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Working';
+	protected $modelClass = 'merchant\house\models\Working';
     use MerchantInfoTrait;
 
     public function init()
     {
         parent::init();
 
-		$this->_initInfo();
 		$this->_ownerInfo();
+		$this->_initInfo();
     }
 
 

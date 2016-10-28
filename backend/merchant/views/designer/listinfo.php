@@ -31,7 +31,6 @@ $gridViewParams = [
 			'value' => function($model) {
 				if ($model->merchant_id > 0) {
 				    return $model->merchantInfo['nameUrl'];
-					//return $model->merchantInfos[$model->merchant_id];
 				}
 				return '';
 			},

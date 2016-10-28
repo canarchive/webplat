@@ -22,10 +22,13 @@ $gridViewParams = [
 			}
 		],
 		[
+			'format' => 'raw',
             'attribute' => 'merchant_id',
 			'value' => function($model) {
-				$return = isset($model->merchantInfos[$model->merchant_id]) ? $model->merchantInfos[$model->merchant_id] : '';
-				return $return;
+				if ($model->merchant_id > 0) {
+				    return $model->merchantInfo['nameUrl'];
+				}
+				return '';
 			},
 		],
 		[

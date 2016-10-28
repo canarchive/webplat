@@ -13,7 +13,7 @@ class Realcase extends MerchantModel
 {
 	public $ownerInfo;
 	public $design_sketch;
-	public $merchantInfo;
+	//public $merchantInfo;
 	public $pictureDesignInfo;
 	public $name;
     
@@ -108,7 +108,7 @@ class Realcase extends MerchantModel
 	{
 		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
 		//$info['picture_design'] = $info->getAttachmentUrl($info['picture_design']);
-		$info['merchantInfo'] = Merchant::findOne($info['merchant_id'])->toArray();
+		//$info['merchantInfo'] = Merchant::findOne($info['merchant_id'])->toArray();
 
 		$serviceModel = new CustomService();
 		$pictureDesign = $this->getAttachmentModel()->findOne($info['picture_design']);
@@ -124,10 +124,10 @@ class Realcase extends MerchantModel
 
         $condition = [ 
             'info_table' => 'realcase',
-            //'info_field' => 'design_sketch',
-            'info_field' => 'picture',
+            'info_field' => 'design_sketch',
+            //'info_field' => 'picture',
             'info_id' => $info->id,
-            //'in_use' => 1,
+            'in_use' => 1,
         ];  
         $infos = $this->getAttachmentModel()->find()->where($condition)->orderBy(['orderlist' => SORT_DESC])->all();
         $designSketchInfos = []; 
