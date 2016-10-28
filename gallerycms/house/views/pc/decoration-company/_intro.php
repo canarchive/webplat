@@ -33,7 +33,7 @@ use yii\helpers\Url;
 				<p>口碑值:<a class="pd-current-cnt"><?= $info['praise']; ?></a></p>
             </div>
             <div class="pd-introduction J_word">
-			    <p><?php $briefStr = empty($info['brief']) ? mb_substr($info['description'], 0, 200) : $info['brief']; echo $briefStr; ?></p>
+			    <p><?php $briefStr = empty($info['brief']) ? mb_substr($info['description'], 0, 100) : $info['brief']; echo $briefStr; ?></p>
             </div>
         </div>
         <div class="pd-hh-cert">
