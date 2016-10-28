@@ -23,22 +23,22 @@ $this->context->mobileMappingUrl = Url::to(['/house/mobile-decoration-company/sh
     <div class="pd-main-body">
         <?php echo $this->render('_nav', ['info' => $info, 'currentNav' => $action]); ?>
         <ul id="comment-list">
-            <!--<li>
+            <?php foreach ($commentInfos as $info) { ?>
+            <li>
                 <div class="comment-user">
                     <img class="avatar" src="http://pic.tugou.com/app/headicon.png">
-                    <h1 class="nickname">老****</h1>
+					<h1 class="nickname"><?= $info['ownerInfo']['name']; ?></h1>
                 </div>
                 <div class="comment-content">
                     <h3 class="score">评分:&nbsp;&nbsp;&nbsp;<span class="stg" v-text="parseFloat(item.score).toFixed(1)"></span></h3>
+                    <?php for ($i = 0; $i < $info['totalScore']; $i++) { ?>
                     <img class="star" src="http://static.tugou.com/home/provider/img/star-picked.png">
-                    <img class="star" src="http://static.tugou.com/home/provider/img/star-picked.png">
-                    <img class="star" src="http://static.tugou.com/home/provider/img/star-picked.png">
-                    <img class="star" src="http://static.tugou.com/home/provider/img/star-picked.png">
-                    <img class="star" src="http://static.tugou.com/home/provider/img/star-half.png">
-                    <p class="content" readonly="readonly">就是简单装修一下，所以找了一个小公司，整个装修过程还是很满意的。这个设计师虽然很年轻，但是她的设计想法我还是很喜欢的，后来又带着我去跑建材城看主材，给了很多意见，真的蛮辛苦的一个小姑娘。后来家里施工也放心的，设计师经常跟我说家里的一些施工进度，兔狗这边监理验收的时候也总是跟我约时间一起过去，看看施工的情况，整个过程还挺好的，后来反正也是在工期内完工的。</p>
-                    <p class="detail">回龙观-64m<sup>2</sup>-简约</p>
+                    <?php } ?>
+					<p class="content" readonly="readonly"><?= $info['content']; ?></p>
+					<p class="detail"><?= $info['ownerInfo']['community_name']; ?>-<?= $info['ownerInfo']['area']; ?>m<sup>2</sup>-<?= $info['ownerInfo']['style']; ?></p>
                 </div>
-            </li>-->
+            </li>
+            <?php } ?>
         </ul>
     </div>
     <div id="pd-fault-footer"></div>
