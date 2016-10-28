@@ -2347,6 +2347,3 @@ if (isMobile == 1) {
             return - 1;
         };
     }</script>
-</body>
-
-</html>
