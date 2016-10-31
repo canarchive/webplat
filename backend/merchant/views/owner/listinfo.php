@@ -67,19 +67,51 @@ $gridViewParams = [
 		],
         [   
             'format' => 'raw',
-            'attribute' => 'operation',
+            'attribute' => 'realcase_id',
             'value' => function($model) {
-                $menus = $this->context->menuInfos['menus'];
-                $opeStr = '';
-                $elems = ['merchant_merchant-realcase_add', 'merchant_merchant-working_add'];
-                foreach ($elems as $elem) {
-                    if (isset($menus[$elem])) {
-                    $opeStr .= "<a href='{$menus[$elem]['url']}?owner_id={$model->id}'>{$menus[$elem]['name']}</a><br />";
-                    }
-                }
+				$realcaseInfo = $model->realcaseInfo;
+				$opeStr = '';
+				if (empty($realcaseInfo)) {
+                    $menus = $this->context->menuInfos['menus'];
+					$menu = isset($menus['merchant_merchant-realcase_add']) ? $menus['merchant_merchant-realcase_add'] : [];
+					$opeStr .= empty($menu) ? '' : "<a href='{$menu['url']}?owner_id={$model->id}'>添加</a><br />";
+				} else {
+                    $opeStr .= "<a href='{$realcaseInfo['infoUrl']}' target='_blank'>查看</a>";
+				}
                 return $opeStr;
-                //$url = Url::to(['business-order/export']);
-                //return "<a href='{$url}?id={$model->id}'>导出</a>";
+            },  
+        ],
+        [   
+            'format' => 'raw',
+            'attribute' => 'working_id',
+            'value' => function($model) {
+				$workingInfo = $model->workingInfo;
+				$opeStr = '';
+				if (empty($workingInfo)) {
+                    $menus = $this->context->menuInfos['menus'];
+					$menu = isset($menus['merchant_merchant-working_add']) ? $menus['merchant_merchant-working_add'] : [];
+					$opeStr .= empty($menu) ? '' : "<a href='{$menu['url']}?owner_id={$model->id}'>添加</a><br />";
+				} else {
+                    $opeStr .= "<a href='{$workingInfo['infoUrl']}' target='_blank'>查看</a>";
+				}
+                return $opeStr;
+            },  
+        ],
+        [   
+            'format' => 'raw',
+            'attribute' => 'num_comment',
+            'value' => function($model) {
+				$cityCode = $model->city_code;
+                $is_joined = $model->is_joined;
+				$commentInfos = $model->commentInfos;
+                $menus = $this->context->menuInfos['menus'];
+				$listMenu = $menus['merchant_merchant-comment_listinfo'];
+				$opeStr = "<a href='{$listMenu['url']}?city_code={$cityCode}&is_joined={$is_joined}&owner_id={$model->id}'>{$model->num_comment}</a>";
+				if (count($commentInfos) < 5) {
+					$menu = isset($menus['merchant_merchant-comment_add']) ? $menus['merchant_merchant-comment_add'] : [];
+					$opeStr .= empty($menu) ? '' : "--<a href='{$menu['url']}?owner_id={$model->id}'>添加</a><br />";
+				} 
+                return $opeStr;
             },  
         ],
     ],

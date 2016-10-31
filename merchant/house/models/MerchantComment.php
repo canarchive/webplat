@@ -53,11 +53,7 @@ class MerchantComment extends MerchantModel
 
 	public function getStatusInfos()
 	{
-		$datas = [
-			'0' => '隐藏',
-			'1' => '正常',
-		];	
-		return $datas;
+		return $this->_decorationStatusInfos();
 	}	
 
 	public function getInfos($where, $limit = 10)

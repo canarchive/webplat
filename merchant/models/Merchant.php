@@ -84,8 +84,9 @@ class Merchant extends MerchantModel
 	protected function getStatusInfos()
 	{
 		$datas = [
-			'0' => '停用',
+			'0' => '未启用',
 			'1' => '正常',
+			'2' => '停用',
 		];
 		return $datas;
 	}	

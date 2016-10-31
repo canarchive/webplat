@@ -12,7 +12,7 @@ class MerchantComment extends MerchantCommentModel
     public function rules()
     {
         return [
-            [['city_code', 'is_joined', 'merchant_id'], 'safe'],
+            [['city_code', 'is_joined', 'merchant_id', 'owner_id'], 'safe'],
         ];
     }
 
@@ -31,6 +31,7 @@ class MerchantComment extends MerchantCommentModel
 			'status' => $this->status,
 			'is_joined' => $this->is_joined,
 			'merchant_id' => $this->merchant_id,
+			'owner_id' => $this->owner_id,
 		]);
 
         return $dataProvider;

@@ -2,6 +2,7 @@
 
 namespace merchant\house\models;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 use common\models\MerchantModel;
 use spread\models\CustomService;
@@ -107,8 +108,6 @@ class Realcase extends MerchantModel
 	protected function _formatInfo($info)
 	{
 		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
-		//$info['picture_design'] = $info->getAttachmentUrl($info['picture_design']);
-		//$info['merchantInfo'] = Merchant::findOne($info['merchant_id'])->toArray();
 
 		$serviceModel = new CustomService();
 		$pictureDesign = $this->getAttachmentModel()->findOne($info['picture_design']);
@@ -157,9 +156,11 @@ class Realcase extends MerchantModel
 		return $infos;
 	}		
 
-	public function getMerchantInfos()
+	public function getInfoUrl()
 	{
-		$infos = $this->_getMerchantInfos(['is_joined' => 1]);
-		return $infos;
+		$domain = Yii::$app->params['baseDomain'];
+		$url = "http://{$this->city_code}.{$domain}/shj-{$this->id}.html";
+
+		return $url;
 	}
 }

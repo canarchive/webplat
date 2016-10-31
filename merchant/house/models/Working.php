@@ -87,15 +87,7 @@ class Working extends MerchantModel
 
 	public function getStatusInfos()
 	{
-		$datas = [
-			'' => '',
-			'start' => '开始',
-			'electric' => '水电',
-			'cement' => '泥木',
-			'paint' => '油漆',
-			'finish' => '竣工',
-		];
-		return $datas;
+		return $this->_decorationStatusInfos();
 	}	
 
 	public function afterSave($insert, $changedAttributes)
@@ -153,5 +145,13 @@ class Working extends MerchantModel
 	{
 		$infos = $this->getMerchantInfos(['is_joined' => 1]);
 		return $infos;
+	}
+
+	public function getInfoUrl()
+	{
+		$domain = Yii::$app->params['baseDomain'];
+		$url = "http://{$this->city_code}.{$domain}/gd-{$this->id}.html";
+
+		return $url;
 	}
 }
