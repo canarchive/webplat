@@ -13,15 +13,14 @@ use spread\models\CustomService;
 class Working extends MerchantModel
 {
 	public $name;
-	public $ownerInfo;
 	public $statusDatas;
 	//public $merchantInfo;
 	public $avatar;
-	public $picture_start;
-	public $picture_electric;
-	public $picture_cement;
-	public $picture_paint;
-	public $picture_finish;
+	public $start;
+	public $electric;
+	public $cement;
+	public $paint;
+	public $finish;
 
     
     /**
@@ -53,7 +52,7 @@ class Working extends MerchantModel
 			[['thumb', 'orderlist'], 'integer'],
 			[['thumb', 'orderlist'], 'default', 'value' => '0'],
 			[['status'], 'default', 'value' => ''],
-			[['start_at', 'start_desc', 'electric_at', 'electric_desc', 'cement_at', 'cement_desc', 'paint_at', 'paint_desc', 'finish_at', 'finish_desc', 'description'], 'safe'],
+			[['start', 'electric', 'cement', 'paint', 'finish', 'start_at', 'start_desc', 'electric_at', 'electric_desc', 'cement_at', 'cement_desc', 'paint_at', 'paint_desc', 'finish_at', 'finish_desc', 'description'], 'safe'],
         ];
     }
 
@@ -66,17 +65,22 @@ class Working extends MerchantModel
             'id' => 'ID',
             'name' => '名称',
 			'merchant_id' => '所属公司',
-			'service_id' => '装修管家',
-			'house_type' => '户型',
-			'style' => '风格',
-			'area' => '面积',
-			'owner_name' => '业主名字',
-			'owner_mobile' => '业主电话',
-			'community_name' => '小区名字',
-			'decoration_type' => '装修类型',
-			'decoration_price' => '装修价格',
             'thumb' => '缩略图',
-            'picture_living' => '效果图',
+			'start' => '开工图片',
+			'electric' => '水电图片',
+			'cement' => '泥木图片',
+			'paint' => '油漆图片',
+			'finish' => '竣工图片',
+			'start_at' => '开工日期',
+			'electric_at' => '水电日期',
+			'cement_at' => '泥木日期',
+			'paint_at' => '油漆日期',
+			'finish_at' => '竣工日期',
+			'start_desc' => '开工描述',
+			'electric_desc' => '水电描述',
+			'cement_desc' => '泥木描述',
+			'paint_desc' => '油漆描述',
+			'finish_desc' => '竣工描述',
 			'orderlist' => '排序',
             'description' => '描述',
             'status' => '是否显示',
@@ -95,10 +99,27 @@ class Working extends MerchantModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['thumb'];
-		$this->_updateSingleAttachment('merchant', $fields);
+		$this->_updateSingleAttachment('working', $fields);
+		$statusInfos = array_filter(array_keys($this->statusInfos));
+		foreach ($statusInfos as $status) {
+		    $this->_updateMulAttachment('working', $status);
+		}
+		if ($insert) {
+			$this->merchantInfo->updateNum('working', 'add');
+			$ownerInfo = $this->ownerInfo;
+			$ownerInfo->working_id = $this->id;
+			$r = $ownerInfo->update(false, ['working_id']);
+		}
 
 		return true;
 	}	
+
+	public function afterDelete()
+	{
+		$this->merchantInfo->updateNum('working', 'minus');
+		$this->ownerInfo->working_id = 0;
+		$this->ownerInfo->update(false, ['working_id']);
+	}
 
 	public function getInfo($id)
 	{
@@ -116,12 +137,8 @@ class Working extends MerchantModel
 	{
 		$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
 		$info['status'] = isset($info->statusInfos[$info->status]) ? $info->statusInfos[$info->status] : $info->status;
-		//$workingStatus = new WorkingStatus();
-		//$info['statusDatas'] = $workingStatus->getInfos(['working_id' => $info['id']]);
-		//$info['merchantInfo'] = Merchant::findOne($info['merchant_id']);
-		$ownerModel = new Owner();
-		$ownerInfo = $info['ownerInfo'] = $ownerModel->getInfo(['id' => $info->owner_id]);
-		//$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
+		//echo $info->owner_id;exit();
+		$ownerInfo = $info->ownerInfo;
 		$info['name'] = $ownerInfo['community_name'] . ' ' . $ownerInfo['style'] . ' ' . $ownerInfo['area'] . '平米 ' . $ownerInfo['decoration_price'] . '万元';
 
 		return $info;

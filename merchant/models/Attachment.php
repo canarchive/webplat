@@ -79,31 +79,31 @@ class Attachment extends AttachmentBase
     				'maxSize' => 300,
     				'type' => 'image/*',
 				],
-				'picture_start' => [
+				'start' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 500,
     				'type' => 'image/*',
 				],
-				'picture_electric' => [
+				'electric' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 500,
     				'type' => 'image/*',
 				],
-				'picture_cement' => [
+				'cement' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 500,
     				'type' => 'image/*',
 				],
-				'picture_paint' => [
+				'paint' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 500,
     				'type' => 'image/*',
 				],
-				'picture_finish' => [
+				'finish' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 500,

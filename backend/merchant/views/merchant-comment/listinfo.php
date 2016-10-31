@@ -20,11 +20,27 @@ $gridViewParams = [
 			},
 		],
 		[
+			'format' => 'raw',
+            'attribute' => 'owner_id',
+			'value' => function($model) {
+				if ($model->owner_id > 0) {
+				    return $model->ownerInfo['name'] . '--' . $model->ownerInfo['community_name'];
+				}
+				return '';
+			},
+		],
+		[
             'attribute' => 'created_at',
             'value'=> function($model){
                 return  date('Y-m-d H:i:s',$model->created_at);
             },
         ],
+		[
+            'attribute' => 'status',
+			'value' => function($model) {
+				return isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $model->status;
+			}
+		],
 		[
 			'format' => 'raw',
 			'attribute' => 'content',
@@ -33,12 +49,6 @@ $gridViewParams = [
 				$content .= mb_strlen(urldecode($model->content)) > 20 ? '<a href="javascript:void(0);" data-placement="top" data-toggle="popover" data-content="' . urldecode($model->content) . '" title="URL"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>全部</a>' : "";
 				return $content;
 			},
-		],
-		[
-            'attribute' => 'status',
-			'value' => function($model) {
-				return isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $model->status;
-			}
 		],
     ],
 ];
