@@ -46,6 +46,9 @@ class Owner extends MerchantModel
 			'service_id' => '客服ID',
 			'merchant_id' => '所属公司',
 			'designer_id' => '设计师ID',
+			'realcase_id' => '实景',
+			'working_id' => '工地',
+			'comment_num' => '评论数',
             'thumb' => '缩略图',
             'name' => '名称',
 			'mobile' => '业主电话',
@@ -60,7 +63,7 @@ class Owner extends MerchantModel
 			'duration' => '工期',
 			'orderlist' => '排序',
             'description' => '描述',
-            'status' => '是否显示',
+            'status' => '状态',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];
@@ -68,12 +71,8 @@ class Owner extends MerchantModel
 
 	public function getStatusInfos()
 	{
-		$datas = [
-			'0' => '停用',
-			'1' => '正常',
-		];
-		return $datas;
-	}
+		return $this->_decorationStatusInfos();
+	}	
 
 	public function afterSave($insert, $changedAttributes)
 	{
@@ -134,5 +133,29 @@ class Owner extends MerchantModel
 
 		$datas = ArrayHelper::map($info, 'id', 'name');
 		return $datas;
+	}
+
+	public function getCommentInfos()
+	{
+		$model = new MerchantComment();
+		$info = $model->find()->select('id')->where(['owner_id' => $this->id])->all();
+
+		return $info;
+	}
+
+	public function getRealcaseInfo()
+	{
+		$model = new Realcase();
+		$info = $model->findOne($this->realcase_id);
+
+		return $info;
+	}
+
+	public function getWorkingInfo()
+	{
+		$model = new Working();
+		$info = $model->findOne($this->working_id);
+
+		return $info;
 	}
 }

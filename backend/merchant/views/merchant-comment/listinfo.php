@@ -37,7 +37,7 @@ $gridViewParams = [
 		[
             'attribute' => 'status',
 			'value' => function($model) {
-				return $model->statusInfos[$model->status];
+				return isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $model->status;
 			}
 		],
     ],
