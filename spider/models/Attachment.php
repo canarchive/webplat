@@ -23,7 +23,7 @@ class Attachment extends SpiderModel
 
     public static function getDb()
     {
-        return Yii::$app->db;
+        return Yii::$app->dbMaster;
     }	
 
     /**

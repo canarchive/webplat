@@ -73,8 +73,9 @@ class SiteAbstract extends SpiderModel
         $model = new Attachment();
         //$where = ['source_status' => [-1, -2]];
         $where = ['source_status' => 0];
-        $infos = $model->find()->where($where)->limit(500)->all();
-		$pathBase = Yii::$app->params['pathParams']['default'] . '/';
+        $infos = $model->find()->where($where)->limit(200)->all();
+		//$pathBase = Yii::$app->params['pathParams']['default'] . '/';
+		$pathBase = '/data/htmlwww/filesys/newdown/';
 		$localBase = 'http://60.205.145.0/common/upload/';
         foreach ($infos as $info) {
 			$pathInfo = pathinfo($info['source_url']);
