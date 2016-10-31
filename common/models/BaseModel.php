@@ -366,4 +366,10 @@ class BaseModel extends ActiveRecord
 		];
 		return $datas;
 	}	
+
+	public function updateNum($field, $type)
+	{
+		$num = $type == 'add' ? 1 : -1;
+		$this->updateCounters(['num_' . $field => $num]);
+	}
 }
