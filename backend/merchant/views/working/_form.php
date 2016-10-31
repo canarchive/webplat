@@ -9,7 +9,6 @@ use merchant\models\Attachment;
 $attachmentModel = new Attachment();
 $thumb = $attachmentModel->getFieldInfos('working', 'thumb');
 
-$pictureLiving = $attachmentModel->getFieldInfos('working', 'picture_living');
 ?>
 
 <div class="menu-form">
@@ -35,7 +34,7 @@ $pictureLiving = $attachmentModel->getFieldInfos('working', 'picture_living');
     ]);
     ?>
 
-    <?php foreach (['start', 'electric', 'cement', 'paint', 'finish'] as $step) { $stepField = "picture_{$step}"; $pictureInfo = $attachmentModel->getFieldInfos('working', $stepField); ?>
+    <?php foreach (['start', 'electric', 'cement', 'paint', 'finish'] as $step) { $stepField = "{$step}"; $pictureInfo = $attachmentModel->getFieldInfos('working', $stepField); ?>
     <?= $form->field($model, $step . '_at')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, $step . '_desc')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, $stepField)->hiddenInput(); ?>

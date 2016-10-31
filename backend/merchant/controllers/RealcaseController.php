@@ -39,7 +39,6 @@ class RealcaseController extends AdminController
 			'merchant_id' => isset($this->ownerInfo['merchant_id']) ? $this->ownerInfo['merchant_id'] : '',
 			'owner_id' => isset($this->ownerInfo['id']) ? $this->ownerInfo['id'] : '',
 		];
-		print_r($data);
 		return $this->_addInfo(new Realcase($data));
     }
 

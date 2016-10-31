@@ -17,9 +17,6 @@ class Designer extends MerchantModel
         return '{{%designer}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
 		$behaviors = [
@@ -80,9 +77,17 @@ class Designer extends MerchantModel
 
 		$fields = ['photo'];
 		$this->_updateSingleAttachment('professor', $fields);
+		if ($insert) {
+			$this->merchantInfo->updateNum('designer', 'add');
+		}
 
 		return true;
 	}	
+
+	public function afterDelete()
+	{
+		$this->merchantInfo->updateNum('designer', 'minus');
+	}
 
 	public function getInfos($where, $limit = 100)
 	{

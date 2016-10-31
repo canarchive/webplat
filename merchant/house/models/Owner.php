@@ -10,6 +10,7 @@ use spread\models\CustomService;
 class Owner extends MerchantModel
 {
 	public $avatar;
+	public $nameCommunity;
 	public $serviceInfo;
 	//public $merchantInfo;
     
@@ -30,8 +31,8 @@ class Owner extends MerchantModel
     {
         return [
             [['name'], 'required'],
-			[['merchant_id', 'thumb', 'service_id', 'designer_id', 'orderlist', 'decoration_price', 'status'], 'default', 'value' => '0'],
-			[['city_code', 'mobile', 'decoration_type', 'community_name', 'house_type', 'style', 'area', 'description'], 'safe'],
+			[['merchant_id', 'thumb', 'realcase_id', 'working_id', 'service_id', 'designer_id', 'orderlist', 'decoration_price', 'status'], 'default', 'value' => '0'],
+			[['realcase_id', 'working_id', 'city_code', 'mobile', 'decoration_type', 'community_name', 'house_type', 'style', 'area', 'description'], 'safe'],
         ];
     }
 
@@ -48,7 +49,7 @@ class Owner extends MerchantModel
 			'designer_id' => '设计师ID',
 			'realcase_id' => '实景',
 			'working_id' => '工地',
-			'comment_num' => '评论数',
+			'num_comment' => '评论数',
             'thumb' => '缩略图',
             'name' => '名称',
 			'mobile' => '业主电话',
@@ -80,9 +81,17 @@ class Owner extends MerchantModel
 
 		$fields = ['thumb'];
 		$this->_updateSingleAttachment('owner', $fields);
+		if ($insert) {
+			$this->merchantInfo->updateNum('owner', 'add');
+		}
 
 		return true;
 	}	
+
+	public function afterDelete()
+	{
+		$this->merchantInfo->updateNum('owner', 'minus');
+	}
 
 	public function getInfo($id)
 	{
@@ -107,6 +116,7 @@ class Owner extends MerchantModel
 		$info['style'] = isset($info->styleInfos[$info->style]) ? $info->styleInfos[$info->style] : $info->style;
 		$info['decoration_type'] = isset($info->decorationTypeInfos[$info->decoration_type]) ? $info->decorationTypeInfos[$info->decoration_type] : $info->decoration_type;
 		$info['avatar'] = strpos($info['brief'], '女士') !== false ? Yii::getAlias('@asseturl') . '/gallerycms/home/images/face04.png' : Yii::getAlias('@asseturl') . '/gallerycms/home/images/face03.png';
+		$info['nameCommunity'] = $info['name'] . '-' . $info['community_name'];
 		return $info;
 	}
 

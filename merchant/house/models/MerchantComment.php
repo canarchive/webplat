@@ -7,7 +7,6 @@ use yii\helpers\ArrayHelper;
 
 class MerchantComment extends MerchantModel
 {
-	public $ownerInfo;
 	public $totalScore;
 
     /**
@@ -18,15 +17,22 @@ class MerchantComment extends MerchantModel
         return '{{%merchant_comment}}';
     }
 
+    public function behaviors()
+    {
+		$behaviors = [
+		    $this->timestampBehaviorComponent,
+		];
+		return $behaviors;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['name', 'photo', 'merchant_id', 'city_code'], 'required'],
-            [['orderlist', 'status', 'merchant_id'], 'default', 'value' => 0],
-			[['description', 'city_code', 'design_concept', 'score_praise', 'score_active', 'sample_num', 'title', 'record', 'aptitude'], 'safe'],
+            [['content', 'owner_id', 'merchant_id', 'city_code', 'status'], 'required'],
+            [['design_star', 'execution_star', 'service_star'], 'default', 'value' => 0],
         ];
     }
 
@@ -37,14 +43,13 @@ class MerchantComment extends MerchantModel
     {
         return [
             'id' => 'ID',
-            'name' => '名称',
-			'title' => '头衔',
-			'aptitude' => '资质',
-			'record' => '贡献',
-			'merchant_id' => '公司ID',
-            'photo' => '照片',
-            'orderlist' => '排序',
-            'description' => '商品描述',
+			'owner_id' => '业主ID',
+			'city_code' => '城市代码',
+			'merchant_id' => '商家',
+			'design_star' => '设计评分',
+			'execution_star' => '施工评分',
+			'service_star' => '服务评分',
+            'content' => '内容',
             'status' => '状态',
             'created_at' => '添加时间',
             'updated_at' => '更新时间',
@@ -56,12 +61,40 @@ class MerchantComment extends MerchantModel
 		return $this->_decorationStatusInfos();
 	}	
 
+	public function beforeSave($insert)
+	{
+		if ($insert) {
+			if ($this->ownerInfo->num_comment >= 6) {
+                $this->addError('status', '一个业主评论数不能超过6条');
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public function afterSave($insert, $changedAttributes)
+	{
+        parent::afterSave($insert, $changedAttributes);
+		if ($insert) {
+			$this->merchantInfo->updateNum('comment', 'add');
+			$this->ownerInfo->updateNum('comment', 'add');
+		}
+
+		return true;
+	}	
+
+	public function afterDelete()
+	{
+		$this->merchantInfo->updateNum('comment', 'minus');
+		$this->ownerInfo->updateNum('comment', 'minus');
+	}
+
 	public function getInfos($where, $limit = 10)
 	{
 		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['id' => SORT_DESC])->limit($limit)->all();
 		$ownerModel = new Owner();
 		foreach ($infos as $key => & $info) {
-		    $info['ownerInfo'] = $ownerModel->getInfo(['id' => $info->owner_id]);
 			$info['totalScore'] = max($info['design_star'], $info['execution_star'], $info['service_star']);
 		}
 

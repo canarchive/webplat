@@ -6,20 +6,16 @@ $detailViewParams = [
 		'id',
 		[
 			'format' => 'raw',
-			'attribute' => 'thumb',
-			'value' => $model->getAttachmentImg($model->thumb, false),
-		],
-        'name',
-		'orderlist',
-		[
 			'attribute' => 'merchant_id',
 			'value' => $model->merchantInfo['nameUrl'],
 		],
 		[
-			'format' => 'raw',
-			'attribute' => 'picture_design',
-			'value' => $model->getAttachmentImg($model->picture_design, false),
+			'attribute' => 'owner_id',
+			'value' => $model->ownerInfo['name'] . '-' . $model->ownerInfo['community_name'],
 		],
+		'design_star',
+		'execution_star',
+		'service_star',
 		[
 			'attribute' => 'status',
 			'value' => $model->statusInfos[$model->status],
@@ -32,7 +28,7 @@ $detailViewParams = [
             'attribute' => 'updated_at',
             'value'=> date('Y-m-d H:i:s',$model->updated_at),
         ],
-		'description',
+		'content',
     ],
 ];
 

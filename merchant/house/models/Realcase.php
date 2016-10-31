@@ -12,7 +12,6 @@ use spread\models\CustomService;
  */
 class Realcase extends MerchantModel
 {
-	public $ownerInfo;
 	public $design_sketch;
 	//public $merchantInfo;
 	public $pictureDesignInfo;
@@ -87,12 +86,26 @@ class Realcase extends MerchantModel
 	{
         parent::afterSave($insert, $changedAttributes);
 
-		$fields = ['thumb', 'picture_design'];
+		$fields = ['thumb', 'picture_origin', 'picture_design'];
 		$this->_updateSingleAttachment('merchant', $fields);
 		$this->_updateMulAttachment('merchant', 'design_sketch');
 
+		if ($insert) {
+			$this->merchantInfo->updateNum('realcase', 'add');
+			$ownerInfo = $this->ownerInfo;
+			$ownerInfo->realcase_id = $this->id;
+			$r = $ownerInfo->update(false, ['realcase_id']);
+		}
+
 		return true;
 	}	
+
+	public function afterDelete()
+	{
+		$this->merchantInfo->updateNum('realcase', 'minus');
+		$this->ownerInfo->realcase_id = 0;
+		$this->ownerInfo->update(false, ['realcase_id']);
+	}
 
 	public function getInfo($id)
 	{
@@ -116,9 +129,7 @@ class Realcase extends MerchantModel
 		}
 		$info['pictureDesignInfo'] = $pictureDesign;
 
-		$ownerModel = new Owner();
-		$ownerInfo = $info['ownerInfo'] = $ownerModel->getInfo(['id' => $info->owner_id]);
-		//$info['serviceInfo'] = $serviceModel->getInfo(['id' => $info->service_id]);
+		$ownerInfo = $info->ownerInfo;
 		$info['name'] = $ownerInfo['community_name'] . ' ' . $ownerInfo['style'] . ' ' . $ownerInfo['area'] . '平米 ' . $ownerInfo['decoration_price'] . '万元';
 
         $condition = [ 

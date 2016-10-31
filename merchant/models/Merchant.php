@@ -70,6 +70,7 @@ class Merchant extends MerchantModel
 			'num_designer' => '设计师数',
 			'num_realcase' => '实景数',
 			'num_working' => '工地数',
+			'num_comment' => '评论数',
 			'score' => '评分',
 			'praise' => '口碑值',
             'description' => '描述',
