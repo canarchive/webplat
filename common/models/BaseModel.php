@@ -343,4 +343,27 @@ class BaseModel extends ActiveRecord
 		$info = $model->getInfo(['id' => $this->owner_id]);
 		return $info;
 	}
+
+	public function searchTimeElem(& $query, $field = 'created_at')
+	{
+		$startAttr = $field . '_start';
+		$endAttr = $field . '_end';
+		$startTime = strtotime($this->$startAttr);
+		$endTime = $this->$endAttr > 0 ? strtotime($this->$endAttr) : time();
+        $query->andFilterWhere(['>=', $field, $startTime]);
+        $query->andFilterWhere(['<', $field, $endTime]);
+	}
+
+	public function _decorationStatusInfos()
+	{
+		$datas = [
+			'' => '',
+			'start' => '开始',
+			'electric' => '水电',
+			'cement' => '泥木',
+			'paint' => '油漆',
+			'finish' => '竣工',
+		];
+		return $datas;
+	}	
 }
