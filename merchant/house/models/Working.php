@@ -150,7 +150,7 @@ class Working extends MerchantModel
 		$ownerModel = new Owner();
 		foreach ($infos as $key => & $info) {
 			$info['thumb'] = $info->getAttachmentUrl($info['thumb']);
-			$info['ownerInfo'] = $ownerModel->getInfo($info['owner_id']);
+			//$info['ownerInfo'] = $ownerModel->getInfo($info['owner_id']);
 			$info['status'] = isset($info->statusInfos[$info->status]) ? $info->statusInfos[$info->status] : $info->status;
 		}
 
