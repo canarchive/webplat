@@ -78,6 +78,20 @@ class Visit extends SpreadModel
 		//$queryString = Yii::$app->request->queryString;
 		$urlFull = Yii::$app->request->referrer;
 		$urlFull = empty($urlFull) ? '' : $urlFull;
+                if (!preg_match('%^(?:
+                    [\x09\x0A\x0D\x20-\x7E]              # ASCII
+                    | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
+                    | \xE0[\xA0-\xBF][\x80-\xBF]         # excluding overlongs
+                    | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
+                    | \xED[\x80-\x9F][\x80-\xBF]         # excluding surrogates
+                    | \xF0[\x90-\xBF][\x80-\xBF]{2}      # planes 1-3
+                    | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
+                    | \xF4[\x80-\x8F][\x80-\xBF]{2}      # plane 16
+                    )*$%xs', $urlFull)
+                ) {
+                    //$urlFull = utf8_encode($urlFull);
+				    $urlFull = mb_convert_encoding($urlFull, 'utf-8', 'gbk');
+                }
 		$urlBase = substr($urlFull, 0, strpos($urlFull, '?'));
 		$urlBase = empty($urlBase) ? $urlFull : $urlBase;
 		$data['url'] = $urlBase;
@@ -85,6 +99,20 @@ class Visit extends SpreadModel
         $data['from_type'] = $isMobile ? 'h5' : 'pc';
 
 		$urlFullPre = Yii::$app->request->get('url_pre', '');
+                if (!preg_match('%^(?:
+                    [\x09\x0A\x0D\x20-\x7E]              # ASCII
+                    | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
+                    | \xE0[\xA0-\xBF][\x80-\xBF]         # excluding overlongs
+                    | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
+                    | \xED[\x80-\x9F][\x80-\xBF]         # excluding surrogates
+                    | \xF0[\x90-\xBF][\x80-\xBF]{2}      # planes 1-3
+                    | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
+                    | \xF4[\x80-\x8F][\x80-\xBF]{2}      # plane 16
+                    )*$%xs', $urlFullPre)
+                ) {
+                    //$urlFullPre = utf8_encode($urlFullPre);
+				    $urlFullPre = mb_convert_encoding($urlFullPre, 'utf-8', 'gbk');
+                }
 		$urlPre = substr($urlFullPre, 0, strpos($urlFullPre, '?'));
 		$urlPre = empty($urlPre) ? $urlFullPre : $urlPre;
 		$data['url_pre'] = $urlPre;
