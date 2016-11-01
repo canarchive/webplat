@@ -1,3 +1,8 @@
+UPDATE `workhouse_merchant`.`wm_owner` AS `o`, (SELECT `owner_id`, COUNT(*) AS `count` FROM `workhouse_merchant`.`wm_merchant_comment` GROUP BY `owner_id`) AS `r` SET `o`.`num_comment` = `r`.`count` WHERE `r`.`owner_id` = `o`.`id`;
+UPDATE `workhouse_merchant`.`wm_owner` AS `o`, `workhouse_merchant`.`wm_realcase` AS `r` SET `o`.`realcase_id` = `r`.`id` WHERE `r`.`owner_id` = `o`.`id`;
+UPDATE `workhouse_merchant`.`wm_owner` AS `o`, `workhouse_merchant`.`wm_working` AS `r` SET `o`.`working_id` = `r`.`id` WHERE `r`.`owner_id` = `o`.`id`;
+
+
 UPDATE `work_spider`.`ws_attachment` AS `a`, `workhouse_merchant`.`wm_merchant` AS `m` SET `a`.`info_id` = `m`.`id`  WHERE `a`.`info_table` = 'merchant' AND `a`.`source_id` = `m`.`source_id`;
 
 UPDATE `work_common`.`wc_attachment` AS `a`, `workhouse_merchant`.`wm_merchant` AS `m` SET `m`.`logo` = `a`.`id`  WHERE `m`.`logo` = 0 AND `a`.`info_table` = 'merchant' AND `a`.`info_field` = 'logo' AND `a`.`info_id` = `m`.`id`;
