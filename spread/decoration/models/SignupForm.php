@@ -13,7 +13,6 @@ class SignupForm extends Model
 {
 	public $mobile;
 	public $name;
-	public $info_id;
 	public $message;
 	public $position;
 	public $position_name;
@@ -21,7 +20,7 @@ class SignupForm extends Model
 	public $area_input;
 	public $form_type;
 	public $isMobile;
-	public $decorationModel;
+	public $decorationOwnerModel;
 	public $quoteInfo = [];
 	public $existOwner;
 
@@ -35,7 +34,7 @@ class SignupForm extends Model
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
 			//[['city_input', 'area_input'], 'default', 'value' => ''],
-			[['city_input', 'area_input', 'form_type', 'message', 'info_id', 'position', 'position_name'], 'safe'],
+			[['city_input', 'area_input', 'form_type', 'message', 'position', 'position_name'], 'safe'],
         ];
     }
 
@@ -56,37 +55,26 @@ class SignupForm extends Model
 		//$positionStr = isset($positionInfos[$this->position]) ? $positionInfos[$this->position] : $this->position;
 		//$note = $positionStr . '#' . strip_tags($this->position_name);
 		$note = strip_tags($this->position_name);
-		$data = array(
+		$data = [
 			'mobile' => $this->mobile,
 			'name' => $this->name,
-			'position' => strip_tags($this->position),
 			'from_type' => $this->isMobile ? 'h5' : 'pc',
-			'note' => $note,
-			'message' => strip_tags($this->message),
-
-			'info_id' => $this->info_id,
-			'info_name' => $this->decorationModel->name,
-			'type' => $this->decorationModel->type,
-			//'city' => $this->decorationModel->city,
 			'city_input' => empty(strip_tags($this->city_input)) ? '' : strip_tags($this->city_input),
 			'form_type' => empty(strip_tags($this->form_type)) ? '' : strip_tags($this->form_type),
 			'area_input' => empty(strip_tags($this->area_input)) ? 0 : strip_tags($this->area_input),
-			'decorationModel' => $this->decorationModel,
+			'position' => strip_tags($this->position),
+			'note' => $note,
+			'message' => strip_tags($this->message),
+		];
 
-		);
-
-		$infoExist = DecorationOwner::findOne(['decoration_id' => $this->info_id, 'mobile' => $this->mobile]);
-		//$infoExist = DecorationOwner::findOne(['mobile' => $this->mobile]);
-		$noCheckDecorationSignined = isset(Yii::$app->params['noCheckDecorationSignined']) ? Yii::$app->params['noCheckDecorationSignined'] : false;
+		$infoExist = DecorationOwner::findOne(['mobile' => $this->mobile]);
 		if ($infoExist) {
 			$infoExist->signup_at = Yii::$app->params['currentTime'];
 			$infoExist->signup_num = $infoExist->signup_num + 1;
 			$infoExist->update(false);
-			if (!$noCheckDecorationSignined) {
-			    $this->addError('error', '您的手机号已报名成功');
-			    $this->existOwner = true;
-			    return false;
-			}
+		    $this->addError('error', '您的手机号已报名成功');
+		    $this->existOwner = true;
+		    return false;
 		}
 
 		$decorationOwner = DecorationOwner::addOwner($data);
@@ -96,15 +84,12 @@ class SignupForm extends Model
 		}
 
 		$conversionInfo = $conversionModel->successLog($data);
-		$this->decorationModel->updateAfterInsert();
-		$decorationOwner->user->updateAfterInsert();
-
 		if ($this->area_input > 20 && $this->area_input < 500) {
 			$this->quoteInfo = $this->_getQuoteInfo($this->area_input);
 		}
 
-		$serviceModel = $decorationOwner->user->dealService($data);
-		$decorationOwner->updateAfterInsert($conversionInfo, $serviceModel->id);
+		$serviceModel = $decorationOwner->dealService($data);
+		$decorationOwner->updateAfterInsert($conversionInfo);
 		//$this->sendSmsService($data, $serviceModel);
 		$data['service_code'] = $serviceModel->code;
 
@@ -119,23 +104,6 @@ class SignupForm extends Model
 			return false;
 		}
 
-		if (empty($this->info_id)) {
-			$this->addError('error', '必须报名指定的家装活动');
-			return false;
-		}
-
-		$this->decorationModel = Decoration::findOne(['id' => $this->info_id]);
-		if (empty($this->decorationModel)) {
-			$this->addError('error', '家装活动信息有误');
-			return false;
-		}
-
-		$noCheckDecorationOver = isset(Yii::$app->params['noCheckDecorationOver']) ? Yii::$app->params['noCheckDecorationOver'] : false;
-		if (!$noCheckDecorationOver && $this->decorationModel['end_at'] < time()) {
-			$this->addError('error', '对不起，本次活动报名已截止，请关注其他活动。');
-			return false;
-		}
-
 		return true;
 	}
 
@@ -143,7 +111,6 @@ class SignupForm extends Model
     {
         $mobile = $data['mobile'];
 
-		//$message = $this->decorationModel['sms'];
 		$siteName = Yii::$app->params['siteNameBase'];
 		$hotline = Yii::$app->params['siteHotline'];
 		$message = "您已成功预约，装修顾问会在15分钟内回访了解您的具体装修需求，请保持您的电话畅通，详情咨询{$hotline}【{$siteName}】";

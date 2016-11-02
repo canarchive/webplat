@@ -68,8 +68,7 @@ function addHouseInfo()
 	var data = {
 	    'operation': 'add',
 		'table': '<?= $tableName; ?>',
-	    'mobile': '<?= $modelUser->mobile; ?>',
-		'decoration_id': '<?= empty($modelDecorationOwner) ? 0 : $modelDecorationOwner->decoration_id; ?>'
+	    'mobile': '<?= $modelOwner->mobile; ?>',
 	};
 	for (var field in dataValues) {
 		data[field] = dataValues[field];
@@ -94,7 +93,7 @@ function addMerchantInfo()
 	var data = {
 	    'operation': 'add',
 		'table': '<?= $tableNameMerchant; ?>',
-	    'mobile': '<?= $modelUser->mobile; ?>'
+	    'mobile': '<?= $modelOwner->mobile; ?>'
 	};
 	for (var field in dataValues) {
 		data[field] = dataValues[field];
