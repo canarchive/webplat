@@ -1,5 +1,11 @@
 <?php
 return [
+'hostKeys' => [
+    '' => '本站',
+    'bx' => '百姓网',
+    'jia' => '家装',
+    'btc' => '搜狗',
+],
 'spreadUrlTypes' => [
     'baojia' => [
         'name' => '免费报价(兔狗)',
