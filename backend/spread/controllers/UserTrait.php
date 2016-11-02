@@ -15,15 +15,8 @@ trait UserTrait
 			return $operation == 'add' ? $this->_add() : $this->_update();
 		}
 
-		if ($type == 'activity-user') {
-            $model = $this->findModel($id);
-            $modelUser = \spread\models\User::findOne(['mobile' => $model->mobile]);
-			$mobile = $model->mobile;
-		} else if ($type == 'user') {
-            $modelUser = $this->findModel($id);
-			$model = '';
-			$mobile = $modelUser->mobile;
-		}
+        $model = $this->findModel($id);
+		$mobile = $model->mobile;
 		$callbackInfos = \spread\models\Callback::findAll(['mobile' => $mobile]);
 		$ownerHouseInfos = \spread\decoration\models\OwnerHouse::findAll(['mobile' => $model->mobile]);
 		$ownerMerchantInfos = \merchant\house\models\OwnerMerchant::findAll(['mobile' => $model->mobile]);
@@ -31,7 +24,6 @@ trait UserTrait
 		$data = [
 			'type' => $type,
 			'model' => $model,
-			'modelUser' => $modelUser,
 			'callbackInfos' => $callbackInfos,
 			'ownerHouseInfos' => $ownerHouseInfos,
 			'ownerMerchantInfos' => $ownerMerchantInfos,
@@ -99,9 +91,6 @@ trait UserTrait
 			if ($field == 'callback_at') {
 			    $value = $model->callback_at > 0 ? $model->callback_at : time();
 			}
-			break;
-		case 'user':
-			$model = \spread\models\User::findOne($infoId);
 			break;
 		case 'owner_house':
 			$model = \spread\decoration\models\OwnerHouse::findOne($infoId);

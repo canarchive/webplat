@@ -59,7 +59,7 @@ function addCallback()
 		return false;
 	}
 	var data = {
-	    'mobile': '<?= $modelUser->mobile; ?>',
+	    'mobile': '<?= $modelOwner->mobile; ?>',
 	    'operation': 'add',
 		'table': '<?= $tableName; ?>',
 	    'content': content,

@@ -4,10 +4,12 @@ namespace spread\decoration\models;
 
 use Yii;
 use common\models\SpreadModel;
+use spread\models\CustomService;
 
 class DecorationOwner extends SpreadModel
 {
 	public $user;
+    public $customService;
 
     /**
      * @inheritdoc
@@ -33,7 +35,6 @@ class DecorationOwner extends SpreadModel
 			'signup_ip' => '报名IP',
 			'signup_city' => '报名城市',
 			'signup_channel' => '报名渠道',
-			'signin_at' => '签到时间',
 			'message' => '留言',
 			'note' => '备注',
 			'keyword' => '搜索关键字',
@@ -46,61 +47,29 @@ class DecorationOwner extends SpreadModel
 
     public static function addOwner($data, $serviceId = null)
     {
-        $userModel = new \spread\models\User();
-        $user = $userModel->getUserInfo($data, $serviceId);
-        if (empty($user)) {
-            return false;
-        }
-
+		$customService = !is_null($serviceId) ? CustomService::findOne($serviceId) : null;
+		$customService = empty($customService) ? CustomService::getServiceInfo() : $customService;
         $ip = \Yii::$app->getRequest()->getIP();
 		$city = \common\components\IP::find($ip);
 		$city = is_array($city) ? implode('-', $city) : $city;
-        $data = [
+        $data = array_merge($data, [
             'signup_at' => Yii::$app->params['currentTime'],
             'signup_at_first' => Yii::$app->params['currentTime'],
             'signup_num' => 1,
-			'decoration_id' => $data['info_id'],
-            'type' => $data['type'],
             'signup_ip' => $ip,
             'signup_city' => $city,
-            'mobile' => $data['mobile'],
-            'name' => $data['name'],
-			'from_type' => $data['from_type'],
-			'type' => $data['type'],
-			//'city' => $data['city'],
-			'city_input' => $data['city_input'],
-			'area_input' => $data['area_input'],
-			'service_id' => $user->service_id,
-            'message' => $data['message'],
-            'note' => $data['note'],
-            'user_id' => $user->id,
-        ];
+			'service_id' => $customService->id,
+        ]);
 
         $newModel = new self($data);
         $insert = $newModel->insert(true, $data);
         if (!$insert) {
             return false;
         }
-		$newModel->user = $user;
+		$newModel->customService = $customService;
 
 		return $newModel;
     }
-
-	public function xunkeOperation($data)
-	{
-		$info = self::findOne(['mobile' => $data['mobile']]);
-		if (!empty($info)) {
-			return false;
-		}
-
-        $newModel = new self($data);
-        $insert = $newModel->insert(true, $data);
-        if (!$insert) {
-            return false;
-        }
-
-		return true;
-	}
 
     public function insert($runValidation = true, $attributes = null)
     {
@@ -156,9 +125,8 @@ class DecorationOwner extends SpreadModel
 		return $datas;
 	}
 
-	public function updateAfterInsert($conversionInfo, $serviceId)
+	public function updateAfterInsert($conversionInfo)
 	{
-		$this->service_id = $serviceId;
 		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
 			$this->signup_channel = $conversionInfo['channel'];
 			$this->keyword = $conversionInfo['keyword'];
@@ -189,9 +157,6 @@ class DecorationOwner extends SpreadModel
 			'position' => '',
 			'note' => $this->note,
 			'message' => '',
-			'info_id' => 1,
-			'info_name' => '',
-			'type' => '',
 			'city_input' => '',
 			'form_type' => '',
 			'from_type' => 'pc',
@@ -204,5 +169,17 @@ class DecorationOwner extends SpreadModel
 		$conversionInfo = $conversionModel->successLog($data);
 
 		return $decorationOwner;
+	}
+
+	public function dealService()
+	{
+		$serviceModel = isset($this->customService) ? $this->customService : CustomService::findOne($this->service_id);
+
+		$serviceModel->distributed_at = Yii::$app->params['currentTime'];
+		$serviceModel->update(false);
+		$serviceModel->updateCounters(['serviced_times' => 1]);
+		
+		$serviceModel->updateServiceInfo();
+		return $serviceModel;
 	}
 }

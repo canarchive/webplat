@@ -27,15 +27,11 @@ class DetailController extends Controller
 
 	public function actionFeature()
     {
-		/*if (empty($this->mHost) && $this->isMobile) {
-			//$url = Yii::getAlias('@m2spreadurl') . Yii::$app->request->getUrl();
-			//$this->redirect($url)->send();
-		}*/
-
-        $datas = $this->getDatas();
-        if (empty($datas)) {
-            return $this->redirect('/')->send();
-        }
+        $signupForm = new SignupForm();
+        $datas = [
+            'model' => $signupForm,
+            'host' => $this->host,
+        ];
 
 		$view = Yii::$app->request->get('view');
 		$urlTypes = Yii::$app->params['spreadUrlTypes'];
@@ -55,27 +51,6 @@ class DetailController extends Controller
 		$this->layout = $viewInfo['main'];
 
         return $this->render($view, $datas);   
-    }
-
-    protected function getDatas()
-    {
-        /*$id = Yii::$app->getRequest()->get('id');
-        $model = new \spread\decoration\models\Decoration();
-     	$where = ['id' => $id];
-		$info = $model->getInfo($where);
-		if (empty($info)) {
-			return false;
-		}*/
-		
-        //$urlFull = Yii::$app->request->hostInfo . Yii::$app->request->getUrl();
-        $signupForm = new SignupForm();
-        $datas = [
-            'model' => $signupForm,
-            //'info' => $info,
-            'host' => $this->host,
-        ];
-
-        return $datas;
     }
 
     protected function getCache($key)

@@ -31,11 +31,10 @@ use yii\bootstrap\ActiveForm;
 </style>
 <?php
 if (!empty($model)) {
-    echo $this->render('_base_info', ['model' => $model, 'modelUser' => $modelUser]);
+    echo $this->render('_base_info', ['model' => $model]);
 }
-//echo $this->render('_base_user', ['model' => $model, 'modelUser' => $modelUser]);
-echo $this->render('_listinfo_owner_house', ['modelDecorationOwner' => $model, 'modelUser' => $modelUser, 'ownerHouseInfos' => $ownerHouseInfos, 'ownerMerchantInfos' => $ownerMerchantInfos]);
-echo $this->render('_listinfo_callback', ['modelActivityUser' => $model, 'modelUser' => $modelUser, 'callbackInfos' => $callbackInfos]);
+echo $this->render('_listinfo_owner_house', ['modelOwner' => $model, 'ownerHouseInfos' => $ownerHouseInfos, 'ownerMerchantInfos' => $ownerMerchantInfos]);
+echo $this->render('_listinfo_callback', ['modelOwner' => $model, 'callbackInfos' => $callbackInfos]);
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -98,7 +97,6 @@ function addElemForUser(data)
 
 function updateElemForUser(table, info_id, field, value)
 {
-	alert(table);
 	var url = '';
 	var data = {
 	    'table': table,

@@ -21,7 +21,7 @@ $tableName = 'activity_user';
 					    <th><?= $model->getAttributeLabel('signup_at'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_city'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_channel'); ?></th>
-					    <th><?= $model->getAttributeLabel('signin_at'); ?></th>
+					    <th><?= $model->getAttributeLabel('signup_num'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,7 +31,7 @@ $tableName = 'activity_user';
 					    <td><?= date('Y-m-d H:i:s', $model->signup_at); ?></td>
 					    <td><?= $model->signup_city; ?></td>
 					    <td><?= $model->signup_channel; ?></td>
-					    <td><?= date('Y-m-d H:i:s', $model->signin_at); ?></td>
+					    <td><?= $model->signup_num; ?></td>
                     </tr>
                     </tbody>
                 </table>
@@ -79,7 +79,6 @@ $tableName = 'activity_user';
                         $(function () {
                             $('#callback_again').datetimepicker({locale: 'zh-CN', format: 'YYYY-MM-DD HH:mm:ss'})
 							.on('changeDate', function(ev){
-								alert('sss');
 								    if (ev.date.valueOf() < date-start-display.valueOf()){
 									}
 							});

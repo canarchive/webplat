@@ -50,7 +50,6 @@ class SignupController extends spreadController
 
 	public function actionCms()
 	{
-		$_POST['info_id'] = 1;
 		return $this->_signup();
 	}
 

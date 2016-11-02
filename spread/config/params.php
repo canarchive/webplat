@@ -81,5 +81,11 @@ return [
 		'mobile' => false,
 		'main' => 'main-base',
 	],
+	'bjmh' => [
+		'name' => '美猴报价报名（jia)',
+		'pc' => false,
+		'mobile' => true,
+		'main' => 'main-base',
+	],
 ],
 ];
