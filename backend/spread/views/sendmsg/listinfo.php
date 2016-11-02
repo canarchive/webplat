@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$menus = $this->context->menuInfos;
-print_r($menus);exit();
+$menus = $this->context->menuInfos['menus'];
 $sendMenu = $menus['spread_decoration_sendmsg_send'];
+//print_r(array_keys($menus));
 $sendInfos = [
 	'dispatch-owner' => [
 		'name' => '通知业主分配的装修公司',
@@ -31,7 +31,7 @@ $sendInfos = [
                         <?php foreach ($sendInfos as $key => $info) { ?>
                         <tr>
 						    <td><?= $info['name']; ?></td>
-					    	<td><?= $info['name']; ?></td>
+							<td><a href="<?= $sendMenu['url']; ?>">发短信</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

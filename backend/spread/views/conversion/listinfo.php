@@ -12,13 +12,10 @@ $gridViewParams = [
 		'name',
 		'mobile',
 		'channel',
-		[
-			'attribute' => 'position',
-			'value' => function($model) {
-				$return = isset($model->positionInfos[$model->position]) ? $model->positionInfos[$model->position] : $model->position;
-				return $return;
-			},
-		],
+		'form_type',
+		'city_input',
+		'area_input',
+		'position',
 		'note',
 		'keyword',
 		'matchtype',

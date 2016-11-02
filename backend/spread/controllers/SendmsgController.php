@@ -14,10 +14,8 @@ class SendmsgController extends AdminController
         return $this->render('listinfo');
     }
 
-    public function actionSend($code)
+    public function actionSend()
     {
-		$this->layout = '@backend/views/charisma/document/layout';
-        echo $this->render($code);
-		exit();
+		return $this->render('send');
     }
 }
