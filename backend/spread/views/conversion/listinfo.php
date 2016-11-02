@@ -16,13 +16,7 @@ $gridViewParams = [
 		'form_type',
 		'city_input',
 		'area_input',
-		[
-			'attribute' => 'position',
-			'value' => function($model) {
-				$return = isset($model->positionInfos[$model->position]) ? $model->positionInfos[$model->position] : $model->position;
-				return $return;
-			},
-		],
+		'position',
 		'note',
 		'keyword',
 		'matchtype',
