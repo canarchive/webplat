@@ -3,15 +3,15 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Merchant;
-use merchant\models\searchs\Merchant as MerchantSearch;
+use merchant\house\models\Merchant;
+use merchant\house\models\searchs\Merchant as MerchantSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class MerchantController extends AdminController
 {
     use MerchantInfoTrait;
-	protected $modelClass = 'merchant\models\Merchant';
+	protected $modelClass = 'merchant\house\models\Merchant';
 
     public function init()
     {
