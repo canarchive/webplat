@@ -37,7 +37,7 @@ $detailViewParams = [
 		'decoration_price',
 		[
 			'attribute' => 'status',
-			'value' => isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $mnodel->status,
+			'value' => isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : $model->status,
 		],
 		[
             'attribute' => 'created_at',

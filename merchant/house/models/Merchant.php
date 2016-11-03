@@ -37,4 +37,22 @@ class Merchant extends MerchantBase
 
 		return $infos;
 	}
+
+	public function updateJoined()
+	{
+	    Designer::updateAll(['is_joined' => $this->is_joined], "merchant_id = {$this->id}");
+	    Owner::updateAll(['is_joined' => $this->is_joined], "merchant_id = {$this->id}");
+	    Realcase::updateAll(['is_joined' => $this->is_joined], "merchant_id = {$this->id}");
+	    Working::updateAll(['is_joined' => $this->is_joined], "merchant_id = {$this->id}");
+	    MerchantComment::updateAll(['is_joined' => $this->is_joined], "merchant_id = {$this->id}");
+	}
+
+	public function deleteSubInfos()
+	{
+	    Designer::deleteAll("merchant_id = {$this->id}");
+	    Owner::deleteAll("merchant_id = {$this->id}");
+	    Realcase::deleteAll("merchant_id = {$this->id}");
+	    Working::deleteAll("merchant_id = {$this->id}");
+	    MerchantComment::deleteAll("merchant_id = {$this->id}");
+	}
 }
