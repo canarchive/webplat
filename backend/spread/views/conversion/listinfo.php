@@ -6,8 +6,7 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
 		'id',
-		'info_id',
-		'info_name',
+		'city_code',
         'from_type',
 		'name',
 		'mobile',
@@ -18,6 +17,7 @@ $gridViewParams = [
 		'position',
 		'note',
 		'keyword',
+		'keyword_search',
 		'matchtype',
 		'adposition',
 		'pagenum',
@@ -38,7 +38,7 @@ $gridViewParams = [
                 return  date('Y-m-d H:i:s',$model->created_at);
             },
         ],		
-		[
+		/*[
 			'format' => 'raw',
 			'attribute' => 'message',
 			'value' => function ($model) {
@@ -46,7 +46,7 @@ $gridViewParams = [
 				$content .= mb_strlen($model->message) > 20 ? '<a href="javascript:void(0);" data-placement="top" data-toggle="popover" data-content="' . $model->message . '" title="message"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>全部</a>' : "";
 				return $content;
 			},
-		],
+		],*/
     ],
 ];
 

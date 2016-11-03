@@ -9,6 +9,7 @@ $gridViewParams = [
         'channel',
 		'from_type',
 		'keyword',
+		'keyword_search',
 		'matchtype',
 		'adposition',
 		'pagenum',
