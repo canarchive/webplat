@@ -44,6 +44,18 @@ $formName = $model->formName();
 						]
 					) ?>
 				</div>
+                <label class="control-label col-md-1">推广渠道</label>
+                <div class="col-md-2">
+					<?= Html::dropDownList(
+						"channel_big", 
+						0, 
+						$channelBigInfos, 
+						[
+							'prompt' => '全部', 
+							'class' => 'form-control',
+						]
+					) ?>
+				</div>
                 <input type="hidden" name="show_full" id="show_full" value="" />
                 <div class="col-md-3">
                     <?= Html::submitButton(Yii::t('app', '查看链接'), ['class' => 'btn btn-primary']) ?>

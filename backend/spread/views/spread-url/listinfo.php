@@ -1,14 +1,13 @@
 <?php
-$fullSuffix = '';
+$fullSuffix = '?channel_big=' . $channelBig;
 if ($showFull) {
 	$fullSuffix = '?';
 	foreach ($model->attributeParams as $aInfo) { 
 		$fullSuffix .= "&{$aInfo['param']}={$aInfo['default']}";
 	}
 }
-$fullSuffix = str_replace('?&', '?', $fullSuffix);
 ?>
-<?= $this->render('_search', array_merge(['cInfos' => $cInfos, 'hostKeys' => $hostKeys], ['model' => $model])); ?>
+<?= $this->render('_search', array_merge(['cInfos' => $cInfos, 'hostKeys' => $hostKeys, 'channelBigInfos' => $channelBigInfos], ['model' => $model])); ?>
 
 <div id="w1" class="grid-view">
     <div class="summary">推广参数列表</div>
@@ -37,8 +36,8 @@ $fullSuffix = str_replace('?&', '?', $fullSuffix);
 			<?php foreach ($urlTypes as $type => $info) { $pcUrl = "{$pcDomain}/bm-{$type}-{$cityCode}.html"; $mobileUrl = "{$mobileDomain}/bm-{$type}-{$cityCode}.html"; ?>
             <tr data-key="">
 			    <td><?= $info['name']; ?></td>
-				<td><?php if ($info['pc']) { echo "<a href='{$pcUrl}' target='_blank'>{$pcUrl}{$fullSuffix}</a>"; } ?></td>
-				<td><?php if ($info['mobile']) { echo "<a href='{$mobileUrl}' target='_blank'>{$mobileUrl}{$fullSuffix}</a>"; } ?></td>
+				<td><?php if ($info['pc']) { echo "<a href='{$pcUrl}{$fullSuffix}' target='_blank'>{$pcUrl}{$fullSuffix}</a>"; } ?></td>
+				<td><?php if ($info['mobile']) { echo "<a href='{$mobileUrl}{$fullSuffix}' target='_blank'>{$mobileUrl}{$fullSuffix}</a>"; } ?></td>
             </tr>
             <?php } ?>
         </tbody>
