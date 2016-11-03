@@ -32,7 +32,7 @@ class Visit extends SpreadModel
             'from_type' => '客户端类型',
             'template_code' => '模板代码',
             'keyword' => '关键字',
-            'keyword_search' => '关键字',
+            'keyword_search' => '搜索关键字',
             //'keywordid' => '关键字ID',
             'matchtype' => '匹配类型',
             'adposition' => '位置',
@@ -217,7 +217,7 @@ class Visit extends SpreadModel
 			break;
 		case 'sg':
 		    $urlPre = Yii::$app->request->get('url_pre', '');
-			$keywordSearch = str_replace('http://www.sogou.com/bill_cpc?query=', '', $urlPre);
+			$keywordSearch = substr($urlPre, strpos($urlPre, '?') + 7);
 		default:
 		}
 		$data['keyword_search'] = $this->_formatutf8Code($keywordSearch);
