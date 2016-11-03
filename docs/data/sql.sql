@@ -1,3 +1,13 @@
+ALTER TABLE `ws_visit` DROP `url_full_pre`;
+ALTER TABLE `ws_conversion` DROP `url_full_pre`;
+
+ALTER TABLE `ws_visit` ADD `dongtai` VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'dongtai' AFTER `pagenum`, ADD `utm_network` VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'utm_network' AFTER `dongtai`, ADD `haoci` VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'haoci' AFTER `utm_network`, ADD `dsp` VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'dsp' AFTER `haoci`;
+ALTER TABLE `ws_conversion` ADD `dongtai` VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'dongtai' AFTER `pagenum`, ADD `haoci` VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'haoci' AFTER `utm_network`, ADD `dsp` VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'dsp' AFTER `haoci` ;
+
+ALTER TABLE `ws_visit` ADD `created_week` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '周' AFTER `created_hour`;
+ALTER TABLE `ws_conversion` ADD `created_week` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '周' AFTER `created_hour`;
+ALTER TABLE `ws_decoration_owner` ADD `created_week` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '周' AFTER `created_hour`;
+
 DROP TABLE ws_decoration;
 DROP TABLE ws_user;
 DELETE FROM `wp_auth_menu` WHERE `module` = 'spread' AND `controller` IN ('user', 'decoration');
@@ -16,11 +26,12 @@ UPDATE `wm_owner` AS `t1`, `wm_realcase` as `t2` SET `t1`.`realcase_id` = `t2`.`
 UPDATE `wm_owner` AS `t1`, `wm_working` as `t2` SET `t1`.`working_id` = `t2`.`id` WHERE `t1`.`id` = `t2`.`owner_id`;
 UPDATE `wm_owner` AS `t1`, (SELECT `owner_id`, COUNT(*) AS `count` FROM `wm_merchant_comment` GROUP BY `owner_id`) as `t2` SET `t1`.`num_comment` = `t2`.`count` WHERE `t1`.`id` = `t2`.`owner_id`;
 
+UPDATE `wm_merchant` SET `num_owner` = 0, `num_designer` = 0, `num_realcase` = 0, `num_working` = 0, `num_comment` = 0;
 UPDATE `wm_merchant` AS `t1`, (SELECT `merchant_id`, COUNT(*) AS `count` FROM `wm_owner` GROUP BY `merchant_id`) as `t2` SET `t1`.`num_owner` = `t2`.`count` WHERE `t1`.`id` = `t2`.`merchant_id`;
 UPDATE `wm_merchant` AS `t1`, (SELECT `merchant_id`, COUNT(*) AS `count` FROM `wm_designer` GROUP BY `merchant_id`) as `t2` SET `t1`.`num_designer` = `t2`.`count` WHERE `t1`.`id` = `t2`.`merchant_id`;
 UPDATE `wm_merchant` AS `t1`, (SELECT `merchant_id`, COUNT(*) AS `count` FROM `wm_realcase` GROUP BY `merchant_id`) as `t2` SET `t1`.`num_realcase` = `t2`.`count` WHERE `t1`.`id` = `t2`.`merchant_id`;
 UPDATE `wm_merchant` AS `t1`, (SELECT `merchant_id`, COUNT(*) AS `count` FROM `wm_working` GROUP BY `merchant_id`) as `t2` SET `t1`.`num_working` = `t2`.`count` WHERE `t1`.`id` = `t2`.`merchant_id`;
-UPDATE `wm_merchant` AS `t1`, (SELECT `merchant_id`, COUNT(*) AS `count` FROM `wm_merchant_comment` GROUP BY `merchant_id`) as `t2` SET `t1`.`num_` = `t2`.`count` WHERE `t1`.`id` = `t2`.`merchant_id`;
+UPDATE `wm_merchant` AS `t1`, (SELECT `merchant_id`, COUNT(*) AS `count` FROM `wm_merchant_comment` GROUP BY `merchant_id`) as `t2` SET `t1`.`num_comment` = `t2`.`count` WHERE `t1`.`id` = `t2`.`merchant_id`;
 
 UPDATE `wm_designer` AS `t1`, `wm_merchant` AS `t2` SET `t1`.`is_joined` = `t2`.`is_joined` WHERE `t1`.`merchant_id` = `t2`.`id`;
 UPDATE `wm_owner` AS `t1`, `wm_merchant` AS `t2` SET `t1`.`is_joined` = `t2`.`is_joined` WHERE `t1`.`merchant_id` = `t2`.`id`;
