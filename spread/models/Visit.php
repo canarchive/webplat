@@ -33,11 +33,11 @@ class Visit extends SpreadModel
             'template_code' => '模板代码',
             'keyword' => '关键字',
             'keyword_search' => '关键字',
-            'keywordid' => '关键字ID',
+            //'keywordid' => '关键字ID',
             'matchtype' => '匹配类型',
             'adposition' => '位置',
             'pagenum' => '页数',
-            'url' => 'URL',
+            //'url' => 'URL',
             'created_at' => '创建时间',
             'created_day' => '日期',
             'created_hour' => '小时',
@@ -52,21 +52,17 @@ class Visit extends SpreadModel
         $attributeParams = $this->getAttributeParams();
         $channel = Yii::$app->getRequest()->get('channel');
         foreach ($attributeParams as $field => $param) {
-            $paramValue = (Yii::$app->getRequest()->get($param, ''));
+            $paramValue = (Yii::$app->getRequest()->get($param['param'], ''));
             if ($field == 'keyword') {
-				$paramValue = $this->_formatUtf8Code($paramValue);
                 //$tmp = mb_convert_encoding($paramValue, 'utf-8');
                 //$paramValue = $paramValue == $tmp ? $paramValue : mb_convert_encoding($paramValue, 'utf-8', 'gbk');
+				$paramValue = $this->_formatUtf8Code($paramValue);
             }
             $data[$field] = $paramValue;
         }
+        $data['city_code'] = Yii::$app->request->get('city_code', '');
 
-        //$hostInfo = Yii::$app->request->hostInfo;
-        //$url = urlencode(Yii::$app->request->getUrl());
-        //$pathInfo = Yii::$app->request->pathInfo;
-        //$queryString = Yii::$app->request->queryString;
-        $urlFull = Yii::$app->request->referrer;
-        $urlFull = empty($urlFull) ? '' : $urlFull;
+        $urlFull = strval(Yii::$app->request->referrer);
 		$urlFull = $this->_formatUtf8Code($urlFull);
         $urlBase = substr($urlFull, 0, strpos($urlFull, '?'));
         $urlBase = empty($urlBase) ? $urlFull : $urlBase;
@@ -74,15 +70,10 @@ class Visit extends SpreadModel
         $data['url_full'] = $urlFull;
         $data['from_type'] = $isMobile ? 'h5' : 'pc';
 
-        $urlFullPre = Yii::$app->request->get('url_pre', '');
-		$urlFullPre = $this->_formatUtf8Code($urlFullPre);
+		$urlFullPre = Yii::$app->request->get('url_pre', '');
         $urlPre = substr($urlFullPre, 0, strpos($urlFullPre, '?'));
-        $urlPre = empty($urlPre) ? $urlFullPre : $urlPre;
-        $data['url_pre'] = $urlPre;
-        $data['url_full_pre'] = $urlFullPre;
-        $data['keyword_search'] = $this->_getKeywordSearch($urlFullPre);
-        $data['city_code'] = Yii::$app->request->get('city_code', '');
-		$data['keyword_search'] = $this->_getKeywordSearch($data['channel']);
+        $data['url_pre'] = empty($urlPre) ? $urlFullPre : $urlPre;
+		$this->_searchEngineDatas($data);
 
         $this->insert(true, $data);
 
@@ -141,7 +132,7 @@ class Visit extends SpreadModel
 				'param' => 'a_pagenum',
 				'default' => '{pagenum}',
 			],
-			'a_dongtai' => [
+			'dongtai' => [
 				'param' => 'a_dongtai',
 				'default' => '{dongtai}',
 			],
@@ -156,6 +147,10 @@ class Visit extends SpreadModel
 			'haoci' => [
 				'param' => 'haoci',
 				'default' => '{haoci}',
+			],
+			'dsp' => [
+				'param' => 'dsp',
+				'default' => '{dsp}',
 			],
 			'keywordid' => [
 				'param' => 'kid',
@@ -207,23 +202,41 @@ class Visit extends SpreadModel
         return $datas;
     }
 
-    protected function _getKeywordSearch($channelBig)
+    protected function _searchEngineDatas(& $data)
     {
-		$keywordSearch = '';
-		switch ($channelBig) {
-		case 'baidu':
-			$keywordSearch = Yii::$app->request->get('word');
-			break;
-		case 'sogou':
-			$keywordSearch = Yii::$app->request->get('keyword');
-		default:
+		$channelBig = $data['channel_big'];
+		$channelBigInfos =$this->channelBigInfos;
+		if (!in_array($channelBig, array_keys($channelBigInfos))) {
+			return ;
 		}
 
-        return $keywordSearch;
+		$keywordSearch = '';
+		switch ($channelBig) {
+		case 'bd':
+			$keywordSearch = Yii::$app->request->get('word');
+			break;
+		case 'sg':
+		    $urlPre = Yii::$app->request->get('url_pre', '');
+			$keywordSearch = str_replace('http://www.sogou.com/bill_cpc?query=', '', $urlPre);
+		default:
+		}
+		$data['keyword_search'] = $this->_formatutf8Code($keywordSearch);
     }
+
+	public function getChannelBigInfos()
+	{
+		$datas = [
+			'bd' => '百度',
+			'sg' => '搜狗',
+		];
+		return $datas;
+	}
 
     protected function _formatUtf8Code($string)
     {
+		if (empty($string)) {
+			return '';
+		}
         if (!preg_match('%^(?:
             [\x09\x0A\x0D\x20-\x7E]              # ASCII
             | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
