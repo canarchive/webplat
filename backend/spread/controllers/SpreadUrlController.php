@@ -27,6 +27,8 @@ class SpreadUrlController extends AdminController
 		$channelBigInfos = $model->channelBigInfos;
 		$channelBig = Yii::$app->request->get('channel_big');
 		$channelBig = in_array($channelBig, array_keys($channelBigInfos)) ? $channelBig : 'bd';
+		$channel = Yii::$app->request->get('channel');
+		$channel = !empty($channel) ? $channel : 'bedsem';
 		$params = require Yii::getAlias('@spread') . '/config/params.php';
 		$urlTypes = $params['spreadUrlTypes'];
 		$hostKeys = $params['hostKeys'];
@@ -38,6 +40,7 @@ class SpreadUrlController extends AdminController
 			'cityName' => $cInfos[$cityCode],
 			'channelBigInfos' => $channelBigInfos,
 			'channelBig' => $channelBig,
+			'channel' => $channel,
 			'hostKeys' => $hostKeys,
 			'urlTypes' => $urlTypes,
 			'pcDomain' => Yii::getAlias("@{$domainKey}spreadurl"),

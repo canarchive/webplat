@@ -44,6 +44,8 @@ $formName = $model->formName();
 						]
 					) ?>
 				</div>
+            </div>
+            <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">推广渠道</label>
                 <div class="col-md-2">
 					<?= Html::dropDownList(
@@ -56,6 +58,10 @@ $formName = $model->formName();
 						]
 					) ?>
 				</div>
+                <label class="control-label col-md-1">二级渠道</label>
+                <div class="col-md-1" style="padding-left:5px;padding-right:5px">
+					<input class="form-control" type="text" name="channel">
+                </div>
                 <input type="hidden" name="show_full" id="show_full" value="" />
                 <div class="col-md-3">
                     <?= Html::submitButton(Yii::t('app', '查看链接'), ['class' => 'btn btn-primary']) ?>
