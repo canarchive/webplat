@@ -60,6 +60,7 @@ function addCallback()
 	}
 	var data = {
 	    'mobile': '<?= $modelOwner->mobile; ?>',
+		'service_id': <?= $modelOwner->service_id; ?>,
 	    'operation': 'add',
 		'table': '<?= $tableName; ?>',
 	    'content': content,

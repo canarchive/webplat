@@ -59,7 +59,7 @@ $modelOwnerMerchantNew = new \merchant\house\models\OwnerMerchant();
 <script>
 function addHouseInfo()
 {
-	var fields = ['address', 'house_area', 'house_sort', 'house_type', 'buy_furniture', 'buy_building', 'renovation_at', 'renovation_step', 'renovation_budget', 'renovation_company'];
+	var fields = ['address', 'house_area', 'house_sort', 'house_type', 'renovation_at', 'renovation_budget'];
 	var dataValues = [];
 	for (var i = 0; i < fields.length; i++) {
 	//for (var field in fields) {
@@ -69,6 +69,7 @@ function addHouseInfo()
 	    'operation': 'add',
 		'table': '<?= $tableName; ?>',
 	    'mobile': '<?= $modelOwner->mobile; ?>',
+		'service_id': <?= $modelOwner->service_id; ?>
 	};
 	for (var field in dataValues) {
 		data[field] = dataValues[field];
@@ -93,6 +94,7 @@ function addMerchantInfo()
 	var data = {
 	    'operation': 'add',
 		'table': '<?= $tableNameMerchant; ?>',
+		'service_id': <?= $modelOwner->service_id; ?>,
 	    'mobile': '<?= $modelOwner->mobile; ?>'
 	};
 	for (var field in dataValues) {
