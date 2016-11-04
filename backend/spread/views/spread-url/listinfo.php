@@ -1,11 +1,14 @@
 <?php
-$fullSuffix = '?channel_big=' . $channelBig;
+$fullSuffix = '';
+$attributeParams = $model->attributeParams;
+$attributeParams['channel_big']['default'] = $channelBig;
+$attributeParams['channel']['default'] = $channel;
 if ($showFull) {
-	$fullSuffix = '?';
-	foreach ($model->attributeParams as $aInfo) { 
+	foreach ($attributeParams as $aInfo) { 
 		$fullSuffix .= "&{$aInfo['param']}={$aInfo['default']}";
 	}
 }
+$fullSuffix = '?' . ltrim($fullSuffix, '&');
 ?>
 <?= $this->render('_search', array_merge(['cInfos' => $cInfos, 'hostKeys' => $hostKeys, 'channelBigInfos' => $channelBigInfos], ['model' => $model])); ?>
 
@@ -13,7 +16,7 @@ if ($showFull) {
     <div class="summary">推广参数列表</div>
     <table class="table table-striped table-bordered">
         <tbody>
-			<?php $i= 0; foreach ($model->attributeParams as $field => $paramInfo) { ?>
+			<?php $i= 0; foreach ($attributeParams as $field => $paramInfo) { ?>
             <?php if ($i / 3 == 0) { echo '<tr data-key="">'; } ?>
 			    <td><?= $paramInfo['param'] . '--' . $paramInfo['default']; ?></td>
             <?php if ($i % 3 == 2) { echo '</tr>'; } ?>
