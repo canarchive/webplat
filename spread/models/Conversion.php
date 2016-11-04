@@ -15,6 +15,7 @@ class Conversion extends Visit
     public function attributeLabels()
     {
 		$attributes = parent::attributeLabels();
+		return $attributes;
     }
 
 	public function insert($runValidation = true, $attributes = null)
