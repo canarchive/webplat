@@ -31,7 +31,7 @@ $sendInfos = [
                         <?php foreach ($sendInfos as $key => $info) { ?>
                         <tr>
 						    <td><?= $info['name']; ?></td>
-							<td><a href="<?= $sendMenu['url']; ?>">发短信</a></td>
+							<td><a href="<?= $sendMenu['url'] . '?type=' . $key; ?>">发短信</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

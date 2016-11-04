@@ -18,9 +18,7 @@ class Conversion extends Visit
     public function attributeLabels()
     {
 		$attributes = parent::attributeLabels();
-        return array_merge($attributes, [
-			'info_id' => '信息ID',
-        ]);
+		return $attributes;
     }
 
 	public function insert($runValidation = true, $attributes = null)

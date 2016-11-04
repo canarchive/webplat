@@ -26,15 +26,14 @@ class Visit extends SpreadModel
     public function attributeLabels()
     {
         return [
-            'id' => '访问日志ID',
+            'id' => 'ID',
 			'channel_big' => '一级渠道',
-            'channel' => '推广渠道',
-            'from_type' => '客户端类型',
-            'template_code' => '模板代码',
+            'channel' => '渠道',
+            'from_type' => '客户端',
             'keyword' => '关键字',
             'keyword_search' => '搜索关键字',
             //'keywordid' => '关键字ID',
-            'matchtype' => '匹配类型',
+            'matchtype' => '匹配',
             'adposition' => '位置',
             'pagenum' => '页数',
             //'url' => 'URL',
@@ -214,6 +213,7 @@ class Visit extends SpreadModel
 		switch ($channelBig) {
 		case 'bd':
 			$keywordSearch = Yii::$app->request->get('word');
+			$keywordSearch = empty($keywordSearch) ? Yii::$app->request->get('wd') : $keywordSearch;
 			break;
 		case 'sg':
 		    $urlPre = Yii::$app->request->get('url_pre', '');
