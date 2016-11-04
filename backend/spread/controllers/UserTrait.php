@@ -39,14 +39,14 @@ trait UserTrait
 		$table = \Yii::$app->request->post('table');
 
 		if ($table == 'owner_house') {
-			$fields = ['mobile', 'decoration_id', 'address', 'house_area', 'house_sort', 'house_type', 'buy_furniture', 'buy_building', 'renovation_at', 'renovation_step', 'renovation_budget', 'renovation_company'];
+			$fields = ['mobile', 'service_id', 'address', 'house_area', 'house_sort', 'house_type', 'renovation_budget'];
 			$model = new \spread\decoration\models\OwnerHouse();
 		} else if ($table == 'callback') {
 			//$fields = ['mobile', 'content', 'note'];
-			$fields = ['mobile', 'content'];
+			$fields = ['mobile', 'service_id', 'content'];
 			$model = new \spread\models\Callback();
 		} else if ($table == 'owner_merchant') {
-			$fields = ['mobile', 'note', 'house_id', 'merchant_id'];
+			$fields = ['mobile', 'note', 'house_id', 'service_id', 'merchant_id'];
 			$model = new \merchant\house\models\OwnerMerchant();
 		} else {
 			return ['status' => 400, 'message' => '参数错误'];
