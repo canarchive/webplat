@@ -4,7 +4,7 @@ namespace gallerycms\components;
 
 use Yii;
 use yii\helpers\Url;
-use merchant\models\Company;
+use merchant\house\models\Company;
 
 class ModuleBase extends \yii\base\Module
 {
@@ -31,7 +31,7 @@ class ModuleBase extends \yii\base\Module
 		static $datas = null;
 		if (is_null($datas)) {
 		    $company = new Company();
-		    $datas = $company->getInfos(['status' => 1]);
+		    $datas = $company->getInfos(['status' => [1, 2]]);
 		}
 
 		return $datas;
