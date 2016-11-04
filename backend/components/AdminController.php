@@ -39,6 +39,9 @@ class AdminController extends Controller
      */
     protected function _listinfoInfo($searchModel, $searchDatas = [])
     {
+		if (!isset($_GET['sort'])) {
+			$_GET['sort'] = '-id';
+		}
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
         return $this->render('listinfo', [
             'dataProvider' => $dataProvider,
