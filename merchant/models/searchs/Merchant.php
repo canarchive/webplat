@@ -11,11 +11,13 @@ class Merchant extends MerchantModel
 {
 	public $created_at_start;
 	public $created_at_end;
+	public $updated_at_start;
+	public $updated_at_end;
 
     public function rules()
     {
         return [
-            [['name', 'city_code', 'is_joined', 'num_owner', 'status'], 'safe'],
+            [['name', 'city_code', 'is_joined', 'status', 'created_at_start', 'created_at_end', 'updated_at_start', 'updated_at_end'], 'safe'],
         ];
     }
 
@@ -41,6 +43,9 @@ class Merchant extends MerchantModel
 			'status' => $this->status,
 			'is_joined' => $this->is_joined,
 		]);
+
+		$this->searchTimeElem($query);
+		$this->searchTimeElem($query, 'updated_at');
 
         return $dataProvider;
     }
