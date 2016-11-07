@@ -2,6 +2,8 @@
 
 namespace merchant\models;
 
+use Yii;
+use common\components\IP;
 use Overtrue\Pinyin\Pinyin;
 use common\models\MerchantModel;
 
@@ -118,7 +120,13 @@ class Company extends MerchantModel
 
 	public function getInfoByIP($returnDefault = true)
 	{
-		$info = $this->findOne(['code_short' => 'bj']);
+        $ip = Yii::$app->getRequest()->getIP();
+        //$ip = '101.226.33.239';
+        //$attributes['ip'] = '123.57.148.73';
+        $city = IP::find($ip);
+        $city = isset($city[1]) ? $city[1] : '北京';
+        $info = $this->findOne(['name' => $city]);
+        $info = empty($info) ? $this->findOne(['code_short' => 'bj']) : $info;
 		return $info;
 	}
 
