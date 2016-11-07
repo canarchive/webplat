@@ -96,6 +96,11 @@ class Merchant extends MerchantModel
 		];
 		return $datas;
 	}	
+	public function beforeSave($insert)
+	{
+		$this->is_joined_change = $this->is_joined != $this->getOldAttribute('is_joined');
+		return true;
+	}
 
 	public function afterSave($insert, $changedAttributes)
 	{
@@ -104,6 +109,10 @@ class Merchant extends MerchantModel
 		$fields = ['logo', 'picture'];
 		$this->_updateSingleAttachment('merchant', $fields);
 		$this->_updateMulAttachment('merchant', 'aptitude');
+		//if (!$insert && $this->is_joined != $this->getOldAttribute('is_joined')) {
+		if (!$insert && $this->is_joined_change) {
+			$this->updateJoined();
+		}
 
 		return true;
 	}	
