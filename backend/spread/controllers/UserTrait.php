@@ -88,8 +88,8 @@ trait UserTrait
 		switch ($table) {
 		case 'activity_user':
 			$model = $this->findModel($infoId);
-			if ($field == 'callback_at') {
-			    $value = $model->callback_at > 0 ? $model->callback_at : time();
+			if ($field == 'callback_again') {
+			    $value = !empty($value) ? strtotime($value) : $model->callback_again;
 			}
 			break;
 		case 'owner_house':
@@ -100,7 +100,7 @@ trait UserTrait
 			break;
 		}
 		$model->$field = $value;
-		$model->update(false);
+		$r =$model->update(false);
 
 		return ['status' => 200, 'message' => 'OK'];
 	}

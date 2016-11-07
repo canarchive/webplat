@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 
+$model->callback_again = $model->callback_again > 0 ? $model->callback_again : time();
+echo date('Y-m-d H:i:s', $model->callback_again);
 $tableName = 'activity_user';
 ?>
 <div class="row">
@@ -73,15 +75,11 @@ $tableName = 'activity_user';
     					); ?>
                         </td>
 					    <td>
-
-						<input class="form-control" type="text" id="callback_again" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'callback_again', this.value)">
+                        <input type="hidden" id="callback_again_old" value="<?= date('Y-m-d H:i:s', $model->callback_again); ?>" />
+						<input class="form-control" type="text" id="callback_again" onblur="changeDate('<?= $tableName; ?>', <?= $model->id; ?>, 'callback_again', this.value)" value="<?= date('Y-m-d H:i:s', $model->callback_again); ?>">
                     <script type="text/javascript">
                         $(function () {
-                            $('#callback_again').datetimepicker({locale: 'zh-CN', format: 'YYYY-MM-DD HH:mm:ss'})
-							.on('changeDate', function(ev){
-								    if (ev.date.valueOf() < date-start-display.valueOf()){
-									}
-							});
+                            $('#callback_again').datetimepicker({locale: 'zh-CN', format: 'YYYY-MM-DD HH:mm:ss'});
 							//$('#callback_again').onchange = function () { alert('ss'); }
                         });
                     </script>
