@@ -187,6 +187,16 @@ function operationForSelected(url)
 	});
 }
 </script>
+<script>
+function changeDate(table, modelId, field, value)
+{
+    var valueOld = $("#" + field + '_old').val();
+    if (value != valueOld) {
+	    updateElemForUser(table, modelId, field, value);
+    }
+    $("#" + field + '_old').val(value);
+}
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
