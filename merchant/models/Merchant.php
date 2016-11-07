@@ -115,7 +115,6 @@ class Merchant extends MerchantModel
 	public function beforeSave($insert)
 	{
 		$this->is_joined_change = $this->is_joined != $this->getOldAttribute('is_joined');
-		var_dump($this->is_joined); var_dump($this->getOldAttribute('is_joined'));
 		return true;
 	}
 
@@ -129,14 +128,10 @@ class Merchant extends MerchantModel
 		$fields = ['logo', 'picture'];
 		$this->_updateSingleAttachment('merchant', $fields);
 		$this->_updateMulAttachment('merchant', 'aptitude');
-		var_dump($this->is_joined); var_dump($this->getOldAttribute('is_joined'));
 		//if (!$insert && $this->is_joined != $this->getOldAttribute('is_joined')) {
-		echo ';;;';var_dump($this->is_joined_change);
 		if (!$insert && $this->is_joined_change) {
 			$this->updateJoined();
 		}
-		exit();
-		return false;
 
 		return true;
 	}	
