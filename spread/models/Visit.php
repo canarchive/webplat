@@ -12,6 +12,7 @@ use yii\helpers\ArrayHelper;
  */
 class Visit extends SpreadModel
 {
+	public $rate;
     /**
      * @inheritdoc
      */
