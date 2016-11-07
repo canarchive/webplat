@@ -6,6 +6,7 @@ use Yii;
 use common\models\MerchantModel;
 use spread\decoration\models\DecorationOwner;
 use spread\decoration\models\OwnerHouse;
+use spread\decoration\models\OwnerDispatch;
 
 class OwnerMerchant extends MerchantModel
 {
@@ -60,17 +61,45 @@ class OwnerMerchant extends MerchantModel
 		return $infos;
 	}
 
+	public function getStatusWeighInfos()
+	{
+		$datas = Yii::$app->params['dispatchStatusInfos']['statusWeigh'];
+		return $datas;
+	}
+
+	public function getStatusOrderInfos()
+	{
+		$datas = Yii::$app->params['dispatchStatusInfos']['statusOrder'];
+		return $datas;
+	}
+
+	public function getIsInvalidInfos()
+	{
+		$datas = Yii::$app->params['dispatchStatusInfos']['isInvalid'];
+		return $datas;
+	}
+
 	public function getStatusInfos()
 	{
 		$datas = [
 			'0' => '派单',
 			'1' => '量房',
 			'2' => '签约',
-			'99' => '撤回',
+			'99' => '废单',
 		];
 
 		return $datas;
 	}
+
+	public function afterSave($insert, $changedAttributes)
+	{
+        parent::afterSave($insert, $changedAttributes);
+
+		$ownerDispatch = new OwnerDispatch();
+		$ownerDispatch->changeFromMerchant($this, $insert);
+
+		return true;
+	}	
 
 	public function getInfos($where, $limit = 500)
 	{
