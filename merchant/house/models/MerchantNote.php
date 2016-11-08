@@ -6,6 +6,9 @@ use common\models\MerchantModel;
 
 class MerchantNote extends MerchantModel
 {
+	private $_mobile;
+	private $_merchantInfo;
+
     /**
      * @inheritdoc
      */
@@ -39,5 +42,35 @@ class MerchantNote extends MerchantModel
 		$info = CustomService::findOne($this->service_id);
 
 		return $info;
+	}
+
+	public function getMobile()
+	{
+		if (!is_null($this->mobile)) {
+			return $this->_mobile;
+		}
+
+		$this->getDetailInfo();
+		return $this->_mobile;
+	}
+		
+	public function getDetailInfo()
+	{
+		$model = new OwnerMerchant();
+		$info = $model->findOne($this->owner_merchant_id);
+		$this->_mobile = isset($info->mobile) ? $info->mobile : '';
+		$this->_merchantInfo = [];
+		if (!empty($info->merchant_id)) {
+			$this->_merchantInfo = Merchant::findOne($info->merchant_id);
+		}
+	}
+
+	public function getMerchantInfo()
+	{
+		if (!is_null($this->_merchantInfo)) {
+			return $this->_merchantInfo;
+		}
+		$this->getDetailInfo();
+		return $this->_merchantInfo;
 	}
 }
