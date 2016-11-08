@@ -3,8 +3,10 @@
 namespace spread\decoration\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use common\models\SpreadModel;
 use spread\models\CustomService;
+use merchant\house\models\Company;
 
 class DecorationOwner extends SpreadModel
 {
@@ -26,10 +28,10 @@ class DecorationOwner extends SpreadModel
     {
         return [
             'id' => 'ID',
-			'use_id' => '用户ID',
+			'city_code' => '城市代码',
+			'service_id' => '客服',
 			'mobile' => '手机号',
 			'name' => '名字',
-			'type' => '家装类型',
 			'from_type' => '来源',
 			'signup_at' => '报名时间',
 			'signup_ip' => '报名IP',
@@ -127,11 +129,27 @@ class DecorationOwner extends SpreadModel
 		return $datas;
 	}
 
+	public function getSignupChannelInfos()
+	{
+		$datas = [
+			'semthird' => '第三方SEM',
+			'semspider' => 'SEM抓取',
+		];
+		return $datas;
+	}
+
+	protected function getCompanyInfos()
+	{
+		$infos = ArrayHelper::map(Company::find()->select('code_short, name')->where(['status' => 2])->all(), 'code_short', 'name');
+		return $infos;
+	}
+
 	public function updateAfterInsert($conversionInfo)
 	{
-		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
+		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'] || !empty($conversionInfo['keywork_search']))) {
 			$this->signup_channel = $conversionInfo['channel'];
 			$this->keyword = $conversionInfo['keyword'];
+			$this->keyword_search = $conversionInfo['keyword_search'];
 			$this->city_code = $conversionInfo['city_code'];
 		}
 		$this->update(false);
@@ -156,7 +174,9 @@ class DecorationOwner extends SpreadModel
 		$data = [
 			'mobile' => $this->mobile,
 			'name' => $this->name,
+			'city_code' => $this->city_code,
 			'position' => '',
+			//'channel_big' => 'seo',
 			'note' => $this->note,
 			'message' => '',
 			'city_input' => '',
@@ -168,6 +188,8 @@ class DecorationOwner extends SpreadModel
 		$serviceId = $this->service_id ? $this->service_id : null;
 		$decorationOwner = $this->addOwner($data, $serviceId);
 		$conversionModel = new \spread\models\Conversion();
+		$data['channel'] = $data['signup_channel'];
+		unset($data['signup_channel']);
 		$conversionInfo = $conversionModel->successLog($data);
 
 		return $decorationOwner;

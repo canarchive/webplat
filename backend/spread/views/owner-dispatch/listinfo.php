@@ -25,9 +25,9 @@ $gridViewParams = [
             },
         ],
 		[
-            'attribute' => 'status',
+            'attribute' => 'status_order',
 			'value' => function($model) {
-				return isset($model->statusInfos[$model->status]) ? $model->statusInfos[$model->status] : '';
+				return isset($model->statusOrderInfos[$model->status_order]) ? $model->statusOrderInfos[$model->status_order] : '';
 			}
 		]
     ],

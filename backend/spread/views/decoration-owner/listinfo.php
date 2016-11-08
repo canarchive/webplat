@@ -29,6 +29,7 @@ $columnsExts = [
 	0 => [
         //'message',
         'keyword',
+		'keyword_search',
         'note',
     ],
 	1 => [

@@ -32,7 +32,7 @@ class OwnerDispatch extends OwnerDispatchModel
 		$query->andFilterWhere(['like', 'mobile', $this->mobile]);
 		$query->andFilterWhere([
 			'service_id' => $this->service_id,
-			'status' => $this->status,
+			//'status' => $this->status,
 		]);
 
         return $dataProvider;
