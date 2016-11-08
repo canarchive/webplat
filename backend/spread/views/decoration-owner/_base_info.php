@@ -44,6 +44,7 @@ $tableName = 'activity_user';
 					    <th><?= $model->getAttributeLabel('status'); ?></th>
 					    <th><?= $model->getAttributeLabel('callback_again'); ?></th>
 					    <th><?= $model->getAttributeLabel('keyword'); ?></th>
+					    <th><?= $model->getAttributeLabel('keyword_search'); ?></th>
 					    <th><?= $model->getAttributeLabel('note'); ?></th>
 					    <th><?= $model->getAttributeLabel('message'); ?></th>
                     </tr>
@@ -85,6 +86,7 @@ $tableName = 'activity_user';
                     </script>
                         </td>
 					    <td><?= $model->keyword; ?></td>
+					    <td><?= $model->keyword_search; ?></td>
 					    <td><?= $model->note; ?></td>
 					    <td><?= $model->message; ?></td>
                     </tr>

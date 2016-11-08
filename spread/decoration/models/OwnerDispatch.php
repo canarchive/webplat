@@ -52,9 +52,13 @@ class OwnerDispatch extends SpreadModel
 		];
 	}
 
-	public function getStatusInfos()
+	public function getStatusOrderInfos()
 	{
-		$datas = Yii::$app->params['dispatchStatusInfos']['status'];
+		$datas = [
+			'0' => '跟踪中',
+			'1' => '成单',
+			'2' => '未成单',
+		];
 		return $datas;
 	}
 

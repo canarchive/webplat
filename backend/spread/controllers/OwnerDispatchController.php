@@ -41,17 +41,15 @@ class OwnerDispatchController extends AdminController
 
         $model = $this->findModel($id);
 		$mobile = $model->mobile;
-		$ownerMerchantInfos = \merchant\house\models\OwnerMerchant::findAll(['mobile' => $mobile]);
-		$noteInfos = \merchant\house\models\MerchantNote::findAll(['mobile' => $mobile]);
-		$callbackInfos = \spread\models\Callback::findAll(['mobile' => $mobile]);
-		$ownerHouseInfos = \spread\decoration\models\OwnerHouse::findAll(['mobile' => $model->mobile]);
+		$ownerMerchantInfos = \merchant\house\models\OwnerMerchant::find()->where(['mobile' => $mobile])->indexBy('id')->all();
+		$noteInfos = \merchant\house\models\MerchantNote::find()->where(['owner_merchant_id' => array_keys($ownerMerchantInfos)])->orderBy('created_at DESC, reply_at DESC')->all();
+		$callbackInfos = \spread\decoration\models\DispatchCallback::find()->where(['mobile' => $mobile])->orderBy('created_at DESC')->all();
 
 		$data = [
 			'model' => $model,
 			'ownerMerchantInfos' => $ownerMerchantInfos,
 			'noteInfos' => $noteInfos,
 			'callbackInfos' => $callbackInfos,
-			'ownerHouseInfos' => $ownerHouseInfos,
 		];
 
 		return $data;
@@ -59,13 +57,16 @@ class OwnerDispatchController extends AdminController
 
 	protected function _add()
 	{
-		$tables = ['callback'];
+		$tables = ['dispatch_callback', 'merchant_note'];
 		$table = Yii::$app->request->post('table');
 
-		if ($table == 'callback') {
-			//$fields = ['mobile', 'content', 'note'];
+		if ($table == 'dispatch_callback') {
 			$fields = ['mobile', 'service_id', 'content'];
-			$model = new \spread\models\Callback();
+			$model = new \spread\decoration\models\DispatchCallback();
+		} elseif ($table == 'merchant_note') {
+			$fields = ['owner_merchant_id', 'reply'];
+			$model = new \merchant\house\models\MerchantNote();
+			$model->reply_at = Yii::$app->params['currentTime'];
 		} else {
 			return ['status' => 400, 'message' => '参数错误'];
 		}
@@ -79,16 +80,19 @@ class OwnerDispatchController extends AdminController
 			'status' => 200, 
 			'message' => 'OK', 
 			'id' => $model->id, 
-			'created_at' => date('Y-m-m H:i:s', $model->created_at),
-			'content' => $content,
+			'created_at' => date('Y-m-d H:i:s', $model->created_at),
+			//'content' => $content,
 		];
+		if ($table == 'merchant_note') {
+			$return['reply_at'] = date('Y-m-d H:i:s', $model->reply_at);
+		}
 
 		return $return;
 	}
 
 	protected function _update()
 	{
-		$tables = ['callback'];
+		$tables = ['dispatch_callback', 'merchant_note'];
 		$table = Yii::$app->request->post('table');
 		$infoId = Yii::$app->request->post('info_id');
 		$field = Yii::$app->request->post('field');
@@ -98,8 +102,12 @@ class OwnerDispatchController extends AdminController
 		}
 
 		switch ($table) {
-		case 'callback':
+		case 'dispatch_callback':
 			$model = \spread\models\Callback::findOne($infoId);
+			break;
+		case 'merchant_note':
+			$model = \merchant\house\models\MerchantNote::findOne($infoId);
+			$model->reply_at = Yii::$app->params['currentTime'];
 			break;
 		}
 		$model->$field = $value;

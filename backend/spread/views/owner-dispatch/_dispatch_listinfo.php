@@ -12,6 +12,7 @@ $tableName = 'owner_merchant';
             <th><?= $modelNew->getAttributeLabel('view_at'); ?></th>
             <th><?= $modelNew->getAttributeLabel('status'); ?></th>
             <!--<th><?= $modelNew->getAttributeLabel('note'); ?></th>-->
+            <th>添加备注</th>
         </tr>
     </thead>
     <tbody id="owner_merchant_infos">
@@ -33,6 +34,7 @@ $tableName = 'owner_merchant';
             ); ?>
             </td>
             <!--<td><?= Html::textarea('note', $model->note, ['rows' => 2, 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'note', this.value)"]); ?></td>-->
+			<td><a href="javascript: void(0);" onclick="$('#note_merchant_name').text('<?= $merchantName; ?>'); $('#owner_merchant_id').val(<?= $model->id; ?>); $('#add_note').show();">派单</a></td>
         </tr>
         <?php } ?>
     </tbody>
