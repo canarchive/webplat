@@ -30,11 +30,9 @@ use yii\bootstrap\ActiveForm;
 }
 </style>
 <?php
-if (!empty($model)) {
-    echo $this->render('_base_info', ['model' => $model]);
-}
-echo $this->render('_listinfo_owner_house', ['modelOwner' => $model, 'ownerHouseInfos' => $ownerHouseInfos, 'ownerMerchantInfos' => $ownerMerchantInfos]);
-echo $this->render('_listinfo_callback', ['modelOwner' => $model, 'callbackInfos' => $callbackInfos]);
+echo $this->render('_base_info', ['model' => $model]);
+echo $this->render('_listinfo_owner_merchant', ['model' => $model, 'noteInfos' => $noteInfos, 'ownerMerchantInfos' => $ownerMerchantInfos]);
+echo $this->render('_listinfo_callback', ['model' => $model, 'callbackInfos' => $callbackInfos]);
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -78,13 +76,19 @@ function addElemForUser(data)
         success: function(response) {
 			var status = response.status;
 			if (status == 200) {
-				if (table == 'callback') {
+				if (table == 'dispatch_callback') {
 					var newContent = "<tr>"
 						+ "<td>" + data.content + "</td>"
 						+ "<td>" + response.created_at + "</td>"
 						+ "</tr>";
-				} else if (table == 'owner_house' || table == 'owner_merchant') {
-					var newContent = response.content;
+				} else if (table == 'merchant_note') {
+					var newContent = "<tr>"
+						+ "<td>" + data.merchantName + "</td>"
+						+ "<td></td>"
+						+ "<td></td>"
+						+ "<td>" + data.reply + "</td>"
+						+ "<td>" + response.reply_at + "</td>"
+						+ "</tr>";
 				}
                 ShowSuccessMessage("信息添加成功", 3000);
 				$("#" + table + "_infos").prepend(newContent);

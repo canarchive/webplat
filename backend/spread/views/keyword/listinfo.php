@@ -9,6 +9,12 @@ $gridViewParams = [
         'keyword',
 		'visit_num',
 		'visit_num_success',
+	    [
+			'attribute' => 'rate',
+			'value' => function ($model) {
+				return number_format($model->visit_num_success / $model->visit_num, 3) * 100 . '%';
+			}
+        ],
 		'pc_num',
 		'pc_num_success',
 		'h5_num',

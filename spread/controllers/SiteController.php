@@ -28,7 +28,6 @@ class SiteController extends SpreadController
 		$method = Yii::$app->getRequest()->method;
 		$isMobile = $this->clientIsMobile();
 		if ($channel && $method == 'GET') {
-			echo $channel;
 			$visit = new \spread\models\Visit();
 			$visit->writeVisitLog($isMobile);
 		}

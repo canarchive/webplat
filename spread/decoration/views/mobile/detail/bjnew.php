@@ -20,17 +20,17 @@ if (isMobile == 0) {
 <header class="cWhite cMdGray clearfix">
     <div class="tit_top">
         <div class="left">
-			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/logo.png" alt="">
+			<img src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/logonew.jpg" alt="">
         </div>
         <div class="f12 text_tit">
-		    <p>中国家装十大电商平台   7年服务700万用户</p>
+		    <p>中国领先互联网装修平台</p>
         </div>
     </div>
 </header>
 <!-- 正文 start -->
 <div class="container" data-page="budget-index">
     <!-- 标题栏 start -->
-    <a href="#"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/baojia-banner-o.jpg" alt=""></a>
+    <a href="#"><img class="img100" src="<?= Yii::getAlias('@asseturl'); ?>/spread/house/baojia/images/banner.jpg" alt=""></a>
     <div class="mask-layer1 zp-mask-layer1"></div>
     <!-- 标题栏 end -->
     <!-- 表格视图-->

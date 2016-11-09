@@ -17,18 +17,4 @@ class DispatchController extends AdminController
         $searchModel = new OwnerMerchantSearch();
 		return $this->_listinfoInfo($searchModel);
     }
-
-    public function actionView($id)
-    {
-		return $this->_viewInfo($id);
-    }
-
-    public function actionUpdate($id = 0)
-    {
-		if (Yii::$app->request->isAjax) {
-		    return $this->_updateByAjax();
-		}
-
-		return $this->_updateInfo($id);
-    }
 }

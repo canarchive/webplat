@@ -1,5 +1,11 @@
 <?php
 return [
+'hostKeys' => [
+    '' => '本站',
+    'bx' => '客户帐户',
+    'jia' => '家装',
+    'btc' => '搜狗',
+],
 'spreadUrlTypes' => [
     'baojia' => [
         'name' => '免费报价(兔狗)',
@@ -79,6 +85,12 @@ return [
 		'name' => 'PC报名（jia)',
 		'pc' => true,
 		'mobile' => false,
+		'main' => 'main-base',
+	],
+	'bjmh' => [
+		'name' => '美猴报价报名（jia)',
+		'pc' => false,
+		'mobile' => true,
 		'main' => 'main-base',
 	],
 ],

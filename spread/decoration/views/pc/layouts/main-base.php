@@ -52,7 +52,7 @@ $formPositionName = isset($this->params['formPositionName']) ? $this->params['fo
 <script type="text/javascript">
 window.BASE_URL = "<?= Yii::getAlias('@gallerycmsurl'); ?>";
 window.ASSET_URL = '<?= Yii::getAlias('@asseturl'); ?>';
-window.signupUrl = '<?= Yii::getAlias('@spreadurl') . '/jz-signup.html'; ?>';
+window.signupUrl = '<?= Yii::getAlias('@web') . '/jz-signup.html'; ?>';
 window.SPREAD_URL = '<?= Yii::getAlias('@web'); ?>';
 </script>
 <?= $this->render('@spread/decoration/views/_stat', []); // 顶部 ?>

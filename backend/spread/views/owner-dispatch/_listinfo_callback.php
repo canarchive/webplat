@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Html;
 
-$tableName = 'callback';
-$modelNew = new \spread\models\Callback();
+$tableName = 'dispatch_callback';
+$modelNew = new \spread\decoration\models\DispatchCallback();
 ?>
 <div class="row">
     <div class="box col-md-12">
@@ -36,7 +36,7 @@ $modelNew = new \spread\models\Callback();
                             <th><?= $modelNew->getAttributeLabel('created_at'); ?></th>
                         </tr>
                     </thead>
-					<tbody id="callback_infos">
+					<tbody id="dispatch_callback_infos">
                     <?php foreach ($callbackInfos as $model) { ?>
 						<tr>
 							<td><?= $model->content; ?></td>
@@ -59,8 +59,8 @@ function addCallback()
 		return false;
 	}
 	var data = {
-	    'mobile': '<?= $modelOwner->mobile; ?>',
-		'service_id': <?= $modelOwner->service_id; ?>,
+	    'mobile': '<?= $model->mobile; ?>',
+		'service_id': <?= $model->service_id; ?>,
 	    'operation': 'add',
 		'table': '<?= $tableName; ?>',
 	    'content': content,
