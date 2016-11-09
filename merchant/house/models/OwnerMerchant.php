@@ -14,6 +14,7 @@ class OwnerMerchant extends MerchantModel
 	public $houseAddress;
 	public $houseArea;
 	public $houseType;
+	public $note;
 
     /**
      * @inheritdoc
@@ -61,24 +62,6 @@ class OwnerMerchant extends MerchantModel
 		return $infos;
 	}
 
-	public function getStatusWeighInfos()
-	{
-		$datas = Yii::$app->params['dispatchStatusInfos']['statusWeigh'];
-		return $datas;
-	}
-
-	public function getStatusOrderInfos()
-	{
-		$datas = Yii::$app->params['dispatchStatusInfos']['statusOrder'];
-		return $datas;
-	}
-
-	public function getIsInvalidInfos()
-	{
-		$datas = Yii::$app->params['dispatchStatusInfos']['isInvalid'];
-		return $datas;
-	}
-
 	public function getStatusInfos()
 	{
 		$datas = [
@@ -103,6 +86,7 @@ class OwnerMerchant extends MerchantModel
 
 	public function getInfos($where, $limit = 500)
 	{
+		$noteModel = new MerchantNote();
 		$infos = $this->find()->where($where)->indexBy('id')->orderBy(['id' => SORT_DESC])->limit($limit)->all();
 		foreach ($infos as & $info) {
 			$ownerInfo = DecorationOwner::find()->where(['mobile' => $info['mobile']])->orderBy(['id' => SORT_DESC])->one();
@@ -111,6 +95,8 @@ class OwnerMerchant extends MerchantModel
 			$info['houseAddress'] = !empty($houseInfo) ? $houseInfo->address : '';
 			$info['houseArea'] = !empty($houseInfo) ? $houseInfo->house_area : '';
 			$info['houseType'] = !empty($houseInfo) && !empty($houseInfo->house_type) ? $houseInfo->houseTypeInfos[$houseInfo->house_type] : '';
+			$noteInfo = $noteModel->find()->where(['owner_merchant_id' => $info->id])->orderBy('reply_at DESC')->one();
+			$info['note'] = isset($noteInfo['reply']) ? $noteInfo['reply'] : '';
 		}
 		return $infos;
 	}

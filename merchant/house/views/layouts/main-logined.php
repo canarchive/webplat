@@ -9,7 +9,7 @@ $this->params['jsFooterFiles'] = isset($this->params['jsFooterFiles']) ? $this->
 
 $currentNav = isset($this->params['currentNav']) ? $this->params['currentNav'] : 'index';
 ?>
-<?php $this->beginContent('@merchant/views/layouts/main-base.php'); ?>
+<?php $this->beginContent('@merchant/house/views/layouts/main-base.php'); ?>
 <div class="off-canvas-wrap">
     <div class="inner-wrap">
         <header class="header hide-for-small">
