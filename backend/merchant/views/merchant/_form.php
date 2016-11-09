@@ -82,6 +82,7 @@ $model->aptitude = $attachmentModel->getFieldIds('merchant', 'aptitude', $model-
     ?> 
     <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
+    <?= $form->field($model, 'is_joined')->dropDownList($model->isJoinedInfos, ['prompt' => Yii::t('admin-common', 'Select Is joined')]); ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>
     <?php ActiveForm::end(); ?>

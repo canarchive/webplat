@@ -6,4 +6,6 @@ return [
 	'signup' => '/housesite/signup',
 
 	'self' => '/house/info/index',
+	'message' => '/house/owner/message',
+	'notelist' => '/house/owner/notelist',
 ];

@@ -12,6 +12,7 @@ use yii\helpers\ArrayHelper;
 class Merchant extends MerchantModel
 {
 	//public $companyInfo;
+	public $is_joined_change;
 	public $aptitude;
 	public $nameUrl;
     
@@ -42,7 +43,7 @@ class Merchant extends MerchantModel
         return [
             [['name', 'city_code'], 'required'],
 			[['logo', 'picture'], 'integer'],
-			[['logo', 'picture', 'category_id', 'status', 'num_owner', 'num_realcase', 'num_working', 'score', 'praise'], 'default', 'value' => '0'],
+			[['is_joined', 'logo', 'picture', 'category_id', 'status', 'num_owner', 'num_realcase', 'num_working', 'score', 'praise'], 'default', 'value' => '0'],
 			[['aptitude', 'sort', 'hotline', 'postcode', 'brief', 'address', 'description'], 'safe'],
         ];
     }
@@ -82,6 +83,15 @@ class Merchant extends MerchantModel
         ];
     }
 
+	protected function getIsJoinedInfos()
+	{
+		$datas = [
+			'0' => '未合作',
+			'1' => '合作',
+		];
+		return $datas;
+	}	
+
 	protected function getStatusInfos()
 	{
 		$datas = [
@@ -102,17 +112,38 @@ class Merchant extends MerchantModel
 		];
 		return $datas;
 	}	
+	public function beforeSave($insert)
+	{
+		$this->is_joined_change = $this->is_joined != $this->getOldAttribute('is_joined');
+		return true;
+	}
 
 	public function afterSave($insert, $changedAttributes)
 	{
+		echo 'oooooo';
+		print_r($changedAttributes);
+		print_r($this->getDirtyAttributes());
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['logo', 'picture'];
 		$this->_updateSingleAttachment('merchant', $fields);
 		$this->_updateMulAttachment('merchant', 'aptitude');
+		//if (!$insert && $this->is_joined != $this->getOldAttribute('is_joined')) {
+		if (!$insert && $this->is_joined_change) {
+			$this->updateJoined();
+		}
 
 		return true;
 	}	
+
+	public function updateJoined() {}
+
+	public function afterDelete()
+	{
+		$this->deleteSubInfos();
+	}
+
+	public function deleteSubInfos(){}
 
 	protected function getCompanyInfos()
 	{
@@ -128,21 +159,12 @@ class Merchant extends MerchantModel
 
 	public function getInfo($id)
 	{
-        /*$key = "decorationsem_decoration_info_{$id}";
-        $info = false;// \Yii::$app->cacheRedis->get($key);
-        if ($info) {
-			$info['signup_number'] = $this->getSignupNumber($id);
-            return $info;
-		}*/
-
 		$info = static::find()->where(['id' => $id])->one();//->toArray();
 		if (empty($info)) {
 			return $info;
 		}
 
 		$info = $this->_formatInfo($info);
-
-        //\Yii::$app->cacheRedis->set($key, $info);
 		return $info;
 	}
 
