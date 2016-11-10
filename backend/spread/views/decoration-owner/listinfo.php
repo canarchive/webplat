@@ -10,7 +10,7 @@ $columnsBase = [
     'city_code',
     'name',
     'mobile',
-    'signup_channel',
+    'channel',
     [
         'attribute' => 'signup_at',
         'value'=> function($model){

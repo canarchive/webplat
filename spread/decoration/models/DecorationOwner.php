@@ -37,7 +37,7 @@ class DecorationOwner extends SpreadModel
 			'signup_ip' => '报名IP',
 			'signup_city' => '报名城市',
 			'channel_big' => '一级渠道',
-			'signup_channel' => '报名渠道',
+			'channel' => '报名渠道',
 			'message' => '留言',
 			'note' => '备注',
 			'keyword' => '关键字',
@@ -56,9 +56,15 @@ class DecorationOwner extends SpreadModel
         $ip = \Yii::$app->getRequest()->getIP();
 		$city = \common\components\IP::find($ip);
 		$city = is_array($city) ? implode('-', $city) : $city;
+		$time = Yii::$app->params['currentTime'];
         $data = array_merge($data, [
-            'signup_at' => Yii::$app->params['currentTime'],
-            'signup_at_first' => Yii::$app->params['currentTime'],
+            'signup_at' => $time,
+            'signup_at_first' => $time,
+            'created_month' => date('Ym', $time),
+            'created_day' => date('Ymd', $time),
+            'created_hour' => date('H', $time),
+            'created_week' => date('W', $time),
+            'created_weekday' => date('N', $time),
             'signup_num' => 1,
             'signup_ip' => $ip,
             'signup_city' => $city,
@@ -147,11 +153,13 @@ class DecorationOwner extends SpreadModel
 	public function updateAfterInsert($conversionInfo)
 	{
 		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'] || !empty($conversionInfo['keywork_search']))) {
-			$this->signup_channel = $conversionInfo['channel'];
+			$this->channel = $conversionInfo['channel'];
 			$this->keyword = $conversionInfo['keyword'];
-			$this->keyword_search = $conversionInfo['keyword_search'];
+			$this->keyword_search = isset($conversionInfo['keyword_search']) ? $conversionInfo['keyword_search'] : '';
 			$this->city_code = $conversionInfo['city_code'];
 		}
+		//print_r($this->toArray());exit();
+		$this->statisticRecord($this->toArray(), 'signup');
 		$this->update(false);
 		return ;
 	}
@@ -183,13 +191,11 @@ class DecorationOwner extends SpreadModel
 			'form_type' => '',
 			'from_type' => 'pc',
 			'area_input' => 0,
-			'signup_channel' => $this->signup_channel,
+			'channel' => $this->channel,
 		];
 		$serviceId = $this->service_id ? $this->service_id : null;
 		$decorationOwner = $this->addOwner($data, $serviceId);
 		$conversionModel = new \spread\models\Conversion();
-		$data['channel'] = $data['signup_channel'];
-		unset($data['signup_channel']);
 		$conversionInfo = $conversionModel->successLog($data);
 
 		return $decorationOwner;
