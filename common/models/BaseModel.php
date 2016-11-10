@@ -372,4 +372,31 @@ class BaseModel extends ActiveRecord
 		$num = $type == 'add' ? 1 : -1;
 		$this->updateCounters(['num_' . $field => $num]);
 	}
+
+	public function statisticRecord($data, $type)
+	{
+		$keywordTypes = ['visit', 'signup'];
+		if (in_array($type, $keywordTypes)) {
+            $keyword = new \spread\models\statistic\Keyword();
+            $keyword->recordData($data, $type);
+		}
+
+		$reportTypes = ['visit', 'signup'];
+		if (in_array($type, $reportTypes)) {
+            $report = new \spread\models\statistic\Report();
+            $report->recordData($data, $type);
+		}
+
+		$reportServiceTypes = ['signup'];
+		if (in_array($type, $reportServiceTypes)) {
+            $reportServiceService = new \spread\models\statistic\ReportService();
+            $reportServiceService->recordData($data, $type);
+		}
+
+		$dispatchTypes = ['dispatch'];
+		if (in_array($type, $dispatchTypes)) {
+            $dispatch = new \spread\models\statistic\Dispatch();
+            $dispatch->recordData($data, $type);
+		}
+	}
 }
