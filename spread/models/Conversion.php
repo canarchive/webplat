@@ -61,12 +61,8 @@ class Conversion extends Visit
 		$insertInfo = array_merge($insertInfo, $spreadInfo);
 
 		$conversion = new Conversion();
-		$conversion->insert(false, $insertInfo);
-
-		if (isset($insertInfo['keyword'])) {
-		    $keywordModel = new \spread\models\Keyword();
-		    $keywordModel->recordKeyword($insertInfo['keyword'], $insertInfo['from_type'], true);
-		}
+		$newData = $conversion->insert(false, $insertInfo);
+		//$this->statisticRecord($newData, 'signup');
 
 		return $insertInfo;
 	}

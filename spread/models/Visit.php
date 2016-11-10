@@ -75,26 +75,28 @@ class Visit extends SpreadModel
         $data['url_pre'] = empty($urlPre) ? $urlFullPre : $urlPre;
 		$this->_searchEngineDatas($data);
 
-        $this->insert(true, $data);
+        $newData = $this->insert(true, $data);
 
         $session = Yii::$app->session;
         $data['time'] = time();
         $session['session_spread_info'] = $data;
 
-        $keywordModel = new \spread\models\Keyword();
-        $keywordModel->recordKeyword($data['keyword'], $data['from_type']);
+		$this->statisticRecord($newData, 'visit');
 
         return $data;        
     }
 
     public function insert($runValidation = true, $attributes = null)
     {
-        $time = time();
+        $time = Yii::$app->params['currentTime'];
         $day = date('Ymd', $time);
         $hour = date('H', $time);
         $attributes['created_at'] = $time;
+        $attributes['created_month'] = date('Ym', $time);
         $attributes['created_day'] = date('Ymd', $time);
         $attributes['created_hour'] = date('H', $time);
+        $attributes['created_week'] = date('W', $time);
+        $attributes['created_weekday'] = date('N', $time);
         $attributes['ip'] = Yii::$app->getRequest()->getIP();
         //$attributes['ip'] = '123.57.148.73';
         $city = \common\components\IP::find($attributes['ip']);
@@ -105,7 +107,7 @@ class Visit extends SpreadModel
             return false;
         }
 
-        return true;
+        return $attributes;
     }    
 
     public function getAttributeParams()
