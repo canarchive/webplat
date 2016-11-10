@@ -10,7 +10,7 @@ $detailViewParams = [
 		'from_type',
 		'signup_ip',
 		'signup_city',
-		'signup_channel',
+		'channel',
 		'keyword',
 		[
             'attribute' => 'signup_at',

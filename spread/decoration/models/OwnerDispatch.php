@@ -9,7 +9,6 @@ class OwnerDispatch extends SpreadModel
 {
 	public $houseInfo;
 	public $statusModel;
-	public $statusChange;
 
     /**
      * @inheritdoc
@@ -64,7 +63,6 @@ class OwnerDispatch extends SpreadModel
 
 	public function beforeSave($insert)
 	{
-		$this->statusChange = $this->status != $this->getOldAttribute('status');
 		return true;
 	}
 
@@ -84,25 +82,20 @@ class OwnerDispatch extends SpreadModel
 		$exist = self::findOne(['mobile' => $data['mobile'], 'house_id' => $data['house_id']]);
 		if (!$exist) {
 			$newData = [
+				'city_code' => $data['city_code'],
 				'mobile' => $data['mobile'],
 				'house_id' => $data['house_id'],
 				'service_id' => $data['service_id'],
-				'sttaus' => $data['status'],
 				'num_merchant' => 1,
 			];
 			$model = new self($newData);
-			$model->insert();
+			$model->insert(false);
 			return ;
 		}
 
 		if ($insert) {
 		    $exist->updateCounters(['num_merchant' => 1]);
 
-		}
-
-		if ($exist['status'] != $data['status']) {
-			$exist['status'] = $data['status'];
-			$exist->update(false);
 		}
 	}
 }

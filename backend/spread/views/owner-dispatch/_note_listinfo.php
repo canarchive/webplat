@@ -20,7 +20,7 @@ $tableName = 'merchant_note';
 			<td><?php $merchantName = isset($model->merchantInfo['name']) ? $model->merchantInfo['name'] : ''; echo $merchantName; ?></td>
             <td><?= $model->content . $model->owner_merchant_id; ?></td>
             <td><?= date('Y-m-d H:i:s', $model->created_at); ?></td>
-            <td><?= Html::textarea('reply', $model->reply, ['rows' => 2, 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'reply', this.value)"]); ?></td>
+            <td><?= Html::textarea('reply', $model->reply, ['rows' => 1, 'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'reply', this.value)"]); ?></td>
             <td><?php if ($model->reply_at > 0) { echo date('Y-m-d H:i:s', $model->reply_at); } ?></td>
         </tr>
         <?php } ?>

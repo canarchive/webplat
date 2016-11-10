@@ -42,7 +42,7 @@ class OwnerDispatchController extends AdminController
         $model = $this->findModel($id);
 		$mobile = $model->mobile;
 		$ownerMerchantInfos = \merchant\house\models\OwnerMerchant::find()->where(['mobile' => $mobile])->indexBy('id')->all();
-		$noteInfos = \merchant\house\models\MerchantNote::find()->where(['owner_merchant_id' => array_keys($ownerMerchantInfos)])->orderBy('created_at DESC, reply_at DESC')->all();
+		$noteInfos = \merchant\house\models\MerchantNote::find()->where(['owner_merchant_id' => array_keys($ownerMerchantInfos)])->orderBy('owner_merchant_id DESC, created_at DESC, reply_at DESC')->all();
 		$callbackInfos = \spread\decoration\models\DispatchCallback::find()->where(['mobile' => $mobile])->orderBy('created_at DESC')->all();
 
 		$data = [
