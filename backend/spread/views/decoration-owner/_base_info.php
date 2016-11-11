@@ -22,7 +22,7 @@ $tableName = 'activity_user';
 					    <th><?= $model->getAttributeLabel('name'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_at'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_city'); ?></th>
-					    <th><?= $model->getAttributeLabel('signup_channel'); ?></th>
+					    <th><?= $model->getAttributeLabel('channel'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_num'); ?></th>
                     </tr>
                     </thead>
@@ -32,7 +32,7 @@ $tableName = 'activity_user';
 						<td><input type="text" name="name" value="<?= $model->name; ?>" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'name', this.value);"/></td>
 					    <td><?= date('Y-m-d H:i:s', $model->signup_at); ?></td>
 					    <td><?= $model->signup_city; ?></td>
-					    <td><?= $model->signup_channel; ?></td>
+					    <td><?= $model->channel; ?></td>
 					    <td><?= $model->signup_num; ?></td>
                     </tr>
                     </tbody>

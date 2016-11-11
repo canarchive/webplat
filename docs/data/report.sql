@@ -1,3 +1,18 @@
+ALTER TABLE `ws_visit` ADD `created_month` INT(10) NOT NULL DEFAULT '0' COMMENT '月份' AFTER `created_at`;
+ALTER TABLE `ws_decoration_owner` ADD `created_month` INT(10) NOT NULL DEFAULT '0' COMMENT '月份' AFTER `created_at`;
+ALTER TABLE `ws_conversion` ADD `created_month` INT(10) NOT NULL DEFAULT '0' COMMENT '月份' AFTER `created_at`;
+
+ALTER TABLE `ws_decoration_owner` ADD `customer_id` SMALLINT(5) NOT NULL DEFAULT '0' COMMENT '客户ID' AFTER `id`;
+ALTER TABLE `ws_visit` ADD `customer_id` SMALLINT(5) NOT NULL DEFAULT '0' COMMENT '客户ID' AFTER `id`;
+ALTER TABLE `ws_decoration_owner` ADD `is_weigh` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '是否量房' AFTER `created_weekday`, ADD `is_order` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '是否成单' AFTER `is_weigh`;
+
+ALTER TABLE `ws_visit` ADD `created_weekday` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '周几' AFTER `created_week`;
+ALTER TABLE `ws_decoration_owner` ADD `created_weekday` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '周几' AFTER `created_week`;
+ALTER TABLE `ws_decoration_owner` CHANGE `signup_channel` `channel` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '渠道';
+
+
+
+
 TRUNCATE `workhouse_statistic`.`ws_day`;
 INSERT INTO `workhouse_statistic`.`ws_day`(`day`, `visit_num`) SELECT `created_day`, COUNT(*) FROM `workhouse_spread`.`ws_visit` GROUP BY `created_day`;
 REPLACE INTO `workhouse_statistic`.`ws_day`(`day`) SELECT `created_day` FROM `workhouse_spread`.`ws_decoration_owner` GROUP BY `created_day`;

@@ -24,7 +24,7 @@ if ($this->context->isService) {
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'mobile')->textInput() ?>
     <?= $form->field($model, 'city_code')->dropDownList($model->companyInfos, ['prompt' => '']); ?>
-    <?= $form->field($model, 'signup_channel')->dropDownList($model->signupChannelInfos, ['prompt' => '']); ?>
+    <?= $form->field($model, 'channel')->dropDownList($model->signupChannelInfos, ['prompt' => '']); ?>
     <?= $form->field($model, 'service_id')->dropDownList($customInfos, ['prompt' => '']); ?>
     <?= $form->field($model, 'note')->textarea(['rows' => 2]) ?>
 
