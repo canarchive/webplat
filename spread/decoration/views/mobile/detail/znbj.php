@@ -20,9 +20,10 @@ $this->params['formPositionName'] = '活动推广-报价new';
     <h1 class="back-home-page">
         <a class="zxzs-set" dataptag="2_3_10_487" href="<?= Yii::getAlias('@m.gallerycmsurl'); ?>">
             <span class="icon-tbt"></span>
-            <b>首页</b>
+            <!--<b>首页</b>-->
         </a>
     </h1>
+    <div style="margin-left:108px; margin-top:-48px; font-size:12px; font-family:'微软雅黑'；">中国领先互联网装修平台</div>
     <!--右边导航按钮-->
     <!--<nav id="dt-hd-nav">
         <i class="icon-dt-hd navigation" id="add_nav_hovers"></i>
@@ -87,7 +88,7 @@ $(function() {
                 </label>
             </div>-->
             <div>
-                <input type="tel" id="newPhone" name="phone" placeholder="输入号码，查询装修报价"></div>
+                <input type="tel" id="newPhone" name="phone" placeholder="输入手机号，查询装修报价"></div>
 			<input id="zxd-form-submit" class="ptag-set" type="button" dataptag="2_4_19_594" value="立即计算">
         </form>
     </div>

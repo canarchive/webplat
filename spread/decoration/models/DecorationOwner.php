@@ -153,6 +153,7 @@ class DecorationOwner extends SpreadModel
 	public function updateAfterInsert($conversionInfo)
 	{
 		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'] || !empty($conversionInfo['keywork_search']))) {
+			$this->channel_big = $conversionInfo['channel_big'];
 			$this->channel = $conversionInfo['channel'];
 			$this->keyword = $conversionInfo['keyword'];
 			$this->keyword_search = isset($conversionInfo['keyword_search']) ? $conversionInfo['keyword_search'] : '';

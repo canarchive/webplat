@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 
 $model->callback_again = $model->callback_again > 0 ? $model->callback_again : time();
-echo date('Y-m-d H:i:s', $model->callback_again);
 $tableName = 'activity_user';
 ?>
 <div class="row">

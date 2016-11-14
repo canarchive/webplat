@@ -53,7 +53,8 @@ use yii\helpers\Url;
             <p>商家合作：
 				<span><?= Yii::$app->params['siteJoinusTel']; ?></span>
             </p>
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?= Yii::$app->params['siteCustomServiceQQ']; ?>&site=qq&menu=yes">在线咨询</a>
+            <!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?= Yii::$app->params['siteCustomServiceQQ']; ?>&site=qq&menu=yes">在线咨询</a>-->
+		    <a href="http://p.qiao.baidu.com/cps/chat?siteId=10007305&userId=22510942" target="_blank">在线咨询</a>
 			<!--<a onclick="nTalk.im_openInPageChat();">在线咨询</a>-->
         </div>
         <div class="item code fn-right">
