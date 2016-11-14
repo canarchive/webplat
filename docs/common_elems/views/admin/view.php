@@ -5,6 +5,10 @@ $detailViewParams = [
     'attributes' => [
         'username',
 		[
+			'attribute' => 'merchant_id',
+			'value' => isset($model->merchantInfos[$model->merchant_id]) ? $model->merchantInfos[$model_id] : $model->merchant_id,
+		],		
+		[
             'attribute' => 'created_at',
             'value'=> date('Y-m-d H:i:s',$model->created_at),
         ],

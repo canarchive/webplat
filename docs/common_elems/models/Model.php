@@ -93,4 +93,44 @@ class Model
 
 		return $datas;
 	}
+
+	public function checkBindGroupon($grouponId)
+	{
+		$bindInfo = GrouponBrand::findOne(['groupon_id' => $grouponId, 'brand_id' => $this->id]);
+
+		return empty($bindInfo) ? false : true;
+	}
+
+	public function getService()
+	{
+		$info = CustomService::findOne($this->service_id);
+
+		return $info;
+	}
+
+	public function getInfos($grouponId)
+	{
+		/*$infos = $this->find()->where(['groupon_id' => $grouponId])->orderBy(['orderlist' => SORT_DESC])->asArray()->all();
+		$model = new self();
+		foreach ($infos as $key => & $info) {
+			$brand = Brand::findOne($info['brand_id'])->toArray();
+			$brand['logo'] = $model->getAttachmentUrl($brand['logo']);
+			$info = array_merge($brand, $info);
+		}*/
+		$cache = \Yii::$app->cache;
+		$keyCache = 'groupon_brand';
+		$data = $cache->get($keyCache);
+		if ($data) {
+			return $data;
+		}
+
+		$infos = Brand::find()->orderBy(['orderlist' => SORT_DESC])->all();
+		foreach ($infos as $key => $info) {
+			$info['logo'] = $info->getAttachmentUrl($info['logo']);
+			$infos[$key] = $info->toArray();
+		}
+        $cache->set($keyCache, $infos);
+
+		return $infos;
+	}	
 }
