@@ -2,7 +2,8 @@
 <div class="apply-bar app-hide">
     <ul>
         <li class="consult-submit">
-			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3237822793&site=qq&menu=yes">
+			<!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3237822793&site=qq&menu=yes">-->
+		    <a href="http://p.qiao.baidu.com/cps/chat?siteId=10007305&userId=22510942" target="_blank">
 			<span class="icon partial-sprite sprite-icon-dialog"></span>我要咨询
             </a>
         </li>
@@ -11,9 +12,9 @@
         </li>
     </ul>
 </div>
-<!--<div class="list-consult app-hide" onclick="nTalk.im_openInPageChat();">
-	<img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/house-m/img/online-service.png" width="100%" alt="在线咨询" />
-</div>-->
+<div class="list-consult app-hide" >
+		<a href="http://p.qiao.baidu.com/cps/chat?siteId=10007305&userId=22510942" target="_blank"></a>
+</div>
 <script type="text/javascript">
 var NTKF_PARAM = {
     "siteid": '',//网站siteid

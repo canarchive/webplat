@@ -5,7 +5,8 @@
 <div class="side">
     <div class="side-con">
         <!--<div id="kefu-close">x</div>
-		<div id="kefu-online" onclick="nTalk.im_openInPageChat();"><img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/consult.png"></div>-->
+		<div id="kefu-online"><a href="http://p.qiao.baidu.com/cps/chat?siteId=10007305&userId=22510942" target="_blank"><img src="<?= Yii::getAlias('@asseturl'); ?>/gallerycms/home/images/consult.png"></a></div>-->
+		<div id="kefu-online"><a href="http://p.qiao.baidu.com/cps/chat?siteId=10007305&userId=22510942" target="_blank"></a></div>
         <div class="icon-btn iconfont icon-huidaodingbu back-top" style="display:none">返回顶部</div>
     </div>
 </div>

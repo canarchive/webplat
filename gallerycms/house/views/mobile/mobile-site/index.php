@@ -45,7 +45,9 @@ $this->context->pcMappingUrl = Url::to(['/house/site/home', 'city_code' => Yii::
     </div>
     <!-- null -->
     <p class="bespoke">
-        <span onclick="nTalk.im_openInPageChat();"></span>
+		<span >
+		<a href="http://p.qiao.baidu.com/cps/chat?siteId=10007305&userId=22510942" target="_blank"></a>
+        </span>
 		<a href="<?= Url::to(['/house/mobile-feature/index', 'view' => 'kaopu', 'city_code' => Yii::$app->params['currentCompany']['code_short']]); ?>"></a>
     </p>
 </div>
