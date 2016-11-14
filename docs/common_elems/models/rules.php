@@ -7,6 +7,10 @@ return [
     [['size'], 'integer'],
     ['rememberMe', 'boolean'],
 
+			[['start_at', 'end_at'], 'filter', 'filter' => function($value) {
+				return strtotime($value);
+			}],
+
     [['file'], 'file', 'skipOnEmpty' => false],
     [['uploadPath'], 'required', 'when' => function($obj) {
         return empty($obj->filename);

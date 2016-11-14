@@ -3,43 +3,14 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 $this->params['cssFiles'] = ['sms'];
+$this->params['jsFiles'] = ['jquery-2.1.0'];
 $this->params['jsFooterFiles'] = [
-	'jquery-2.1.0', 'foundation.min',
+	'foundation.min',
 	'main', 'footable', 'tooltips', 'mustache', 'sms'
 ];
 $this->params['currentNav'] = 'owner';
 Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTitle'];
 ?>
-<nav class="top-bar show-for-small" data-topbar>
-    <div class="topbar-title">
-        <a href="#" class="toggle-topbar">短信服务
-            <i class="fa fa-bars"></i></a>
-    </div>
-    <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-            <!--<li>
-                <a href="https://sms-my.luosimao.com/send/batch">批量发送</a></li>
-            <li>
-                <a href="https://sms-my.luosimao.com/api">触发发送</a></li>
-            <li>
-                <a href="https://sms-my.luosimao.com/signature">签名管理</a></li>
-            <li class="active">
-                <a href="https://sms-my.luosimao.com/template/index">短信模板</a></li>
-            <li>
-                <a href="https://sms-my.luosimao.com/send/history">发送历史</a></li>
-            <li>
-                <a href="https://sms-my.luosimao.com/incoming">上行回复</a></li>
-            <li>
-                <a href="https://sms-my.luosimao.com/setting">余额提醒</a></li>
-            <li>
-                <a href="https://sms-my.luosimao.com/api/white_list">IP白名单</a></li>
-            <li>
-                <a href="https://sms-my.luosimao.com/send/push">推送设置</a></li>
-            <li><a href="https://sms-my.luosimao.com/send/black">黑名单</a></li>-->
-        </ul>
-    </section>
-</nav>
 <div class="container">
     <?= $this->render('_nav', ['curAction' => 'index']); ?>
     <section class="main-wrap sms-container">
@@ -64,13 +35,13 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
                                 <tr>
                                     <th data-hide="phone,tablet" class="time">派单时间</th>
                                     <th data-hide="phone,tablet" class="time">姓名</th>
-                                    <th class="content">手机号</th>
+                                    <th class="time">手机号</th>
                                     <th data-hide="phone,tablet" class="time">查看时间</th>
                                     <th data-hide="phone,tablet" class="time">小区</th>
                                     <th data-hide="phone,tablet" class="time">面积</th>
                                     <th data-hide="phone,tablet" class="time">户型</th>
                                     <!--<th class="status">状态</th>-->
-                                    <th class="content">详情</th>
+                                    <th class="">详情</th>
                                     <!--<th data-hide="phone" class="ctr">操作</th></tr>-->
                             </thead>
                             <tbody>
@@ -85,6 +56,11 @@ Yii::$app->params['seoTitle'] = '业主信息列表-' . Yii::$app->params['seoTi
 								    <td><?= $info['houseType']; ?></td>
 								    <!--<td><?= $info->statusInfos[$info['status']]; ?></td>-->
 								    <td><?= $info['note']; ?></td>
+                                    <td class="footable-visible footable-last-column">
+                                        <!--<a href="" class="button radius secondary tiny"><i class="fa fa-eye"></i></a>-->
+                                        <a href="<?= Url::to(['/house/owner/message', 'id' => $info['id']]); ?>" title="留言" class="button success radius tiny"><i>我要留言</i></a>
+                                        <a href="<?= Url::to(['/house/owner/notelist', 'id' => $info['id']]); ?>" title="备注列表" class="button success radius tiny"><i>备注列表</i></a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

@@ -1,3 +1,10 @@
+INSERT INTO `workhouse_spread`.`ws_owner_dispatch` (`city_code`, `mobile`,  `house_id`, `service_id`, `created_at`)
+SELECT `city_code`, `mobile`, `house_id`, `service_id`, `created_at` FROM `workhouse_merchant`.`wm_owner_merchant` GROUP BY `mobile` ORDER BY `created_at` DESC;
+UPDATE `workhouse_spread`.`ws_owner_dispatch` AS `t1`, (SELECT `mobile`, COUNT(*) AS `count` FROM `workhouse_merchant`.`wm_owner_merchant` GROUP BY `mobile`, `merchant_id`) AS `t2` SET `num_merchant` = `count` WHERE `t1`.`mobile` = `t2`.`mobile`;
+
+INSERT INTO `workhouse_merchant`.`wm_merchant_note` (`owner_merchant_id`, `reply`, `reply_at`) SELECT `id`, `note`, `view_at` FROM `workhouse_merchant`.`wm_owner_merchant`;
+
+
 ALTER TABLE `ws_visit` DROP `url_full_pre`;
 ALTER TABLE `ws_conversion` DROP `url_full_pre`;
 

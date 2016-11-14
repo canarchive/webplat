@@ -37,13 +37,13 @@ class AdminController extends Controller
      * Lists infos.
      * @return mixed
      */
-    protected function _listinfoInfo($searchModel, $searchDatas = [])
+    protected function _listinfoInfo($searchModel, $searchDatas = [], $view = 'listinfo')
     {
 		if (!isset($_GET['sort'])) {
 			$_GET['sort'] = '-id';
 		}
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
-        return $this->render('listinfo', [
+        return $this->render($view, [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
 			'searchDatas' => $searchDatas,

@@ -5,4 +5,9 @@ return [
 		'uid' => 'api',
 		'key' => '',
 	],
+	'company' => [
+		'url' => 'http://center.isms.hk/17home/httpSendSMSJson',
+		'uid' => '17house',
+		'key' => 'qwer1234',
+	],
 ];
