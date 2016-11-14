@@ -41,11 +41,12 @@ class DetailController extends Controller
 		$viewInfo = $urlTypes[$view];
 		$datas['view'] = $view;
 		if (in_array($view, ['kaopu', 'shangjia'])) {
-		    $owner = new \merchant\models\Owner();
+		    $owner = new \merchant\house\models\Owner();
 			$datas['ownerInfos'] = $owner->getInfos([], 20);
 			if ($view == 'shangjia') {
+		        $where = ['city_code' => Yii::$app->params['currentCompany']['code_short'], 'status' => 1];
 		        $model = new \merchant\models\Merchant();
-		        $datas['infos'] = $model->getInfos();
+		        $datas['infos'] = $model->getInfos($where);
 			}
 		}
 		$this->layout = $viewInfo['main'];

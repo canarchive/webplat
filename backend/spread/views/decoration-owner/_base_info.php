@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 
+$model->callback_again = $model->callback_again > 0 ? $model->callback_again : time();
 $tableName = 'activity_user';
 ?>
 <div class="row">
@@ -20,7 +21,7 @@ $tableName = 'activity_user';
 					    <th><?= $model->getAttributeLabel('name'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_at'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_city'); ?></th>
-					    <th><?= $model->getAttributeLabel('signup_channel'); ?></th>
+					    <th><?= $model->getAttributeLabel('channel'); ?></th>
 					    <th><?= $model->getAttributeLabel('signup_num'); ?></th>
                     </tr>
                     </thead>
@@ -30,7 +31,7 @@ $tableName = 'activity_user';
 						<td><input type="text" name="name" value="<?= $model->name; ?>" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'name', this.value);"/></td>
 					    <td><?= date('Y-m-d H:i:s', $model->signup_at); ?></td>
 					    <td><?= $model->signup_city; ?></td>
-					    <td><?= $model->signup_channel; ?></td>
+					    <td><?= $model->channel; ?></td>
 					    <td><?= $model->signup_num; ?></td>
                     </tr>
                     </tbody>
@@ -42,6 +43,7 @@ $tableName = 'activity_user';
 					    <th><?= $model->getAttributeLabel('status'); ?></th>
 					    <th><?= $model->getAttributeLabel('callback_again'); ?></th>
 					    <th><?= $model->getAttributeLabel('keyword'); ?></th>
+					    <th><?= $model->getAttributeLabel('keyword_search'); ?></th>
 					    <th><?= $model->getAttributeLabel('note'); ?></th>
 					    <th><?= $model->getAttributeLabel('message'); ?></th>
                     </tr>
@@ -73,20 +75,17 @@ $tableName = 'activity_user';
     					); ?>
                         </td>
 					    <td>
-
-						<input class="form-control" type="text" id="callback_again" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'callback_again', this.value)">
+                        <input type="hidden" id="callback_again_old" value="<?= date('Y-m-d H:i:s', $model->callback_again); ?>" />
+						<input class="form-control" type="text" id="callback_again" onblur="changeDate('<?= $tableName; ?>', <?= $model->id; ?>, 'callback_again', this.value)" value="<?= date('Y-m-d H:i:s', $model->callback_again); ?>">
                     <script type="text/javascript">
                         $(function () {
-                            $('#callback_again').datetimepicker({locale: 'zh-CN', format: 'YYYY-MM-DD HH:mm:ss'})
-							.on('changeDate', function(ev){
-								    if (ev.date.valueOf() < date-start-display.valueOf()){
-									}
-							});
+                            $('#callback_again').datetimepicker({locale: 'zh-CN', format: 'YYYY-MM-DD HH:mm:ss'});
 							//$('#callback_again').onchange = function () { alert('ss'); }
                         });
                     </script>
                         </td>
 					    <td><?= $model->keyword; ?></td>
+					    <td><?= $model->keyword_search; ?></td>
 					    <td><?= $model->note; ?></td>
 					    <td><?= $model->message; ?></td>
                     </tr>

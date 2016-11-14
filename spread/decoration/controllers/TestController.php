@@ -6,9 +6,17 @@ use Yii;
 use yii\helpers\Url;
 use spread\components\Controller;
 use spread\decoration\models\SignupForm;
+use spread\decoration\models\Statistic;
 
 class TestController extends Controller
 {
+
+	public function actionStatistic()
+	{
+		$params = require Yii::getAlias('@spread') . '/config/params-statistic.php';
+		print_r($params);
+	}
+
 	public function actionTest()
 	{
 		$sql = '';

@@ -3,8 +3,10 @@
 namespace spread\decoration\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use common\models\SpreadModel;
 use spread\models\CustomService;
+use merchant\house\models\Company;
 
 class DecorationOwner extends SpreadModel
 {
@@ -26,16 +28,16 @@ class DecorationOwner extends SpreadModel
     {
         return [
             'id' => 'ID',
-			'use_id' => '用户ID',
+			'city_code' => '城市代码',
+			'service_id' => '客服',
 			'mobile' => '手机号',
 			'name' => '名字',
-			'type' => '家装类型',
 			'from_type' => '来源',
 			'signup_at' => '报名时间',
 			'signup_ip' => '报名IP',
 			'signup_city' => '报名城市',
 			'channel_big' => '一级渠道',
-			'signup_channel' => '报名渠道',
+			'channel' => '报名渠道',
 			'message' => '留言',
 			'note' => '备注',
 			'keyword' => '关键字',
@@ -54,9 +56,15 @@ class DecorationOwner extends SpreadModel
         $ip = \Yii::$app->getRequest()->getIP();
 		$city = \common\components\IP::find($ip);
 		$city = is_array($city) ? implode('-', $city) : $city;
+		$time = Yii::$app->params['currentTime'];
         $data = array_merge($data, [
-            'signup_at' => Yii::$app->params['currentTime'],
-            'signup_at_first' => Yii::$app->params['currentTime'],
+            'signup_at' => $time,
+            'signup_at_first' => $time,
+            'created_month' => date('Ym', $time),
+            'created_day' => date('Ymd', $time),
+            'created_hour' => date('H', $time),
+            'created_week' => date('W', $time),
+            'created_weekday' => date('N', $time),
             'signup_num' => 1,
             'signup_ip' => $ip,
             'signup_city' => $city,
@@ -127,13 +135,32 @@ class DecorationOwner extends SpreadModel
 		return $datas;
 	}
 
+	public function getSignupChannelInfos()
+	{
+		$datas = [
+			'semthird' => '第三方SEM',
+			'semspider' => 'SEM抓取',
+		];
+		return $datas;
+	}
+
+	protected function getCompanyInfos()
+	{
+		$infos = ArrayHelper::map(Company::find()->select('code_short, name')->where(['status' => 2])->all(), 'code_short', 'name');
+		return $infos;
+	}
+
 	public function updateAfterInsert($conversionInfo)
 	{
-		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
-			$this->signup_channel = $conversionInfo['channel'];
+		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'] || !empty($conversionInfo['keywork_search']))) {
+			$this->channel_big = $conversionInfo['channel_big'];
+			$this->channel = $conversionInfo['channel'];
 			$this->keyword = $conversionInfo['keyword'];
+			$this->keyword_search = isset($conversionInfo['keyword_search']) ? $conversionInfo['keyword_search'] : '';
 			$this->city_code = $conversionInfo['city_code'];
 		}
+		//print_r($this->toArray());exit();
+		$this->statisticRecord($this->toArray(), 'signup');
 		$this->update(false);
 		return ;
 	}
@@ -156,14 +183,16 @@ class DecorationOwner extends SpreadModel
 		$data = [
 			'mobile' => $this->mobile,
 			'name' => $this->name,
+			'city_code' => $this->city_code,
 			'position' => '',
+			//'channel_big' => 'seo',
 			'note' => $this->note,
 			'message' => '',
 			'city_input' => '',
 			'form_type' => '',
 			'from_type' => 'pc',
 			'area_input' => 0,
-			'signup_channel' => $this->signup_channel,
+			'channel' => $this->channel,
 		];
 		$serviceId = $this->service_id ? $this->service_id : null;
 		$decorationOwner = $this->addOwner($data, $serviceId);

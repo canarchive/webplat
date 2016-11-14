@@ -23,8 +23,9 @@ if ($this->context->isService) {
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'mobile')->textInput() ?>
-    <?= $form->field($model, 'signup_channel')->textInput() ?>
-    <?= $form->field($model, 'service_id')->dropDownList($customInfos, ['prompt' => Yii::t('admin-common', 'Select Service')]); ?>
+    <?= $form->field($model, 'city_code')->dropDownList($model->companyInfos, ['prompt' => '']); ?>
+    <?= $form->field($model, 'channel')->dropDownList($model->signupChannelInfos, ['prompt' => '']); ?>
+    <?= $form->field($model, 'service_id')->dropDownList($customInfos, ['prompt' => '']); ?>
     <?= $form->field($model, 'note')->textarea(['rows' => 2]) ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>

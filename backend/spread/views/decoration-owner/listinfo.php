@@ -10,7 +10,7 @@ $columnsBase = [
     'city_code',
     'name',
     'mobile',
-    'signup_channel',
+    'channel',
     [
         'attribute' => 'signup_at',
         'value'=> function($model){
@@ -29,6 +29,7 @@ $columnsExts = [
 	0 => [
         //'message',
         'keyword',
+		'keyword_search',
         'note',
     ],
 	1 => [

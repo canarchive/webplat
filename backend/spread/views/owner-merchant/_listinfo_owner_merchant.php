@@ -95,7 +95,6 @@ function addMerchantInfo()
 	    'operation': 'add',
 		'table': '<?= $tableNameMerchant; ?>',
 		'service_id': <?= $modelOwner->service_id; ?>,
-		'city_code': '<?= $modelOwner->city_code; ?>',
 	    'mobile': '<?= $modelOwner->mobile; ?>'
 	};
 	for (var field in dataValues) {
