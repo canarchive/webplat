@@ -8,20 +8,13 @@ $model->region_level1 = isset($regionInfo['parent_code']) ? $regionInfo['parent_
 ?>
 
 <div class="menu-form">
-
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-
     <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'username')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'password')->passwordInput() ?>
     <?= $form->field($model, 'email') ?>
     <?= $form->field($model, 'parent_code')->dropDownList($model->selectInfos, ['prompt' => Yii::t('admin-common', 'Select Menu Parent')]); ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
-
-	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>
-    <?php ActiveForm::end(); ?>
-
-
 
     <?= $form->field($model, 'region_level1')->dropDownList($model->regionSubInfos,
     [
@@ -42,4 +35,7 @@ $model->region_level1 = isset($regionInfo['parent_code']) ? $regionInfo['parent_
     [
         'prompt'=>'--请选择市--',
     ]) ?>
+
+	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>
+    <?php ActiveForm::end(); ?>
 </div>

@@ -5,8 +5,6 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-        'name',
-        'category_id',
 		[
 			'format' => 'raw',
 			'attribute' => 'logo',
@@ -21,15 +19,9 @@ $gridViewParams = [
             },
         ],
 		[
-            'attribute' => 'updated_at',
-            'value' => function($model) {
-                return  date('Y-m-d H:i:s',$model->updated_at);
-            },
-        ],
-		[
-            'attribute' => 'is_show',
+            'attribute' => 'status',
 			'value' => function($model) {
-				return $model->isShowInfos[$model->is_show];
+				return $model->statusInfos[$model->status];
 			},
 		]
     ],
