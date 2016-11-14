@@ -4,15 +4,13 @@ $detailViewParams = [
     'model' => $model,
     'attributes' => [
         'username',
-        'truename',
-        'email',
+		[
+			'attribute' => 'merchant_id',
+			'value' => isset($model->merchantInfos[$model->merchant_id]) ? $model->merchantInfos[$model_id] : $model->merchant_id,
+		],		
 		[
             'attribute' => 'created_at',
             'value'=> date('Y-m-d H:i:s',$model->created_at),
-        ],
-		[
-            'attribute' => 'updated_at',
-            'value'=> date('Y-m-d H:i:s',$model->updated_at),
         ],
 		[
 			'format' => 'raw',
@@ -20,8 +18,8 @@ $detailViewParams = [
 			'value' => Yii::$app->formatter->asImage($model->logo),
 		],
 		[
-			'attribute' => 'is_show',
-			'value' => $model->isShowInfos[$model->is_show],
+			'attribute' => 'status',
+			'value' => $model->statusInfos[$model->status],
 		],
     ],
 ];
