@@ -7,39 +7,50 @@ use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\QueryParamAuth;
-use passport\models\SigninForm;
 use restapp\components\Controller;
-use paytrade\cloud\models\Cart;
-use paytrade\cloud\models\CheckOrder;
+use paytrade\models\Cart;
+use paytrade\models\CheckOrder;
 
 class CartController extends Controller
 {
-    public $modelClass = 'paytrade\cloud\models\Cart';
+    public $modelClass = 'paytrade\models\Cart';
 
     public function actionIndex()
     {
-		return $this->_index();
+		$infos = $this->_operate('list', []);
+
+		$checkOrder = new CheckOrder();
+		$datas = $checkOrder->checkInfos($infos);
+
+		return $datas;
     }
 
     public function actionCreate()
     {
-		return $this->_create();
+		$params['snapupId'] = Yii::$app->request->post('snapup_id');
+		$params['number'] = intval(Yii::$app->request->post('number', 0));
+
+		return $this->_operate('add', $params);
     }
 
-    public function actionUpdate($id)
-    {
-		return $this->_update($id);
-    }
+	public function actionUpdate()
+	{
+		$params['id'] = Yii::$app->request->post('id');
+		$params['number'] = intval(Yii::$app->request->post('number', 0));
+		$params['type'] = Yii::$app->request->post('type');
+		$status = Yii::$app->request->post('status');
+		$params['status'] = $status === '0' ? 0 : 1;
+
+		return $this->_operate('update', $params);
+	}
 
     public function actionDelete($id)
     {
-		return $this->_delete($id);
+		$params['id'] = $id;
+
+		return $this->_operate('delete', $params);
     }
 
-    public function actionView($id)
-    {
-		return $this->_view($id);
-    }
 	public function actionClear()
 	{
 		return $this->_operate('clear', []);
@@ -47,7 +58,7 @@ class CartController extends Controller
 
 	protected function _operate($action, $params)
 	{
-		$params['userId'] = Yii::$app->user->id;
+		$params['userId'] = 1;//\Yii::$app->user->id;
 
 		$model = new Cart();
 		$method = $action . 'Info';

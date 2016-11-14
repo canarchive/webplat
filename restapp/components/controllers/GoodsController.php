@@ -11,35 +11,19 @@ use restapp\components\Controller;
 
 class GoodsController extends Controller
 {
-    public $modelClass = 'paytrade\models\Goods';
+    public $modelClass = 'website\models\GoodsSnapup';
+	public $authExcept = ['index', 'view'];
 
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
-		//$_POST['user_id'] = $identity->id;
+		$_POST['user_id'] = $identity->id;
 		$searchModel = new \website\models\searchs\GoodsSnapup();
 		return $this->_index($searchModel);
     }
 
-    public function actionCreate()
-    {
-		$identity = $this->_getIdentity();
-		$_POST['user_id'] = $identity->id;
-		return $this->_create();
-    }
-
-    public function actionUpdate($id)
-    {
-		return $this->_update($id);
-    }
-
-    public function actionDelete($id)
-    {
-		return $this->_delete($id);
-    }
-
     public function actionView($id)
     {
-		return $this->_view($id);
+		return $this->_view($id, false);
     }
 }

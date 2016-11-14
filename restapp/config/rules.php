@@ -3,6 +3,8 @@ return [
  	'PUT,PATCH <module>/users/<id>' => '<module>/user/update',
     'GET,HEAD <module>/users/<id>' => '<module>/user/view',
     'GET,HEAD <module>/users' => '<module>/user/index',
+    'POST <module>/user/signin' => '<module>/user/signin',
+    'POST <module>/user/signup' => '<module>/user/signup',
 
  	'PUT,PATCH <module>/addresses/<id>' => '<module>/user-address/update',
     'DELETE <module>/addresses/<id>' => '<module>/user-address/delete',
@@ -10,32 +12,24 @@ return [
     'POST <module>/addresses' => '<module>/user-address/create',
     'GET,HEAD <module>/addresses' => '<module>/user-address/index',
 
-    'POST <module>/user/signin' => '<module>/user/signin',
-    'POST <module>/user/signup' => '<module>/user/signup',
-
     'GET,HEAD <module>/regions' => '<module>/region/index',
     'GET,HEAD <module>/regions/<id>' => '<module>/region/view',
 
     'POST <module>/sms/generate-code' => '<module>/sms/generate-code',
     'POST <module>/sms/check-code' => '<module>/sms/check-code',
 
-    'GET,HEAD <module>/goods/<id>' => '<module>/goods/view',
-    'GET,HEAD <module>/goods' => '<module>/goods/index',
-
-    'GET,HEAD <module>/goods' => '<module>/goods/index',
-
  	'PUT,PATCH <module>/carts/<id>' => '<module>/cart/update',
     'DELETE <module>/carts/<id>' => '<module>/cart/delete',
     'GET,HEAD <module>/carts/<id>' => '<module>/cart/view',
-    'POST <module>/carts/clear' => '<module>/cart/clear',
+    'GET,HEAD <module>/carts/all' => '<module>/cart/clear',
     'POST <module>/carts' => '<module>/cart/create',
     'GET,HEAD <module>/carts' => '<module>/cart/index',
 
- 	'PUT,PATCH <module>/orders/<id>' => '<module>/order-info/update',
-    'DELETE <module>/orders/<id>' => '<module>/order-info/delete',
-    'GET,HEAD <module>/orders/<id>' => '<module>/order-info/view',
-    'POST <module>/orders' => '<module>/order-info/create',
-    'GET,HEAD <module>/orders' => '<module>/order-info/index',
+ 	'PUT,PATCH <module>/order-infos/<id>' => '<module>/order-info/update',
+    'DELETE <module>/order-infos/<id>' => '<module>/order-info/delete',
+    'GET,HEAD <module>/order-infos/<id>' => '<module>/order-info/view',
+    'POST <module>/order-infos' => '<module>/order-info/create',
+    'GET,HEAD <module>/order-infos' => '<module>/order-info/index',
 
     'POST <module>/accounts' => '<module>/account/create',
     'POST <module>/accounts/ask' => '<module>/account/ask',
@@ -73,8 +67,5 @@ return [
 
     'GET,HEAD <module>/brands' => '<module>/brand/index',
     'GET,HEAD <module>/brands/<id>' => '<module>/brand/view',
-
-    'GET,HEAD <module>/shipments' => '<module>/shipment/index',
-    'GET,HEAD <module>/shipments/<id>' => '<module>/shipment/view',
 
 ];

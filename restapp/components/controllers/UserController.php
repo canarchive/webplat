@@ -53,13 +53,11 @@ class UserController extends Controller
     {
         $model = new SigninForm();
 
-		if (!($model->load(\Yii::$app->getRequest()->getQueryParams(), ''))) {
+		if (!($model->load(\Yii::$app->getRequest()->getBodyParams(), ''))) {
             return ['status' => 400, 'message' => '参数错误'];
 		}
-		
-		$result = $model->signin();
-		if ($result['status'] != 200) {
-            return ['status' => 422, 'message' => $result['message']];
+		if (!$model->signin()) {
+            return ['status' => 422, 'message' => '账号或密码有误'];
 		}
 
 		$accessToken = \Yii::$app->user->identity->getAuthKey();

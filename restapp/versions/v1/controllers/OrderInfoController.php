@@ -1,9 +1,9 @@
 <?php
 namespace restapp\versions\v1\controllers;
 
-use restapp\components\controllers\OrderController as OrderControllerBase;
+use restapp\components\controllers\OrderInfoController as OrderInfoControllerBase;
 
-class OrderController extends OrderControllerBase
+class OrderInfoController extends OrderInfoControllerBase
 {
 
 }

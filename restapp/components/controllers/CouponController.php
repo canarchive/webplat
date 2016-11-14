@@ -9,14 +9,14 @@ use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\QueryParamAuth;
 use restapp\components\Controller;
 
-class UserAddressController extends Controller
+class CouponController extends Controller
 {
     public $modelClass = 'paytrade\models\Coupon';
 
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
-		$_GET['user_id'] = $identity->id;
+		$_POST['user_id'] = $identity->id;
 		$searchModel = new \paytrade\models\searchs\Coupon();
 		return $this->_index($searchModel);
     }

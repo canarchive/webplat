@@ -8,17 +8,16 @@ use yii\web\NotFoundHttpException;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\QueryParamAuth;
 use restapp\components\Controller;
-use passport\models\searchs\UserAddress as UserAddressSearch;
 
 class UserAddressController extends Controller
 {
-    public $modelClass = 'passport\models\UserAddress';
+    public $modelClass = 'paytrade\models\UserAddress';
 
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
-		$_GET['user_id'] = $identity->id;
-		$searchModel = new UserAddressSearch();
+		$_POST['user_id'] = $identity->id;
+		$searchModel = new \paytrade\models\searchs\UserAddress();
 		return $this->_index($searchModel);
     }
 
