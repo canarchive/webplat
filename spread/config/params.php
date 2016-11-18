@@ -45,12 +45,12 @@ return [
 		'main' => 'main-base',
 	],
 
-    'liangfang' => [
+    /*'liangfang' => [
         'name' => '免费量房(17house)',
         'pc' => false,
         'mobile' => true,
 		'main' => 'main-base',
-    ],
+	],*/
     'bjnew' => [
         'name' => '17报价(17house)',
         'pc' => false,
@@ -63,24 +63,24 @@ return [
         'mobile' => true,
 		'main' => 'main-base',
     ],
-	'sjlfb' => [
+	/*'sjlfb' => [
 		'name' => '装修报名（17house)-百姓',
 		'pc' => true,
 		'mobile' => false,
 		'main' => 'main-base',
-	],
+	],*/
     'my' => [
         'name' => '满意(图满意）-百姓',
         'pc' => false,
         'mobile' => true,
 		'main' => 'main-base',
     ],
-    'bj' => [
+    /*'bj' => [
         'name' => '报价-百姓',
         'pc' => false,
         'mobile' => true,
 		'main' => 'main-base',
-    ],
+	],*/
 	'sj' => [
 		'name' => 'PC报名（jia)',
 		'pc' => true,

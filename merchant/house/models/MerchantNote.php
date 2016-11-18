@@ -3,6 +3,7 @@
 namespace merchant\house\models;
 
 use common\models\MerchantModel;
+use spread\decoration\models\OwnerDispatch;
 
 class MerchantNote extends MerchantModel
 {
@@ -46,7 +47,7 @@ class MerchantNote extends MerchantModel
 
 	public function getMobile()
 	{
-		if (!is_null($this->mobile)) {
+		if (!is_null($this->_mobile)) {
 			return $this->_mobile;
 		}
 
@@ -72,5 +73,18 @@ class MerchantNote extends MerchantModel
 		}
 		$this->getDetailInfo();
 		return $this->_merchantInfo;
+	}
+
+	public function getMobileId()
+	{
+		if (is_null($this->_mobile)) {
+		    $this->getDetailInfo();
+		}
+
+		$mobile = $this->_mobile;
+		$model = new OwnerDispatch();
+		$info = $model->find()->where(['mobile' => $mobile])->one();
+
+		return $info->id;
 	}
 }
