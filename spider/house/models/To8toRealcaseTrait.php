@@ -126,8 +126,8 @@ trait To8toRealcaseTrait
     {
         $model = new Realcase();
         //$where = ['source_site_code' => $siteCode, 'source_status_spider' => 1, 'source_status_deal' => 0];
-        $where = ['source_site_code' => $siteCode, 'source_status_spider' => -1];//, 'source_status_deal' => 0];
-        $infos = $model->find()->where($where)->limit(500)->all();
+        $where = ['source_site_code' => $siteCode, 'source_status_deal' => 0];//, 'source_status_deal' => 0];
+        $infos = $model->find()->where($where)->limit(600)->all();
 		//echo count($infos);exit();
         foreach ($infos as $info) {
             $file = $siteCode . '/infosshow/' . $info['source_city_code'] . '/' . $info['source_merchant_id'] . '/realcase/' . $info['source_id'] . '.html';
@@ -141,6 +141,10 @@ trait To8toRealcaseTrait
             $crawler = new Crawler();
             $crawler->addContent($this->getContent($file));
 			$this->_dealOwner($crawler, $info);
+
+            $info->source_status_deal = 1;
+            $info->update(false);
+			continue;
 
             $info->design_concept = trim($crawler->filter('.design_ins_text div')->text());
 

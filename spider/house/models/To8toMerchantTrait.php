@@ -519,4 +519,92 @@ trait To8toMerchantTrait
 			echo "<a href='{$url}' target='_blank'>{$url}</a><br />";
 		}*/
     }
+
+    public function merchantShowCheckName($siteCode)
+    {
+        $model = new Merchant();
+        $where = ['source_site_code' => $siteCode, 'source_status_deal' => 0];
+        $infos = $model->find()->where($where)->limit(3000)->all();
+        $cityInfos = $this->configInfo['cityInfos'];
+		//print_r($cityInfos);exit();
+		//echo count($infos);
+        foreach ($infos as $info) {
+			$name = $info['name_full'];
+			$cityName = $cityInfos[$info['source_city_code']]['name'];
+			if (strpos($name, $cityName) === 0) {
+				$len = strlen($cityName);
+			    $shortName = substr($name, $len);
+				if (substr($shortName, 0, 3) == '市') {
+					$shortName = substr($shortName, 3);
+				}
+			} else {
+				$shortName = $name;
+			}
+			$strs = [
+				'装饰集团绍兴有限公司上...',
+				'装饰工程有限责任公...',
+				'装饰工程有限公司西安第...',
+				'建筑装饰工程服务有限公...',
+				'建筑装饰工程有限公...',
+				'建筑装饰设计工程有限公司',
+				'建筑装饰工程有限责任公司',
+				'装饰设计建筑工程有限公司',
+				'建筑设计工程有限公司',
+				'建筑装饰工程有限公司',
+				'装饰设计工程有限公司',
+				'装饰工程设计有限公司',
+				'装饰工程有限责任公司',
+				'装饰装修工程有限公司',
+				'装饰材料有限公司',
+				'建筑工程有限公司',
+				'装潢设计有限公司',
+				'装饰装潢有限公司',
+				'装饰装修有限公司', 
+				'装饰工程有限公司', 
+				'装饰设计有限公司', 
+				'装饰有限责任公司',
+				'装饰有限公司',
+				'股份有限公司',
+				'有限公司', 
+			];
+			$strsRep = ['','', '', '', '','','','','','','','', '', '','','','','','',''];
+			$shortName = str_replace($strs, $strsRep, $shortName);
+
+			echo $cityName . '==' . $shortName . ' ----- ' . $name . '<br />';
+			$info->source_status_deal = 1;
+			$info->name = $shortName;
+			$info->update(false);
+        }
+    }
+
+    public function merchantShowExt($siteCode)
+    {
+        $model = new Merchant();
+        $where = ['source_site_code' => $siteCode, 'source_status_deal' => 1];
+        $infos = $model->find()->where($where)->limit(1000)->all();
+		echo count($infos);
+        $showUrls = $this->configInfo['showUrls'];
+        foreach ($infos as $info) {
+            $info->source_status_deal = 0;
+			if (!empty($info->description)) {
+                $info->update(false);
+				continue;
+			}
+            $description = '';
+                $file = $info['source_site_code'] . '/show/' . $info['city_code'] . '/' . $info['source_id'] . '-index.html';
+			echo $file . '<br />';
+                if (!$this->fileExist($file)) {
+                    $info->source_status_spider = 0;
+                $info->update(false);
+                    continue;
+                }
+                $crawler = new Crawler();
+                $crawler->addContent($this->getContent($file));
+                $descriptionObj = $crawler->filter('.intro_text1');//->text();
+                $description = count($descriptionObj) ? $descriptionObj->text() : '';
+            $info->description = $description;
+            $info->update(false);
+        }
+    }
+
 }

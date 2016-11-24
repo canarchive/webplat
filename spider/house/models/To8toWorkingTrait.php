@@ -144,6 +144,10 @@ trait To8toWorkingTrait
             $crawler->addContent($this->getContent($file));
 			$this->_dealOwner($crawler, $info);
 
+            $info->source_status_deal = 1;
+            $info->update(false);
+			continue;
+
 		    $statusNode = $crawler->filter('.case_progress .on_li')->last();
 		    $info->status = count($statusNode) > 0 ? trim($statusNode->text()) : '开工';
 

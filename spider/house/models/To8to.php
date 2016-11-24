@@ -130,4 +130,85 @@ class To8to extends SpiderAbstract
             $model->insert(false);
         }
     }
+
+	public function ownerCheck($siteCode)
+	{
+        $model = new Owner();
+		$styles = $model->styleInfos;
+        $where = ['source_site_code' => $siteCode, 'source_status_deal' => 0];
+        $infos = $model->find()->where($where)->limit(4000)->all();
+		//$fields = ['area', 'style', 'house_type', 'decoration_type', 'decoration_price', 'community_name', 'duration', 'brief'];
+		$pres = [
+			'(女士)(女士)的新家',
+			'(先生)(先生)的新家',
+			'先生(先生)的新家', 
+			'小姐(女士)的新家',
+			'老师(女士)的新家',
+			'女士(女士)的新家',
+			'女生(女士)的新家',
+			'先生。(先生)的新家',
+			'阳先生的新家',
+			'先生的姨妈的新家',
+			'先生2的新家',
+			'（tong）(先生)的新家',
+			'试外网4的新家',
+			'试外网3的新家',
+			'试外网2的新家',
+			'试外网1的新家',
+			'伟的新家',
+			'小姐的装修日记',
+			'小姐装修日记',
+			'女士装修日记',
+			'冬菊的新家',
+			'延宇的新家',
+			'先生的新家', 
+			'女士的新家',
+			'(女士)的新家', 
+			'(先生)的新家', 
+			'先生·的新家',
+			'小姐的新家', 
+			'先生装修日记',
+			'生的新家',
+			'的新家',
+		];
+
+		$surnameAll = require Yii::getAlias('@common') . '/config/params-surname.php';
+		$suffixes = ['先生', '先生', '先生', '女士', '女士', '小姐'];
+
+        foreach ($infos as $info) {
+			$info->source_status_deal = 1;
+			$i = 1;
+			if ($i <= 80) {
+				$surnames = $surnameAll['first'];
+			} elseif ($i < 95) {
+				$surname = $surnameAll['second'];
+			} else {
+				$surname = $surnameAll['third'];
+			}
+			$surnameKey = array_rand($surnames);
+			$surname = $surnames[$surnameKey];
+			$suffixKey = array_rand($suffixes);
+			$suffix = $suffixes[$suffixKey];
+			echo $surname . '-' . $suffix . '<br />';
+			$info->name = $surname . $suffix;
+
+			/*echo $info->id . $info->ext_info_2 . '---';
+			$v = $info->ext_info_2;
+			foreach ($pres as $pre) {
+				if (strpos($v, $pre) !== false) {
+					$pos = strpos($v, $pre);
+					//echo $v . $pos . $pre;
+					$v = substr($v, 0, $pos - 3);
+					break;
+				}
+			}
+			echo $v . '<br />';
+			$info->community_name = $v;*/
+
+			/*$key = array_rand($styles);
+			$info->style = $styles[$key];
+			echo $info->style . '<br />';*/
+			$info->update(false);
+		}
+	}
 }
