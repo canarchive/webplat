@@ -6,12 +6,12 @@
                     <div class='feature-product'>
 					    <a href='<?= $info['url']; ?>' target='_blank'>
 						    <img alt='<?= $info['name']; ?>' title="<?= $info['name']; ?>" class='feature-product-image' src='<?= $info['picture']; ?>'>
-                            <div class='feature-product-content'>
+                            <!--<div class='feature-product-content'>
 							    <h2 class='feature-product-heading'><?= $info['name']; ?></h2>
                                 <p class='feature-product-description'>
 								    <strong><?= $info['name_ext']; ?></strong>
                                 </p>
-                            </div>
+                            </div>-->
                         </a>
                     </div>
                 </div>

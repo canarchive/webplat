@@ -10,7 +10,8 @@ class GoodsController extends ShootController
     {
 		$positionDatas = [
 			'list_left' => [], 
-			'list_right' => []
+			'list_right' => [],
+			'list_mobile' => [],
 		];
 		$positionInfos = $this->_getPositionInfos(array_keys($positionDatas));
 		foreach ($positionInfos as $info) {

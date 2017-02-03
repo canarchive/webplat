@@ -29,12 +29,12 @@ $urlPre = Yii::getAlias('@shooturl');
             <div class='footer-social lap-one-half desk-lap-one-third'>
                 <p>
                     <span class='text'>关注我们</span>
-                    <a href='http://weibo.com/oppo' target='_blank'>
+                    <!--<a href='http://weibo.com/shedaojia' target='_blank'>
                         <span class='icon icon-weibo'></span>
-                    </a>
-                    <a href='#' id='footer-wx' class='relative'>
+                    </a>-->
+                    <a href='javascript:void(0);' id='footer-wx' class='relative'>
                         <span class='icon icon-wechat'></span>
-						<img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/wx.png" class="wx-float" alt="">
+						<img src="<?= Yii::getAlias('@asseturl'); ?>/shoot/default/images/qrcode_258.jpg" class="wx-float" alt="">
                     </a>
                     <!--<a href='' target='_blank' class='text text-link'>加入我们</a>-->
                 </p>
