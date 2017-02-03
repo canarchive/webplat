@@ -4,7 +4,7 @@ namespace gallerycms\components;
 
 use Yii;
 use yii\helpers\Url;
-use merchant\house\models\Company;
+use merchant\models\Company;
 
 class ModuleBase extends \yii\base\Module
 {
