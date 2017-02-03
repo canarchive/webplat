@@ -18,9 +18,7 @@ class Conversion extends Visit
     public function attributeLabels()
     {
 		$attributes = parent::attributeLabels();
-        return array_merge($attributes, [
-			'info_id' => '信息ID',
-        ]);
+		return $attributes;
     }
 
 	public function insert($runValidation = true, $attributes = null)
@@ -63,12 +61,8 @@ class Conversion extends Visit
 		$insertInfo = array_merge($insertInfo, $spreadInfo);
 
 		$conversion = new Conversion();
-		$conversion->insert(false, $insertInfo);
-
-		if (isset($insertInfo['keyword'])) {
-		    $keywordModel = new \spread\models\Keyword();
-		    $keywordModel->recordKeyword($insertInfo['keyword'], $insertInfo['from_type'], true);
-		}
+		$newData = $conversion->insert(false, $insertInfo);
+		//$this->statisticRecord($newData, 'signup');
 
 		return $insertInfo;
 	}

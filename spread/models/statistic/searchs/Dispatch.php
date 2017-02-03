@@ -1,13 +1,12 @@
 <?php
 
-namespace spread\models\searchs;
+namespace spread\models\statistic\searchs;
 
 use Yii;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use spread\models\Keyword as KeywordModel;
+use spread\models\statistic\Dispatch as DispatchModel;
 
-class Keyword extends KeywordModel
+class Dispatch extends DispatchModel
 {
 	public $company_id;
 	public $created_at_start;
@@ -16,21 +15,21 @@ class Keyword extends KeywordModel
     public function rules()
     {
         return [
-            [['keyword', 'created_at_start', 'created_at_end'], 'safe'],
+            [['datetime_type'], 'safe'],
         ];
     }
 
     public function search($params)
     {
-        $query = KeywordModel::find();//->orderBy('id DESC');
+        $query = DispatchModel::find();//->orderBy('id DESC');
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 
-        if ($this->load($params) && !$this->validate()) {
+        if ($this->load($params, '') && !$this->validate()) {
             return $dataProvider;
         }
 
-		if (!empty($this->keyword)) {
+		/*if (!empty($this->keyword)) {
             $query->orFilterWhere(['like', 'keyword', $this->keyword]);
             //$query->orFilterWhere(['like', 'message', $this->keyword]);
 		}
@@ -38,7 +37,7 @@ class Keyword extends KeywordModel
 		$startTime = strtotime($this->created_at_start);
 		$endTime = $this->created_at_end > 0 ? strtotime($this->created_at_end) : time();
         $query->andFilterWhere(['>=', 'created_at', $startTime]);
-        $query->andFilterWhere(['<', 'created_at', $endTime]);
+		$query->andFilterWhere(['<', 'created_at', $endTime]);*/
 
         return $dataProvider;		
 	}	

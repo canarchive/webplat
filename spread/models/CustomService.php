@@ -3,7 +3,9 @@
 namespace spread\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use common\models\SpreadModel;
+use backend\models\Manager;
 
 /**
  * This is the model class for table "template".
@@ -79,5 +81,33 @@ class CustomService extends spreadModel
         $this->updateCounters(['serviced_num' => 1]);
 		
 		return ;
+	}
+
+	public function getInfo($where)
+	{
+		$info = $this->findOne($where);
+		return $info;
+	}
+
+	public function getManagerAllInfos()
+	{
+		$managerModel = new Manager();
+		$infos = $managerModel->getInfos();
+
+		$infos = ArrayHelper::map($infos, 'id', 'username');
+		return $infos;
+	}
+
+	public function getManagerInfos($returnAll = false)
+	{
+		$managerModel = new Manager();
+		$infos = $managerModel->getInfosByRoles(['客服']);
+
+		if ($returnAll) {
+			return $infos;
+		}
+
+		$infos = ArrayHelper::map($infos, 'id', 'username');
+		return $infos;
 	}
 }
