@@ -6,6 +6,7 @@ $controller = $this->context;
 $menuInfos = $controller->menuInfos;
 
 $treeContent = $this->render('_menuinfo', ['menuModel' => $menuModel, 'infos' => $infos, 'permissionKeys' => $permissionKeys]);
+$this->params['haveTreeList'] = true;
 ?>
 <script type="text/javascript">
 $(document).ready(function() {

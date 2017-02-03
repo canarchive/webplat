@@ -1,0 +1,20 @@
+master
+backend
+wechat
+
+merchant     merchant-house     merchant-shoot
+spider
+gallerycms   gallerycms-house   gallerycms-shoot
+spread       spread-decoration  spread-shoot       spread-groupon
+website
+restapp
+passport
+shoot
+paytrade     paytrade-shoot     paytrade-cloud
+
+
+web-house        backend  gallerycms-house merchant-house spread-decoration
+web-cmsshoot     backend  gallerycms-shoot merchant-shoot spread-shoot
+cloud-purchase   backend  website restapp paytrade-cloud
+web-17house      backend  spread-decoration 
+o2o-shoot        backend  passport spread-shoot paytrade-shoot
