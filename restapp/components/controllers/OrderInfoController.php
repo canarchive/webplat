@@ -8,20 +8,19 @@ use yii\web\NotFoundHttpException;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\QueryParamAuth;
 use restapp\components\Controller;
-use paytrade\cloud\models\Cart;
-use paytrade\cloud\models\CheckOrder;
-use paytrade\cloud\models\OrderInfo;
-use paytrade\cloud\models\searchs\OrderInfo as OrderInfoSearch;
+use paytrade\models\Cart;
+use paytrade\models\CheckOrder;
+use paytrade\models\OrderInfo;
 
 class OrderInfoController extends Controller
 {
-    public $modelClass = 'paytrade\cloud\models\OrderInfo';
+    public $modelClass = 'paytrade\models\OrderInfo';
 
     public function actionIndex()
     {
 		$identity = $this->_getIdentity();
 		$_POST['user_id'] = $identity->id;
-		$searchModel = new OrderInfoSearch();
+		$searchModel = new \paytrade\models\searchs\OrderInfo();
 		return $this->_index($searchModel);
     }
 
