@@ -2,6 +2,7 @@
 namespace backend\components;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\components\Controller;
 
@@ -36,10 +37,13 @@ class AdminController extends Controller
      * Lists infos.
      * @return mixed
      */
-    protected function _listinfoInfo($searchModel, $searchDatas = [])
+    protected function _listinfoInfo($searchModel, $searchDatas = [], $view = 'listinfo')
     {
+		if (!isset($_GET['sort'])) {
+			$_GET['sort'] = '-id';
+		}
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
-        return $this->render('listinfo', [
+        return $this->render($view, [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
 			'searchDatas' => $searchDatas,
@@ -189,6 +193,7 @@ class AdminController extends Controller
     {
 		$modelClass = $this->modelClass;
         if (($model = $modelClass::findOne($id)) !== null) {
+			$this->_checkRecordPriv($model);
             return $model;
         }
 		if ($throwException) {
@@ -197,4 +202,8 @@ class AdminController extends Controller
 
 		return false;
     }
+
+	protected function _checkRecordPriv($model)
+	{
+	}
 }

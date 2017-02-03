@@ -53,8 +53,8 @@ class CharismaAsset extends \yii\web\AssetBundle
         'backend/js/jquery.uploadify-3.1.min.js',
         'backend/js/jquery.history.js',
         'backend/js/charisma.js',
-        'backend/js/jquery.treetable.js',
-        'backend/js/jquery.treeview.js',
+        //'backend/js/jquery.treetable.js',
+        //'backend/js/jquery.treeview.js',
         'backend/js/common.js',
     ];
 

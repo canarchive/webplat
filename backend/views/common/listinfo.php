@@ -33,8 +33,12 @@ if (isset($searchContent)) {
 ?>
 <div class="index">
     <?php
+    if (isset($this->params['noPjax'])) {
+    echo GridView::widget($gridViewParams);
+	} else {
     Pjax::begin(['enablePushState'=>false]);
     echo GridView::widget($gridViewParams);
     Pjax::end();
+	}
     ?>
 </div>

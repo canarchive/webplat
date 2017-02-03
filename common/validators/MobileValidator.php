@@ -6,7 +6,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\web\JsExpression;
 use yii\helpers\Json;
-use yii\Validators\Validator;
+use yii\validators\Validator;
 
 class MobileValidator extends Validator
 {
