@@ -132,7 +132,7 @@ class RoleController extends AdminController
      * @return AuthItem      the loaded model
      * @throws HttpException if the model cannot be found
      */
-    protected function findModel($id)
+	protected function findModel($id, $throwException = true)
     {
         $item = Yii::$app->getAuthManager()->getRole($id);
         if ($item) {
