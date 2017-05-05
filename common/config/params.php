@@ -6,6 +6,7 @@ return [
 
 	'currentTime' => time(),
 	'baseTitle' => 'website',
+	'smsSignName' => '【团购会】',
 	'bankInfos' => require(__DIR__ . '/bank.php'),
 	'genderInfos' => ['0' => '保密', '1' => '男', '2' => '女'],
 	'siteInfos' => require(__DIR__ . '/site-infos.php'),
@@ -16,4 +17,14 @@ return [
 	'siteCopyRightInfo' => '© 2005 - 2016 北京市诚聚互联科技有限公司 版权所有',
 	'siteIcpInfo' => '网站备案号 京ICP备15002642号-3',
 	'siteHotline' => '400-6218-718',
+
+	'seoTitle' => '团家汇装修网_免费提供新房装修设计_二手房装修报价改造-老房婚房量房等装修服务',
+	'seoKeyword' => '装修设计，免费量房，装修报价，新房装修，二手房装修装修，老房装修，婚房装修',
+	'seoDescription' => '【团家汇装修网】中国家装首选平台，并免费提供三家装修公司供装修业主提供专业上门量房，免费设计，免费报价服务，主营：新房装修，二手房装修装修，老房装修，婚房装修等装修设计一站式服务。',
+	'siteCopyRightInfo' => '© 2016 - 2020 北京市诚聚互联科技有限公司 版权所有',
+	'siteIcpInfo' => '网站备案号 京ICP备15002642号-3',
+	'siteHotline' => '400-6218-718',	
+	'siteJoinusTel' => '400-6218-719',	
+	'siteName' => '团家汇',
+	'siteNameBase' => '团家汇',
 ];

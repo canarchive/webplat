@@ -11,6 +11,9 @@ return [
             'paytrade/runtime',
             'gallerycms/runtime',
             'merchant/runtime',
+            'website/runtime',
+            'paytrade/runtime',
+            'restapp/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -24,6 +27,9 @@ return [
             'paytrade/config/main-local.php',
             'gallerycms/config/main-local.php',
             'merchant/config/main-local.php',
+            'website/config/main-local.php',
+            'paytrade/config/main-local.php',
+            'restapp/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -36,6 +42,9 @@ return [
             'paytrade/runtime',
             'gallerycms/runtime',
             'merchant/runtime',
+            'website/runtime',
+            'paytrade/runtime',
+            'restapp/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -48,6 +57,9 @@ return [
             'paytrade/config/main-local.php',
             'gallerycms/config/main-local.php',
             'merchant/config/main-local.php',
+            'website/config/main-local.php',
+            'paytrade/config/main-local.php',
+            'restapp/config/main-local.php',
         ],
     ],
 ];

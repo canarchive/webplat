@@ -19,6 +19,9 @@ return [
 				'signup' => 'shoot/signup/index',
 		        ['pattern' => '/gallerycms-upload/<table:\w+>/<field:\w+>', 'route' => '/gallerycms-upload/index', 'host' => Yii::getAlias('@gallerycmsurl')],
 		        ['pattern' => '/merchant-upload/<table:\w+>/<field:\w+>', 'route' => '/merchant-upload/index', 'host' => Yii::getAlias('@merchanturl')],
+		        ['pattern' => '/website-upload/<table:\w+>/<field:\w+>', 'route' => '/website-upload/index', 'host' => Yii::getAlias('@websiteurl')],
+		        ['pattern' => '/paytrade-upload/<table:\w+>/<field:\w+>', 'route' => '/paytrade-upload/index', 'host' => Yii::getAlias('@paytradeurl')],
+                ['pattern' => 'callback/<result:\w+>/<code:\w+>', 'route' => 'account/callback', 'host' => Yii::getAlias('@paytradeurl')],
             ],
         ],
 		'assetManager' => [
