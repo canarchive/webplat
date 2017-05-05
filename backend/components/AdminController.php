@@ -96,11 +96,13 @@ class AdminController extends Controller
 
     protected function _importInfo($model)
     {
-        if ($model->load(Yii::$app->request->post()) && $model->import()) {
-            return $this->redirect(['listinfo']);
+		$number = null;
+        if ($model->load(Yii::$app->request->post())) {
+			$number = $model->import();
         }
 
         return $this->render('import', [
+			'number' => $number,
             'model' => $model,
 		]);
 	}

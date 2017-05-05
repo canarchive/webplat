@@ -50,6 +50,7 @@ class Visit extends SpreadModel
     {
         $data = [];
         $attributeParams = $this->getAttributeParams();
+<<<<<<< HEAD
         $channel = Yii::$app->getRequest()->get('channel');
         foreach ($attributeParams as $field => $param) {
             $paramValue = (Yii::$app->getRequest()->get($param['param'], ''));
@@ -58,6 +59,21 @@ class Visit extends SpreadModel
                 //$paramValue = $paramValue == $tmp ? $paramValue : mb_convert_encoding($paramValue, 'utf-8', 'gbk');
 				$paramValue = $this->_formatUtf8Code($paramValue);
             }
+=======
+        $channel = \Yii::$app->getRequest()->get('channel');
+        foreach ($attributeParams as $field => $param) {
+            $paramValue = (\Yii::$app->getRequest()->get($param, ''));
+			if ($field == 'keyword') {
+				$tmp = mb_convert_encoding($paramValue, 'utf-8');
+				$paramValue = $paramValue == $tmp ? $paramValue : mb_convert_encoding($paramValue, 'utf-8', 'gbk');
+			}
+            /*if ($field == 'keyword' && strpos($channel, 'sembd') !== false) {
+                $paramValue = rawurldecode($paramValue);
+                //$encoding1 =mb_detect_encoding($paramValue);
+                $paramValue = mb_convert_encoding($paramValue, 'utf-8', 'gb2312');// : $paramValue;
+				$paramValue = preg_match('/\\\\x[0-9a-zA-Z]/', $paramValue, $r) ? '' : $paramValue;
+			}*/
+>>>>>>> web-17house
             $data[$field] = $paramValue;
         }
         $data['city_code'] = Yii::$app->request->get('city_code', '');

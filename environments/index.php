@@ -14,6 +14,8 @@ return [
             'website/runtime',
             'paytrade/runtime',
             'restapp/runtime',
+            'spread/runtime',
+            'merchant/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -30,6 +32,8 @@ return [
             'website/config/main-local.php',
             'paytrade/config/main-local.php',
             'restapp/config/main-local.php',
+            'spread/config/main-local.php',
+            'merchant/config/main-local.php',
         ],
     ],
     'Production' => [
@@ -45,6 +49,8 @@ return [
             'website/runtime',
             'paytrade/runtime',
             'restapp/runtime',
+            'spread/runtime',
+            'merchant/runtime',
         ],
         'setExecutable' => [
             'yii',
@@ -60,6 +66,8 @@ return [
             'website/config/main-local.php',
             'paytrade/config/main-local.php',
             'restapp/config/main-local.php',
+            'spread/config/main-local.php',
+            'merchant/config/main-local.php',
         ],
     ],
 ];

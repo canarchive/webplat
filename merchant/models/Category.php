@@ -29,13 +29,13 @@ class Category extends MerchantModel
             ['name', 'unique', 'targetClass' => '\merchant\models\Category', 'message' => 'This name has already been taken.'],
             [['orderlist'], 'integer'],
             [['orderlist'], 'default', 'value' => 0],
-			[['status', 'description'], 'safe'],
+			[['status', 'description', 'brief'], 'safe'],
         ];
     }
 
 	public function getInfos()
 	{
-		$infos = $this->find()->select(['id', 'name'])->indexBy('id')->asArray()->all();
+		$infos = $this->find()->select(['id', 'name', 'brief'])->indexBy('id')->asArray()->all();
 
 		return $infos;
 	}

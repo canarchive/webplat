@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 $baseDomain = 'alyee.com';
+=======
+$baseDomain = 'no.com';
+>>>>>>> web-17house
 $domains = [
 	'yii2.website' => '商城',
 	'yii2.passport' => '用户中心',

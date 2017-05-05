@@ -34,6 +34,23 @@ return [
             'rules' => [
 				'hd-<id:\d+>' => 'shoot/detail/index',
 				'submit' => 'shoot/signup/submit',
+                '/' => '/decoration/detail/home',
+                '<client:(pc|wap)>' => '/decoration/detail/third',
+				//Yii::getAlias('@grouponurl') => '/groupon',
+				'detail/<id:\d+>' => 'groupon/detail/index',
+                'detail-<id:\d+>' => '/decoration/detail/index',
+				'jz-signup' => '/decoration/signup/index',
+				'jz-success' => '/decoration/detail/success',
+				'jz-lottery' => '/decoration/signup/lottery',
+				'jz-bonus' => '/decoration/signup/bonus',
+				'jz-gift-bag' => '/decoration/signup/gift-bag',
+				//'<city:\w+>' => 'groupon/detail/index',
+		        ['pattern' => '/<controller:\w+>/<action:\w+>', 'route' => '/groupon/<controller>/<action>', 'host' => Yii::getAlias('@grouponurl')],
+				'api/order-mobile' => '/casher/api/order-mobile',
+				'xunke' => 'decoration/accept/xunke',
+				'jzhd-<type:\w+>-<city:\w+>' => '/decoration/detail/spread',
+				'<view:\w+>' => 'decoration/detail/inner',
+				'<view:\w+>-<type:\w+>-<city:\w+>' => 'decoration/detail/inner',
 			],
 		],
     ],
@@ -42,6 +59,15 @@ return [
 		'shoot' => [
 			'class' => 'spread\shoot\Module',
 		]
+		'groupon' => [
+			'class' => 'spread\groupon\Module',
+		],
+		'decoration' => [
+			'class' => 'spread\decoration\Module',
+		],
+		'casher' => [
+			'class' => 'spread\casher\Module',
+		],
 	],
     'params' => $params,
 ];

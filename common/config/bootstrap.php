@@ -12,4 +12,6 @@ Yii::setAlias('website', dirname(dirname(__DIR__)) . '/website');
 Yii::setAlias('passport', dirname(dirname(__DIR__)) . '/passport');
 Yii::setAlias('restapp', dirname(dirname(__DIR__)) . '/restapp');
 Yii::setAlias('paytrade', dirname(dirname(__DIR__)) . '/paytrade');
+Yii::setAlias('spread', dirname(dirname(__DIR__)) . '/spread');
+Yii::setAlias('merchant', dirname(dirname(__DIR__)) . '/merchant');
 require_once(__DIR__ . '/bootstrap-local.php');

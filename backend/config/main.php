@@ -88,6 +88,12 @@ return [
 		'paytrade' => [
 			'class' => 'backend\paytrade\Module',
 		],
+		'spread' => [
+			'class' => 'backend\spread\Module',
+		],
+		'merchant' => [
+			'class' => 'backend\merchant\Module',
+		],
 	],
 	'language' => 'zh-CN',
 

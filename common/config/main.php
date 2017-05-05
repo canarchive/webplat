@@ -14,6 +14,7 @@ return [
             'rules' => [
 		        ['pattern' => '/shoot-upload/<table:\w+>/<field:\w+>', 'route' => '/shoot-upload/index', 'host' => Yii::getAlias('@shooturl')],
 		        ['pattern' => '/spread-upload/<table:\w+>/<field:\w+>', 'route' => '/spread-upload/index', 'host' => Yii::getAlias('@spreadurl')],
+<<<<<<< HEAD
 		        ['pattern' => 'signin', 'route' => 'site/signin', 'host' => Yii::getAlias('@passporturl')],
 		        ['pattern' => 'signup', 'route' => 'site/signup', 'host' => Yii::getAlias('@passporturl')],
 				'signup' => 'shoot/signup/index',
@@ -22,6 +23,9 @@ return [
 		        ['pattern' => '/website-upload/<table:\w+>/<field:\w+>', 'route' => '/website-upload/index', 'host' => Yii::getAlias('@websiteurl')],
 		        ['pattern' => '/paytrade-upload/<table:\w+>/<field:\w+>', 'route' => '/paytrade-upload/index', 'host' => Yii::getAlias('@paytradeurl')],
                 ['pattern' => 'callback/<result:\w+>/<code:\w+>', 'route' => 'account/callback', 'host' => Yii::getAlias('@paytradeurl')],
+=======
+		        ['pattern' => '/merchant-upload/<table:\w+>/<field:\w+>', 'route' => '/merchant-upload/index', 'host' => Yii::getAlias('@merchanturl')],
+>>>>>>> web-17house
             ],
         ],
 		'assetManager' => [

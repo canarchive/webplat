@@ -8,6 +8,8 @@ $documentCodes = [
 	'backend_panel' => '我的面板', 
 	'backend_manager' => '管理员、操作和权限',
 	'backend_document_database' => '日志和表结构',
+	'spread_casher_business' => '团购会收银机-商家四联单的管理',
+	'spread_casher_orderinfo' => '团购会收银机-商家订单的管理',
 ];
 ?>
 <div class="row">
