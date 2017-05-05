@@ -31,6 +31,7 @@ return [
             'errorAction' => 'site/error',
         ],
 		'urlManager' => [
+<<<<<<< HEAD
             'rules' => [
 				'hd-<id:\d+>' => 'shoot/detail/index',
 				'submit' => 'shoot/signup/submit',
@@ -52,6 +53,9 @@ return [
 				'<view:\w+>' => 'decoration/detail/inner',
 				'<view:\w+>-<type:\w+>-<city:\w+>' => 'decoration/detail/inner',
 			],
+=======
+			'rules' => require(__DIR__ . '/rules-decoration.php'),
+>>>>>>> web-house
 		],
     ],
 

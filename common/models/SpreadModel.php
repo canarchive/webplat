@@ -2,7 +2,11 @@
 
 namespace common\models;
 
+<<<<<<< HEAD
 use yii\helpers\ArrayHelper;
+=======
+use spread\models\Attachment as AttachmentSpread;
+>>>>>>> web-house
 
 class SpreadModel extends BaseModel
 {
@@ -13,7 +17,7 @@ class SpreadModel extends BaseModel
 
 	protected function getAttachmentModel()
 	{
-		return new \spread\models\Attachment();
+		return new AttachmentSpread();
 	}
 
 	public function getDecorationInfo()

@@ -3,6 +3,7 @@
 namespace spread\decoration;
 
 use Yii;
+<<<<<<< HEAD
 
 class Module extends \yii\base\Module
 {
@@ -11,4 +12,10 @@ class Module extends \yii\base\Module
      */
     public $defaultRoute = '';
 
+=======
+use gallerycms\components\ModuleBase;
+
+class Module extends ModuleBase
+{
+>>>>>>> web-house
 }

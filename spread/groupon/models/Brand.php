@@ -37,10 +37,17 @@ class Brand extends SpreadModel
     public function rules()
     {
         return [
+<<<<<<< HEAD
             [['name', 'category_id', 'logo'], 'required'],
 			['code', 'unique', 'targetClass' => '\spread\groupon\models\Brand', 'message' => '代码已经被使用。'],
             [['orderlist', 'status'], 'default', 'value' => 0],
 			[['description', 'code'], 'safe'],
+=======
+            [['name', 'category_id', 'logo', 'code'], 'required'],
+			['code', 'unique', 'targetClass' => '\spread\groupon\models\Brand', 'message' => '代码已经被使用。'],
+            [['orderlist', 'status'], 'default', 'value' => 0],
+			[['description'], 'safe'],
+>>>>>>> web-house
         ];
     }
 
@@ -79,7 +86,12 @@ class Brand extends SpreadModel
         parent::afterSave($insert, $changedAttributes);
 
 		$fields = ['logo'];
+<<<<<<< HEAD
 		$this->_updateSingleAttachment('brand', $fields);
+=======
+		$attachment = new \spread\models\Attachment();
+		$this->_updateSingleAttachment($attachment, 'brand', $fields);
+>>>>>>> web-house
 
 		return true;
 	}	
@@ -102,6 +114,7 @@ class Brand extends SpreadModel
 
 		return empty($bindInfo) ? false : true;
 	}
+<<<<<<< HEAD
 
 	public function getInfos()
 	{
@@ -122,4 +135,6 @@ class Brand extends SpreadModel
 		}
 		return $datas;
 	}
+=======
+>>>>>>> web-house
 }

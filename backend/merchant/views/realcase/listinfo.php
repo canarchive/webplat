@@ -1,11 +1,20 @@
 <?php
+use yii\helpers\Url;
+$this->params['noPjax'] = true;
 
 $gridViewParams = [
     'dataProvider' => $dataProvider,
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-        'name',
+		[
+			'format' => 'raw',
+            'attribute' => 'name',
+			'value' => function($model) {
+				$url = Yii::getAlias('@gallerycmsurl') . Url::to(['/realcase/show', 'id' => $model->id]);
+				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
+			},
+		],
 		[
 			'format' => 'raw',
 			'attribute' => 'thumb',
@@ -14,15 +23,13 @@ $gridViewParams = [
 			}
 		],
 		[
+			'format' => 'raw',
             'attribute' => 'merchant_id',
 			'value' => function($model) {
-				return $model->merchantInfos[$model->merchant_id];
-			},
-		],
-		[
-            'attribute' => 'service_id',
-			'value' => function($model) {
-				return $model->serviceInfos[$model->service_id];
+				if ($model->merchant_id > 0) {
+				    return $model->merchantInfo['nameUrl'];
+				}
+				return '';
 			},
 		],
 		[

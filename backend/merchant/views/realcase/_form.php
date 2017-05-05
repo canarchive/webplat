@@ -9,24 +9,21 @@ use merchant\models\Attachment;
 $attachmentModel = new Attachment();
 $thumb = $attachmentModel->getFieldInfos('realcase', 'thumb');
 $pictureDesign = $attachmentModel->getFieldInfos('realcase', 'picture_design');
+$pictureOrigin = $attachmentModel->getFieldInfos('realcase', 'picture_origin');
 $designSketch = $attachmentModel->getFieldInfos('realcase', 'design_sketch');
 $model->design_sketch = $attachmentModel->getFieldIds('realcase', 'design_sketch', $model->id); 
+
+$ownerInfo = $this->context->ownerInfo;
 
 ?>
 
 <div class="menu-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'merchant_id')->dropDownList($model->merchantInfos, ['prompt' => Yii::t('admin-common', 'Select Merchant')]); ?>
-    <?= $form->field($model, 'service_id')->dropDownList($model->serviceInfos, ['prompt' => Yii::t('admin-common', 'Select service')]); ?>
+	<input type="hidden" name="owner_id" value="<?= $ownerInfo['id']; ?>" />
+    <?= $form->field($model, 'brief')->textInput(['maxlength' => 128]) ?>
+    <?= $form->field($model, 'design_concept')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'orderlist')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'community_name')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'house_type')->dropDownList($model->houseTypeInfos, ['prompt' => Yii::t('admin-common', 'Select House Type')]); ?>
-    <?= $form->field($model, 'style')->dropDownList($model->styleInfos, ['prompt' => Yii::t('admin-common', 'Select Style')]); ?>
-    <?= $form->field($model, 'area')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'decoration_type')->dropDownList($model->decorationTypeInfos, ['prompt' => Yii::t('admin-common', 'Select Decoration Type')]); ?>
-    <?= $form->field($model, 'decoration_price')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'thumb')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
@@ -41,6 +38,23 @@ $model->design_sketch = $attachmentModel->getFieldIds('realcase', 'design_sketch
         'clientOptions' => [
 		    //'dataType' => 'json',
 			'maxFileSize' => $thumb['maxSize'] * 1024,
+        ],
+    ]);
+    ?>
+    <?= $form->field($model, 'picture_origin')->hiddenInput(); ?>
+    <?= FileUploadUI::widget([
+        'model' => $attachmentModel,
+        'attribute' => 'files[picture_origin]',
+        'url' => ['/merchant-upload/index', 'table' => 'realcase', 'field' => 'picture_origin', 'id' => $model->id],
+		'gallery' => true,
+        'fieldOptions' => [
+			'isSingle' => $pictureOrigin['isSingle'],
+			'idField' => Html::getInputId($model, 'picture_origin'),
+            'accept' => 'image/*'
+        ],
+        'clientOptions' => [
+		    //'dataType' => 'json',
+			'maxFileSize' => $pictureOrigin['maxSize'] * 1024,
         ],
     ]);
     ?>

@@ -5,28 +5,26 @@ $gridViewParams = [
     //'filterModel' => $searchModel,
     'columns' => [
         'id',
-        'name',
 		[
 			'format' => 'raw',
-			'attribute' => 'logo',
-			'value' => function($model) {
-				return $model->getAttachmentImg($model->logo);
-			}
+			'attribute' => 'name',
+            'value'=> function($model){
+				$domain = Yii::$app->params['baseDomain'];
+				$url = "http://{$model->code_short}.{$domain}";
+				return "<a href='{$url}' target='_blank'>{$model->name}</a>";
+            },
 		],
+		'code_short',
 		'code',
+		'num_merchant',
+		'num_merchant_self',
 		'hotline',
-		'postcode',
-		'address',
+		//'postcode',
+		//'address',
 		[
             'attribute' => 'created_at',
             'value'=> function($model){
                 return  date('Y-m-d H:i:s',$model->created_at);
-            },
-        ],
-		[
-            'attribute' => 'updated_at',
-            'value'=> function($model){
-                return  date('Y-m-d H:i:s',$model->updated_at);
             },
         ],
 		[
@@ -35,7 +33,6 @@ $gridViewParams = [
 				return $model->statusInfos[$model->status];
 			}
 		],
-		'description',
     ],
 ];
 

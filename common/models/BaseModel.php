@@ -266,6 +266,10 @@ class BaseModel extends ActiveRecord
             'simple-EN' => '简欧',
             'new-classics' => '新古典',
             'SE-asia' => '东南亚',
+			'japa' => '日式',
+			'north-EN' => '北欧',
+			'simpla-EN' => '简欧',
+			//'loft' => 'LOFT',
         ];
 
         return $datas;

@@ -4,7 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use \merchant\models\Attachment;
+use \merchant\models\Attachment As AttachmentMerchant;
 use merchant\models\Merchant;
 
 class MerchantModel extends BaseModel
@@ -16,12 +16,12 @@ class MerchantModel extends BaseModel
 
 	protected function getAttachmentModel()
 	{
-		return new Attachment();
+		return new AttachmentMerchant();
 	}
 
-	protected function getMerchantInfos()
+	protected function _getMerchantInfos($where = [])
 	{
-		$infos = ArrayHelper::map(Merchant::find()->all(), 'id', 'name');
+		$infos = ArrayHelper::map(Merchant::find()->where($where)->all(), 'id', 'name');
 		return $infos;
 	}
 
@@ -29,42 +29,6 @@ class MerchantModel extends BaseModel
 	{
 		$infos = ArrayHelper::map(\spread\models\CustomService::find()->all(), 'id', 'name');
 		return $infos;
-	}
-
-	public function getHouseTypeInfos()
-	{
-		$datas = [
-			'one' => '一居',
-			'two' => '二居',
-			'three' => '三居',
-			'four' => '四居',
-			'solo' => '小户型',
-			'lodging' => '公寓',
-			'double' => '复式',
-			'villa' => '别墅',
-		];
-
-		return $datas;
-	}
-
-	public function getStyleInfos()
-	{
-		$datas = [
-			'simple' => '简约',
-			'modern' => '现代',
-			'EN' => '欧式',
-			'CN' => '中式',
-			'rural' => '田园',
-			'mediterranean' => '地中海',
-			'US' => '美式',
-			'mashup' => '混搭',
-			'family' => '宜家',
-			'simple-EN' => '简欧',
-			'new-classics' => '新古典',
-			'SE-asia' => '东南亚',
-		];
-
-		return $datas;
 	}
 
 	public function getDecorationTypeInfos()

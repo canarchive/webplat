@@ -1,11 +1,16 @@
 <?php
 use yii\helpers\Html;
 
+<<<<<<< HEAD
+=======
+$modelNew = new \spread\decoration\models\OwnerHouse();
+>>>>>>> web-house
 $tableName = 'owner_house';
 ?>
 <table class="table table-striped table-bordered responsive">
     <thead>
         <tr>
+<<<<<<< HEAD
             <th><?= $model->getAttributeLabel('created_at'); ?></th>
             <th><?= $model->getAttributeLabel('updated_at'); ?></th>
             <th><?= $model->getAttributeLabel('address'); ?></th>
@@ -22,6 +27,22 @@ $tableName = 'owner_house';
             <td><?= date('Y-m-d H:i:s', $model->updated_at); ?></td>
             <td><input type="text" name="address" value="<?= $model->address; ?>" onchange="updateElemForOwner('<?= $tableName; ?>', <?= $model->id; ?>, 'address', this.value)"/></td>
             <td><input type="text" name="house_area" value="<?= $model->house_area; ?>" onchange="updateElemForOwner('<?= $tableName; ?>', <?= $model->id; ?>, 'house_area', this.value)"/></td>
+=======
+            <th><?= $modelNew->getAttributeLabel('address'); ?></th>
+            <th><?= $modelNew->getAttributeLabel('house_area'); ?></th>
+            <th><?= $modelNew->getAttributeLabel('renovation_budget'); ?></th>
+            <th><?= $modelNew->getAttributeLabel('house_type'); ?></th>
+            <th><?= $modelNew->getAttributeLabel('house_sort'); ?></th>
+            <th>派单操作</th>
+        </tr>
+    </thead>
+    <tbody id="owner_house_infos">
+        <?php foreach ($ownerHouseInfos as $model) { ?>
+        <tr>
+            <td><input type="text" name="address" value="<?= $model->address; ?>" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'address', this.value)"/></td>
+            <td><input type="text" name="house_area" value="<?= $model->house_area; ?>" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'house_area', this.value)"/>平米</td>
+            <td><input type="text" name="renovation_budget" value="<?= $model->renovation_budget; ?>" onchange="updateElemForUser('<?= $tableName; ?>', <?= $model->id; ?>, 'renovation_budget', this.value)"/>万元</td>
+>>>>>>> web-house
             <td>
             <?= Html::dropDownList(
                 'house_type', 
@@ -30,7 +51,11 @@ $tableName = 'owner_house';
                 [
                     'prompt' => '全部', 
                     'class' => 'form-control',
+<<<<<<< HEAD
                     'onchange' => "updateElemForOwner('{$tableName}', {$model->id}, 'house_type', this.value)",
+=======
+                    'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'house_type', this.value)",
+>>>>>>> web-house
                 ]
             ); ?>
             </td>
@@ -42,6 +67,7 @@ $tableName = 'owner_house';
                 [
                     'prompt' => '全部', 
                     'class' => 'form-control',
+<<<<<<< HEAD
                     'onchange' => "updateElemForOwner('{$tableName}', {$model->id}, 'house_sort', this.value)",
                 ]
             ); ?>
@@ -89,5 +115,14 @@ $tableName = 'owner_house';
             </td>
             <td><?= Html::radioList('renovation_company', $model->renovation_company, $model->renovationCompanyInfos, ['onchange' => "updateElemForOwner('{$tableName}', {$model->id}, 'renovation_company', $('input[name=\"renovation_company\"]:checked').val())"]); ?></td>
         </tr>
+=======
+                    'onchange' => "updateElemForUser('{$tableName}', {$model->id}, 'house_sort', this.value)",
+                ]
+            ); ?>
+            </td>
+				<td><a href="javascript: void(0);" onclick="$('#house_id').val(<?= $model->id; ?>); $('#house_show').html('<?= $model->address; ?>'); $('#sendto_merchant').show();">派单</a></td>
+        </tr>
+        <?php } ?>
+>>>>>>> web-house
     </tbody>
 </table>

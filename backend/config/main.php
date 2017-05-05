@@ -64,6 +64,7 @@ return [
     ],
 
 	'modules' => [
+<<<<<<< HEAD
 		'passport' => [
 			'class' => 'backend\passport\Module',
 		],
@@ -88,12 +89,23 @@ return [
 		'paytrade' => [
 			'class' => 'backend\paytrade\Module',
 		],
+=======
+		'gallerycms' => [
+			'class' => 'backend\gallerycms\Module',
+		],
+>>>>>>> web-house
 		'spread' => [
 			'class' => 'backend\spread\Module',
 		],
 		'merchant' => [
 			'class' => 'backend\merchant\Module',
 		],
+<<<<<<< HEAD
+=======
+		'spider' => [
+			'class' => 'backend\spider\Module',
+		],
+>>>>>>> web-house
 	],
 	'language' => 'zh-CN',
 

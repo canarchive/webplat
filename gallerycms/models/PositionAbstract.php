@@ -2,7 +2,7 @@
 
 namespace gallerycms\models;
 
-use common\models\gallerycmsModel;
+use common\models\GallerycmsModel;
 
 class PositionAbstract extends GallerycmsModel
 {

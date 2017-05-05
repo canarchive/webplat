@@ -5,6 +5,7 @@ return [
         'setWritable' => [
             'backend/runtime',
             //'backend/web/assets',
+<<<<<<< HEAD
             'passport/runtime',
             'shoot/runtime',
             'spread/runtime',
@@ -16,6 +17,12 @@ return [
             'restapp/runtime',
             'spread/runtime',
             'merchant/runtime',
+=======
+            'gallerycms/runtime',
+            'spread/runtime',
+            'merchant/runtime',
+            'spider/runtime',
+>>>>>>> web-house
         ],
         'setExecutable' => [
             'yii',
@@ -23,6 +30,7 @@ return [
         ],
         'setCookieValidationKey' => [
             'backend/config/main-local.php',
+<<<<<<< HEAD
             'passport/config/main-local.php',
             'shoot/config/main-local.php',
             'spread/config/main-local.php',
@@ -34,12 +42,19 @@ return [
             'restapp/config/main-local.php',
             'spread/config/main-local.php',
             'merchant/config/main-local.php',
+=======
+            'gallerycms/config/main-local.php',
+            'spread/config/main-local.php',
+            'merchant/config/main-local.php',
+            'spider/config/main-local.php',
+>>>>>>> web-house
         ],
     ],
     'Production' => [
         'path' => 'prod',
         'setWritable' => [
             'backend/runtime',
+<<<<<<< HEAD
             'passport/runtime',
             'shoot/runtime',
             'spread/runtime',
@@ -51,12 +66,19 @@ return [
             'restapp/runtime',
             'spread/runtime',
             'merchant/runtime',
+=======
+            'gallerycms/runtime',
+            'spread/runtime',
+            'merchant/runtime',
+            'spider/runtime',
+>>>>>>> web-house
         ],
         'setExecutable' => [
             'yii',
         ],
         'setCookieValidationKey' => [
             'backend/config/main-local.php',
+<<<<<<< HEAD
             'passport/config/main-local.php',
             'shoot/config/main-local.php',
             'spread/config/main-local.php',
@@ -68,6 +90,12 @@ return [
             'restapp/config/main-local.php',
             'spread/config/main-local.php',
             'merchant/config/main-local.php',
+=======
+            'gallerycms/config/main-local.php',
+            'spread/config/main-local.php',
+            'merchant/config/main-local.php',
+            'spider/config/main-local.php',
+>>>>>>> web-house
         ],
     ],
 ];

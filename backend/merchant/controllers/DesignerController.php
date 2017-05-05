@@ -3,14 +3,22 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Designer;
-use merchant\models\searchs\Designer as DesignerSearch;
+use merchant\house\models\Designer;
+use merchant\house\models\searchs\Designer as DesignerSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class DesignerController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Designer';
+	protected $modelClass = 'merchant\house\models\Designer';
+    use MerchantInfoTrait;
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_initInfo();
+    }
 
     public function actionListinfo()
     {
@@ -25,7 +33,11 @@ class DesignerController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Designer());
+		$data = [
+			'merchant_id' => Yii::$app->request->get('merchant_id', 0),
+			'city_code' => isset($this->companyInfo['code_short']) ? $this->companyInfo['code_short'] : '',
+		];
+		return $this->_addInfo(new Designer($data));
     }
 
     public function actionUpdate($id = 0)

@@ -3,14 +3,22 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Merchant;
-use merchant\models\searchs\Merchant as MerchantSearch;
+use merchant\house\models\Merchant;
+use merchant\house\models\searchs\Merchant as MerchantSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class MerchantController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Merchant';
+    use MerchantInfoTrait;
+	protected $modelClass = 'merchant\house\models\Merchant';
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_initInfo();
+    }
 
     public function actionListinfo()
     {
@@ -25,7 +33,11 @@ class MerchantController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Merchant());
+		$data = [
+			'city_code' => isset($this->companyInfo['code_short']) ? $this->companyInfo['code_short'] : '',
+			'is_joined' => $this->is_joined,
+		];
+		return $this->_addInfo(new Merchant($data));
     }
 
     public function actionUpdate($id = 0)

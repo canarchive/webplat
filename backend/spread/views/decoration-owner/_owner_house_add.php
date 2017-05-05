@@ -8,16 +8,27 @@ $tableName = 'owner_house';
         <tr>
             <th><?= $modelNew->getAttributeLabel('address'); ?></th>
             <th><?= $modelNew->getAttributeLabel('house_area'); ?></th>
+<<<<<<< HEAD
             <th><?= $modelNew->getAttributeLabel('house_type'); ?></th>
             <th><?= $modelNew->getAttributeLabel('house_sort'); ?></th>
             <th><?= $modelNew->getAttributeLabel('buy_furniture'); ?></th>
             <th><?= $modelNew->getAttributeLabel('buy_building'); ?></th>
+=======
+            <th><?= $modelNew->getAttributeLabel('renovation_budget'); ?></th>
+            <th><?= $modelNew->getAttributeLabel('house_type'); ?></th>
+            <th><?= $modelNew->getAttributeLabel('house_sort'); ?></th>
+>>>>>>> web-house
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><input type="text" name="address" id="address" value=""/></td>
+<<<<<<< HEAD
             <td><input type="text" name="house_area" id="house_area" value=""/></td>
+=======
+            <td><input type="text" name="house_area" id="house_area" value=""/>平米</td>
+            <td><input type="text" name="renovation_budget" id="renovation_budget" value=""/>万元</td>
+>>>>>>> web-house
             <td>
             <?= Html::dropDownList(
                 'house_type', 
@@ -42,6 +53,7 @@ $tableName = 'owner_house';
                 ]
             ); ?>
             </td>
+<<<<<<< HEAD
             <td><?= Html::radioList('buy_furniture', 0, $modelNew->buyFurnitureInfos, ['id' => 'buy_furniture']); ?></td>
             <td><?= Html::radioList('buy_building', 0, $modelNew->buyBuildingInfos, ['id' => 'buy_building']); ?></td>
         </tr>
@@ -84,6 +96,8 @@ $tableName = 'owner_house';
             ); ?>
             </td>
             <td><?= Html::radioList('renovation_company', 0, $modelNew->renovationCompanyInfos, ['id' => 'renovation_company']); ?></td>
+=======
+>>>>>>> web-house
         </tr>
     </tbody>
 </table>

@@ -3,11 +3,17 @@
 namespace backend\spread\controllers;
 
 use Yii;
+<<<<<<< HEAD
+=======
+use spread\models\Statistic;
+use spread\models\searchs\Statistic as StatisticSearch;
+>>>>>>> web-house
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class StatisticController extends AdminController
 {
+<<<<<<< HEAD
 	public $showSubnav = false;
 	public function actionSem()
 	{
@@ -40,5 +46,19 @@ class StatisticController extends AdminController
 		$infos = $searchModel->getInfos($field, $type);
 
 		return $this->render('statistic', ['currentType' => $type, 'datas' => $infos, 'fields' => $typeInfo]);
+=======
+	protected $modelClass = 'spread\models\Statistic';
+
+    public function actionListinfo()
+    {
+        $searchModel = new StatisticSearch();
+		$searchDatas = $searchModel->getSearchDatas();
+		return $this->_listinfoInfo($searchModel, $searchDatas);
+    }
+
+    public function actionView($id)
+    {
+		return $this->_viewInfo($id);
+>>>>>>> web-house
     }
 }

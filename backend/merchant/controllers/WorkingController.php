@@ -3,14 +3,24 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Working;
-use merchant\models\searchs\Working as WorkingSearch;
+use merchant\house\models\Working;
+use merchant\house\models\searchs\Working as WorkingSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class WorkingController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Working';
+	protected $modelClass = 'merchant\house\models\Working';
+    use MerchantInfoTrait;
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_ownerInfo();
+		$this->_initInfo();
+    }
+
 
     public function actionListinfo()
     {
@@ -25,7 +35,12 @@ class WorkingController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Working());
+		$data = [
+			'city_code' => isset($this->ownerInfo['city_code']) ? $this->ownerInfo['city_code'] : '',
+			'merchant_id' => isset($this->ownerInfo['merchant_id']) ? $this->ownerInfo['merchant_id'] : '',
+			'owner_id' => isset($this->ownerInfo['id']) ? $this->ownerInfo['id'] : '',
+		];
+		return $this->_addInfo(new Working($data));
     }
 
     public function actionUpdate($id = 0)

@@ -1,4 +1,5 @@
 <?php
+//ini_set("session.cookie_domain",'.tuanjiahui.com');
 return [
     'timeZone'=>'Asia/Shanghai',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
@@ -12,6 +13,7 @@ return [
             'showScriptName' => false,
 			'suffix' => '.html',
             'rules' => [
+<<<<<<< HEAD
 		        ['pattern' => '/shoot-upload/<table:\w+>/<field:\w+>', 'route' => '/shoot-upload/index', 'host' => Yii::getAlias('@shooturl')],
 		        ['pattern' => '/spread-upload/<table:\w+>/<field:\w+>', 'route' => '/spread-upload/index', 'host' => Yii::getAlias('@spreadurl')],
 <<<<<<< HEAD
@@ -26,6 +28,12 @@ return [
 =======
 		        ['pattern' => '/merchant-upload/<table:\w+>/<field:\w+>', 'route' => '/merchant-upload/index', 'host' => Yii::getAlias('@merchanturl')],
 >>>>>>> web-17house
+=======
+		        ['pattern' => '/gallerycms-upload/<table:\w+>/<field:\w+>', 'route' => '/gallerycms-upload/index', 'host' => Yii::getAlias('@gallerycmsurl')],
+		        ['pattern' => '/spread-upload/<table:\w+>/<field:\w+>', 'route' => '/spread-upload/index', 'host' => Yii::getAlias('@spreadurl')],
+		        ['pattern' => '/merchant-upload/<table:\w+>/<field:\w+>', 'route' => '/merchant-upload/index', 'host' => Yii::getAlias('@merchanturl')],
+		        ['pattern' => '/spider-upload/<table:\w+>/<field:\w+>', 'route' => '/spider-upload/index', 'host' => Yii::getAlias('@spiderurl')],
+>>>>>>> web-house
             ],
         ],
 		'assetManager' => [
@@ -35,6 +43,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        /*'session' => [
+            'cookieParams' => [
+                'domain' => '.tuanjiahui.com',
+                'lifetime' => 0,
+                'httpOnly' => true,
+                'path' => '/',
+            ],
+		],*/
 		'request' => [
 			'class' => 'common\components\Request',
 		],

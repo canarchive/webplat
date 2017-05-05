@@ -10,13 +10,14 @@ return [
     'id' => 'app-merchant',
     'basePath' => dirname(__DIR__),
 	//'viewPath' => '@merchant/views',
-	'layout' => null,
+	//'layout' => null,
     'bootstrap' => ['log'],
     'controllerNamespace' => 'merchant\controllers',
     'components' => [
         'user' => [
             'identityClass' => 'merchant\models\User',
             'enableAutoLogin' => true,
+			'loginUrl' => ['/site/signin'],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -34,9 +35,28 @@ return [
 	        'enablePrettyUrl' => true,
             'enableStrictParsing' => false,
             'showScriptName' => false,
-            'rules' => [
-			],
+			'rules' => require(__DIR__ . '/rules.php'),
 		],
+    ],
+
+    'as access' => [
+        'class' => 'merchant\components\AccessControl',
+        'allowActions' => [
+			//'info/*',
+			//'site/index',
+			'merchant-upload/*',
+			'site/signin',
+			'site/signup',
+			'site/logout',
+			'product/*',
+            'debug/*',
+        ]
+    ],
+
+    'modules' => [
+        'house' => [
+            'class' => 'merchant\house\Module',
+        ],
     ],
 
     'params' => $params,

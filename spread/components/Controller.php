@@ -18,6 +18,7 @@ class Controller extends CommonController
 		$hostMobile = Yii::getAlias('@m.spreadurl');
         //$this->isMobile = $this->clientIsMobile();
 		$this->isMobile = in_array($this->host, Yii::$app->params['mHosts']) ? true : false;
+        $this->_getHostKey();
 
 		$url = Yii::$app->request->url;
 		$cityCode = isset($this->module->currentCityCode) ? $this->module->currentCityCode : null;
@@ -42,4 +43,20 @@ class Controller extends CommonController
 	{
 	}
 
+    protected function _getHostKey()
+    {   
+        $host = $this->host;
+        if (strpos($host, 'toteme.cn') !== false) {
+            $hostKey = 'bx';
+		} elseif (strpos($host, 'btcfang.cn') !== false) {
+			$hostKey = 'btc';
+			Yii::$app->params['siteCopyRightInfo'] = '北京力新国际投资招商有限公司 ';
+        } else  {
+            $hostKey = ''; 
+        }   
+
+		Yii::$app->params['hostKey'] = $hostKey;
+        Yii::$app->params['hostAliasPc'] = "@{$hostKey}spreadurl";
+        Yii::$app->params['hostAliasMobile'] = "@m.{$hostKey}spreadurl";
+    }
 }

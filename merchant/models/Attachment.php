@@ -45,16 +45,22 @@ class Attachment extends AttachmentBase
     				'maxSize' => 300,
     				'type' => 'image/*',
 				],
+				'picture_origin' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 600,
+    				'type' => 'image/*',
+				],
 				'picture_design' => [
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 300,
+    				'maxSize' => 600,
     				'type' => 'image/*',
 				],
 				'design_sketch' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
-    				'maxSize' => 500,
+    				'maxSize' => 600,
     				'type' => 'image/*',
 				],
 			],
@@ -73,9 +79,31 @@ class Attachment extends AttachmentBase
     				'maxSize' => 300,
     				'type' => 'image/*',
 				],
-			],
-			'working_status' => [
-				'picture_living' => [
+				'start' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 500,
+    				'type' => 'image/*',
+				],
+				'electric' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 500,
+    				'type' => 'image/*',
+				],
+				'cement' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 500,
+    				'type' => 'image/*',
+				],
+				'paint' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 500,
+    				'type' => 'image/*',
+				],
+				'finish' => [
         			'isSingle' => false,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 500,

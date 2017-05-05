@@ -23,12 +23,6 @@ class Attachment extends AttachmentBase
     				'maxSize' => 200,
     				'type' => 'image/*',
 				],
-				'map' => [
-        			'isSingle' => true,
-    				'minSize' => 1, // unit: kb
-    				'maxSize' => 200,
-    				'type' => 'image/*',
-				],
 			],
     				'maxSize' => 100,
     				'type' => 'image/*',

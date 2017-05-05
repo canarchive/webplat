@@ -42,14 +42,6 @@ class Attachment extends AttachmentBase
     				'type' => 'image/*',
 				],
 			],
-			'picture_category' => [
-				'thumb' => [
-        			'isSingle' => true,
-    				'minSize' => 1, // unit: kb
-    				'maxSize' => 30,
-    				'type' => 'image/*',
-				],
-			],
 			'professor' => [
 				'photo' => [
         			'isSingle' => true,
@@ -75,6 +67,34 @@ class Attachment extends AttachmentBase
         			'isSingle' => true,
     				'minSize' => 1, // unit: kb
     				'maxSize' => 2000,
+    				'type' => 'image/*',
+				],
+			],			
+			'house_sample' => [
+				'thumb' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 400,
+    				'type' => 'image/*',
+				],
+				'picture' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 600,
+    				'type' => 'image/*',
+				],
+			],			
+			'house_community' => [
+				'thumb' => [
+        			'isSingle' => true,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 300,
+    				'type' => 'image/*',
+				],
+				'picture' => [
+        			'isSingle' => false,
+    				'minSize' => 1, // unit: kb
+    				'maxSize' => 600,
     				'type' => 'image/*',
 				],
 			],			

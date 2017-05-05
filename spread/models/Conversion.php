@@ -12,9 +12,6 @@ class Conversion extends Visit
         return '{{%conversion}}';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
 		$attributes = parent::attributeLabels();
@@ -26,31 +23,8 @@ class Conversion extends Visit
 		return parent::insert($runValidation, $attributes);
     }	
 
-	public static function getPositionInfos()
-	{
-		$datas = [
-			'' => '未知',
-			'top' => '顶部',
-			'picture' => 'H5中部图片',
-			'bottom' => '底部',
-		];
-		return $datas;
-	}
-
 	public function successLog($data)
 	{
-		$insertInfo = [
-			'message' => $data['message'],
-			'name' => $data['name'],
-			'mobile' => $data['mobile'],
-			'from_type' => $data['from_type'],
-			'info_id' => $data['info_id'],
-			'info_name' => $data['info_name'],
-			'position' => $data['position'],
-			'message' => $data['message'],
-			'note' => '',
-		];
-
 		$session = \Yii::$app->session;
 		$spreadInfo = isset($session['session_spread_info']) ? $session['session_spread_info'] : [];
 		$spreadInfo = !empty($spreadInfo) && time() - $spreadInfo['time'] < 1800 ? $spreadInfo : [];
@@ -58,7 +32,7 @@ class Conversion extends Visit
 		if (isset($spreadInfo['time'])) {
 			unset($spreadInfo['time']);
 		}
-		$insertInfo = array_merge($insertInfo, $spreadInfo);
+		$insertInfo = array_merge($data, $spreadInfo);
 
 		$conversion = new Conversion();
 		$newData = $conversion->insert(false, $insertInfo);

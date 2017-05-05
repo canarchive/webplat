@@ -3,14 +3,23 @@
 namespace backend\merchant\controllers;
 
 use Yii;
-use merchant\models\Realcase;
-use merchant\models\searchs\Realcase as RealcaseSearch;
+use merchant\house\models\Realcase;
+use merchant\house\models\searchs\Realcase as RealcaseSearch;
 use yii\web\NotFoundHttpException;
 use backend\components\AdminController;
 
 class RealcaseController extends AdminController
 {
-	protected $modelClass = 'merchant\models\Realcase';
+	protected $modelClass = 'merchant\house\models\Realcase';
+    use MerchantInfoTrait;
+
+    public function init()
+    {
+        parent::init();
+
+		$this->_ownerInfo();
+		$this->_initInfo();
+    }
 
     public function actionListinfo()
     {
@@ -25,7 +34,12 @@ class RealcaseController extends AdminController
 
     public function actionAdd()
     {
-		return $this->_addInfo(new Realcase());
+		$data = [
+			'city_code' => isset($this->ownerInfo['city_code']) ? $this->ownerInfo['city_code'] : '',
+			'merchant_id' => isset($this->ownerInfo['merchant_id']) ? $this->ownerInfo['merchant_id'] : '',
+			'owner_id' => isset($this->ownerInfo['id']) ? $this->ownerInfo['id'] : '',
+		];
+		return $this->_addInfo(new Realcase($data));
     }
 
     public function actionUpdate($id = 0)

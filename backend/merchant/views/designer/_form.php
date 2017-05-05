@@ -7,18 +7,24 @@ use merchant\models\Attachment;
 
 $attachmentModel = new Attachment();
 $photo = $attachmentModel->getFieldInfos('designer', 'photo');
+$context = $this->context;
 
 ?>
 
 <div class="menu-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+	<input type="hidden" name="merchant_id" value="<?= $context->merchant_id; ?>" />
+	<input type="hidden" name="city_code" value="<?= $context->companyInfo['code_short']; ?>" />
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'aptitude')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'record')->textInput(['maxlength' => 128]) ?>
-    <?= $form->field($model, 'merchant_id')->dropDownList($model->merchantInfos, ['prompt' => Yii::t('admin-common', 'Select merchant')]); ?>
+    <?= $form->field($model, 'design_concept')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'orderlist')->textInput() ?>
+    <?= $form->field($model, 'score_praise')->textInput() ?>
+    <?= $form->field($model, 'score_active')->textInput() ?>
+    <?= $form->field($model, 'sample_num')->textInput() ?>
     <?= $form->field($model, 'photo')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,

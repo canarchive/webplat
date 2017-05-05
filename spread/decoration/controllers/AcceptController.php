@@ -33,7 +33,11 @@ class AcceptController extends spreadController
             'type' => '677',
             'signup_ip' => '',
             'signup_city' => $city,
+<<<<<<< HEAD
 			'signup_channel' => 'sembd-xunke',
+=======
+			'channel' => 'sembd-xunke',
+>>>>>>> web-house
             'mobile' => $mobile,
             'name' => $name,
 			'keyword' => $keyword,

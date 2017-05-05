@@ -10,48 +10,17 @@ use backend\components\AdminController;
 
 class VisitController extends AdminController
 {
+	protected $modelClass = 'spread\models\Visit';
 
-    /**
-     * Lists all Visit.
-     * @return mixed
-     */
     public function actionListinfo()
     {
         $searchModel = new VisitSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 		$searchDatas = $searchModel->getSearchDatas();
-
-        return $this->render('listinfo', [
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
-			'searchDatas' => $searchDatas,
-        ]);
+		return $this->_listinfoInfo($searchModel, $searchDatas);
     }
 
-    /**
-     * Displays a single Visit model.
-     * @param  string $id
-     * @return mixed
-     */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
-
-        return $this->render('view', ['model' => $model]);
-    }
-
-    /**
-     * Finds the Visit model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param  string        $id
-     * @return Visit      the loaded model
-     * @throws HttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Visit::findOne($id)) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');		
+		return $this->_viewInfo($id);
     }
 }

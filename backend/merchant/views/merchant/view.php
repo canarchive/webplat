@@ -1,5 +1,5 @@
 <?php
-
+$this->context->companyInfo = $model->companyInfo;
 $detailViewParams = [
     'model' => $model,
     'attributes' => [
@@ -10,18 +10,15 @@ $detailViewParams = [
 			'value' => $model->getAttachmentImg($model->logo, false),
 		],
         'name',
-		[
-			'attribute' => 'company_id',
-			'value' => $model->companyInfos[$model->company_id],
-		],
-		[
+		/*[
 			'attribute' => 'sort',
 			'value' => $model->sortInfos[$model->sort],
-		],
-		[
-			'attribute' => 'category_id',
-			'value' => $model->categoryInfos[$model->category_id],
-		],
+		],*/
+        'num_owner',
+        'num_realcase',
+        'num_working',
+        'score',
+        'praise',
         'hotline',
 		'postcode',
 		'address',

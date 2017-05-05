@@ -13,6 +13,7 @@ class SignupForm extends Model
 {
 	public $mobile;
 	public $name;
+<<<<<<< HEAD
 	public $info_id;
 	public $message;
 	public $template_code;
@@ -26,6 +27,18 @@ class SignupForm extends Model
 	public $gift_bag_id;
 	public $decorationModel;
 	public $submitType = '';
+=======
+	public $message;
+	public $position;
+	public $position_name;
+	public $city_input;
+	public $area_input;
+	public $form_type;
+	public $isMobile;
+	public $decorationOwnerModel;
+	public $quoteInfo = [];
+	public $existOwner;
+>>>>>>> web-house
 
     /**
      * @inheritdoc
@@ -36,7 +49,12 @@ class SignupForm extends Model
             [['mobile', 'name'], 'filter', 'filter' => 'trim'],
             [['mobile'], 'required'],
             ['mobile', 'common\validators\MobileValidator'],
+<<<<<<< HEAD
 			[['lottery_id', 'bonus_id', 'gift_bag_id', 'message', 'info_id', 'template_code', 'position', 'position_name'], 'safe'],
+=======
+			//[['city_input', 'area_input'], 'default', 'value' => ''],
+			[['city_input', 'area_input', 'form_type', 'message', 'position', 'position_name'], 'safe'],
+>>>>>>> web-house
         ];
     }
 
@@ -53,6 +71,7 @@ class SignupForm extends Model
 		}
 
 		$conversionModel = new \spread\models\Conversion();
+<<<<<<< HEAD
 		$positionInfos = $conversionModel->getPositionInfos();
 		$positionStr = isset($positionInfos[$this->position]) ? $positionInfos[$this->position] : $this->position;
 		$note = $positionStr . '#' . strip_tags($this->position_name);
@@ -86,6 +105,32 @@ class SignupForm extends Model
 		if (!$noCheckDecorationSignined && !empty($infoExist)) {
 			$this->addError('error', '这个手机号已经报名了本场家装活动');
 			return false;
+=======
+		//$positionInfos = $conversionModel->getPositionInfos();
+		//$positionStr = isset($positionInfos[$this->position]) ? $positionInfos[$this->position] : $this->position;
+		//$note = $positionStr . '#' . strip_tags($this->position_name);
+		$note = strip_tags($this->position_name);
+		$data = [
+			'mobile' => $this->mobile,
+			'name' => $this->name,
+			'from_type' => $this->isMobile ? 'h5' : 'pc',
+			'city_input' => empty(strip_tags($this->city_input)) ? '' : strip_tags($this->city_input),
+			'form_type' => empty(strip_tags($this->form_type)) ? '' : strip_tags($this->form_type),
+			'area_input' => empty(strip_tags($this->area_input)) ? 0 : strip_tags($this->area_input),
+			'position' => strip_tags($this->position),
+			'note' => $note,
+			'message' => strip_tags($this->message),
+		];
+
+		$infoExist = DecorationOwner::findOne(['mobile' => $this->mobile]);
+		if ($infoExist) {
+			$infoExist->signup_at = Yii::$app->params['currentTime'];
+			$infoExist->signup_num = $infoExist->signup_num + 1;
+			$infoExist->update(false);
+		    $this->addError('error', '您的手机号已报名成功');
+		    $this->existOwner = true;
+		    return false;
+>>>>>>> web-house
 		}
 
 		$decorationOwner = DecorationOwner::addOwner($data);
@@ -95,6 +140,7 @@ class SignupForm extends Model
 		}
 
 		$conversionInfo = $conversionModel->successLog($data);
+<<<<<<< HEAD
 		$this->decorationModel->updateCounters(['signup_number' => 1]);
 		if (!empty($conversionInfo['channel']) || !empty($conversionInfo['keyword'])) {
 			$decorationOwner->signup_channel = $conversionInfo['channel'];
@@ -144,6 +190,19 @@ class SignupForm extends Model
 
 		$this->addError('error', '领取奖品失败');
 		return false;
+=======
+		if ($this->area_input > 20 && $this->area_input < 500) {
+			$this->quoteInfo = $this->_getQuoteInfo($this->area_input);
+		}
+
+		$serviceModel = $decorationOwner->dealService($data);
+		$decorationOwner->updateAfterInsert($conversionInfo);
+		//$this->sendSmsService($data, $serviceModel);
+		$data['service_code'] = $serviceModel->code;
+
+		$this->sendSms($data, $serviceModel->mobile);
+		return ['status' => 200, 'message' => 'OK', 'quoteInfo' => $this->quoteInfo];
+>>>>>>> web-house
 	}
 
 	protected function isValidate()
@@ -153,6 +212,7 @@ class SignupForm extends Model
 			return false;
 		}
 
+<<<<<<< HEAD
 		if (empty($this->info_id)) {
 			$this->addError('error', '必须报名指定的家装活动');
 			return false;
@@ -188,6 +248,21 @@ class SignupForm extends Model
 
 		$smser = new Smser('company');
         $smser->send($mobile, $content, 'decoration_signup');
+=======
+		return true;
+	}
+
+    protected function sendSms($data)
+    {
+        $mobile = $data['mobile'];
+
+		$siteName = Yii::$app->params['siteNameBase'];
+		$hotline = Yii::$app->params['siteHotline'];
+		$message = "您已成功预约，装修顾问会在15分钟内回访了解您的具体装修需求，请保持您的电话畅通，详情咨询{$hotline}【{$siteName}】";
+
+		$smser = new Smser('company');
+        $smser->send($mobile, $message, 'decoration_signup');
+>>>>>>> web-house
         
         return true;
     }
@@ -202,4 +277,14 @@ class SignupForm extends Model
         
         return true;
     }
+<<<<<<< HEAD
+=======
+
+	public function _getQuoteInfo($area)
+	{
+		$quote = new Quote(); 
+		$info = $quote->getResult($area);
+		return $info;
+	}
+>>>>>>> web-house
 }

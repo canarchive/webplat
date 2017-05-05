@@ -2,6 +2,8 @@
 
 namespace merchant\models;
 
+use Yii;
+use common\components\IP;
 use Overtrue\Pinyin\Pinyin;
 use common\models\MerchantModel;
 
@@ -10,7 +12,8 @@ use common\models\MerchantModel;
  */
 class Company extends MerchantModel
 {
-	public $region_level1;
+	public $merchant_list;
+	public $merchant_add;
 
     /**
      * @inheritdoc
@@ -38,21 +41,13 @@ class Company extends MerchantModel
     {
 		//print_r($_POST);exit();
         return [
-            [['name', 'region_code', 'code'], 'required'],
-            ['code', 'unique', 'targetClass' => '\merchant\models\Company', 'message' => 'This code has already been taken.'],
+            [['name', 'code'], 'required'],
+            ['code_short', 'unique', 'targetClass' => '\merchant\models\Company', 'message' => 'This code short has already been taken.'],
             [['status', 'logo'], 'default', 'value' => 0],
-			/*['region_code', 'default', 'value' => function($model, $attribute) {
-				$specials = ['11000', '12000', '310000', '71000', '81000', '82000'];
-				if (in_array($model->region_level1, $specials)) {
-					return $model->region_level1;
-				}
-				return $model->region_code;
-			}],*/
 			['code_initial', 'default', 'value' => function($model, $attribute) {
                 $spell = substr(Pinyin::letter(trim($model->name)), 0, 1);
 				return $spell;
 			}],
-			//[['postcode', 'code', 'code_initial'], 'default', 'value' => ''],
 			[['name_full', 'postcode', 'hotline', 'address', 'description'], 'safe'],
         ];
     }
@@ -65,27 +60,31 @@ class Company extends MerchantModel
         return [
             'id' => '公司ID',
 			'code' => '代码',
+			'code_short' => '代码简称',
 			'code_initial' => '首写字母',
-			'region_level1' => '省级地区',
-			'region_code' => '地区代码',
 			'name_full' => '全称',
             'name' => '名称',
             'logo' => 'LOGO',
 			'hotline' => '电话',
 			'postcode' => '邮编',
 			'address' => '地址',
+			'num_merchant' => '商家数',
+			'num_merchant_self' => '合作商家数',
             'description' => '描述',
             'status' => '是否显示',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
+			'merchant_list' => '商家列表',
+			'merchant_add' => '添加商家',
         ];
     }
 
 	protected function getStatusInfos()
 	{
 		$datas = [
-			'0' => '停用',
-			'1' => '正常',
+			'0' => '筹备中',
+			'1' => '启动中',
+			'2' => '运行中',
 		];
 		return $datas;
 	}	
@@ -100,9 +99,9 @@ class Company extends MerchantModel
 		return true;
 	}	
 
-	public function getInfos()
+	public function getInfos($where = [])
 	{
-		$infos = $this->find()->orderBy(['code_initial' => SORT_ASC])->indexBy('code')->all();
+		$infos = $this->find()->where($where)->orderBy(['code_initial' => SORT_ASC])->indexBy('code')->all();
 
 		return $infos;
 	}
@@ -111,5 +110,30 @@ class Company extends MerchantModel
 	{
 		$info = $this->findOne(['code' => $code]);
 		return $info;
+	}
+
+	public function getInfoByCodeShort($code)
+	{
+		$info = $this->findOne(['code_short' => $code]);
+		return $info;
+	}
+
+	public function getInfoByIP($returnDefault = true)
+	{
+        $ip = Yii::$app->getRequest()->getIP();
+        //$ip = '101.226.33.239';
+        //$attributes['ip'] = '123.57.148.73';
+        $city = IP::find($ip);
+        $city = isset($city[1]) ? $city[1] : '北京';
+        $info = $this->findOne(['name' => $city]);
+        $info = empty($info) ? $this->findOne(['code_short' => 'bj']) : $info;
+		return $info;
+	}
+
+	private function _somesql()
+	{
+		//UPDATE `wm_company` AS `c`, (SELECT `city_code`, COUNT(*) AS `num` FROM `wm_merchant` WHERE `is_spider` = 1 GROUP BY `city_code`) AS `m` SET `c`.`num_merchant` = `m`.`num` WHERE `c`.`code_short` = `m`.`city_code`;
+		//UPDATE `wm_company` AS `c`, (SELECT `city_code`, COUNT(*) AS `num` FROM `wm_merchant` WHERE `is_spider` = 0 GROUP BY `city_code`) AS `m` SET `c`.`num_merchant_self` = `m`.`num` WHERE `c`.`code_short` = `m`.`city_code`;
+
 	}
 }

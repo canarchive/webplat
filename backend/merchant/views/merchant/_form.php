@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use merchant\models\Category;
 use yii\helpers\Url;
 use common\widgets\FileUploadUI;
 use merchant\models\Attachment;
@@ -17,10 +16,10 @@ $model->aptitude = $attachmentModel->getFieldIds('merchant', 'aptitude', $model-
 <div class="menu-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+	<input type="hidden" name="city_code" value="<?= $this->context->companyInfo['code_short']; ?>" />
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'brief')->textInput(['maxlength' => 128]) ?>
     <?= $form->field($model, 'sort')->dropDownList($model->sortInfos, ['prompt' => Yii::t('admin-common', 'Select Sort')]); ?>
-    <?= $form->field($model, 'company_id')->dropDownList($model->companyInfos, ['prompt' => Yii::t('admin-common', 'Select Company')]); ?>
     <?= $form->field($model, 'logo')->hiddenInput(); ?>
     <?= FileUploadUI::widget([
         'model' => $attachmentModel,
@@ -38,7 +37,11 @@ $model->aptitude = $attachmentModel->getFieldIds('merchant', 'aptitude', $model-
         ],
     ]);
     ?>
-    <?= $form->field($model, 'category_id')->dropDownList($model->categoryInfos, ['prompt' => Yii::t('admin-common', 'Select Category')]); ?>
+    <?= $form->field($model, 'num_owner')->textInput() ?>
+    <?= $form->field($model, 'num_realcase')->textInput() ?>
+    <?= $form->field($model, 'num_working')->textInput() ?>
+    <?= $form->field($model, 'score')->textInput() ?>
+    <?= $form->field($model, 'praise')->textInput() ?>
     <?= $form->field($model, 'hotline')->textInput() ?>
     <?= $form->field($model, 'postcode')->textInput() ?>
     <?= $form->field($model, 'address')->textInput() ?>
@@ -79,6 +82,7 @@ $model->aptitude = $attachmentModel->getFieldIds('merchant', 'aptitude', $model-
     ?> 
     <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusInfos, ['prompt' => Yii::t('admin-common', 'Select Status')]); ?>
+    <?= $form->field($model, 'is_joined')->dropDownList($model->isJoinedInfos, ['prompt' => Yii::t('admin-common', 'Select Is joined')]); ?>
 
 	<?= $this->render('@app/views/common/form_button', ['model' => $model]); ?>
     <?php ActiveForm::end(); ?>

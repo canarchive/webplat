@@ -9,8 +9,8 @@ $params = array_merge(
 return [
     'id' => 'app-gallerycms',
     'basePath' => dirname(__DIR__),
-	'viewPath' => '@gallerycms/views/default',
-	'layout' => null,
+    'viewPath' => '@gallerycms/views/default',
+    'layout' => null,
     'bootstrap' => ['log'],
     'controllerNamespace' => 'gallerycms\controllers',
     'components' => [
@@ -31,6 +31,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
+<<<<<<< HEAD
             'rules' => [
 			    'list-<id:\d+>' => 'site/list',
 			    'show-<id:\d+>' => 'site/show',
@@ -42,5 +43,16 @@ return [
 			'class' => 'gallerycms\shoot\Module',
 		],
 	],
+=======
+            'enableStrictParsing' => true,
+			'rules' => require(__DIR__ . '/rules-house.php'),
+		],
+    ],
+    'modules' => [
+        'house' => [
+            'class' => 'gallerycms\house\Module',
+        ],
+    ],
+>>>>>>> web-house
     'params' => $params,
 ];

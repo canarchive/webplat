@@ -41,8 +41,13 @@ return [
         ],
     ],
 	'modules' => [
+<<<<<<< HEAD:shoot/config/main.php
 		'info' => [
 			'class' => 'shoot\info\Module',
+=======
+		'house' => [
+			'class' => 'spider\house\Module',
+>>>>>>> web-house:spider/config/main.php
 		],
 	],
     'params' => $params,

@@ -1,4 +1,5 @@
 <?php
+$this->context->companyInfo = $model->companyInfo;
 
 $detailViewParams = [
     'model' => $model,

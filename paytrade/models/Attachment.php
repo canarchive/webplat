@@ -2,11 +2,24 @@
 
 namespace paytrade\models;
 
+<<<<<<< HEAD:paytrade/models/Attachment.php
 use common\models\WebsiteModel;
 use common\models\Attachment as AttachmentBase;
 
 class Attachment extends AttachmentBase
+=======
+use Yii;
+use common\models\SpiderModel;
+use yii\helpers\ArrayHelper;
+
+/**
+ * This is the model class for table "merchant".
+ */
+class Attachment extends SpiderModel
+>>>>>>> web-house:spider/models/Attachment.php
 {
+	public $attrs;
+    
     /**
      * @inheritdoc
      */
@@ -17,6 +30,7 @@ class Attachment extends AttachmentBase
 
     public static function getDb()
     {
+<<<<<<< HEAD:paytrade/models/Attachment.php
         return \Yii::$app->dbPaytrade;
     }	
 
@@ -54,7 +68,26 @@ class Attachment extends AttachmentBase
 		if (!isset($infos[$table][$field])) {
 			return false;
 		}
+=======
+        return Yii::$app->dbMaster;
+    }	
 
-		return $infos[$table][$field];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+        ];
+    }
+>>>>>>> web-house:spider/models/Attachment.php
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+        ];
+    }
 }
